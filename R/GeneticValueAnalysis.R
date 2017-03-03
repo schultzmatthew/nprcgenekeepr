@@ -207,7 +207,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   if (sparse) {
     kmat <- Diagonal(n+1) / 2
   }
-  else{
+  else {
     kmat <- diag(n+1) / 2
   }
 
@@ -406,7 +406,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
       # If the sire is unknown, create a unique set of alleles for him
       alleles[[id]][["sire"]] <- rep(a, n)
       a <- a+1
-    } else{
+    } else {
       # Otherwise get his two sets of alleles and randomly select one
       # for each iteration
       s1 <- alleles[[s]][["sire"]]
@@ -418,7 +418,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
       # If the dam is unknown, create a unique set of alleles for her
       alleles[[id]][["dam"]] <- rep(a, n)
       a <- a+1
-    } else{
+    } else {
       # Otherwise get her two sets of alleles and randomly select one
       # for each iteration
       d1 <- alleles[[d]][["sire"]]
@@ -498,7 +498,7 @@ calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
   count.rare <- function(a) {
     if (by.id) {
       f <- freq(a, ids)
-    } else{
+    } else {
       f <- freq(a)
     }
     rare.alleles <- f$allele[f$freq <= threshold]
@@ -730,7 +730,7 @@ orderReport <- function(rpt, ped) {
     if ("age" %in% names(rpt)) {
       finalRpt$imports <- imports[with(imports, order(age)), ]
     }
-    else{
+    else {
       finalRpt$imports <- imports[with(imports, order(id)), ]
     }
 
@@ -743,7 +743,7 @@ orderReport <- function(rpt, ped) {
     if ("age" %in% names(rpt)) {
       finalRpt$no.parentage <- no.parentage[with(no.parentage, order(age)), ]
     }
-    else{
+    else {
       finalRpt$no.parentage <- no.parentage[with(no.parentage, order(id)), ]
     }
   }
@@ -801,13 +801,13 @@ rankSubjects <- function(rpt) {
       rpt[[i]][, "value"] <- "Low Value"
     } else if (names(rpt[i]) == "no.parentage") {
       rpt[[i]][, "value"] <- "Undetermined"
-    } else{
+    } else {
       rpt[[i]][, "value"] <- "High Value"
     }
 
     if (names(rpt[i]) == "no.parentage") {
       rpt[[i]][, "rank"] <- NA
-    } else{
+    } else {
       rpt[[i]][, "rank"] <- rnk:(rnk + nrow(rpt[[i]]) - 1)
       rnk <- rnk + nrow(rpt[[i]])
     }
