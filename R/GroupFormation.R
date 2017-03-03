@@ -302,22 +302,15 @@ filterThreshold <- function(kin, threshold = 0.015625) {
 #' @param kin a dataframe with columns \code{id1}, \code{id2}, and
 #' \code{kinship}. This is the kinship data reformatted from a matrix,
 #' to a long-format table.
+#' @param ped Dataframe of pedigree information including the IDs listed in
+#' \code{candidates}.
+#' @param ignore a list coontaining zero or more character vectors of length 2
+#' indicating which sex pairs should be ignored with regard to kinship.
+#' Defaults to \code{list(c("F", "F"))}.
 #'
+#' @return a dataframe representing a filtered long-format kinship table.
 #' @export
 filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
-  # Parameters
-  # ----------
-  # kin : data.frame {fields: id1, id2, kinship}
-  #   Long-format kinship table.
-  # ped : `Pedigree`
-  #   Table of pedigree information.
-  # ignore : list <char>
-  #   List of sex pairs for which kinship should be ignored.
-  #
-  # Return
-  # ------
-  # data.frame
-  #   Filtered long-format kinship table.
 
   if (length(ignore) == 0) {
     return(kin)
