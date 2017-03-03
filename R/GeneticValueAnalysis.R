@@ -1,3 +1,6 @@
+#   Build and Reload Package:  'Cmd + Shift + B'
+#   Check Package:             'Cmd + Shift + E'
+#   Test Package:              'Cmd + Shift + T'
 # GeneticValueAnalysis.R
 # 2015-03-04
 #
@@ -57,38 +60,32 @@ get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
 
 ###############################################################################
 # Main Function:
+#' Generates a genetic value report for a provided pedigree
 #'
+#' @param ped the pedigree information in datatable format
+#' @param gu.iter integer indicating the number of iterations for the gene-drop
+#'  analysis. Default is 5000 iterations
+#' @param gu.thresh integer indicating the threshold number of animals for
+#' defining a unique allele. Default considers an allele "unique"
+#' if it is found in only 1 animal.
+#' @param pop character vector with animal IDs to consider as the population of
+#' interest. The default is NULL.
+#' @param updateProgress : function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
+#'
+#' @return a dataframe with the genetic value report. Animals are ranked
+#' in order of descending value.
+#'
+#' @export
 reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
-                     by.id = TRUE, updateProgress = NULL){
+                     by.id = TRUE, updateProgress = NULL) {
   # Generates a genetic value report for a provided pedigree
-  #
-  # Parameters
-  # ----------
-  # ped : `Pedigree`
-  #   Pedigree information in a table.
-  # gu.iter : int
-  #   Number of iterations for the gene-drop analysis,
-  #   default is 5000 iterations
-  # gu.thresh : int
-  #   Threshold number of animals for defining a unique allele.
-  #   Default considers an allele "unique" if it is found in only 1 animal.
-  # pop : vector (char)
-  #   A list of IDs to consider as the population of interest,
-  #   default is NULL
-  # updateProgress : function or NULL
-  #   Function that can be called during each iteration to update a
-  #   shiny::Progress object.
-  #
-  # Return
-  # ------
-  # data.frame
-  #   Returns a genetic value report with animals ranked in order of
-  #   descending value.
 
-  if(!is.null(pop)){
+  if (!is.null(pop)) {
     ped$population <- FALSE
     ped$population[ped$id %in% pop] <- TRUE
-  } else if(is.null(ped$population)){
+  } else if (is.null(ped$population)) {
     ped$population <- TRUE
   }
 
@@ -108,7 +105,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   alleles <- gene.drop(ped$id, ped$sire, ped$dam, ped$gen,
                        n=gu.iter, updateProgress = updateProgress)
 
-  if(!is.null(updateProgress)){
+  if (!is.null(updateProgress)) {
     updateProgress(detail = "Calculating Genome Uniqueness", value = 1, reset = TRUE)
   }
 
@@ -116,7 +113,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   gu <- calc.gu(alleles, threshold = gu.thresh, by.id = by.id, pop = probands)
   gu <- gu[probands,]
 
-  if(!is.null(updateProgress)){
+  if (!is.null(updateProgress)) {
     updateProgress(detail = "Calculating Numbers of Offspring", value = 1, reset=TRUE)
   }
 
@@ -129,7 +126,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   rownames(ped) <- ped$id
   demographics <- ped[probands, include.cols]
 
-  if(!is.null(updateProgress)){
+  if (!is.null(updateProgress)) {
     updateProgress(detail="Calculating Founder Equivalents", value=1, reset=TRUE)
   }
 
@@ -202,7 +199,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse=FALSE) {
   # Returns: Matrix (row and col names are 'id')
   n <- length(id)
   if (any(duplicated(id))) stop("All id values must be unique")
-  if(sparse){
+  if (sparse) {
     kmat <- Diagonal(n+1) / 2
   }
   else{
@@ -237,7 +234,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse=FALSE) {
 }
 
 
-filterKinMatrix <- function(ids, kmat){
+filterKinMatrix <- function(ids, kmat) {
   # Filters a kinship matrix to include only the egos listed in 'ids'
   # Parameters
   # ----------
@@ -257,7 +254,7 @@ filterKinMatrix <- function(ids, kmat){
   return(kmat[(rownames(kmat) %in% ids), (colnames(kmat) %in% ids)])
 }
 
-avgKinship <- function(kmat){
+avgKinship <- function(kmat) {
   # Calculates the averages kinship for each animal in a kinship matrix
   # Parameters
   # ----------
@@ -318,7 +315,7 @@ avgKinship <- function(kmat){
 # calculated by this function should match the "founder genome uniqueness"
 # measure calculated by Pedscope.
 
-calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL){
+calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL) {
   # Calculates genome uniqueness for each ID that is part of the population.
   # Parameters
   # ----------
@@ -341,7 +338,7 @@ calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL){
   #   A single-column table of genome uniqueness values as percentages.
   #   Rownames are set to 'id' values that are part of the population.
 
-  if(!is.null(pop)){
+  if (!is.null(pop)) {
     alleles <- alleles[alleles$id %in% pop, ]
   }
 
@@ -358,7 +355,7 @@ calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL){
   return(gu)
 }
 
-gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
+gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL) {
   # Performs a gene drop simulation based on the provided pedigree information
   # Parameters
   # ----------
@@ -389,17 +386,17 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
   alleles <- list()
   a <- 1
 
-  if(!is.null(updateProgress)){
+  if (!is.null(updateProgress)) {
     updateProgress(detail="Performing Gene-drop Simulation", value=0, reset=TRUE)
   }
 
   # Iterate through each ID and get the maternal and paternal alleles
-  for(id in ped$id){
+  for(id in ped$id) {
     alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
 
-    if(is.na(s)){
+    if (is.na(s)) {
       # If the sire is unknown, create a unique set of alleles for him
       alleles[[id]][["sire"]] <- rep(a, n)
       a <- a+1
@@ -411,7 +408,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
       alleles[[id]][["sire"]] <- chooseAlleles(s1, s2)
     }
 
-    if(is.na(d)){
+    if (is.na(d)) {
       # If the dam is unknown, create a unique set of alleles for her
       alleles[[id]][["dam"]] <- rep(a, n)
       a <- a+1
@@ -423,7 +420,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
       alleles[[id]][["dam"]] <- chooseAlleles(d1, d2)
     }
 
-    if(!is.null(updateProgress)){
+    if (!is.null(updateProgress)) {
       updateProgress(n=nrow(ped))
     }
   }
@@ -434,7 +431,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
 
   id <- c()
   parent <- c()
-  for(i in 1:length(keys)){
+  for(i in 1:length(keys)) {
     key <- keys[[i]]
     id <- c(id, key[1])
     parent <- c(parent, key[2])
@@ -447,7 +444,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL){
   return(alleles)
 }
 
-chooseAlleles <- function(a1, a2){
+chooseAlleles <- function(a1, a2) {
   # Combines two vectors of alleles by randomly selecting one allele
   # or the other at each position.
   # Parameters
@@ -467,7 +464,7 @@ chooseAlleles <- function(a1, a2){
   return((a1 * s1) + (a2 * s2))
 }
 
-calc.a <- function(alleles, threshold=1, by.id=FALSE){
+calc.a <- function(alleles, threshold=1, by.id=FALSE) {
   # 'a' is the number of an individual's alleles that are rare in
   # each simulation.
   # Parameters
@@ -492,8 +489,8 @@ calc.a <- function(alleles, threshold=1, by.id=FALSE){
   parents <- alleles$parent
   alleles <- alleles[, !(names(alleles) %in% c("id", "parent"))]
 
-  count.rare <- function(a){
-    if(by.id){
+  count.rare <- function(a) {
+    if (by.id) {
       f <- freq(a, ids)
     } else{
       f <- freq(a)
@@ -506,7 +503,7 @@ calc.a <- function(alleles, threshold=1, by.id=FALSE){
   return(apply(alleles, 2, count.rare))
 }
 
-freq <- function(alleles, ids=NULL){
+freq <- function(alleles, ids=NULL) {
   # Calculates the count of each allele in the provided vector. If
   # ids are provided, the function will only count the unique alleles
   # for an individual (homozygous alleles will be counted as 1).
@@ -523,7 +520,7 @@ freq <- function(alleles, ids=NULL){
   # data.frame {allele, freq}
   #   Table of allele counts within the population.
 
-  if(!is.null(ids)){
+  if (!is.null(ids)) {
     alleles <- unlist(tapply(alleles, as.factor(ids), unique))
   }
 
@@ -536,7 +533,7 @@ freq <- function(alleles, ids=NULL){
 # Additional Statistics:
 
 # Founder Equivalents
-calc.fe <- function(ped){
+calc.fe <- function(ped) {
   # Pedigree (req. fields: id, sire, dam, gen, population)
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
@@ -552,10 +549,10 @@ calc.fe <- function(ped){
 
   d <- rbind(f, d)
 
-  for(i in 1:max(ped$gen)){
+  for(i in 1:max(ped$gen)) {
     gen <- ped[(ped$gen == i), ]
 
-    for(j in 1:nrow(gen)){
+    for(j in 1:nrow(gen)) {
       ego <- gen$id[j]
       sire <- gen$sire[j]
       dam <- gen$dam[j]
@@ -571,7 +568,7 @@ calc.fe <- function(ped){
 }
 
 # Founder Genome Equivalents
-calc.fg <- function(ped, alleles){
+calc.fg <- function(ped, alleles) {
   # Pedigree (req. fields: id, sire, dam, gen, population)
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
@@ -587,10 +584,10 @@ calc.fg <- function(ped, alleles){
 
   d <- rbind(f, d)
 
-  for(i in 1:max(ped$gen)){
+  for(i in 1:max(ped$gen)) {
     gen <- ped[(ped$gen == i), ]
 
-    for(j in 1:nrow(gen)){
+    for(j in 1:nrow(gen)) {
       ego <- gen$id[j]
       sire <- gen$sire[j]
       dam <- gen$dam[j]
@@ -607,7 +604,7 @@ calc.fg <- function(ped, alleles){
 }
 
 # Allelic Retention
-calc.retention <- function(ped, alleles){
+calc.retention <- function(ped, alleles) {
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   descendants <- ped$id[ped$population & !(ped$id %in% founders)]
@@ -618,7 +615,7 @@ calc.retention <- function(ped, alleles){
   alleles <- alleles[(alleles$id %in% descendants),
                      !(colnames(alleles) %in% c("id", "parent"))]
 
-  retained <- apply(alleles, 2, function(a){founders$allele %in% a})
+  retained <- apply(alleles, 2, function(a) {founders$allele %in% a})
   retained <- rowSums(retained, na.rm=TRUE)/ncol(retained)
   founders <- cbind(founders, retained)
 
@@ -631,7 +628,7 @@ calc.retention <- function(ped, alleles){
 ###############################################################################
 # Additional Report Information:
 
-offspringCounts <- function(probands, ped, consider.pop=FALSE){
+offspringCounts <- function(probands, ped, consider.pop=FALSE) {
   # Finds the number of total offspring for an animal in the provided pedigree;
   # optionally find the number that are part of the population of interest.
   #
@@ -656,7 +653,7 @@ offspringCounts <- function(probands, ped, consider.pop=FALSE){
   total.offspring <- findOffspring(probands, ped)
   results <- as.data.frame(total.offspring)
 
-  if(consider.pop && !is.null(ped$population)){
+  if (consider.pop && !is.null(ped$population)) {
     pop <- ped[ped$population, ]
     living.offspring <- findOffspring(probands, pop)
     results <- cbind(results, living.offspring)
@@ -664,7 +661,7 @@ offspringCounts <- function(probands, ped, consider.pop=FALSE){
   return(results)
 }
 
-findOffspring <- function(probands, ped){
+findOffspring <- function(probands, ped) {
   # Finds the number of total offspring for an animal in the provided pedigree
   # Parameters
   # ----------
@@ -694,7 +691,7 @@ findOffspring <- function(probands, ped){
 ###############################################################################
 # Report Formatting:
 
-orderReport <- function(rpt, ped){
+orderReport <- function(rpt, ped) {
   # Takes in the results from a genetic value analysis, and orders the report
   # according to the ranking scheme we have developed.
   # Parameters
@@ -717,14 +714,14 @@ orderReport <- function(rpt, ped){
 
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
 
-  if("origin" %in% names(rpt)){
+  if ("origin" %in% names(rpt)) {
     # imports with no offspring
     i <- (!is.na(rpt$origin) & (rpt$total.offspring == 0) &
             (rpt$id %in% founders))
 
     imports <- rpt[i, ]
     rpt <- rpt[!i, ]
-    if("age" %in% names(rpt)){
+    if ("age" %in% names(rpt)) {
       finalRpt$imports <- imports[with(imports, order(age)), ]
     }
     else{
@@ -737,7 +734,7 @@ orderReport <- function(rpt, ped){
 
     no.parentage <- rpt[i, ]
     rpt <- rpt[!i, ]
-    if("age" %in% names(rpt)){
+    if ("age" %in% names(rpt)) {
       finalRpt$no.parentage <- no.parentage[with(no.parentage, order(age)), ]
     }
     else{
@@ -770,7 +767,7 @@ orderReport <- function(rpt, ped){
   return(finalRpt)
 }
 
-rankSubjects <- function(rpt){
+rankSubjects <- function(rpt) {
   # Adds a column to 'rpt' containing integers from 1 to nrow, and provides
   # a value designation for each animal of "high value" or "low value"
   #
@@ -789,20 +786,20 @@ rankSubjects <- function(rpt){
 
   rnk <- 1
 
-  for(i in 1:length(rpt)){
-    if(nrow(rpt[[i]]) == 0){
+  for(i in 1:length(rpt)) {
+    if (nrow(rpt[[i]]) == 0) {
       next
     }
 
-    if(names(rpt[i]) == "low.val"){
+    if (names(rpt[i]) == "low.val") {
       rpt[[i]][, "value"] <- "Low Value"
-    } else if(names(rpt[i]) == "no.parentage"){
+    } else if (names(rpt[i]) == "no.parentage") {
       rpt[[i]][, "value"] <- "Undetermined"
     } else{
       rpt[[i]][, "value"] <- "High Value"
     }
 
-    if(names(rpt[i]) == "no.parentage"){
+    if (names(rpt[i]) == "no.parentage") {
       rpt[[i]][, "rank"] <- NA
     } else{
       rpt[[i]][, "rank"] <- rnk:(rnk + nrow(rpt[[i]]) - 1)
