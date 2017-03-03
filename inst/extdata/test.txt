@@ -1,0 +1,18 @@
+setwd("C:/Users/Mike/Desktop/20160729_GeneticManagementTools/")
+wfile <- read.csv("Example_Pedigree.csv", header=TRUE, stringsAsFactors=FALSE, na.strings="", check.names=FALSE)
+sb <- qc.Studbook(wfile)
+sb["population"] <- TRUE
+p <- sb
+p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
+p["gen"] <- findGeneration(p$id, p$sire, p$dam)
+gv <- reportGV(p, gu.iter=201, gu.thresh=2)
+candidates <- c("1112", "846", "1025", "1038", "1042")
+kmat <- gv$kinship
+ped <- p
+threshold <- 0.015625
+ignore=list(c("F", "F"))
+min.age=1
+iter=10
+numGp=2
+updateProgress=NULL
+ 

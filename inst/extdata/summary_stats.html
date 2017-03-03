@@ -1,0 +1,58 @@
+<p>
+	<h3><b>Summary Statistics</b></h3>
+	After running a Genetic Value Analysis, this page
+	will contain summary statistics and histograms for
+	the population under consideration.
+	<br>
+	<b>Note:</b> Founder equivalents and founder genome
+	equivalents will be inflated due to partial parentage
+	information. Calculating these statistics necessitates
+	adding placeholder IDs to fill out partial parentage
+	information. Each placeholder ID used is treated as
+	a founder. Calculations of <em>f<sub>e</sub></em> and
+	<em>f<sub>g</sub></em> may be changed at some point
+	in the future to try to correct for this situation.
+</p>
+
+<em>
+<p style="padding-left: 10px; padding-bottom: 15px">
+	<b>Founder Equivalents:</b>
+	<br>
+	Founder equivalents estimates the expected number
+	of equally contributing founders that would be
+	required to produce the observed genetic diversity
+	in the current population.
+</p>
+<p style="padding-left: 50px; padding-bottom: 15px">
+	f<sub>e</sub> = 1 / &Sigma;(p<sub>i</sub><sup>2</sup>)
+</p>
+<p style="padding-left: 10px; padding-bottom: 25px">
+	Where p<sub>i</sub> is the proportion of the genes of the living,
+	descendant population contributed by founder i.
+</p>
+</em>
+
+<em>
+<p style="padding-left: 10px">
+	<b>Founder Genome Equivalents:</b>
+	<br>
+	Founder genome equivalents estimates the expected number of
+	equally contributing founders that would be required to 
+	produce the observed genetic diversity in the current
+	population if no alleles had been lost to drift.
+</p>
+<p style="padding-left: 50px; padding-bottom: 15px">
+	f<sub>g</sub> = 1 / &Sigma;(p<sub>i</sub><sup>2</sup>/r<sub>i</sub>)
+</p>
+<p style="padding-left: 10px; padding-bottom: 15px">
+	Where p<sub>i</sub> is the proportion of the genes of the living,
+	descendant population contributed by founder i, and r<sub>i</sub>
+	is the allelic retention for founder i (estimated by gene drop).
+</p>
+</em>
+<p>
+	Lacy RC. 1989. Analysis of founder representation in pedigrees:
+	founder equivalents and founder genome equivalents. Zoo Biol 8:111-123.
+</p>
+
+
