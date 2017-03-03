@@ -207,6 +207,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 # the function.
 #
 #' @import Matrix
+#' @export
 kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Returns: Matrix (row and col names are 'id')
   n <- length(id)
@@ -313,34 +314,29 @@ avgKinship <- function(kmat) {
 # The estimates of genome uniqueness for founders within the population
 # calculated by this function should match the "founder genome uniqueness"
 # measure calculated by Pedscope.
+#
+#' Calculates genome uniqueness for each ID that is part of the population.
+#'
+#' @param alleles dataframe of containing an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{gene.drop()}.
+#' @param iterations an integer indicating the number of iterations for the
+#' gene drop simulation. Default is 5000
+#' @param threshold an integer indicating the maximum number of copies of an
+#' allele that can be present in the population for it to be considered rare.
+#' Default is 1.
 #' @param by.id logical varioable of length 1 that is passed through to
 #' eventually be used by \code{freq()}, which alculates the count of each
-#'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
-#'  the function will only count the unique alleles for an individual
-#'   (homozygous alleles will be counted as 1).
+#' allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#' the function will only count the unique alleles for an individual
+#' (homozygous alleles will be counted as 1).
+#' @param pop character vector with animal IDs to consider as the population of
+#' interest, otherwise all animals will be considered. The default is NULL.
+#'
+#' @return Dataframe \code{rows: id, col: gu}
+#'  A single-column table of genome uniqueness values as percentages.
+#'  Rownames are set to 'id' values that are part of the population.
+#' @export
 calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
-  # Calculates genome uniqueness for each ID that is part of the population.
-  # Parameters
-  # ----------
-  # alleles : `AlleleTable`
-  #   Table of allele information produced by gene.drop()
-  # iterations : int
-  #   Number of iterations for the gene drop simulation, default is 5000
-  # threshold : int
-  #   Maximum number of copies of an allele that can be present in the
-  #   population for it to be considered rare. Default is 1.
-  # by.id : bool
-  # pop : vector <char or NULL>
-  #   If provided, this list will be used as the set of animals under
-  #   consideration. Otherwise all animals will be considered.
-  #
-  #
-  # Return
-  # ------
-  # data.frame {rows: id, cols: 'gu'}
-  #   A single-column table of genome uniqueness values as percentages.
-  #   Rownames are set to 'id' values that are part of the population.
-
   if (!is.null(pop)) {
     alleles <- alleles[alleles$id %in% pop, ]
   }
@@ -524,10 +520,14 @@ freq <- function(alleles, ids = NULL) {
 ###############################################################################
 # Additional Statistics:
 
-# Founder Equivalents
+#' Calculates founder Equivalents
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#'
+#' It is assumed that the pedigree has no partial parentage
+#' @export
 calc.fe <- function(ped) {
-  # Pedigree (req. fields: id, sire, dam, gen, population)
-  # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
@@ -558,11 +558,16 @@ calc.fe <- function(ped) {
 
   return(1 / sum(p^2))
 }
-
-# Founder Genome Equivalents
+#' Calculates Founder Genome Equivalents
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#'
+#' It is assumed that the pedigree has no partial parentage
+#' @param alleles dataframe of containing an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{gene.drop()}.
+#' @export
 calc.fg <- function(ped, alleles) {
-  # Pedigree (req. fields: id, sire, dam, gen, population)
-  # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
@@ -595,7 +600,15 @@ calc.fg <- function(ped, alleles) {
   return(1 / sum((p^2) / r, na.rm = TRUE))
 }
 
-# Allelic Retention
+#' Calculates Allelic Retention
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#'
+#' It is assumed that the pedigree has no partial parentage
+#' @param alleles dataframe of containing an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{gene.drop()}.
+#' @export
 calc.retention <- function(ped, alleles) {
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
@@ -619,29 +632,25 @@ calc.retention <- function(ped, alleles) {
 
 ###############################################################################
 # Additional Report Information:
-
+#' Finds the number of total offspring for an animal in the provided pedigree;
+#' optionally find the number that are part of the population of interest.
+#'
+#' @param probands character vector of egos for which offspring should be
+#' counted.
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#' This is the complete pedigree.
+#' @param consider.pop logical value indication whether or not the number of
+#' offspring that are part of the focal populatio be counted? Default is
+#' \code{FALSE}.
+#'
+#' @return a dataframe with at least \code{id} and \code{total.offspring}
+#' required and \code{living.offspring} optional.
+#'
+#' @return a dataframe containing the total offspring for the provided ids,
+#' and optionally, the number that are part of the focal population.
+#' @export
 offspringCounts <- function(probands, ped, consider.pop = FALSE) {
-  # Finds the number of total offspring for an animal in the provided pedigree;
-  # optionally find the number that are part of the population of interest.
-  #
-  # Parameters
-  # ----------
-  # ids : vector <char>
-  #   Egos for which offspring should be counted.
-  # ped : `Pedigree`
-  #   The complete pedigree.
-  # consider.pop : bool
-  #   Should the number of offspring that are part of the focal population
-  #   be counted? Default is false.
-  #
-  # Return
-  # ------
-  # data.frame {cols: 'id' (req),
-  #                   'total.offspring' (req),
-  #                   'living.offspring' (opt)}
-  #   Returns a data.frame containing the total offspring for the provided ids,
-  #   and optionally, the number that are part of the focal population.
-
   total.offspring <- findOffspring(probands, ped)
   results <- as.data.frame(total.offspring)
 
@@ -653,21 +662,18 @@ offspringCounts <- function(probands, ped, consider.pop = FALSE) {
   return(results)
 }
 
-findOffspring <- function(probands, ped) {
-  # Finds the number of total offspring for an animal in the provided pedigree
-  # Parameters
-  # ----------
-  # probands : vector <char>
-  #   List of animals for which offspring should be counted and returned.
-  # ped : `Pedigree`
-  #   The complete pedigree information
-  #
-  # Returns
-  # -------
-  # named vector
-  #   Offpsring counts for each animal in 'probands'. Rownames are set to the
-  #   IDs from 'probands'.
+#' Finds the number of total offspring for an animal in the provided pedigree.
+#'
+#' @param probands character vector of egos for which offspring should be
+#' counted and returned.
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#' This requires complete pedigree information..
+#'
+#' @return a named vector containing the offpsring counts for each animal in
+#' \code{probands}. Rownames are set to the IDs from \code{probands}.
 
+findOffspring <- function(probands, ped) {
   sires <- tapply(ped$id, as.factor(ped$sire), length)
   dams <- tapply(ped$id, as.factor(ped$dam), length)
   offspring <- c(sires, dams)
@@ -682,25 +688,24 @@ findOffspring <- function(probands, ped) {
 
 ###############################################################################
 # Report Formatting:
-
+#' Takes in the results from a genetic value analysis, and orders the report
+#' according to the ranking scheme we have developed.
+#'
+#' @param rpt a dataframe {req colnames: id, gu, z.scores, import, total.offspring}
+#   A data.frame of results from a genetic value analysis
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#' This requires complete pedigree information..
+#'
+#' @return A dataframe, which is \code{rpt} sorted according to the ranking scheme:
+#' \itemize{
+#'  \item imported animals with no offspring
+#'  \item animals with genome uniqueness above 10%, ranked by descending gu
+#'  \item animals with mean kinship less than 0.25, ranked by ascending mk
+#'  \item all remaining animals, ranked by ascending mk
+#' }
+#' @export
 orderReport <- function(rpt, ped) {
-  # Takes in the results from a genetic value analysis, and orders the report
-  # according to the ranking scheme we have developed.
-  # Parameters
-  # ----------
-  # rpt : data.frame {req colnames: id, gu, z.scores, import, total.offspring}
-  #   A data.frame of results from a genetic value analysis
-  # ped : `Pedigree`
-  #   The complete pedigree for the animals in the report.
-  #
-  # Return
-  # ------
-  # data.frame
-  #   The rpt data.frame, sorted according to the ranking scheme:
-  #   1. imported animals with no offspring
-  #   2. animals with genome uniqueness above 10%, ranked by descending gu
-  #   3. animals with mean kinship less than 0.25, ranked by ascending mk
-  #   4. all remaining animals, ranked by ascending mk
 
   finalRpt <- list()
 
@@ -758,24 +763,17 @@ orderReport <- function(rpt, ped) {
   rownames(finalRpt) <- seq(nrow(finalRpt))
   return(finalRpt)
 }
-
+#' Adds a column to \code{rpt} containing integers from 1 to nrow, and provides
+#' a value designation for each animal of "high value" or "low value"
+#'
+#' @param rpt a list of data.frame {req. colnames: value} containing genetic
+#' value data for the population. Dataframes separate out those animals that
+#' are imports, those that have high genome uniqueness (gu > 10%), those that
+#' have low mean kinship (mk < 0.25), and the remainder.
+#'
+#' @return A list of dataframes with value and ranking information added.
+#' @export
 rankSubjects <- function(rpt) {
-  # Adds a column to 'rpt' containing integers from 1 to nrow, and provides
-  # a value designation for each animal of "high value" or "low value"
-  #
-  # Parameters
-  # ----------
-  # rpt : list of data.frame {req. colnames: value}
-  #   A list of dataframes containing genetic value data for the population.
-  #   Dataframes separate out those animals that are imports, those that have
-  #   high genome uniqueness (gu > 10%), those that have low mean kinship
-  #   (mk < 0.25), and the remainder.
-  #
-  # Return
-  # ------
-  # list of data.frame
-  #   Updated list of data.frames, with value and ranking information added.
-
   rnk <- 1
 
   for (i in 1:length(rpt)) {
