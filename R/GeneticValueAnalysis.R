@@ -76,7 +76,7 @@ get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
 #'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
 #'  the function will only count the unique alleles for an individual
 #'   (homozygous alleles will be counted as 1).
-#' @param updateProgress : function or NULL. If this function is defined, it
+#' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #'
@@ -367,7 +367,7 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
 #' @param gen integer vector indicating the generation number for each animal.
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
-#' @param updateProgress : function or NULL. If this function is defined, it
+#' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #'

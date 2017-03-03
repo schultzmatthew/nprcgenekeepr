@@ -31,7 +31,7 @@ shinyUI(tagList(
 
              titlePanel(div(style = "height:125px;width:100%",
                             div(style = "float:left;width:45%",
-                                img(src = "../ONPRC_Logo.png", height = 100, width = 200)),
+                                img(src = "../snprc_cobrand.png", height = 100, width = 650)),
                             div(style = "float:right;text-align:right;width:45%",
                                 "Genetic Management Tools")
              )
