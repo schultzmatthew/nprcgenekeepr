@@ -153,29 +153,26 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 #' ----------
 #' @param candidates character vector of IDs of the animals available for use
 #'  in the group.
-#' @param current.group : vector <char>
-#'   IDs of animals currently assigned to the group.
+#' @param current.group character vector of IDs of animals currently assigned to the group.
 #' @param kmat : matrix {row and column names: animal IDs}
 #'   Matrix of pairwise kinship values. Rows and columns are named with
 #'   animal IDs.
-#' @param ped : `Pedigree`
-#'   Table of pedigree information including the IDs listed in "candidates".
-#' @param threshold : float
-#'   Minimum kinship level to be considered in group formation. Pairwise
-#'   kinship below this level will be ignored.
-#' @param ignore : list <char>
-#'   List of sex combinations to be ignored. If provided, the vectors in the
-#'   list specify if pairwise kinship should be ignored between certain sexes.
-#'   Default is to ignore all pairwise kinship between females.
-#' @param min.age : int
-#'   Minimum age to consider in group formation. Pairwise kinships involving
-#'   an animal of this age or younger will be ignored. Default is 1 year.
-#' @param iter : int
-#'   Number of times to perform the random group formation process. Default
-#'   is 1000 iterations.
-#' @param updateProgress : function or NULL
-#'   Function that can be called during each iteration to update a
-#'   shiny::Progress object.
+#' @param ped Dataframe of pedigree information including the IDs listed in
+#' \code{candidates}.
+#' @param threshold numeric value indicating the minimum kinship level to be
+#' considered in group formation. Pairwise kinship below this level will be
+#' ignored.
+#' @param ignore list of character vectors representing the sex combinations
+#' to be ignored. If provided, the vectors in the list specify if pairwise
+#'  kinship should be ignored between certain sexes. Default is to ignore all
+#'  pairwise kinship between females.
+#' @param min.age integer value indicating the minimum age to consider in group
+#' formation. Pairwise kinships involving an animal of this age or younger will
+#'  be ignored. Default is 1 year.
+#' @param iter integer value indicating number of times to perform the random
+#' group formation process. Default is 1000 iterations.
+#' @param updateProgress optional function (may be NULL) that is called
+#' during each iteration to update a \code{shiny::Progress object}.
 #'
 #' @return a list with \code{group}, which contains a list of the best
 #' group(s) produced during the simulation and \code{score}, which provides
@@ -256,24 +253,19 @@ groupAddition <- function(candidates, current.group, kmat, ped,
 
 #################################################################################
 # Helper Functions:
+#' Reformats a kinship matrix into a long-format table.
+#'
+#' @param kin_matrix numerical matrix of pairwise kinship values. The row and
+#' column names correspond to animal IDs.
+#' @param rm.dups locigal value indication whether or not reverse-order ID
+#' pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
+#' be collapsed into a single entry if rm.dups = TRUE)
+#'
+#' @return dataframe with columns \code{id1}, \code{id2}, and \code{kinship}.
+#' This is the kinship data reformatted from a matrix, to a long-format table.
 #' @importFrom utils stack
 #' @export
 reformatKinship <- function(kin_matrix, rm.dups = FALSE) {
-  # Function reformats a kinship matrix into a long-format table.
-  # Parameters
-  # ----------
-  # kin_matrix : matrix <float>
-  #   Matrix of pairwise kinship values. The row and column names correspond to
-  #   animal IDs.
-  # rm.dups : bool
-  #   Should reverse-order ID pairs be filtered out? (i.e. "ID1 ID2 kin_val" and
-  #   "ID2 ID1 kin_val" will be collapsed into a single entry if rm.dups = TRUE)
-  #
-  # Return
-  # ------
-  # data.frame {fields: id1, id2, kinship}
-  #   Kinship data reformatted from a matrix, to a long-format table.
-
   if (rm.dups) {
     kin_matrix[upper.tri(kin_matrix)] <- NA
   }
@@ -289,19 +281,30 @@ reformatKinship <- function(kin_matrix, rm.dups = FALSE) {
 
   return(k[, c("id1", "id2", "kinship")])
 }
-
+#' Filters kinship values less than the specified threshold from a long-format
+#' table of kinship values.
+#'
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, and
+#' \code{kinship}. This is the kinship data reformatted from a matrix,
+#' to a long-format table.
+#' @param threshold numeric value representing the minimum kinship level to be
+#' considered in group formation. Pairwise kinship below this level will be
+#' ignored.
+#' @export
 filterThreshold <- function(kin, threshold = 0.015625) {
-  # Filters kinship values less than the specified threshold from a long-format
-  # table of kinship values
   kin <- kin[kin$kinship >= threshold, ]
   rownames(kin) <- 1:nrow(kin)
   return(kin)
 }
-
+#' Filters kinship values from a long-format kinship table based on the sexes
+#'  of the two animals involved.
+#'
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, and
+#' \code{kinship}. This is the kinship data reformatted from a matrix,
+#' to a long-format table.
+#'
 #' @export
 filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
-  # Filters kinship values from a long-format kinship table based on the
-  # sexes of the two animals involved.
   # Parameters
   # ----------
   # kin : data.frame {fields: id1, id2, kinship}
@@ -343,7 +346,8 @@ filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
 #' Removes kinship values where one animal is less than the min.age
 #'
 #' @param kin
-#' @param ped
+#' @param ped : `Pedigree`
+#'   Dataframe of pedigree information including the IDs listed in "candidates".
 #' @param min.age numeric value representing minimum years of age of
 #' animals to retain.
 #' @export
