@@ -6,36 +6,43 @@
 ###############################################################################
 # Data Definition:
 #
-# Pedigree
-# Contains studbook information for a number of individuals
-# A Pedigree is a data.frame with the following columns:
-#   id : char
-#     The unique identifier for an individual
-#   sire : char or NA
-#     Identifier of an individual's father, NA if unknown
-#   dam : char or NA
-#     Identifier of an individual's mother, NA if unknown
-#   sex : factor {levels: M, F, U}
-#     Sex specifier for an individual
-#   gen : int
-#     Generation number of the individual
-#   birth : Date or NA (optional)
-#     An individual's birth date
-#   exit : Date or NA (optional)
-#     An individual's exit date (death, or departure if applicable)
-#   age : float or NA (optional)
-#     The individual's current age or age at exit
-#   population : bool (optional)
-#     Is the id part of the extant population?
-#   origin : char or NA (optional)
-#     Name of the facility that the individual was imported from; NA if
-#     the invidual was not imported
 
 # Constants:
 TIME.ORIGIN <- as.Date("1970-01-01")
-POSSIBLE.COLS <- c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
-                   "ancestry", "population", "origin", "status", "condition",
-                   "spf", "vasx.ovx", "ped.num")
+#' Get possible column names for a studbood.
+#'
+#' @return a character vector of possible columns in a studbook. The possible
+#' columns are
+#' \itemize{
+#' \item{id} {character vector with unique identifier for an individual}
+#' \item{sire} {character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).}
+#' \item{dam} {character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).}
+#' \item{sex} {factor {levels: "M", "F", "U"} Sex specifier for an individual}
+#' \item{gen} {integer vector with the generation number of the individual}
+#' \item{birth} {Date or NA (optional) with the individual's birth date}
+#' \item{exit} {Date or NA (optional) with the individual's exit date (death,
+#'  or departure if applicable)}
+#' \item{age}{numeric vector with individual's age}
+#' \item{ancestry}{definition is missing.}
+#' \item{age} {numeric or NA (optional)
+#' The individual's current age or age at exit}
+#' \item{population} {bool (optional)
+#' Is the id part of the extant population?}
+#' \item{origin} {char or NA (optional)
+#' Name of the facility that the individual was imported from; NA if
+#' the invidual was not imported}
+#' \item{status}{definition is missing.}
+#' \item{condition}{definition is missing.}
+#' \item{spf}{definition is missing.}
+#' \item{vasx.ovx}{definition is missing.}
+#' \item{ped.num}{definition is missing.}
+get_possible_cols <- function() {
+  c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
+    "ancestry", "population", "origin", "status", "condition",
+    "spf", "vasx.ovx", "ped.num")
+}
 
 ###############################################################################
 # Main Function:
@@ -146,7 +153,7 @@ qc.Studbook <- function(sb) {
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
   sb <- removeDuplicates(sb)
-  cols <- intersect(POSSIBLE.COLS, colnames(sb))
+  cols <- intersect(get_possible_cols(), colnames(sb))
   sb <- sb[, cols]
   sb <- sb[with(sb, order(gen, id)), ]
   rownames(sb) <- seq(length = nrow(sb))
