@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-R/Notebook.html
+vignettes/Notebook.html
 man/*
 NAMESPACE
 
