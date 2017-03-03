@@ -52,6 +52,7 @@
 #'
 #' @return Superset of columns that can be in a pedigree file.
 #' @usage
+#' library(nprcmanager)
 #' get_inlcude_columns()
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
@@ -70,6 +71,11 @@ get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
 #' if it is found in only 1 animal.
 #' @param pop character vector with animal IDs to consider as the population of
 #' interest. The default is NULL.
+#' @param by.id logical varioable of length 1 that is passed through to
+#' eventually be used by \code{freq()}, which alculates the count of each
+#'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#'  the function will only count the unique alleles for an individual
+#'   (homozygous alleles will be counted as 1).
 #' @param updateProgress : function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
@@ -306,7 +312,11 @@ avgKinship <- function(kmat) {
 # The estimates of genome uniqueness for founders within the population
 # calculated by this function should match the "founder genome uniqueness"
 # measure calculated by Pedscope.
-
+#' @param by.id logical varioable of length 1 that is passed through to
+#' eventually be used by \code{freq()}, which alculates the count of each
+#'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#'  the function will only count the unique alleles for an individual
+#'   (homozygous alleles will be counted as 1).
 calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
   # Calculates genome uniqueness for each ID that is part of the population.
   # Parameters
@@ -457,6 +467,11 @@ chooseAlleles <- function(a1, a2) {
   return((a1 * s1) + (a2 * s2))
 }
 
+#' @param by.id logical varioable of length 1 that is passed through to
+#' eventually be used by \code{freq()}, which alculates the count of each
+#'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#'  the function will only count the unique alleles for an individual
+#'   (homozygous alleles will be counted as 1).
 calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
   # 'a' is the number of an individual's alleles that are rare in
   # each simulation.
