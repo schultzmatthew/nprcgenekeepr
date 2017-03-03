@@ -139,9 +139,9 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Calculating known founders
   founders <- ped[is.na(ped$sire) & is.na(ped$dam), ]
-  males <- founders[(founders$sex=="M") & !grepl("^U", founders$id,
+  males <- founders[(founders$sex == "M") & !grepl("^U", founders$id,
                                                  ignore.case = TRUE), ]
-  females <- founders[(founders$sex=="F") & !grepl("^U", founders$id,
+  females <- founders[(founders$sex == "F") & !grepl("^U", founders$id,
                                                    ignore.case = TRUE), ]
 
   finalData <- cbind(demographics, indiv.avgs, z.scores, gu, offspring)
@@ -205,35 +205,35 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   n <- length(id)
   if (any(duplicated(id))) stop("All id values must be unique")
   if (sparse) {
-    kmat <- Diagonal(n+1) / 2
+    kmat <- Diagonal(n + 1) / 2
   }
   else {
-    kmat <- diag(n+1) / 2
+    kmat <- diag(n + 1) / 2
   }
 
-  kmat[n+1,n+1]    <- 0 # if A and B both have "unknown" dad, this ensures
+  kmat[n + 1,n + 1]    <- 0 # if A and B both have "unknown" dad, this ensures
   # that they won't end up 'related' in the matrix
 
-  # id number "n+1" is a placeholder for missing parents
-  mrow <- match(mother.id, id, nomatch = n+1) #row number of the mother
-  drow <- match(father.id, id, nomatch = n+1) #row number of the dad
+  # id number "n + 1" is a placeholder for missing parents
+  mrow <- match(mother.id, id, nomatch = n + 1) #row number of the mother
+  drow <- match(father.id, id, nomatch = n + 1) #row number of the dad
 
-  # Those at depth==0 don't need to be processed
-  # Subjects with depth = i must be processed before those at depth i+1.
+  # Those at depth == 0 don't need to be processed
+  # Subjects with depth = i must be processed before those at depth i + 1.
   # Any parent is guarranteed to be at a lower depth than their children
   #  The inner loop on "i" can NOT be replaced with a vectorized expression:
   # sibs' effect on each other is cumulative.
   for (depth in 1:max(pdepth)) {
-    indx <- (1:n)[pdepth==depth]
+    indx <- (1:n)[pdepth == depth]
     for (i in indx) {
       mom <- mrow[i]
       dad <- drow[i]
-      kmat[i,]  <- kmat[,i] <- (kmat[mom,] + kmat[dad,])/2
-      kmat[i,i] <- (1+ kmat[mom,dad])/2
+      kmat[i,]  <- kmat[,i] <- (kmat[mom,] + kmat[dad,]) / 2
+      kmat[i,i] <- (1 + kmat[mom,dad]) / 2
     }
   }
 
-  kmat <- kmat[1:n,1:n]
+  kmat <- kmat[1:n, 1:n]
   dimnames(kmat) <- list(id, id)
   kmat
 }
@@ -351,7 +351,7 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
   # each simulation and average across all simulated alleles.
   rare <- calc.a(alleles, threshold, by.id)
   iterations <- sum(!(colnames(alleles) %in% c("id", "parent")))
-  gu <- rowSums(rare)/(2*iterations)
+  gu <- rowSums(rare) / (2*iterations)
 
   # convert to a percentage
   gu <- gu * 100
@@ -397,7 +397,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   }
 
   # Iterate through each ID and get the maternal and paternal alleles
-  for(id in ped$id) {
+  for (id in ped$id) {
     alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
@@ -405,7 +405,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
     if (is.na(s)) {
       # If the sire is unknown, create a unique set of alleles for him
       alleles[[id]][["sire"]] <- rep(a, n)
-      a <- a+1
+      a <- a + 1
     } else {
       # Otherwise get his two sets of alleles and randomly select one
       # for each iteration
@@ -417,7 +417,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
     if (is.na(d)) {
       # If the dam is unknown, create a unique set of alleles for her
       alleles[[id]][["dam"]] <- rep(a, n)
-      a <- a+1
+      a <- a + 1
     } else {
       # Otherwise get her two sets of alleles and randomly select one
       # for each iteration
@@ -437,7 +437,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
 
   id <- c()
   parent <- c()
-  for(i in 1:length(keys)) {
+  for (i in 1:length(keys)) {
     key <- keys[[i]]
     id <- c(id, key[1])
     parent <- c(parent, key[2])
@@ -555,10 +555,10 @@ calc.fe <- function(ped) {
 
   d <- rbind(f, d)
 
-  for(i in 1:max(ped$gen)) {
+  for (i in 1:max(ped$gen)) {
     gen <- ped[(ped$gen == i), ]
 
-    for(j in 1:nrow(gen)) {
+    for (j in 1:nrow(gen)) {
       ego <- gen$id[j]
       sire <- gen$sire[j]
       dam <- gen$dam[j]
@@ -570,7 +570,7 @@ calc.fe <- function(ped) {
   d <- d[current_desc, ]
   p <- colMeans(d)
 
-  return(1/sum(p^2))
+  return(1 / sum(p^2))
 }
 
 # Founder Genome Equivalents
@@ -590,10 +590,10 @@ calc.fg <- function(ped, alleles) {
 
   d <- rbind(f, d)
 
-  for(i in 1:max(ped$gen)) {
+  for (i in 1:max(ped$gen)) {
     gen <- ped[(ped$gen == i), ]
 
-    for(j in 1:nrow(gen)) {
+    for (j in 1:nrow(gen)) {
       ego <- gen$id[j]
       sire <- gen$sire[j]
       dam <- gen$dam[j]
@@ -606,7 +606,7 @@ calc.fg <- function(ped, alleles) {
   p <- colMeans(d)
 
   r <- calc.retention(ped, alleles)
-  return(1/sum((p^2)/r, na.rm = TRUE))
+  return(1 / sum((p^2) / r, na.rm = TRUE))
 }
 
 # Allelic Retention
@@ -622,7 +622,7 @@ calc.retention <- function(ped, alleles) {
                      !(colnames(alleles) %in% c("id", "parent"))]
 
   retained <- apply(alleles, 2, function(a) {founders$allele %in% a})
-  retained <- rowSums(retained, na.rm = TRUE)/ncol(retained)
+  retained <- rowSums(retained, na.rm = TRUE) / ncol(retained)
   founders <- cbind(founders, retained)
 
   founders <- tapply(founders$retained, founders$id, mean)
@@ -792,7 +792,7 @@ rankSubjects <- function(rpt) {
 
   rnk <- 1
 
-  for(i in 1:length(rpt)) {
+  for (i in 1:length(rpt)) {
     if (nrow(rpt[[i]]) == 0) {
       next
     }
