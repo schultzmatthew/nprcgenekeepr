@@ -238,41 +238,28 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   kmat
 }
 
-
+#' Filters a kinship matrix to include only the egos listed in 'ids'
+#'
+#' @param ids character vector containing the IDs of interest.
+#' The kinship matrix should be reduced to only include these rows and columns.
+#' @param kmat a numeric matrix of pairwise kinship coefficients.
+#' Rows and columns should be named with IDs.
+#'
+#' @return a numeric matrix. This is the reduced kinship matrix with named
+#' rows and columns (row and col names are 'ids')
+#' @export
 filterKinMatrix <- function(ids, kmat) {
-  # Filters a kinship matrix to include only the egos listed in 'ids'
-  # Parameters
-  # ----------
-  # ids : char
-  #   IDs of interest. The kinship matrix should be reduced to only
-  #   include these rows and columns.
-  # kmat : matrix
-  #   Matrix of pairwise kinship coefficients. Rows and columns
-  #   should be named with IDs.
-  #
-  # Return
-  # ------
-  # matrix
-  #   The reduced kinship matrix with named rows and columns
-  #   (row and col names are 'ids')
-
   return(kmat[(rownames(kmat) %in% ids), (colnames(kmat) %in% ids)])
 }
+#' Calculates the averages kinship for each animal in a kinship matrix
+#'
+#' @param kmat a numeric matrix of pairwise kinship coefficients.
+#' Animal IDs are the row and column names.
+#'
+#' @return named numeric vecter of average kinship coefficients for each
+#' animal ID. Elements are named with the IDs from the columns of kmat.
 
 avgKinship <- function(kmat) {
-  # Calculates the averages kinship for each animal in a kinship matrix
-  # Parameters
-  # ----------
-  # kmat : matrix
-  #   Matrix of pairwise kinship coefficients. Animal IDs are the row
-  #   and column names.
-  #
-  # Return
-  # ------
-  # vector <numeric>
-  #   A named vector of average kinship coefficients for each Animal ID.
-  #   Elements are named with the IDs from the columns of kmat.
-
   return(colMeans(kmat, na.rm = TRUE))
 }
 
