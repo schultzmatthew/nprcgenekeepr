@@ -85,7 +85,7 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 
     g <- list()
     g[1:numGp] <- 1:numGp
-    while(TRUE) {
+    while (TRUE) {
       if (isEmpty(g)) {
         break
       }
@@ -136,60 +136,54 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 
   return(list(group = saved.gp, score = saved.score))
 }
-
-#################################################################################
-# Adding animals to an existing group:
-
+#' Adding animals to an existing group:
+#'
+#' Function to find the largest group that can be formed by adding unrelated
+#' animals from a set of candidate IDs to an existing group.
+#'
+#' The function implements a maximal independent set algorithm to find groups
+#' of unrelated animals. A set of animals may have many different MISs of
+#' varying sizes, and finding the largest would require traversing all possible
+#' combinations of animals. Since this could be very time consuming, this
+#' algorithm produces a random sample of the possible MISs, and selects from
+#' these. The size of the random sample is determined by the specified number
+#' of iterations.
+#'
+#' Parameters
+#' ----------
+#' @param candidates character vector of IDs of the animals available for use
+#'  in the group.
+#' @param current.group : vector <char>
+#'   IDs of animals currently assigned to the group.
+#' @param kmat : matrix {row and column names: animal IDs}
+#'   Matrix of pairwise kinship values. Rows and columns are named with
+#'   animal IDs.
+#' @param ped : `Pedigree`
+#'   Table of pedigree information including the IDs listed in "candidates".
+#' @param threshold : float
+#'   Minimum kinship level to be considered in group formation. Pairwise
+#'   kinship below this level will be ignored.
+#' @param ignore : list <char>
+#'   List of sex combinations to be ignored. If provided, the vectors in the
+#'   list specify if pairwise kinship should be ignored between certain sexes.
+#'   Default is to ignore all pairwise kinship between females.
+#' @param min.age : int
+#'   Minimum age to consider in group formation. Pairwise kinships involving
+#'   an animal of this age or younger will be ignored. Default is 1 year.
+#' @param iter : int
+#'   Number of times to perform the random group formation process. Default
+#'   is 1000 iterations.
+#' @param updateProgress : function or NULL
+#'   Function that can be called during each iteration to update a
+#'   shiny::Progress object.
+#'
+#' @return a list with \code{group}, which contains a list of the best
+#' group(s) produced during the simulation and \code{score}, which provides
+#' the score associated with the group(s).
 #' @export
 groupAddition <- function(candidates, current.group, kmat, ped,
                           threshold = 0.015625, ignore = list(c("F", "F")),
                           min.age = 1, iter = 1000, updateProgress = NULL) {
-  # Function to find the largest group that can be formed by adding unrelated
-  # animals from a set of candidate IDs to an existing group.
-  #
-  # The function implements a maximal independent set algorithm to find groups
-  # of unrelated animals. A set of animals may have many different MISs of
-  # varying sizes, and finding the largest would require traversing all possible
-  # combinations of animals. Since this could be very time consuming, this
-  # algorithm produces a random sample of the possible MISs, and selects from
-  # these. The size of the random sample is determined by the specified number
-  # of iterations.
-  #
-  # Parameters
-  # ----------
-  # candidates : vector <char>
-  #   IDs of the animals available for use in the group.
-  # current.group : vector <char>
-  #   IDs of animals currently assigned to the group.
-  # kmat : matrix {row and column names: animal IDs}
-  #   Matrix of pairwise kinship values. Rows and columns are named with
-  #   animal IDs.
-  # ped : `Pedigree`
-  #   Table of pedigree information including the IDs listed in "candidates".
-  # threshold : float
-  #   Minimum kinship level to be considered in group formation. Pairwise
-  #   kinship below this level will be ignored.
-  # ignore : list <char>
-  #   List of sex combinations to be ignored. If provided, the vectors in the
-  #   list specify if pairwise kinship should be ignored between certain sexes.
-  #   Default is to ignore all pairwise kinship between females.
-  # min.age : int
-  #   Minimum age to consider in group formation. Pairwise kinships involving
-  #   an animal of this age or younger will be ignored. Default is 1 year.
-  # iter : int
-  #   Number of times to perform the random group formation process. Default
-  #   is 1000 iterations.
-  # updateProgress : function or NULL
-  #   Function that can be called during each iteration to update a
-  #   shiny::Progress object.
-  #
-  # Return
-  # ------
-  # list {fields: group, score}
-  #   "group" contains a list of the best group(s) produced during the
-  #   simulation, while "score" provides the score associated with the
-  #   group(s).
-
   kmat <- filterKinMatrix(union(candidates, current.group), kmat)
   kin <- reformatKinship(kmat)
 
@@ -223,7 +217,7 @@ groupAddition <- function(candidates, current.group, kmat, ped,
     gp <- current.group
     d <- candidates
 
-    while(TRUE) {
+    while (TRUE) {
       if (isEmpty(d)) {
         break
       }
