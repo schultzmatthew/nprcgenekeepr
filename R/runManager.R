@@ -1,8 +1,8 @@
 #' @export
 runManager <- function() {
-  appDir <- system.file("application", "myapp", package = "nprcmanager")
+  appDir <- system.file("application", package = "nprcmanager")
   if (appDir == "") {
-    stop("Could not find example directory. Try re-installing `nprcmanager`.",
+    stop("Could not find application directory. Try re-installing `nprcmanager`.",
          call. = FALSE)
   }
 

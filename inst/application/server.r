@@ -1,7 +1,7 @@
-source("../../R/PedigreeCuration.R")
-source("../../R/GeneticValueAnalysis.R")
-source("../../R/GroupFormation.R")
-source("../../R/Relations.R")
+# source("../../R/PedigreeCuration.R")
+# source("../../R/GeneticValueAnalysis.R")
+# source("../../R/GroupFormation.R")
+# source("../../R/Relations.R")
 
 shinyServer(function(input, output, session) {
   #############################################################################

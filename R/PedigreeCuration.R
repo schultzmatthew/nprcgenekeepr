@@ -5,7 +5,7 @@
 
 ###############################################################################
 # Data Definition:
-# 
+#
 # Pedigree
 # Contains studbook information for a number of individuals
 # A Pedigree is a data.frame with the following columns:
@@ -39,7 +39,7 @@ POSSIBLE.COLS <- c('id', 'sire', 'dam', 'sex', 'gen', 'birth', 'exit', 'age',
 
 ###############################################################################
 # Main Function:
-
+#' @export
 qc.Studbook <- function(sb){
   # Function performs basic quality control on pedigree information
   #
@@ -83,66 +83,66 @@ qc.Studbook <- function(sb){
   # ------
   # `Pedigree`
   #   A table of standardized and quality controlled pedigree information.
-  
+
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
   headers <- gsub("egoid", "id", headers)
   headers <- gsub("sireid", "sire", headers)
   headers <- gsub("damid", "dam", headers)
-  
+
   # Checking for the 4 required fields (id, sire, dam, sex)
   if(is.na(match('id', headers))){
     stop("No valid headers found")
   }
-  
+
   names(sb) <- headers
   required <- c('id', 'sire', 'dam', 'sex') %in% headers
-  
+
   if(!all(required)){
     stop("Required field missing")
   }
-  
+
   required <- c('age', 'birth') %in% headers
   if(!any(required)){
     stop("Required field missing")
   }
-  
+
   # Removing erroneous IDs (someone started entering 'unknown' for unknown
   # parents instead of leaving the field blank in PRIMe)
   sb <- sb[toupper(sb$id) != "UNKNOWN", ]
   sb$sire[toupper(sb$sire) == "UNKNOWN"] <- NA
   sb$dam[toupper(sb$dam) == "UNKNOWN"] <- NA
-  
+
   # Adding UIDs
   sb <- add.uIds(sb)
-  
+
   # Find any parents that don't have their own line entry
   sb <- addParents(sb)
-  
+
   # Add and standardize needed fields
   sb$sex <- convertSexCodes(sb$sex)
   sb$sex <- checkParentSex(sb$id, sb$sire, sb$dam, sb$sex)
-  
+
   if("status" %in% headers){
     sb$status <- convertStatusCodes(sb$status)
   }
   if("ancestry" %in% headers){
     sb$ancestry <- convertAncestry(sb$ancestry)
   }
-  
+
   # converting date column entries from strings to datetime
   sb <- convertDates(sb)
   sb <- setExit(sb)
-  
+
   # setting age
   # uses current date as the end point if no exit date is available
   if(("birth" %in% headers) && !("age" %in% headers)){
     sb["age"] <- calcAge(sb$birth, sb$exit)
   }
-  
+
   # Adding generation numbers
   sb["gen"] <- findGeneration(sb$id, sb$sire, sb$dam)
-  
+
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
   sb <- removeDuplicates(sb)
@@ -150,18 +150,18 @@ qc.Studbook <- function(sb){
   sb <- sb[, cols]
   sb <- sb[with(sb, order(gen, id)), ]
   rownames(sb) <- seq(length=nrow(sb))
-  
+
   # Ensuring the IDs are stored as characters
   sb$id <- as.character(sb$id)
   sb$sire <- as.character(sb$sire)
   sb$dam <- as.character(sb$dam)
-  
+
   return(sb)
 }
 
 ###############################################################################
 # Helper Functions:
-
+#' @export
 addParents <- function(ped){
   # Given a pedigree, find any IDs listed in the 'sire' or 'dam' columns
   # that lack their own line entry and generate one.
@@ -176,19 +176,19 @@ addParents <- function(ped){
   # Pedigree
   #   Updated Pedigree with entries added as necessary. Entries have the id
   #   and sex specified; all remaining columns are filled with NA.
-  
+
   sires <- ped$sire
   dams <- ped$dam
-  
+
   # Finding sires and dams not in the id column
   a1 <- sires[!(sires %in% ped$id) & !is.na(sires)]
   a1 <- a1[!duplicated(a1)]
   a2 <- dams[!(dams %in% ped$id) & !is.na(dams)]
   a2 <- a2[!duplicated(a2)]
-  
+
   a1 <- data.frame(id=a1, stringsAsFactors=FALSE)
   a2 <- data.frame(id=a2, stringsAsFactors=FALSE)
-  
+
   # Adding line entries for these parents
   if(nrow(a1) > 0){
     a1$sire <- NA
@@ -196,7 +196,7 @@ addParents <- function(ped){
     a1$sex <- "M"
     ped <- rbind.fill(ped, a1)
   }
-  
+
   if(nrow(a2) > 0){
     a2$sire <- NA
     a2$dam <- NA
@@ -205,7 +205,7 @@ addParents <- function(ped){
   }
   return(ped)
 }
-
+#' @export
 rbind.fill <- function(df1, df2){
   # Appends the rows of df2 to df1, can handle cases where df2
   # has a subset of the columns of df1
@@ -221,10 +221,10 @@ rbind.fill <- function(df1, df2){
   # ------
   # data.frame
   #   The appended data, with NA inserted into columns as needed
-  
+
   # Find columns in df1 not in df2
   add.headers <- setdiff(names(df1), names(df2))
-  
+
   # Add the missing columns to df2 (containing NA values)
   if(!isEmpty(add.headers)){
     for(i in 1:length(add.headers)){
@@ -250,7 +250,7 @@ rbind.fill <- function(df1, df2){
   }
   return(rbind(df1, df2))
 }
-
+#' @export
 checkParentSex <- function(id, sire, dam, sex){
   # Updates sex for animals listed as either a sire or dam
   # Parameters
@@ -268,25 +268,25 @@ checkParentSex <- function(id, sire, dam, sex){
   # ------
   # factor {levels: M, F, H, U}
   #   A vector of sex codes for the ids provided
-  
+
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
   dams <- unique(dam)
   dams <- dams[!is.na(dams)]
-  
+
   # Check if any ids are listed in both the sire and dam columns (error)
   err <- intersect(sires, dams)
   if(length(err > 0)){
     stop(err, " : Subject(s) listed as both sire and dam")
   }
-  
+
   # Update gender for sires and dams
   sex[((id %in% sires) & (sex != "M"))] <- "M"
   sex[((id %in% dams) & (sex != "F"))] <- "F"
   return(sex)
 }
-
+#' @export
 convertSexCodes <- function(sex, ignore.herm=TRUE){
   # Converts sex indicator for an individual to a standardized code
   # {M, F, H, U}
@@ -304,10 +304,10 @@ convertSexCodes <- function(sex, ignore.herm=TRUE){
   # factor {levels: M, F, H, U}
   #   Modified vector containing standardized sex codes with the
   #   possible values M, F, U, & optionally, H
-  
+
   sex <- toupper(sex)
   sex[is.na(sex)] <- "U"
-  
+
   sex[sex %in% c("MALE", "M", "1")] <- "M"
   sex[sex %in% c("FEMALE", "F", "2")] <- "F"
   sex[sex %in% c("UNKNOWN", "U", "3")] <- "U"
@@ -318,10 +318,11 @@ convertSexCodes <- function(sex, ignore.herm=TRUE){
     sex[sex %in% c("HERMAPHRODITE", "H", "4")] <- "H"
   }
   sex <- factor(sex, levels=c("F", "M", "H", "U"))
-  
+
   return(sex)
 }
 
+#' @export
 convertStatusCodes <- function(status){
   # Converts status indicators to a Standardized code
   # Parameters
@@ -335,18 +336,19 @@ convertStatusCodes <- function(status){
   # factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}
   #   Vector of standardized status codes with the possible values
   #   ALIVE, DECEASED, SHIPPED, or UNKNOWN
-  
+
   status <- toupper(status)
   status[is.na(status)] <- "UNKNOWN"
   status[status %in% c("ALIVE", "A", "1")] <- "ALIVE"
   status[status %in% c("DECEASED", "DEAD", "D", "2")] <- "DECEASED"
   status[status %in% c("SHIPPED", "SOLD", "SALE", "S", "3")] <- "SHIPPED"
   status[status %in% c("UNKNOWN", "U", "4")] <- "UNKNOWN"
-  
+
   status <- factor(status, levels=c("ALIVE", "DECEASED", "SHIPPED", "UNKNOWN"))
   return(status)
 }
 
+#' @export
 convertAncestry <- function(ancestry){
   # Converts the ancestry information to a standardized code
   # Parameters
@@ -360,9 +362,9 @@ convertAncestry <- function(ancestry){
   # factor {levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN}
   #   Vector of standardized designators specifying if an animal is a Chinese
   #   rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or Japanese macaque
-  
+
   ancestry <- tolower(ancestry)
-  
+
   # Find entries containing non-standardized indications of population
   chinese <- grepl("chin", ancestry) & !grepl("ind", ancestry)
   indian <- !grepl("chin", ancestry) & grepl("ind", ancestry)
@@ -370,21 +372,22 @@ convertAncestry <- function(ancestry){
                grepl("hyb", ancestry))
   japanese <- grepl("jap", ancestry)
   unknown <- is.na(ancestry)
-  
+
   other <- !(chinese | indian | hybrid | japanese) & !unknown
-  
+
   ancestry[chinese] <- "CHINESE"
   ancestry[indian] <- "INDIAN"
   ancestry[hybrid] <- "HYBRID"
   ancestry[japanese] <- "JAPANESE"
   ancestry[unknown] <- "UNKNOWN"
   ancestry[other] <- "OTHER"
-  
+
   ancestry <- factor(ancestry, levels=c("INDIAN", "CHINESE", "HYBRID",
                                         "JAPANESE", "OTHER", "UNKNOWN"))
   return(ancestry)
 }
 
+#' @export
 convertDates <- function(ped){
   # Converts date columns formatted as characters to be of type datetime
   #
@@ -398,9 +401,9 @@ convertDates <- function(ped){
   # ------
   # data.frame
   #   Updated table with date columns converted from <char> to <Date>
-  
+
   headers <- tolower(names(ped))
-  
+
   if("birth" %in% headers){
     ped$birth <- as.Date(ped$birth, origin=TIME.ORIGIN)
   }
@@ -416,9 +419,10 @@ convertDates <- function(ped){
   return(ped)
 }
 
+#' @export
 setExit <- function(ped){
   # Sets the exit date, if there is no exit column in the table
-  # 
+  #
   # Parameters
   # ----------
   # ped : data.frame {opt. columns: birth, death, departure}
@@ -431,9 +435,9 @@ setExit <- function(ped){
   # data.frame
   #   An updated table with exit dates specified based on date information
   #   that was available.
-  
+
   headers <- tolower(names(ped))
-  
+
   if(("birth" %in% headers) && !("exit" %in% headers)){
     if(("death" %in% headers) && ("departure" %in% headers)){
 	  # mapply simplifies results by default
@@ -455,6 +459,7 @@ setExit <- function(ped){
   return(ped)
 }
 
+#' @export
 chooseDate <- function(d1, d2, earlier=T){
   # Given two dates, one is selected to be returned based on whether
   # it occurred earlier or later than the other. NAs are ignored if
@@ -472,7 +477,7 @@ chooseDate <- function(d1, d2, earlier=T){
   # ------
   # Date or NA
   #   The chosen date, or NA if neither is provided
-  
+
   if(is.na(d1)){
     return(d2)
   }
@@ -490,23 +495,25 @@ chooseDate <- function(d1, d2, earlier=T){
   }
 }
 
+#' @export
 calcAge <- function(birth, exit){
   # Given vectors of birth and exit dates, calculate an individuals age;
   # calculates based on the current date, if no exit date is available
-  # 
+  #
   # Returns
   # -------
   # vector <float or NA>
   #   Age in decimal years from 'birth' to 'exit' or the current date
   #   if 'exit' is NA
-  
+
   exit[is.na(exit)] <- Sys.Date()
   return(round((as.double(exit - birth)/365.25), 1))
 }
 
+#' @export
 findGeneration <- function(id, sire, dam){
   # Determines the generation number for each id.
-  # 
+  #
   # Parameters
   # ----------
   # id : vector <char>
@@ -521,34 +528,36 @@ findGeneration <- function(id, sire, dam){
   # vector <int>
   #   Generation numbers for each id, starting at 0 for
   #   individuals lacking IDs both parents.
-  
+
   parents <- c()
   gen <- rep(NA, length(id))
   i <- 0
-  
+
   while(TRUE){
     cumulative.parents <- id[(is.na(sire) | (sire %in% parents)) &
                                (is.na(dam) | (dam %in% parents))]
     next.gen <- setdiff(cumulative.parents, parents)
-    
+
     if(isEmpty(next.gen)){
       break
     }
-    
+
     gen[id %in% next.gen] <- i
     i <- i+1
-    
+
     parents <- cumulative.parents
   }
   return(gen)
 }
 
+#' @export
 isEmpty <- function(x){
   # Returns true if x is a zero-length vector
   x <- x[!is.na(x)]
   return(length(x) == 0)
 }
 
+#' @export
 removeDuplicates <- function(ped){
   # Returns an updated data.frame with duplicate rows removed. Returns
   # an error if the table has duplicate IDs with differing data.
@@ -557,9 +566,9 @@ removeDuplicates <- function(ped){
   # ped : data.frame {req. col: id}
   #   Table of pedigree information
   #
-  
+
   p <- unique(ped)
-  
+
   if(sum(duplicated(p$id)) == 0){
     return(p)
   }
@@ -568,6 +577,7 @@ removeDuplicates <- function(ped){
   }
 }
 
+#' @export
 add.uIds <- function(ped){
   # Eliminates partial parentage situations by adding unique placeholder
   # IDs for the unknown parent.
@@ -580,10 +590,10 @@ add.uIds <- function(ped){
   # ------
   # data.frame
   #   The updated pedigree with partial parentage removed.
-  
+
   s <- which(is.na(ped$sire) & !is.na(ped$dam))
   d <- which(!is.na(ped$sire) & is.na(ped$dam))
-  
+
   if(!identical(s, integer(0))){
     k <- length(s)
     sire_ids <- paste("U", sprintf("%04d", 1:k), sep="")
@@ -592,20 +602,21 @@ add.uIds <- function(ped){
   else{
     k <- 0
   }
-  
+
   if(!identical(d, integer(0))){
     m <- k + 1
     n <- k + length(d)
     dam_ids <- paste("U", sprintf("%04d", m:n), sep="")
     ped[d, "dam"] <- dam_ids
   }
-  
+
   return(ped)
 }
 
+#' @export
 findPedigreeNumber <- function(id, sire, dam){
   # Determines the generation number for each id.
-  # 
+  #
   # Parameters
   # ----------
   # id : vector <char>
@@ -623,28 +634,28 @@ findPedigreeNumber <- function(id, sire, dam){
   founders <- id[is.na(sire) & is.na(dam)]
   ped.num <- rep(NA, length(id))
   n <- 1
-  
+
   while(!isEmpty(founders)){
     population <- founders[1]
-    
+
     while(TRUE){
       parents <- union(sire[id %in% population],
                        dam[id %in% population])
       parents <- parents[!is.na(parents)]
-      
+
       offspring <- id[(sire %in% population)  | (dam %in% population)]
-      
+
       added <- setdiff(union(offspring, parents), population)
-      
+
       if(isEmpty(added)){
         break
       }
-      
+
       population <- union(population, union(parents, offspring))
     }
     ped.num[id %in% population] <- n
     n <- n + 1
-    
+
     founders <- setdiff(founders, population)
   }
   return(ped.num)
@@ -652,6 +663,7 @@ findPedigreeNumber <- function(id, sire, dam){
 
 ###############################################################################
 # Pedigree Filtering:
+#' @export
 trimPedigree <- function(probands, ped){
   # Filters a pedigree down to only the ancestors of the provided group,
   # removing unnecessary individuals from the studbook. This version builds
@@ -669,17 +681,17 @@ trimPedigree <- function(probands, ped){
   # ------
   # `Pedigree`
   #   The reduced pedigree
-  
+
   animals <- probands
-  
+
   while(TRUE){
     sires <- ped$sire[ped$id %in% animals]
     dams <- ped$dam[ped$id %in% animals]
-    
+
     parents <- unique(union(sires, dams))
     parents <- parents[!is.na(parents)]
     added <- setdiff(parents, animals)
-    
+
     if(identical(added, character(0))){
       break
     }
@@ -691,12 +703,13 @@ trimPedigree <- function(probands, ped){
     }
     animals <- union(animals, parents)
   }
-  
+
   p <- ped[ped$id %in% animals, ]
   return(p)
 }
 
 
+#' @export
 trimPedigree2 <- function(probands, ped){
   # Filters a pedigree down to only the ancestors of the provided group,
   # removing unnecessary individuals from the studbook. This version builds
@@ -713,17 +726,17 @@ trimPedigree2 <- function(probands, ped){
   # ------
   # `Pedigree`
   #   The reduced pedigree
-  
+
   animals <- probands
-  
+
   while(TRUE){
     sires <- ped$sire[ped$id %in% animals]
     dams <- ped$dam[ped$id %in% animals]
-    
+
     parents <- unique(union(sires, dams))
     parents <- parents[!is.na(parents)]
     added <- setdiff(parents, animals)
-    
+
     if(identical(added, character(0))){
       break
     }
@@ -735,41 +748,41 @@ trimPedigree2 <- function(probands, ped){
     }
     animals <- union(animals, parents)
   }
-  
+
   ped <- ped[ped$id %in% animals, ]
   p <- ped
-  
+
   while(TRUE){
     founders <- p$id[is.na(p$sire) & is.na(p$dam)]
-    
+
     sires <- as.data.frame(table(p$sire[p$sire %in% founders]))
     dams <- as.data.frame(table(p$dam[p$dam %in% founders]))
     sires$Var1 <- as.character(sires$Var1)
     dams$Var1 <- as.character(dams$Var1)
-    
+
     rmv <- c(sires$Var1[sires$Freq == 1], dams$Var1[dams$Freq == 1])
     if(isEmpty(rmv)){
       break
     }
-    
+
     p$sire[p$sire %in% rmv] <- NA
     p$dam[p$dam %in% rmv] <- NA
     p <- p[!(p$id %in% rmv), ]
-    
+
   }
-  
+
   # Adding back second parents where one is known
   single.parents <- p$id[(is.na(p$sire) & !is.na(p$dam)) |
                            (!is.na(p$sire) & is.na(p$dam))]
-  
+
   add.back <- c()
   for(id in single.parents){
     if(!is.na(ped$sire[ped$id==id]) & !is.na(ped$dam[ped$id==id])){
-      
+
       if(is.na(p$sire[p$id==id])){
         add.back <- c(add.back, ped$sire[ped$id==id])
         p[(p$id==id), "sire"] <- ped$sire[ped$id==id]
-        
+
       } else{
         add.back <- c(add.back, ped$dam[ped$id==id])
         p[(p$id==id), "dam"] <- ped$dam[ped$id==id]
@@ -779,14 +792,15 @@ trimPedigree2 <- function(probands, ped){
   add.back <- ped[(ped$id %in% add.back), ]
   add.back$sire <- NA
   add.back$dam <- NA
-  
+
   p <- rbind(p, add.back)
-  
+
   return(p)
 }
 
 ###############################################################################
 # Population Designation Functions:
+#' @export
 resetPopulation <- function(ids, ped){
   # Update or add the 'population' field of a Pedigree
   # @type   ids: vector (string)
@@ -796,9 +810,9 @@ resetPopulation <- function(ids, ped){
   #
   # @rtype:      Pedigree
   # @return:     Updated pedigree
-  
+
   ped$population <- FALSE
-  
+
   if(length(ids) == 0){
     ped$population <- TRUE
   } else{
@@ -807,6 +821,7 @@ resetPopulation <- function(ids, ped){
   return(ped)
 }
 
+#' @export
 resetGroup <- function(ids, ped){
   # Update or add the 'group' field of a Pedigree
   # @type   ids: vector (string)
@@ -817,7 +832,7 @@ resetGroup <- function(ids, ped){
   #
   # @rtype:      Pedigree
   # @return:     Updated pedigree
-  
+
   ped$group <- FALSE
   ped$group[ped$id %in% ids] <- TRUE
   return(ped)
