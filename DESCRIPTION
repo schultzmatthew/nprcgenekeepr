@@ -6,7 +6,8 @@ Author: Michael Raboin
 Maintainer: <emoran550@gmail.com>
 Description: Implements Genetic Tools for Colony Management.
 Depends:
-    R (>= 3.2.1)
+    R (>= 3.2.1), 
+    shiny
 Imports:
     Matrix,
     utils
