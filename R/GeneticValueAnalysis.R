@@ -358,30 +358,25 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
   return(gu)
 }
 
+#' Performs a gene drop simulation based on the provided pedigree information
+#'
+#' @param id character vector of IDs for a set of animals.
+#' @param sire character vector or NA for the IDs of the sires for the set of
+#'  animals.
+#' @param dam character vector or NA for the IDs of the dams for the set of animals.
+#' @param gen integer vector indicating the generation number for each animal.
+#' @param n integer indicating the number of iterations to simulate.
+#' Default is 5000.
+#'
+#' @return data.frame {id, parent, V1 ... Vn}
+#' A data.frame providing the maternal and paternal alleles for an animal
+#' for each iteration. The first two columns provide the animal's ID and
+#' whether the allele came from the sire or dam. These are followed by
+#' \code{n] columns indicating the allele for that iteration.
+#'
+#' @export
 gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
-  # Performs a gene drop simulation based on the provided pedigree information
-  # Parameters
-  # ----------
-  # id : vector <char>
-  #   IDs for a set of animals.
-  # sire : vector <char or NA>
-  #   IDs of the sires for the set of animals.
-  # dam : vector <char or NA>
-  #   IDs of the dams for the set of animals.
-  # gen : vector <int>
-  #   Generation number for each animal.
-  # n : int
-  #   The number of iterations to simulate. Default is 5000.
-  #
-  # Return
-  # ------
-  # data.frame {id, parent, V1 ... Vn}
-  #   A data.frame providing the maternal and paternal alleles for an animal
-  #   for each iteration. The first two columns provide the animal's ID and
-  #   whether the allele came from the sire or dam. These are followed by n
-  #   columns indicating the allele for that iteration.
-
-  # Sort the IDs by generation so older generations are first
+  ## Sort the IDs by generation so older generations are first
   ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
   rownames(ped) <- id
   ped <- ped[order(gen), ]
@@ -394,7 +389,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
                    reset = TRUE)
   }
 
-  # Iterate through each ID and get the maternal and paternal alleles
+  ## Iterate through each ID and get the maternal and paternal alleles
   for (id in ped$id) {
     alleles[[id]] <- list()
     s <- ped[id, "sire"]
@@ -448,52 +443,42 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   return(alleles)
 }
 
+#' Combines two vectors of alleles by randomly selecting one allele
+#' or the other at each position.
+#'
+#' @param a1 integer vector with first allele for each individual
+#' @param a2 integer vector with second allele for each individual
+#' \code{a1} and \code{a2} are equal length vectors of alleles for one
+#' individual
+#'
+#' @return An integer vector with the result of sampling from \code{a1}
+#' and \code{a2} according to Mendelian inheritance.
+#' @export
 chooseAlleles <- function(a1, a2) {
-  # Combines two vectors of alleles by randomly selecting one allele
-  # or the other at each position.
-  # Parameters
-  # ----------
-  # a1, a2 : vector <int>
-  #   Equal length vectors of alleles for one individual
-  #
-  # Return
-  # ------
-  # int
-  #   A new set of alleles created by combining the two provided sets
-  #   according to Mendelian inheritance.
-
   s1 = sample(c(0, 1), length(a1), replace = TRUE)
   s2 = 1 - s1
 
   return((a1 * s1) + (a2 * s2))
 }
 
+#' Calculates \code{a}, the number of an individual's alleles that are rare in
+#' each simulation.
+#'
+#' @param alleles a matrix with {id, parent, V1 ... Vn} providing the alleles
+#' an animal recieved during each simulation.
+#' The first 2 columns provide the animal ID and the parent the allele came
+#' from. Remaining columns provide alleles.
+#' @param threshold an integer indicating the maximum number of copies of an
+#'  allele that can be present in the population for it to be considered rare.
+#'  Default is 1.
 #' @param by.id logical varioable of length 1 that is passed through to
 #' eventually be used by \code{freq()}, which alculates the count of each
 #'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
 #'  the function will only count the unique alleles for an individual
 #'   (homozygous alleles will be counted as 1).
+#' @return A matrix with named rows indicating the number of unique alleles
+#'   an animal had during each round of simulation (indicated in columns).
 calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
-  # 'a' is the number of an individual's alleles that are rare in
-  # each simulation.
-  # Parameters
-  # ----------
-  # alleles : matrix {id, parent, V1 ... Vn}
-  #   A matrix providing the alleles an animal recieved during
-  #   each simulation. The first 2 columns provide the animal ID
-  #   and the parent the allele came from. Remaining columns provide
-  #   alleles.
-  # threshold : int
-  #   Maximum number of copies of an allele that can be present in the
-  #   population for it to be considered rare. Default is 1.
-  # by.id : bool
-  #
-  # Return
-  # ------
-  # matrix
-  #   A matrix with named rows indicating the number of unique alleles
-  #   an animal had during each round of simulation (indicated in columns).
-
   ids <- alleles$id
   parents <- alleles$parent
   alleles <- alleles[, !(names(alleles) %in% c("id", "parent"))]
@@ -512,23 +497,18 @@ calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
   return(apply(alleles, 2, count.rare))
 }
 
+#' Calculates the count of each allele in the provided vector.
+#'
+#'  If ids are provided, the function will only count the unique alleles
+#' for an individual (homozygous alleles will be counted as 1).
+#'
+#' @param alleles an integer vector of alleles in the population
+#' @param ids character vector of IDs indicating to which animal each allele
+#' in \code{alleles} belongs.
+#'
+#' @return a data.frame with columns \code{allele} and \code{freq}. This is a
+#'  table of allele counts within the population.
 freq <- function(alleles, ids = NULL) {
-  # Calculates the count of each allele in the provided vector. If
-  # ids are provided, the function will only count the unique alleles
-  # for an individual (homozygous alleles will be counted as 1).
-  #
-  # Parameters
-  # ----------
-  # alleles : vector <int>
-  #   Alleles in the population
-  # ids : vector <char>
-  #   IDs indicating to which animal each allele in 'alleles' belongs.
-  #
-  # Return
-  # ------
-  # data.frame {allele, freq}
-  #   Table of allele counts within the population.
-
   if (!is.null(ids)) {
     alleles <- unlist(tapply(alleles, as.factor(ids), unique))
   }
