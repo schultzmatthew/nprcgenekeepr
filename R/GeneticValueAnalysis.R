@@ -106,7 +106,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
                        n = gu.iter, updateProgress = updateProgress)
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail = "Calculating Genome Uniqueness", value = 1, reset = TRUE)
+    updateProgress(detail = "Calculating Genome Uniqueness", value = 1,
+                   reset = TRUE)
   }
 
   # Calculate genome uniqueness and order the rows of the returned data.frame
@@ -114,7 +115,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   gu <- gu[probands,]
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail = "Calculating Numbers of Offspring", value = 1, reset = TRUE)
+    updateProgress(detail = "Calculating Numbers of Offspring", value = 1,
+                   reset = TRUE)
   }
 
   # Get a data.frame of offspring counts for the probands
@@ -127,7 +129,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   demographics <- ped[probands, include.cols]
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail = "Calculating Founder Equivalents", value = 1, reset = TRUE)
+    updateProgress(detail = "Calculating Founder Equivalents", value = 1,
+                   reset = TRUE)
   }
 
   # Calculating founder equivalents and founder genome equivalents
@@ -136,8 +139,10 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Calculating known founders
   founders <- ped[is.na(ped$sire) & is.na(ped$dam), ]
-  males <- founders[(founders$sex=="M") & !grepl("^U", founders$id, ignore.case = TRUE), ]
-  females <- founders[(founders$sex=="F") & !grepl("^U", founders$id, ignore.case = TRUE), ]
+  males <- founders[(founders$sex=="M") & !grepl("^U", founders$id,
+                                                 ignore.case = TRUE), ]
+  females <- founders[(founders$sex=="F") & !grepl("^U", founders$id,
+                                                   ignore.case = TRUE), ]
 
   finalData <- cbind(demographics, indiv.avgs, z.scores, gu, offspring)
   finalData <- list(report = orderReport(finalData, ped),
@@ -387,7 +392,8 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   a <- 1
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail = "Performing Gene-drop Simulation", value = 0, reset = TRUE)
+    updateProgress(detail = "Performing Gene-drop Simulation", value = 0,
+                   reset = TRUE)
   }
 
   # Iterate through each ID and get the maternal and paternal alleles
