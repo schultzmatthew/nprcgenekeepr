@@ -103,7 +103,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Perform the gene drop simulation
   alleles <- gene.drop(ped$id, ped$sire, ped$dam, ped$gen,
-                       n=gu.iter, updateProgress = updateProgress)
+                       n = gu.iter, updateProgress = updateProgress)
 
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Calculating Genome Uniqueness", value = 1, reset = TRUE)
@@ -114,11 +114,11 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   gu <- gu[probands,]
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail = "Calculating Numbers of Offspring", value = 1, reset=TRUE)
+    updateProgress(detail = "Calculating Numbers of Offspring", value = 1, reset = TRUE)
   }
 
   # Get a data.frame of offspring counts for the probands
-  offspring <- offspringCounts(probands, ped, consider.pop=TRUE)
+  offspring <- offspringCounts(probands, ped, consider.pop = TRUE)
 
   include.cols <- intersect(get_include_columns(), names(ped))
 
@@ -127,7 +127,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   demographics <- ped[probands, include.cols]
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail="Calculating Founder Equivalents", value=1, reset=TRUE)
+    updateProgress(detail = "Calculating Founder Equivalents", value = 1, reset = TRUE)
   }
 
   # Calculating founder equivalents and founder genome equivalents
@@ -136,17 +136,17 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Calculating known founders
   founders <- ped[is.na(ped$sire) & is.na(ped$dam), ]
-  males <- founders[(founders$sex=="M") & !grepl("^U", founders$id, ignore.case=T), ]
-  females <- founders[(founders$sex=="F") & !grepl("^U", founders$id, ignore.case=T), ]
+  males <- founders[(founders$sex=="M") & !grepl("^U", founders$id, ignore.case = TRUE), ]
+  females <- founders[(founders$sex=="F") & !grepl("^U", founders$id, ignore.case = TRUE), ]
 
   finalData <- cbind(demographics, indiv.avgs, z.scores, gu, offspring)
-  finalData <- list(report=orderReport(finalData, ped),
-                    kinship=kmat,
-                    fe=fe,
-                    fg=fg,
-                    male.founders=nrow(males),
-                    female.founders=nrow(females),
-                    total=(nrow(males) + nrow(females)))
+  finalData <- list(report = orderReport(finalData, ped),
+                    kinship = kmat,
+                    fe = fe,
+                    fg = fg,
+                    male.founders = nrow(males),
+                    female.founders = nrow(females),
+                    total = (nrow(males) + nrow(females)))
   return(finalData)
 }
 
@@ -195,7 +195,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 # requires the generation number to be calculated elsewhere and passed into
 # the function.
 #
-kinship <- function(id, father.id, mother.id, pdepth, sparse=FALSE) {
+kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Returns: Matrix (row and col names are 'id')
   n <- length(id)
   if (any(duplicated(id))) stop("All id values must be unique")
@@ -210,11 +210,11 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse=FALSE) {
   # that they won't end up 'related' in the matrix
 
   # id number "n+1" is a placeholder for missing parents
-  mrow <- match(mother.id, id, nomatch=n+1) #row number of the mother
-  drow <- match(father.id, id, nomatch=n+1) #row number of the dad
+  mrow <- match(mother.id, id, nomatch = n+1) #row number of the mother
+  drow <- match(father.id, id, nomatch = n+1) #row number of the dad
 
   # Those at depth==0 don't need to be processed
-  # Subjects with depth=i must be processed before those at depth i+1.
+  # Subjects with depth = i must be processed before those at depth i+1.
   # Any parent is guarranteed to be at a lower depth than their children
   #  The inner loop on "i" can NOT be replaced with a vectorized expression:
   # sibs' effect on each other is cumulative.
@@ -268,7 +268,7 @@ avgKinship <- function(kmat) {
   #   A named vector of average kinship coefficients for each Animal ID.
   #   Elements are named with the IDs from the columns of kmat.
 
-  return(colMeans(kmat, na.rm=TRUE))
+  return(colMeans(kmat, na.rm = TRUE))
 }
 
 ###############################################################################
@@ -315,7 +315,7 @@ avgKinship <- function(kmat) {
 # calculated by this function should match the "founder genome uniqueness"
 # measure calculated by Pedscope.
 
-calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL) {
+calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
   # Calculates genome uniqueness for each ID that is part of the population.
   # Parameters
   # ----------
@@ -355,7 +355,7 @@ calc.gu <- function(alleles, threshold=1, by.id=FALSE, pop=NULL) {
   return(gu)
 }
 
-gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL) {
+gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   # Performs a gene drop simulation based on the provided pedigree information
   # Parameters
   # ----------
@@ -379,7 +379,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL) {
   #   columns indicating the allele for that iteration.
 
   # Sort the IDs by generation so older generations are first
-  ped <- data.frame(id, sire, dam, gen, stringsAsFactors=FALSE)
+  ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
   rownames(ped) <- id
   ped <- ped[order(gen), ]
 
@@ -387,7 +387,7 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL) {
   a <- 1
 
   if (!is.null(updateProgress)) {
-    updateProgress(detail="Performing Gene-drop Simulation", value=0, reset=TRUE)
+    updateProgress(detail = "Performing Gene-drop Simulation", value = 0, reset = TRUE)
   }
 
   # Iterate through each ID and get the maternal and paternal alleles
@@ -421,13 +421,13 @@ gene.drop <- function(id, sire, dam, gen, n=5000, updateProgress=NULL) {
     }
 
     if (!is.null(updateProgress)) {
-      updateProgress(n=nrow(ped))
+      updateProgress(n = nrow(ped))
     }
   }
 
   # Convert the list of alleles to a data.frame
-  alleles <- as.data.frame(t(data.frame(alleles, check.names=F)))
-  keys <- strsplit(rownames(alleles), ".", fixed=TRUE)
+  alleles <- as.data.frame(t(data.frame(alleles, check.names = FALSE)))
+  keys <- strsplit(rownames(alleles), ".", fixed = TRUE)
 
   id <- c()
   parent <- c()
@@ -458,13 +458,13 @@ chooseAlleles <- function(a1, a2) {
   #   A new set of alleles created by combining the two provided sets
   #   according to Mendelian inheritance.
 
-  s1 = sample(c(0, 1), length(a1), replace=TRUE)
+  s1 = sample(c(0, 1), length(a1), replace = TRUE)
   s2 = 1 - s1
 
   return((a1 * s1) + (a2 * s2))
 }
 
-calc.a <- function(alleles, threshold=1, by.id=FALSE) {
+calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
   # 'a' is the number of an individual's alleles that are rare in
   # each simulation.
   # Parameters
@@ -503,7 +503,7 @@ calc.a <- function(alleles, threshold=1, by.id=FALSE) {
   return(apply(alleles, 2, count.rare))
 }
 
-freq <- function(alleles, ids=NULL) {
+freq <- function(alleles, ids = NULL) {
   # Calculates the count of each allele in the provided vector. If
   # ids are provided, the function will only count the unique alleles
   # for an individual (homozygous alleles will be counted as 1).
@@ -537,10 +537,10 @@ calc.fe <- function(ped) {
   # Pedigree (req. fields: id, sire, dam, gen, population)
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
-  UID.founders <- founders[grepl("^U", founders, ignore.case=T)]
+  UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
 
-  d <- matrix(0, nrow=length(descendants), ncol=length(founders))
+  d <- matrix(0, nrow = length(descendants), ncol = length(founders))
   colnames(d) <- founders
   rownames(d) <- descendants
 
@@ -572,10 +572,10 @@ calc.fg <- function(ped, alleles) {
   # Pedigree (req. fields: id, sire, dam, gen, population)
   # ASSUME: Pedigree has no partial parentage
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
-  UID.founders <- founders[grepl("^U", founders, ignore.case=T)]
+  UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
 
-  d <- matrix(0, nrow=length(descendants), ncol=length(founders))
+  d <- matrix(0, nrow = length(descendants), ncol = length(founders))
   colnames(d) <- founders
   rownames(d) <- descendants
 
@@ -600,7 +600,7 @@ calc.fg <- function(ped, alleles) {
   p <- colMeans(d)
 
   r <- calc.retention(ped, alleles)
-  return(1/sum((p^2)/r, na.rm=TRUE))
+  return(1/sum((p^2)/r, na.rm = TRUE))
 }
 
 # Allelic Retention
@@ -616,7 +616,7 @@ calc.retention <- function(ped, alleles) {
                      !(colnames(alleles) %in% c("id", "parent"))]
 
   retained <- apply(alleles, 2, function(a) {founders$allele %in% a})
-  retained <- rowSums(retained, na.rm=TRUE)/ncol(retained)
+  retained <- rowSums(retained, na.rm = TRUE)/ncol(retained)
   founders <- cbind(founders, retained)
 
   founders <- tapply(founders$retained, founders$id, mean)
@@ -628,7 +628,7 @@ calc.retention <- function(ped, alleles) {
 ###############################################################################
 # Additional Report Information:
 
-offspringCounts <- function(probands, ped, consider.pop=FALSE) {
+offspringCounts <- function(probands, ped, consider.pop = FALSE) {
   # Finds the number of total offspring for an animal in the provided pedigree;
   # optionally find the number that are part of the population of interest.
   #
