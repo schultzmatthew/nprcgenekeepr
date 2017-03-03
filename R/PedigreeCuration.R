@@ -33,9 +33,9 @@
 
 # Constants:
 TIME.ORIGIN <- as.Date("1970-01-01")
-POSSIBLE.COLS <- c('id', 'sire', 'dam', 'sex', 'gen', 'birth', 'exit', 'age',
-                   'ancestry', 'population', 'origin', 'status', 'condition',
-                   'spf', 'vasx.ovx', "ped.num")
+POSSIBLE.COLS <- c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
+                   "ancestry", "population", "origin", "status", "condition",
+                   "spf", "vasx.ovx", "ped.num")
 
 ###############################################################################
 # Main Function:
@@ -91,23 +91,23 @@ qc.Studbook <- function(sb) {
   headers <- gsub("damid", "dam", headers)
 
   # Checking for the 4 required fields (id, sire, dam, sex)
-  if (is.na(match('id', headers))) {
+  if (is.na(match("id", headers))) {
     stop("No valid headers found")
   }
 
   names(sb) <- headers
-  required <- c('id', 'sire', 'dam', 'sex') %in% headers
+  required <- c("id", "sire", "dam", "sex") %in% headers
 
   if (!all(required)) {
     stop("Required field missing")
   }
 
-  required <- c('age', 'birth') %in% headers
+  required <- c("age", "birth") %in% headers
   if (!any(required)) {
     stop("Required field missing")
   }
 
-  # Removing erroneous IDs (someone started entering 'unknown' for unknown
+  # Removing erroneous IDs (someone started entering "unknown" for unknown
   # parents instead of leaving the field blank in PRIMe)
   sb <- sb[toupper(sb$id) != "UNKNOWN", ]
   sb$sire[toupper(sb$sire) == "UNKNOWN"] <- NA
@@ -149,7 +149,7 @@ qc.Studbook <- function(sb) {
   cols <- intersect(POSSIBLE.COLS, colnames(sb))
   sb <- sb[, cols]
   sb <- sb[with(sb, order(gen, id)), ]
-  rownames(sb) <- seq(length=nrow(sb))
+  rownames(sb) <- seq(length = nrow(sb))
 
   # Ensuring the IDs are stored as characters
   sb$id <- as.character(sb$id)
@@ -163,7 +163,7 @@ qc.Studbook <- function(sb) {
 # Helper Functions:
 #' @export
 addParents <- function(ped) {
-  # Given a pedigree, find any IDs listed in the 'sire' or 'dam' columns
+  # Given a pedigree, find any IDs listed in the "sire" or "dam" columns
   # that lack their own line entry and generate one.
   #
   # Parameters
@@ -186,8 +186,8 @@ addParents <- function(ped) {
   a2 <- dams[!(dams %in% ped$id) & !is.na(dams)]
   a2 <- a2[!duplicated(a2)]
 
-  a1 <- data.frame(id=a1, stringsAsFactors=FALSE)
-  a2 <- data.frame(id=a2, stringsAsFactors=FALSE)
+  a1 <- data.frame(id = a1, stringsAsFactors = FALSE)
+  a2 <- data.frame(id = a2, stringsAsFactors = FALSE)
 
   # Adding line entries for these parents
   if (nrow(a1) > 0) {
@@ -227,12 +227,12 @@ rbind.fill <- function(df1, df2) {
 
   # Add the missing columns to df2 (containing NA values)
   if (!isEmpty(add.headers)) {
-    for(i in 1:length(add.headers)) {
+    for (i in 1:length(add.headers)) {
       c <- df1[, add.headers[i]]
       col.type <- mode(c)
       if (col.type == "numeric") {
         if (class(c) == "Date") {
-          df2[, add.headers[i]] <- as.Date(NA, origin=TIME.ORIGIN)
+          df2[, add.headers[i]] <- as.Date(NA, origin = TIME.ORIGIN)
         } else{
           df2[, add.headers[i]] <- NaN
         }
@@ -287,7 +287,7 @@ checkParentSex <- function(id, sire, dam, sex) {
   return(sex)
 }
 #' @export
-convertSexCodes <- function(sex, ignore.herm=TRUE) {
+convertSexCodes <- function(sex, ignore.herm = TRUE) {
   # Converts sex indicator for an individual to a standardized code
   # {M, F, H, U}
   #
@@ -317,7 +317,7 @@ convertSexCodes <- function(sex, ignore.herm=TRUE) {
   else{
     sex[sex %in% c("HERMAPHRODITE", "H", "4")] <- "H"
   }
-  sex <- factor(sex, levels=c("F", "M", "H", "U"))
+  sex <- factor(sex, levels = c("F", "M", "H", "U"))
 
   return(sex)
 }
@@ -344,7 +344,7 @@ convertStatusCodes <- function(status) {
   status[status %in% c("SHIPPED", "SOLD", "SALE", "S", "3")] <- "SHIPPED"
   status[status %in% c("UNKNOWN", "U", "4")] <- "UNKNOWN"
 
-  status <- factor(status, levels=c("ALIVE", "DECEASED", "SHIPPED", "UNKNOWN"))
+  status <- factor(status, levels = c("ALIVE", "DECEASED", "SHIPPED", "UNKNOWN"))
   return(status)
 }
 
@@ -382,7 +382,7 @@ convertAncestry <- function(ancestry) {
   ancestry[unknown] <- "UNKNOWN"
   ancestry[other] <- "OTHER"
 
-  ancestry <- factor(ancestry, levels=c("INDIAN", "CHINESE", "HYBRID",
+  ancestry <- factor(ancestry, levels = c("INDIAN", "CHINESE", "HYBRID",
                                         "JAPANESE", "OTHER", "UNKNOWN"))
   return(ancestry)
 }
@@ -405,16 +405,16 @@ convertDates <- function(ped) {
   headers <- tolower(names(ped))
 
   if ("birth" %in% headers) {
-    ped$birth <- as.Date(ped$birth, origin=TIME.ORIGIN)
+    ped$birth <- as.Date(ped$birth, origin = TIME.ORIGIN)
   }
   if ("death" %in% headers) {
-    ped$death <- as.Date(ped$death, origin=TIME.ORIGIN)
+    ped$death <- as.Date(ped$death, origin = TIME.ORIGIN)
   }
   if ("departure" %in% headers) {
-    ped$departure <- as.Date(ped$departure, origin=TIME.ORIGIN)
+    ped$departure <- as.Date(ped$departure, origin = TIME.ORIGIN)
   }
   if ("exit" %in% headers) {
-    ped$exit <- as.Date(ped$exit, origin=TIME.ORIGIN)
+    ped$exit <- as.Date(ped$exit, origin = TIME.ORIGIN)
   }
   return(ped)
 }
@@ -444,7 +444,7 @@ setExit <- function(ped) {
 	  # mapply would return a list, but simplification coerces this to a vector
 	  # consequently, the simplification also coerces Date columns to Numeric
 	  # TIME.ORIGIN is used to counter this and maintain Dates properly
-      ped$exit <- as.Date(mapply(chooseDate, ped$death, ped$departure), origin=TIME.ORIGIN)
+      ped$exit <- as.Date(mapply(chooseDate, ped$death, ped$departure), origin = TIME.ORIGIN)
     }
     else if ("death" %in% headers) {
       ped$exit <- ped$death
@@ -453,14 +453,14 @@ setExit <- function(ped) {
       ped$exit <- ped$departure
     }
     else{
-      ped$exit <- as.Date(NA, origin=TIME.ORIGIN)
+      ped$exit <- as.Date(NA, origin = TIME.ORIGIN)
     }
   }
   return(ped)
 }
 
 #' @export
-chooseDate <- function(d1, d2, earlier=T) {
+chooseDate <- function(d1, d2, earlier = TRUE) {
   # Given two dates, one is selected to be returned based on whether
   # it occurred earlier or later than the other. NAs are ignored if
   # possible.
@@ -503,8 +503,8 @@ calcAge <- function(birth, exit) {
   # Returns
   # -------
   # vector <float or NA>
-  #   Age in decimal years from 'birth' to 'exit' or the current date
-  #   if 'exit' is NA
+  #   Age in decimal years from "birth" to "exit" or the current date
+  #   if "exit" is NA
 
   exit[is.na(exit)] <- Sys.Date()
   return(round((as.double(exit - birth)/365.25), 1))
@@ -519,9 +519,9 @@ findGeneration <- function(id, sire, dam) {
   # id : vector <char>
   #   IDs for a set of individuals
   # sire : vector <char or NA>
-  #   IDs of the sires for the individuals in 'id'
+  #   IDs of the sires for the individuals in "id"
   # dam : vector <char or NA>
-  #   IDs of the dams for the individuals in 'id'
+  #   IDs of the dams for the individuals in "id"
   #
   # Return
   # ------
@@ -596,7 +596,7 @@ add.uIds <- function(ped) {
 
   if (!identical(s, integer(0))) {
     k <- length(s)
-    sire_ids <- paste("U", sprintf("%04d", 1:k), sep="")
+    sire_ids <- paste("U", sprintf("%04d", 1:k), sep = "")
     ped[s, "sire"] <- sire_ids
   }
   else{
@@ -606,7 +606,7 @@ add.uIds <- function(ped) {
   if (!identical(d, integer(0))) {
     m <- k + 1
     n <- k + length(d)
-    dam_ids <- paste("U", sprintf("%04d", m:n), sep="")
+    dam_ids <- paste("U", sprintf("%04d", m:n), sep = "")
     ped[d, "dam"] <- dam_ids
   }
 
@@ -622,9 +622,9 @@ findPedigreeNumber <- function(id, sire, dam) {
   # id : vector <char>
   #   IDs for a set of individuals
   # sire : vector <char or NA>
-  #   IDs of the sires for the individuals in 'id'
+  #   IDs of the sires for the individuals in "id"
   # dam : vector <char or NA>
-  #   IDs of the dams for the individuals in 'id'
+  #   IDs of the dams for the individuals in "id"
   #
   # Return
   # ------
@@ -776,7 +776,7 @@ trimPedigree2 <- function(probands, ped) {
                            (!is.na(p$sire) & is.na(p$dam))]
 
   add.back <- c()
-  for(id in single.parents) {
+  for (id in single.parents) {
     if (!is.na(ped$sire[ped$id==id]) & !is.na(ped$dam[ped$id==id])) {
 
       if (is.na(p$sire[p$id==id])) {
@@ -802,7 +802,7 @@ trimPedigree2 <- function(probands, ped) {
 # Population Designation Functions:
 #' @export
 resetPopulation <- function(ids, ped) {
-  # Update or add the 'population' field of a Pedigree
+  # Update or add the "population" field of a Pedigree
   # @type   ids: vector (string)
   # @param  ids: List of IDs to be flagged as part of the population
   # @type   ped: Pedigree
@@ -823,7 +823,7 @@ resetPopulation <- function(ids, ped) {
 
 #' @export
 resetGroup <- function(ids, ped) {
-  # Update or add the 'group' field of a Pedigree
+  # Update or add the "group" field of a Pedigree
   # @type   ids: vector (string)
   # @param  ids: List of IDs to be flagged as part of the group under
   #              consideration
