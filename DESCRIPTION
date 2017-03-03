@@ -4,7 +4,12 @@ Title: Implements Genetic Tools for Colony Management
 Version: 0.1.0
 Author: Michael Raboin
 Maintainer: <emoran550@gmail.com>
-Description: Implements Genetic Tools for Colony Management
+Description: Implements Genetic Tools for Colony Management.
+Depends:
+    R (>= 3.2.1)
+Imports:
+    Matrix,
+    utils
 License: What license is it under?
 Encoding: UTF-8
 License: GPL-2

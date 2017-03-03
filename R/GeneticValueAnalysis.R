@@ -6,7 +6,6 @@
 #
 # Contains functions to calculate the kinship coefficient and genome
 # uniqueness for animals listed in a Pedigree table.
-
 ###############################################################################
 # Data Definitions:
 #
@@ -48,11 +47,12 @@
 #   of these columns are unnamed and conform to the scheme V1, V2, ... Vn
 #   V(n) : int
 #
+#
+
 #' Get the superset of columns that can be in a pedigree file.
 #'
 #' @return Superset of columns that can be in a pedigree file.
 #' @usage
-#' library(nprcmanager)
 #' get_inlcude_columns()
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
@@ -206,6 +206,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 # requires the generation number to be calculated elsewhere and passed into
 # the function.
 #
+#' @import Matrix
 kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Returns: Matrix (row and col names are 'id')
   n <- length(id)
