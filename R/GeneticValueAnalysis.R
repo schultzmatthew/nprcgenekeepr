@@ -53,7 +53,7 @@
 #'
 #' @return Superset of columns that can be in a pedigree file.
 #' @usage
-#' get_inlcude_columns()
+#' cols <- get_inlcude_columns()
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
   c("id", "sex", "age", "birth", "exit", "population", "condition", "origin")
@@ -367,12 +367,15 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
 #' @param gen integer vector indicating the generation number for each animal.
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
+#' @param updateProgress : function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
 #'
-#' @return data.frame {id, parent, V1 ... Vn}
+#' @return data.frame \code{id, parent, V1 ... Vn}
 #' A data.frame providing the maternal and paternal alleles for an animal
 #' for each iteration. The first two columns provide the animal's ID and
 #' whether the allele came from the sire or dam. These are followed by
-#' \code{n] columns indicating the allele for that iteration.
+#' \code{n} columns indicating the allele for that iteration.
 #'
 #' @export
 gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
