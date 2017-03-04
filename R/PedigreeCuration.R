@@ -11,86 +11,81 @@
 TIME.ORIGIN <- as.Date("1970-01-01")
 #' Get possible column names for a studbood.
 #'
-#' @return a character vector of possible columns in a studbook. The possible
-#' columns are
+#' @return a character vector of the possible columns that can be in a studbook.
+#' The possible columns are as follows:
 #' \itemize{
-#' \item{id} {character vector with unique identifier for an individual}
-#' \item{sire} {character vector with unique identifier for an
+#' \item{id} {-- character vector with unique identifier for an individual}
+#' \item{sire} {-- character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).}
-#' \item{dam} {character vector with unique identifier for an
+#' \item{dam} {-- character vector with unique identifier for an
 #' individual's mother (\code{NA} if unknown).}
-#' \item{sex} {factor {levels: "M", "F", "U"} Sex specifier for an individual}
-#' \item{gen} {integer vector with the generation number of the individual}
-#' \item{birth} {Date or NA (optional) with the individual's birth date}
-#' \item{exit} {Date or NA (optional) with the individual's exit date (death,
+#' \item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an individual}
+#' \item{gen} {-- integer vector with the generation number of the individual}
+#' \item{birth} {-- Date or NA (optional) with the individual's birth date}
+#' \item{exit} {-- Date or NA (optional) with the individual's exit date (death,
 #'  or departure if applicable)}
-#' \item{age}{numeric vector with individual's age}
-#' \item{ancestry}{definition is missing.}
-#' \item{age} {numeric or NA (optional)
+#' \item{age} {-- numeric vector with individual's age}
+#' \item{ancestry} {-- definition is missing.}
+#' \item{age} {-- numeric or NA (optional)
 #' The individual's current age or age at exit}
-#' \item{population} {bool (optional)
+#' \item{population} {-- bool (optional)
 #' Is the id part of the extant population?}
-#' \item{origin} {char or NA (optional)
+#' \item{origin} {-- char or NA (optional)
 #' Name of the facility that the individual was imported from; NA if
 #' the invidual was not imported}
-#' \item{status}{definition is missing.}
-#' \item{condition}{definition is missing.}
-#' \item{spf}{definition is missing.}
-#' \item{vasx.ovx}{definition is missing.}
-#' \item{ped.num}{definition is missing.}
+#' \item{status} {-- definition is missing.}
+#' \item{condition} {-- definition is missing.}
+#' \item{spf} {-- definition is missing.}
+#' \item{vasx.ovx} {-- definition is missing.}
+#' \item{ped.num} {-- definition is missing.}}
+#' @export
 get_possible_cols <- function() {
   c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
     "ancestry", "population", "origin", "status", "condition",
     "spf", "vasx.ovx", "ped.num")
 }
+#' Main pedigree curation function that performs basic quality control on
+#' pedigree information
+#'
+#' @param sb : data.frame
+#   Table of pedigree and demographic information
+#   The function recognizes the following columns (optional columns
+#   will be used if present, but are not required):
+#
+# id : char
+#   Unique identifier for all individuals
+# sire : char or NA
+#   Identifier for the father of the current id
+# dam : char or NA
+#   Identifier for the mother of the current id
+# sex : factor {levels: M, F, U}
+#   Sex of the individual
+# birth : date or NA (optional)
+#   Date of birth
+# departure : date or NA (optional)
+#   Date an individual was sold or shipped from the colony
+# death : date or NA (optional)
+#   Date of death, if applicable
+# status : factor {levels: ALIVE, DEAD, SHIPPED} (optional)
+#   Status of an individual
+# origin : char or NA (optional)
+#   Facility an individual originated from, if other than ONPRC
+# ancestry : char or NA (optional)
+#   Geographic population to which the individual belongs
+# spf : char or NA (optional)
+#   Specific pathogen-free status of an individual
+# vasx.ovx : char or NA (optional)
+#   Indicator of the vasectomy/ovariectomy status of an animal; NA if
+#   animal is intact, assume all other values indicate surgical alteration
+# condition : char or NA (optional)
+#   Indicator of the restricted status of an animal. "Nonrestricted" animals
+#   are generally assumed to be naive.
+#
+#' @return a datatable with standardized and quality controlled pedigree
+#' information.
 
-###############################################################################
-# Main Function:
 #' @export
 qc.Studbook <- function(sb) {
-  # Function performs basic quality control on pedigree information
-  #
-  # Parameters
-  # ----------
-  # sb : data.frame
-  #   Table of pedigree and demographic information
-  #   The function recognizes the following columns (optional columns
-  #   will be used if present, but are not required):
-  #
-  # id : char
-  #   Unique identifier for all individuals
-  # sire : char or NA
-  #   Identifier for the father of the current id
-  # dam : char or NA
-  #   Identifier for the mother of the current id
-  # sex : factor {levels: M, F, U}
-  #   Sex of the individual
-  # birth : date or NA (optional)
-  #   Date of birth
-  # departure : date or NA (optional)
-  #   Date an individual was sold or shipped from the colony
-  # death : date or NA (optional)
-  #   Date of death, if applicable
-  # status : factor {levels: ALIVE, DEAD, SHIPPED} (optional)
-  #   Status of an individual
-  # origin : char or NA (optional)
-  #   Facility an individual originated from, if other than ONPRC
-  # ancestry : char or NA (optional)
-  #   Geographic population to which the individual belongs
-  # spf : char or NA (optional)
-  #   Specific pathogen-free status of an individual
-  # vasx.ovx : char or NA (optional)
-  #   Indicator of the vasectomy/ovariectomy status of an animal; NA if
-  #   animal is intact, assume all other values indicate surgical alteration
-  # condition : char or NA (optional)
-  #   Indicator of the restricted status of an animal. "Nonrestricted" animals
-  #   are generally assumed to be naive.
-  #
-  # Return
-  # ------
-  # `Pedigree`
-  #   A table of standardized and quality controlled pedigree information.
-
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
   headers <- gsub("egoid", "id", headers)
@@ -103,15 +98,19 @@ qc.Studbook <- function(sb) {
   }
 
   names(sb) <- headers
-  required <- c("id", "sire", "dam", "sex") %in% headers
+  required_cols <- c("id", "sire", "dam", "sex")
+  required <- required_cols %in% headers
 
   if (!all(required)) {
-    stop("Required field missing")
+    stop(paste0("Required field missing (", paste0(required_cols[!required],
+                                                   collapse = ", "), ")."))
   }
 
-  required <- c("age", "birth") %in% headers
+  required_cols <- c("age", "birth")
+  required <- required_cols %in% headers
   if (!any(required)) {
-    stop("Required field missing")
+    stop(paste0("Required field missing (", paste0(required_cols[!required],
+                                                   collapse = ", "), ")."))
   }
 
   # Removing erroneous IDs (someone started entering "unknown" for unknown
