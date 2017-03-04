@@ -24,19 +24,24 @@ TIME.ORIGIN <- as.Date("1970-01-01")
 #' \item{birth} {-- Date or NA (optional) with the individual's birth date}
 #' \item{exit} {-- Date or NA (optional) with the individual's exit date (death,
 #'  or departure if applicable)}
-#' \item{age} {-- numeric vector with individual's age}
-#' \item{ancestry} {-- definition is missing.}
-#' \item{age} {-- numeric or NA (optional)
-#' The individual's current age or age at exit}
-#' \item{population} {-- bool (optional)
+#' \item{ancestry} {-- character vector or \code{NA} (optional) that indicates
+#' the geographic population to which the individual belongs.}
+#' \item{age} {-- numeric or \code{NA} (optional) indicating the individual's
+#' current age or age at exit.}
+#' \item{population} {-- logical (optional)
 #' Is the id part of the extant population?}
-#' \item{origin} {-- char or NA (optional)
-#' Name of the facility that the individual was imported from; NA if
-#' the invidual was not imported}
+#' \item{origin} {-- character vector or \code{NA} (optional) that indicates
+#' the name of the facility that the individual was imported from.
+#' \code{NA} indicates the invidual was not imported.}
 #' \item{status} {-- definition is missing.}
-#' \item{condition} {-- definition is missing.}
-#' \item{spf} {-- definition is missing.}
-#' \item{vasx.ovx} {-- definition is missing.}
+#' \item{condition} {--  character vector or \code{NA} (optional) that indicates
+#' the restricted status of an animal. "Nonrestricted" animals
+#   are generally assumed to be naive.}
+#' \item{spf} {-- character vector or \code{NA} (optional) indicating the
+#' specific pathogen-free status of an individual.}
+#' \item{vasx.ovx} {-- character vector indicating the vasectomy/overiectomy
+#' status of an animal where \code{NA} indicates an intact animal and all other
+#' values inicate surgical alteration.}
 #' \item{ped.num} {-- definition is missing.}}
 #' @export
 get_possible_cols <- function() {
