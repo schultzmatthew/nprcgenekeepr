@@ -480,11 +480,10 @@ calcAge <- function(birth, exit) {
 #' individual's father (\code{NA} if unknown).
 #' @param dam character vector with unique identifier for an
 #' individual's mother (\code{NA} if unknown).
-# Return
-# ------
-# vector <int>
-#   Generation numbers for each id, starting at 0 for
-#   individuals lacking IDs both parents.
+#'
+#' @return An integer vector indication the generation numbers for each id,
+#' starting at 0 for individuals lacking IDs both parents.
+#'
 #' @export
 findGeneration <- function(id, sire, dam) {
   parents <- c()
