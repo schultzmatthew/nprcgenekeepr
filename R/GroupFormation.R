@@ -335,12 +335,13 @@ filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
   rownames(kin) <- 1:nrow(kin)
   return(kin)
 }
-
 #' Removes kinship values where one animal is less than the min.age
 #'
-#' @param kin
-#' @param ped : `Pedigree`
-#'   Dataframe of pedigree information including the IDs listed in "candidates".
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, and
+#' \code{kinship}. This is the kinship data reformatted from a matrix,
+#' to a long-format table.
+#' @param ped dataframe of pedigree information including the IDs listed
+#' in "candidates".
 #' @param min.age numeric value representing minimum years of age of
 #' animals to retain.
 #' @export

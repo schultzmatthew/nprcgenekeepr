@@ -9,6 +9,7 @@ Depends:
     R (>= 3.2.1)
 Imports:
     Matrix,
+    shiny,
     utils
 License: What license is it under?
 Encoding: UTF-8

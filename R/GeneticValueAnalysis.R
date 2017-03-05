@@ -52,7 +52,7 @@
 #' Get the superset of columns that can be in a pedigree file.
 #'
 #' @return Superset of columns that can be in a pedigree file.
-#' @usage
+#' @examples
 #' cols <- get_inlcude_columns()
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.

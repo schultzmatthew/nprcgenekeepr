@@ -9,6 +9,7 @@
 
 # Constants:
 TIME.ORIGIN <- as.Date("1970-01-01")
+
 #' Get possible column names for a studbood.
 #'
 #' @return a character vector of the possible columns that can be in a studbook.
@@ -21,8 +22,8 @@ TIME.ORIGIN <- as.Date("1970-01-01")
 #' individual's mother (\code{NA} if unknown).}
 #' \item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an individual}
 #' \item{gen} {-- integer vector with the generation number of the individual}
-#' \item{birth} {-- Date or NA (optional) with the individual's birth date}
-#' \item{exit} {-- Date or NA (optional) with the individual's exit date (death,
+#' \item{birth} {-- Date or \code{NA} (optional) with the individual's birth date}
+#' \item{exit} {-- Date or \code{NA} (optional) with the individual's exit date (death,
 #'  or departure if applicable)}
 #' \item{ancestry} {-- character vector or \code{NA} (optional) that indicates
 #' the geographic population to which the individual belongs.}
@@ -36,7 +37,7 @@ TIME.ORIGIN <- as.Date("1970-01-01")
 #' \item{status} {-- definition is missing.}
 #' \item{condition} {--  character vector or \code{NA} (optional) that indicates
 #' the restricted status of an animal. "Nonrestricted" animals
-#   are generally assumed to be naive.}
+#' are generally assumed to be naive.}
 #' \item{spf} {-- character vector or \code{NA} (optional) indicating the
 #' specific pathogen-free status of an individual.}
 #' \item{vasx.ovx} {-- character vector indicating the vasectomy/overiectomy
@@ -172,22 +173,19 @@ qc.Studbook <- function(sb) {
 
 ###############################################################################
 # Helper Functions:
+#' Add parents
+#'
+#' Given a pedigree, find any IDs listed in the "sire" or "dam" columns
+#' that lack their own line entry and generate one.
+#'
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
+#'
+#' @return An updated pedigree with entries added as necessary.
+#' Entries have the id and sex specified; all remaining columns are filled
+#' with \code{NA}.
 #' @export
 addParents <- function(ped) {
-  # Given a pedigree, find any IDs listed in the "sire" or "dam" columns
-  # that lack their own line entry and generate one.
-  #
-  # Parameters
-  # ----------
-  # ped : Pedigree
-  #   Pedigree data.frame of information for a group of animals
-  #
-  # Return
-  # ------
-  # Pedigree
-  #   Updated Pedigree with entries added as necessary. Entries have the id
-  #   and sex specified; all remaining columns are filled with NA.
-
   sires <- ped$sire
   dams <- ped$dam
 
@@ -216,22 +214,18 @@ addParents <- function(ped) {
   }
   return(ped)
 }
+#' Append the rows of one dataframe to another.
+#'
+#' Appends the rows of df2 to df1, can handle cases where df2
+#' has a subset of the columns of df1
+#'
+#' @param df1 the target dataframe to append to.
+#' @param df2 the the donor dataframe information should be appended from
+#'
+#' @return The appended dataframe with \code{NA} inserted into columns as
+#' needed.
 #' @export
 rbind.fill <- function(df1, df2) {
-  # Appends the rows of df2 to df1, can handle cases where df2
-  # has a subset of the columns of df1
-  #
-  # Parameters
-  # ----------
-  # df1 : data.frame
-  #   The target data.frame to append to
-  # df2 : data.frame
-  #   The donor data.frame information should be appended from
-  #
-  # Return
-  # ------
-  # data.frame
-  #   The appended data, with NA inserted into columns as needed
 
   # Find columns in df1 not in df2
   add.headers <- setdiff(names(df1), names(df2))
@@ -261,25 +255,19 @@ rbind.fill <- function(df1, df2) {
   }
   return(rbind(df1, df2))
 }
+#' Updates sex for animals listed as either a sire or dam.
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
+#' @param sex factor with levels: "M", "F", "U". Sex specifier for an
+#' individual.
+#' @return A factor with levels: "M", "F", "H", and "U"
+#' representing the sex codes for the ids provided
 #' @export
 checkParentSex <- function(id, sire, dam, sex) {
-  # Updates sex for animals listed as either a sire or dam
-  # Parameters
-  # ----------
-  # id : char
-  #   Identifier of an animal
-  # sire : char or NA
-  #   Identifier of id's father
-  # dam : char or NA
-  #   Identifier of id's mother
-  # sex : char, int, or NA
-  #   Indicator of id's sex
-  #
-  # Return
-  # ------
-  # factor {levels: M, F, H, U}
-  #   A vector of sex codes for the ids provided
-
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
@@ -297,57 +285,46 @@ checkParentSex <- function(id, sire, dam, sex) {
   sex[((id %in% dams) & (sex != "F"))] <- "F"
   return(sex)
 }
+#' Converts sex indicator for an individual to a standardized codes.
+#'
+#' Standard sex codes are
+#' \itemize{
+#' \item{M} {-- replacing "MALE" or "1"}
+#' \item{F} {-- replacing "FEMALE" or "2"}
+#' \item{U} {-- replacing "UNKNOWN" or "3"}
+#' \item{H} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE}
+#' \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}}
+#'
+#' @param sex factor indicating sex of a set of individuals
+#' @param ignore.herm logical flag indicating if hermaphrodites should be
+#' treated as unknown sex ("U"), default is \code{TRUE}.
 #' @export
 convertSexCodes <- function(sex, ignore.herm = TRUE) {
-  # Converts sex indicator for an individual to a standardized code
-  # {M, F, H, U}
-  #
-  # Parameters
-  # ----------
-  # sex : vector <char, int, or NA>
-  #   Codes indicating sex of a set of individuals
-  # ignore.herm : bool
-  #   Flag indicating if hermaphrodites should be treated as
-  #   unknown sex, default is true
-  #
-  # Return
-  # ------
-  # factor {levels: M, F, H, U}
-  #   Modified vector containing standardized sex codes with the
-  #   possible values M, F, U, & optionally, H
-
   sex <- toupper(sex)
   sex[is.na(sex)] <- "U"
 
   sex[sex %in% c("MALE", "M", "1")] <- "M"
   sex[sex %in% c("FEMALE", "F", "2")] <- "F"
   sex[sex %in% c("UNKNOWN", "U", "3")] <- "U"
+
   if (ignore.herm) {
     sex[sex %in% c("HERMAPHRODITE", "H", "4")] <- "U"
-  }
-  else{
+  } else {
     sex[sex %in% c("HERMAPHRODITE", "H", "4")] <- "H"
   }
   sex <- factor(sex, levels = c("F", "M", "H", "U"))
-
   return(sex)
 }
-
+#' Converts status indicators to a Standardized code
+#'
+#' @param status character vector or NA. Flag indicating an individual's
+#' status as alive, dead, sold, etc.
+#'
+#' @return factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}. Vector of
+#' standardized status codes with the possible values
+#' ALIVE, DECEASED, SHIPPED, or UNKNOWN
 #' @export
 convertStatusCodes <- function(status) {
-  # Converts status indicators to a Standardized code
-  # Parameters
-  # ----------
-  # status : vector <char or NA>
-  #   Flag indicating an individual's status as alive, dead,
-  #   sold, etc.
-  #
-  # Return
-  # ------
-  # factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}
-  #   Vector of standardized status codes with the possible values
-  #   ALIVE, DECEASED, SHIPPED, or UNKNOWN
-
   status <- toupper(status)
   status[is.na(status)] <- "UNKNOWN"
   status[status %in% c("ALIVE", "A", "1")] <- "ALIVE"
@@ -359,21 +336,16 @@ convertStatusCodes <- function(status) {
   return(status)
 }
 
+#' Converts the ancestry information to a standardized code
+#'
+#' @param ancestry character vector or NA with free-form text providing
+#' information about the geographic population of origin.
+#'
+#' @return factor vector of standardized designators specifying if an animal is
+#' a Chinese rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or
+#' Japanese macaque. Levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN.
 #' @export
 convertAncestry <- function(ancestry) {
-  # Converts the ancestry information to a standardized code
-  # Parameters
-  # ----------
-  # ancestry : vector <char or NA>
-  #   Free-form text providing information about the geographic
-  #   population of origin
-  #
-  # Returns
-  # -------
-  # factor {levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN}
-  #   Vector of standardized designators specifying if an animal is a Chinese
-  #   rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or Japanese macaque
-
   ancestry <- tolower(ancestry)
 
   # Find entries containing non-standardized indications of population
@@ -397,22 +369,16 @@ convertAncestry <- function(ancestry) {
                                         "JAPANESE", "OTHER", "UNKNOWN"))
   return(ancestry)
 }
-
+#' Converts date columns formatted as characters to be of type datetime
+#'
+#' @param ped a dataframe of pedigree information that may contain birth,
+#' death, departure, or exit dates. The fields are optional, but will be used
+#' if present.(optional fields: birth, death, departure, and exit).
+#'
+#' @return A dataframe with an updated table with date columns converted from
+#' \code{character} data type to \code{Date} data type.
 #' @export
 convertDates <- function(ped) {
-  # Converts date columns formatted as characters to be of type datetime
-  #
-  # Parameters
-  # ----------
-  # ped : data.frame {opt. fields: birth, death, departure, exit}
-  #   Table of pedigree information that may contain birth, death, departure
-  #   or exit dates. The fields are optional, but will be used if present.
-  #
-  # Return
-  # ------
-  # data.frame
-  #   Updated table with date columns converted from <char> to <Date>
-
   headers <- tolower(names(ped))
 
   if ("birth" %in% headers) {
@@ -429,24 +395,17 @@ convertDates <- function(ped) {
   }
   return(ped)
 }
-
+#' Sets the exit date, if there is no exit column in the table
+#'
+#' @param ped dataframe of pedigree and demographic information potentially
+#' containing columns indicating the birth and death dates of an individual.
+#' The table may also contain dates of sale (departure). Optional columns
+#' are \code{birth}, \code{death}, \code{departure}.
+#'
+#' @return A dataframe with an updated table with exit dates specified based
+#' on date information that was available.
 #' @export
 setExit <- function(ped) {
-  # Sets the exit date, if there is no exit column in the table
-  #
-  # Parameters
-  # ----------
-  # ped : data.frame {opt. columns: birth, death, departure}
-  #   Table of pedigree and demographic information potentially containing
-  #   columns indicating the birth and death dates of an individual. The
-  #   table may also contain dates of sale (departure).
-  #
-  # Return
-  # ------
-  # data.frame
-  #   An updated table with exit dates specified based on date information
-  #   that was available.
-
   headers <- tolower(names(ped))
 
   if (("birth" %in% headers) && !("exit" %in% headers)) {
@@ -455,40 +414,34 @@ setExit <- function(ped) {
 	  # mapply would return a list, but simplification coerces this to a vector
 	  # consequently, the simplification also coerces Date columns to Numeric
 	  # TIME.ORIGIN is used to counter this and maintain Dates properly
-      ped$exit <- as.Date(mapply(chooseDate, ped$death, ped$departure), origin = TIME.ORIGIN)
-    }
-    else if ("death" %in% headers) {
+      ped$exit <- as.Date(mapply(chooseDate, ped$death, ped$departure),
+                          origin = TIME.ORIGIN)
+    } else if ("death" %in% headers) {
       ped$exit <- ped$death
-    }
-    else if ("departure" %in% headers) {
+    } else if ("departure" %in% headers) {
       ped$exit <- ped$departure
-    }
-    else{
+    } else {
       ped$exit <- as.Date(NA, origin = TIME.ORIGIN)
     }
   }
   return(ped)
 }
-
+#' Choose date based on \code{earlier} flag.
+#'
+#' Given two dates, one is selected to be returned based on whether
+#' it occurred earlier or later than the other. \code{NAs} are ignored if
+#' possible.
+#'
+#' @param d1 \code{Date} vector with the first of two dates to compare.
+#' @param d2 \code{Date} vector with the second of two dates to compare.
+#' @param earlier logical variable with \code{TRUE} if the earlier of the two
+#' dates is to be returned, otherwise the later is returned. Default is
+#' \code{TRUE}.
+#'
+#' @return \code{Date} vector of chosen dates or \code{NA} where neither
+#' is provided
 #' @export
 chooseDate <- function(d1, d2, earlier = TRUE) {
-  # Given two dates, one is selected to be returned based on whether
-  # it occurred earlier or later than the other. NAs are ignored if
-  # possible.
-  #
-  # Parameters
-  # ----------
-  # d1, d2 : Date or NA
-  #   The dates to compare
-  # earlier : bool
-  #   If TRUE, the earlier of the two dates is returned, otherwise
-  #   the later is returned. Default is TRUE.
-  #
-  # Return
-  # ------
-  # Date or NA
-  #   The chosen date, or NA if neither is provided
-
   if (is.na(d1)) {
     return(d2)
   }
@@ -505,46 +458,44 @@ chooseDate <- function(d1, d2, earlier = TRUE) {
     return(d2)
   }
 }
-
+#' Calculate animal ages.
+#'
+#' Given vectors of birth and exit dates, calculate an individuals age. If no
+#' exit date is provided, the calculation is based on the current date.
+#'
+#' @param birth Date vector of birth dates
+#' @param exit Date vector of exit dates.
+#'
+#' @return A numeric vector (\code{NA} allowed) indicating age in decimal years
+#' from "birth" to "exit" or the current date if "exit" is NA.
 #' @export
 calcAge <- function(birth, exit) {
-  # Given vectors of birth and exit dates, calculate an individuals age;
-  # calculates based on the current date, if no exit date is available
-  #
-  # Returns
-  # -------
-  # vector <float or NA>
-  #   Age in decimal years from "birth" to "exit" or the current date
-  #   if "exit" is NA
-
   exit[is.na(exit)] <- Sys.Date()
   return(round((as.double(exit - birth)/365.25), 1))
 }
-
+# Determines the generation number for each id.
+#
+# Parameters
+# ----------
+# id : vector <char>
+#   IDs for a set of individuals
+# sire : vector <char or NA>
+#   IDs of the sires for the individuals in "id"
+# dam : vector <char or NA>
+#   IDs of the dams for the individuals in "id"
+#
+# Return
+# ------
+# vector <int>
+#   Generation numbers for each id, starting at 0 for
+#   individuals lacking IDs both parents.
 #' @export
 findGeneration <- function(id, sire, dam) {
-  # Determines the generation number for each id.
-  #
-  # Parameters
-  # ----------
-  # id : vector <char>
-  #   IDs for a set of individuals
-  # sire : vector <char or NA>
-  #   IDs of the sires for the individuals in "id"
-  # dam : vector <char or NA>
-  #   IDs of the dams for the individuals in "id"
-  #
-  # Return
-  # ------
-  # vector <int>
-  #   Generation numbers for each id, starting at 0 for
-  #   individuals lacking IDs both parents.
-
   parents <- c()
   gen <- rep(NA, length(id))
   i <- 0
 
-  while(TRUE) {
+  while (TRUE) {
     cumulative.parents <- id[(is.na(sire) | (sire %in% parents)) &
                                (is.na(dam) | (dam %in% parents))]
     next.gen <- setdiff(cumulative.parents, parents)
@@ -554,30 +505,28 @@ findGeneration <- function(id, sire, dam) {
     }
 
     gen[id %in% next.gen] <- i
-    i <- i+1
+    i <- i + 1
 
     parents <- cumulative.parents
   }
   return(gen)
 }
-
+#' Returns \code{TRUE} if x is a zero-length vector.
+#'
+#' @param x vector of any type.
 #' @export
 isEmpty <- function(x) {
-  # Returns true if x is a zero-length vector
   x <- x[!is.na(x)]
   return(length(x) == 0)
 }
-
+#' Returns an updated dataframe with duplicate rows removed.
+#'
+#' Returns an error if the table has duplicate IDs with differing data.
+#'
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The \code{id} column is required.
 #' @export
 removeDuplicates <- function(ped) {
-  # Returns an updated data.frame with duplicate rows removed. Returns
-  # an error if the table has duplicate IDs with differing data.
-  # Parameters
-  # ----------
-  # ped : data.frame {req. col: id}
-  #   Table of pedigree information
-  #
-
   p <- unique(ped)
 
   if (sum(duplicated(p$id)) == 0) {
@@ -587,21 +536,14 @@ removeDuplicates <- function(ped) {
     stop("Duplicate IDs with mismatched information present")
   }
 }
-
+#' Eliminates partial parentage situations by adding unique placeholder
+#' IDs for the unknown parent.
+#'
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The fields \code{sire} and \code{dam} are required.
+#' @return The updated pedigree with partial parentage removed.
 #' @export
 add.uIds <- function(ped) {
-  # Eliminates partial parentage situations by adding unique placeholder
-  # IDs for the unknown parent.
-  # Parameters
-  # ----------
-  # ped : data.frame (req. fields: sire, dam)
-  #   Data.frame of pedigree information
-  #
-  # Return
-  # ------
-  # data.frame
-  #   The updated pedigree with partial parentage removed.
-
   s <- which(is.na(ped$sire) & !is.na(ped$dam))
   d <- which(!is.na(ped$sire) & is.na(ped$dam))
 
@@ -623,33 +565,25 @@ add.uIds <- function(ped) {
 
   return(ped)
 }
-
+#' Determines the generation number for each id.
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
+#' @return Integer vector indicating generation numbers for each id,
+#' starting at 0 for individuals lacking IDs for both parents.
 #' @export
 findPedigreeNumber <- function(id, sire, dam) {
-  # Determines the generation number for each id.
-  #
-  # Parameters
-  # ----------
-  # id : vector <char>
-  #   IDs for a set of individuals
-  # sire : vector <char or NA>
-  #   IDs of the sires for the individuals in "id"
-  # dam : vector <char or NA>
-  #   IDs of the dams for the individuals in "id"
-  #
-  # Return
-  # ------
-  # vector <int>
-  #   Generation numbers for each id, starting at 0 for
-  #   individuals lacking IDs both parents.
   founders <- id[is.na(sire) & is.na(dam)]
   ped.num <- rep(NA, length(id))
   n <- 1
 
-  while(!isEmpty(founders)) {
+  while (!isEmpty(founders)) {
     population <- founders[1]
 
-    while(TRUE) {
+    while (TRUE) {
       parents <- union(sire[id %in% population],
                        dam[id %in% population])
       parents <- parents[!is.na(parents)]
@@ -674,28 +608,26 @@ findPedigreeNumber <- function(id, sire, dam) {
 
 ###############################################################################
 # Pedigree Filtering:
+#
+#' Trim pedigree to ancestors of provided group leaving uninformative ancestors.
+#'
+#' Filters a pedigree down to only the ancestors of the provided group,
+#' removing unnecessary individuals from the studbook. This version builds
+#' the pedigree back in time starting from a group of probands. This will
+#' include all ancestors of the probands, even ones that might be
+#' uninformative.
+#'
+#' @param probands a character vector with the list of animals whose ancestors
+#' should be included in the final pedigree.
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The fields \code{sire} and \code{dam} are required.
+#'
+#' @return A reduced pedigree.
 #' @export
 trimPedigree <- function(probands, ped) {
-  # Filters a pedigree down to only the ancestors of the provided group,
-  # removing unnecessary individuals from the studbook. This version builds
-  # the pedigree back in time starting from a group of probands. This will
-  # include all ancestors of the probands, even ones that might be
-  # uninformative.
-  # Parameters
-  # ----------
-  # probands : vector <char>
-  #   List of animals whose ancestors should be included in the final pedigree
-  # ped : `Pedigree`
-  #   Table of pedigree and demographic information
-  #
-  # Return
-  # ------
-  # `Pedigree`
-  #   The reduced pedigree
-
   animals <- probands
 
-  while(TRUE) {
+  while (TRUE) {
     sires <- ped$sire[ped$id %in% animals]
     dams <- ped$dam[ped$id %in% animals]
 
@@ -718,29 +650,25 @@ trimPedigree <- function(probands, ped) {
   p <- ped[ped$id %in% animals, ]
   return(p)
 }
-
-
+#' Trim pedigree to ancestors of provided group removing uninformative
+#' ancestors.
+#'
+#' Filters a pedigree down to only the ancestors of the provided group.
+#' removing unnecessary individuals from the studbook. This version builds
+#' the pedigree back in time starting from a group of probands, then moves
+#' back down the tree trimming off uninformative ancestors.
+#'
+#' @param probands a character vector with the list of animals whose ancestors
+#' should be included in the final pedigree.
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The fields \code{sire} and \code{dam} are required.
+#'
+#' @return A reduced pedigree.
 #' @export
 trimPedigree2 <- function(probands, ped) {
-  # Filters a pedigree down to only the ancestors of the provided group,
-  # removing unnecessary individuals from the studbook. This version builds
-  # the pedigree back in time starting from a group of probands, then moves
-  # back down the tree trimming off uninformative ancestors.
-  # Parameters
-  # ----------
-  # probands : vector <char>
-  #   List of animals whose ancestors should be included in the final pedigree
-  # ped : `Pedigree`
-  #   Table of pedigree and demographic information
-  #
-  # Return
-  # ------
-  # `Pedigree`
-  #   The reduced pedigree
-
   animals <- probands
 
-  while(TRUE) {
+  while (TRUE) {
     sires <- ped$sire[ped$id %in% animals]
     dams <- ped$dam[ped$id %in% animals]
 
@@ -763,7 +691,7 @@ trimPedigree2 <- function(probands, ped) {
   ped <- ped[ped$id %in% animals, ]
   p <- ped
 
-  while(TRUE) {
+  while (TRUE) {
     founders <- p$id[is.na(p$sire) & is.na(p$dam)]
 
     sires <- as.data.frame(table(p$sire[p$sire %in% founders]))
@@ -788,15 +716,15 @@ trimPedigree2 <- function(probands, ped) {
 
   add.back <- c()
   for (id in single.parents) {
-    if (!is.na(ped$sire[ped$id==id]) & !is.na(ped$dam[ped$id==id])) {
+    if (!is.na(ped$sire[ped$id == id]) & !is.na(ped$dam[ped$id == id])) {
 
-      if (is.na(p$sire[p$id==id])) {
-        add.back <- c(add.back, ped$sire[ped$id==id])
-        p[(p$id==id), "sire"] <- ped$sire[ped$id==id]
+      if (is.na(p$sire[p$id == id])) {
+        add.back <- c(add.back, ped$sire[ped$id == id])
+        p[(p$id == id), "sire"] <- ped$sire[ped$id == id]
 
       } else{
-        add.back <- c(add.back, ped$dam[ped$id==id])
-        p[(p$id==id), "dam"] <- ped$dam[ped$id==id]
+        add.back <- c(add.back, ped$dam[ped$id == id])
+        p[(p$id == id), "dam"] <- ped$dam[ped$id == id]
       }
     }
   }
@@ -808,44 +736,37 @@ trimPedigree2 <- function(probands, ped) {
 
   return(p)
 }
-
-###############################################################################
-# Population Designation Functions:
+#' Population designation function
+#'
+#' @param ids character vector of IDs to be flagged as part of the population
+#' under consideration.
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The \code{id} column is required.
+#'
+#' @return An updated pedigree with the \code{population} column added or
+#' updated.
 #' @export
 resetPopulation <- function(ids, ped) {
-  # Update or add the "population" field of a Pedigree
-  # @type   ids: vector (string)
-  # @param  ids: List of IDs to be flagged as part of the population
-  # @type   ped: Pedigree
-  # @param  ped: The complete pedigree provided
-  #
-  # @rtype:      Pedigree
-  # @return:     Updated pedigree
-
   ped$population <- FALSE
 
   if (length(ids) == 0) {
     ped$population <- TRUE
-  } else{
+  } else {
     ped$population[ped$id %in% ids] <- TRUE
   }
   return(ped)
 }
-
+#' Update or add the "group" field of a Pedigree.
+#'
+#' @param ids character vector of IDs to be flagged as part of the group under
+#' consideration.
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The \code{id} column is required.
+#'
+#' @return An updated pedigree with the \code{group} column added or updated.
 #' @export
 resetGroup <- function(ids, ped) {
-  # Update or add the "group" field of a Pedigree
-  # @type   ids: vector (string)
-  # @param  ids: List of IDs to be flagged as part of the group under
-  #              consideration
-  # @type   ped: Pedigree
-  # @param  ped: The complete pedigree provided
-  #
-  # @rtype:      Pedigree
-  # @return:     Updated pedigree
-
   ped$group <- FALSE
   ped$group[ped$id %in% ids] <- TRUE
   return(ped)
 }
-
