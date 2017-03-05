@@ -475,15 +475,11 @@ calcAge <- function(birth, exit) {
 }
 # Determines the generation number for each id.
 #
-# Parameters
-# ----------
-# id : vector <char>
-#   IDs for a set of individuals
-# sire : vector <char or NA>
-#   IDs of the sires for the individuals in "id"
-# dam : vector <char or NA>
-#   IDs of the dams for the individuals in "id"
-#
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
 # Return
 # ------
 # vector <int>

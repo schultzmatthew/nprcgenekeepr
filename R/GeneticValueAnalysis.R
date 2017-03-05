@@ -53,6 +53,7 @@
 #'
 #' @return Superset of columns that can be in a pedigree file.
 #' @examples
+#' library(nprcmanager)
 #' cols <- get_inlcude_columns()
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
@@ -298,12 +299,6 @@ avgKinship <- function(kmat) {
 # to the population.
 # The function below calculates genome uniqueness for all living animals
 # and considers all alleles. It does not ignore living founders and their
-#
-
-
-
-
-
 
 # Our results for genome uniqueness will, therefore differ slightly from those
 # returned by Pedscope. Pedscope calculates genome uniqueness only for
@@ -319,8 +314,6 @@ avgKinship <- function(kmat) {
 #'
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{gene.drop()}.
-#' @param iterations an integer indicating the number of iterations for the
-#' gene drop simulation. Default is 5000
 #' @param threshold an integer indicating the maximum number of copies of an
 #' allele that can be present in the population for it to be considered rare.
 #' Default is 1.
