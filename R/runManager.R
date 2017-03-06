@@ -1,3 +1,5 @@
+#' Allows running \code{shiny} application with \code{nprcmanager::runManager()}
+#'
 #' @export
 runManager <- function() {
   appDir <- system.file("application", package = "nprcmanager")
