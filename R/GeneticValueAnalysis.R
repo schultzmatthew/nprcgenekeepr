@@ -1,68 +1,55 @@
-#   Build and Reload Package:  'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
-# GeneticValueAnalysis.R
-# 2015-03-04
-#
-# Contains functions to calculate the kinship coefficient and genome
-# uniqueness for animals listed in a Pedigree table.
+#' @name{GeneticValueAnalysis.R}
+#' @title{Genetic Value Analysis}
+#' 2015-03-04
+#'
+#' Contains functions to calculate the kinship coefficient and genome
+#' uniqueness for animals listed in a Pedigree table.
 ###############################################################################
-# Data Definitions:
-#
-# Pedigree
-# Contains studbook information for a number of individuals
-# A Pedigree is a data.frame with the following columns:
-#   id : char
-#     The unique identifier for an individual
-#   sire : char or NA
-#     Identifier of an individual's father, NA if unknown
-#   dam : char or NA
-#     Identifier of an individual's mother, NA if unknown
-#   sex : factor {levels: M, F, U}
-#     Sex specifier for an individual
-#   gen : int
-#     Generation number of the individual
-#   birth : Date or NA (optional)
-#     An individual's birth date
-#   exit : Date or NA (optional)
-#     An individual's exit date (death, or departure if applicable)
-#   age : float or NA (optional)
-#     The individual's current age or age at exit
-#   population : bool (optional)
-#     Is the id part of the extant population?
-#   origin : char or NA (optional)
-#     Name of the facility that the individual was imported from; NA if
-#     the invidual was not imported
-#
-# ASSUME: All IDs listed in the sire or dam columns must have a row entry in
-#   the id column
-
-# AlleleTable
-# A AlleleTable is a data.frame containing information about alleles an ego
-# has inherited
-#   id : char
-#   parent : factor (levels: sire, dam)
-#
-#   The AlleleTable also contains n columns representing n alleles; all
-#   of these columns are unnamed and conform to the scheme V1, V2, ... Vn
-#   V(n) : int
-#
-#
+#' @description{Data Definitions} {
+#'
+#' Pedigree
+#' Contains studbook information for a number of individuals
+#' A Pedigree is a data.frame with the following columns:
+#'   id : char
+#'     The unique identifier for an individual
+#'   sire : char or NA
+#'     Identifier of an individual's father, NA if unknown
+#'   dam : char or NA
+#'     Identifier of an individual's mother, NA if unknown
+#'   sex : factor {levels: M, F, U}
+#'     Sex specifier for an individual
+#'   gen : int
+#'     Generation number of the individual
+#'   birth : Date or NA (optional)
+#'     An individual's birth date
+#'   exit : Date or NA (optional)
+#'     An individual's exit date (death, or departure if applicable)
+#'   age : float or NA (optional)
+#'     The individual's current age or age at exit
+#'   population : bool (optional)
+#'     Is the id part of the extant population?
+#'   origin : char or NA (optional)
+#'     Name of the facility that the individual was imported from; NA if
+#'     the invidual was not imported
+#'
+#' ASSUME: All IDs listed in the sire or dam columns must have a row entry in
+#'   the id column
+#'   }
 
 #' Get the superset of columns that can be in a pedigree file.
 #'
 #' @return Superset of columns that can be in a pedigree file.
-#' @examples
-#' library(nprcmanager)
-#' cols <- get_inlcude_columns()
+#' examples
+#' get_inlcude_columns()
+#'
 #' @export
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
   c("id", "sex", "age", "birth", "exit", "population", "condition", "origin")
 }
 
-###############################################################################
-# Main Function:
-#' Generates a genetic value report for a provided pedigree
+#' Generates a genetic value report for a provided pedigree.
+#'
+#' This is the main function for the Genetic Value Analysis.
 #'
 #' @param ped the pedigree information in datatable format
 #' @param gu.iter integer indicating the number of iterations for the gene-drop
@@ -161,58 +148,69 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
                     total = (nrow(males) + nrow(females)))
   return(finalData)
 }
-
-###############################################################################
-# Kinship Matrix Functions:
-
-# NOTE:
-# M Raboin 2014-10-02
-# The code for the following kinship function was written by Terry Therneau
-# at the Mayo clinic, and taken from his website. This function is part of a
-# package written in S (and later ported to R) for calculating kinship and
-# other statistics.
-#
-# Main website:
-# http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991
-#
-# S-Plus/R Function Page:
-# http://www.mayo.edu/research/departments-divisions/department-health
-#  -sciences-research/division-biomedical-statistics-informatics/software/
-#  s-plus-r-functions
-#
-# Downloaded 2014-08-26
-#
-# All of the code on the S-Plus page was stated to be released under the
-# GNU General Public License (version 2 or later).
-#
-# The R version became the kinship2 package available on CRAN:
-# http://cran.r-project.org/web/packages/kinship2/index.html
-
-# $Id: kinship.s,v 1.5 2003/01/04 19:07:53 therneau Exp $
-#
-# Create the kinship matrix, using the algorithm of K Lange,
-#  Mathematical and Statistical Methods for Genetic Analysis,
-#  Springer, 1997, p 71-72.
-#
-# The rows (cols) of founders are just .5 * identity matrix, no further
-#    processing is needed for them.
-# Parents must be processed before their children, and then a child's
-#    kinship is just a sum of the kinship's for his/her parents.
-#
-# Modified:
-# 2014-09-08 14:44:26
-# M Raboin
-# The function previously had an internal call to the kindepth function in
-# order to provide the parameter pdepth (the generation number). This version
-# requires the generation number to be calculated elsewhere and passed into
-# the function.
-#
+#' Generates a kinship matrix.
+#'
+#' The function previously had an internal call to the kindepth function in
+#' order to provide the parameter pdepth (the generation number). This version
+#' requires the generation number to be calculated elsewhere and passed into
+#' the function.
+#'
+#' @param id character vector of IDs for a set of animals.
+#' @param father.id character vector or NA for the IDs of the sires for the set
+#' of animals.
+#' @param mother.id character vector or NA for the IDs of the dams for the set
+#' of animals.
+#' @param pdepth integer vector indicating the generation number for each animal.
+#' @param sparse logical flag. If \code{TRUE}, \code{Matrix::Diagnol()} is
+#' used to make a unit diagnol matrix. If \code{FALSE}, \code{base::diag()} is
+#' used to make a unit square matrix.
+#'
+#'
+#' @description {Kinship Matrix Functions} {
+#' The code for the kinship function was written by Terry Therneau
+#' at the Mayo clinic and taken from his website. This function is part of a
+#' package written in S (and later ported to R) for calculating kinship and
+#' other statistics.
+#' }
+#'
+#' @author {Terry Therneau, original version}
+#'
+#'
+#' @references {Main website} \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+#'
+#'
+#' @references {S-Plus/R Function Page}
+#' \url{http://www.mayo.edu/research/departments-divisions/department-health
+#'  -sciences-research/division-biomedical-statistics-informatics/software/}
+#'
+#'  @description {s-plus-r-functions} {Downloaded 2014-08-26}
+#'
+#' All of the code on the S-Plus page was stated to be released under the
+#' GNU General Public License (version 2 or later).
+#'
+#' The R version became the kinship2 package available on CRAN:
+#' @references \url{http://cran.r-project.org/web/packages/kinship2/index.html}
+#'
+#' $Id: kinship.s,v 1.5 2003/01/04 19:07:53 therneau Exp $
+#'
+#' @references {Create the kinship matrix, using the algorithm of K Lange,
+#'  Mathematical and Statistical Methods for Genetic Analysis,
+#'  Springer, 1997, p 71-72.}
+#'
+#' The rows (cols) of founders are just .5 * identity matrix, no further
+#'    processing is needed for them.
+#' Parents must be processed before their children, and then a child's
+#'    kinship is just a sum of the kinship's for his/her parents.
+#'
+#' @author {as modified by, M Raboin, 2014-09-08 14:44:26}
+#'
 #' @import Matrix
 #' @export
 kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Returns: Matrix (row and col names are 'id')
   n <- length(id)
-  if (any(duplicated(id))) stop("All id values must be unique")
+  if (any(duplicated(id)))
+    stop("All id values must be unique")
   if (sparse) {
     kmat <- Diagonal(n + 1) / 2
   }
@@ -220,7 +218,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
     kmat <- diag(n + 1) / 2
   }
 
-  kmat[n + 1,n + 1]    <- 0 # if A and B both have "unknown" dad, this ensures
+  kmat[n + 1, n + 1]    <- 0 # if A and B both have "unknown" dad, this ensures
   # that they won't end up 'related' in the matrix
 
   # id number "n + 1" is a placeholder for missing parents
@@ -237,8 +235,8 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
     for (i in indx) {
       mom <- mrow[i]
       dad <- drow[i]
-      kmat[i,]  <- kmat[,i] <- (kmat[mom,] + kmat[dad,]) / 2
-      kmat[i,i] <- (1 + kmat[mom,dad]) / 2
+      kmat[i, ]  <- kmat[, i] <- (kmat[mom,] + kmat[dad, ]) / 2
+      kmat[i, i] <- (1 + kmat[mom, dad]) / 2
     }
   }
 
@@ -246,7 +244,6 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   dimnames(kmat) <- list(id, id)
   kmat
 }
-
 #' Filters a kinship matrix to include only the egos listed in 'ids'
 #'
 #' @param ids character vector containing the IDs of interest.
@@ -271,49 +268,57 @@ filterKinMatrix <- function(ids, kmat) {
 avgKinship <- function(kmat) {
   return(colMeans(kmat, na.rm = TRUE))
 }
-
-###############################################################################
-# Genome Uniqueness Functions:
-#
-# Reference:
-# Ballou JD, Lacy RC.  1995.  Identifying genetically important individuals
-#   for management of genetic variation in pedigreed populations, p 77-111.
-#   In: Ballou JD, Gilpin M, Foose TJ, editors.  Population management for
-#   survival and recovery. New York (NY): Columbia University Press.
-#
-# Note:
-# The following functions calculate genome uniqueness according to the equation
-# described in Ballou & Lacy, above.
-#
-# It should be noted, however that this function differs slightly in that it
-# does not distinguish between founders and non-founders in calculating the
-# statistic.
-#
-# Ballou & Lacy describe genome uniqueness as "the proportion of simulations
-# in which an individual receives the only copy of a founder allele." We have
-# interpretted this as meaning that genome uniqueness should only be calculated
-# for living, non-founder animals. Alleles possessed by living founders are
-# not considered when calculating genome uniqueness.
-#
-# We have a differing view on this, since a living founder can still contribute
-# to the population.
-# The function below calculates genome uniqueness for all living animals
-# and considers all alleles. It does not ignore living founders and their
-
-# Our results for genome uniqueness will, therefore differ slightly from those
-# returned by Pedscope. Pedscope calculates genome uniqueness only for
-# non-founders and ignores the contribution of any founders in the population.
-# This will cause Pedscope's genome uniqueness estimates to possibly be
-# slightly higher for non-founders than what this function will calculate.
-
-# The estimates of genome uniqueness for founders within the population
-# calculated by this function should match the "founder genome uniqueness"
-# measure calculated by Pedscope.
-#
 #' Calculates genome uniqueness for each ID that is part of the population.
+#'
+#' @description {Genome Uniqueness Functions}{}
+#'
+#' @references Ballou JD, Lacy RC.  1995. Identifying genetically important
+#' individuals for management of genetic variation in pedigreed populations,
+#' p 77-111. In: Ballou JD, Gilpin M, Foose TJ, editors.
+#' Population management for survival and recovery. New York (NY):
+#' Columbia University Press.
+#'
+#' Note:
+#' The following functions calculate genome uniqueness according to the equation
+#' described in Ballou & Lacy, above.
+#'
+#' It should be noted, however that this function differs slightly in that it
+#' does not distinguish between founders and non-founders in calculating the
+#' statistic.
+#'
+#' Ballou & Lacy describe genome uniqueness as "the proportion of simulations
+#' in which an individual receives the only copy of a founder allele." We have
+#' interpretted this as meaning that genome uniqueness should only be calculated
+#' for living, non-founder animals. Alleles possessed by living founders are
+#' not considered when calculating genome uniqueness.
+#'
+#' We have a differing view on this, since a living founder can still contribute
+#' to the population.
+#' The function below calculates genome uniqueness for all living animals
+#' and considers all alleles. It does not ignore living founders and their
+#'
+#' Our results for genome uniqueness will, therefore differ slightly from those
+#' returned by Pedscope. Pedscope calculates genome uniqueness only for
+#' non-founders and ignores the contribution of any founders in the population.
+#' This will cause Pedscope's genome uniqueness estimates to possibly be
+#' slightly higher for non-founders than what this function will calculate.
+#'
+#' The estimates of genome uniqueness for founders within the population
+#' calculated by this function should match the "founder genome uniqueness"
+#' measure calculated by Pedscope.
 #'
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{gene.drop()}.
+#' An AlleleTable contains information about alleles an ego has inherited.
+#' It contains the following columns:
+#' \itemize{
+#'  \item {id} {--- A character vector of IDs for a set of animals.}
+#'  \item {parent} {--- A factor with levels of sire and dam.}
+#'  \item {V1} {--- Unnamed integer column representing allele 1.}
+#'  \item {V2} {--- Unnamed integer column representing allele 2.}
+#'  \item {...} {--- Unnamed integer columns representing alleles.}
+#'  \item {Vn} {--- Unnamed integer coulumn representing the nth column.}}
+#'
 #' @param threshold an integer indicating the maximum number of copies of an
 #' allele that can be present in the population for it to be considered rare.
 #' Default is 1.
@@ -346,7 +351,6 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
 
   return(gu)
 }
-
 #' Performs a gene drop simulation based on the provided pedigree information
 #'
 #' @param id character vector of IDs for a set of animals.
@@ -434,7 +438,6 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   rownames(alleles) <- 1:nrow(alleles)
   return(alleles)
 }
-
 #' Combines two vectors of alleles by randomly selecting one allele
 #' or the other at each position.
 #'
@@ -452,7 +455,6 @@ chooseAlleles <- function(a1, a2) {
 
   return((a1 * s1) + (a2 * s2))
 }
-
 #' Calculates \code{a}, the number of an individual's alleles that are rare in
 #' each simulation.
 #'
@@ -488,7 +490,6 @@ calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
 
   return(apply(alleles, 2, count.rare))
 }
-
 #' Calculates the count of each allele in the provided vector.
 #'
 #'  If ids are provided, the function will only count the unique alleles
@@ -592,7 +593,6 @@ calc.fg <- function(ped, alleles) {
   r <- calc.retention(ped, alleles)
   return(1 / sum((p^2) / r, na.rm = TRUE))
 }
-
 #' Calculates Allelic Retention
 #'
 #' @param ped the pedigree information in datatable format.  Pedigree
@@ -620,9 +620,6 @@ calc.retention <- function(ped, alleles) {
   founders <- tapply(founders$retained, founders$id, mean)
   return(founders)
 }
-
-
-
 ###############################################################################
 # Additional Report Information:
 #' Finds the number of total offspring for an animal in the provided pedigree;
