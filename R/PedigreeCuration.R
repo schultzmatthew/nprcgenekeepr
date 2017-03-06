@@ -44,6 +44,7 @@ TIME.ORIGIN <- as.Date("1970-01-01")
 #' status of an animal where \code{NA} indicates an intact animal and all other
 #' values inicate surgical alteration.}
 #' \item{ped.num} {-- definition is missing.}}
+#'
 #' @export
 get_possible_cols <- function() {
   c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
@@ -473,8 +474,8 @@ calcAge <- function(birth, exit) {
   exit[is.na(exit)] <- Sys.Date()
   return(round((as.double(exit - birth)/365.25), 1))
 }
-# Determines the generation number for each id.
-#
+#' Determines the generation number for each id.
+#'
 #' @param id character vector with unique identifier for an individual
 #' @param sire character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).
