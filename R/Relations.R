@@ -34,7 +34,6 @@
 #' the id, the parents, and the grandparents. Inserts NA for unknown pedigree
 #' members.
 #'
-#' @param id character vector of IDs for a set of animals.
 #' @param id character vector with unique identifier for an individual
 #' @param sire character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).
