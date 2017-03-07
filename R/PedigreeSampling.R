@@ -9,7 +9,7 @@
 # amount of time required to perform calculations with
 # SIMWALK2 or similar programs.
 #
-#' Creates a pedigree tree (PedTree).
+#' Create a pedigree tree (PedTree).
 #'
 #' The PedTree is a list containing sire and dam information for an individual.
 #'
