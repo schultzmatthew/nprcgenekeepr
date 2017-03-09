@@ -392,7 +392,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
     id <- c(id, key[1])
     parent <- c(parent, key[2])
   }
-  id <- gsub("X", "", id)
+  #id <- gsub("X", "", id)
 
   alleles$id <- id
   alleles$parent <- parent
