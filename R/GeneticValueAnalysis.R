@@ -1,41 +1,3 @@
-#' @name{GeneticValueAnalysis.R}
-#' @title{Genetic Value Analysis}
-#' 2015-03-04
-#'
-#' Contains functions to calculate the kinship coefficient and genome
-#' uniqueness for animals listed in a Pedigree table.
-###############################################################################
-#' @description{Data Definitions} {
-#'
-#' Pedigree
-#' Contains studbook information for a number of individuals
-#' A Pedigree is a data.frame with the following columns:
-#'   id : char
-#'     The unique identifier for an individual
-#'   sire : char or NA
-#'     Identifier of an individual's father, NA if unknown
-#'   dam : char or NA
-#'     Identifier of an individual's mother, NA if unknown
-#'   sex : factor {levels: M, F, U}
-#'     Sex specifier for an individual
-#'   gen : int
-#'     Generation number of the individual
-#'   birth : Date or NA (optional)
-#'     An individual's birth date
-#'   exit : Date or NA (optional)
-#'     An individual's exit date (death, or departure if applicable)
-#'   age : float or NA (optional)
-#'     The individual's current age or age at exit
-#'   population : bool (optional)
-#'     Is the id part of the extant population?
-#'   origin : char or NA (optional)
-#'     Name of the facility that the individual was imported from; NA if
-#'     the invidual was not imported
-#'
-#' ASSUME: All IDs listed in the sire or dam columns must have a row entry in
-#'   the id column
-#'   }
-
 #' Get the superset of columns that can be in a pedigree file.
 #'
 #' @return Superset of columns that can be in a pedigree file.
@@ -164,7 +126,6 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 #' @param sparse logical flag. If \code{TRUE}, \code{Matrix::Diagnol()} is
 #' used to make a unit diagnol matrix. If \code{FALSE}, \code{base::diag()} is
 #' used to make a unit square matrix.
-#'
 #'
 #' @description {Kinship Matrix Functions} {
 #' The code for the kinship function was written by Terry Therneau
@@ -622,8 +583,10 @@ calc.retention <- function(ped, alleles) {
 }
 ###############################################################################
 # Additional Report Information:
-#' Finds the number of total offspring for an animal in the provided pedigree;
-#' optionally find the number that are part of the population of interest.
+#
+#' Finds the number of total offspring for each animal in the pedigree
+#'
+#' Optionally find the number that are part of the population of interest.
 #'
 #' @param probands character vector of egos for which offspring should be
 #' counted.
@@ -631,8 +594,8 @@ calc.retention <- function(ped, alleles) {
 #' (req. fields: id, sire, dam, gen, population).
 #' This is the complete pedigree.
 #' @param consider.pop logical value indication whether or not the number of
-#' offspring that are part of the focal populatio be counted? Default is
-#' \code{FALSE}.
+#' offspring that are part of the focal population are to be counted?
+#' Default is \code{FALSE}.
 #'
 #' @return a dataframe with at least \code{id} and \code{total.offspring}
 #' required and \code{living.offspring} optional.
@@ -652,7 +615,7 @@ offspringCounts <- function(probands, ped, consider.pop = FALSE) {
   return(results)
 }
 
-#' Finds the number of total offspring for an animal in the provided pedigree.
+#' Finds the number of total offspring for each animal in the provided pedigree.
 #'
 #' @param probands character vector of egos for which offspring should be
 #' counted and returned.
@@ -678,7 +641,9 @@ findOffspring <- function(probands, ped) {
 
 ###############################################################################
 # Report Formatting:
-#' Takes in the results from a genetic value analysis, and orders the report
+#' Order the results of the genetic value analysis for use in a report.
+#'
+#' Takes in the results from a genetic value analysis and orders the report
 #' according to the ranking scheme we have developed.
 #'
 #' @param rpt a dataframe {req colnames: id, gu, z.scores, import, total.offspring}
@@ -753,6 +718,8 @@ orderReport <- function(rpt, ped) {
   rownames(finalRpt) <- seq(nrow(finalRpt))
   return(finalRpt)
 }
+#' Ranks animals based on genetic value.
+#'
 #' Adds a column to \code{rpt} containing integers from 1 to nrow, and provides
 #' a value designation for each animal of "high value" or "low value"
 #'
