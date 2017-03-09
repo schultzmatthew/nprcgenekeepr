@@ -1,0 +1,65 @@
+#' Genetic Value Analysis Functions
+#' @seealso \code{\link{get_include_columns}} to get set of columns that can
+#' be used in a pedigree file
+#'
+#' 2015-03-04
+#'
+#' Contains functions to calculate the kinship coefficient and genome
+#' uniqueness for animals listed in a Pedigree table.
+###############################################################################
+#' @description Primary Data Structure --- Pedigree
+#'
+#' Contains studbook information for a number of individuals.
+#' ASSUME: All IDs listed in the sire or dam columns must have a row entry in
+#'   the id column
+#'
+#' A Pedigree is a data.frame with the following columns:
+#' The possible columns are as follows:
+#' \itemize{
+#' \item{id} {-- character vector with unique identifier for an individual}
+#' \item{sire} {-- character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).}
+#' \item{dam} {-- character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).}
+#' \item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an individual}
+#' \item{gen} {-- integer vector with the generation number of the individual}
+#' \item{birth} {-- Date or \code{NA} (optional) with the individual's birth date}
+#' \item{exit} {-- Date or \code{NA} (optional) with the individual's exit date (death,
+#'  or departure if applicable)}
+#' \item{ancestry} {-- character vector or \code{NA} (optional) that indicates
+#' the geographic population to which the individual belongs.}
+#' \item{age} {-- numeric or \code{NA} (optional) indicating the individual's
+#' current age or age at exit.}
+#' \item{population} {-- logical (optional)
+#' Is the id part of the extant population?}
+#' \item{origin} {-- character vector or \code{NA} (optional) that indicates
+#' the name of the facility that the individual was imported from.
+#' \code{NA} indicates the invidual was not imported.}
+#' \item{origin} {-- Facility an individual originated from, if other than local}}
+#'
+#' Genetic Value Analysis Functions
+#'
+#' \itemize{
+#' \item{\link{avgKinship}} {--- Calculates the averages kinship for each animal in a
+#' kinship matrix}
+#' \item {\link{calc.a}} {--- Calculates \code{a}, the number of an individual's alleles
+#' that are rare in each simulation.}
+#' \item{\link{freq}} {--- Calculates the count of each allele in the provided vector.}
+#' \item{\link{calc.fe}} {--- Calculates founder equivalents.}
+#' \item{\link{calc.fg}} {--- Calculates founder genome equivalents.}
+#' \item{\link{calc.gu}} {--- Calculates genome uniqueness for each ID that is
+#' part of the population.}
+#' \item{\link{gene.drop}} {--- Performs a gene drop simulation based on the
+#' pedigree information.}
+#' \item{\link{chooseAlleles}} {--- Combines two vectors of alleles by randomly
+#' selecting one allele or the other at each position.}
+#' \item{\link{calc.retention}} {--- Calculates allelic retention.}
+#' \item{\link{filterKinMatrix}} {--- Filters a kinship matrix to include only the egos
+#' listed in 'ids'}
+#' \item{\link{kinship}} {--- Generates a kinship matrix}
+#' \item{\link{reportGV}}
+#' {--- Generates a genetic value report for a provided pedigree.}
+#' }
+#' @docType package
+#' @name genetic_analysis_functions
+NULL
