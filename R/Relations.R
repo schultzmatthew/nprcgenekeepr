@@ -1,31 +1,6 @@
 # Relations.R
 # 2015-08-31
 
-# Contains functions to calculate the first-order relationships in a pedigree,
-# and to convert pairwise kinships to the appropriate relationship category.
-
-# Relationships categories:
-# For each ID in the pair, find a CEPH-style pedigree and compare them
-#   If one is the parent of the other:
-#     Designate the relationship as 'parent-offspring'
-#		Else if both parents are shared:
-#     Designate the relationship as 'full-siblings'
-#		Else if one parent is shared:
-#     Designate the relationship as 'half-siblings'
-#		Else if one is the grandparent of the other:
-#     Designate the relationship as 'grandparent-grandchild'
-#		Else if both grand parents are shared:
-#     Designate the relationship as 'cousin'
-#		Else if at least one grand parent is shared:
-#     Designate the relationship as 'cousin - other'
-#		Else if the parents of one are the grandparents of the other:
-#     Designate the relationship as 'full-avuncular'
-#   Else if a single parent of one is the grandparent of the other:
-#     Designate the relationship as 'avuncular - other'
-#		Else if the kinship is greater than 0, but the pair don't fall into the above categories:
-#     Designate the relationship as 'other'
-#   Else:
-#     Designate the relationships as 'no relation'
 
 ###############################################################################
 #' Make a CEPH-style pedigree for each id
@@ -34,6 +9,33 @@
 #' the id, the parents, and the grandparents. Inserts NA for unknown pedigree
 #' members.
 #'
+#' Calculates the first-order relationships in a pedigree,
+#' and to convert pairwise kinships to the appropriate relationship category.
+
+#' Relationships categories:
+#' For each ID in the pair, find a CEPH-style pedigree and compare them
+#' \itemize{
+#' \item {If one is the parent of the other}
+#'     {--- Designate the relationship as \code{parent-offspring}}
+#' \item {Else if both parents are shared}
+#'     {--- Designate the relationship as \code{full-siblings}}
+#' \item {Else if one parent is shared}
+#'     {--- Designate the relationship as \code{half-siblings}}
+#' \item {Else if one is the grandparent of the other}
+#'     {--- Designate the relationship as \code{grandparent-grandchild}}
+#' \item {Else if both grand parents are shared}
+#'     {--- Designate the relationship as \code{cousin}}
+#' \item {Else if at least one grand parent is shared}
+#'     {--- Designate the relationship as \code{cousin - other}}
+#' \item {Else if the parents of one are the grandparents of the other}
+#'     {--- Designate the relationship as \code{full-avuncular}}
+#' \item {Else if a single parent of one is the grandparent of the other}
+#'     {--- Designate the relationship as \code{avuncular - other}}
+#' \item {Else if the kinship is greater than 0, but the pair don't fall into the above categories}
+#'     {--- Designate the relationship as \code{other}}
+#' \item {Else}
+#'     {--- Designate the relationships as \code{no relation.}}}
+
 #' @param id character vector with unique identifier for an individual
 #' @param sire character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).
@@ -59,13 +61,13 @@ makeCEPH <- function(id, sire, dam) {
 
     if (is.na(sire)) {
       pgp <- c(NA, NA)
-    } else{
+    } else {
       pgp <- c(ped[sire, "sire"], ped[sire, "dam"])
     }
 
     if (is.na(dam)) {
       mgp <- c(NA, NA)
-    } else{
+    } else {
       mgp <- c(ped[dam, "sire"], ped[dam, "dam"])
     }
 
@@ -114,7 +116,7 @@ countFirstOrder <- function(ped, ids = NULL) {
     o <- sum((ped$sire %in% id) | (ped$dam %in% id))
     if (is.na(sire) | is.na(dam)) {
       s <- 0
-    } else{
+    } else {
       s <- sum((ped$sire %in% sire) & (ped$dam %in% dam)) - 1
     }
 
@@ -204,7 +206,7 @@ convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
       relation <- "Avuncular - Other"
     } else if (kin$kinship[i] > 0) {
       relation <- "Other"
-    } else{
+    } else {
       relation <- "No Relation"
     }
 
