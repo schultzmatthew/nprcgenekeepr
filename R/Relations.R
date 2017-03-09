@@ -31,7 +31,8 @@
 #'     {--- Designate the relationship as \code{full-avuncular}}
 #' \item {Else if a single parent of one is the grandparent of the other}
 #'     {--- Designate the relationship as \code{avuncular - other}}
-#' \item {Else if the kinship is greater than 0, but the pair don't fall into the above categories}
+#' \item {Else if the kinship is greater than 0, but the pair don't fall into
+#' the above categories}
 #'     {--- Designate the relationship as \code{other}}
 #' \item {Else}
 #'     {--- Designate the relationships as \code{no relation.}}}
@@ -47,8 +48,6 @@
 #' list elements are the IDs from id. Below each ID is a list of three
 #' elements: parents (sire, dam), paternal grandparents (pgp: sire, dam),
 #' and maternal grandparents (mgp: sire, dam).
-
-
 makeCEPH <- function(id, sire, dam) {
   ped <- data.frame(sire = sire, dam = dam, row.names = id,
                     stringsAsFactors = FALSE)
@@ -76,29 +75,26 @@ makeCEPH <- function(id, sire, dam) {
 
   return(ceph)
 }
-
+#' Counts first-order relatives.
+#'
+#' Tallies the number of first-order relatives for each member of the provided
+#' pedigree. If 'ids' is provided, the analysis is restricted to only the
+#' specified subset.
+#'
+#' @param ped : `Pedigree`
+#'   Standardized pedigree information in a table.
+#' @param ids character vector of IDs or NULL
+#'   These are the IDs to which the analysis should be restricted. First-order
+#'   relationships will only be tallied for the listed IDs and will only
+#'   consider relationships within the subset. If NULL, the analysis will
+#'   include all IDs in the pedigree.
+#'
+#' @return A dataframe with column \code{id}, \code{parents}, \code{offspring},
+#' \code{siblings}, and \code{total}. A table of first-order relationship
+#' counts, broken down to indicate the number of parents, offspring, and
+#' siblings that are part of the subset under consideration.
+#' @export
 countFirstOrder <- function(ped, ids = NULL) {
-  # Tallies the number of first-order relatives for each member of the provided
-  # pedigree. If 'ids' is provided, the analysis is restricted to only the
-  # specified subset.
-  #
-  # Parameters
-  # ----------
-  # ped : `Pedigree`
-  #   Standardized pedigree information in a table.
-  # ids : vector <char> or NULL
-  #   List of IDs to which the analysis should be restricted. First-order
-  #   relationships will only be tallied for the listed IDs and will only
-  #   consider relationships within the subset. If NULL, the analysis will
-  #   include all IDs in the pedigree.
-  #
-  # Return
-  # ------
-  # data.frame {fields: id, parents, offspring, siblings, total}
-  #   A table of first-order relationship counts, broken down to indicate
-  #   the number of parents, offspring, and siblings that are part of the
-  #   subset under consideration.
-
   if (!is.null(ids)) {
     ped <- ped[ped$id %in% ids, ]
   }
@@ -132,29 +128,23 @@ countFirstOrder <- function(ped, ids = NULL) {
 
   return(ped[, c("id", "parents", "offspring", "siblings", "total")])
 }
-
-# Converts pairwise kinship values to a relationship category descriptor.
-#
-# Parameters
-# ----------
-# kmat : matrix
-#   Matrix of pairwise kinship coefficients. Rows and columns
-#   should be named with IDs.
-# ped : `Pedigree`
-#   Standardized pedigree information in a table.
-# ids : vector <char> or NULL
-#   List of IDs to which the analysis should be restricted. If provided,
-#   only relationships between these IDs will be converted to categories.
-# updateProgress : function or NULL
-#   Function that can be called during each iteration to update a
-#   shiny::Progress object.
-#
-# Return
-# ------
-# data.frame {fields: id1, id2, kinship, relation}
-#   Long-form table of pairwise kinships, with relationship categories
-#   included for each pair.
-
+#' Converts pairwise kinship values to a relationship category descriptor.
+#'
+#' @param kmat a numeric matrix of pairwise kinship coefficients.
+#' Rows and columns should be named with IDs.
+#' @param ped the pedigree information in datatable format with required
+#' colnames \code{id}, \code{sire}, and \code{dam}.
+#' @param ids character vector of IDs or NULL to which the analysis should be
+#' restricted. If provided, only relationships between these IDs will be
+#' converted to relationships.
+#' @param updateProgress function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
+#'
+#' @return A dataframe with columns \code{id1}, \code{id2}, \code{kinship},
+#' \code{relation}. It is a long-form table of pairwise kinships, with
+#'  relationship categories included for each pair.
+#' @export
 convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
   if (!is.null(ids)) {
     kmat <- filterKinMatrix(ids, kmat)
@@ -229,14 +219,14 @@ entire <- function(v) {
   v <- if (is.na(v)) FALSE else v
   return(v)
 }
-
+#' kin : data.frame {fields: id1, id2, kinship, relation}
+#'
+#'
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, \code{kinship},
+#' and \code{relation}. It is a long-form table of pairwise kinships, with
+#' relationship categories included for each pair.
+#' @export
 relationClasses <- function(kin) {
-  #
-  # kin : data.frame {fields: id1, id2, kinship, relation}
-  #
-  #
-  #
-
   rel.class <- c("Self", "Parent-Offspring", "Full-Siblings", "Half-Siblings",
                  "Grandparent-Grandchild", "Full-Cousins", "Cousin - Other",
                  "Full-Avuncular", "Avuncular - Other", "Other", "No Relation")
@@ -249,10 +239,6 @@ relationClasses <- function(kin) {
   rel.class <- rel.class[rel.class %in% r[, "Relationship Class"]]
   return(r[match(rel.class, r[, "Relationship Class"]),])
 }
-
-###############################################################################
-
-
 # filterKinDuplicates <- function(kin) {
 #   # data.frame {id1, id2, kinship}
 #   pairs <- c()
@@ -270,8 +256,3 @@ relationClasses <- function(kin) {
 #
 #   return(kin[keep, ])
 # }
-
-
-
-###############################################################################
-

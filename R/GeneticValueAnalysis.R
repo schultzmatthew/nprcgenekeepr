@@ -619,7 +619,7 @@ offspringCounts <- function(probands, ped, consider.pop = FALSE) {
 #' counted and returned.
 #' @param ped the pedigree information in datatable format.  Pedigree
 #' (req. fields: id, sire, dam, gen, population).
-#' This requires complete pedigree information..
+#' This requires complete pedigree information.
 #'
 #' @return a named vector containing the offpsring counts for each animal in
 #' \code{probands}. Rownames are set to the IDs from \code{probands}.
