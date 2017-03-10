@@ -4,21 +4,21 @@
 
 
 #################################################################################
-#' Generating 1 or more new groups from a list of candidates
-#' Function to find the largest group of unrelated animals that can be formed
-#' from a set of candidate IDs. If more than 1 group is desired, the function
-#' finds the set of groups with the largest average size.
-#
-#' The function implements a maximal independent set algorithm to find groups
-#' of unrelated animals. A set of animals may have many different MISs of
+#' Assign breeding groups
+#'
+#' Generating  from a list of candidates.
+#' \code{groupAssign} finds either the largest group of unrelated animals
+#' that can be formed from a set of candidate IDs or if more than 1 group is
+#' desired, it finds the set of groups with the largest average size.
+#'
+#' The function implements a maximal independent set (MIS) algorithm to find
+#' groups of unrelated animals. A set of animals may have many different MISs of
 #' varying sizes, and finding the largest would require traversing all possible
 #' combinations of animals. Since this could be very time consuming, this
 #' algorithm produces a random sample of the possible MISs, and selects from
 #' these. The size of the random sample is determined by the specified number
 #' of iterations.
-#
-#' Parameters
-#' ----------
+#'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
 #' @param kmat numberic matrix {row and column names: animal IDs} of
@@ -42,13 +42,10 @@
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #
-#' Return
-#' ------
-#' list {fields: group, score}
-#'   "group" contains a list of the best group(s) produced during the
-#'   simulation, while "score" provides the score associated with the
-#'   group(s).
-
+#' @return A list with fields \code{group} and \code{score}.
+#'   The field \code{group} contains a list of the best group(s) produced
+#'   during the simulation, while the field \code{score} provides the score
+#'   associated with the group(s).
 #' @export
 groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
                         ignore = list(c("F", "F")), min.age = 1, iter = 1000,
@@ -103,7 +100,8 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
       }
 
       # Remove all relatives from consideration for the group it was added to
-      # need to modify "kin" to include blank entries for animals with no relatives
+      # need to modify "kin" to include blank entries for animals with no
+      # relatives
       d[[i]] <- setdiff(d[[i]], kin[[id]])
 
       remaining.g <- g
@@ -136,21 +134,19 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 
   return(list(group = saved.gp, score = saved.score))
 }
-#' Adding animals to an existing group:
+#' Add animals to an existing breeding group:
 #'
 #' Function to find the largest group that can be formed by adding unrelated
 #' animals from a set of candidate IDs to an existing group.
 #'
-#' The function implements a maximal independent set algorithm to find groups
-#' of unrelated animals. A set of animals may have many different MISs of
+#' The function implements a maximal independent set (MIS) algorithm to find
+#' groups of unrelated animals. A set of animals may have many different MISs of
 #' varying sizes, and finding the largest would require traversing all possible
 #' combinations of animals. Since this could be very time consuming, this
 #' algorithm produces a random sample of the possible MISs, and selects from
 #' these. The size of the random sample is determined by the specified number
 #' of iterations.
 #'
-#' Parameters
-#' ----------
 #' @param candidates character vector of IDs of the animals available for use
 #'  in the group.
 #' @param current.group character vector of IDs of animals currently assigned to the group.

@@ -38,6 +38,7 @@ createPedTree <- function(ped) {
 #' @param id character vector of length 1 having the ID of interest
 #' @param ptree a list of lists forming a pedigree tree as constructed by
 #' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
+#' @return A character vector of ancestors for an individual ID.
 #' @export
 getAncestors <- function(id, ptree) {
 
@@ -64,10 +65,13 @@ getAncestors <- function(id, ptree) {
 
   return(c(sire_lineage, dam_lineage))
 }
+#' \code{makesLoop} tests for a common ancestor.
+#'
+#' @return TRUE if there is one or more common ancestors for the sire and dam.
+#'
 #' Tests to see if sires and dams for an individual in a ptree have a common
 #' ancester.
 #'
-#' @return TRUE if one or more common ancestor exists
 #' @param id character vector of length 1 having the ID of interest
 #' @param ptree a list of lists forming a pedigree tree as constructed by
 #' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.

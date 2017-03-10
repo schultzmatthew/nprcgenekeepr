@@ -583,7 +583,7 @@ calc.retention <- function(ped, alleles) {
 ###############################################################################
 # Additional Report Information:
 #
-#' Finds the number of total offspring for each animal in the pedigree
+#' Finds the total number of offspring for each animal in the pedigree
 #'
 #' Optionally find the number that are part of the population of interest.
 #'
@@ -596,11 +596,9 @@ calc.retention <- function(ped, alleles) {
 #' offspring that are part of the focal population are to be counted?
 #' Default is \code{FALSE}.
 #'
-#' @return a dataframe with at least \code{id} and \code{total.offspring}
+#' @return A dataframe with at least \code{id} and \code{total.offspring}
 #' required and \code{living.offspring} optional.
 #'
-#' @return a dataframe containing the total offspring for the provided ids,
-#' and optionally, the number that are part of the focal population.
 #' @export
 offspringCounts <- function(probands, ped, consider.pop = FALSE) {
   total.offspring <- findOffspring(probands, ped)
@@ -620,7 +618,7 @@ offspringCounts <- function(probands, ped, consider.pop = FALSE) {
 #' counted and returned.
 #' @param ped the pedigree information in datatable format.  Pedigree
 #' (req. fields: id, sire, dam, gen, population).
-#' This requires complete pedigree information..
+#' This requires complete pedigree information.
 #'
 #' @return a named vector containing the offpsring counts for each animal in
 #' \code{probands}. Rownames are set to the IDs from \code{probands}.
@@ -645,10 +643,11 @@ findOffspring <- function(probands, ped) {
 #' Takes in the results from a genetic value analysis and orders the report
 #' according to the ranking scheme we have developed.
 #'
-#' @param rpt a dataframe {req colnames: id, gu, z.scores, import, total.offspring}
-#   A data.frame of results from a genetic value analysis
-#' @param ped the pedigree information in datatable format.  Pedigree
-#' (req. fields: id, sire, dam, gen, population).
+#' @param rpt a dataframe with required colnames \code{id}, \code{gu},
+#' \code{z.scores}, \code{import}, \code{total.offspring}, which is
+#   a data.frame of results from a genetic value analysis.
+#' @param ped the pedigree information in datatable format with required
+#' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
 #' This requires complete pedigree information..
 #'
 #' @return A dataframe, which is \code{rpt} sorted according to the ranking scheme:

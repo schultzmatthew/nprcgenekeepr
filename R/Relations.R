@@ -1,31 +1,6 @@
 # Relations.R
 # 2015-08-31
 
-# Contains functions to calculate the first-order relationships in a pedigree,
-# and to convert pairwise kinships to the appropriate relationship category.
-
-# Relationships categories:
-# For each ID in the pair, find a CEPH-style pedigree and compare them
-#   If one is the parent of the other:
-#     Designate the relationship as 'parent-offspring'
-#		Else if both parents are shared:
-#     Designate the relationship as 'full-siblings'
-#		Else if one parent is shared:
-#     Designate the relationship as 'half-siblings'
-#		Else if one is the grandparent of the other:
-#     Designate the relationship as 'grandparent-grandchild'
-#		Else if both grand parents are shared:
-#     Designate the relationship as 'cousin'
-#		Else if at least one grand parent is shared:
-#     Designate the relationship as 'cousin - other'
-#		Else if the parents of one are the grandparents of the other:
-#     Designate the relationship as 'full-avuncular'
-#   Else if a single parent of one is the grandparent of the other:
-#     Designate the relationship as 'avuncular - other'
-#		Else if the kinship is greater than 0, but the pair don't fall into the above categories:
-#     Designate the relationship as 'other'
-#   Else:
-#     Designate the relationships as 'no relation'
 
 ###############################################################################
 #' Make a CEPH-style pedigree for each id
@@ -34,6 +9,34 @@
 #' the id, the parents, and the grandparents. Inserts NA for unknown pedigree
 #' members.
 #'
+#' Calculates the first-order relationships in a pedigree,
+#' and to convert pairwise kinships to the appropriate relationship category.
+
+#' Relationships categories:
+#' For each ID in the pair, find a CEPH-style pedigree and compare them
+#' \itemize{
+#' \item {If one is the parent of the other}
+#'     {--- Designate the relationship as \code{parent-offspring}}
+#' \item {Else if both parents are shared}
+#'     {--- Designate the relationship as \code{full-siblings}}
+#' \item {Else if one parent is shared}
+#'     {--- Designate the relationship as \code{half-siblings}}
+#' \item {Else if one is the grandparent of the other}
+#'     {--- Designate the relationship as \code{grandparent-grandchild}}
+#' \item {Else if both grand parents are shared}
+#'     {--- Designate the relationship as \code{cousin}}
+#' \item {Else if at least one grand parent is shared}
+#'     {--- Designate the relationship as \code{cousin - other}}
+#' \item {Else if the parents of one are the grandparents of the other}
+#'     {--- Designate the relationship as \code{full-avuncular}}
+#' \item {Else if a single parent of one is the grandparent of the other}
+#'     {--- Designate the relationship as \code{avuncular - other}}
+#' \item {Else if the kinship is greater than 0, but the pair don't fall into
+#' the above categories}
+#'     {--- Designate the relationship as \code{other}}
+#' \item {Else}
+#'     {--- Designate the relationships as \code{no relation.}}}
+
 #' @param id character vector with unique identifier for an individual
 #' @param sire character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).
@@ -45,8 +48,6 @@
 #' list elements are the IDs from id. Below each ID is a list of three
 #' elements: parents (sire, dam), paternal grandparents (pgp: sire, dam),
 #' and maternal grandparents (mgp: sire, dam).
-
-
 makeCEPH <- function(id, sire, dam) {
   ped <- data.frame(sire = sire, dam = dam, row.names = id,
                     stringsAsFactors = FALSE)
@@ -59,13 +60,13 @@ makeCEPH <- function(id, sire, dam) {
 
     if (is.na(sire)) {
       pgp <- c(NA, NA)
-    } else{
+    } else {
       pgp <- c(ped[sire, "sire"], ped[sire, "dam"])
     }
 
     if (is.na(dam)) {
       mgp <- c(NA, NA)
-    } else{
+    } else {
       mgp <- c(ped[dam, "sire"], ped[dam, "dam"])
     }
 
@@ -74,29 +75,26 @@ makeCEPH <- function(id, sire, dam) {
 
   return(ceph)
 }
-
+#' Counts first-order relatives.
+#'
+#' Tallies the number of first-order relatives for each member of the provided
+#' pedigree. If 'ids' is provided, the analysis is restricted to only the
+#' specified subset.
+#'
+#' @param ped : `Pedigree`
+#'   Standardized pedigree information in a table.
+#' @param ids character vector of IDs or NULL
+#'   These are the IDs to which the analysis should be restricted. First-order
+#'   relationships will only be tallied for the listed IDs and will only
+#'   consider relationships within the subset. If NULL, the analysis will
+#'   include all IDs in the pedigree.
+#'
+#' @return A dataframe with column \code{id}, \code{parents}, \code{offspring},
+#' \code{siblings}, and \code{total}. A table of first-order relationship
+#' counts, broken down to indicate the number of parents, offspring, and
+#' siblings that are part of the subset under consideration.
+#' @export
 countFirstOrder <- function(ped, ids = NULL) {
-  # Tallies the number of first-order relatives for each member of the provided
-  # pedigree. If 'ids' is provided, the analysis is restricted to only the
-  # specified subset.
-  #
-  # Parameters
-  # ----------
-  # ped : `Pedigree`
-  #   Standardized pedigree information in a table.
-  # ids : vector <char> or NULL
-  #   List of IDs to which the analysis should be restricted. First-order
-  #   relationships will only be tallied for the listed IDs and will only
-  #   consider relationships within the subset. If NULL, the analysis will
-  #   include all IDs in the pedigree.
-  #
-  # Return
-  # ------
-  # data.frame {fields: id, parents, offspring, siblings, total}
-  #   A table of first-order relationship counts, broken down to indicate
-  #   the number of parents, offspring, and siblings that are part of the
-  #   subset under consideration.
-
   if (!is.null(ids)) {
     ped <- ped[ped$id %in% ids, ]
   }
@@ -114,7 +112,7 @@ countFirstOrder <- function(ped, ids = NULL) {
     o <- sum((ped$sire %in% id) | (ped$dam %in% id))
     if (is.na(sire) | is.na(dam)) {
       s <- 0
-    } else{
+    } else {
       s <- sum((ped$sire %in% sire) & (ped$dam %in% dam)) - 1
     }
 
@@ -130,29 +128,23 @@ countFirstOrder <- function(ped, ids = NULL) {
 
   return(ped[, c("id", "parents", "offspring", "siblings", "total")])
 }
-
-# Converts pairwise kinship values to a relationship category descriptor.
-#
-# Parameters
-# ----------
-# kmat : matrix
-#   Matrix of pairwise kinship coefficients. Rows and columns
-#   should be named with IDs.
-# ped : `Pedigree`
-#   Standardized pedigree information in a table.
-# ids : vector <char> or NULL
-#   List of IDs to which the analysis should be restricted. If provided,
-#   only relationships between these IDs will be converted to categories.
-# updateProgress : function or NULL
-#   Function that can be called during each iteration to update a
-#   shiny::Progress object.
-#
-# Return
-# ------
-# data.frame {fields: id1, id2, kinship, relation}
-#   Long-form table of pairwise kinships, with relationship categories
-#   included for each pair.
-
+#' Converts pairwise kinship values to a relationship category descriptor.
+#'
+#' @param kmat a numeric matrix of pairwise kinship coefficients.
+#' Rows and columns should be named with IDs.
+#' @param ped the pedigree information in datatable format with required
+#' colnames \code{id}, \code{sire}, and \code{dam}.
+#' @param ids character vector of IDs or NULL to which the analysis should be
+#' restricted. If provided, only relationships between these IDs will be
+#' converted to relationships.
+#' @param updateProgress function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
+#'
+#' @return A dataframe with columns \code{id1}, \code{id2}, \code{kinship},
+#' \code{relation}. It is a long-form table of pairwise kinships, with
+#'  relationship categories included for each pair.
+#' @export
 convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
   if (!is.null(ids)) {
     kmat <- filterKinMatrix(ids, kmat)
@@ -204,7 +196,7 @@ convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
       relation <- "Avuncular - Other"
     } else if (kin$kinship[i] > 0) {
       relation <- "Other"
-    } else{
+    } else {
       relation <- "No Relation"
     }
 
@@ -227,14 +219,14 @@ entire <- function(v) {
   v <- if (is.na(v)) FALSE else v
   return(v)
 }
-
+#' kin : data.frame {fields: id1, id2, kinship, relation}
+#'
+#'
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, \code{kinship},
+#' and \code{relation}. It is a long-form table of pairwise kinships, with
+#' relationship categories included for each pair.
+#' @export
 relationClasses <- function(kin) {
-  #
-  # kin : data.frame {fields: id1, id2, kinship, relation}
-  #
-  #
-  #
-
   rel.class <- c("Self", "Parent-Offspring", "Full-Siblings", "Half-Siblings",
                  "Grandparent-Grandchild", "Full-Cousins", "Cousin - Other",
                  "Full-Avuncular", "Avuncular - Other", "Other", "No Relation")
@@ -247,10 +239,6 @@ relationClasses <- function(kin) {
   rel.class <- rel.class[rel.class %in% r[, "Relationship Class"]]
   return(r[match(rel.class, r[, "Relationship Class"]),])
 }
-
-###############################################################################
-
-
 # filterKinDuplicates <- function(kin) {
 #   # data.frame {id1, id2, kinship}
 #   pairs <- c()
@@ -268,8 +256,3 @@ relationClasses <- function(kin) {
 #
 #   return(kin[keep, ])
 # }
-
-
-
-###############################################################################
-
