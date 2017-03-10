@@ -18,7 +18,7 @@
 #' the date the pedigree census occurred.
 #' @import lubridate
 #' @import stringi
-#' @import(plotrix)
+#' @import plotrix
 #' @export
 age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
                              raxlab, gap, current_date) {
