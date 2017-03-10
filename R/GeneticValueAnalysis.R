@@ -30,7 +30,7 @@ get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #'
-#' @return a dataframe with the genetic value report. Animals are ranked
+#' @return A dataframe with the genetic value report. Animals are ranked
 #' in order of descending value.
 #'
 #' @export
@@ -116,6 +116,11 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 #' order to provide the parameter pdepth (the generation number). This version
 #' requires the generation number to be calculated elsewhere and passed into
 #' the function.
+#'
+#' The rows (cols) of founders are just .5 * identity matrix, no further
+#'    processing is needed for them.
+#' Parents must be processed before their children, and then a child's
+#'    kinship is just a sum of the kinship's for his/her parents.
 #'
 #' @param id character vector of IDs for a set of animals.
 #' @param father.id character vector or NA for the IDs of the sires for the set
@@ -212,7 +217,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
 #' @param kmat a numeric matrix of pairwise kinship coefficients.
 #' Rows and columns should be named with IDs.
 #'
-#' @return a numeric matrix. This is the reduced kinship matrix with named
+#' @return A numeric matrix that is the reduced kinship matrix with named
 #' rows and columns (row and col names are 'ids')
 #' @export
 filterKinMatrix <- function(ids, kmat) {
@@ -223,7 +228,7 @@ filterKinMatrix <- function(ids, kmat) {
 #' @param kmat a numeric matrix of pairwise kinship coefficients.
 #' Animal IDs are the row and column names.
 #'
-#' @return named numeric vecter of average kinship coefficients for each
+#' @return A named numeric vecter of average kinship coefficients for each
 #' animal ID. Elements are named with the IDs from the columns of kmat.
 
 avgKinship <- function(kmat) {
@@ -231,17 +236,8 @@ avgKinship <- function(kmat) {
 }
 #' Calculates genome uniqueness for each ID that is part of the population.
 #'
-#' @description {Genome Uniqueness Functions}{}
-#'
-#' @references Ballou JD, Lacy RC.  1995. Identifying genetically important
-#' individuals for management of genetic variation in pedigreed populations,
-#' p 77-111. In: Ballou JD, Gilpin M, Foose TJ, editors.
-#' Population management for survival and recovery. New York (NY):
-#' Columbia University Press.
-#'
-#' Note:
 #' The following functions calculate genome uniqueness according to the equation
-#' described in Ballou & Lacy, above.
+#' described in Ballou & Lacy.
 #'
 #' It should be noted, however that this function differs slightly in that it
 #' does not distinguish between founders and non-founders in calculating the
@@ -267,6 +263,14 @@ avgKinship <- function(kmat) {
 #' The estimates of genome uniqueness for founders within the population
 #' calculated by this function should match the "founder genome uniqueness"
 #' measure calculated by Pedscope.
+#'
+#' @description {Genome Uniqueness Functions}{}
+#'
+#' @references Ballou JD, Lacy RC.  1995. Identifying genetically important
+#' individuals for management of genetic variation in pedigreed populations,
+#' p 77-111. In: Ballou JD, Gilpin M, Foose TJ, editors.
+#' Population management for survival and recovery. New York (NY):
+#' Columbia University Press.
 #'
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{gene.drop()}.
