@@ -163,11 +163,6 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 #'  Mathematical and Statistical Methods for Genetic Analysis,
 #'  Springer, 1997, p 71-72.}
 #'
-#' The rows (cols) of founders are just .5 * identity matrix, no further
-#'    processing is needed for them.
-#' Parents must be processed before their children, and then a child's
-#'    kinship is just a sum of the kinship's for his/her parents.
-#'
 #' @author {as modified by, M Raboin, 2014-09-08 14:44:26}
 #'
 #' @import Matrix
