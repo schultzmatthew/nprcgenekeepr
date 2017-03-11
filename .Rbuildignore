@@ -1,2 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^.\inst\extdata\Notes.txt
+^.\inst\extdata\Example_Pedigree.txt
+^.\inst\extdata\RhesusMasterForMetrics.txt
