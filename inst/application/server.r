@@ -28,7 +28,7 @@ shinyServer(function(input, output, session) {
                   header = TRUE,
                   sep = input$sep,
                   stringsAsFactors = FALSE,
-                  na.strings = "",
+                  na.strings = c("", "NA"),
                   check.names = FALSE)
 
     d <- tryCatch(qc.Studbook(d),
@@ -586,7 +586,7 @@ shinyServer(function(input, output, session) {
   output$downloadGroup <- downloadHandler(
     filename = function() {paste("Group-", input$view_grp, ".csv", sep = "")},
     content = function(file) {
-      write.csv(bg_view(), file, na = "", row.names = FALSE)
+      write.csv(sort(bg_view()), file, na = "", row.names = FALSE)
     }
   )
 
