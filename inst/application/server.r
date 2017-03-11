@@ -303,9 +303,11 @@ shinyServer(function(input, output, session) {
                      "<br>",
                      "Known Male Founders: ", as.character(mf),
                      "<br>",
-                     "Founder Equivalents: ", as.character(round(fe, digits = 2)),
+                     "Founder Equivalents: ",
+                     as.character(round(fe, digits = 2)),
                      "<br>",
-                     "Founder Genome Equivalents: ", as.character(round(fg, digits = 2))
+                     "Founder Genome Equivalents: ",
+                     as.character(round(fg, digits = 2))
     )
 
     header <- paste("<tr>",
@@ -595,20 +597,20 @@ shinyServer(function(input, output, session) {
 ###############################################################################
 # Functions for proper display of the pedigree on the Pedigree Browser tab
 
+#' Converts all columns of a data.frame to of class "character"
+#'
+#' NOTE:
+#' Function was created to deal with a display bug in xtables (used by Shiny)
+#' The bug causes Date columns to be displayed improperly
+#' Shiny also displays all Numbers (including integers) with 2 decimal places
+#' @param a dataframe
+#' @param  df: Any data.frame where the first three columns can be coerced to
+#' character.
+#' @return A dataframe with the first three columns converted to class
+#' "character" for
+#'             display with xtables (in shiny)
+#' @export
 toCharacter <- function(df) {
-  # Converts all columns of a data.frame to of class "character"
-  # @type   df: data.frame
-  # @param  df: Any data.frame to be manipulated
-  #
-  # @rtype:     data.frame
-  # @return:    data.frame with all columns converted to class "character" for
-  #             display with xtables (in shiny)
-  #
-  # NOTE:
-  # Function was created to deal with a display bug in xtables (used by Shiny)
-  # The bug causes Date columns to be displayed improperly
-  # Shiny also displays all Numbers (including integers) with 2 decimal places
-
   #headers <- names(df)
   headers <- c("id", "sire", "dam")
 
@@ -617,16 +619,18 @@ toCharacter <- function(df) {
   }
   return(df)
 }
-
+#' Convert internal column names to display or header names.
+#'
+#' Converts the column names of a Pedigree or Genetic value Report to
+#'   something more descriptive
+#'
+#' @param character vector of length one having a string to be display names or
+#' header names.
+#'
+#' @param key: A column name
+#' @return A converted column header
+#' @export
 nameConversion <- function(key) {
-  # Converts the column names of a Pedigree or Genetic value Report to
-  #   something more descriptive
-  # @type   key: string
-  # @param  key: A column name
-  #
-  # @rtype:      string
-  # @returns:    A converted column header
-
   switch(key,
          id = "Ego ID",
          sire = "Sire ID",
@@ -652,23 +656,29 @@ nameConversion <- function(key) {
          ped.num = "Pedigree #",
          spf = "SPF",
          condition = "Condition")
-
 }
 
+#' Convert internal column names to display or header names.
+#'
+#' Converts the column names of a Pedigree or Genetic value Report to
+#' something more descriptive.
+#'
+#' @param headers a character vector of column (header) names
+#'
+#' @return Updated list of column names
+#' @export
 headerDisplayNames <- function(headers) {
-  # Converts the column names of a Pedigree or Genetic value Report to
-  #   something more descriptive
-  # @type   headers: vector (string)
-  # @param  headers: List of column names to be converted
-  #
-  # @rtype:          vector (string)
-  # @returns:        Updated list of column names
-
   return(unlist(lapply(headers, nameConversion)))
 }
 
+#' Filters a genetic value report down to only the specified animals
+#'
+#' @param ids character vector of animal IDs
+#' @param rpt a dataframe with required colnames \code{id}, \code{gu},
+#' \code{z.scores}, \code{import}, \code{total.offspring}, which is
+#' a data.frame of results from a genetic value analysis.
+#' @return A copy of report specific to the specified animals
 filterReport <- function(ids, rpt) {
- # Filters a genetic value report down to only the specified animals
  return(rpt[rpt$id %in% ids,])
 }
 
