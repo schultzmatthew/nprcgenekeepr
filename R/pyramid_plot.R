@@ -53,9 +53,12 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' that produces a person’s age, stated according to common usage — common
 #' usage meaning that a person’s age should always be an integer that
 #' increases exactly on a birthday.
+#' @param ped dataframe with pedigree
 #' @import lubridate
+#' @import utils
 #' @export
 get_age_dist <- function(ped = ped()) {
+  ped <- read.csv(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv")
   ped <- ped[tolower(ped$Status) == "alive", c("Id", "Birth", "Sex", "Status")]
   ped <- dplyr::rename(ped, id = Id, birth_date = Birth, sex = Sex)
   ped$age <- interval(start = ped$birth_date, end = now()) /
