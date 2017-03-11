@@ -8,8 +8,12 @@ Description: Implements Genetic Tools for Colony Management.
 Depends:
     R (>= 3.2.1)
 Imports:
+    dplyr,
+    lubridate,
     Matrix,
+    plotrix,
     shiny,
+    stringi,
     utils
 License: What license is it under?
 Encoding: UTF-8
