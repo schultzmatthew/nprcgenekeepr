@@ -8,7 +8,6 @@
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
   c("id", "sex", "age", "birth", "exit", "population", "condition", "origin")
 }
-
 #' Generates a genetic value report for a provided pedigree.
 #'
 #' This is the main function for the Genetic Value Analysis.
