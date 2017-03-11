@@ -55,7 +55,7 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' increases exactly on a birthday.
 #' @param ped dataframe with pedigree
 #' @import lubridate
-#' @import utils
+#' @importFrom utils read.csv
 #' @export
 get_age_dist <- function(ped = ped()) {
   ped <- read.csv(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv")

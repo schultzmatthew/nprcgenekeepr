@@ -1,7 +1,7 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.1.0
+Version: 0.1.1
 Author: Michael Raboin
 Maintainer: <emoran550@gmail.com>
 Description: Implements Genetic Tools for Colony Management.
