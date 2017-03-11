@@ -644,7 +644,7 @@ findOffspring <- function(probands, ped) {
 #'
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
 #' \code{z.scores}, \code{import}, \code{total.offspring}, which is
-#   a data.frame of results from a genetic value analysis.
+#' a data.frame of results from a genetic value analysis.
 #' @param ped the pedigree information in datatable format with required
 #' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
 #' This requires complete pedigree information..
