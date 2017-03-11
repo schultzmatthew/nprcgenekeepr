@@ -562,7 +562,7 @@ shinyServer(function(input, output, session) {
     if (nrow(gp) == 0) {
       return(NULL)
     } else{
-      return(gp)
+      return(gp[order(gp$`Ego ID`), , drop = FALSE])
     }
   })
 
@@ -586,7 +586,7 @@ shinyServer(function(input, output, session) {
   output$downloadGroup <- downloadHandler(
     filename = function() {paste("Group-", input$view_grp, ".csv", sep = "")},
     content = function(file) {
-      write.csv(sort(bg_view()), file, na = "", row.names = FALSE)
+      write.csv(bg_view(), file, na = "", row.names = FALSE)
     }
   )
 
