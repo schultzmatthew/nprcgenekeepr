@@ -31,7 +31,7 @@ shinyUI(tagList(
 
              titlePanel(div(style = "height:125px;width:100%",
                             div(style = "float:left;width:45%",
-                                img(src = "../ONPRC_Logo.png", height = 80, width = 400)),
+                                img(src = "../snprc-new2color.png", height = 80, width = 400)),
                             div(style = "float:right;text-align:right;width:45%",
                                 "Genetic Management Tools")
              )
@@ -241,6 +241,7 @@ shinyUI(tagList(
              )
 
     ),
+    source("server_pyramid_plot.R", local = TRUE),
     tabPanel("README",
 
              includeHTML("../extdata/readme.html")
