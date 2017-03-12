@@ -1,15 +1,21 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.1.1
+Version: 0.1.2
+Date: 2017-03-11
 Author: Michael Raboin
 Maintainer: <emoran550@gmail.com>
 Description: Implements Genetic Tools for Colony Management.
 Depends:
     R (>= 3.2.1)
 Imports:
+    dplyr,
+    lubridate,
     Matrix,
-    shiny
+    plotrix,
+    shiny,
+    stringi,
+    utils
 License: What license is it under?
 Encoding: UTF-8
 License: GPL-2
