@@ -589,8 +589,7 @@ shinyServer(function(input, output, session) {
       write.csv(bg_view(), file, na = "", row.names = FALSE)
     }
   )
-
-
+  output$pyramide_plot <- renderPlot({pyramide_plot})
 })
 
 

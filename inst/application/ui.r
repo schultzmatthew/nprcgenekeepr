@@ -241,7 +241,7 @@ shinyUI(tagList(
              )
 
     ),
-    source("server_pyramid_plot.R", local = TRUE),
+    source("ui_pyramid_plot.R", local = TRUE),
     tabPanel("README",
 
              includeHTML("../extdata/readme.html")
