@@ -589,6 +589,16 @@ shinyServer(function(input, output, session) {
       write.csv(bg_view(), file, na = "", row.names = FALSE)
     }
   )
+  pyramide_plot <- eventReactive(input$pyramide_plot, {
+    if (is.null(ped())) {
+      return(NULL)
+    }
+    # Ensuring the pedigree has been trimmed
+    # (if there are too many animals, the program will crash)
+    p <- ped()
+    return(get_pyramid_plot(p))
+  })
+
   output$pyramide_plot <- renderPlot({pyramide_plot})
 })
 
