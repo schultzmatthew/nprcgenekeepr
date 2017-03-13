@@ -45,7 +45,7 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 }
 #' Get the age distribution for the pedigree
 #'
-#' Forms a dataframe with columns \code{id}, \code{birth_date}, \code{sex},
+#' Forms a dataframe with columns \code{id}, \code{birth}, \code{sex},
 #' and {age} for those animals with a status of \code{Alive} in the pedigree.
 #'
 #' The lubridate package is used here because of the way the modern Gregorian
@@ -57,11 +57,114 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' @import lubridate
 #' @importFrom utils read.csv
 #' @export
-get_age_dist <- function(ped = ped()) {
-  ped <- read.csv(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv")
-  ped <- ped[tolower(ped$Status) == "alive", c("Id", "Birth", "Sex", "Status")]
-  ped <- dplyr::rename(ped, id = Id, birth_date = Birth, sex = Sex)
-  ped$age <- interval(start = ped$birth_date, end = now()) /
+get_pyramide_age_dist <- function() {
+  ped <- read.csv(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv",
+                  stringsAsFactors = FALSE)
+  # ped <- ped[tolower(ped$EXIT) == "", c("EGO.ID", "SIRE.SIRE.ID",
+  #                                              "DAM.ID", "SEX", "BIRTH",
+  #                                              "EXIT")]
+  names(ped) <- c("id", "sire", "dam", "sex", "birth", "exit_date")
+  ped$birth <- ymd(ped$birth)
+  ped$age <- NA
+  ped$status <- NA
+  ped$status[ped$exit_date == "9999999999"] <- "DECEASED"
+  ped$status[ped$exit_date == ""] <- "ALIVE"
+  ped$exit_date[ped$exit_date == "" | ped$exit_date == "9999999999"] <- NA
+  ped$status[!is.na(ped$exit_date)] <- "DECEASED"
+  #ped$exit_date[!is.na(ped$exit_date)] <-
+  #  ymd(ped$exit_date[!is.na(ped$exit_date)])
+  ped$age[is.na(ped$exit_date) & !is.na(ped$birth)] <-
+    interval(start = ped$birth[is.na(ped$exit_date) &
+                                      !is.na(ped$birth)],
+             end = now()) / duration(num = 1, units = "years")
+  ped$age[!is.na(ped$exit_date) & !is.na(ped$birth)] <-
+    interval(start = ped$birth[!is.na(ped$exit_date) &
+                                 !is.na(ped$birth)],
+             end = ymd(ped$exit_date[!is.na(ped$exit_date) &
+                                       !is.na(ped$birth)])) /
     duration(num = 1, units = "years")
+  names(ped)[names(ped) == "exit_date"] <- "exit"
   ped
 }
+#' Get the maximum age of live animals in the pedigree.
+#'
+#' @param ped dataframe with pedigree
+#' @export
+get_ped_max_age <- function(ped) {
+  max(ped$age, na.rm = TRUE)
+}
+#' Round up the provided integer vector \code{int} according to the
+#' \code{modulas}.
+#'
+#' @param int integer vector
+#' @param modulas integer value to use as the divisor.
+#' @export
+make_round_up <- function(int, modulas) {
+  int + modulas - int %% modulas
+}
+#' Fill bins represented by list of two lists \code{males} and \code{females}.
+#'
+#'
+#' @param age_dist dataframe with \code{sex} and \code{age} columns
+#' @param lower_ages integer vector of lower age boundaries; must be the same
+#' length as \code{upper_ages}
+#' @param upper_ages integer vector of upper age boundaries; must be the same
+#' length as \code{lower_ages}
+#' @export
+fill_bins <- function(
+  age_dist, lower_ages,
+  upper_ages = lower_ages + c(lower_ages[2:length(lower_ages)], 100)) {
+  male_bins <- c()
+  female_bins <- c()
+  for (bin in seq_along(lower_ages)) {
+    male_bins <- c(male_bins, nrow(age_dist[age_dist$sex == 'M' &
+                                              age_dist$age >= lower_ages[bin] &
+                                              age_dist$age < upper_ages[bin], ]))
+    female_bins <- c(female_bins, nrow(age_dist[age_dist$sex == 'F' &
+                                                  age_dist$age >= lower_ages[bin] &
+                                                  age_dist$age < upper_ages[bin], ]))
+  }
+  list(males = male_bins, females = female_bins)
+}
+get_max_ax <- function(bins, ax_modulas) {
+  make_round_up(max(max(bins$male), max(bins$female)), ax_modulas)
+}
+library(stringi)
+library(plotrix)
+#' Creates a pyramid plot of the pedigree provided.
+#'
+#' The pedigree provided must have the following columns: \code{sex} and
+#' \code{age}. This needs to be augmented to allow pedigrees structures that
+#' are provided by the nprcmanager package.
+#' @param ped dataframe with pedigree data.
+#' @import stringi
+#' @export
+get_pyramid_plot <- function(ped = NULL) {
+
+  if (is.null(ped))
+    ped <- get_pyramide_age_dist()
+  par(bg = "#FFF8DC")
+  bin_width <- 2
+  ax_modulas <- 5
+  upper_ages <- seq(bin_width,
+                    make_round_up(get_ped_max_age(ped), bin_width), bin_width)
+  lower_ages <- upper_ages - bin_width
+
+  bins <- fill_bins(ped, lower_ages, upper_ages)
+  max_ax <- max(get_max_ax(bins, ax_modulas))
+  age_labels <- stri_c(lower_ages, " - ", upper_ages - 1)
+  mcol <- color.gradient(0, 0,   0.5)
+  fcol <- color.gradient(1, 0.5, 0.5)
+  current_date <- now()
+  ax_by <- max_ax / ax_modulas
+  ax_gap <- ax_by * 0.6
+  gap <- ax_gap
+  laxlab <- seq(0, max_ax, by = ax_by)
+  raxlab <- seq(0, max_ax, by = ax_by)
+  age_pyramid.plot(bins$males, bins$females, age_labels, mcol, fcol,
+                  laxlab, raxlab, gap, current_date)
+
+  par(bg = "transparent")
+
+}
+

@@ -8,7 +8,6 @@
 get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
   c("id", "sex", "age", "birth", "exit", "population", "condition", "origin")
 }
-
 #' Generates a genetic value report for a provided pedigree.
 #'
 #' This is the main function for the Genetic Value Analysis.
@@ -645,7 +644,7 @@ findOffspring <- function(probands, ped) {
 #'
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
 #' \code{z.scores}, \code{import}, \code{total.offspring}, which is
-#   a data.frame of results from a genetic value analysis.
+#' a data.frame of results from a genetic value analysis.
 #' @param ped the pedigree information in datatable format with required
 #' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
 #' This requires complete pedigree information..

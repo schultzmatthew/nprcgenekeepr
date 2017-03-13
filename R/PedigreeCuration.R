@@ -92,7 +92,7 @@ get_possible_cols <- function() {
 #   Indicator of the restricted status of an animal. "Nonrestricted" animals
 #   are generally assumed to be naive.
 #
-#' @return a datatable with standardized and quality controlled pedigree
+#' @return A datatable with standardized and quality controlled pedigree
 #' information.
 
 #' @export
