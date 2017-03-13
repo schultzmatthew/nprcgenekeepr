@@ -167,4 +167,47 @@ get_pyramid_plot <- function(ped = NULL) {
   par(bg = "transparent")
 
 }
+ids <- c("31879", "31882", "31900", "31902", "31938", "31940", "31951",
+         "31952", "31966", "31970", "31980", "32043", "32130", "32132",
+         "32303", "31648", "31659", "31660", "31738", "31740", "31764",
+         "31786", "31792", "31800", "31817", "31844", "31852", "31993",
+         "32040")
+base_url <- "https://vger.txbiomed.org/labkey"
+max_rows <- 0
+get_parents <- function(ped_source_df, ids) {
+  unique(ped_source_df$id[(ped_source_df$sire %in% ids &
+                             !is.na(ped_source_df$sire)) |
+                            (ped_source_df$dam %in% ids &
+                             !is.na(ped_source_df$dam))])
 
+}
+get_lk_direct_ancestors <- function(base_url, ids) {
+  ped_source_df <- labkey.selectRows(
+    baseUrl = base_url,
+    folderPath = "/SNPRC",
+    schemaName = "study",
+    queryName = "demographics",
+    viewName = "",
+    #colSort = "-Date",
+    colFilter = NULL,
+    containerFilter = NULL,
+    colNameOpt = "fieldname",
+    maxRows = NULL,
+    colSelect = c("Id", "date", "gender", "species", "birth", "death",
+                  "lastDayAtCenter", "calculated_status", "dam", "sire",
+                  "origin", "parentid"),
+    showHidden = TRUE)
+  names(ped_source_df)[names(ped_source_df) == "Id"] <- "id"
+  names(ped_source_df)[names(ped_source_df) == "gender"] <- "sex"
+  len <- length(ids)
+  ancestors_df <- ped_source_df[ped_source_df$id %in% ids, ]
+  while (len > 0) {
+    parents <- get_parents(ped_source_df, ids)
+    len <- length(parents)
+    if (len > 0) {
+      ancestors_df <- rbind(ancestors_df,
+                            ped_source_df[ped_source_df$id %in% parents, ])
+    }
+  }
+  ancestors_df
+}
