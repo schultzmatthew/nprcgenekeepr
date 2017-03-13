@@ -8,5 +8,5 @@ runManager <- function() {
          call. = FALSE)
   }
 
-  shiny::runApp(appDir, display.mode = "normal")
+  shiny::runApp(appDir, display.mode = "normal", port = 6012)
 }
