@@ -167,13 +167,4 @@ get_pyramid_plot <- function(ped = NULL) {
   par(bg = "transparent")
 
 }
-pyramide_plot <- eventReactive(input$pyramide_plot, {
-  if (is.null(ped())) {
-    return(NULL)
-  }
-  # Ensuring the pedigree has been trimmed
-  # (if there are too many animals, the program will crash)
-  p <- ped()
-  return(get_pyramid_plot(p))
-})
 
