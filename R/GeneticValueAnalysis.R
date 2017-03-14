@@ -18,7 +18,7 @@ get_include_columns <- function() { # Replaces INCLUDE.COLUMNS data statement.
 #' @param gu.thresh integer indicating the threshold number of animals for
 #' defining a unique allele. Default considers an allele "unique"
 #' if it is found in only 1 animal.
-#' @param pop character 1 vector with animal IDs to consider as the population of
+#' @param pop character vector with animal IDs to consider as the population of
 #' interest. The default is NULL.
 #' @param by.id logical varioable of length 1 that is passed through to
 #' eventually be used by \code{freq()}, which alculates the count of each
