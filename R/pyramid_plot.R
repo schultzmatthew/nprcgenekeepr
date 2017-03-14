@@ -195,7 +195,7 @@ get_lk_direct_ancestors <- function(base_url, ids) {
     maxRows = NULL,
     colSelect = c("Id", "date", "gender", "species", "birth", "death",
                   "lastDayAtCenter", "calculated_status", "dam", "sire",
-                  "origin", "parentid"), # , "species/species_code/code"
+                  "origin", "parentid" , "species/species_code/code"),
     showHidden = TRUE)
   names(ped_source_df)[names(ped_source_df) == "Id"] <- "id"
   names(ped_source_df)[names(ped_source_df) == "gender"] <- "sex"
