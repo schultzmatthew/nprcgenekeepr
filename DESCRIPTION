@@ -4,7 +4,7 @@ Title: Implements Genetic Tools for Colony Management
 Version: 0.1.2
 Date: 2017-03-11
 Author: Michael Raboin
-Maintainer: <emoran550@gmail.com>
+Maintainer: <msharp@txbiomed.org>
 Description: Implements Genetic Tools for Colony Management.
 Depends:
     R (>= 3.2.1)
@@ -16,7 +16,6 @@ Imports:
     shiny,
     stringi,
     utils
-License: What license is it under?
 Encoding: UTF-8
 License: GPL-2
 RoxygenNote: 6.0.1
