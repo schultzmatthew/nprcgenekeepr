@@ -175,11 +175,10 @@ ids <- c("31879", "31882", "31900", "31902", "31938", "31940", "31951",
 base_url <- "https://vger.txbiomed.org/labkey"
 max_rows <- 0
 get_parents <- function(ped_source_df, ids) {
-  unique(ped_source_df$id[(ped_source_df$sire %in% ids &
-                             !is.na(ped_source_df$sire)) |
-                            (ped_source_df$dam %in% ids &
-                             !is.na(ped_source_df$dam))])
-
+  unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
+                             !is.na(ped_source_df$sire))],
+           ped_source_df$dam[(ped_source_df$id %in% ids &
+                             !is.na(ped_source_df$dam))]))
 }
 get_lk_direct_ancestors <- function(base_url, ids) {
   ped_source_df <- labkey.selectRows(
@@ -199,10 +198,11 @@ get_lk_direct_ancestors <- function(base_url, ids) {
     showHidden = TRUE)
   names(ped_source_df)[names(ped_source_df) == "Id"] <- "id"
   names(ped_source_df)[names(ped_source_df) == "gender"] <- "sex"
-  len <- length(ids)
+  parents <- ids
+  len <- length(parents)
   ancestors_df <- ped_source_df[ped_source_df$id %in% ids, ]
   while (len > 0) {
-    parents <- get_parents(ped_source_df, ids)
+    parents <- get_parents(ped_source_df, parents)
     len <- length(parents)
     if (len > 0) {
       ancestors_df <- rbind(ancestors_df,
@@ -212,3 +212,5 @@ get_lk_direct_ancestors <- function(base_url, ids) {
   ancestors_df
 }
 test <- get_lk_direct_ancestors(base_url, ids)
+test[!test$id %in% deb_df$EGO.ID, ]
+deb_df[!deb_df$EGO.ID %in% test$id, ]
