@@ -1,0 +1,64 @@
+---
+title: "Development Plans"
+author: "R. Mark Sharp"
+date: "3/23/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use
+genetic data in a gene dropping simulation.
+
+From: "R. Mark Sharp" <msharp@TxBiomed.org>
+
+Subject: Re: Genetic management of colonies
+
+Date: March 23, 2017 at 5:01:07 PM CDT
+
+To: Jack Kent <jkent@txbiomed.org>
+
+Cc: Deborah Newman <dnewman@txbiomedgenetics.org>, 
+Charles Peterson <charlesp@txbiomed.org>
+
+Jack, Debbie, and Charles,
+
+Thank you for meeting with me. I appreciate your help in clarifying the 
+various stages of the issues associated with providing genetic management 
+guidance via simulation with partially known MHC data. 
+
+1. I will look more closely into what will be needed to add genetic 
+information and gene frequency information into the gene dropping routines 
+in the kinship2 package. The initial implementation will use only a single 
+locus, which should be a sufficient for MHC data
+
+	A. First step will be to ensure we get expected proportions of genes in 
+	children of individuals when we provide genetic data to all founders using 
+	a gene frequency based algorithm.
+
+	B. Second step will be to ensure we get expected proportions of genes in 
+	children when all parental generations have fully known genotypes.
+
+	C. Third step will be to ensure we get expected proportions of genes in 
+	children when parental generations have partially known genotypes and all 
+	other genotypes are uninformative.
+
+	D. Fourth step will be to ensure we get expected proportions of genes in 
+	children when parental generations have partially known genotypes and 
+	remaining parental genes are determined by gene frequency.
+
+2. We will not worry about getting rid of genes in the pedigrees since colony 
+managers need only not breed animals that carry unwanted alleles.
+
+3. I will produce a small number of pedigree drawings using the data Debbie 
+has provided to get feedback on preferences and additional requirements.
+
+4. I will not deal with paternity and maternity issues within the pedigrees 
+at this time.
+
+Thanks again.
+
