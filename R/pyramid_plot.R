@@ -167,23 +167,28 @@ get_pyramid_plot <- function(ped = NULL) {
   par(bg = "transparent")
 
 }
-ids <- c("31879", "31882", "31900", "31902", "31938", "31940", "31951",
-         "31952", "31966", "31970", "31980", "32043", "32130", "32132",
-         "32303", "31648", "31659", "31660", "31738", "31740", "31764",
-         "31786", "31792", "31800", "31817", "31844", "31852", "31993",
-         "32040")
-base_url <- "https://vger.txbiomed.org/labkey"
-max_rows <- 0
-get_parents <- function(ped_source_df, ids) {
-  unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
-                             !is.na(ped_source_df$sire))],
-           ped_source_df$dam[(ped_source_df$id %in% ids &
-                             !is.na(ped_source_df$dam))]))
-}
-get_lk_direct_ancestors <- function(base_url, ids) {
+# ids <- c("31879", "31882", "31900", "31902", "31938", "31940", "31951",
+#          "31952", "31966", "31970", "31980", "32043", "32130", "32132",
+#          "32303", "31648", "31659", "31660", "31738", "31740", "31764",
+#          "31786", "31792", "31800", "31817", "31844", "31852", "31993",
+#          "32040")
+# base_url <- "https://vger.txbiomed.org/labkey"
+# max_rows <- 0
+# get_parents <- function(ped_source_df, ids) {
+#   unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
+#                              !is.na(ped_source_df$sire))],
+#            ped_source_df$dam[(ped_source_df$id %in% ids &
+#                              !is.na(ped_source_df$dam))]))
+# }
+#' Get direct ancestors from labkey \code{study} schema and \code{demographics}
+#' table.
+#'
+#' @importFrom Rlabkey labkey.selectRows
+#' @export
+get_lk_direct_ancestors <- function(base_url, folder_path, ids) {
   ped_source_df <- labkey.selectRows(
     baseUrl = base_url,
-    folderPath = "/SNPRC",
+    folderPath = folder_path,
     schemaName = "study",
     queryName = "demographics",
     viewName = "",
@@ -211,6 +216,7 @@ get_lk_direct_ancestors <- function(base_url, ids) {
   }
   ancestors_df
 }
-test <- get_lk_direct_ancestors(base_url, ids)
-test[!test$id %in% deb_df$EGO.ID, ]
-deb_df[!deb_df$EGO.ID %in% test$id, ]
+# test <- get_lk_direct_ancestors(base_url = base_url, folder_path = "/SNPRC",
+#                                 ids = ids)
+# test[!test$id %in% deb_df$EGO.ID, ]
+# deb_df[!deb_df$EGO.ID %in% test$id, ]
