@@ -267,7 +267,7 @@ shinyUI(tagList(
              )
 
     ),
-    tabPanel("Pyramid Plot", source("../application/ui_pyramid_plot.R",
+    eval(source("../application/ui_pyramid_plot.R",
                                     local = TRUE)),
     # tabPanel("Pyramid Plot",
     #

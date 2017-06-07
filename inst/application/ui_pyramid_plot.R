@@ -1,4 +1,4 @@
-#tabPanel("Pyramid Plot",
+tabPanel("Pyramid Plot",
          div(style = "min-width:1000px",
              # Side Panel
              div(style = paste("float: left; width: 400px; height: 450px; padding: 10px;",
@@ -10,5 +10,5 @@
              # Main Panel
              div(style = "margin-left:425px;padding:10px;",
                  get_pyramid_plot())
-         )#)
+         ))
 
