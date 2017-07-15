@@ -14,7 +14,7 @@ Imports:
     Matrix,
     plotrix,
     Rlabkey,
-    RSelinium,
+    RSelenium,
     shiny,
     stringi,
     utils
