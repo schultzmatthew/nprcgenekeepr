@@ -8,6 +8,6 @@ NAMESPACE
 inst/extdata/BaboonLivingForMetrics.csv
 inst/extdata/RhesusMasterForMetrics.csv
 inst/extdata/Notes.txt
-Development_Plans.html
+vignettes/Development_Plans.html
 
 
