@@ -2,7 +2,7 @@ library(shiny)
 if (!require("DT"))
   install.packages('DT')
 library(DT)
-
+source("../application/ui_pyramid_plot.R")
 shinyUI(tagList(
   tags$head(tags$style(
     HTML(
@@ -387,10 +387,7 @@ shinyUI(tagList(
       )
 
       ),
-    eval(source(
-      "../application/ui_pyramid_plot.R",
-      local = TRUE
-    )),
+    pyramid_plot_tab,
     # tabPanel("Pyramid Plot",
     #
     #          div(style = "min-width:1000px",
