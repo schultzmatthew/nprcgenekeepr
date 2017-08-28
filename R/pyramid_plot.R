@@ -180,6 +180,7 @@ get_parents <- function(ped_source_df, ids) {
            ped_source_df$dam[(ped_source_df$id %in% ids &
                              !is.na(ped_source_df$dam))]))
 }
+library(Rlabkey)
 get_lk_direct_ancestors <- function(base_url, ids) {
   ped_source_df <- labkey.selectRows(
     baseUrl = base_url,
@@ -211,6 +212,6 @@ get_lk_direct_ancestors <- function(base_url, ids) {
   }
   ancestors_df
 }
-test <- get_lk_direct_ancestors(base_url, ids)
-test[!test$id %in% deb_df$EGO.ID, ]
-deb_df[!deb_df$EGO.ID %in% test$id, ]
+# test <- get_lk_direct_ancestors(base_url, ids)
+# test[!test$id %in% deb_df$EGO.ID, ]
+# deb_df[!deb_df$EGO.ID %in% test$id, ]
