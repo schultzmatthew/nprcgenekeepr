@@ -58,43 +58,56 @@ get_possible_cols <- function() {
 #' Main pedigree curation function that performs basic quality control on
 #' pedigree information
 #'
-#' @param sb : data.frame
-#   Table of pedigree and demographic information
-#   The function recognizes the following columns (optional columns
-#   will be used if present, but are not required):
-#
-# id : char
-#   Unique identifier for all individuals
-# sire : char or NA
-#   Identifier for the father of the current id
-# dam : char or NA
-#   Identifier for the mother of the current id
-# sex : factor {levels: M, F, U}
-#   Sex of the individual
-# birth : date or NA (optional)
-#   Date of birth
-# departure : date or NA (optional)
-#   Date an individual was sold or shipped from the colony
-# death : date or NA (optional)
-#   Date of death, if applicable
-# status : factor {levels: ALIVE, DEAD, SHIPPED} (optional)
-#   Status of an individual
-# origin : char or NA (optional)
-#   Facility an individual originated from, if other than ONPRC
-# ancestry : char or NA (optional)
-#   Geographic population to which the individual belongs
-# spf : char or NA (optional)
-#   Specific pathogen-free status of an individual
-# vasx.ovx : char or NA (optional)
-#   Indicator of the vasectomy/ovariectomy status of an animal; NA if
-#   animal is intact, assume all other values indicate surgical alteration
-# condition : char or NA (optional)
-#   Indicator of the restricted status of an animal. "Nonrestricted" animals
-#   are generally assumed to be naive.
-#
+#' @param sb A dataframe containing a table of pedigree and demographic
+#' information.
+#'
+#' The function recognizes the following columns (optional columns
+#' will be used if present, but are not required):
+#'
+#' \itemize{
+#' \item{id} {--- Character vector with Unique identifier for all individuals}
+#' \item{sire} {--- Character vector with unique identifier for the father of the
+#' current id}
+#' \item{dam} {--- Character vector with unique identifier for the mother of the
+#' current id}
+#' \item{sex} {--- Factor {levels: "M", "F", "U"} Sex specifier for an
+#' individual}
+#' \item{birth} {--- Date or \code{NA} (optional) with the individual's birth
+#' date}
+#' \item{departure} {--- Date or \code{NA} (optional) an individual was sold
+#' or shipped from the colony}
+#' \item{death} {--- date or \code{NA} (optional)
+#'  Date of death, if applicable}
+#' \item{status} {--- Factor {levels: ALIVE, DEAD, SHIPPED} (optional)
+#'  Status of an individual}
+#' \item{origin} {--- Character or \code{NA} (optional)
+#'  Facility an individual originated from, if other than ONPRC}
+#' \item{ancestry} {--- Character or \code{NA} (optional)
+#'  Geographic population to which the individual belongs}
+#' \item{spf} {--- Character or \code{NA} (optional)
+#'  Specific pathogen-free status of an individual}
+#' \item{vasx.ovx} {--- Character or \code{NA} (optional)
+#'  Indicator of the vasectomy/ovariectomy status of an animal; \code{NA} if
+#'  animal is intact, assume all other values indicate surgical alteration}
+#' \item{condition} {--- Character or \code{NA} (optional)
+#'  Indicator of the restricted status of an animal. "Nonrestricted" animals
+#'  are generally assumed to be naive.}
+#' }
 #' @return A datatable with standardized and quality controlled pedigree
 #' information.
-
+#'
+#' The following changes are made to the headers.
+#' \itemize{
+#' \item {Column headers are converted to all lower case}
+#' \item {Periods (".") within column headers are collapsed to no space ""}
+#' \item {\code{egoid} is converted to \code{id}}
+#' \item {\code{sireid} is convert to \code{sire}}
+#' \item {\code{damid} is converted to \code{dam}}}
+#'
+#' If the dataframe (\code{sb} does not contain the four required columns
+#' (\code{id}, \code{sire}, \code{dam}, and \code{sex}) the functions
+#' throws and error by calling \code{stop()}.
+#'
 #' @export
 qc.Studbook <- function(sb) {
   headers <- tolower(names(sb))
