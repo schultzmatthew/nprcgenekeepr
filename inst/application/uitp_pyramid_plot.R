@@ -1,4 +1,4 @@
-pyramid_plot_tab <-
+uitp_pyramid_plot <-
   tabPanel("Pyramid Plot",
            div(
              style = "min-width:1000px",
