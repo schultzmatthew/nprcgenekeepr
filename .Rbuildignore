@@ -6,3 +6,4 @@
 .travis.yml
 .gitignore
 ^docs$
+^testthat/test_basic.R

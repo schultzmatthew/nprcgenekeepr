@@ -57,9 +57,10 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' @import lubridate
 #' @importFrom utils read.csv
 #' @export
-get_pyramide_age_dist <- function() {
-  ped <- read.csv(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv",
-                  stringsAsFactors = FALSE)
+get_pyramid_age_dist <-
+  function(ped = read.csv(file =
+                            "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv",
+                  stringsAsFactors = FALSE)) {
   # ped <- ped[tolower(ped$EXIT) == "", c("EGO.ID", "SIRE.SIRE.ID",
   #                                              "DAM.ID", "SEX", "BIRTH",
   #                                              "EXIT")]
@@ -138,11 +139,12 @@ library(plotrix)
 #' are provided by the nprcmanager package.
 #' @param ped dataframe with pedigree data.
 #' @import stringi
+#' @importFrom graphics par
 #' @export
 get_pyramid_plot <- function(ped = NULL) {
 
   if (is.null(ped))
-    ped <- get_pyramide_age_dist()
+    ped <- get_pyramid_age_dist()
   par(bg = "#FFF8DC")
   bin_width <- 2
   ax_modulas <- 5
@@ -174,15 +176,26 @@ get_pyramid_plot <- function(ped = NULL) {
 #          "32040")
 # base_url <- "https://vger.txbiomed.org/labkey"
 # max_rows <- 0
-# get_parents <- function(ped_source_df, ids) {
-#   unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
-#                              !is.na(ped_source_df$sire))],
-#            ped_source_df$dam[(ped_source_df$id %in% ids &
-#                              !is.na(ped_source_df$dam))]))
-# }
+#' Get parents to corresponding animal IDs provided
+#'
+#' @param ped_source_df dataframe with pedigree structure having at least the
+#' columns id, sire, and dam.
+#' @param ids character vector of animal IDs
+#' @export
+get_parents <- function(ped_source_df, ids) {
+  unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
+                             !is.na(ped_source_df$sire))],
+           ped_source_df$dam[(ped_source_df$id %in% ids &
+                             !is.na(ped_source_df$dam))]))
+}
 #' Get direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
 #'
+#' @param base_url character vector of length 1 having the base URL
+#' (baseUrl) of the LabKey server
+#' @param folder_path character vector of length 1 having the LabKey folder path
+#' (folderPath)
+#' @param ids character vector with an animal ID in each cell.
 #' @importFrom Rlabkey labkey.selectRows
 #' @export
 get_lk_direct_ancestors <- function(base_url, folder_path, ids) {
