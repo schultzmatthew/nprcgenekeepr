@@ -9,13 +9,17 @@ uitp_input_file_format <-
       "th {font-weight: bold; background-color: #7CFC00;}",
       "hr {border-width:2px;border-color:#A9A9A9;}"
     ),
-
+    if (get_site_info()$center == "SNPRC") {
+      logo <- "../snprc-new2color.png"
+    } else {
+      logo <- "../ONPRC_Logo.png"
+    }
     titlePanel(div(
       style = "height:125px;width:100%",
       div(
         style = "float:left;width:45%",
         img(
-          src = "../snprc-new2color.png",
+          src = logo,
           height = 80,
           width = 400
         )
