@@ -1,6 +1,6 @@
 #' Get site information
 #'
-#' @returns A list of site specific informatio used by the application.
+#' @return{A list of site specific informatio used by the application.}
 #'
 #' This version is a stub in that it has to be modified by each site.
 #' The plan is to either replace this routine or give it a dynamic way to
@@ -15,12 +15,12 @@
 #'   "https://boomer.txbiomed.org/labkey".}
 #'   \item{schemaName}{If \code{center} is "SNPRC", schemaName is "study".
 #'   If \code{center} is "ONPRC", schemaName is "study"}
-#'   \item{folderPath} If \code{center} is "SNPRC", folderPath is "/SNPRC".
+#'   \item{folderPath} {If \code{center} is "SNPRC", folderPath is "/SNPRC".
 #'   If \code{center} is "ONPRC", folderPath is "/ONPRC"}
 #'   \item{queryName}{is "demographics"}
 #'}
 #' @export
-get_site_info <- function() {
+getSiteInfo <- function() {
   list(
     center = "SNPRC",
     baseUrl = "https://boomer.txbiomed.org/labkey",
