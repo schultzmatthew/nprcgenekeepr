@@ -589,19 +589,18 @@ shinyServer(function(input, output, session) {
       write.csv(bg_view(), file, na = "", row.names = FALSE)
     }
   )
-  pyramide_plot <- eventReactive(input$pyramide_plot, {
-    if (is.null(ped())) {
-      return(NULL)
-    }
-    # Ensuring the pedigree has been trimmed
-    # (if there are too many animals, the program will crash)
-    p <- ped()
-    return(get_pyramid_plot(p))
-  })
+  # pyramid_plot <- eventReactive(input$display_pyramid_plot, {
+  #   if (is.null(ped())) {
+  #     return(NULL)
+  #   }
+  #   # Ensuring the pedigree has been trimmed
+  #   # (if there are too many animals, the program will crash)
+  #   p <- ped()
+  #   get_pyramid_plot()
+  # })
 
-  output$pyramide_plot <- renderPlot({pyramide_plot})
+  output$pyramid_plot <- renderPlot(get_pyramid_plot(ped()))
 })
-
 
 ###############################################################################
 # Functions for proper display of the pedigree on the Pedigree Browser tab

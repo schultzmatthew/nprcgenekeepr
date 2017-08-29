@@ -1,7 +1,6 @@
 uitp_pedigree_browser <-
   tabPanel(
     "Pedigree Browser",
-
     # Side Panel
     div(
       div(
@@ -22,7 +21,7 @@ uitp_pedigree_browser <-
                         "manually entered here  (IDs may be pasted from Excel):")),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          tags$textarea(id = "population_ids", rows = 5, cols = 20, ""),
+          tags$textarea(id = "population_ids", rows = 5, cols = 30, ""),
           actionButton("specify_pop", label = "Update Breeding Colony")
         ),
         div(
@@ -34,8 +33,8 @@ uitp_pedigree_browser <-
           downloadButton("downloadPedigree", "Export")
         ),
         helpText(
-          "(a population must be defined before proceeding
-          to the Genetic Value Analysis)"
+          "(A population must be defined before proceeding
+          to the Genetic Value Analysis.)", style = "color:blue"
       )
 
         )
