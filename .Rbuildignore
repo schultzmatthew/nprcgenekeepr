@@ -5,3 +5,4 @@
 ^.\inst\extdata\RhesusMasterForMetrics.txt
 .travis.yml
 .gitignore
+^docs$
