@@ -50,7 +50,7 @@ TIME.ORIGIN <- as.Date("1970-01-01")
 #' starting at 0 for individuals lacking IDs for both parents.}}
 #'
 #' @export
-get_possible_cols <- function() {
+getPossibleCols <- function() {
   c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
     "ancestry", "population", "origin", "status", "condition",
     "spf", "vasx.ovx", "ped.num")
@@ -249,10 +249,10 @@ qc.Studbook <- function(sb) {
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
   sb <- removeDuplicates(sb)
-  cols <- intersect(get_possible_cols(), colnames(sb))
+  cols <- intersect(getPossibleCols(), colnames(sb))
   sb <- sb[, cols]
   sb <- sb[with(sb, order(gen, id)), ]
-  rownames(sb) <- seq(length = nrow(sb))
+  rownames(sb) <- seq(length.out = nrow(sb))
 
   # Ensuring the IDs are stored as characters
   sb$id <- as.character(sb$id)
