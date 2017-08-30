@@ -97,6 +97,7 @@ get_possible_cols <- function() {
 #' information.
 #'
 #' The following changes are made to the headers.
+#'
 #' \itemize{
 #' \item {Column headers are converted to all lower case}
 #' \item {Periods (".") within column headers are collapsed to no space ""}
@@ -104,8 +105,8 @@ get_possible_cols <- function() {
 #' \item {\code{sireid} is convert to \code{sire}}
 #' \item {\code{damid} is converted to \code{dam}}}
 #'
-#' If the dataframe (\code{sb} does not contain the four required columns
-#' (\code{id}, \code{sire}, \code{dam}, \code{sex}), \code{age}, and
+#' If the dataframe (\code{sb} does not contain the five required columns
+#' (\code{id}, \code{sire}, \code{dam}, \code{sex}), and
 #' \code{birth} the function throws an error by calling \code{stop()}.
 #'
 #' If the \code{id} field has the string \emph{UNKNOWN} (any case) or both
@@ -122,9 +123,10 @@ get_possible_cols <- function() {
 #' their own record in the pedigree.
 #'
 #' The function \code{convertSexCodes} is used with \code{ignore.herm == TRUE}
-#' to convert sex codes according to the following standardized codes:
+#' to convert sex codes according to the following factors of standardized
+#' codes:
 #'
-#' #' \itemize{
+#' \itemize{
 #' \item{F} {-- replacing "FEMALE" or "2"}
 #' \item{M} {-- replacing "MALE" or "1"}
 #' \item{H} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE}
@@ -134,6 +136,55 @@ get_possible_cols <- function() {
 #' The function \code{checkParentSex} is used to ensure no parent is both
 #' a sire and a dam. If this error is detected, the function throws an error
 #' and halts the program.
+#'
+#' The function \code{convertStatusCodes} converts status indicators to the
+#' following factors of standardized codes. Case of the original status value
+#' is ignored.
+#'
+#' \itemize{
+#' \item{"ALIVE"} {--- replacing "alive", "A" and "1"}
+#' \item {"DECEASED"} {--- replacing "deceased", "DEAD", "D", "2"}
+#' \item {"SHIPPED"} {--- replacing "shipped", "sold", "sale", "s", "3"}
+#' \item{"UNKNOWN"} {--- replacing is.na(status)}
+#' \item {"UNKNOWN"} {--- replacing "unknown", "U", "4"}}
+#'
+#' The function \code{convertAncestry} coverts ancestry indicators using
+#' regular experessions such that the following conversions are made from
+#' character strings that match selected substrings to the following factors.
+#'
+#' \itemize{
+#' \item{"INDIAN"} {--- replacing "ind" and not "chin"}
+#' \item{"CHINESE"} {--- replacing "chin" and not "ind"}
+#' \item{"HYBRID"} {--- replacing "hyb" or "chin" and "ind"}
+#' \item{"JAPANESE"} {--- replacing "jap"}
+#' \item{"UNKNOWN"} {--- replacing \code{NA}}
+#' \item{"OTHER"} {--- replacing not matching any of the above}}
+#'
+#' The function \code{convertDates} converts character representations of
+#' dates in the columns \code{birth}, \code{death}, \code{departure}, and
+#' \code{exit} to dates using the \code{as.Date} function.
+#'
+#' The function \code{setExit} uses huristics and the columns \code{death}
+#' and \code{departure} to set \code{exit} if it is not already defined.
+#'
+#' The function \code{calcAge} uses the \code{birth} and the \code{exit}
+#' columns to define the \code{age} columnn. The numerical values is rounded
+#' to the nearest 0.1 of a year. If \code{exit} is not defined, the
+#' current system date (\code{Sys.Date()}) is used.
+#'
+#' The function \code{findGeneration} is used to define the generation number
+#' for each animal in the pedigree.
+#'
+#' The function \code{removeDuplicates} checks for any duplicated records and
+#' removeds the duplicates. I also throws an error and stops the program if an
+#' ID appears in more
+#' than one record where one or more of the other columns have a difference.
+#'
+#' Columns that cannot be used subsequently are removed and the rows are
+#' ordered by generation number and then ID.
+#'
+#' Finally the columns \code{id} \code{sire}, and \code{dam} are coerce to
+#' character.
 #'
 #' @export
 qc.Studbook <- function(sb) {
@@ -149,7 +200,9 @@ qc.Studbook <- function(sb) {
   }
 
   names(sb) <- headers
-  required_cols <- c("id", "sire", "dam", "sex", "age", "birth")
+  ## An age column was required, however, code below creates it if it does
+  ## not exists. Thus, it is not required as a prerequisit.
+  required_cols <- c("id", "sire", "dam", "sex", "birth")
   required <- required_cols %in% headers
 
   if (!all(required)) {
@@ -180,9 +233,9 @@ qc.Studbook <- function(sb) {
     sb$ancestry <- convertAncestry(sb$ancestry)
   }
 
-  # converting date column entries from strings to datetime
-  sb <- convertDates(sb)
-  sb <- setExit(sb)
+  # converting date column entries from strings to date
+  sb <- convertDates(sb, time.origin = TIME.ORIGIN)
+  sb <- setExit(sb, time.origin = TIME.ORIGIN)
 
   # setting age
   # uses current date as the end point if no exit date is available
@@ -416,20 +469,11 @@ convertAncestry <- function(ancestry) {
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type.
 #' @export
-convertDates <- function(ped) {
-  headers <- tolower(names(ped))
-
-  if ("birth" %in% headers) {
-    ped$birth <- as.Date(ped$birth, origin = TIME.ORIGIN)
-  }
-  if ("death" %in% headers) {
-    ped$death <- as.Date(ped$death, origin = TIME.ORIGIN)
-  }
-  if ("departure" %in% headers) {
-    ped$departure <- as.Date(ped$departure, origin = TIME.ORIGIN)
-  }
-  if ("exit" %in% headers) {
-    ped$exit <- as.Date(ped$exit, origin = TIME.ORIGIN)
+convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
+  headers <-  tolower(names(ped))
+  headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
+  for (header in headers) {
+    ped[[header]] <- as.Date(ped[[header]], origin = time.origin)
   }
   return(ped)
 }
@@ -438,12 +482,12 @@ convertDates <- function(ped) {
 #' @param ped dataframe of pedigree and demographic information potentially
 #' containing columns indicating the birth and death dates of an individual.
 #' The table may also contain dates of sale (departure). Optional columns
-#' are \code{birth}, \code{death}, \code{departure}.
+#' are \code{birth}, \code{death}, and \code{departure}.
 #'
 #' @return A dataframe with an updated table with exit dates specified based
 #' on date information that was available.
 #' @export
-setExit <- function(ped) {
+setExit <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <- tolower(names(ped))
 
   if (("birth" %in% headers) && !("exit" %in% headers)) {
@@ -453,13 +497,13 @@ setExit <- function(ped) {
 	  # consequently, the simplification also coerces Date columns to Numeric
 	  # TIME.ORIGIN is used to counter this and maintain Dates properly
       ped$exit <- as.Date(mapply(chooseDate, ped$death, ped$departure),
-                          origin = TIME.ORIGIN)
+                          origin = time.origin)
     } else if ("death" %in% headers) {
       ped$exit <- ped$death
     } else if ("departure" %in% headers) {
       ped$exit <- ped$departure
     } else {
-      ped$exit <- as.Date(NA, origin = TIME.ORIGIN)
+      ped$exit <- as.Date(NA, origin = time.origin)
     }
   }
   return(ped)
@@ -509,7 +553,7 @@ chooseDate <- function(d1, d2, earlier = TRUE) {
 #' @export
 calcAge <- function(birth, exit) {
   exit[is.na(exit)] <- Sys.Date()
-  return(round((as.double(exit - birth)/365.25), 1))
+  return(round((as.double(exit - birth) / 365.25), 1))
 }
 #' Determines the generation number for each id.
 #'
@@ -520,7 +564,7 @@ calcAge <- function(birth, exit) {
 #' individual's mother (\code{NA} if unknown).
 #'
 #' @return An integer vector indication the generation numbers for each id,
-#' starting at 0 for individuals lacking IDs both parents.
+#' starting at 0 for individuals lacking IDs for both parents.
 #'
 #' @export
 findGeneration <- function(id, sire, dam) {
@@ -528,6 +572,18 @@ findGeneration <- function(id, sire, dam) {
   gen <- rep(NA, length(id))
   i <- 0
 
+#' @description{The first time through this loop no sire or dam is in parents.
+#' This means that the animals without a sire and without a dam are
+#' assigned to generation 0 and become the first parental genereation.
+#' The second time through this loop finds all of the animals that do
+#' not have a sire or do not have a dam and at least one parent
+#' is in the vector of parents defined the first time through.
+#' The ids that were not assigned as parents in the previous loop
+#' are given the incremented generation number.}
+
+#' Subsequent trips in the loop repeat what was done the second time
+#' through until no further animals can be added to the \code{next.gen}
+#' vector.
   while (TRUE) {
     cumulative.parents <- id[(is.na(sire) | (sire %in% parents)) &
                                (is.na(dam) | (dam %in% parents))]
