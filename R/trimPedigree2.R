@@ -15,50 +15,30 @@
 #' @export
 trimPedigree2 <- function(probands, ped) {
   ped <- trimPedigree(probands, ped)
-  p <- ped
-
-  while (TRUE) {
-    founders <- p$id[is.na(p$sire) & is.na(p$dam)]
-
-    sires <- as.data.frame(table(p$sire[p$sire %in% founders]))
-    dams <- as.data.frame(table(p$dam[p$dam %in% founders]))
-    sires$Var1 <- as.character(sires$Var1)
-    dams$Var1 <- as.character(dams$Var1)
-
-    rmv <- c(sires$Var1[sires$Freq == 1], dams$Var1[dams$Freq == 1])
-    if (isEmpty(rmv)) {
-      break
-    }
-
-    p$sire[p$sire %in% rmv] <- NA
-    p$dam[p$dam %in% rmv] <- NA
-    p <- p[!(p$id %in% rmv), ]
-
-  }
+  p <- removeUniformativeFounders(ped)
 
   # Adding back second parents where one is known
-  single.parents <- p$id[(is.na(p$sire) & !is.na(p$dam)) |
+  single_parents <- p$id[(is.na(p$sire) & !is.na(p$dam)) |
                            (!is.na(p$sire) & is.na(p$dam))]
 
-  add.back <- c()
-  for (id in single.parents) {
+  add_back <- c()
+  for (id in single_parents) {
     if (!is.na(ped$sire[ped$id == id]) & !is.na(ped$dam[ped$id == id])) {
 
       if (is.na(p$sire[p$id == id])) {
-        add.back <- c(add.back, ped$sire[ped$id == id])
+        add_back <- c(add_back, ped$sire[ped$id == id])
         p[(p$id == id), "sire"] <- ped$sire[ped$id == id]
-
       } else{
-        add.back <- c(add.back, ped$dam[ped$id == id])
+        add_back <- c(add_back, ped$dam[ped$id == id])
         p[(p$id == id), "dam"] <- ped$dam[ped$id == id]
       }
     }
   }
-  add.back <- ped[(ped$id %in% add.back), ]
-  add.back$sire <- NA
-  add.back$dam <- NA
+  add_back <- ped[(ped$id %in% add_back), ]
+  add_back$sire <- NA
+  add_back$dam <- NA
 
-  p <- rbind(p, add.back)
+  p <- rbind(p, add_back)
 
   return(p)
 }
