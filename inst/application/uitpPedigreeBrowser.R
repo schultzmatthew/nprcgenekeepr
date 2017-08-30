@@ -1,4 +1,4 @@
-uitp_pedigree_browser <-
+uitpPedigreeBrowser <-
   tabPanel(
     "Pedigree Browser",
     # Side Panel

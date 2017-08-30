@@ -20,7 +20,7 @@
 #' @import stringi
 #' @import plotrix
 #' @export
-age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
+agePyramidPlot <- function(males, females, age_labels, mcol, fcol, laxlab,
                              raxlab, gap, current_date) {
   pyramid.plot(lx = males, rx = females, labels = age_labels,
                main = stri_c("Total on ",
@@ -57,7 +57,7 @@ age_pyramid.plot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' @import lubridate
 #' @importFrom utils read.csv
 #' @export
-get_pyramid_age_dist <-
+getPyramidAgeDist <-
   function(ped = read.csv(file =
                             "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv",
                   stringsAsFactors = FALSE)) {
@@ -91,7 +91,7 @@ get_pyramid_age_dist <-
 #'
 #' @param ped dataframe with pedigree
 #' @export
-get_ped_max_age <- function(ped) {
+getPedMaxAge <- function(ped) {
   max(ped$age, na.rm = TRUE)
 }
 #' Round up the provided integer vector \code{int} according to the
@@ -100,7 +100,7 @@ get_ped_max_age <- function(ped) {
 #' @param int integer vector
 #' @param modulas integer value to use as the divisor.
 #' @export
-make_round_up <- function(int, modulas) {
+makeRoundUp <- function(int, modulas) {
   int + modulas - int %% modulas
 }
 #' Fill bins represented by list of two lists \code{males} and \code{females}.
@@ -112,7 +112,7 @@ make_round_up <- function(int, modulas) {
 #' @param upper_ages integer vector of upper age boundaries; must be the same
 #' length as \code{lower_ages}
 #' @export
-fill_bins <- function(
+fillBins <- function(
   age_dist, lower_ages,
   upper_ages = lower_ages + c(lower_ages[2:length(lower_ages)], 100)) {
   male_bins <- c()
@@ -127,33 +127,32 @@ fill_bins <- function(
   }
   list(males = male_bins, females = female_bins)
 }
-get_max_ax <- function(bins, ax_modulas) {
-  make_round_up(max(max(bins$male), max(bins$female)), ax_modulas)
+getMaxAx <- function(bins, ax_modulas) {
+  makeRoundUp(max(max(bins$male), max(bins$female)), ax_modulas)
 }
-library(stringi)
-library(plotrix)
 #' Creates a pyramid plot of the pedigree provided.
 #'
 #' The pedigree provided must have the following columns: \code{sex} and
 #' \code{age}. This needs to be augmented to allow pedigrees structures that
 #' are provided by the nprcmanager package.
 #' @param ped dataframe with pedigree data.
+#' @import plotrix
 #' @import stringi
 #' @importFrom graphics par
 #' @export
-get_pyramid_plot <- function(ped = NULL) {
+getPyramidPlot <- function(ped = NULL) {
 
   if (is.null(ped))
-    ped <- get_pyramid_age_dist()
+    ped <- getPyramidAgeDist()
   par(bg = "#FFF8DC")
   bin_width <- 2
   ax_modulas <- 5
   upper_ages <- seq(bin_width,
-                    make_round_up(get_ped_max_age(ped), bin_width), bin_width)
+                    makeRoundUp(getPedMaxAge(ped), bin_width), bin_width)
   lower_ages <- upper_ages - bin_width
 
-  bins <- fill_bins(ped, lower_ages, upper_ages)
-  max_ax <- max(get_max_ax(bins, ax_modulas))
+  bins <- fillBins(ped, lower_ages, upper_ages)
+  max_ax <- max(getMaxAx(bins, ax_modulas))
   age_labels <- stri_c(lower_ages, " - ", upper_ages - 1)
   mcol <- color.gradient(0, 0,   0.5)
   fcol <- color.gradient(1, 0.5, 0.5)
@@ -163,7 +162,7 @@ get_pyramid_plot <- function(ped = NULL) {
   gap <- ax_gap
   laxlab <- seq(0, max_ax, by = ax_by)
   raxlab <- seq(0, max_ax, by = ax_by)
-  age_pyramid.plot(bins$males, bins$females, age_labels, mcol, fcol,
+  agePyramidPlot(bins$males, bins$females, age_labels, mcol, fcol,
                   laxlab, raxlab, gap, current_date)
 
   par(bg = "transparent")
@@ -182,7 +181,7 @@ get_pyramid_plot <- function(ped = NULL) {
 #' columns id, sire, and dam.
 #' @param ids character vector of animal IDs
 #' @export
-get_parents <- function(ped_source_df, ids) {
+getParents <- function(ped_source_df, ids) {
   unique(c(ped_source_df$sire[(ped_source_df$id %in% ids &
                              !is.na(ped_source_df$sire))],
            ped_source_df$dam[(ped_source_df$id %in% ids &
@@ -198,7 +197,7 @@ get_parents <- function(ped_source_df, ids) {
 #' @param ids character vector with an animal ID in each cell.
 #' @importFrom Rlabkey labkey.selectRows
 #' @export
-get_lk_direct_ancestors <- function(base_url, folder_path, ids) {
+getLkDirectAncestors <- function(base_url, folder_path, ids) {
   ped_source_df <- labkey.selectRows(
     baseUrl = base_url,
     folderPath = folder_path,
@@ -220,7 +219,7 @@ get_lk_direct_ancestors <- function(base_url, folder_path, ids) {
   len <- length(parents)
   ancestors_df <- ped_source_df[ped_source_df$id %in% ids, ]
   while (len > 0) {
-    parents <- get_parents(ped_source_df, parents)
+    parents <- getParents(ped_source_df, parents)
     len <- length(parents)
     if (len > 0) {
       ancestors_df <- rbind(ancestors_df,
@@ -229,7 +228,7 @@ get_lk_direct_ancestors <- function(base_url, folder_path, ids) {
   }
   ancestors_df
 }
-# test <- get_lk_direct_ancestors(base_url = base_url, folder_path = "/SNPRC",
+# test <- getLkDirectAncestors(base_url = base_url, folder_path = "/SNPRC",
 #                                 ids = ids)
 # test[!test$id %in% deb_df$EGO.ID, ]
 # deb_df[!deb_df$EGO.ID %in% test$id, ]

@@ -1,4 +1,4 @@
-uitp_breeding_group_formation <-
+uitpBreedingGroupFormation <-
   tabPanel(
     "Breeding Group Formation",
 
@@ -101,5 +101,4 @@ uitp_breeding_group_formation <-
       #tableOutput("breeding_groups")
       DT::dataTableOutput("breeding_groups")
       )
-
     )

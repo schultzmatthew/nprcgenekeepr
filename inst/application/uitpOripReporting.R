@@ -1,4 +1,4 @@
-uitp_orip_reporting <-
+uitpOripReporting <-
   tabPanel(
     "ORIP Reporting",
 

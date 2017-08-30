@@ -1,4 +1,4 @@
-uitp_summary_statistics <-
+uitpSummaryStatistics <-
   tabPanel(
     "Summary Statistics",
 

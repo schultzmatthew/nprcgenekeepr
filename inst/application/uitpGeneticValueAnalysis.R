@@ -1,4 +1,4 @@
-uitp_genetic_value_analysis <-
+uitpGeneticValueAnalysis <-
   tabPanel(
     "Genetic Value Analysis",
 

@@ -599,7 +599,7 @@ shinyServer(function(input, output, session) {
   #   get_pyramid_plot()
   # })
 
-  output$pyramid_plot <- renderPlot(get_pyramid_plot(ped()))
+  output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
 })
 
 ###############################################################################

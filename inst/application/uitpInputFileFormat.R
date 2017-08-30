@@ -1,4 +1,4 @@
-uitp_input_file_format <-
+uitpInputFileFormat <-
   tabPanel(
     "Input File Format",
 

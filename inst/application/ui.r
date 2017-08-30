@@ -2,14 +2,14 @@ library(shiny)
 if (!require("DT"))
   install.packages('DT')
 library(DT)
-source("../application/uitp_input_file_format.R")
-source("../application/uitp_pedigree_browser.R")
-source("../application/uitp_genetic_value_analysis.R")
-source("../application/uitp_summary_statistics.R")
-source("../application/uitp_breeding_group_formation.R")
-source("../application/uitp_orip_reporting.R")
-source("../application/uitp_pyramid_plot.R")
-source("../application/uitp_readme.R")
+source("../application/uitpInputFileFormat.R")
+source("../application/uitpPedigreeBrowser.R")
+source("../application/uitpGeneticValueAnalysis.R")
+source("../application/uitpSummaryStatistics.R")
+source("../application/uitpBreedingGroupFormation.R")
+source("../application/uitpOripReporting.R")
+source("../application/uitpPyramidPlot.R")
+source("../application/uitpReadme.R")
 
 shinyUI(tagList(
   tags$head(tags$style(
@@ -56,14 +56,14 @@ shinyUI(tagList(
   )),
   navbarPage(
     title = NULL,
-    uitp_input_file_format,
-    uitp_pedigree_browser,
-    uitp_genetic_value_analysis,
-    uitp_summary_statistics,
-    uitp_breeding_group_formation,
-    uitp_orip_reporting,
-    uitp_pyramid_plot,
-    uitp_readme,
+    uitpInputFileFormat,
+    uitpPedigreeBrowser,
+    uitpGeneticValueAnalysis,
+    uitpSummaryStatistics,
+    uitpBreedingGroupFormation,
+    uitpOripReporting,
+    uitpPyramidPlot,
+    uitpReadme,
     id = "tab_pages"
   )
 ))

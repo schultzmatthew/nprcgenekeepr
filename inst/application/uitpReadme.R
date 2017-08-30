@@ -1,3 +1,3 @@
-uitp_readme <-
+uitpReadme <-
   tabPanel("README",
            includeHTML("../extdata/readme.html"))
