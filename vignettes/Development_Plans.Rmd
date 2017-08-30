@@ -13,7 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
     also a dam in the pedigree. It would be better if an error message was sent
     to the user, the program did not stop, the program did not allow the 
     pedigree to processed, the user was prompted to enter a corrected data set.
-
+2. It would be better to catalogue and report the changes made by qc.Studbook()
+   so that the user knows how the provided pedigree was changed.
+   
 ## Meeting notes
 
 I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use
