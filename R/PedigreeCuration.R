@@ -108,6 +108,15 @@ get_possible_cols <- function() {
 #' (\code{id}, \code{sire}, \code{dam}, \code{sex}), \code{age}, and
 #' \code{birth} the function throws an error by calling \code{stop()}.
 #'
+#' If the \code{id} field has the string \emph{UNKNOWN} (any case) or both
+#' the fields \code{sire} or \code{dam} have \code{NA} or \emph{UNKNOWN}
+#' (any case), the record is removed.
+#' If either of the fields \code{sire} or \code{dam} have the
+#' string \emph{UNKNOWN} (any case), they are replaced with a unique identifier
+#' with the form \code{Unnnn}, where \code{nnnn} represents one of a series
+#' of sequential integers representing the number of missing sires and
+#' dams right justified in a pattern of \code{0000}.
+#'
 #' @export
 qc.Studbook <- function(sb) {
   headers <- tolower(names(sb))
