@@ -105,8 +105,8 @@ get_possible_cols <- function() {
 #' \item {\code{damid} is converted to \code{dam}}}
 #'
 #' If the dataframe (\code{sb} does not contain the four required columns
-#' (\code{id}, \code{sire}, \code{dam}, and \code{sex}) the functions
-#' throws and error by calling \code{stop()}.
+#' (\code{id}, \code{sire}, \code{dam}, \code{sex}), \code{age}, and
+#' \code{birth} the function throws an error by calling \code{stop()}.
 #'
 #' @export
 qc.Studbook <- function(sb) {
@@ -122,17 +122,10 @@ qc.Studbook <- function(sb) {
   }
 
   names(sb) <- headers
-  required_cols <- c("id", "sire", "dam", "sex")
+  required_cols <- c("id", "sire", "dam", "sex", "age", "birth")
   required <- required_cols %in% headers
 
   if (!all(required)) {
-    stop(paste0("Required field missing (", paste0(required_cols[!required],
-                                                   collapse = ", "), ")."))
-  }
-
-  required_cols <- c("age", "birth")
-  required <- required_cols %in% headers
-  if (!any(required)) {
     stop(paste0("Required field missing (", paste0(required_cols[!required],
                                                    collapse = ", "), ")."))
   }
