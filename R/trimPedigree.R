@@ -36,6 +36,6 @@ trimPedigree <- function(probands, ped) {
     animals <- union(animals, parents)
   }
 
-  p <- ped[ped$id %in% animals, ]
-  return(p)
+  ped <- ped[ped$id %in% animals, ]
+  return(ped)
 }

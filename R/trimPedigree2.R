@@ -1,7 +1,7 @@
 #' Trim pedigree to ancestors of provided group removing uninformative
 #' ancestors.
 #'
-#' Filters a pedigree down to only the ancestors of the provided group.
+#' Filters a pedigree down to only the ancestors of the provided group,
 #' removing unnecessary individuals from the studbook. This version builds
 #' the pedigree back in time starting from a group of probands, then moves
 #' back down the tree trimming off uninformative ancestors.
@@ -14,29 +14,7 @@
 #' @return A reduced pedigree.
 #' @export
 trimPedigree2 <- function(probands, ped) {
-  animals <- probands
-
-  while (TRUE) {
-    sires <- ped$sire[ped$id %in% animals]
-    dams <- ped$dam[ped$id %in% animals]
-
-    parents <- unique(union(sires, dams))
-    parents <- parents[!is.na(parents)]
-    added <- setdiff(parents, animals)
-
-    if (identical(added, character(0))) {
-      break
-    }
-    if (identical(added, numeric(0))) {
-      break
-    }
-    if (identical(added, integer(0))) {
-      break
-    }
-    animals <- union(animals, parents)
-  }
-
-  ped <- ped[ped$id %in% animals, ]
+  ped <- trimPedigree(probands, ped)
   p <- ped
 
   while (TRUE) {
