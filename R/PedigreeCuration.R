@@ -115,7 +115,25 @@ get_possible_cols <- function() {
 #' string \emph{UNKNOWN} (any case), they are replaced with a unique identifier
 #' with the form \code{Unnnn}, where \code{nnnn} represents one of a series
 #' of sequential integers representing the number of missing sires and
-#' dams right justified in a pattern of \code{0000}.
+#' dams right justified in a pattern of \code{0000}. See \code{add.uIds}
+#' function.
+#'
+#' The function \code{addParents} is used to add records for parents missing
+#' their own record in the pedigree.
+#'
+#' The function \code{convertSexCodes} is used with \code{ignore.herm == TRUE}
+#' to convert sex codes according to the following standardized codes:
+#'
+#' #' \itemize{
+#' \item{F} {-- replacing "FEMALE" or "2"}
+#' \item{M} {-- replacing "MALE" or "1"}
+#' \item{H} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE}
+#' \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
+#' \item{U} {-- replacing "UNKNOWN" or "3"}}
+#'
+#' The function \code{checkParentSex} is used to ensure no parent is both
+#' a sire and a dam. If this error is detected, the function throws an error
+#' and halts the program.
 #'
 #' @export
 qc.Studbook <- function(sb) {
@@ -309,11 +327,11 @@ checkParentSex <- function(id, sire, dam, sex) {
 #'
 #' Standard sex codes are
 #' \itemize{
-#' \item{M} {-- replacing "MALE" or "1"}
 #' \item{F} {-- replacing "FEMALE" or "2"}
-#' \item{U} {-- replacing "UNKNOWN" or "3"}
+#' \item{M} {-- replacing "MALE" or "1"}
 #' \item{H} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE}
-#' \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}}
+#' \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
+#' \item{U} {-- replacing "UNKNOWN" or "3"}}
 #'
 #' @param sex factor indicating sex of a set of individuals
 #' @param ignore.herm logical flag indicating if hermaphrodites should be
