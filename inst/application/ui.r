@@ -7,7 +7,11 @@ source("../application/uitpPedigreeBrowser.R")
 source("../application/uitpGeneticValueAnalysis.R")
 source("../application/uitpSummaryStatistics.R")
 source("../application/uitpBreedingGroupFormation.R")
-source("../application/uitpOripReporting.R")
+#if (getSiteInfo()$center == "ONPRC") {
+  source("../application/uitpOripReporting.R")
+#} else {
+#  uitpOripReporting <- NULL
+#}
 source("../application/uitpPyramidPlot.R")
 source("../application/uitpReadme.R")
 

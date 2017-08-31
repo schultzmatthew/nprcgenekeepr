@@ -592,6 +592,9 @@ shinyServer(function(input, output, session) {
       write.csv(bg_view(), file, na = "", row.names = FALSE)
     }
   )
+
+  #############################################################################
+  # Function to handle display of pyramid plot
   # pyramid_plot <- eventReactive(input$display_pyramid_plot, {
   #   if (is.null(ped())) {
   #     return(NULL)
@@ -601,7 +604,6 @@ shinyServer(function(input, output, session) {
   #   p <- ped()
   #   get_pyramid_plot()
   # })
-
   output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
 })
 

@@ -11,10 +11,10 @@ uitpPyramidPlot <-
                  "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
                ),
                includeHTML("../extdata/pyramidPlot.html")
-             ),
-             # Main Panel
-             div(style = "margin-left:425px;padding:10px;",
-                 actionButton("displayPyramidPlot",
-                              label = "Display Pyramid Plot"))
+             )#,
+             # # Main Panel
+             # div(style = "margin-left:425px;padding:10px;",
+             #     actionButton("displayPyramidPlot",
+             #                  label = "Display Pyramid Plot"))
            ),
            plotOutput("pyramidPlot"))

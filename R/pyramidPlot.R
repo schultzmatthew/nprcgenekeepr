@@ -57,10 +57,19 @@ agePyramidPlot <- function(males, females, age_labels, mcol, fcol, laxlab,
 #' @import lubridate
 #' @importFrom utils read.csv
 #' @export
-getPyramidAgeDist <-
-  function(ped = read.csv(file =
-                            "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv",
-                  stringsAsFactors = FALSE)) {
+getPyramidAgeDist <- function(ped = "null") {
+  if (ped == "null") {
+    ped <- tryCatch(read.csv(file =
+                           "../extdata/snprc_baboon_ped.csv",
+                         stringsAsFactors = FALSE),
+                    warning = function(cond) {
+                      stop(paste0(cond, "\nWorkding directory: ", getwd()))
+                    },
+                    error = function(cond) {
+                      stop(paste0(cond, "\nWorkding directory: ", getwd()))
+                    })
+    #stop(paste0(getwd()))
+  }
   # ped <- ped[tolower(ped$EXIT) == "", c("EGO.ID", "SIRE.SIRE.ID",
   #                                              "DAM.ID", "SEX", "BIRTH",
   #                                              "EXIT")]
@@ -118,12 +127,14 @@ fillBins <- function(
   male_bins <- c()
   female_bins <- c()
   for (bin in seq_along(lower_ages)) {
-    male_bins <- c(male_bins, nrow(age_dist[age_dist$sex == 'M' &
-                                              age_dist$age >= lower_ages[bin] &
-                                              age_dist$age < upper_ages[bin], ]))
-    female_bins <- c(female_bins, nrow(age_dist[age_dist$sex == 'F' &
-                                                  age_dist$age >= lower_ages[bin] &
-                                                  age_dist$age < upper_ages[bin], ]))
+    male_bins <- c(male_bins,
+                   nrow(age_dist[age_dist$sex == 'M' &
+                                   age_dist$age >= lower_ages[bin] &
+                                   age_dist$age < upper_ages[bin], ]))
+    female_bins <- c(female_bins,
+                     nrow(age_dist[age_dist$sex == 'F' &
+                                     age_dist$age >= lower_ages[bin] &
+                                     age_dist$age < upper_ages[bin], ]))
   }
   list(males = male_bins, females = female_bins)
 }

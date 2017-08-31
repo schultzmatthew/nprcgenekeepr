@@ -7,7 +7,7 @@ uitpGeneticValueAnalysis <-
       # Side Panel
       div(
         style = paste(
-          "float: left; width: 400px; height: 180px; padding: 10px;",
+          "float: left; width: 400px; height: 190px; padding: 10px;",
           "border: 1px solid lightgray; background-color: #EDEDED;",
           "margin-left:3px; margin-top: 3px; margin-bottom: 3px;",
           "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
