@@ -59,8 +59,10 @@ shinyServer(function(input, output, session) {
 
         if (input$trim) {
           probands <- p$id[p$population]
-          p <- trimPedigree(probands, p)
-          #p <- trimPedigree2(probands, p)
+          p <- trimPedigree(probands, p, removeUninformative = FALSE,
+                            addBackSingles = FALSE)
+          #p <- trimPedigree(probands, p, removeUninformative = TRUE,
+          #                  addBackSingles = TRUE)
         }
 
         p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
@@ -134,7 +136,8 @@ shinyServer(function(input, output, session) {
     # (if there are too many animals, the program will crash)
     p <- ped()
     probands <- p$id[p$population]
-    p <- trimPedigree(probands, p)
+    p <- trimPedigree(probands, p, removeUninformative = FALSE,
+                      addBackSingles = FALSE)
 
     validate(
       need(length(probands) != 0, "Error: No population specified")
