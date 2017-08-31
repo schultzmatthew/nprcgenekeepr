@@ -16,9 +16,9 @@ uitpPedigreeBrowser <-
       # Main Panel
       div(
         style = "margin-left: 425px; width: 550px; padding: 10px;",
-        helpText(paste0("If analysis of all individuals is not needed, ",
-                        "IDs of selected breeding population members may be ",
-                        "manually entered here  (IDs may be pasted from Excel):")),
+        helpText(paste0("If analysis of all individuals is not needed, IDs of ",
+                        "selected breeding population members may be manually ",
+                        "entered here (IDs may be pasted from Excel):")),
         div(
           style = "display:inline-block;width:250px;padding:10px",
           tags$textarea(id = "population_ids", rows = 5, cols = 30, ""),
@@ -26,9 +26,10 @@ uitpPedigreeBrowser <-
         ),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          checkboxInput('uid', label = "Display UIDs for partial parentage",
+          checkboxInput("uid", label = "Display UIDs for partial parentage",
                         value = TRUE),
-          checkboxInput('trim', label = 'Trim pedigree based on specified population',
+          checkboxInput("trim",
+                        label = "Trim pedigree based on specified population",
                         value = FALSE),
           downloadButton("downloadPedigree", "Export")
         ),
