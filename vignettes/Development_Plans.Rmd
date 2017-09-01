@@ -1,19 +1,24 @@
 ---
 title: "Development Plans"
 author: "R. Mark Sharp"
-date: "3/23/2017"
+date: "Sept. 1, 2017"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+## Next steps
+1. Find out what is needed to assign known genotypes to individuals and to 
+    incorporate that information into the gene dropping routine.
+2. Find some ways to use genetic marker data in the evaluation of genetic 
+   value.
+3. Develop a simplistic method of using data directly from LabKey via the 
+   labkey-api-r.
+4. Develop the appropriate UI
+
 ## To do
-1. The __checkParentSex__ function stops the application if a sire is 
-    also a dam in the pedigree. It would be better if an error message was sent
-    to the user, the program did not stop, the program did not allow the 
-    pedigree to processed, the user was prompted to enter a corrected data set.
-2. It would be better to catalogue and report the changes made by qc.Studbook()
+1. It would be better to catalogue and report the changes made by qc.Studbook()
    so that the user knows how the provided pedigree was changed.
    
 ## Meeting notes
