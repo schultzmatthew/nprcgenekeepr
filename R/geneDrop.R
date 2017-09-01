@@ -19,7 +19,7 @@
 #' \code{n} columns indicating the allele for that iteration.
 #'
 #' @export
-geneDrop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
+geneDrop <- function(id, sire, dam, gen, genotype, n = 5000, updateProgress = NULL) {
   ## Sort the IDs by generation so older generations are first
   ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
   rownames(ped) <- id
@@ -38,29 +38,33 @@ geneDrop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
     alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
-
-    if (is.na(s)) {
-      # If the sire is unknown, create a unique set of alleles for him
-      alleles[[id]][["sire"]] <- rep(a, n)
-      a <- a + 1
+    if (any(genotype$id == id)) {
+      alleles[[id]][["sire"]] <- rep(genotype$first[genotype$id == id], n)
+      alleles[[id]][["dam"]] <- rep(genotype$second[genotype$id == id], n)
     } else {
-      # Otherwise get his two sets of alleles and randomly select one
-      # for each iteration
-      s1 <- alleles[[s]][["sire"]]
-      s2 <- alleles[[s]][["dam"]]
-      alleles[[id]][["sire"]] <- chooseAlleles(s1, s2)
-    }
+      if (is.na(s)) {
+        # If the sire is unknown, create a unique set of alleles for him
+        alleles[[id]][["sire"]] <- rep(a, n)
+        a <- a + 1
+      } else {
+        # Otherwise get his two sets of alleles and randomly select one
+        # for each iteration
+        s1 <- alleles[[s]][["sire"]]
+        s2 <- alleles[[s]][["dam"]]
+        alleles[[id]][["sire"]] <- chooseAlleles(s1, s2)
+      }
 
-    if (is.na(d)) {
-      # If the dam is unknown, create a unique set of alleles for her
-      alleles[[id]][["dam"]] <- rep(a, n)
-      a <- a + 1
-    } else {
-      # Otherwise get her two sets of alleles and randomly select one
-      # for each iteration
-      d1 <- alleles[[d]][["sire"]]
-      d2 <- alleles[[d]][["dam"]]
-      alleles[[id]][["dam"]] <- chooseAlleles(d1, d2)
+      if (is.na(d)) {
+        # If the dam is unknown, create a unique set of alleles for her
+        alleles[[id]][["dam"]] <- rep(a, n)
+        a <- a + 1
+      } else {
+        # Otherwise get her two sets of alleles and randomly select one
+        # for each iteration
+        d1 <- alleles[[d]][["sire"]]
+        d2 <- alleles[[d]][["dam"]]
+        alleles[[id]][["dam"]] <- chooseAlleles(d1, d2)
+      }
     }
 
     if (!is.null(updateProgress)) {
