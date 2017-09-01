@@ -67,7 +67,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Calculate genome uniqueness and order the rows of the returned data.frame
   gu <- calc.gu(alleles, threshold = gu.thresh, by.id = by.id, pop = probands)
-  gu <- gu[probands,]
+  gu <- gu[probands, , drop = FALSE]
 
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Calculating Numbers of Offspring", value = 1,
@@ -102,6 +102,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   finalData <- cbind(demographics, indiv.avgs, z.scores, gu, offspring)
   finalData <- list(report = orderReport(finalData, ped),
                     kinship = kmat,
+                    gu = gu,
                     fe = fe,
                     fg = fg,
                     male.founders = nrow(males),
