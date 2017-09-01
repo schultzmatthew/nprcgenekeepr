@@ -190,6 +190,7 @@ getPossibleCols <- function() {
 qc.Studbook <- function(sb) {
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
+  headers <- gsub("_", "", headers)
   headers <- gsub("egoid", "id", headers)
   headers <- gsub("sireid", "sire", headers)
   headers <- gsub("damid", "dam", headers)
