@@ -6,6 +6,23 @@
 #' @param dam character vector with IDS of the dams for the set of
 #'  animals. \code{NA} is used for missing dams.
 #' @param gen integer vector indicating the generation number for each animal.
+#' @param genotype is a dataframe containing known genotypes. It has three
+#' columns:  \code{id}, \code{first}, and \code{second}. The second and third
+#' columns contain the integers indicating the observed genotypes.
+#'
+#' Currently there is no means of handling knowing only one haplotype.
+#' It will be easy to add another column to handle situations where only one
+#' allele is observed and it is not known to be homozygous or heterozygous. The
+#' new fourth column could have a frequency for homozygosity that could be
+#' used in the gene dropping algorithm.
+#'
+#' The genotypes are using indirection (integer instead of character) to
+#' indicate the genes because the minipulation of character strings was found
+#' to take 20-35 times longer to perform.
+#'
+#' Adding additional columns to \code{genotype} does not significantly affect
+#' the time require. Thus, it is convenient to add the corresponding haplotype
+#' names to the dataframe using \code{first_name} and \code{second_name}.
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
 #' @param updateProgress function or NULL. If this function is defined, it
