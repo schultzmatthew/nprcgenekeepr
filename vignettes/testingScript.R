@@ -44,9 +44,12 @@ ped_qc <- qc.Studbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
 genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
-                        second = 20000 + 1:20, stringsAsFactors = FALSE)
+                        second = 20000 + 1:20,
+                       first_name = stri_c("first", 1:20),
+                       second_name = stri_c("second", 1:20),
+                       stringsAsFactors = FALSE)
 genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
 gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
-gu <- gu[probands,]
+gu <- gu[probands, ,drop = FALSE]
 
