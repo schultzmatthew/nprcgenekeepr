@@ -313,9 +313,10 @@ calc.gu <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
 #' Performs a gene drop simulation based on the provided pedigree information
 #'
 #' @param id character vector of IDs for a set of animals.
-#' @param sire character vector or NA for the IDs of the sires for the set of
-#'  animals.
-#' @param dam character vector or NA for the IDs of the dams for the set of animals.
+#' @param sire character vector with IDS of the sires for the set of
+#'  animals. \code{NA} is used for missing sires.
+#' @param dam character vector with IDS of the dams for the set of
+#'  animals. \code{NA} is used for missing dams.
 #' @param gen integer vector indicating the generation number for each animal.
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
