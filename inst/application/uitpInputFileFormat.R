@@ -50,6 +50,33 @@ uitpInputFileFormat <-
       fileInput("select_file", label = "Select Input File")
 
       ),
+    div(
+      style = paste(
+        "float: left; width: 400px; height: 100%; padding: 10px;",
+        "border: 1px solid lightgray; background-color: #EDEDED;",
+        "margin-left: 3px;",
+        "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+      ),
+      helpText(
+        "Select a genotype file corresponding to the pedigree file.
+        See the 'Format' tab for file formatting descriptions."
+      ),
+
+      radioButtons(
+        'sep',
+        label = 'Separator',
+        choices = list(
+          'Comma' = ',',
+          'Semicolon' = ';',
+          'Tab' = '\t'
+        ),
+        selected = ','
+      ),
+
+      fileInput("genotype_file", label = "Select Input File")
+
+      ),
+
 
     # Main Panel
     div(style = "margin-left:425px;padding:10px;",

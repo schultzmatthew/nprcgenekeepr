@@ -26,11 +26,24 @@ conn <- odbcConnect("frogstar-vortex-animal-msharp")
 proband_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                        "library/nprcmanager/inst/extdata/",
                        "baboon_breeders_probands.csv")
+qc_ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
+                       "library/nprcmanager/inst/extdata/",
+                       "baboon_breeders_qc_ped.csv")
+genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
+                        "library/nprcmanager/inst/extdata/",
+                        "baboon_breeders_genotypes.csv")
 # probands <- sqlQuery(conn, stri_c("select id from current_data
 #                              where location in (102.06, 102.07, 102.08)
 #                              and at_sfbr = 'Y'"))
 # write.csv(probands,
 #           file = proband_file, row.names = FALSE)
+genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
+                       second = 20000 + 1:20,
+                       first_name = stri_c("first", 1:20),
+                       second_name = stri_c("second", 1:20),
+                       stringsAsFactors = FALSE)
+write.csv(genotype,
+         file = genotype_file, row.names = FALSE)
 probands <- read.csv(proband_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)
@@ -43,11 +56,8 @@ ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
 ped_qc <- qc.Studbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
-genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
-                        second = 20000 + 1:20,
-                       first_name = stri_c("first", 1:20),
-                       second_name = stri_c("second", 1:20),
-                       stringsAsFactors = FALSE)
+write.csv(p,
+          file = qc_ped_file, row.names = FALSE)
 genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
 gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
