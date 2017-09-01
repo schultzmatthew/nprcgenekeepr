@@ -14,15 +14,13 @@
 #' @return A reduced pedigree.
 #' @export
 getProbandPedigree <- function(probands, ped) {
-  animals <- probands
-
   while (TRUE) {
-    sires <- ped$sire[ped$id %in% animals]
-    dams <- ped$dam[ped$id %in% animals]
+    sires <- ped$sire[ped$id %in% probands]
+    dams <- ped$dam[ped$id %in% probands]
 
     parents <- unique(union(sires, dams))
     parents <- parents[!is.na(parents)]
-    added <- setdiff(parents, animals)
+    added <- setdiff(parents, probands)
 
     if (identical(added, character(0))) {
       break
@@ -33,9 +31,9 @@ getProbandPedigree <- function(probands, ped) {
     if (identical(added, integer(0))) {
       break
     }
-    animals <- union(animals, parents)
+    probands <- union(probands, parents)
   }
 
-  ped <- ped[ped$id %in% animals, ]
+  ped <- ped[ped$id %in% probands, ]
   return(ped)
 }

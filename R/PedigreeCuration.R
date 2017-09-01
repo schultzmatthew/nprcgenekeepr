@@ -194,6 +194,7 @@ qc.Studbook <- function(sb) {
   headers <- gsub("egoid", "id", headers)
   headers <- gsub("sireid", "sire", headers)
   headers <- gsub("damid", "dam", headers)
+  headers <- gsub("birthdate", "birth", headers)
 
   # Checking for the 4 required fields (id, sire, dam, sex)
   if (is.na(match("id", headers))) {

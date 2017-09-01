@@ -6,4 +6,5 @@
 .travis.yml
 .gitignore
 ^docs$
-^testthat/test_basic.R
+tests/testthat/test_basic.R
+R/testingScript.R
