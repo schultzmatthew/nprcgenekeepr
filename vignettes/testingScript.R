@@ -62,4 +62,5 @@ genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
 gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
 gu <- gu[probands, ,drop = FALSE]
+length(p$sex[p$sex == "F"])
 
