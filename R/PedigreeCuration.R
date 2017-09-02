@@ -467,7 +467,7 @@ convertAncestry <- function(ancestry) {
 #' @param ped a dataframe of pedigree information that may contain birth,
 #' death, departure, or exit dates. The fields are optional, but will be used
 #' if present.(optional fields: birth, death, departure, and exit).
-#'
+#' @param time.origin date object used by \code{as.Date} to set \code{origin}.
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type.
 #' @export
@@ -485,6 +485,7 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
 #' containing columns indicating the birth and death dates of an individual.
 #' The table may also contain dates of sale (departure). Optional columns
 #' are \code{birth}, \code{death}, and \code{departure}.
+#' @param time.origin date object used by \code{as.Date} to set \code{origin}.
 #'
 #' @return A dataframe with an updated table with exit dates specified based
 #' on date information that was available.

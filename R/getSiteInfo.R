@@ -22,9 +22,15 @@
 #' @export
 getSiteInfo <- function() {
   list(
-    center = "SNPRC",
+    center = "ONPRC",
     baseUrl = "https://boomer.txbiomed.org/labkey",
     schemaName = "study",
     folderPath = "/SNPRC",
     queryName = "demographics")
+  # list(
+  #   center = "SNPRC",
+  #   baseUrl = "https://boomer.txbiomed.org/labkey",
+  #   schemaName = "study",
+  #   folderPath = "/SNPRC",
+  #   queryName = "demographics")
 }
