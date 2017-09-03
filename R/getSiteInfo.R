@@ -32,7 +32,7 @@ getSiteInfo <- function() {
     config_df <- read.csv(config_file, header = TRUE, sep = ",",
                           stringsAsFactors = FALSE, na.strings = c("", "NA"),
                           check.names = FALSE)
-    c(
+    list(
       center = config_df[["center"]],
       baseUrl = config_df[["baseUrl"]],
       schemaName = config_df[["schemaName"]],
@@ -57,7 +57,7 @@ getSiteInfo <- function() {
                    "such as:\n",
                    "\"SNPRC\", \"https://boomer.txbiomed.org/labkey\", ",
                    "\"study\", \"/SNPRC\", \"demographics\"\n"))
-    c(center = "ONPRC",
+    list(center = "ONPRC",
       baseUrl = "https://boomer.txbiomed.org/labkey",
       schemaName = "study",
       folderPath = "/SNPRC",
