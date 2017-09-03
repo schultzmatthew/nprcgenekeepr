@@ -19,18 +19,47 @@
 #'   If \code{center} is "ONPRC", folderPath is "/ONPRC"}
 #'   \item{queryName}{is "demographics"}
 #'}
+#' @import stringi
 #' @export
 getSiteInfo <- function() {
-  list(
-    center = "ONPRC",
-    baseUrl = "https://boomer.txbiomed.org/labkey",
-    schemaName = "study",
-    folderPath = "/SNPRC",
-    queryName = "demographics")
-  # list(
-  #   center = "SNPRC",
-  #   baseUrl = "https://boomer.txbiomed.org/labkey",
-  #   schemaName = "study",
-  #   folderPath = "/SNPRC",
-  #   queryName = "demographics")
+  sys_info <- Sys.info()
+  if (stri_detect_fixed(toupper(sys_info[["sysname"]]), "WIND")) {
+    config_file <- paste0("Users/", sys_info[["user"]], "/_nprcmanager_config")
+  } else {
+    config_file <- paste0("~/.nprcmanager_config")
+  }
+  if (file.exists(config_file)) {
+    config_df <- read.csv(config_file, header = TRUE, sep = ",",
+                          stringsAsFactors = FALSE, na.strings = c("", "NA"),
+                          check.names = FALSE)
+    c(
+      center = config_df[["center"]],
+      baseUrl = config_df[["baseUrl"]],
+      schemaName = config_df[["schemaName"]],
+      folderPath = config_df[["folderPath"]],
+      queryName = config_df[["queryName"]],
+      sysname  = sys_info[["sysname"]],
+      release = sys_info[["release"]],
+      version  = sys_info[["version"]],
+      nodename = sys_info[["nodename"]],
+      machine = sys_info[["machine"]],
+      login = sys_info[["login"]],
+      user = sys_info[["user"]],
+      effective_user = sys_info[["effective_user"]])
+  } else {
+    c(
+      center = "ONPRC",
+      baseUrl = "https://boomer.txbiomed.org/labkey",
+      schemaName = "study",
+      folderPath = "/SNPRC",
+      queryName = "demographics",
+      sysname  = sys_info[["sysname"]],
+      release = sys_info[["release"]],
+      version  = sys_info[["version"]],
+      nodename = sys_info[["nodename"]],
+      machine = sys_info[["machine"]],
+      login = sys_info[["login"]],
+      user = sys_info[["user"]],
+      effective_user = sys_info[["effective_user"]])
+  }
 }
