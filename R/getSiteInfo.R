@@ -47,8 +47,17 @@ getSiteInfo <- function() {
       user = sys_info[["user"]],
       effective_user = sys_info[["effective_user"]])
   } else {
-    c(
-      center = "ONPRC",
+    warning(paste0("The nprcmananger configuration file is missing.\n",
+                   "The file should be named: ", config_file, ".\n",
+                   "It should have two lines with the first being a header ",
+                   "with the following:\n",
+                   "center, baseUrl, schemaName, folderPath, queryName\n",
+                   "Note character case and order is fixed.\n",
+                   "The second line should have comma separated quoted fields ",
+                   "such as:\n",
+                   "\"SNPRC\", \"https://boomer.txbiomed.org/labkey\", ",
+                   "\"study\", \"/SNPRC\", \"demographics\"\n"))
+    c(center = "ONPRC",
       baseUrl = "https://boomer.txbiomed.org/labkey",
       schemaName = "study",
       folderPath = "/SNPRC",
