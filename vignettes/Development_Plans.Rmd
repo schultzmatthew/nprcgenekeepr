@@ -11,10 +11,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Next steps
 1. Find out what is needed to assign known genotypes to individuals and to 
     incorporate that information into the gene dropping routine.
+    This has been done at the function level in the _geneDrop_ function. 
+    The next step is to allow the pedigree submitted via the UI to contain
+    the genetic information.
 2. Find some ways to use genetic marker data in the evaluation of genetic 
-   value.
+   value. This needs to be discussed.
 3. Develop a simplistic method of using data directly from LabKey via the 
-   labkey-api-r.
+   labkey-api-r. There is now a configuration file that can be used by 
+   the application to get the primate center designation, the LabKey 
+   baseUrl, a schemaName, a folderPath, and the queryName. 
+   The file is structured so that more than one of each could be placed in the 
+   file. However, more design work is needed before this will be of use.
+ 
 4. Develop the appropriate UI
 
 ## To do
