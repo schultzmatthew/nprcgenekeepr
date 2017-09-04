@@ -47,8 +47,9 @@ uitpInputFileFormat <-
         selected = ','
       ),
 
-      fileInput("select_file", label = "Select Input File")
-
+      fileInput("select_file", label = "Select Input File"),
+      textInput("minParentAge", label = "Minimum Parent Age (years)",
+                   value = "2.5")
       ),
     # div(6,
     #   style = paste(

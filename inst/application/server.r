@@ -30,8 +30,8 @@ shinyServer(function(input, output, session) {
                   stringsAsFactors = FALSE,
                   na.strings = c("", "NA"),
                   check.names = FALSE)
-
-    d <- tryCatch(qc.Studbook(d),
+    minParentAge <- isolate(as.numeric(input$minParentAge))
+    d <- tryCatch(qc.Studbook(d, minParentAge),
                   warning = function(cond) {
                     return(NULL)
                   },
