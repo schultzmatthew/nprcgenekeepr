@@ -41,6 +41,7 @@ geneDrop <- function(id, sire, dam, gen, genotype, n = 5000, updateProgress = NU
   ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
   rownames(ped) <- id
   ped <- ped[order(gen), ]
+  genotype <- genotype[!is.na(genotype$first), ]
 
   alleles <- list()
   a <- 1
