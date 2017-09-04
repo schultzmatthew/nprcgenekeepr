@@ -190,7 +190,7 @@ getPossibleCols <- function() {
 #' Finally the columns \code{id} \code{sire}, and \code{dam} are coerce to
 #' character.
 #'
-#'
+#' @importFrom utils write.csv
 #' @export
 qc.Studbook <- function(sb, minParentAge = 2) {
   headers <- tolower(names(sb))
@@ -247,12 +247,12 @@ qc.Studbook <- function(sb, minParentAge = 2) {
   # ensure parents are older than offspring
   suspiciousParents <- checkParentAge(sb, minParentAge)
   if (nrow(suspiciousParents) > 0) {
-    file_name <- "../../inst/extdata/lowParentAge.csv"
+    fileName <- paste0(getSiteInfo()$homeDir, "lowParentAge.csv")
     write.csv(suspiciousParents,
-              file = file_name, row.names = FALSE)
+              file = fileName, row.names = FALSE)
 
     stop(paste0("Parents will low age at birth of offspring are listed in ",
-                file_name, ".\n"))
+                fileName, ".\n"))
   }
   # setting age
   # uses current date as the end point if no exit date is available
