@@ -24,12 +24,14 @@
 getSiteInfo <- function() {
   sys_info <- Sys.info()
   if (stri_detect_fixed(toupper(sys_info[["sysname"]]), "WIND")) {
-    config_file <- paste0("Users/", sys_info[["user"]], "/_nprcmanager_config")
+    homeDir <- paste0("Users/", sys_info[["user"]], "/")
+    configFile <- paste0(homeDir, "_nprcmanager_config")
   } else {
-    config_file <- paste0("~/.nprcmanager_config")
+    homeDir <- paste0("~/")
+    configFile <- paste0(homeDir, ".nprcmanager_config")
   }
-  if (file.exists(config_file)) {
-    config_df <- read.csv(config_file, header = TRUE, sep = ",",
+  if (file.exists(configFile)) {
+    config_df <- read.csv(configFile, header = TRUE, sep = ",",
                           stringsAsFactors = FALSE, na.strings = c("", "NA"),
                           check.names = FALSE)
     list(
@@ -45,10 +47,12 @@ getSiteInfo <- function() {
       machine = sys_info[["machine"]],
       login = sys_info[["login"]],
       user = sys_info[["user"]],
-      effective_user = sys_info[["effective_user"]])
+      effective_user = sys_info[["effective_user"]],
+      homeDir = homeDir,
+      configFile = configFile)
   } else {
     warning(paste0("The nprcmananger configuration file is missing.\n",
-                   "The file should be named: ", config_file, ".\n",
+                   "The file should be named: ", configFile, ".\n",
                    "It should have two lines with the first being a header ",
                    "with the following:\n",
                    "center, baseUrl, schemaName, folderPath, queryName\n",
@@ -69,6 +73,8 @@ getSiteInfo <- function() {
       machine = sys_info[["machine"]],
       login = sys_info[["login"]],
       user = sys_info[["user"]],
-      effective_user = sys_info[["effective_user"]])
+      effective_user = sys_info[["effective_user"]],
+      homeDir = homeDir,
+      configFile = configFile)
   }
 }
