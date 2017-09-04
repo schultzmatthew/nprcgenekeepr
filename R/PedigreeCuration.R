@@ -93,6 +93,10 @@ getPossibleCols <- function() {
 #'  Indicator of the restricted status of an animal. "Nonrestricted" animals
 #'  are generally assumed to be naive.}
 #' }
+#' @param minParentAge numeric values to set the minimum age in years for
+#' an animal to have an offspring. Defaults to 2 years. The check is not
+#' performed for animals with missing birth dates.
+#'
 #' @return A datatable with standardized and quality controlled pedigree
 #' information.
 #'
@@ -186,8 +190,9 @@ getPossibleCols <- function() {
 #' Finally the columns \code{id} \code{sire}, and \code{dam} are coerce to
 #' character.
 #'
+#'
 #' @export
-qc.Studbook <- function(sb) {
+qc.Studbook <- function(sb, minParentAge = 2) {
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
   headers <- gsub("_", "", headers)
@@ -239,6 +244,16 @@ qc.Studbook <- function(sb) {
   sb <- convertDates(sb, time.origin = TIME.ORIGIN)
   sb <- setExit(sb, time.origin = TIME.ORIGIN)
 
+  # ensure parents are older than offspring
+  suspiciousParents <- checkParentAge(sb, minParentAge)
+  if (nrow(suspiciousParents) > 0) {
+    file_name <- "../../inst/extdata/lowParentAge.csv"
+    write.csv(suspiciousParents,
+              file = file_name, row.names = FALSE)
+
+    stop(paste0("Parents will low age at birth of offspring are listed in ",
+                file_name, ".\n"))
+  }
   # setting age
   # uses current date as the end point if no exit date is available
   if (("birth" %in% headers) && !("age" %in% headers)) {
