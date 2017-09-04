@@ -1,0 +1,2 @@
+center, baseUrl, schemaName, folderPath, queryName
+"SNPRC", "https://boomer.txbiomed.org/labkey", "study", "/SNPRC", "demographics"
