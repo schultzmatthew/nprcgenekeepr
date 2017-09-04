@@ -2,10 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
-vignettes/Notebook.html
 man/*
 NAMESPACE
 inst/extdata/BaboonLivingForMetrics.csv
 inst/extdata/RhesusMasterForMetrics.csv
 inst/extdata/Notes.txt
-vignettes/Development_Plans.html
+vignettes/*.html
+vignettes/*.md
+vignettes/Development_Plans.R

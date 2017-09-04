@@ -2,8 +2,12 @@
 title: "Development Plans"
 author: "R. Mark Sharp"
 date: "Sept. 1, 2017"
-output: html_document
----
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Development Plans}
+  %\usepackage[UTF-8]{inputenc}
+------
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

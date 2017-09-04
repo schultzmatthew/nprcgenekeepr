@@ -32,6 +32,9 @@ qc_ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
 genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                         "library/nprcmanager/inst/extdata/",
                         "baboon_breeders_genotypes.csv")
+ped_genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
+                      "library/nprcmanager/inst/extdata/",
+                      "baboon_breeders_ped_genotype.csv")
 # probands <- sqlQuery(conn, stri_c("select id from current_data
 #                              where location in (102.06, 102.07, 102.08)
 #                              and at_sfbr = 'Y'"))
@@ -42,8 +45,8 @@ genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
                        first_name = stri_c("first", 1:20),
                        second_name = stri_c("second", 1:20),
                        stringsAsFactors = FALSE)
-write.csv(genotype,
-         file = genotype_file, row.names = FALSE)
+# write.csv(genotype,
+#          file = genotype_file, row.names = FALSE)
 probands <- read.csv(proband_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)
@@ -53,13 +56,27 @@ probands <- blank_fill_ids(probands$id)
 ped <- get_direct_ancestors(conn, probands)
 ped <- add_birth_date(conn, ped)
 ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
+ped$id <- stri_trim_both(ped$id)
 ped_qc <- qc.Studbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
-write.csv(p,
-          file = qc_ped_file, row.names = FALSE)
+ write.csv(p,
+           file = qc_ped_file, row.names = FALSE)
+p <- read.csv(qc_ped_file, header = TRUE, sep = ",",
+                     stringsAsFactors = FALSE, na.strings = c("", "NA"),
+                     check.names = FALSE)
 genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
+# p_genotype <- merge(p, genotype, by = "id", all = TRUE)
+write.csv(p_genotype,
+         file = ped_genotype_file, row.names = FALSE)
+p_genotype <- read.csv(ped_genotype_file, header = TRUE, sep = ",",
+              stringsAsFactors = FALSE, na.strings = c("", "NA"),
+              check.names = FALSE)
+alleles2 <- geneDrop(p_genotype$id, p_genotype$sire, p_genotype$dam,
+                     p_genotype$gen, p_genotype[ , c("id", "first", "second",
+                                                     "first_name",
+                                                     "second_name")], n = 1000)
 gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
 gu <- gu[probands, ,drop = FALSE]
 length(p$sex[p$sex == "F"])

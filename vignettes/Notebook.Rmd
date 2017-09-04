@@ -2,7 +2,12 @@
 title: "Genetic Management Tools"
 author: "Michael Raboin"
 date: "August 14, 2015"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
+---
 ---
 
 <a href="#overview">Overview</a>  
