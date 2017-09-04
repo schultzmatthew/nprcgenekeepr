@@ -40,11 +40,6 @@ ped_genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/"
 #                              and at_sfbr = 'Y'"))
 # write.csv(probands,
 #           file = proband_file, row.names = FALSE)
-genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
-                       second = 20000 + 1:20,
-                       first_name = stri_c("first", 1:20),
-                       second_name = stri_c("second", 1:20),
-                       stringsAsFactors = FALSE)
 # write.csv(genotype,
 #          file = genotype_file, row.names = FALSE)
 probands <- read.csv(proband_file, header = TRUE, sep = ",",
@@ -57,6 +52,9 @@ ped <- get_direct_ancestors(conn, probands)
 ped <- add_birth_date(conn, ped)
 ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
 ped$id <- stri_trim_both(ped$id)
+ped$sire_id <- stri_trim_both(ped$sire_id)
+ped$dam_id <- stri_trim_both(ped$dam_id)
+
 ped_qc <- qc.Studbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
@@ -65,6 +63,11 @@ p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
 p <- read.csv(qc_ped_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)
+genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
+                       second = 20000 + 1:20,
+                       first_name = stri_c("first", 1:20),
+                       second_name = stri_c("second", 1:20),
+                       stringsAsFactors = FALSE)
 genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
 # p_genotype <- merge(p, genotype, by = "id", all = TRUE)
