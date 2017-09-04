@@ -24,9 +24,9 @@ agePyramidPlot <- function(males, females, age_labels, mcol, fcol, laxlab,
                              raxlab, gap, current_date) {
   pyramid.plot(lx = males, rx = females, labels = age_labels,
                main = stri_c("Total on ",
-                           stri_c(year(current_date), "-",
+                           year(current_date), "-",
                                  month(current_date, label = TRUE), "-",
-                                 stri_sub(stri_c(current_date), -2)),
+                                 day(current_date),
                            ": ", sum(c(males, females))),
                top.labels = c(
                  stri_c('Male = ', sum(males)),
@@ -41,7 +41,7 @@ agePyramidPlot <- function(males, females, age_labels, mcol, fcol, laxlab,
                # laxlab = seq(0, 100, by = 10),
                # raxlab = seq(0, 100, by = 10),
                unit = "Number of Animals",
-               show.values = TRUE)
+               show.values = TRUE, ndig = 0)
 }
 #' Get the age distribution for the pedigree
 #'
