@@ -7,13 +7,35 @@ source("../application/uitpPedigreeBrowser.R")
 source("../application/uitpGeneticValueAnalysis.R")
 source("../application/uitpSummaryStatistics.R")
 source("../application/uitpBreedingGroupFormation.R")
-#if (getSiteInfo()$center == "ONPRC") {
-  source("../application/uitpOripReporting.R")
-#} else {
-#  uitpOripReporting <- NULL
-#}
 source("../application/uitpPyramidPlot.R")
 source("../application/uitpReadme.R")
+if (getSiteInfo()$center == "ONPRC") {
+  source("../application/uitpOripReporting.R")
+  navbarPageArgs <- list(
+    title = NULL,
+    uitpInputFileFormat,
+    uitpPedigreeBrowser,
+    uitpGeneticValueAnalysis,
+    uitpSummaryStatistics,
+    uitpBreedingGroupFormation,
+    uitpOripReporting,
+    uitpPyramidPlot,
+    uitpReadme,
+    id = "tab_pages"
+  )
+} else {
+  navbarPageArgs <- list(
+    title = NULL,
+    uitpInputFileFormat,
+    uitpPedigreeBrowser,
+    uitpGeneticValueAnalysis,
+    uitpSummaryStatistics,
+    uitpBreedingGroupFormation,
+    uitpPyramidPlot,
+    uitpReadme,
+    id = "tab_pages"
+  )
+}
 
 shinyUI(tagList(
   tags$head(tags$style(
@@ -58,16 +80,5 @@ shinyUI(tagList(
       "
   )
   )),
-  navbarPage(
-    title = NULL,
-    uitpInputFileFormat,
-    uitpPedigreeBrowser,
-    uitpGeneticValueAnalysis,
-    uitpSummaryStatistics,
-    uitpBreedingGroupFormation,
-    uitpOripReporting,
-    uitpPyramidPlot,
-    uitpReadme,
-    id = "tab_pages"
-  )
-))
+  do.call(navbarPage, navbarPageArgs)
+  ))
