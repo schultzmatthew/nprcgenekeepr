@@ -130,11 +130,13 @@ fillBins <- function(
     male_bins <- c(male_bins,
                    nrow(age_dist[age_dist$sex == 'M' &
                                    age_dist$age >= lower_ages[bin] &
-                                   age_dist$age < upper_ages[bin], ]))
+                                   age_dist$age < upper_ages[bin] &
+                                   !is.na(age_dist$age), ]))
     female_bins <- c(female_bins,
                      nrow(age_dist[age_dist$sex == 'F' &
                                      age_dist$age >= lower_ages[bin] &
-                                     age_dist$age < upper_ages[bin], ]))
+                                     age_dist$age < upper_ages[bin] &
+                                     !is.na(age_dist$age), ]))
   }
   list(males = male_bins, females = female_bins)
 }
@@ -147,6 +149,7 @@ getMaxAx <- function(bins, ax_modulas) {
 #' \code{age}. This needs to be augmented to allow pedigrees structures that
 #' are provided by the nprcmanager package.
 #' @param ped dataframe with pedigree data.
+#' @import lubridate
 #' @import plotrix
 #' @import stringi
 #' @importFrom graphics par
