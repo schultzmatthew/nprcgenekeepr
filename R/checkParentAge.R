@@ -11,11 +11,11 @@
 #' in the original \code{sb} dataframe with the following added columns:
 #' \enumerate{
 #' \item {sireBirth} {sire's birth date}
-#' \item{sireAge} {age of sire in years on the date indicated by \code{birth}.
-#' \item{damBirth} for those offspring where one or more parent was less than
+#' \item{sireAge} {age of sire in years on the date indicated by \code{birth}.}
+#' \item{damBirth} {dam's birth date}
 #' \code{damAge} {age of dam in years on the date indicated by \code{birth}.}
 #' }
-#'
+#' @import lubridate
 #' @export
 checkParentAge <- function(sb, minParentAge = 2) {
   sireBirth <- data.frame(
@@ -29,14 +29,16 @@ checkParentAge <- function(sb, minParentAge = 2) {
   sb <- merge(sb, sireBirth, by.x = "sire", by.y = "id", all = TRUE)
   sb <- merge(sb, damBirth, by.x = "dam", by.y = "id", all = TRUE)
   sb$sireAge <- NA
-  sb$sireAge[!is.na(sb$sireBirth)] <- (sb$sireBirth[!is.na(sb$sireBirth)] -
-                                         sb$birth[!is.na(sb$sireBirth)]) /
+  sb$sireAge[!is.na(sb$sireBirth)] <- (sb$birth[!is.na(sb$sireBirth)] -
+                                         sb$sireBirth[!is.na(sb$sireBirth)]) /
     dyears(1)
-  sb$damAge[!is.na(sb$damBirth)] <- (sb$damBirth[!is.na(sb$damBirth)] -
-                                         sb$birth[!is.na(sb$damBirth)]) /
+  sb$damAge <- NA
+  sb$damAge[!is.na(sb$damBirth)] <- (sb$birth[!is.na(sb$damBirth)] -
+                                         sb$damBirth[!is.na(sb$damBirth)]) /
     dyears(1)
   sb <- sb[!is.na(sb$birth), ]
   sb <- sb[(sb$sireAge < minParentAge & !is.na(sb$sireBirth)) |
               (sb$damAge < minParentAge & !is.na(sb$damBirth)), ]
   sb
 }
+
