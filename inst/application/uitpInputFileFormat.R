@@ -22,9 +22,9 @@ uitpInputFileFormat <-
       div(style = "float:right;text-align:right;width:45%",
           "Genetic Management Tools")
     )),
-
     # Side Panel
-    div(
+    sidebarLayout(
+    sidebarPanel(
       style = paste(
         "float: left; width: 400px; height: 100%; padding: 10px;",
         "border: 1px solid lightgray; background-color: #EDEDED;",
@@ -33,7 +33,8 @@ uitpInputFileFormat <-
       ),
       helpText(
         "Select a pedigree file for analysis.
-        See the 'Format' tab for file formatting descriptions."
+        See the 'Input File Format' information to the right for file
+        formatting descriptions."
       ),
 
       radioButtons(
@@ -46,40 +47,31 @@ uitpInputFileFormat <-
         ),
         selected = ','
       ),
-
-      fileInput("select_file", label = "Select Input File"),
+      fileInput("select_file", label = "Select Pedigree File"),
       textInput("minParentAge", label = "Minimum Parent Age (years)",
-                   value = "2.5")
+                   value = "2.5"),
+      helpText(
+        "You may optionally select a separate genotype file that corresponds to
+        the pedigree file to allow observed genotypes to be modeled.
+        See the 'Input File Format' information to the right for file
+        formatting descriptions."
       ),
-    # div(6,
-    #   style = paste(
-    #     "float: left; width: 400px; height: 100%; padding: 10px;",
-    #     "border: 1px solid lightgray; background-color: #EDEDED;",
-    #     "margin-left: 3px;",
-    #     "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-    #   ),
-    #   helpText(
-    #     "Select a genotype file corresponding to the pedigree file.
-    #     See the 'Format' tab for file formatting descriptions."
-    #   ),
-    #
-    #   radioButtons(
-    #     'sep',
-    #     label = 'Separator',
-    #     choices = list(
-    #       'Comma' = ',',
-    #       'Semicolon' = ';',
-    #       'Tab' = '\t'
-    #     ),
-    #     selected = ','
-    #   ),
-    #
-    #   fileInput("genotype_file", label = "Select Input File")
-    #
-    #   ),
+      radioButtons(
+        'sep',
+        label = 'Separator',
+        choices = list(
+          'Comma' = ',',
+          'Semicolon' = ';',
+          'Tab' = '\t'
+        ),
+        selected = ','
+      ),
 
+      fileInput("genotype_file", label = "Select Genotype File")
+      ),
 
     # Main Panel
-    div(style = "margin-left:425px;padding:10px;",
+    mainPanel(#style = "margin-left:425px;padding:10px;",
         includeHTML("../extdata/input_format.html"))
+  )
   )
