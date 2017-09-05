@@ -8,28 +8,28 @@
 		colony can be accommodated within the same input file.
 	</li>
 	<li style="padding-bottom: 15px">
-		If an animal is missing information on one or both parents, that cell 
-		should be blank. For animals with no information on either parent, 
-		both cells under "Sire ID" and "Dam ID" should be blank. For animals 
-		with partial parentage information, unique "placeholder" IDs 
-		(designated as UIDs in Pedigree Brower tab) will be assigned by the 
-		software to represent the unknown parent.  <em>Please be aware that 
-		animals with no parents will be treated as founders in these 
+		If an animal is missing information on one or both parents, that cell
+		should be blank. For animals with no information on either parent,
+		both cells under "Sire ID" and "Dam ID" should be blank. For animals
+		with partial parentage information, unique "placeholder" IDs
+		(designated as UIDs in Pedigree Brower tab) will be assigned by the
+		software to represent the unknown parent.  <em>Please be aware that
+		animals with no parents will be treated as founders in these
 		calculations, i.e., sources of new genetic variation in the colony.</em>
 	</li>
 </ul>
 </p>
 
 <br>
-<h4>Input File Format Details:</h4>
+<h4>Pedigree File Format Details:</h4>
 <p>The following columns names are reserved and will be recognized:</p>
 <p><i>Ego ID, Sire ID, Dam ID,</i> and <i>Sex</i> are required columns.</p>
 <p>Either <i>Age</i> or <i>Birth</i> must also be provided.
 <ul style="list-style-type:disc">
 	<li style="padding-bottom: 15px">
-		Use column the names listed in the table below. Column name case and 
-		column order are not significant. The first column name listed for 
-		each column is the name used internally and is the name used in 
+		Use column the names listed in the table below. Column name case and
+		column order are not significant. The first column name listed for
+		each column is the name used internally and is the name used in
 		examples and output.
 	</li>
 	<li style="padding-bottom: 15px">
@@ -37,22 +37,28 @@
 		user-specified age.
 	</li>
 	<li style="padding-bottom: 15px">
-		Otherwise, the program will calculate age based on the <i>Birth</i> 
-		column and the current date, or the <i>Death, Departure,</i> or 
+		Otherwise, the program will calculate age based on the <i>Birth</i>
+		column and the current date, or the <i>Death, Departure,</i> or
 		<i>Exit</i> columns, if provided.
 	</li>
 	<li style="padding-bottom: 15px">
-		<i>Exit</i> dates, if provided, will supercede <i>Death</i> and 
-		<i>Departure</i> dates. If <i>Exit</i> is not provided, <i>Death</i> 
-		and <i>Departure</i> will be combined based on which date is 
-		chronologically first. (This functions primarily to catch clerical 
+		<i>Exit</i> dates, if provided, will supercede <i>Death</i> and
+		<i>Departure</i> dates. If <i>Exit</i> is not provided, <i>Death</i>
+		and <i>Departure</i> will be combined based on which date is
+		chronologically first. (This functions primarily to catch clerical
 		errors or historical changes in record-keeping practices.)
 	</li>
 	<li>
-		Dates should be in the format YYYY-MM-DD (this date option can be 
-		found under the "English-U.K." locale option under the "Format 
+		Dates should be in the format YYYY-MM-DD (this date option can be
+		found under the "English-U.K." locale option under the "Format
 		Cells -> Number -> Date"
 		menu in Excel 2010).
+	</li>
+	<li>
+		Genotype data may be supplied within the pedigree file or in a separate
+		genotype file. Only two additional columns (<i>first</i> and <i>second</i>
+		are required when the genotypes are provided within the pedigree file.
+		The columns are described below.
 	</li>
 </ul>
 </p>
@@ -73,13 +79,13 @@
 	</tr>
 	<tr bgcolor="#CCCCFF">
 		<td>Sire ID</td>
-        <td>sire, sire_id</td>
+        <td>sire, sireid, sire_id</td>
 		<td>Unique identifier of the ego's father</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
 		<td>Dam ID</td>
-        <td>dam, dam_id</td>
+        <td>dam, damid, dam_id</td>
 		<td>Unique identifier of the ego's mother</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
@@ -130,6 +136,39 @@
 		</td>
 		<td>YYYY-MM-DD Format</td>
 	</tr>
+	<tr bgcolor="#BFFF00">
+		<td>First</td>
+        <td>first</td>
+		<td>Unique integer greater than or equal to 10000</td>
+		<td>Represents one haploid and maps to a specific allele:
+		<br>Can be the same value as <i>second</i> if the individual is
+		homozygous at this locus
+		</td>
+	</tr>
+	<tr bgcolor="#BFFF00">
+		<td>Second</td>
+        <td>second</td>
+		<td>Unique integer greater than or equal to 10000</td>
+		<td>Represents one haploid and maps to a specific allele::
+		<br>Can be the same value as <i>first</i> if the individual is
+		homozygous at this locus</td>
+	</tr>
+	<tr bgcolor="#FSFFCC">
+		<td>First Name</td>
+        <td>first_name</td>
+		<td>Alphanumeric representation of first allele</td>
+		<td>Currently limited to alphanumeric values, underscores, spaces and
+		dashes. Other characters have not been tested.
+		</td>
+	</tr>
+	<tr bgcolor="#F2FFCC">
+		<td>Second Name</td>
+        <td>second_name</td>
+		<td>Alphanumeric representation of second allele</td>
+		<td>Currently limited to alphanumeric values, underscores, spaces and
+		dashes. Other characters have not been tested.
+		</td>
+	</tr>
 </table>
 <br>
 <ul style="list-style-type:disc">
@@ -152,18 +191,18 @@
 		columns of information shown. Input file processing will include:
 		<ul style="list-style-type:circle">
 			<li style="padding-top: 5px; padding-bottom: 5px">
-				A check for the 4 required fields: Ego ID, Sire ID, Dam ID, and 
+				A check for the 4 required fields: Ego ID, Sire ID, Dam ID, and
 				Sex.
 			</li>
 			<li style="padding-top: 5px; padding-bottom: 5px">
 				A check for either Age or Birth information.
 			</li>
 			<li style="padding-bottom: 5px">
-				Any animals listed as a Sire or Dam that do not have their own 
+				Any animals listed as a Sire or Dam that do not have their own
 				row or line entry as an Ego will be added.
 			</li>
 			<li style="padding-bottom: 5px">
-				Parents will be checked to ensure their own Ego entry is the 
+				Parents will be checked to ensure their own Ego entry is the
 				correct sex.
 			</li>
 			<li style="padding-bottom: 5px">
@@ -172,15 +211,15 @@
 			<li style="padding-bottom: 5px">
 				If Death or Departure date columns have been included, an
 				"Exit" column will be built. Otherwise, Exit date assignment
-				will be skipped if an Exit date column was provided in the 
+				will be skipped if an Exit date column was provided in the
 				input file.
 			</li>
 			<li style="padding-bottom: 5px">
 				If Birth dates have been included, age will be calculated as
-				(Birth Date - Exit Date)/365.25. If no Death, Departure, or Exit
+				(Birth Date - Exit Date) / 365.25. If no Death, Departure, or Exit
 				dates are provided, it is assumed that the ego is still alive,
-				and Age will be calculated as (Birth Date - 
-				Today's Date)/365.25.
+				and Age will be calculated as (Birth Date -
+				Today's Date) / 365.25.
 				Age calculation will be skipped if an Age information column is
 				included in the input file.
 			</li>
@@ -188,9 +227,94 @@
 				Generation numbers will be added to each ego.
 			</li>
 			<li>
-				Families (Pedigrees) will be numbered and this information will 
+				Families (Pedigrees) will be numbered and this information will
 				be added to each ego.
 			</li>
 		</ul>
+	</li>
+</ul>
+
+<br>
+<h4>Genotype File Format Details:</h4>
+<p>The following columns names are reserved and will be recognized:</p>
+<p><i>id, first</i>, and <i>second</i> are required columns.</p>
+<p><i>first_name</i> and <i>second_name</i> may also be provided.
+<ul style="list-style-type:disc">
+	<li style="padding-bottom: 15px">
+		Use column the names listed in the table below. Column name case and
+		column order are not significant. The column name listed for
+		each column is the name used internally and is the name used in
+		examples and output.
+	</li>
+	<li>
+		Genotype data can be supplied within the pedigree file or in this
+		genotype file. Only two additional columns (<i>first</i> and <i>second</i>
+		are required when the genotypes are provided within the pedigree file.
+		See table above for a description.
+		The genotype file columns are described below.
+	</li>
+</ul>
+</p>
+<hr></hr>
+
+<table>
+	<tr bgcolor="#7CFC00">
+		<th>Column</th>
+        <th>Column Name</th>
+		<th>Description of Information</th>
+		<th>Data Format</th>
+	</tr>
+	<tr bgcolor="#CCCCFF">
+		<td>ID</td>
+        <td>id</td>
+		<td>Unique animal identifier</td>
+		<td>Alphanumeric characters (no symbols)</td>
+	</tr>
+	<tr bgcolor="#CCCCFF">
+		<td>First</td>
+        <td>first</td>
+		<td>Unique integer greater than or equal to 10000</td>
+		<td>Represents one haploid and maps to a specific allele:
+		<br>Can be the same value as <i>second</i> if the individual is
+		homozygous at this locus
+		</td>
+	</tr>
+	<tr bgcolor="#CCCCFF">
+		<td>Second</td>
+        <td>second</td>
+		<td>Unique integer greater than or equal to 10000</td>
+		<td>Represents one haploid and maps to a specific allele:
+		<br>Can be the same value as <i>first</i> if the individual is
+		homozygous at this locus</td>
+	</tr>
+	<tr bgcolor="#E6E6FF">
+		<td>First Name</td>
+        <td>first_name</td>
+		<td>Alphanumeric representation of first allele</td>
+		<td>Currently limited to alphanumeric values, underscores, spaces and
+		dashes. Other characters have not been tested.
+		</td>
+	</tr>
+	<tr bgcolor="#E6E6FF">
+		<td>Second Name</td>
+        <td>second_name</td>
+		<td>Alphanumeric representation of second allele</td>
+		<td>Currently limited to alphanumeric values, underscores, spaces and
+		dashes. Other characters have not been tested.
+		</td>
+	</tr>
+</table>
+<br>
+<ul style="list-style-type:disc">
+	<li style="padding-bottom: 15px">
+		You will need to save your genotype file as a plain text file
+		(either .txt or .csv), in order to upload it correctly.
+		To do this, you may use the "Save As" function in Excel to
+		save a spreadsheet in a "tab-delimited" or "comma-delimited"
+		file format.
+	</li>
+	<li style="padding-bottom: 15px">
+		Select the correct file type, and then
+		click on "Select Genotype File" to upload the file.
 	</li>
 </ul>
