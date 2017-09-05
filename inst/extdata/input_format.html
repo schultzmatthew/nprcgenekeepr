@@ -8,14 +8,14 @@
 		colony can be accommodated within the same input file.
 	</li>
 	<li style="padding-bottom: 15px">
-		If an animal is missing information on one or both parents, that cell should
-		be blank. For animals with no information on either parent, both cells under
-		"Sire ID" and "Dam ID" should be blank. For animals with partial parentage
-		information, unique "placeholder" IDs (designated as UIDs in Pedigree
-		Brower tab) will be assigned by the software to
-		represent the unknown parent.  <em>Please be aware that animals with no parents
-		will be treated as founders in these calculations, i.e., sources of new
-		genetic variation in the colony.</em>
+		If an animal is missing information on one or both parents, that cell 
+		should be blank. For animals with no information on either parent, 
+		both cells under "Sire ID" and "Dam ID" should be blank. For animals 
+		with partial parentage information, unique "placeholder" IDs 
+		(designated as UIDs in Pedigree Brower tab) will be assigned by the 
+		software to represent the unknown parent.  <em>Please be aware that 
+		animals with no parents will be treated as founders in these 
+		calculations, i.e., sources of new genetic variation in the colony.</em>
 	</li>
 </ul>
 </p>
@@ -27,21 +27,31 @@
 <p>Either <i>Age</i> or <i>Birth</i> must also be provided.
 <ul style="list-style-type:disc">
 	<li style="padding-bottom: 15px">
-		If the <i>Age</i> column is provided, the program will use the user-specified age.
+		Use column the names listed in the table below. Column name case and 
+		column order are not significant. The first column name listed for 
+		each column is the name used internally and is the name used in 
+		examples and output.
 	</li>
 	<li style="padding-bottom: 15px">
-		Otherwise, the program will calculate age based on the <i>Birth</i> column and the
-		current date, or the <i>Death, Departure,</i> or <i>Exit</i> columns, if provided.
+		If the <i>Age</i> column is provided, the program will use the
+		user-specified age.
 	</li>
 	<li style="padding-bottom: 15px">
-		<i>Exit</i> dates, if provided, will supercede <i>Death</i> and <i>Departure</i>
-		dates. If <i>Exit</i> is not provided, <i>Death</i> and <i>Departure</i> will be
-		combined based on which date is chronologically first. (This functions primarily
-		to catch clerical errors or historical changes in record-keeping practices.)
+		Otherwise, the program will calculate age based on the <i>Birth</i> 
+		column and the current date, or the <i>Death, Departure,</i> or 
+		<i>Exit</i> columns, if provided.
+	</li>
+	<li style="padding-bottom: 15px">
+		<i>Exit</i> dates, if provided, will supercede <i>Death</i> and 
+		<i>Departure</i> dates. If <i>Exit</i> is not provided, <i>Death</i> 
+		and <i>Departure</i> will be combined based on which date is 
+		chronologically first. (This functions primarily to catch clerical 
+		errors or historical changes in record-keeping practices.)
 	</li>
 	<li>
-		Dates should be in the format YYYY-MM-DD (this date option can be found under
-		the "English-U.K." locale option under the "Format Cells -> Number -> Date"
+		Dates should be in the format YYYY-MM-DD (this date option can be 
+		found under the "English-U.K." locale option under the "Format 
+		Cells -> Number -> Date"
 		menu in Excel 2010).
 	</li>
 </ul>
@@ -142,17 +152,19 @@
 		columns of information shown. Input file processing will include:
 		<ul style="list-style-type:circle">
 			<li style="padding-top: 5px; padding-bottom: 5px">
-				A check for the 4 required fields: Ego ID, Sire ID, Dam ID, and Sex.
+				A check for the 4 required fields: Ego ID, Sire ID, Dam ID, and 
+				Sex.
 			</li>
 			<li style="padding-top: 5px; padding-bottom: 5px">
 				A check for either Age or Birth information.
 			</li>
 			<li style="padding-bottom: 5px">
-				Any animals listed as a Sire or Dam that do not have their own row
-				or line entry as an Ego will be added.
+				Any animals listed as a Sire or Dam that do not have their own 
+				row or line entry as an Ego will be added.
 			</li>
 			<li style="padding-bottom: 5px">
-				Parents will be checked to ensure their own Ego entry is the correct sex.
+				Parents will be checked to ensure their own Ego entry is the 
+				correct sex.
 			</li>
 			<li style="padding-bottom: 5px">
 				Duplicate rows will be removed.
@@ -160,13 +172,15 @@
 			<li style="padding-bottom: 5px">
 				If Death or Departure date columns have been included, an
 				"Exit" column will be built. Otherwise, Exit date assignment
-				will be skipped if an Exit date column was provided in the input file.
+				will be skipped if an Exit date column was provided in the 
+				input file.
 			</li>
 			<li style="padding-bottom: 5px">
 				If Birth dates have been included, age will be calculated as
 				(Birth Date - Exit Date)/365.25. If no Death, Departure, or Exit
 				dates are provided, it is assumed that the ego is still alive,
-				and Age will be calculated as (Birth Date - Today's Date)/365.25.
+				and Age will be calculated as (Birth Date - 
+				Today's Date)/365.25.
 				Age calculation will be skipped if an Age information column is
 				included in the input file.
 			</li>
@@ -174,8 +188,8 @@
 				Generation numbers will be added to each ego.
 			</li>
 			<li>
-				Families (Pedigrees) will be numbered and this information will be added
-				to each ego.
+				Families (Pedigrees) will be numbered and this information will 
+				be added to each ego.
 			</li>
 		</ul>
 	</li>
