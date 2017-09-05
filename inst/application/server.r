@@ -2,7 +2,7 @@
 # source("../../R/GeneticValueAnalysis.R")
 # source("../../R/GroupFormation.R")
 # source("../../R/Relations.R")
-
+`%then%` <- shiny:::`%OR%`
 shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling initial pedigree upload and QC
@@ -39,8 +39,9 @@ shinyServer(function(input, output, session) {
                     return(NULL)
                   }
                   )
-    validate(need(minParentAge >= 0, "    Minimum Parent Age must be >= 0."))
-    validate(need(!is.null(d), "   Error uploading data."))
+    validate(need(minParentAge >= 0,
+                  "    Minimum Parent Age must be >= 0.") %then%
+               need(!is.null(d), "   Error uploading data."))
     d
   })
 
@@ -80,7 +81,7 @@ shinyServer(function(input, output, session) {
 
   # Changing the active tab to the "Pedigree Browser" tab
   observe({
-    if (!is.null(input$select_file)) {
+    if (!is.null(sb())) {
       updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
     }
   })
