@@ -32,42 +32,65 @@ uitpInputFileFormat <-
         "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
       ),
       helpText(
-        "Select a pedigree file for analysis.
-        See the 'Input File Format' information to the right for file
-        formatting descriptions."
+        "Select how you are submitting data.
+        See the Input File(s) information on the right for
+        file content and format specifications."
       ),
-
       radioButtons(
-        'sep',
-        label = 'Separator',
+        "dataSource",
+        label = "File Type(s)",
         choices = list(
-          'Comma' = ',',
-          'Semicolon' = ';',
-          'Tab' = '\t'
+          "Pedigree(s) file only; genotypes not provided" = "pedFile",
+          "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
+          "Pedigree(s) and genotypes in separate files" = "separatePedGenoFile"
         ),
-        selected = ','
+        selected = "pedFile"
       ),
-      fileInput("select_file", label = "Select Pedigree File"),
+      conditionalPanel(
+        condition = "input.dataSource == 'pedFile'",
+        radioButtons(
+          'sep',
+          label = 'Separator',
+          choices = list(
+            'Comma' = ',',
+            'Semicolon' = ';',
+            'Tab' = '\t'
+          ),
+          selected = ','
+        ),
+        fileInput("select_file", label = "Select Pedigree File")
+      ),
+      conditionalPanel(
+        condition = "input.dataSource == 'commonPedGenoFile'",
+        radioButtons(
+          'sep',
+          label = 'Separator',
+          choices = list(
+            'Comma' = ',',
+            'Semicolon' = ';',
+            'Tab' = '\t'
+          ),
+          selected = ','
+        ),
+        fileInput("select_file", label = "Select Pedigree-Genotype File")
+      ),
+      conditionalPanel(
+        condition = "input.dataSource == 'separatePedGenoFile'",
+        radioButtons(
+          'sep',
+          label = 'Separator',
+          choices = list(
+            'Comma' = ',',
+            'Semicolon' = ';',
+            'Tab' = '\t'
+          ),
+          selected = ','
+        ),
+        fileInput("pedigree_file", label = "Select Pedigree File"),
+        fileInput("genotype_file", label = "Select Genotype File")
+      ),
       textInput("minParentAge", label = "Minimum Parent Age (years)",
-                   value = "2.5"),
-      helpText(
-        "You may optionally select a separate genotype file that corresponds to
-        the pedigree file to allow observed genotypes to be modeled.
-        See the 'Input File Format' information to the right for file
-        formatting descriptions."
-      ),
-      radioButtons(
-        'sep',
-        label = 'Separator',
-        choices = list(
-          'Comma' = ',',
-          'Semicolon' = ';',
-          'Tab' = '\t'
-        ),
-        selected = ','
-      ),
-
-      fileInput("genotype_file", label = "Select Genotype File")
+                   value = "2.5")
       ),
 
     # Main Panel
