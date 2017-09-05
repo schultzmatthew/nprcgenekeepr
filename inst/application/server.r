@@ -39,11 +39,8 @@ shinyServer(function(input, output, session) {
                     return(NULL)
                   }
                   )
-
-    validate(
-      need(!is.null(d), "Error uploading data.")
-    )
-
+    validate(need(minParentAge >= 0, "    Minimum Parent Age must be >= 0."))
+    validate(need(!is.null(d), "   Error uploading data."))
     d
   })
 
