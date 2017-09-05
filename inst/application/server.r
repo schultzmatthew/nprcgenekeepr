@@ -22,7 +22,14 @@ shinyServer(function(input, output, session) {
     if (is.null(inFile)) {
       return(NULL)
     }
-
+getMinParentAge <- function() {
+  minParentAge <- isolate(as.numeric(input$minParentAge))
+  if (minParentAge < 0)
+    stop("Minimum Parent Age must be >= 0.")
+  else {
+    minParentAge
+  }
+}
     # Load and QC the data table
     d <- read.csv(inFile$datapath,
                   header = TRUE,
@@ -30,7 +37,15 @@ shinyServer(function(input, output, session) {
                   stringsAsFactors = FALSE,
                   na.strings = c("", "NA"),
                   check.names = FALSE)
-    minParentAge <- isolate(as.numeric(input$minParentAge))
+
+    minParentAge <- tryCatch({getMinParentAge()},
+      warning = function(cond) {
+        return(NULL)
+      },
+      error = function(cond) {
+        return(NULL)
+      }
+    )
     d <- tryCatch(qc.Studbook(d, minParentAge),
                   warning = function(cond) {
                     return(NULL)
@@ -39,9 +54,13 @@ shinyServer(function(input, output, session) {
                     return(NULL)
                   }
                   )
-    validate(need(minParentAge >= 0,
-                  "    Minimum Parent Age must be >= 0.") %then%
-               need(!is.null(d), "   Error uploading data."))
+    validate(need(!is.null(minParentAge),
+                  paste0("   Error uploading data. ",
+                         geterrmessage())) %then%
+               need(!is.null(d), paste0("   Error uploading data. ",
+                                        geterrmessage())))
+    if (is.null(minParentAge))
+      d <- NULL
     d
   })
 
