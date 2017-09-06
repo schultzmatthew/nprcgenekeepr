@@ -25,6 +25,18 @@ shinyServer(function(input, output, session) {
   # Load/QC the pedigree once a file has been specified
   sb <- reactive({
     input$getData # This button starts it all
+    sepOne <- isolate(input$sepOne)
+    sepTwo <- isolate(input$sepTwo)
+    sepThree <- isolate(input$sepThree)
+    if (!is.null(sepOne)) {
+      sep <- sepOne
+    } else if (!is.null(sepTwo)) {
+      sep <- sepTwo
+    } else if (!is.null(sepThree)) {
+      sep <- sepThree
+    } else {
+      stop("Column seperator was not defined.")
+    }
     minParentAge <- tryCatch({isolate(getMinParentAge())},
                              warning = function(cond) {
                                return(NULL)
@@ -42,23 +54,23 @@ shinyServer(function(input, output, session) {
     dataSource <- isolate(input$dataSource)
     pedigreeFile <- isolate(input$pedigreeFile)
     # Load pedigree table
-    d <- isolate(read.csv(pedigreeFile$datapath,
+    d <- read.csv(isolate(pedigreeFile$datapath),
                           header = TRUE,
-                          sep = input$sep,
+                          sep = sep,
                           stringsAsFactors = FALSE,
                           na.strings = c("", "NA"),
-                          check.names = FALSE))
+                          check.names = FALSE)
     if (is.null(dataSource)) {
       stop("Did not expect input$dataSource to be NULL")
     } else if (dataSource == "separatePedGenoFile") {
       genotypeFile <- isolate(input$genotypeFile)
       # Load pedigree table
-      genotype <- isolate(read.csv(genotypeFile$datapath,
+      genotype <- read.csv(isolate(genotypeFile$datapath),
                             header = TRUE,
-                            sep = input$sep,
+                            sep = sep,
                             stringsAsFactors = FALSE,
                             na.strings = c("", "NA"),
-                            check.names = FALSE))
+                            check.names = FALSE)
       genotype <- tryCatch(checkGenotypeFile(genotype),
                            warning = function(cond) {
                              return(NULL)
