@@ -17,11 +17,23 @@
 		animals with no parents will be treated as founders in these
 		calculations, i.e., sources of new genetic variation in the colony.</em>
 	</li>
+	<li style="padding-bottom: 15px">
+	  Genotypic information for a single locus can be included in the genetic
+	  analyses. See <a href="#pedigree_format">Pedigree File Format</a> and
+	  <a href="#genotype_format">Genotype File Format</a> below for file
+	  descriptions.
+	  Observed genotypic information can be supplied for any members of
+	  the pedigree. Designation of two alleles is required as currently
+	  there is no accommodation for partial genetic information for an individual.
+	  Thus, two alleles are required. Please contact
+	  <a href="mailto:msharp@TxBiomed.org?Subject=nprcmanager:%20Need%20to%20allow%20partial%20genetic%20information" target="_top">R. Mark Sharp</a>
+	  if you need to be able to enter partial genetic information.
+	</li>
 </ul>
 </p>
 
 <br>
-<h4>Pedigree File Format Details:</h4>
+<h4 id="pedigree_format">Pedigree File Format Details:</h4>
 <p>The following columns names are reserved and will be recognized:</p>
 <p><i>Ego ID, Sire ID, Dam ID,</i> and <i>Sex</i> are required columns.</p>
 <p>Either <i>Age</i> or <i>Birth</i> must also be provided.
@@ -235,7 +247,7 @@
 </ul>
 
 <br>
-<h4>Genotype File Format Details:</h4>
+<h4 id="genotype_format">Genotype File Format Details:</h4>
 <p>The following columns names are reserved and will be recognized:</p>
 <p><i>id, first</i>, and <i>second</i> are required columns.</p>
 <p><i>first_name</i> and <i>second_name</i> may also be provided.
