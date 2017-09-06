@@ -24,84 +24,84 @@ uitpInputFileFormat <-
     )),
     # Side Panel
     sidebarLayout(
-    sidebarPanel(
-      style = paste(
-        "float: left; width: 400px; height: 100%; padding: 10px;",
-        "border: 1px solid lightgray; background-color: #EDEDED;",
-        "margin-left: 3px;",
-        "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-      ),
-      helpText(
-        "Select how you are submitting data.
-        See the Input File Handling information on the right for
-        file content and format specifications."
-      ),
-      radioButtons(
-        "dataSource",
-        label = "File Type(s)",
-        choices = list(
-          "Pedigree(s) file only; genotypes not provided" = "pedFile",
-          "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
-          "Pedigree(s) and genotypes in separate files" = "separatePedGenoFile"
+      sidebarPanel(
+        style = paste(
+          "float: left; width: 400px; height: 100%; padding: 10px;",
+          "border: 1px solid lightgray; background-color: #EDEDED;",
+          "margin-left: 3px;",
+          "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
         ),
-        selected = "pedFile"
-      ),
-      conditionalPanel(
-        condition = "input.dataSource == 'pedFile'",
+        helpText(
+          "Select how you are submitting data.
+          See the Input File Handling information on the right for
+          file content and format specifications."
+        ),
         radioButtons(
-          'sep',
-          label = 'Separator',
+          "dataSource",
+          label = "File Type(s)",
           choices = list(
-            'Comma' = ',',
-            'Semicolon' = ';',
-            'Tab' = '\t'
+            "Pedigree(s) file only; genotypes not provided" = "pedFile",
+            "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
+            "Pedigree(s) and genotypes in separate files" = "separatePedGenoFile"
           ),
-          selected = ','
+          selected = "pedFile"
         ),
-        fileInput("pedigree_file", label = "Select Pedigree File")
-      ),
-      conditionalPanel(
-        condition = "input.dataSource == 'commonPedGenoFile'",
-        radioButtons(
-          'sep',
-          label = 'Separator',
-          choices = list(
-            'Comma' = ',',
-            'Semicolon' = ';',
-            'Tab' = '\t'
+        conditionalPanel(
+          condition = "input.dataSource == 'pedFile'",
+          radioButtons(
+            'sep',
+            label = 'Separator',
+            choices = list(
+              'Comma' = ',',
+              'Semicolon' = ';',
+              'Tab' = '\t'
+            ),
+            selected = ','
           ),
-          selected = ','
+          fileInput("pedigreeFile", label = "Select Pedigree File")
         ),
-        fileInput("pedigree_file", label = "Select Pedigree-Genotype File")
-      ),
-      conditionalPanel(
-        condition = "input.dataSource == 'separatePedGenoFile'",
-        radioButtons(
-          'sep',
-          label = 'Separator',
-          choices = list(
-            'Comma' = ',',
-            'Semicolon' = ';',
-            'Tab' = '\t'
+        conditionalPanel(
+          condition = "input.dataSource == 'commonPedGenoFile'",
+          radioButtons(
+            'sep',
+            label = 'Separator',
+            choices = list(
+              'Comma' = ',',
+              'Semicolon' = ';',
+              'Tab' = '\t'
+            ),
+            selected = ','
           ),
-          selected = ','
+          fileInput("pedigreeFile", label = "Select Pedigree-Genotype File")
         ),
-        fileInput("pedigreeFile", label = "Select Pedigree File"),
-        fileInput("genotypeFile", label = "Select Genotype File")
+        conditionalPanel(
+          condition = "input.dataSource == 'separatePedGenoFile'",
+          radioButtons(
+            'sep',
+            label = 'Separator',
+            choices = list(
+              'Comma' = ',',
+              'Semicolon' = ';',
+              'Tab' = '\t'
+            ),
+            selected = ','
+          ),
+          fileInput("pedigreeFile", label = "Select Pedigree File"),
+          fileInput("genotypeFile", label = "Select Genotype File")
+        ),
+        textInput("minParentAge", label = "Minimum Parent Age (years)",
+                  value = "2.5"),
+        helpText(
+          "If a parent is not at least as old as the minimum parent age
+          on the birth date of an offspring in the pedigree, the input
+          file will not be accepted and a file named lowParentAge.csv will
+          be written to the users home directory. Animals without birth dates
+          are not considered."
+        ),
+        actionButton("getData", "Read files now.")
       ),
-      textInput("minParentAge", label = "Minimum Parent Age (years)",
-                   value = "2.5")
-      ),
-    helpText(
-      "If a parent is not at least as old as the minimum parent age
-      on the birth date of an offspring in the pedigree, the input
-      file will not be accepted and a file named lowParentAge.csv will
-      be written to the users home directory. Animals without birth dates
-      are not considered."
-    ),
-    actionButton("getData", "Read files now."),
-    # Main Panel
-    mainPanel(#style = "margin-left:425px;padding:10px;",
+      # Main Panel
+      mainPanel(#style = "margin-left:425px;padding:10px;",
         includeHTML("../extdata/input_format.html"))
-  )
+    )
   )
