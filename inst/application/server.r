@@ -3,6 +3,14 @@
 # source("../../R/GroupFormation.R")
 # source("../../R/Relations.R")
 `%then%` <- shiny:::`%OR%`
+getMinParentAge <- function() {
+  minParentAge <- isolate(as.numeric(input$minParentAge))
+  if (minParentAge < 0)
+    stop("Minimum Parent Age must be >= 0.")
+  else {
+    minParentAge
+  }
+}
 shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling initial pedigree upload and QC
@@ -16,36 +24,55 @@ shinyServer(function(input, output, session) {
 
   # Load/QC the pedigree once a file has been specified
   sb <- reactive({
-    # inFile will be NULL initially.
+    input$getData # This button starts it all
+    minParentAge <- tryCatch({isolate(getMinParentAge())},
+                             warning = function(cond) {
+                               return(NULL)
+                             },
+                             error = function(cond) {
+                               return(NULL)
+                             }
+    )
+    # pedigreeFile will be NULL initially.
     # After the user selects a file, it will be a filepath.
-    inFile <- input$select_file
-    if (is.null(inFile)) {
+    pedigreeFile <- isolate(input$pedigree_file)
+    if (is.null(pedigreeFile)) {
       return(NULL)
     }
-getMinParentAge <- function() {
-  minParentAge <- isolate(as.numeric(input$minParentAge))
-  if (minParentAge < 0)
-    stop("Minimum Parent Age must be >= 0.")
-  else {
-    minParentAge
-  }
-}
-    # Load and QC the data table
-    d <- read.csv(inFile$datapath,
-                  header = TRUE,
-                  sep = input$sep,
-                  stringsAsFactors = FALSE,
-                  na.strings = c("", "NA"),
-                  check.names = FALSE)
+    dataSource <- isolate(input$dataSource)
+    pedigreeFile <- isolate(input$pedigreeFile)
+    # Load pedigree table
+    d <- isolate(read.csv(pedigreeFile$datapath,
+                          header = TRUE,
+                          sep = input$sep,
+                          stringsAsFactors = FALSE,
+                          na.strings = c("", "NA"),
+                          check.names = FALSE))
+    if (is.null(dataSource)) {
+      stop("Did not expect input$dataSource to be NULL")
+    } else if (dataSource == "separatePedGenoFile") {
+      genotypeFile <- isolate(input$genotypeFile)
+      # Load pedigree table
+      genotype <- isolate(read.csv(genotypeFile$datapath,
+                            header = TRUE,
+                            sep = input$sep,
+                            stringsAsFactors = FALSE,
+                            na.strings = c("", "NA"),
+                            check.names = FALSE))
+      genotype <- tryCatch(checkGenotypeFile(genotype),
+                           warning = function(cond) {
+                             return(NULL)
+                           },
+                           error = function(cond) {
+                             return(NULL)
+                           })
+    } else {
+      genotypes <- NULL
+    }
+    if (is.null(pedigreeFile)) {
+      return(NULL)
+    }
 
-    minParentAge <- tryCatch({getMinParentAge()},
-      warning = function(cond) {
-        return(NULL)
-      },
-      error = function(cond) {
-        return(NULL)
-      }
-    )
     d <- tryCatch(qc.Studbook(d, minParentAge),
                   warning = function(cond) {
                     return(NULL)
@@ -58,7 +85,10 @@ getMinParentAge <- function() {
                   paste0("   Error uploading data. ",
                          geterrmessage())) %then%
                need(!is.null(d), paste0("   Error uploading data. ",
-                                        geterrmessage())))
+                                        geterrmessage())) %then%
+               need(!is.null(genotype),
+                     paste0("   Error uploading genotype file. ",
+                            geterrmessage())))
     if (is.null(minParentAge))
       d <- NULL
     d
@@ -72,6 +102,9 @@ getMinParentAge <- function() {
 
     p <- tryCatch(
       {
+        if (dataSource == "separatePedGenoFile") {
+          p <- addGenotype(p, genotype)
+        }
         p <- resetPopulation(specifyPopulation(), p)
 
         if (input$trim) {
