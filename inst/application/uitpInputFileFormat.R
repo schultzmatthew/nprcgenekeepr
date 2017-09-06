@@ -58,7 +58,7 @@ uitpInputFileFormat <-
           ),
           selected = ','
         ),
-        fileInput("select_file", label = "Select Pedigree File")
+        fileInput("pedigree_file", label = "Select Pedigree File")
       ),
       conditionalPanel(
         condition = "input.dataSource == 'commonPedGenoFile'",
@@ -72,7 +72,7 @@ uitpInputFileFormat <-
           ),
           selected = ','
         ),
-        fileInput("select_file", label = "Select Pedigree-Genotype File")
+        fileInput("pedigree_file", label = "Select Pedigree-Genotype File")
       ),
       conditionalPanel(
         condition = "input.dataSource == 'separatePedGenoFile'",
@@ -86,8 +86,8 @@ uitpInputFileFormat <-
           ),
           selected = ','
         ),
-        fileInput("pedigree_file", label = "Select Pedigree File"),
-        fileInput("genotype_file", label = "Select Genotype File")
+        fileInput("pedigreeFile", label = "Select Pedigree File"),
+        fileInput("genotypeFile", label = "Select Genotype File")
       ),
       textInput("minParentAge", label = "Minimum Parent Age (years)",
                    value = "2.5")
@@ -99,7 +99,7 @@ uitpInputFileFormat <-
       be written to the users home directory. Animals without birth dates
       are not considered."
     ),
-
+    actionButton("getData", "Read files now."),
     # Main Panel
     mainPanel(#style = "margin-left:425px;padding:10px;",
         includeHTML("../extdata/input_format.html"))
