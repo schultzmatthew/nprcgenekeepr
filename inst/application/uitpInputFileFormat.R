@@ -49,7 +49,7 @@ uitpInputFileFormat <-
         conditionalPanel(
           condition = "input.dataSource == 'pedFile'",
           radioButtons(
-            'sep',
+            'sepOne',
             label = 'Separator',
             choices = list(
               'Comma' = ',',
@@ -63,7 +63,7 @@ uitpInputFileFormat <-
         conditionalPanel(
           condition = "input.dataSource == 'commonPedGenoFile'",
           radioButtons(
-            'sep',
+            'sepTwo',
             label = 'Separator',
             choices = list(
               'Comma' = ',',
@@ -77,7 +77,7 @@ uitpInputFileFormat <-
         conditionalPanel(
           condition = "input.dataSource == 'separatePedGenoFile'",
           radioButtons(
-            'sep',
+            'sepThree',
             label = 'Separator',
             choices = list(
               'Comma' = ',',
