@@ -33,7 +33,7 @@ uitpInputFileFormat <-
       ),
       helpText(
         "Select how you are submitting data.
-        See the Input File(s) information on the right for
+        See the Input File Handling information on the right for
         file content and format specifications."
       ),
       radioButtons(
@@ -92,6 +92,13 @@ uitpInputFileFormat <-
       textInput("minParentAge", label = "Minimum Parent Age (years)",
                    value = "2.5")
       ),
+    helpText(
+      "If a parent is not at least as old as the minimum parent age
+      on the birth date of an offspring in the pedigree, the input
+      file will not be accepted and a file named lowParentAge.csv will
+      be written to the users home directory. Animals without birth dates
+      are not considered."
+    ),
 
     # Main Panel
     mainPanel(#style = "margin-left:425px;padding:10px;",
