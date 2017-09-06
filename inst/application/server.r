@@ -4,11 +4,11 @@
 # source("../../R/Relations.R")
 `%then%` <- shiny:::`%OR%`
 getMinParentAge <- function() {
-  minParentAge <- isolate(as.numeric(input$minParentAge))
+  minParentAge <- as.numeric(renderText({input$minParentAge}))
   if (minParentAge < 0)
     stop("Minimum Parent Age must be >= 0.")
   else {
-    minParentAge
+    return(minParentAge)
   }
 }
 shinyServer(function(input, output, session) {
@@ -25,74 +25,102 @@ shinyServer(function(input, output, session) {
   # Load/QC the pedigree once a file has been specified
   sb <- reactive({
     input$getData # This button starts it all
-    sepOne <- isolate(input$sepOne)
-    sepTwo <- isolate(input$sepTwo)
-    sepThree <- isolate(input$sepThree)
-    if (!is.null(sepOne)) {
-      sep <- sepOne
-    } else if (!is.null(sepTwo)) {
-      sep <- sepTwo
-    } else if (!is.null(sepThree)) {
-      sep <- sepThree
-    } else {
-      stop("Column seperator was not defined.")
-    }
-    minParentAge <- tryCatch({isolate(getMinParentAge())},
+    isolate({
+      sepOne <- input$sepOne
+      sepTwo <- input$sepTwo
+      sepThree <- input$sepThree
+      if (!is.null(sepOne)) {
+        sep <- sepOne
+        pedigreeFile <- input$pedigreeFileOne
+        cat(paste0("pedigreeFileOne - pedigreeFile$name: ",
+                   pedigreeFile$name, "\n",
+                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
+            file = "~/shiny.txt", append = TRUE)
+      } else if (!is.null(sepTwo)) {
+        sep <- sepTwo
+        cat(paste0("pedigreeFileTwo - pedigreeFile$name: ",
+                   pedigreeFile$name, "\n",
+                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
+            file = "~/shiny.txt", append = TRUE)
+      } else if (!is.null(sepThree)) {
+        sep <- sepThree
+        pedigreeFile <- input$pedigreeFileThree
+        genotypeFile <- input$genotypeFile
+        cat(paste0("pedigreeFileThree - pedigreeFile$name: ",
+                   pedigreeFile$name, "; ",
+                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n",
+                   "genotypeFile$name: ", genotypeFile$name,
+                   "; genotypeFile$datapath: ", genotypeFile$datapath),
+            file = "~/shiny.txt", append = TRUE)
+      } else {
+        stop("Column seperator was not defined.")
+      }
+      cat(paste0("sep: ", sep, "\n"), file = "~/shiny.txt", append = TRUE)
+      minParentAge <- renderText({input$minParentAge})
+      cat(paste0("minParentAge: ",
+                 input$minParentAge, "\n"),
+          file = "~/shiny.txt", append = TRUE)
+      minParentAge <- tryCatch(as.numeric(input$minParentAge),
+                               warning = function(cond) {
+                                 return(NULL)
+                               },
+                               error = function(cond) {
+                                 return(NULL)
+                               }
+      )
+      cat(paste0("minParentAge: ", minParentAge, "\n"),
+          file = "~/shiny.txt", append = TRUE)
+      cat(paste0("pedigreeFile$name: ", pedigreeFile$name,
+                 "; pedigreeFile$datapath: ", pedigreeFile$datapath,
+                 "\n"),
+          file = "~/shiny.txt", append = TRUE)
+
+      # pedigreeFile will be NULL initially.
+      # After the user selects a file, it will be a filepath.
+      if (is.null(input$pedigreeFile)) {
+        return(NULL)
+      }
+      # Load pedigree table
+      d <- read.csv(input$pedigreeFile$datapath,
+                    header = TRUE,
+                    sep = sep,
+                    stringsAsFactors = FALSE,
+                    na.strings = c("", "NA"),
+                    check.names = FALSE)
+
+      if (is.null(dataSource)) {
+        stop("Did not expect input$dataSource to be NULL")
+      } else if (dataSource == "separatePedGenoFile") {
+        # Load pedigree table
+        genotype <- read.csv(genotypeFile$datapath,
+                             header = TRUE,
+                             sep = sep,
+                             stringsAsFactors = FALSE,
+                             na.strings = c("", "NA"),
+                             check.names = FALSE)
+        genotype <- tryCatch(checkGenotypeFile(genotype),
                              warning = function(cond) {
                                return(NULL)
                              },
                              error = function(cond) {
                                return(NULL)
-                             }
-    )
-    # pedigreeFile will be NULL initially.
-    # After the user selects a file, it will be a filepath.
-    pedigreeFile <- isolate(input$pedigree_file)
-    if (is.null(pedigreeFile)) {
-      return(NULL)
-    }
-    dataSource <- isolate(input$dataSource)
-    pedigreeFile <- isolate(input$pedigreeFile)
-    # Load pedigree table
-    d <- read.csv(isolate(pedigreeFile$datapath),
-                          header = TRUE,
-                          sep = sep,
-                          stringsAsFactors = FALSE,
-                          na.strings = c("", "NA"),
-                          check.names = FALSE)
-    if (is.null(dataSource)) {
-      stop("Did not expect input$dataSource to be NULL")
-    } else if (dataSource == "separatePedGenoFile") {
-      genotypeFile <- isolate(input$genotypeFile)
-      # Load pedigree table
-      genotype <- read.csv(isolate(genotypeFile$datapath),
-                            header = TRUE,
-                            sep = sep,
-                            stringsAsFactors = FALSE,
-                            na.strings = c("", "NA"),
-                            check.names = FALSE)
-      genotype <- tryCatch(checkGenotypeFile(genotype),
-                           warning = function(cond) {
-                             return(NULL)
-                           },
-                           error = function(cond) {
-                             return(NULL)
-                           })
-    } else {
-      genotypes <- NULL
-    }
-    if (is.null(pedigreeFile)) {
-      return(NULL)
-    }
+                             })
+      } else {
+        genotype <- NULL
+      }
 
-    d <- tryCatch(qc.Studbook(d, minParentAge),
-                  warning = function(cond) {
-                    return(NULL)
-                  },
-                  error = function(cond) {
-                    return(NULL)
-                  }
-                  )
+      if (!is.null(minParentAge)) {
+        d <- tryCatch(qc.Studbook(d, minParentAge),
+                      warning = function(cond) {
+                        return(NULL)
+                      },
+                      error = function(cond) {
+                        return(NULL)
+                      }
+        )
+      }
+    })
+
     validate(need(!is.null(minParentAge),
                   paste0("   Error uploading data. ",
                          geterrmessage())) %then%
@@ -101,8 +129,6 @@ shinyServer(function(input, output, session) {
                need(!is.null(genotype),
                      paste0("   Error uploading genotype file. ",
                             geterrmessage())))
-    if (is.null(minParentAge))
-      d <- NULL
     d
   })
 
