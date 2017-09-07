@@ -251,7 +251,7 @@ qc.Studbook <- function(sb, minParentAge = 2) {
     write.csv(suspiciousParents,
               file = fileName, row.names = FALSE)
 
-    stop(paste0("Parents will low age at birth of offspring are listed in ",
+    stop(paste0("Parents with low age at birth of offspring are listed in ",
                 fileName, ".\n"))
   }
   # setting age
@@ -724,7 +724,8 @@ findPedigreeNumber <- function(id, sire, dam) {
 #' information. The \code{id} column is required.
 #'
 #' @return An updated pedigree with the \code{population} column added or
-#' updated.
+#' updated by being set to \code{TRUE} for the animal IDs in \code{ped$id} and
+#' \code{FALSE} otherwise.
 #' @export
 resetPopulation <- function(ids, ped) {
   ped$population <- FALSE
@@ -743,7 +744,9 @@ resetPopulation <- function(ids, ped) {
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information. The \code{id} column is required.
 #'
-#' @return An updated pedigree with the \code{group} column added or updated.
+#' @return An updated pedigree with the \code{group} column added or updated
+#' by being set to \code{TRUE} for the animal IDs in \code{ped$id} and
+#' \code{FALSE} otherwise.
 #' @export
 resetGroup <- function(ids, ped) {
   ped$group <- FALSE
