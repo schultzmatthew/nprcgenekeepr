@@ -44,7 +44,7 @@ uitpInputFileFormat <-
             "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
             "Pedigree(s) and genotypes in separate files" = "separatePedGenoFile"
           ),
-          selected = "pedFile"
+          selected = NULL
         ),
         conditionalPanel(
           condition = "input.dataSource == 'pedFile'",

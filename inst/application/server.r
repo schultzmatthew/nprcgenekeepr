@@ -26,24 +26,28 @@ shinyServer(function(input, output, session) {
   sb <- reactive({
     input$getData # This button starts it all
     isolate({
-      sepOne <- input$sepOne
-      sepTwo <- input$sepTwo
-      sepThree <- input$sepThree
-      if (!is.null(sepOne)) {
-        sep <- sepOne
+      cat(paste0("1st. input$dataSource: ", input$dataSource,
+                 "; input$sepOne: ", input$sepOne,
+                 "; input$sepTwo: ", input$sepTwo,
+                 "; input$sepThree: ", input$sepThree,"\n"),
+          file = "~/shiny.txt", append = FALSE)
+
+      if (input$dataSource == "pedFile") {
+        sep <- input$sepOne
         pedigreeFile <- input$pedigreeFileOne
         cat(paste0("pedigreeFileOne - pedigreeFile$name: ",
                    pedigreeFile$name, "\n",
                    "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
             file = "~/shiny.txt", append = TRUE)
-      } else if (!is.null(sepTwo)) {
-        sep <- sepTwo
+      } else if (input$dataSource == "commonPedGenoFile") {
+        sep <- input$sepTwo
+        pedigreeFile <- input$pedigreeFileTwo
         cat(paste0("pedigreeFileTwo - pedigreeFile$name: ",
                    pedigreeFile$name, "\n",
                    "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
             file = "~/shiny.txt", append = TRUE)
-      } else if (!is.null(sepThree)) {
-        sep <- sepThree
+      } else if (input$dataSource == "separatePedGenoFile") {
+        sep <- input$sepThree
         pedigreeFile <- input$pedigreeFileThree
         genotypeFile <- input$genotypeFile
         cat(paste0("pedigreeFileThree - pedigreeFile$name: ",
@@ -53,7 +57,7 @@ shinyServer(function(input, output, session) {
                    "; genotypeFile$datapath: ", genotypeFile$datapath),
             file = "~/shiny.txt", append = TRUE)
       } else {
-        stop("Column seperator was not defined.")
+        stop("Column separator was not defined.")
       }
       cat(paste0("sep: ", sep, "\n"), file = "~/shiny.txt", append = TRUE)
       minParentAge <- renderText({input$minParentAge})
@@ -77,9 +81,12 @@ shinyServer(function(input, output, session) {
 
       # pedigreeFile will be NULL initially.
       # After the user selects a file, it will be a filepath.
-      if (is.null(input$pedigreeFile)) {
+      if (is.null(pedigreeFile)) {
         return(NULL)
       }
+      cat(paste0("before read.csv input$dataSource: ", input$dataSource,
+                 "; pedigreeFile$name: ", pedigreeFile$name,"\n"),
+          file = "~/shiny.txt", append = TRUE)
       # Load pedigree table
       d <- read.csv(pedigreeFile$datapath,
                     header = TRUE,
@@ -87,16 +94,22 @@ shinyServer(function(input, output, session) {
                     stringsAsFactors = FALSE,
                     na.strings = c("", "NA"),
                     check.names = FALSE)
-      cat(paste0("pedigreeFile$name: ", pedigreeFile$name,
+      cat(paste0("after read.csv pedigreeFile$name: ", pedigreeFile$name,
                  "; contents rows: ", nrow(d),
                  ", columns: ", ncol(d), ", col names: ", names(d),
                  "\n"),
           file = "~/shiny.txt", append = TRUE)
 
-      if (is.null(dataSource)) {
-        stop("Did not expect dataSource to be NULL")
-      } else if (dataSource == "separatePedGenoFile") {
+      if (is.null(input$dataSource)) {
+        stop("Did not expect input$dataSource to be NULL")
+      } else if (input$dataSource == "separatePedGenoFile") {
         # Load pedigree table
+        cat(paste0("before read.csv genotypeFile$datapath: ",
+                   genotypeFile$datapath,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), ", col names: ", names(d),
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
         genotype <- read.csv(genotypeFile$datapath,
                              header = TRUE,
                              sep = sep,
@@ -105,7 +118,8 @@ shinyServer(function(input, output, session) {
                              check.names = FALSE)
         cat(paste0("genotype$name: ", genotype$name,
                    "; contents rows: ", nrow(genotype),
-                   ", columns: ", ncol(genotype), ", col names: ", names(genotype),
+                   ", columns: ", ncol(genotype), ", col names: ",
+                   names(genotype),
                    "\n"),
             file = "~/shiny.txt", append = TRUE)
         genotype <- tryCatch(checkGenotypeFile(genotype),
@@ -114,10 +128,27 @@ shinyServer(function(input, output, session) {
                              },
                              error = function(cond) {
                                return(NULL)
-                             })
+                             },
+                             finally = {
+                               cat(paste0("   tryCatch checkGenotype file. ",
+                                          geterrmessage(), "\n"),
+                                   file = "~/shiny.txt", append = TRUE)
+                             }
+        )
+        d <- addGenotype(d, genotype)
+        cat(paste0("After addGenotype - genotypeFile$name: ",
+                   genotypeFile$name,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), ", col names: ", names(d),
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
       } else {
+        cat(paste0("Setting genotype to NULL.\n"),
+            file = "~/shiny.txt", append = TRUE)
         genotype <- NULL
       }
+      cat(paste0("Data files may have been read.\n"),
+          file = "~/shiny.txt", append = TRUE)
 
       if (!is.null(minParentAge)) {
         d <- tryCatch(qc.Studbook(d, minParentAge),
@@ -129,31 +160,38 @@ shinyServer(function(input, output, session) {
                       }
         )
       }
-    })
-
-    validate(need(!is.null(minParentAge),
+      cat(paste0("before validate().\n"),
+          file = "~/shiny.txt", append = TRUE)
+   validate(need(!is.null(minParentAge),
                   paste0("   Error uploading data. ",
                          geterrmessage())) %then%
                need(!is.null(d), paste0("   Error uploading data. ",
-                                        geterrmessage())) %then%
-               need(!is.null(genotype),
-                     paste0("   Error uploading genotype file. ",
-                            geterrmessage())))
+                                        geterrmessage()))
+    )
+    if (!is.null(d)) {
+      updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
+    }
+    cat(paste0("After validate(); nrow(d) = ", nrow(d),
+               "; ncol(d): ", ncol(d), "\n"), file = "~/shiny.txt", append = TRUE)
     d
+    })
   })
 
   ped <- reactive({
+    cat(paste0("In ped <- reactive()\n"), file = "~/shiny.txt", append = TRUE)
     if (is.null(sb())) {
       return(NULL)
     }
+    cat(paste0("In ped <- reactive() and !is.null(sb()) == TRUE\n"),
+        file = "~/shiny.txt", append = TRUE)
+
     p <- sb()
 
     p <- tryCatch(
       {
-        if (dataSource == "separatePedGenoFile") {
-          p <- addGenotype(p, genotype)
-        }
         p <- resetPopulation(specifyPopulation(), p)
+        cat(paste0("resetPopulation() called\n"),
+            file = "~/shiny.txt", append = TRUE)
 
         if (input$trim) {
           probands <- p$id[p$population]
@@ -161,6 +199,8 @@ shinyServer(function(input, output, session) {
                             addBackSingles = FALSE)
           #p <- trimPedigree(probands, p, removeUninformative = TRUE,
           #                  addBackSingles = TRUE)
+          cat(paste0("trimPedigree() called\n"),
+              file = "~/shiny.txt", append = TRUE)
         }
 
         p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
