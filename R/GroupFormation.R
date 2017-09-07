@@ -21,7 +21,7 @@
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
-#' @param kmat numberic matrix {row and column names: animal IDs} of
+#' @param kmat numeric matrix {row and column names: animal IDs} of
 #' pairwise kinship values. Rows and columns are named with animal IDs.
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information including the IDs listed in \code{candidates}.
