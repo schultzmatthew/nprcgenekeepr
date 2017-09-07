@@ -1,0 +1,47 @@
+#' Determines the generation number for each id.
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
+#'
+#' @return An integer vector indication the generation numbers for each id,
+#' starting at 0 for individuals lacking IDs for both parents.
+#'
+#' @export
+findGeneration <- function(id, sire, dam) {
+  parents <- c()
+  gen <- rep(NA, length(id))
+  i <- 0
+
+  #' @description{This loops through the entire pedigree by one generation at a
+  #' time. If finds the zeroth generation during first loop.
+  #' The first time through this loop no sire or dam is in parents.
+  #' This means that the animals without a sire and without a dam are
+  #' assigned to generation 0 and become the first parental genereation.
+  #' The second time through this loop finds all of the animals that do
+  #' not have a sire or do not have a dam and at least one parent
+  #' is in the vector of parents defined the first time through.
+  #' The ids that were not assigned as parents in the previous loop
+  #' are given the incremented generation number.}
+  #'
+  #' Subsequent trips in the loop repeat what was done the second time
+  #' through until no further animals can be added to the \code{next.gen}
+  #' vector.
+  while (TRUE) {
+    cumulative.parents <- id[(is.na(sire) | (sire %in% parents)) &
+                               (is.na(dam) | (dam %in% parents))]
+    next.gen <- setdiff(cumulative.parents, parents)
+
+    if (isEmpty(next.gen)) {
+      break
+    }
+
+    gen[id %in% next.gen] <- i
+    i <- i + 1
+
+    parents <- cumulative.parents
+  }
+  return(gen)
+  }
