@@ -590,7 +590,9 @@ findGeneration <- function(id, sire, dam) {
   gen <- rep(NA, length(id))
   i <- 0
 
-#' @description{The first time through this loop no sire or dam is in parents.
+#' @description{This loops through the entire pedigree by one generation at a
+#' time. If finds the zeroth generation during first loop.
+#' The first time through this loop no sire or dam is in parents.
 #' This means that the animals without a sire and without a dam are
 #' assigned to generation 0 and become the first parental genereation.
 #' The second time through this loop finds all of the animals that do
@@ -598,7 +600,7 @@ findGeneration <- function(id, sire, dam) {
 #' is in the vector of parents defined the first time through.
 #' The ids that were not assigned as parents in the previous loop
 #' are given the incremented generation number.}
-
+#'
 #' Subsequent trips in the loop repeat what was done the second time
 #' through until no further animals can be added to the \code{next.gen}
 #' vector.
