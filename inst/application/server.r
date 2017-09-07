@@ -81,15 +81,20 @@ shinyServer(function(input, output, session) {
         return(NULL)
       }
       # Load pedigree table
-      d <- read.csv(input$pedigreeFile$datapath,
+      d <- read.csv(pedigreeFile$datapath,
                     header = TRUE,
                     sep = sep,
                     stringsAsFactors = FALSE,
                     na.strings = c("", "NA"),
                     check.names = FALSE)
+      cat(paste0("pedigreeFile$name: ", pedigreeFile$name,
+                 "; contents rows: ", nrow(d),
+                 ", columns: ", ncol(d), ", col names: ", names(d),
+                 "\n"),
+          file = "~/shiny.txt", append = TRUE)
 
       if (is.null(dataSource)) {
-        stop("Did not expect input$dataSource to be NULL")
+        stop("Did not expect dataSource to be NULL")
       } else if (dataSource == "separatePedGenoFile") {
         # Load pedigree table
         genotype <- read.csv(genotypeFile$datapath,
@@ -98,6 +103,11 @@ shinyServer(function(input, output, session) {
                              stringsAsFactors = FALSE,
                              na.strings = c("", "NA"),
                              check.names = FALSE)
+        cat(paste0("genotype$name: ", genotype$name,
+                   "; contents rows: ", nrow(genotype),
+                   ", columns: ", ncol(genotype), ", col names: ", names(genotype),
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
         genotype <- tryCatch(checkGenotypeFile(genotype),
                              warning = function(cond) {
                                return(NULL)
