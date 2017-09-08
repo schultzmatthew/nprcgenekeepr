@@ -138,7 +138,7 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.gp)) {
-      groupKin[[i]] <-   filterKinMatrix(save.gp[[i]], kmat)
+      groupKin[[i]] <-   filterKinMatrix(saved.gp[[i]], kmat)
     }
     return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
   } else {
@@ -261,7 +261,7 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.gp)) {
-      groupKin[[i]] <-   filterKinMatrix(save.gp[[i]], kmat)
+      groupKin[[i]] <-   filterKinMatrix(saved.gp[[i]], kmat)
     }
     return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
   } else {
