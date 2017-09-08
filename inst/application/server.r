@@ -151,7 +151,7 @@ shinyServer(function(input, output, session) {
           file = "~/shiny.txt", append = TRUE)
 
       if (!is.null(minParentAge)) {
-        d <- tryCatch(qc.Studbook(d, minParentAge),
+        d <- tryCatch(qcStudbook(d, minParentAge),
                       warning = function(cond) {
                         return(NULL)
                       },

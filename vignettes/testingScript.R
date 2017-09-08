@@ -11,7 +11,7 @@
 # d <- read.csv(
 #   "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/snprc_baboon_ped.csv",
 #   header = TRUE, sep = ",", stringsAsFactors = FALSE, na.strings = c("", "NA"), check.names = FALSE)
-# d <- qc.Studbook(d)
+# d <- qcStudbook(d)
 # p <- d
 # p <- resetPopulation(NULL, p)
 # p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
@@ -55,7 +55,7 @@ ped$id <- stri_trim_both(ped$id)
 ped$sire_id <- stri_trim_both(ped$sire_id)
 ped$dam_id <- stri_trim_both(ped$dam_id)
 
-ped_qc <- qc.Studbook(ped)
+ped_qc <- qcStudbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
  write.csv(p,

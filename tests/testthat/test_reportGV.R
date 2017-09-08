@@ -7,7 +7,7 @@
 # d <- read.csv("../../inst/extdata/BaboonLivingForMetrics.csv", header = TRUE,
 #               sep = ",", stringsAsFactors = FALSE, na.strings = "",
 #               check.names = FALSE)
-# d <- qc.Studbook(d)
+# d <- qcStudbook(d)
 # p <- d
 # p <- resetPopulation(NULL, p)
 # p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)

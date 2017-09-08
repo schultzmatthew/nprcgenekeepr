@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = TRUE)
 4. Develop the appropriate UI
 
 ## To do
-1. It would be better to catalogue and report the changes made by qc.Studbook()
+1. It would be better to catalogue and report the changes made by qcStudbook()
    so that the user knows how the provided pedigree was changed.
    
 ## Meeting notes

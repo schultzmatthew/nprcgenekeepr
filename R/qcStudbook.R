@@ -137,7 +137,7 @@
 #'
 #' @importFrom utils write.csv
 #' @export
-qc.Studbook <- function(sb, minParentAge = 2) {
+qcStudbook <- function(sb, minParentAge = 2) {
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
   headers <- gsub("_", "", headers)
