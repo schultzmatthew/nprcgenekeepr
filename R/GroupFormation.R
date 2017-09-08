@@ -251,12 +251,12 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
   # Adding a group for the unused animals
   n <- length(saved.gp) + 1
   saved.gp[[n]] <- setdiff(candidates, unlist(saved.gp))
-  if (withKen) {
-    gpKen <- list()
+  if (withKin) {
+    groupKin <- list()
     for (i in seq_along(saved.gp)) {
-
+      groupKin[[i]] <-   filterKinMatrix(save.gp[[i]], kmat)
     }
-    return(list(group = saved.gp, score = saved.score))
+    return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
   } else {
     return(list(group = saved.gp, score = saved.score))
   }
