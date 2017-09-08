@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-man/*
 inst/extdata/BaboonLivingForMetrics.csv
 inst/extdata/RhesusMasterForMetrics.csv
 inst/extdata/Notes.txt
