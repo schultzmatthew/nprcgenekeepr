@@ -45,6 +45,8 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
   if (!is.null(genotype)) {
     genotype <- genotype[!is.na(genotype$first), ]
     genoDefined <- TRUE
+  } else {
+    genoDefined <- FALSE
   }
 
   alleles <- list()
