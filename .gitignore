@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 man/*
-NAMESPACE
 inst/extdata/BaboonLivingForMetrics.csv
 inst/extdata/RhesusMasterForMetrics.csv
 inst/extdata/Notes.txt
