@@ -54,11 +54,11 @@ ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
 ped$id <- stri_trim_both(ped$id)
 ped$sire_id <- stri_trim_both(ped$sire_id)
 ped$dam_id <- stri_trim_both(ped$dam_id)
-
+probands <- stri_trim_both(probands)
 ped_qc <- qcStudbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
- write.csv(p,
+write.csv(p,
            file = qc_ped_file, row.names = FALSE)
 p <- read.csv(qc_ped_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
@@ -70,7 +70,7 @@ genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
                        stringsAsFactors = FALSE)
 genotype_empty <- NULL
 alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
-# p_genotype <- merge(p, genotype, by = "id", all = TRUE)
+p_genotype <- merge(p, genotype, by = "id", all = TRUE)
 write.csv(p_genotype,
          file = ped_genotype_file, row.names = FALSE)
 p_genotype <- read.csv(ped_genotype_file, header = TRUE, sep = ",",
