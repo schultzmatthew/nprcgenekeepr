@@ -298,7 +298,7 @@ shinyServer(function(input, output, session) {
                     by.id = TRUE,
                     updateProgress = updateProgress))
   })
-
+  # Returns the genetic_value() report
   rpt <- reactive({
     if (is.null(genetic_value())) {
       return(NULL)
@@ -546,7 +546,7 @@ shinyServer(function(input, output, session) {
 
       toCharacter(r)
     },
-    include.rownames = FALSE
+    rownames = FALSE
     )
   })
 
@@ -581,7 +581,7 @@ shinyServer(function(input, output, session) {
 
     p <- ped()
     ids <- unlist(strsplit(input$grp_ids, "[ \t\n]"))
-    current.group <- unlist(strsplit(input$cur_grp, "[ \t\n]"))
+    currentGroup <- unlist(strsplit(input$cur_grp, "[ \t\n]"))
 
     if (length(ids) > 0) {
       p <- resetGroup(ids, p)
@@ -591,8 +591,8 @@ shinyServer(function(input, output, session) {
     }
 
     # Assume an animal that is in the group can't also be a candidate
-    if (length(current.group) > 0) {
-      candidates <- setdiff(candidates, current.group)
+    if (length(currentGroup) > 0) {
+      candidates <- setdiff(candidates, currentGroup)
     }
 
     # Filter out low-value animals if desired
@@ -609,10 +609,10 @@ shinyServer(function(input, output, session) {
            paste("Group candidates present that are",
                  "not in the provided pedigree\n",
                  paste(setdiff(candidates, p$id), sep = "\n"))),
-      need(!(length(setdiff(current.group, p$id)) > 0),
+      need(!(length(setdiff(currentGroup, p$id)) > 0),
            paste("Current group members present that",
                  "are not in the provided pedigree\n",
-                 paste(setdiff(current.group, p$id), sep = "\n")))
+                 paste(setdiff(currentGroup, p$id), sep = "\n")))
     )
 
     ignore <- input$ff_rel
@@ -635,9 +635,9 @@ shinyServer(function(input, output, session) {
       n <<- n + 1
     }
 
-    if (length(current.group) > 0) {
+    if (length(currentGroup) > 0) {
       grp <- groupAddition(candidates,
-                           current.group,
+                           currentGroup,
                            kmat(),
                            p,
                            threshold = threshold,
@@ -805,7 +805,7 @@ headerDisplayNames <- function(headers) {
     indiv.avgs = "Individual Mean Kinship",
     z.scores = "Z-score (Mean Kinship)",
     genome.unique = "Genome Uniqueness",
-    total.offspring = "Total Offspring",
+    totalOffspring = "Total Offspring",
     living.offspring = "Living Offspring",
     rank = "Rank",
     value = "Value Designation",
@@ -823,7 +823,7 @@ headerDisplayNames <- function(headers) {
 #'
 #' @param ids character vector of animal IDs
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
-#' \code{z.scores}, \code{import}, \code{total.offspring}, which is
+#' \code{z.scores}, \code{import}, \code{totalOffspring}, which is
 #' a data.frame of results from a genetic value analysis.
 #' @return A copy of report specific to the specified animals
 filterReport <- function(ids, rpt) {
