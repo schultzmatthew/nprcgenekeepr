@@ -1,5 +1,5 @@
 #' Genetic Value Analysis Functions
-#' @seealso \code{\link{get_include_columns}} to get set of columns that can
+#' @seealso \code{\link{getIncludeColumns}} to get set of columns that can
 #' be used in a pedigree file
 #'
 #' 2015-03-04
@@ -49,7 +49,7 @@
 #' \item{\link{calc.fg}} {--- Calculates founder genome equivalents.}
 #' \item{\link{calc.gu}} {--- Calculates genome uniqueness for each ID that is
 #' part of the population.}
-#' \item{\link{gene.drop}} {--- Performs a gene drop simulation based on the
+#' \item{\link{geneDrop}} {--- Performs a gene drop simulation based on the
 #' pedigree information.}
 #' \item{\link{chooseAlleles}} {--- Combines two vectors of alleles by randomly
 #' selecting one allele or the other at each position.}

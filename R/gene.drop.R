@@ -1,4 +1,7 @@
-#' Performs a gene drop simulation based on the provided pedigree information
+#' Performs a gene drop simulation based on the provided pedigree information.
+#'
+#' Deprecated; replaced by geneDrop(), which allows inclussion of genotypic
+#' data.
 #'
 #' @param id character vector of IDs for a set of animals.
 #' @param sire character vector with IDS of the sires for the set of
@@ -6,23 +9,6 @@
 #' @param dam character vector with IDS of the dams for the set of
 #'  animals. \code{NA} is used for missing dams.
 #' @param gen integer vector indicating the generation number for each animal.
-#' @param genotype is a dataframe containing known genotypes. It has three
-#' columns:  \code{id}, \code{first}, and \code{second}. The second and third
-#' columns contain the integers indicating the observed genotypes.
-#'
-#' Currently there is no means of handling knowing only one haplotype.
-#' It will be easy to add another column to handle situations where only one
-#' allele is observed and it is not known to be homozygous or heterozygous. The
-#' new fourth column could have a frequency for homozygosity that could be
-#' used in the gene dropping algorithm.
-#'
-#' The genotypes are using indirection (integer instead of character) to
-#' indicate the genes because the minipulation of character strings was found
-#' to take 20-35 times longer to perform.
-#'
-#' Adding additional columns to \code{genotype} does not significantly affect
-#' the time require. Thus, it is convenient to add the corresponding haplotype
-#' names to the dataframe using \code{first_name} and \code{second_name}.
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
 #' @param updateProgress function or NULL. If this function is defined, it
@@ -36,19 +22,14 @@
 #' \code{n} columns indicating the allele for that iteration.
 #'
 #' @export
-geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
-                     updateProgress = NULL) {
+gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   ## Sort the IDs by generation so older generations are first
   ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
   rownames(ped) <- id
   ped <- ped[order(gen), ]
-  if (!is.null(genotype)) {
-    genotype <- genotype[!is.na(genotype$first), ]
-    genoDefined <- TRUE
-  }
 
   alleles <- list()
-  a <- 1
+  a <- 1L
 
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Performing Gene-drop Simulation", value = 0,
@@ -60,19 +41,9 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
     alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
-    assigned <- FALSE
-    if (genoDefined) {
-      if (any(genotype$id == id)) {
-        alleles[[id]][["sire"]] <- rep(genotype$first[genotype$id == id], n)
-        alleles[[id]][["dam"]] <- rep(genotype$second[genotype$id == id], n)
-        assigned <- TRUE
-      }
-    }
-    if (!assigned) {
-      ## assignAlleles increments "a" as needed.
-      alleles <- assignAlleles("sire", s, alleles, id, a, n)
-      alleles <- assignAlleles("dam", d, alleles, id, a, n)
-    }
+    ## assignAlleles increments "a" as needed.
+    alleles <- assignAlleles("sire", s, alleles, id, a, n)
+    alleles <- assignAlleles("dam", d, alleles, id, a, n)
 
     if (!is.null(updateProgress)) {
       updateProgress(n = nrow(ped))
