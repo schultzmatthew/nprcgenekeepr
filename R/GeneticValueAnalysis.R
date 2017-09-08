@@ -597,13 +597,13 @@ calc.retention <- function(ped, alleles) {
 #' offspring that are part of the focal population are to be counted?
 #' Default is \code{FALSE}.
 #'
-#' @return A dataframe with at least \code{id} and \code{total.offspring}
+#' @return A dataframe with at least \code{id} and \code{totalOffspring}
 #' required and \code{living.offspring} optional.
 #'
 #' @export
 offspringCounts <- function(probands, ped, consider.pop = FALSE) {
-  total.offspring <- findOffspring(probands, ped)
-  results <- as.data.frame(total.offspring)
+  totalOffspring <- findOffspring(probands, ped)
+  results <- as.data.frame(totalOffspring)
 
   if (consider.pop && !is.null(ped$population)) {
     pop <- ped[ped$population, ]
@@ -645,7 +645,7 @@ findOffspring <- function(probands, ped) {
 #' according to the ranking scheme we have developed.
 #'
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
-#' \code{z.scores}, \code{import}, \code{total.offspring}, which is
+#' \code{z.scores}, \code{import}, \code{totalOffspring}, which is
 #' a data.frame of results from a genetic value analysis.
 #' @param ped the pedigree information in datatable format with required
 #' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
@@ -667,7 +667,7 @@ orderReport <- function(rpt, ped) {
 
   if ("origin" %in% names(rpt)) {
     # imports with no offspring
-    i <- (!is.na(rpt$origin) & (rpt$total.offspring == 0) &
+    i <- (!is.na(rpt$origin) & (rpt$totalOffspring == 0) &
             (rpt$id %in% founders))
 
     imports <- rpt[i, ]
@@ -680,7 +680,7 @@ orderReport <- function(rpt, ped) {
     }
 
     # ONPRC-born animals with no parentage
-    i <- (is.na(rpt$origin) & (rpt$total.offspring == 0) &
+    i <- (is.na(rpt$origin) & (rpt$totalOffspring == 0) &
             (rpt$id %in% founders))
 
     no.parentage <- rpt[i, ]
