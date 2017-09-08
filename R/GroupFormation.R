@@ -74,53 +74,53 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 
   # Starting the group assignment simulation:
   saved.score <- -1
-  saved.gp <- list()
+  saved.groupMembers <- list()
 
   for (k in 1:iter) {
-    gp <- list()
-    d <- list()
+    groupMembers <- list()
+    available <- list()
     for (i in 1:numGp) {
-      gp[[i]] <- vector()
-      d[[i]] <- candidates
+      groupMembers[[i]] <- vector()
+      available[[i]] <- candidates
     }
 
-    g <- list()
-    g[1:numGp] <- 1:numGp
+    grpNum <- list()
+    grpNum[1:numGp] <- 1:numGp
     while (TRUE) {
-      if (isEmpty(g)) {
+      if (isEmpty(grpNum)) {
         break
       }
 
       # Select a group at random
-      i <- sample(g, 1)[[1]]
+      i <- sample(grpNum, 1)[[1]]
 
       # Select an animal that can be added to this group and add it
-      id <- sample(d[[i]], 1)
-      gp[[i]] <- c(gp[[i]], id)
+      id <- sample(available[[i]], 1)
+      groupMembers[[i]] <- c(groupMembers[[i]], id)
 
       # Remove the selected animal from consideration
       for (j in 1:numGp) {
-        d[[j]] <- setdiff(d[[j]], id)
+        available[[j]] <- setdiff(available[[j]], id)
       }
 
       # Remove all relatives from consideration for the group it was added to
       # need to modify "kin" to include blank entries for animals with no
       # relatives
-      d[[i]] <- setdiff(d[[i]], kin[[id]])
+      available[[i]] <- setdiff(available[[i]], kin[[id]])
 
-      remaining.g <- g
-      for (i in remaining.g) {
-        if (isEmpty(d[[i]])) {
-          g <- setdiff(g, i)
+      remainingGrpNum <- grpNum
+      for (i in remainingGrpNum) {
+        if (isEmpty(available[[i]])) {
+          grpNum <- setdiff(grpNum, i)
         }
       }
     }
 
     # Score the resulting groups
-    score <- min(sapply(gp, length))
+    score <- min(sapply(groupMembers, length))
 
     if (score > saved.score) {
-      saved.gp <- gp
+      saved.groupMembers <- groupMembers
       saved.score <- score
     }
 
@@ -131,18 +131,18 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
   }
 
   # Adding a group for the unused animals
-  n <- length(saved.gp) + 1
-  saved.gp[[n]] <- ifelse(isEmpty(setdiff(candidates, unlist(saved.gp))),
+  n <- length(saved.groupMembers) + 1
+  saved.groupMembers[[n]] <- ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
                           c(NA),
-                          setdiff(candidates, unlist(saved.gp)))
+                          setdiff(candidates, unlist(saved.groupMembers)))
   if (withKin) {
     groupKin <- list()
-    for (i in seq_along(saved.gp)) {
-      groupKin[[i]] <-   filterKinMatrix(saved.gp[[i]], kmat)
+    for (i in seq_along(saved.groupMembers)) {
+      groupKin[[i]] <-   filterKinMatrix(saved.groupMembers[[i]], kmat)
     }
-    return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
+    return(list(group = saved.groupMembers, score = saved.score, groupKin = groupKin))
   } else {
-    return(list(group = saved.gp, score = saved.score))
+    return(list(group = saved.groupMembers, score = saved.score))
   }
 }
 #' Add animals to an existing breeding group:
@@ -219,10 +219,10 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
 
   # Starting the group assignment simulation
   saved.score <- -1
-  saved.gp <- list()
+  saved.groupMembers <- list()
 
   for (k in 1:iter) {
-    gp <- currentGroup
+    groupMembers <- currentGroup
     d <- candidates
 
     while (TRUE) {
@@ -232,7 +232,7 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
 
       # Select an animal that can be added to this group and add it
       id <- sample(d, 1)
-      gp <- c(gp, id)
+      groupMembers <- c(groupMembers, id)
 
       # Remove the selected animal from consideration
       d <- setdiff(d, id)
@@ -242,10 +242,10 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
     }
 
     # Score the resulting group
-    score <- length(gp)
+    score <- length(groupMembers)
 
     if (score > saved.score) {
-      saved.gp[[1]] <- gp
+      saved.groupMembers[[1]] <- groupMembers
       saved.score <- score
     }
 
@@ -256,16 +256,16 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
   }
 
   # Adding a group for the unused animals
-  n <- length(saved.gp) + 1
-  saved.gp[[n]] <- setdiff(candidates, unlist(saved.gp))
+  n <- length(saved.groupMembers) + 1
+  saved.groupMembers[[n]] <- setdiff(candidates, unlist(saved.groupMembers))
   if (withKin) {
     groupKin <- list()
-    for (i in seq_along(saved.gp)) {
-      groupKin[[i]] <-   filterKinMatrix(saved.gp[[i]], kmat)
+    for (i in seq_along(saved.groupMembers)) {
+      groupKin[[i]] <-   filterKinMatrix(saved.groupMembers[[i]], kmat)
     }
-    return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
+    return(list(group = saved.groupMembers, score = saved.score, groupKin = groupKin))
   } else {
-    return(list(group = saved.gp, score = saved.score))
+    return(list(group = saved.groupMembers, score = saved.score))
   }
 }
 
