@@ -63,7 +63,7 @@ uitpBreedingGroupFormation <-
           label = "Number of simulations:",
           value = 10,
           min = 1,
-          max = 10000
+          max = 1000000
         )
       ),
 
