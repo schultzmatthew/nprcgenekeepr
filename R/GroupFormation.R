@@ -41,6 +41,10 @@
 #' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
+#' @param withKin logical varialbe when set to \code{TRUE} the kinship
+#' matrix for the group is returned along with the group and score.
+#' Defaults to not return the kinship matrix. This maintains compatability with
+#' earlier versions.
 #
 #' @return A list with fields \code{group} and \code{score}.
 #'   The field \code{group} contains a list of the best group(s) produced
@@ -49,7 +53,7 @@
 #' @export
 groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
                         ignore = list(c("F", "F")), min.age = 1, iter = 1000,
-                        numGp = 1, updateProgress = NULL) {
+                        numGp = 1, updateProgress = NULL, withKin = FALSE) {
   kmat <- filterKinMatrix(candidates, kmat)
   kin <- reformatKinship(kmat)
 
@@ -149,7 +153,7 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 #'
 #' @param candidates character vector of IDs of the animals available for use
 #'  in the group.
-#' @param current.group character vector of IDs of animals currently assigned to the group.
+#' @param currentGroup character vector of IDs of animals currently assigned to the group.
 #' @param kmat : matrix {row and column names: animal IDs}
 #'   Matrix of pairwise kinship values. Rows and columns are named with
 #'   animal IDs.
@@ -169,15 +173,19 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 #' group formation process. Default is 1000 iterations.
 #' @param updateProgress optional function (may be NULL) that is called
 #' during each iteration to update a \code{shiny::Progress object}.
-#'
+#' @param withKin logical varialbe when set to \code{TRUE} the kinship
+#' matrix for the group is returned along with the group and score.
+#' Defaults to not return the kinship matrix. This maintains compatability with
+#' earlier versions.
 #' @return a list with \code{group}, which contains a list of the best
 #' group(s) produced during the simulation and \code{score}, which provides
 #' the score associated with the group(s).
 #' @export
-groupAddition <- function(candidates, current.group, kmat, ped,
+groupAddition <- function(candidates, currentGroup, kmat, ped,
                           threshold = 0.015625, ignore = list(c("F", "F")),
-                          min.age = 1, iter = 1000, updateProgress = NULL) {
-  kmat <- filterKinMatrix(union(candidates, current.group), kmat)
+                          min.age = 1, iter = 1000, updateProgress = NULL,
+                          withKin = FALSE) {
+  kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
   kin <- reformatKinship(kmat)
 
   kin <- filterThreshold(kin, threshold = threshold)
@@ -188,13 +196,13 @@ groupAddition <- function(candidates, current.group, kmat, ped,
   kin <- kin[(kin$id1 != kin$id2), ]
 
   # Ignore kinship between current group members
-  kin <- kin[!((kin$id1 %in% current.group) & (kin$id2 %in% current.group)), ]
+  kin <- kin[!((kin$id1 %in% currentGroup) & (kin$id2 %in% currentGroup)), ]
 
   # Converting the kinships to a list
   kin <- tapply(kin$id2, kin$id1, c)
 
   # Filtering out candidates related to current group members
-  conflicts <- unlist(kin[current.group])
+  conflicts <- unlist(kin[currentGroup])
   candidates <- setdiff(candidates, conflicts)
 
   # adding animals with no relatives
@@ -207,7 +215,7 @@ groupAddition <- function(candidates, current.group, kmat, ped,
   saved.gp <- list()
 
   for (k in 1:iter) {
-    gp <- current.group
+    gp <- currentGroup
     d <- candidates
 
     while (TRUE) {
@@ -243,8 +251,15 @@ groupAddition <- function(candidates, current.group, kmat, ped,
   # Adding a group for the unused animals
   n <- length(saved.gp) + 1
   saved.gp[[n]] <- setdiff(candidates, unlist(saved.gp))
+  if (withKen) {
+    gpKen <- list()
+    for (i in seq_along(saved.gp)) {
 
-  return(list(group = saved.gp, score = saved.score))
+    }
+    return(list(group = saved.gp, score = saved.score))
+  } else {
+    return(list(group = saved.gp, score = saved.score))
+  }
 }
 
 #################################################################################
@@ -289,7 +304,8 @@ reformatKinship <- function(kin_matrix, rm.dups = FALSE) {
 #' @export
 filterThreshold <- function(kin, threshold = 0.015625) {
   kin <- kin[kin$kinship >= threshold, ]
-  rownames(kin) <- 1:nrow(kin)
+  if (nrow(kin) > 0)
+    rownames(kin) <- 1:nrow(kin)
   return(kin)
 }
 #' Filters kinship values from a long-format kinship table based on the sexes
@@ -328,7 +344,8 @@ filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
   }
   kin$sort.col <- NULL
   kin <- kin[keep, ]
-  rownames(kin) <- 1:nrow(kin)
+  if (nrow(kin) > 0)
+    rownames(kin) <- 1:nrow(kin)
   return(kin)
 }
 #' Removes kinship values where one animal is less than the min.age
@@ -354,7 +371,8 @@ filterAge <- function(kin, ped, min.age = 1) {
 
   kin$sort.col <- NULL
   kin <- kin[keep, ]
-  rownames(kin) <- 1:nrow(kin)
+  if (nrow(kin) > 0)
+    rownames(kin) <- 1:nrow(kin)
   return(kin)
 }
 
