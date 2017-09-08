@@ -1,8 +1,7 @@
 context("addGenotype")
 library(testthat)
 library(stringi)
-qc_ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
-                      "library/nprcmanager/inst/extdata/",
+qc_ped_file <- stri_c("../../inst/extdata/",
                       "baboon_breeders_qc_ped.csv")
 
 ped <- read.csv(qc_ped_file, header = TRUE, sep = ",",
