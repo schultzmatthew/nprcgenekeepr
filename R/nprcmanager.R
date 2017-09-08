@@ -61,5 +61,5 @@
 #' {--- Generates a genetic value report for a provided pedigree.}
 #' }
 #' @docType package
-#' @name genetic_analysis_functions
+#' @name nprcmanager
 NULL
