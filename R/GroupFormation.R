@@ -135,8 +135,15 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
   saved.gp[[n]] <- ifelse(isEmpty(setdiff(candidates, unlist(saved.gp))),
                           c(NA),
                           setdiff(candidates, unlist(saved.gp)))
-
-  return(list(group = saved.gp, score = saved.score))
+  if (withKin) {
+    groupKin <- list()
+    for (i in seq_along(saved.gp)) {
+      groupKin[[i]] <-   filterKinMatrix(save.gp[[i]], kmat)
+    }
+    return(list(group = saved.gp, score = saved.score, groupKin = groupKin))
+  } else {
+    return(list(group = saved.gp, score = saved.score))
+  }
 }
 #' Add animals to an existing breeding group:
 #'
