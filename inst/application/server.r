@@ -748,67 +748,38 @@ shinyServer(function(input, output, session) {
 ###############################################################################
 # Functions for proper display of the pedigree on the Pedigree Browser tab
 
-#' Converts all columns of a data.frame to of class "character"
+#' Force dataframe columns to character
+#'
+#' Converts designated columns of a dataframe to character. Defaults to
+#' converting columns \code{id}, \code{sire}, and \code{dam}.
 #'
 #' NOTE:
 #' Function was created to deal with a display bug in xtables (used by Shiny)
 #' The bug causes Date columns to be displayed improperly
 #' Shiny also displays all Numbers (including integers) with 2 decimal places
-#' @param a dataframe
+#' Comment by R. Mark Sharp - this is just one way to modify the number of
+#' digits displayed.
+#' library(DT)
+#'
+#' set.seed(323)
+#' data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) %>%
+#'   datatable() %>%
+#'   formatRound(columns=c('x', 'y'), digits=3)
+#'
 #' @param  df: Any data.frame where the first three columns can be coerced to
 #' character.
-#' @return A dataframe with the first three columns converted to class
-#' "character" for
-#'             display with xtables (in shiny)
+#' @param headers character vector with the columns to be converted to
+#' character class. Defaults to \code{c("id", "sire", "dam")}/
+#' @return A dataframe with the specified columns converted to class
+#' "character" for display with xtables (in shiny)
 #' @export
-toCharacter <- function(df) {
-  #headers <- names(df)
-  headers <- c("id", "sire", "dam")
+toCharacter <- function(df, headers = c("id", "sire", "dam")) {
 
-  for (i in 1:length(headers)) { # should be i in seq_along(headers)
+  for (i in seq_along(headers)) {
     df[[i]] <- as.character(df[[i]])
   }
   return(df)
 }
-#' Convert internal column names to display or header names.
-#'
-#' Converts the column names of a Pedigree or Genetic value Report to
-#'   something more descriptive
-#'
-#' @param character vector of length one having a string to be display names or
-#' header names.
-#'
-#' @param key: A column name
-#' @return A converted column header
-#' @export
-nameConversion <- function(key) {
-  switch(key,
-         id = "Ego ID",
-         sire = "Sire ID",
-         dam = "Dam ID",
-         sex = "Sex",
-         gen = "Generation #",
-         birth = "Birth Date",
-         exit = "Exit Date",
-         age = "Age (in years)",
-         population = "Breeding Colony Member",
-         group = "Subset Member",
-         origin = "Origin",
-         indiv.avgs = "Individual Mean Kinship",
-         z.scores = "Z-score (Mean Kinship)",
-         genome.unique = "Genome Uniqueness",
-         total.offspring = "Total Offspring",
-         living.offspring = "Living Offspring",
-         rank = "Rank",
-         value = "Value Designation",
-         status = "Status",
-         ancestry = "Ancestry",
-         gu = "Genome Uniqueness (%)",
-         ped.num = "Pedigree #",
-         spf = "SPF",
-         condition = "Condition")
-}
-
 #' Convert internal column names to display or header names.
 #'
 #' Converts the column names of a Pedigree or Genetic value Report to
@@ -819,7 +790,33 @@ nameConversion <- function(key) {
 #' @return Updated list of column names
 #' @export
 headerDisplayNames <- function(headers) {
-  return(unlist(lapply(headers, nameConversion)))
+  nameConversion <- c(
+    id = "Ego ID",
+    sire = "Sire ID",
+    dam = "Dam ID",
+    sex = "Sex",
+    gen = "Generation #",
+    birth = "Birth Date",
+    exit = "Exit Date",
+    age = "Age (in years)",
+    population = "Breeding Colony Member",
+    group = "Subset Member",
+    origin = "Origin",
+    indiv.avgs = "Individual Mean Kinship",
+    z.scores = "Z-score (Mean Kinship)",
+    genome.unique = "Genome Uniqueness",
+    total.offspring = "Total Offspring",
+    living.offspring = "Living Offspring",
+    rank = "Rank",
+    value = "Value Designation",
+    status = "Status",
+    ancestry = "Ancestry",
+    gu = "Genome Uniqueness (%)",
+    ped.num = "Pedigree #",
+    spf = "SPF",
+    condition = "Condition"
+  )
+  return(as.character(nameConversion[headers]))
 }
 
 #' Filters a genetic value report down to only the specified animals
