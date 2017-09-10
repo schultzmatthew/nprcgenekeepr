@@ -26,6 +26,9 @@ conn <- odbcConnect("frogstar-vortex-animal-msharp")
 proband_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                        "library/nprcmanager/inst/extdata/",
                        "baboon_breeders_probands.csv")
+ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
+                      "library/nprcmanager/inst/extdata/",
+                      "baboon_breeders_ped.csv")
 qc_ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                        "library/nprcmanager/inst/extdata/",
                        "baboon_breeders_qc_ped.csv")
@@ -54,7 +57,10 @@ ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
 ped$id <- stri_trim_both(ped$id)
 ped$sire_id <- stri_trim_both(ped$sire_id)
 ped$dam_id <- stri_trim_both(ped$dam_id)
+
 probands <- stri_trim_both(probands)
+write.csv(ped,
+          file = ped_file, row.names = FALSE)
 ped_qc <- qcStudbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
                   addBackSingles = FALSE)
