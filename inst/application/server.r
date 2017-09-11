@@ -814,7 +814,9 @@ headerDisplayNames <- function(headers) {
     gu = "Genome Uniqueness (%)",
     ped.num = "Pedigree #",
     spf = "SPF",
-    condition = "Condition"
+    condition = "Condition",
+    first_name = "First Allele",
+    second_name = "Second Allele"
   )
   return(as.character(nameConversion[headers]))
 }
