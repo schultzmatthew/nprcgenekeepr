@@ -1,9 +1,8 @@
 context("addGenotype")
 library(testthat)
 library(stringi)
-qc_ped_file <- stri_c("../../inst/extdata/",
-                      "baboon_breeders_qc_ped.csv")
-
+qc_ped_file <- system.file("extdata", "baboon_breeders_qc_ped.csv",
+                           package = "nprcmanager")
 ped <- read.csv(qc_ped_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)

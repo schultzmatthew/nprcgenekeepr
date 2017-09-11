@@ -1,7 +1,8 @@
 context("addUIds")
 library(testthat)
 library(stringi)
-ped_file <- stri_c("../../inst/extdata/baboon_breeders_ped.csv")
+ped_file <- system.file("extdata", "baboon_breeders_ped.csv",
+                           package = "nprcmanager")
 ped <- read.csv(ped_file, header = TRUE, sep = ",",
                 stringsAsFactors = FALSE, na.strings = c("", "NA"),
                 check.names = FALSE)
