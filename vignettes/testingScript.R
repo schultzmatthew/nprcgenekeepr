@@ -92,3 +92,26 @@ gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
 gu <- gu[probands, ,drop = FALSE]
 length(p$sex[p$sex == "F"])
 
+rhesus_file <- system.file("extdata", "BreedingGroups1_4MendozaTest.csv",
+                        package = "nprcmanager")
+rhesus_proband_file <- "inst/extdata/rhesus_mhc_proband_genotypes.csv"
+rhesus_ped_file <- "inst/extdata/rhesus_mhc_ped.csv"
+rhesus_proband <- read.csv(rhesus_file, header = TRUE, sep = ",",
+                stringsAsFactors = FALSE, na.strings = c("", "NA"),
+                check.names = FALSE)
+rhesus_proband$id <- as.character(rhesus_proband$`Animal ID`)
+rhesus_proband$first_name <- paste0(rhesus_proband[[3]], "_", rhesus_proband[[5]])
+rhesus_proband$second_name <- paste0(rhesus_proband[[4]], "_", rhesus_proband[[6]])
+rhesus_proband[ , 1:6] <- NULL
+# write.csv(rhesus_proband,
+#             file = rhesus_proband_file, row.names = FALSE)
+rhesus_probands <- blank_fill_ids(rhesus_proband$id)
+rhesus_ped <- get_direct_ancestors(conn, rhesus_probands)
+rhesus_ped <- add_birth_date(conn, rhesus_ped)
+rhesus_ped$birth_date <- format(rhesus_ped$birth_date, format = "%Y-%m-%d")
+rhesus_ped$id <- stri_trim_both(rhesus_ped$id)
+rhesus_ped$sire_id <- stri_trim_both(rhesus_ped$sire_id)
+rhesus_ped$dam_id <- stri_trim_both(rhesus_ped$dam_id)
+# write.csv(rhesus_ped,
+#           file = rhesus_ped_file, row.names = FALSE)
+
