@@ -25,7 +25,7 @@
 	  Observed genotypic information can be supplied for any members of
 	  the pedigree. Designation of two alleles is required as currently
 	  there is no accommodation for partial genetic information for an individual.
-	  Thus, two alleles are required. Please contact
+	  Please contact
 	  <a href="mailto:msharp@TxBiomed.org?Subject=nprcmanager:%20Need%20to%20allow%20partial%20genetic%20information" target="_top">R. Mark Sharp</a>
 	  if you need to be able to enter partial genetic information.
 	</li>
@@ -152,7 +152,7 @@
 		<td>First</td>
         <td>first</td>
 		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele:
+		<td>Represents one haploid and maps to a specific allele or haplotype.
 		<br>Can be the same value as <i>second</i> if the individual is
 		homozygous at this locus
 		</td>
@@ -161,7 +161,7 @@
 		<td>Second</td>
         <td>second</td>
 		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele::
+		<td>Represents one haploid and maps to a specific allele or haplotype.
 		<br>Can be the same value as <i>first</i> if the individual is
 		homozygous at this locus</td>
 	</tr>
@@ -249,8 +249,9 @@
 <br>
 <h4 id="genotype_format">Genotype File Format Details:</h4>
 <p>The following columns names are reserved and will be recognized:</p>
-<p><i>id, first</i>, and <i>second</i> are required columns.</p>
-<p><i>first_name</i> and <i>second_name</i> may also be provided.
+<p>Columns <i>id, first_name</i>, and <i>second_name</i> are required columns.</p>
+<p>Columns <i>first</i> and <i>second</i> will be automatically generated and
+cannot be present.</p>.
 <ul style="list-style-type:disc">
 	<li style="padding-bottom: 15px">
 		Use column the names listed in the table below. Column name case and
@@ -283,23 +284,6 @@
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>First</td>
-        <td>first</td>
-		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele:
-		<br>Can be the same value as <i>second</i> if the individual is
-		homozygous at this locus
-		</td>
-	</tr>
-	<tr bgcolor="#CCCCFF">
-		<td>Second</td>
-        <td>second</td>
-		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele:
-		<br>Can be the same value as <i>first</i> if the individual is
-		homozygous at this locus</td>
-	</tr>
-	<tr bgcolor="#E6E6FF">
 		<td>First Name</td>
         <td>first_name</td>
 		<td>Alphanumeric representation of first allele</td>
@@ -307,7 +291,7 @@
 		dashes. Other characters have not been tested.
 		</td>
 	</tr>
-	<tr bgcolor="#E6E6FF">
+	<tr bgcolor="#CCCCFF">
 		<td>Second Name</td>
         <td>second_name</td>
 		<td>Alphanumeric representation of second allele</td>
