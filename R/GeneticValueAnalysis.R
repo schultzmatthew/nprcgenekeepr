@@ -6,7 +6,8 @@
 #'
 #' @export
 getIncludeColumns <- function() { # Replaces INCLUDE.COLUMNS data statement.
-  c("id", "sex", "age", "birth", "exit", "population", "condition", "origin")
+  c("id", "sex", "age", "birth", "exit", "population", "condition", "origin",
+    "first_name", "second_name")
 }
 #' Generates a genetic value report for a provided pedigree.
 #'
@@ -48,8 +49,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   genotype <- getGVGenotype(ped)
 
   # Generate the kinship matrix and filter down to the animals of interest
-  kmat.raw <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
-  kmat <- filterKinMatrix(probands, kmat.raw)
+  kmat <- filterKinMatrix(probands, kinship(ped$id, ped$sire, ped$dam,
+                                            ped$gen))
 
   # Calculate the average kinship, and convert to z-scores
   indiv.avgs <- avgKinship(kmat)
