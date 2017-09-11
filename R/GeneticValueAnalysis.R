@@ -37,19 +37,15 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
                      by.id = TRUE, updateProgress = NULL) {
   # Generates a genetic value report for a provided pedigree
 
-  if (!is.null(pop)) {
-    ped$population <- FALSE
-    ped$population[ped$id %in% pop] <- TRUE
-  } else if (is.null(ped$population)) {
-    ped$population <- TRUE
-  }
-  if (any("first" %in% names(ped))) {
-    genotype <- ped[ , c("id", "first", "second")]
-  } else {
-    genotype <- NULL
-  }
-  # Get a list of animals in the population to consider
+  ## If user has limited the population of iterest by defining 'pop',
+  ## that information is incorporated via the 'population' column.
+  ped$population <- getGVPopulation(ped, pop)
+
+  # Get the list of animals in the population to consider
   probands <- as.character(ped$id[ped$population])
+
+  ## Extract genotype data if available otherwise NULL is returned.
+  genotype <- getGVGenotype(ped)
 
   # Generate the kinship matrix and filter down to the animals of interest
   kmat.raw <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
