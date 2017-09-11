@@ -28,5 +28,6 @@
 # da <- get_direct_ancestors(conn, ids)
 # deb_ped <- read.csv2(file = "/Users/msharp/Desktop/2cage_bab_brdrs_ped.csv")
 # names(deb_ped)
-# names(deb_ped) <- c("id", "sire_id", "dam_id", "sex", "birth_date", "exit_date")
+# names(deb_ped) <- c("id", "sire_id", "dam_id", "sex", "birth_date",
+#                     "exit_date")
 # deb_ped[deb_ped$id %in% blank_fill_ids(da$id), ]
