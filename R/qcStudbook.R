@@ -212,6 +212,7 @@ qcStudbook <- function(sb, minParentAge = 2) {
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
   sb <- removeDuplicates(sb)
+  sb <- fixGenotypeCols(sb)
   cols <- intersect(getPossibleCols(), colnames(sb))
   sb <- sb[, cols]
   sb <- sb[with(sb, order(gen, id)), ]

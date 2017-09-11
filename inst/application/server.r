@@ -139,18 +139,30 @@ shinyServer(function(input, output, session) {
         cat(paste0("After addGenotype - genotypeFile$name: ",
                    genotypeFile$name,
                    "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), ", col names: ", names(d),
-                   "\n"),
+                   ", columns: ", ncol(d), "; col names: ",
+                   paste(names(d), sep = ", "), "\n"),
             file = "~/shiny.txt", append = TRUE)
       } else {
         cat(paste0("Setting genotype to NULL.\n"),
             file = "~/shiny.txt", append = TRUE)
         genotype <- NULL
       }
-      cat(paste0("Data files may have been read.\n"),
+      cat(paste0("Data files may have been read.\n",
+                 "genotypeFile$name: ",
+                   genotypeFile$name,
+                 "; contents rows: ", nrow(d),
+                 ", columns: ", ncol(d), "; col names: ",
+                 paste(names(d), sep = ", "), "\n"),
           file = "~/shiny.txt", append = TRUE)
 
       if (!is.null(minParentAge)) {
+        cat(paste0("Before qcStudbook.\n",
+                   "genotypeFile$name: ",
+                   genotypeFile$name,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), "; col names: ",
+                   paste(names(d), sep = ", "), "\n"),
+            file = "~/shiny.txt", append = TRUE)
         d <- tryCatch(qcStudbook(d, minParentAge),
                       warning = function(cond) {
                         return(NULL)
@@ -159,6 +171,14 @@ shinyServer(function(input, output, session) {
                         return(NULL)
                       }
         )
+        cat(paste0("After qcStudbook.\n",
+                   "genotypeFile$name: ",
+                   genotypeFile$name,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), "; col names: ",
+                   paste(names(d), sep = ", "), "\n"),
+            file = "~/shiny.txt", append = TRUE)
+
       }
       cat(paste0("before validate().\n"),
           file = "~/shiny.txt", append = TRUE)
@@ -186,10 +206,17 @@ shinyServer(function(input, output, session) {
         file = "~/shiny.txt", append = TRUE)
 
     p <- sb()
+    cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
+    cat("\n", file = "~/shiny.txt", append = TRUE)
 
     p <- tryCatch(
       {
+        p <- sb()
+        cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
+        cat(" - in tryCatch before resetPopulation\n",
+            file = "~/shiny.txt", append = TRUE)
         p <- resetPopulation(specifyPopulation(), p)
+        cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
         cat(paste0("resetPopulation() called\n"),
             file = "~/shiny.txt", append = TRUE)
 

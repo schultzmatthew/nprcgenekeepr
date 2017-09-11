@@ -1,0 +1,15 @@
+#' Reformat names of observed genotype columns
+#'
+#' This is not a good fix. A better solution is to avoid the problem.
+#' Currently qcStudbook() blindly changes all of the column names by removing
+#' the underscores.
+#' @export
+fixGenotypeCols <- function(ped) {
+  if (any(tolower(names(ped)) %in% "firstname")) {
+    names(ped)[names(ped) == "firstname"] <- "first_name"
+  }
+  if (any(tolower(names(ped)) %in% "secondname")) {
+    names(ped)[names(ped) == "secondname"] <- "second_name"
+  }
+  ped
+}
