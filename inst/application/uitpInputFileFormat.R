@@ -43,7 +43,8 @@ uitpInputFileFormat <-
             "Pedigree(s) file only; genotypes not provided" = "pedFile",
             "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
             "Pedigree(s) and genotypes in separate files" =
-              "separatePedGenoFile"
+              "separatePedGenoFile",
+            "Breeders only; pedigree obtained from database" = "breeders"
           ),
           selected = NULL
         ),
@@ -89,6 +90,20 @@ uitpInputFileFormat <-
           ),
           fileInput("pedigreeFileThree", label = "Select Pedigree File"),
           fileInput("genotypeFile", label = "Select Genotype File")
+        ),
+        conditionalPanel(
+          condition = "input.dataSource == 'breeders'",
+          radioButtons(
+            'sepFour',
+            label = 'Separator',
+            choices = list(
+              'Comma' = ',',
+              'Semicolon' = ';',
+              'Tab' = '\t'
+            ),
+            selected = ','
+          ),
+          fileInput("breederFile", label = "Select Breeder File")
         ),
         textInput("minParentAge", label = "Minimum Parent Age (years)",
                   value = "2.5"),

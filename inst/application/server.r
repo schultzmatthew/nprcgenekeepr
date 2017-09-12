@@ -37,6 +37,13 @@ shinyServer(function(input, output, session) {
                    "genotypeFile$name: ", genotypeFile$name,
                    "; genotypeFile$datapath: ", genotypeFile$datapath),
             file = "~/shiny.txt", append = TRUE)
+      } else if (input$dataSource == "breeders") {
+        sep <- input$sepFour
+        breederFile <- input$breederFile
+        cat(paste0("breederFile - breederFile$name: ",
+                   breederFile$name, "; ",
+                   "breederFile$datapath: ", breederFile$datapath, "\n"),
+            file = "~/shiny.txt", append = TRUE)
       } else {
         stop("Column separator was not defined.")
       }
@@ -69,17 +76,26 @@ shinyServer(function(input, output, session) {
                  "; pedigreeFile$name: ", pedigreeFile$name,"\n"),
           file = "~/shiny.txt", append = TRUE)
       # Load pedigree table
-      d <- read.csv(pedigreeFile$datapath,
-                    header = TRUE,
-                    sep = sep,
-                    stringsAsFactors = FALSE,
-                    na.strings = c("", "NA"),
-                    check.names = FALSE)
-      cat(paste0("after read.csv pedigreeFile$name: ", pedigreeFile$name,
-                 "; contents rows: ", nrow(d),
-                 ", columns: ", ncol(d), ", col names: ", names(d),
-                 "\n"),
-          file = "~/shiny.txt", append = TRUE)
+      if (input$datasource == "breeders") {
+        d <- getBreederPed(breederFile$datapath)
+        cat(paste0("after getBreederPed: ", breederFile$name,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), ", col names: ", names(d),
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
+      } else {
+        d <- read.csv(pedigreeFile$datapath,
+                      header = TRUE,
+                      sep = sep,
+                      stringsAsFactors = FALSE,
+                      na.strings = c("", "NA"),
+                      check.names = FALSE)
+        cat(paste0("after read.csv pedigreeFile$name: ", pedigreeFile$name,
+                   "; contents rows: ", nrow(d),
+                   ", columns: ", ncol(d), ", col names: ", names(d),
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
+      }
 
       if (is.null(input$dataSource)) {
         stop("Did not expect input$dataSource to be NULL")
