@@ -148,18 +148,14 @@ shinyServer(function(input, output, session) {
         genotype <- NULL
       }
       cat(paste0("Data files may have been read.\n",
-                 "genotypeFile$name: ",
-                   genotypeFile$name,
-                 "; contents rows: ", nrow(d),
+                 "contents rows: ", nrow(d),
                  ", columns: ", ncol(d), "; col names: ",
                  paste(names(d), sep = ", "), "\n"),
           file = "~/shiny.txt", append = TRUE)
 
       if (!is.null(minParentAge)) {
         cat(paste0("Before qcStudbook.\n",
-                   "genotypeFile$name: ",
-                   genotypeFile$name,
-                   "; contents rows: ", nrow(d),
+                   "contents rows: ", nrow(d),
                    ", columns: ", ncol(d), "; col names: ",
                    paste(names(d), sep = ", "), "\n"),
             file = "~/shiny.txt", append = TRUE)
@@ -172,9 +168,7 @@ shinyServer(function(input, output, session) {
                       }
         )
         cat(paste0("After qcStudbook.\n",
-                   "genotypeFile$name: ",
-                   genotypeFile$name,
-                   "; contents rows: ", nrow(d),
+                   "contents rows: ", nrow(d),
                    ", columns: ", ncol(d), "; col names: ",
                    paste(names(d), sep = ", "), "\n"),
             file = "~/shiny.txt", append = TRUE)
@@ -271,7 +265,7 @@ shinyServer(function(input, output, session) {
     names(p) <- headerDisplayNames(names(p))
 
     p
-  }), filter = "top")
+  }))#, filter = "top")
 
   specifyPopulation <- eventReactive(input$specify_pop, {
     p <- unlist(strsplit(input$population_ids, "[ \t\n]"))
@@ -362,7 +356,7 @@ shinyServer(function(input, output, session) {
     names(g) <- headerDisplayNames(names(g))
 
     return(g)
-  }), filter = "top")
+  }))#, filter = "top")
 
   # output$gva <- renderText({
   #   if (is.null(rpt())) {
@@ -748,7 +742,7 @@ shinyServer(function(input, output, session) {
     }
 
     return(bg_view())
-  }), filter = "top")
+  }))#, filter = "top")
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
