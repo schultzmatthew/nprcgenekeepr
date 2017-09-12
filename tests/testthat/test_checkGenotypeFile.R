@@ -1,4 +1,4 @@
-context("addGenotype")
+context("checkGenotypeFile")
 library(testthat)
 library(stringi)
 
@@ -8,6 +8,7 @@ qc_ped_file <- system.file("extdata", "baboon_breeders_qc_ped.csv",
 ped <- read.csv(qc_ped_file, header = TRUE, sep = ",",
                 stringsAsFactors = FALSE, na.strings = c("", "NA"),
                 check.names = FALSE)
+ped <- ped[order(ped$id), ]
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first_name", 1:20),
                        second_name = stri_c("second_name", 1:20),
@@ -21,7 +22,7 @@ genotype <- data.frame(id = ped$id[50 + 1:20],
                        second_name = stri_c("sec:ond_name", 1:20),
                        stringsAsFactors = FALSE)
 test_that("checkGenotypeFile detects a bad dataframe", {
-  expect_error(checkGenotypeFile(genotype))
+  expect_true(is.data.frame(checkGenotypeFile(genotype)))
 })
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first_name", 1:20),
@@ -29,7 +30,7 @@ genotype <- data.frame(id = ped$id[50 + 1:20],
                        stringsAsFactors = FALSE)
 genotype$first_name[genotype$id == "1X1237"] <- "almost; ok"
 test_that("checkGenotypeFile detects single error", {
-  expect_error(checkGenotypeFile(genotype))
+  expect_true(is.data.frame(checkGenotypeFile(genotype)))
 })
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first_name", 1:20),
