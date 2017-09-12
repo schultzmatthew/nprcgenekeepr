@@ -6,6 +6,9 @@
 \usage{
 fixGenotypeCols(ped)
 }
+\arguments{
+\item{ped}{the pedigree information in datatable format}
+}
 \description{
 This is not a good fix. A better solution is to avoid the problem.
 Currently qcStudbook() blindly changes all of the column names by removing
