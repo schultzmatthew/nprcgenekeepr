@@ -1,7 +1,3 @@
-# source("../../R/PedigreeCuration.R")
-# source("../../R/GeneticValueAnalysis.R")
-# source("../../R/GroupFormation.R")
-# source("../../R/Relations.R")
 `%then%` <- shiny:::`%OR%`
 getMinParentAge <- function() {
   minParentAge <- as.numeric(renderText({input$minParentAge}))
@@ -14,13 +10,6 @@ getMinParentAge <- function() {
 shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling initial pedigree upload and QC
-
-  # Opening the file browser when the button is clicked
-  # selectFile <- eventReactive(input$select_file, {
-  #   return(
-  #         tryCatch(file.choose(), error = function(e) {NULL})
-  #       )
-  # })
 
   # Load/QC the pedigree once a file has been specified
   sb <- reactive({
@@ -265,7 +254,7 @@ shinyServer(function(input, output, session) {
     names(p) <- headerDisplayNames(names(p))
 
     p
-  }))#, filter = "top")
+  }))
 
   specifyPopulation <- eventReactive(input$specify_pop, {
     p <- unlist(strsplit(input$population_ids, "[ \t\n]"))
@@ -356,7 +345,7 @@ shinyServer(function(input, output, session) {
     names(g) <- headerDisplayNames(names(g))
 
     return(g)
-  }))#, filter = "top")
+  }))
 
   # output$gva <- renderText({
   #   if (is.null(rpt())) {
@@ -728,21 +717,13 @@ shinyServer(function(input, output, session) {
     }
   })
 
-  # output$breeding_groups <- renderTable({
-  #   if (is.null(bg())) {
-  #     return(NULL)
-  #   }
-  #
-  #   return(bg_view())
-  # })
-
   output$breeding_groups <- DT::renderDataTable(DT::datatable({
     if (is.null(bg())) {
       return(NULL)
     }
 
     return(bg_view())
-  }))#, filter = "top")
+  }))
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
@@ -754,20 +735,11 @@ shinyServer(function(input, output, session) {
 
   #############################################################################
   # Function to handle display of pyramid plot
-  # pyramid_plot <- eventReactive(input$display_pyramid_plot, {
-  #   if (is.null(ped())) {
-  #     return(NULL)
-  #   }
-  #   # Ensuring the pedigree has been trimmed
-  #   # (if there are too many animals, the program will crash)
-  #   p <- ped()
-  #   get_pyramid_plot()
-  # })
   output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
 })
 
 ###############################################################################
-# Functions for proper display of the pedigree on the Pedigree Browser tab
+# Helper functions for proper display of the pedigree on the Pedigree Browser tab
 
 #' Force dataframe columns to character
 #'
