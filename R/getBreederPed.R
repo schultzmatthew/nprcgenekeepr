@@ -4,7 +4,7 @@
 #' this package.
 #'
 #' @param fileName character vector of temporary file path.
-#' @import tacr
+#' @param sep column separator in CSV file
 #' @export
 getBreederPed <- function(fileName, sep = ",") {
   breeders <- read.csv(fileName,

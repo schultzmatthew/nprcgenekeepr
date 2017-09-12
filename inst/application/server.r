@@ -77,7 +77,7 @@ shinyServer(function(input, output, session) {
           file = "~/shiny.txt", append = TRUE)
       # Load pedigree table
       if (input$datasource == "breeders") {
-        d <- getBreederPed(breederFile$datapath)
+        d <- getBreederPed(breederFile$datapath, sep = sep)
         cat(paste0("after getBreederPed: ", breederFile$name,
                    "; contents rows: ", nrow(d),
                    ", columns: ", ncol(d), ", col names: ", names(d),

@@ -9,6 +9,7 @@
 #' @param ids character vector with Ids.
 #' @param colSelect optional character vector of columns to return in the
 #' dataframe.
+#' @importFrom tacr getDemographics
 #' @export
 getLkDirectAncestors <- function(labkeyNode, ids, colSelect = NULL) {
   colSet <- c("Id", "date", "gender", "species", "birth", "death",

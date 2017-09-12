@@ -16,7 +16,7 @@
 #'   datatable() %>%
 #'   formatRound(columns=c('x', 'y'), digits=3)
 #'
-#' @param  df: Any data.frame where the first three columns can be coerced to
+#' @param  df a dataframe where the first three columns can be coerced to
 #' character.
 #' @param headers character vector with the columns to be converted to
 #' character class. Defaults to \code{c("id", "sire", "dam")}/

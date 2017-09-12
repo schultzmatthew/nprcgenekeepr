@@ -7,11 +7,11 @@
 toCharacter(df, headers = c("id", "sire", "dam"))
 }
 \arguments{
+\item{df}{a dataframe where the first three columns can be coerced to
+character.}
+
 \item{headers}{character vector with the columns to be converted to
 character class. Defaults to \code{c("id", "sire", "dam")}/}
-
-\item{df:}{Any data.frame where the first three columns can be coerced to
-character.}
 }
 \value{
 A dataframe with the specified columns converted to class
