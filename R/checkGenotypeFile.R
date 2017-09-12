@@ -26,10 +26,11 @@ checkGenotypeFile <- function(genotype) {
         stop(stri_c("Possible collision on allele(s) interpreted as a number
                     > 10000: ", numberStr))
       }
-      if (any(stri_detect_regex(alleles, "[;:\"']+"))) {
-        stop(stri_c("Alleles have one or more of the following characters,
-                    which are not currently supported: ", ";:\"'"))
-      }
+      # Anything goes
+      # if (any(stri_detect_regex(alleles, "[;:\"']+"))) {
+      #   stop(stri_c("Alleles have one or more of the following characters,
+      #               which are not currently supported: ", ";:\"'"))
+      # }
     }
   }
   names(genotype) <- c("id", cols[2:length(cols)])
