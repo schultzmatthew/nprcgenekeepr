@@ -28,8 +28,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   rownames(ped) <- id
   ped <- ped[order(gen), ]
 
-  alleles <- list()
-  a <- 1L
+  alleles <- list(alleles = list(), counter = 1)
 
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Performing Gene-drop Simulation", value = 0,
@@ -38,12 +37,12 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
 
   ## Iterate through each ID and get the maternal and paternal alleles
   for (id in ped$id) {
-    alleles[[id]] <- list()
+    alleles$alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
     ## assignAlleles increments "a" as needed.
-    alleles <- assignAlleles("sire", s, alleles, id, a, n)
-    alleles <- assignAlleles("dam", d, alleles, id, a, n)
+    alleles <- assignAlleles(alleles, "sire", s, id, n)
+    alleles <- assignAlleles(alleles, "dam", d, id, n)
 
     if (!is.null(updateProgress)) {
       updateProgress(n = nrow(ped))
@@ -51,7 +50,7 @@ gene.drop <- function(id, sire, dam, gen, n = 5000, updateProgress = NULL) {
   }
 
   # Convert the list of alleles to a data.frame
-  alleles <- as.data.frame(t(data.frame(alleles, check.names = FALSE)))
+  alleles <- as.data.frame(t(data.frame(alleles$alleles, check.names = FALSE)))
   keys <- strsplit(rownames(alleles), ".", fixed = TRUE)
 
   id <- c()

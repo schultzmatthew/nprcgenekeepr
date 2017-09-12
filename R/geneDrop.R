@@ -73,9 +73,8 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
       }
     }
     if (!assigned) {
-      ## assignAlleles increments "a" as needed.
-      alleles <- assignAlleles("sire", s, alleles, id, n)
-      alleles <- assignAlleles("dam", d, alleles, id, n)
+      alleles <- assignAlleles(alleles, "sire", s, id, n)
+      alleles <- assignAlleles(alleles, "dam", d, id, n)
     }
 
     if (!is.null(updateProgress)) {

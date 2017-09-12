@@ -4,18 +4,18 @@
 \alias{assignAlleles}
 \title{Assign parent alleles randomly}
 \usage{
-assignAlleles(parentType, parent, alleles, id, n)
+assignAlleles(alleles, parentType, parent, id, n)
 }
 \arguments{
-\item{parentType}{character vector of length one with value of
-\code{"sire"} or \code{"dam"}.}
-
-\item{parent}{either \code{ped[id, "sire"]} or \code{ped[id, "dam"]}.}
-
 \item{alleles}{a list with a list \code{alleles$alleles}, which is a list
 of list containing the alleles for each individual's sire and dam that have
 been assigned thus far and \code{alleles$counter} that is the counter used
 to track the lists of\code{alleles$alleles}.}
+
+\item{parentType}{character vector of length one with value of
+\code{"sire"} or \code{"dam"}.}
+
+\item{parent}{either \code{ped[id, "sire"]} or \code{ped[id, "dam"]}.}
 
 \item{id}{character vector of length one containing the animal ID}
 
