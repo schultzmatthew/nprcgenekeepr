@@ -4,7 +4,7 @@
 \alias{assignAlleles}
 \title{Assign parent alleles randomly}
 \usage{
-assignAlleles(parentType, parent, alleles, id, a, n)
+assignAlleles(parentType, parent, alleles, id, n)
 }
 \arguments{
 \item{parentType}{character vector of length one with value of
@@ -12,13 +12,12 @@ assignAlleles(parentType, parent, alleles, id, a, n)
 
 \item{parent}{either \code{ped[id, "sire"]} or \code{ped[id, "dam"]}.}
 
-\item{alleles}{list of list containing the alleles for each individual's
-sire and dam that have been assigned thus far}
+\item{alleles}{a list with a list \code{alleles$alleles}, which is a list
+of list containing the alleles for each individual's sire and dam that have
+been assigned thus far and \code{alleles$counter} that is the counter used
+to track the lists of\code{alleles$alleles}.}
 
 \item{id}{character vector of length one containing the animal ID}
-
-\item{a}{integer value that is a counter. This function updates \code{a} in
-the calling environment.}
 
 \item{n}{integer indicating the number of iterations to simulate.
 Default is 5000.}

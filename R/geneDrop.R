@@ -49,8 +49,8 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
     genoDefined <- FALSE
   }
 
-  alleles <- list()
-  a <- 1
+  alleles <- list(alleles = list(), counter = 1)
+
 
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Performing Gene-drop Simulation", value = 0,
@@ -59,21 +59,23 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
 
   ## Iterate through each ID and get the maternal and paternal alleles
   for (id in ped$id) {
-    alleles[[id]] <- list()
+    alleles$alleles[[id]] <- list()
     s <- ped[id, "sire"]
     d <- ped[id, "dam"]
     assigned <- FALSE
     if (genoDefined) {
       if (any(genotype$id == id)) {
-        alleles[[id]][["sire"]] <- rep(genotype$first[genotype$id == id], n)
-        alleles[[id]][["dam"]] <- rep(genotype$second[genotype$id == id], n)
+        alleles$alleles[[id]][["sire"]] <-
+          rep(genotype$first[genotype$id == id], n)
+        alleles$alleles[[id]][["dam"]] <-
+          rep(genotype$second[genotype$id == id], n)
         assigned <- TRUE
       }
     }
     if (!assigned) {
       ## assignAlleles increments "a" as needed.
-      alleles <- assignAlleles("sire", s, alleles, id, a, n)
-      alleles <- assignAlleles("dam", d, alleles, id, a, n)
+      alleles <- assignAlleles("sire", s, alleles, id, n)
+      alleles <- assignAlleles("dam", d, alleles, id, n)
     }
 
     if (!is.null(updateProgress)) {
@@ -82,7 +84,7 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
   }
 
   # Convert the list of alleles to a data.frame
-  alleles <- as.data.frame(t(data.frame(alleles, check.names = FALSE)))
+  alleles <- as.data.frame(t(data.frame(alleles$alleles, check.names = FALSE)))
   keys <- strsplit(rownames(alleles), ".", fixed = TRUE)
 
   id <- c()
