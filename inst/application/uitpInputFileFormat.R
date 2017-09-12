@@ -42,7 +42,8 @@ uitpInputFileFormat <-
           choices = list(
             "Pedigree(s) file only; genotypes not provided" = "pedFile",
             "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
-            "Pedigree(s) and genotypes in separate files" = "separatePedGenoFile"
+            "Pedigree(s) and genotypes in separate files" =
+              "separatePedGenoFile"
           ),
           selected = NULL
         ),
