@@ -42,7 +42,8 @@ getSiteInfo <- function() {
           if (stri_detect_fixed(tokens[2], "(")) {
             inList <- TRUE
             if (tolower(tokens[1]) != "pedcolumns") {
-              stop(paste0("Unexpected list following ", tokens[1], ".\n"))
+              stop(paste0("Unexpected list following '", tokens[1],
+                          "'. Check spelling carefully.\n"))
             } else {
               pedColumns <- c(tokens[2:length(tokens)])
               if (any(stri_detect_fixed(tokens, ")"))) {
