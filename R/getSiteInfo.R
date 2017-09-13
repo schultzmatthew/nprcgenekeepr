@@ -31,15 +31,67 @@ getSiteInfo <- function() {
     configFile <- paste0(homeDir, ".nprcmanager_config")
   }
   if (file.exists(configFile)) {
-    config_df <- read.csv(configFile, header = TRUE, sep = ",",
-                          stringsAsFactors = FALSE, na.strings = c("", "NA"),
-                          check.names = FALSE)
+    lines <- readLines(configFile, skipNul = TRUE)
+    inList <- FALSE
+    for (line in lines) {
+      tokens <- getTokens(line)
+      if (length(tokens) > 0) {
+        if (stri_sub(tokens[1], 1, 1) == "#") # comment found
+          next
+        if (length(tokens) > 1) {
+          if (stri_detect_fixed(tokens[2], "(")) {
+            inList <- TRUE
+            if (tolower(tokens[1]) != "pedcolumns") {
+              stop(paste0("Unexpected list following ", tokens[1], ".\n"))
+            } else {
+              pedColumns <- c(tokens[2:length(tokens)])
+              if (any(stri_detect_fixed(tokens, ")"))) {
+                inList <- FALSE
+              }
+              next
+            }
+          } else if (inList) {
+            pedColumns <- c(pedColumns, tokens)
+            if (any(stri_detect_fixed(tokens, ")"))) {
+              inList <- FALSE
+            }
+          } else if (tolower(tokens[1]) == "center") {
+            center <- tokens[2]
+          } else if (tolower(tokens[1]) == "baseurl") {
+            baseUrl <- tokens[2]
+          } else if (tolower(tokens[1]) == "schemaname") {
+            schemaName <- tokens[2]
+          } else if (tolower(tokens[1]) == "folderpath") {
+            folderPath <- tokens[2]
+          } else if (tolower(tokens[1]) == "queryname") {
+            queryName <- tokens[2]
+          } else {
+            stop(paste0("Cannot parse line: ", line,
+                        "\n found in configuration file.\n"))
+          }
+        } else if (length(tokens) == 1 & inList) {
+          pedColumns <- c(pedColumns, tokens)
+          if (any(stri_detect_fixed(tokens, ")"))) {
+            inList <- FALSE
+          }
+        } else {
+          next
+        }
+      }
+    }
+    if (!is.null(pedColumns)) {
+      pedColumns[2] <- stri_sub(pedColumns[2], 2)
+      len <- length(pedColumns)
+      pedColumns[len] <- stri_sub(pedColumns[len], 1,
+                                  stri_length(pedColumns[len]) - 1)
+    }
     list(
-      center = config_df[["center"]],
-      baseUrl = config_df[["baseUrl"]],
-      schemaName = config_df[["schemaName"]],
-      folderPath = config_df[["folderPath"]],
-      queryName = config_df[["queryName"]],
+      center = center,
+      baseUrl = baseUrl,
+      schemaName = schemaName,
+      folderPath = folderPath,
+      queryName = queryName,
+      pedColumns = pedColumns,
       sysname  = sys_info[["sysname"]],
       release = sys_info[["release"]],
       version  = sys_info[["version"]],
@@ -66,6 +118,9 @@ getSiteInfo <- function() {
       schemaName = "study",
       folderPath = "/SNPRC",
       queryName = "demographics",
+      pedColumns = c("Id", "date", "gender", "species", "birth", "death",
+                  "lastDayAtCenter", "calculated_status", "dam", "sire",
+                  "origin", "parentid" , "species/arc_species_code"),
       sysname  = sys_info[["sysname"]],
       release = sys_info[["release"]],
       version  = sys_info[["version"]],
