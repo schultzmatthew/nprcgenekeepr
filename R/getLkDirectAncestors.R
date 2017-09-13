@@ -11,7 +11,11 @@
 #' dataframe.
 #' @importFrom tacr getDemographics
 #' @export
-getLkDirectAncestors <- function(labkeyNode, ids, colSelect = NULL) {
+getLkDirectAncestors <- function(ids) {
+  siteInfo <- getSiteInfo()
+  labkeyNode <- stri_split_fixed(siteInfo$baseUrl, "/")[[1]][[3]]
+  colSelect <- c("Id", "sire", "dam", "gender", "lastDayAtCenter", "birth",
+                 "death")
   colSet <- c("Id", "date", "gender", "species", "birth", "death",
               "lastDayAtCenter", "calculated_status", "dam", "sire",
               "origin", "parentid" , "species/arc_species_code")

@@ -7,19 +7,24 @@
 #' @param sep column separator in CSV file
 #' @export
 getBreederPed <- function(fileName, sep = ",") {
+  cat(paste0("in getBreederPed\n"),
+      file = "~/shiny.txt", append = TRUE)
+
   breeders <- read.csv(fileName,
                        header = TRUE,
                        sep = sep,
                        stringsAsFactors = FALSE,
                        na.strings = c("", "NA"),
                        check.names = FALSE)
+  cat(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
+             nrow(breeders), "\n"),
+      file = "~/shiny.txt", append = TRUE)
   breeders <- as.character(breeders$id)
-  baseUrl <- getSiteInfo()$baseUrl
-  labkeyNode <- stri_split_fixed(baseUrl, "/")[[1]][[3]]
-  colSelect <- c("Id", "sire", "dam", "gender", "lastDayAtCenter", "birth",
-                 "death")
-  ped <- getLkDirectAncestors(labkeyNode, ids = breeders,
-                                    colSelect = colSelect)
-  names(ped) <- c("id", "sire", "dam", "sex", "departure", "birth", "death")
-  ped[!is.na(ped$id), ]
+  ped <- getLkDirectAncestors(ids = breeders)
+  names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")
+  ped <- ped[!is.na(ped$id), ]
+  ped$birth <- format(ped$birth, format = "%Y-%m-%d")
+  ped$death <- format(ped$death, format = "%Y-%m-%d")
+  ped$departure <- format(ped$departure, format = "%Y-%m-%d")
+  ped
 }

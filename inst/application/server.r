@@ -39,10 +39,10 @@ shinyServer(function(input, output, session) {
             file = "~/shiny.txt", append = TRUE)
       } else if (input$dataSource == "breeders") {
         sep <- input$sepFour
-        breederFile <- input$breederFile
-        cat(paste0("breederFile - breederFile$name: ",
-                   breederFile$name, "; ",
-                   "breederFile$datapath: ", breederFile$datapath, "\n"),
+        pedigreeFile <- input$breederFile
+        cat(paste0("breederFile - pedigreeFile$name: ",
+                   pedigreeFile$name, "; ",
+                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
             file = "~/shiny.txt", append = TRUE)
       } else {
         stop("Column separator was not defined.")
@@ -62,23 +62,21 @@ shinyServer(function(input, output, session) {
       )
       cat(paste0("minParentAge: ", minParentAge, "\n"),
           file = "~/shiny.txt", append = TRUE)
-      cat(paste0("pedigreeFile$name: ", pedigreeFile$name,
-                 "; pedigreeFile$datapath: ", pedigreeFile$datapath,
-                 "\n"),
-          file = "~/shiny.txt", append = TRUE)
 
-      # pedigreeFile will be NULL initially.
+      # pedigreeFile and breederFile will be NULL initially.
       # After the user selects a file, it will be a filepath.
       if (is.null(pedigreeFile)) {
         return(NULL)
       }
-      cat(paste0("before read.csv input$dataSource: ", input$dataSource,
-                 "; pedigreeFile$name: ", pedigreeFile$name,"\n"),
+      cat(paste0("before read.csv input$dataSource: ", input$dataSource, "\n"),
           file = "~/shiny.txt", append = TRUE)
       # Load pedigree table
-      if (input$datasource == "breeders") {
-        d <- getBreederPed(breederFile$datapath, sep = sep)
-        cat(paste0("after getBreederPed: ", breederFile$name,
+      if (input$dataSource == "breeders") {
+        cat(paste0("before getBreederPed: ", pedigreeFile$name,
+                   "\n"),
+            file = "~/shiny.txt", append = TRUE)
+        d <- getBreederPed(pedigreeFile$datapath, sep = sep)
+        cat(paste0("after getBreederPed: ", pedigreeFile$name,
                    "; contents rows: ", nrow(d),
                    ", columns: ", ncol(d), ", col names: ", names(d),
                    "\n"),

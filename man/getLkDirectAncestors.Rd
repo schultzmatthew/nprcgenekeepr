@@ -4,13 +4,13 @@
 \alias{getLkDirectAncestors}
 \title{Get the direct ancestors of selected animals}
 \usage{
-getLkDirectAncestors(labkeyNode, ids, colSelect = NULL)
+getLkDirectAncestors(ids)
 }
 \arguments{
+\item{ids}{character vector with Ids.}
+
 \item{labkeyNode}{a string specifying the \code{labkeyNode} for the labkey
 server. Defaults to "boomer.txbiomed.org",}
-
-\item{ids}{character vector with Ids.}
 
 \item{colSelect}{optional character vector of columns to return in the
 dataframe.}
