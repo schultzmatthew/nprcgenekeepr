@@ -32,6 +32,13 @@ getSiteInfo <- function() {
   }
   if (file.exists(configFile)) {
     lines <- readLines(configFile, skipNul = TRUE)
+    lines_and_cols <- getColumnVec(lines, "lkPedColumns")
+    lines <- lines_and_cols$lines
+    lkPedColumns <- lines_and_cols$vec
+    lines_and_cols <- getColumnVec(lines, "mapPedColumns")
+    lines <- lines_and_cols$lines
+    mapPedColumns <- lines_and_cols$vec
+
     inList <- FALSE
     for (line in lines) {
       tokens <- getTokens(line)
@@ -41,18 +48,18 @@ getSiteInfo <- function() {
         if (length(tokens) > 1) {
           if (stri_detect_fixed(tokens[2], "(")) {
             inList <- TRUE
-            if (tolower(tokens[1]) != "pedcolumns") {
+            if (tolower(tokens[1]) != "lkPedColumns") {
               stop(paste0("Unexpected list following '", tokens[1],
                           "'. Check spelling carefully.\n"))
             } else {
-              pedColumns <- c(tokens[2:length(tokens)])
+              lkPedColumns <- c(tokens[2:length(tokens)])
               if (any(stri_detect_fixed(tokens, ")"))) {
                 inList <- FALSE
               }
               next
             }
           } else if (inList) {
-            pedColumns <- c(pedColumns, tokens)
+            lkPedColumns <- c(lkPedColumns, tokens)
             if (any(stri_detect_fixed(tokens, ")"))) {
               inList <- FALSE
             }
@@ -71,7 +78,7 @@ getSiteInfo <- function() {
                         "\n found in configuration file.\n"))
           }
         } else if (length(tokens) == 1 & inList) {
-          pedColumns <- c(pedColumns, tokens)
+          lkPedColumns <- c(lkPedColumns, tokens)
           if (any(stri_detect_fixed(tokens, ")"))) {
             inList <- FALSE
           }
@@ -80,11 +87,11 @@ getSiteInfo <- function() {
         }
       }
     }
-    if (!is.null(pedColumns)) {
-      pedColumns[2] <- stri_sub(pedColumns[2], 2)
-      len <- length(pedColumns)
-      pedColumns[len] <- stri_sub(pedColumns[len], 1,
-                                  stri_length(pedColumns[len]) - 1)
+    if (!is.null(lkPedColumns)) {
+      lkPedColumns[2] <- stri_sub(lkPedColumns[2], 2)
+      len <- length(lkPedColumns)
+      lkPedColumns[len] <- stri_sub(lkPedColumns[len], 1,
+                                  stri_length(lkPedColumns[len]) - 1)
     }
     list(
       center = center,
@@ -92,7 +99,7 @@ getSiteInfo <- function() {
       schemaName = schemaName,
       folderPath = folderPath,
       queryName = queryName,
-      pedColumns = pedColumns,
+      lkPedColumns = lkPedColumns,
       sysname  = sys_info[["sysname"]],
       release = sys_info[["release"]],
       version  = sys_info[["version"]],
@@ -119,7 +126,7 @@ getSiteInfo <- function() {
       schemaName = "study",
       folderPath = "/SNPRC",
       queryName = "demographics",
-      pedColumns = c("Id", "date", "gender", "species", "birth", "death",
+      lkPedColumns = c("Id", "date", "gender", "species", "birth", "death",
                   "lastDayAtCenter", "calculated_status", "dam", "sire",
                   "origin", "parentid" , "species/arc_species_code"),
       sysname  = sys_info[["sysname"]],

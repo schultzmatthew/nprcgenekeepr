@@ -9,25 +9,17 @@
 #' @param ids character vector with Ids.
 #' @param colSelect optional character vector of columns to return in the
 #' dataframe.
-#' @importFrom tacr getDemographics
 #' @export
 getLkDirectAncestors <- function(ids) {
   siteInfo <- getSiteInfo()
   labkeyNode <- stri_split_fixed(siteInfo$baseUrl, "/")[[1]][[3]]
-  colSelect <- c("Id", "sire", "dam", "gender", "lastDayAtCenter", "birth",
-                 "death")
-  colSet <- c("Id", "date", "gender", "species", "birth", "death",
-              "lastDayAtCenter", "calculated_status", "dam", "sire",
-              "origin", "parentid" , "species/arc_species_code")
+  colSet <- siteInfo$lkPedColumns
   if (is.null(colSelect)) {
     colSelect <- colSet
   } else {
     colSelect <- intersect(colSet, colSelect)
   }
-  pedSourceDf <- tacr::getDemographics(
-    labkeyNode = labkeyNode,
-    colSelect = colSelect,
-    renameCol = TRUE)
+  pedSourceDf <- getDemographics(colSelect = colSet)
   parents <- ids
   len <- length(parents)
   ancestorsDf <- pedSourceDf[pedSourceDf$id %in% ids, ]
