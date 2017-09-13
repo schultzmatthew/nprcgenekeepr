@@ -7,6 +7,8 @@
 #' @import stringi
 #' @export
 getTokens <- function(line) {
-  line <- stri_trim_both(line)
-  return(stri_split_regex(line, pattern = "[[\\p{WHITE_SPACE},=]]+")[[1]])
+  line <- stri_replace_all_fixed(stri_trim_both(line), pattern = "\"",
+                                 replacement = "")
+  tokens <- stri_split_regex(line, pattern = "[[\\p{WHITE_SPACE},=]]+")[[1]]
+  tokens[!tokens == ""]
 }
