@@ -24,7 +24,7 @@
 getSiteInfo <- function() {
   sys_info <- Sys.info()
   if (stri_detect_fixed(toupper(sys_info[["sysname"]]), "WIND")) {
-    homeDir <- paste0("Users/", sys_info[["user"]], "/")
+    homeDir <- paste0("/Users/", sys_info[["user"]], "/")
     configFile <- paste0(homeDir, "_nprcmanager_config")
   } else {
     homeDir <- paste0("~/")
