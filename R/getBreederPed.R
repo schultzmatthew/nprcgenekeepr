@@ -19,7 +19,7 @@ getBreederPed <- function(fileName, sep = ",") {
   cat(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
              nrow(breeders), "\n"),
       file = "~/shiny.txt", append = TRUE)
-  breeders <- as.character(breeders$id)
+  breeders <- as.character(breeders[ , 1])
   ped <- getLkDirectAncestors(ids = breeders)
   names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")
   ped <- ped[!is.na(ped$id), ]
