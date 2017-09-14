@@ -2,7 +2,7 @@
 % Please edit documentation in R/GroupFormation.R
 \name{filterAge}
 \alias{filterAge}
-\title{Removes kinship values where one animal is less than the min.age}
+\title{Removes kinship values where an animal is less than the min.age}
 \usage{
 filterAge(kin, ped, min.age = 1)
 }
@@ -18,5 +18,5 @@ in "candidates".}
 animals to retain.}
 }
 \description{
-Removes kinship values where one animal is less than the min.age
+Removes kinship values where an animal is less than the min.age
 }
