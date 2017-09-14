@@ -25,7 +25,7 @@ library(stringi)
 conn <- odbcConnect("frogstar-vortex-animal-msharp")
 proband_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                        "library/nprcmanager/inst/extdata/",
-                       "baboon_breeders_probands.csv")
+                       "baboon_breeders_only.csv")
 ped_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                       "library/nprcmanager/inst/extdata/",
                       "baboon_breeders_ped.csv")
