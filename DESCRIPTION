@@ -1,7 +1,7 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.2.0
+Version: 0.2.1
 Date: 2017-09-13
 Author: Michael Raboin
 Authors@R: c(
@@ -21,7 +21,6 @@ Imports:
     RSelenium,
     shiny,
     stringi,
-    tacr,
     utils
 Suggests:
     knitr,
