@@ -8,24 +8,21 @@ lines <- c("center = \"SNPRC\"",
            "              \"lastDayAtCenter\", \"dam\", \"sire\")",
            "mapPedColumns = (\"id\", \"sex\", \"birth\", \"death\", ",
            "  \"exit\", \"dam\", \"sire\")")
-original <- lines
 lkVec <- c("Id", "gender", "birth", "death",
            "lastDayAtCenter", "dam", "sire")
 mapVec <- c("id", "sex", "birth", "death", "exit", "dam", "sire")
 
-test_that("getColumnVec returns correct lines and vectors", {
-  expect_equal(lines[7], original[7])
-  lines_and_vec <- getColumnVec(lines, "lkPedColumns")
-  lines <- lines_and_vec$lines
-  lkPedColumns <- lines_and_vec$vec
-  expect_equal(lines[1], "center = \"SNPRC\"")
-  expect_equal(lines[5], original[7])
-  expect_equal(lkPedColumns, lkVec)
-  lines_and_vec <- getColumnVec(lines, "lkPedColumns")
-  lines <- lines_and_vec$lines
-  mapPedColumns <- lines_and_vec$vec
-  expect_equal(lines[1], "center = \"SNPRC\"")
-  expect_equal(length(lines), 4)
-  expect_equal(mapPedColumns, mapVec)
-
+test_that("getTokenList returns correct lines and vectors", {
+  tokenList <- getTokenList(lines)
+  params <- tokenList$params
+  tokenVectors <- tokenList$tokenVec
+  expect_equal(params, c("center", "baseUrl", "schemaName", "folderPath",
+                         "queryName", "lkPedColumns", "mapPedColumns"))
+  expect_equal(tokenVectors[[1]], "SNPRC")
+  expect_equal(tokenVectors[[2]], "https://boomer.txbiomed.org/labkey")
+  expect_equal(tokenVectors[[3]], "study")
+  expect_equal(tokenVectors[[4]],"/SNPRC")
+  expect_equal(tokenVectors[[5]], "demographics")
+  expect_equal(tokenVectors[[6]], lkVec)
+  expect_equal(tokenVectors[[7]], mapVec)
 })

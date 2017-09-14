@@ -32,74 +32,15 @@ getSiteInfo <- function() {
   }
   if (file.exists(configFile)) {
     lines <- readLines(configFile, skipNul = TRUE)
-    lines_and_cols <- getColumnVec(lines, "lkPedColumns")
-    lines <- lines_and_cols$lines
-    lkPedColumns <- lines_and_cols$vec
-    lines_and_cols <- getColumnVec(lines, "mapPedColumns")
-    lines <- lines_and_cols$lines
-    mapPedColumns <- lines_and_cols$vec
-
-    inList <- FALSE
-    for (line in lines) {
-      tokens <- getTokens(line)
-      if (length(tokens) > 0) {
-        if (stri_sub(tokens[1], 1, 1) == "#") # comment found
-          next
-        if (length(tokens) > 1) {
-          if (stri_detect_fixed(tokens[2], "(")) {
-            inList <- TRUE
-            if (tolower(tokens[1]) != "lkPedColumns") {
-              stop(paste0("Unexpected list following '", tokens[1],
-                          "'. Check spelling carefully.\n"))
-            } else {
-              lkPedColumns <- c(tokens[2:length(tokens)])
-              if (any(stri_detect_fixed(tokens, ")"))) {
-                inList <- FALSE
-              }
-              next
-            }
-          } else if (inList) {
-            lkPedColumns <- c(lkPedColumns, tokens)
-            if (any(stri_detect_fixed(tokens, ")"))) {
-              inList <- FALSE
-            }
-          } else if (tolower(tokens[1]) == "center") {
-            center <- tokens[2]
-          } else if (tolower(tokens[1]) == "baseurl") {
-            baseUrl <- tokens[2]
-          } else if (tolower(tokens[1]) == "schemaname") {
-            schemaName <- tokens[2]
-          } else if (tolower(tokens[1]) == "folderpath") {
-            folderPath <- tokens[2]
-          } else if (tolower(tokens[1]) == "queryname") {
-            queryName <- tokens[2]
-          } else {
-            stop(paste0("Cannot parse line: ", line,
-                        "\n found in configuration file.\n"))
-          }
-        } else if (length(tokens) == 1 & inList) {
-          lkPedColumns <- c(lkPedColumns, tokens)
-          if (any(stri_detect_fixed(tokens, ")"))) {
-            inList <- FALSE
-          }
-        } else {
-          next
-        }
-      }
-    }
-    if (!is.null(lkPedColumns)) {
-      lkPedColumns[2] <- stri_sub(lkPedColumns[2], 2)
-      len <- length(lkPedColumns)
-      lkPedColumns[len] <- stri_sub(lkPedColumns[len], 1,
-                                  stri_length(lkPedColumns[len]) - 1)
-    }
+    tokenList <- getTokenList(lines)
     list(
-      center = center,
-      baseUrl = baseUrl,
-      schemaName = schemaName,
-      folderPath = folderPath,
-      queryName = queryName,
-      lkPedColumns = lkPedColumns,
+      center = getParamDef(tokenList, "center"),
+      baseUrl = getParamDef(tokenList, "baseUrl"),
+      schemaName = getParamDef(tokenList, "schemaName"),
+      folderPath = getParamDef(tokenList, "folderPath"),
+      queryName = getParamDef(tokenList, "queryName"),
+      lkPedColumns = getParamDef(tokenList, "lkPedColumns"),
+      mapPedColumns = getParamDef(tokenList, "mapPedColumns"),
       sysname  = sys_info[["sysname"]],
       release = sys_info[["release"]],
       version  = sys_info[["version"]],
@@ -126,9 +67,9 @@ getSiteInfo <- function() {
       schemaName = "study",
       folderPath = "/SNPRC",
       queryName = "demographics",
-      lkPedColumns = c("Id", "date", "gender", "species", "birth", "death",
-                  "lastDayAtCenter", "calculated_status", "dam", "sire",
-                  "origin", "parentid" , "species/arc_species_code"),
+      lkPedColumns = c("Id", "gender", "birth", "death", "lastDayAtCenter",
+                       "dam", "sire"),
+      mapPedColumns = c("id", "sex", "birth", "death", "exit", "dam", "sire"),
       sysname  = sys_info[["sysname"]],
       release = sys_info[["release"]],
       version  = sys_info[["version"]],
