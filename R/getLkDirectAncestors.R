@@ -12,14 +12,9 @@
 #' @export
 getLkDirectAncestors <- function(ids) {
   siteInfo <- getSiteInfo()
-  labkeyNode <- stri_split_fixed(siteInfo$baseUrl, "/")[[1]][[3]]
   colSet <- siteInfo$lkPedColumns
-  if (is.null(colSelect)) {
-    colSelect <- colSet
-  } else {
-    colSelect <- intersect(colSet, colSelect)
-  }
   pedSourceDf <- getDemographics(colSelect = colSet)
+  names(pedSourceDf) <- siteInfo$mapPedColumns
   parents <- ids
   len <- length(parents)
   ancestorsDf <- pedSourceDf[pedSourceDf$id %in% ids, ]
