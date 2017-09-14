@@ -1,9 +1,7 @@
 #' Returns first right and left space trimmed token from first character vector
 #' element.
 #'
-#' @param line character vector with text
-#' @param pattern character vector with search pattern used to select the
-#' text to be retrieved.
+#' @param lines character vector with text from configuration file
 #' @import stringi
 #' @export
 getTokenList <- function(lines) {

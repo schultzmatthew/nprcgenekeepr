@@ -4,7 +4,10 @@
 \alias{getMinParentAge}
 \title{Get minimum parent age.}
 \usage{
-getMinParentAge()
+getMinParentAge(input)
+}
+\arguments{
+\item{input}{shiny's input}
 }
 \description{
 This can be set to anything greater than or equal to 0.

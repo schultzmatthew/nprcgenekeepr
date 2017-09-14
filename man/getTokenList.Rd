@@ -8,10 +8,7 @@ element.}
 getTokenList(lines)
 }
 \arguments{
-\item{line}{character vector with text}
-
-\item{pattern}{character vector with search pattern used to select the
-text to be retrieved.}
+\item{lines}{character vector with text from configuration file}
 }
 \description{
 Returns first right and left space trimmed token from first character vector

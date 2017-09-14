@@ -4,11 +4,7 @@
 #' table.
 #' @return dataframe with pedigree structure having all of the direct ancestors
 #' for the Ids provided.
-#' @param labkeyNode a string specifying the \code{labkeyNode} for the labkey
-#' server. Defaults to "boomer.txbiomed.org",
 #' @param ids character vector with Ids.
-#' @param colSelect optional character vector of columns to return in the
-#' dataframe.
 #' @export
 getLkDirectAncestors <- function(ids) {
   siteInfo <- getSiteInfo()

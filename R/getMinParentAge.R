@@ -4,8 +4,10 @@
 #'
 #' Set to 0 if you do not want to enforce parents being sexually mature
 #' by age. Animals that do not have an age are ignored.
+#' @param input shiny's input
+#' @import shiny
 #' @export
-getMinParentAge <- function() {
+getMinParentAge <- function(input) {
   minParentAge <- as.numeric(renderText({input$minParentAge}))
   if (minParentAge < 0)
     stop("Minimum Parent Age must be >= 0.")

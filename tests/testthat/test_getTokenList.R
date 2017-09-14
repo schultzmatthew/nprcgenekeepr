@@ -14,7 +14,7 @@ mapVec <- c("id", "sex", "birth", "death", "exit", "dam", "sire")
 
 test_that("getTokenList returns correct lines and vectors", {
   tokenList <- getTokenList(lines)
-  params <- tokenList$params
+  params <- tokenList$param
   tokenVectors <- tokenList$tokenVec
   expect_equal(params, c("center", "baseUrl", "schemaName", "folderPath",
                          "queryName", "lkPedColumns", "mapPedColumns"))

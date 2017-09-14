@@ -2,8 +2,6 @@
 #' element.
 #'
 #' @param line character vector with text
-#' @param pattern character vector with search pattern used to select the
-#' text to be retrieved.
 #' @import stringi
 #' @export
 getTokens <- function(line) {

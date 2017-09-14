@@ -9,9 +9,6 @@ getTokens(line)
 }
 \arguments{
 \item{line}{character vector with text}
-
-\item{pattern}{character vector with search pattern used to select the
-text to be retrieved.}
 }
 \description{
 Returns first right and left space trimmed token from first character vector

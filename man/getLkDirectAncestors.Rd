@@ -8,12 +8,6 @@ getLkDirectAncestors(ids)
 }
 \arguments{
 \item{ids}{character vector with Ids.}
-
-\item{labkeyNode}{a string specifying the \code{labkeyNode} for the labkey
-server. Defaults to "boomer.txbiomed.org",}
-
-\item{colSelect}{optional character vector of columns to return in the
-dataframe.}
 }
 \value{
 dataframe with pedigree structure having all of the direct ancestors
