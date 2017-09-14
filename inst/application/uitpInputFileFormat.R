@@ -106,7 +106,7 @@ uitpInputFileFormat <-
           fileInput("breederFile", label = "Select Breeder File")
         ),
         textInput("minParentAge", label = "Minimum Parent Age (years)",
-                  value = "2.5"),
+                  value = "0.0"),
         helpText(
           "If a parent is not at least as old as the minimum parent age
           on the birth date of an offspring in the pedigree, the input

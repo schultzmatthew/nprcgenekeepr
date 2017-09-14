@@ -479,12 +479,12 @@ shinyServer(function(input, output, session) {
 
     k <- paste("<tr>",
                "<td>Mean Kinship</td>",
-               "<td>", as.character(mk["Min."]), "</td>",
-               "<td>", as.character(mk["1st Qu."]), "</td>",
-               "<td>", as.character(mk["Mean"]), "</td>",
-               "<td>", as.character(mk["Median"]), "</td>",
-               "<td>", as.character(mk["3rd Qu."]), "</td>",
-               "<td>", as.character(mk["Max."]), "</td>",
+               "<td>", as.character(round(mk["Min."], 4)), "</td>",
+               "<td>", as.character(round(mk["1st Qu."], 4)), "</td>",
+               "<td>", as.character(round(mk["Mean"], 4)), "</td>",
+               "<td>", as.character(round(mk["Median"], 4)), "</td>",
+               "<td>", as.character(round(mk["3rd Qu."], 4)), "</td>",
+               "<td>", as.character(round(mk["Max."], 4)), "</td>",
                "</tr>")
 
     g <- paste("<tr>",
