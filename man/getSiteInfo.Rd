@@ -9,10 +9,6 @@ getSiteInfo()
 \value{
 {A list of site specific informatio used by the application.}
 
-This version is a stub in that it has to be modified by each site.
-The plan is to either replace this routine or give it a dynamic way to
-define the needed information.
-
 Currently this returns the following character strings in a named list.
 \enumerate{
   \item{center}{One of "SNPRC" or "ONPRC"}
