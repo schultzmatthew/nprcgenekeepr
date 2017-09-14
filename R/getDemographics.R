@@ -4,8 +4,10 @@
 #'
 #' @param colSelect (optional) a vector of comma separated strings specifying
 #' which columns of a dataset or view to import
+#' @importFrom Rlabkey labkey.selectRows
 #' @export
 getDemographics <- function(colSelect = NULL) {
+  siteInfo <- getSiteInfo()
   demoDf <- labkey.selectRows(
     baseUrl = siteInfo$baseUrl, folderPath = siteInfo$folderPath,
     schemaName = siteInfo$schemaName, queryName = siteInfo$queryName,
