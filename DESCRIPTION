@@ -21,7 +21,6 @@ Imports:
     RSelenium,
     shiny,
     stringi,
-    tacr,
     utils
 Suggests:
     knitr,
