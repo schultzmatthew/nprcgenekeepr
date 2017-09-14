@@ -1,7 +1,7 @@
 context("basic")
 
 #library(RSelenium)
-library(testthat)
+#library(testthat)
 
 # remDr <- remoteDriver()
 # remDr$open(silent = TRUE)
