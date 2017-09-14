@@ -2,10 +2,6 @@
 #'
 #' @return{A list of site specific informatio used by the application.}
 #'
-#' This version is a stub in that it has to be modified by each site.
-#' The plan is to either replace this routine or give it a dynamic way to
-#' define the needed information.
-#'
 #' Currently this returns the following character strings in a named list.
 #' \enumerate{
 #'   \item{center}{One of "SNPRC" or "ONPRC"}
@@ -53,15 +49,7 @@ getSiteInfo <- function() {
       configFile = configFile)
   } else {
     warning(paste0("The nprcmananger configuration file is missing.\n",
-                   "The file should be named: ", configFile, ".\n",
-                   "It should have two lines with the first being a header ",
-                   "with the following:\n",
-                   "center, baseUrl, schemaName, folderPath, queryName\n",
-                   "Note character case and order is fixed.\n",
-                   "The second line should have comma separated quoted fields ",
-                   "such as:\n",
-                   "\"SNPRC\", \"https://boomer.txbiomed.org/labkey\", ",
-                   "\"study\", \"/SNPRC\", \"demographics\"\n"))
+                   "The file should be named: ", configFile, ".\n"))
     list(center = "ONPRC",
       baseUrl = "https://boomer.txbiomed.org/labkey",
       schemaName = "study",
