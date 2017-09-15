@@ -162,7 +162,7 @@ qcStudbook <- function(sb, minParentAge = 2) {
     stop(paste0("Required field missing (", paste0(required_cols[!required],
                                                    collapse = ", "), ")."))
   }
-
+  sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   # Removing erroneous IDs (someone started entering "unknown" for unknown
   # parents instead of leaving the field blank in PRIMe)
   sb <- sb[toupper(sb$id) != "UNKNOWN", ]
