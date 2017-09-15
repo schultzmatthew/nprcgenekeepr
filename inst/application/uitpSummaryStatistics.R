@@ -24,6 +24,7 @@ uitpSummaryStatistics <-
       htmlOutput("summary_stats"),
       plotOutput("mk_plot", width = "400px", height = "400px"),
       plotOutput("zscore_plot", width = "400px", height = "400px"),
+      plotOutput("gu_plot", width = "400px", height = "400px"),
       #tableOutput("relations")
       DT::dataTableOutput("relations")
     )

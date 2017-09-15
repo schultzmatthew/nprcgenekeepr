@@ -537,6 +537,24 @@ shinyServer(function(input, output, session) {
          ylab = "Frequency")
     abline(v = avg,col = "red",lty = "dashed", lwd = 2)
   })
+  output$gu_plot <- renderPlot({
+    if (is.null(rpt())) {
+      return(NULL)
+    }
+    gu <- rpt()[, "gu"]
+    avg <- mean(gu, na.rm = TRUE)
+    std.dev <- sd(gu, na.rm = TRUE)
+
+    u <- avg + (2 * std.dev)
+    l <- avg - (2 * std.dev)
+
+    hist(gu,
+         breaks = 25,
+         main = "Genetic Uniqueness",
+         xlab = "Genetic Uniqueness Score",
+         ylab = "Frequency")
+    abline(v = avg,col = "red",lty = "dashed", lwd = 2)
+  })
 
   output$relations <- eventReactive(input$relations, {
     renderTable({
