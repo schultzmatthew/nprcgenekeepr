@@ -25,10 +25,10 @@ rebindFill <- function(df1, df2) {
   # Add the missing columns to df2 (containing NA values)
   if (!isEmpty(add.headers)) {
     for (i in 1:length(add.headers)) {
-      c <- df1[, add.headers[i]]
-      col.type <- mode(c)
+      col <- df1[, add.headers[i]]
+      col.type <- mode(col)
       if (col.type == "numeric") {
-        if (class(c) == "Date") {
+        if (class(col) == "Date") {
           df2[, add.headers[i]] <- as.Date(NA, origin = as.Date("1970-01-01"))
         } else{
           df2[, add.headers[i]] <- NaN
