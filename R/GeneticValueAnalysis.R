@@ -1,20 +1,3 @@
-#' Combines two vectors of alleles by randomly selecting one allele
-#' or the other at each position.
-#'
-#' @param a1 integer vector with first allele for each individual
-#' @param a2 integer vector with second allele for each individual
-#' \code{a1} and \code{a2} are equal length vectors of alleles for one
-#' individual
-#'
-#' @return An integer vector with the result of sampling from \code{a1}
-#' and \code{a2} according to Mendelian inheritance.
-#' @export
-chooseAlleles <- function(a1, a2) {
-  s1 = sample(c(0, 1), length(a1), replace = TRUE)
-  s2 = 1 - s1
-
-  return((a1 * s1) + (a2 * s2))
-}
 #' Calculates \code{a}, the number of an individual's alleles that are rare in
 #' each simulation.
 #'
@@ -32,7 +15,7 @@ chooseAlleles <- function(a1, a2) {
 #'   (homozygous alleles will be counted as 1).
 #' @return A matrix with named rows indicating the number of unique alleles
 #'   an animal had during each round of simulation (indicated in columns).
-calc.a <- function(alleles, threshold = 1, by.id = FALSE) {
+calcA <- function(alleles, threshold = 1, by.id = FALSE) {
   ids <- alleles$id
   parents <- alleles$parent
   alleles <- alleles[, !(names(alleles) %in% c("id", "parent"))]
@@ -81,7 +64,7 @@ freq <- function(alleles, ids = NULL) {
 #'
 #' It is assumed that the pedigree has no partial parentage
 #' @export
-calc.fe <- function(ped) {
+calcFE <- function(ped) {
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
@@ -121,7 +104,7 @@ calc.fe <- function(ped) {
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{geneDrop()}.
 #' @export
-calc.fg <- function(ped, alleles) {
+calcFG <- function(ped, alleles) {
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]

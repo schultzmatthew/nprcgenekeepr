@@ -70,7 +70,7 @@ calcGU <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
 
   # Calculate the number of an individual's alleles that are rare in
   # each simulation and average across all simulated alleles.
-  rare <- calc.a(alleles, threshold, by.id)
+  rare <- calcA(alleles, threshold, by.id)
   iterations <- sum(!(colnames(alleles) %in% c("id", "parent")))
   gu <- rowSums(rare) / (2*iterations)
 
