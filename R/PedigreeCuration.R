@@ -25,7 +25,7 @@ rebindFill <- function(df1, df2) {
   # Add the missing columns to df2 (containing NA values)
   if (!isEmpty(add.headers)) {
     for (i in 1:length(add.headers)) {
-      col <- df1[, add.headers[i]]
+      col <- df1[[add.headers[i]]] # We want to extract not subset
       col.type <- mode(col)
       if (col.type == "numeric") {
         if (class(col) == "Date") {
