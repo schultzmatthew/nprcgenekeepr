@@ -45,7 +45,7 @@ shinyServer(function(input, output, session) {
                    "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
             file = "~/shiny.txt", append = TRUE)
       } else {
-        stop("Column separator was not defined.")
+        stop("Data source was not defined.")
       }
       cat(paste0("sep: ", sep, "\n"), file = "~/shiny.txt", append = TRUE)
       minParentAge <- renderText({input$minParentAge})

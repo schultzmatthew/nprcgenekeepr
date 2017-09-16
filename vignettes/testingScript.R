@@ -88,7 +88,7 @@ alleles2 <- geneDrop(p_genotype$id, p_genotype$sire, p_genotype$dam,
                      p_genotype$gen, p_genotype[ , c("id", "first", "second",
                                                      "first_name",
                                                      "second_name")], n = 1000)
-gu <- calc.gu(alleles, threshold = 1, by.id = TRUE, pop = probands)
+gu <- calcGU(alleles, threshold = 1, by.id = TRUE, pop = probands)
 gu <- gu[probands, ,drop = FALSE]
 length(p$sex[p$sex == "F"])
 

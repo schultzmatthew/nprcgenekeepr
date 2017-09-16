@@ -47,7 +47,7 @@
 #' \item{\link{freq}} {--- Calculates the count of each allele in the provided vector.}
 #' \item{\link{calc.fe}} {--- Calculates founder equivalents.}
 #' \item{\link{calc.fg}} {--- Calculates founder genome equivalents.}
-#' \item{\link{calc.gu}} {--- Calculates genome uniqueness for each ID that is
+#' \item{\link{calcGU}} {--- Calculates genome uniqueness for each ID that is
 #' part of the population.}
 #' \item{\link{geneDrop}} {--- Performs a gene drop simulation based on the
 #' pedigree information.}

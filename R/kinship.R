@@ -1,0 +1,95 @@
+#' Generates a kinship matrix.
+#'
+#' The function previously had an internal call to the kindepth function in
+#' order to provide the parameter pdepth (the generation number). This version
+#' requires the generation number to be calculated elsewhere and passed into
+#' the function.
+#'
+#' The rows (cols) of founders are just .5 * identity matrix, no further
+#'    processing is needed for them.
+#' Parents must be processed before their children, and then a child's
+#'    kinship is just a sum of the kinship's for his/her parents.
+#'
+#' @param id character vector of IDs for a set of animals.
+#' @param father.id character vector or NA for the IDs of the sires for the set
+#' of animals.
+#' @param mother.id character vector or NA for the IDs of the dams for the set
+#' of animals.
+#' @param pdepth integer vector indicating the generation number for each animal.
+#' @param sparse logical flag. If \code{TRUE}, \code{Matrix::Diagnol()} is
+#' used to make a unit diagnol matrix. If \code{FALSE}, \code{base::diag()} is
+#' used to make a unit square matrix.
+#'
+#' @description {Kinship Matrix Functions} {
+#' The code for the kinship function was written by Terry Therneau
+#' at the Mayo clinic and taken from his website. This function is part of a
+#' package written in S (and later ported to R) for calculating kinship and
+#' other statistics.
+#' }
+#'
+#' @author {Terry Therneau, original version}
+#'
+#'
+#' @references {Main website} \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+#'
+#'
+#' @references {S-Plus/R Function Page}
+#' \url{http://www.mayo.edu/research/departments-divisions/department-health
+#'  -sciences-research/division-biomedical-statistics-informatics/software/}
+#'
+#'  @description {s-plus-r-functions} {Downloaded 2014-08-26}
+#'
+#' All of the code on the S-Plus page was stated to be released under the
+#' GNU General Public License (version 2 or later).
+#'
+#' The R version became the kinship2 package available on CRAN:
+#' @references \url{http://cran.r-project.org/web/packages/kinship2/index.html}
+#'
+#' $Id: kinship.s,v 1.5 2003/01/04 19:07:53 therneau Exp $
+#'
+#' @references {Create the kinship matrix, using the algorithm of K Lange,
+#'  Mathematical and Statistical Methods for Genetic Analysis,
+#'  Springer, 1997, p 71-72.}
+#'
+#' @author {as modified by, M Raboin, 2014-09-08 14:44:26}
+#'
+#' @import Matrix
+#' @export
+kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
+  # Returns: Matrix (row and col names are 'id')
+  n <- length(id)
+  if (any(duplicated(id)))
+    stop("All id values must be unique")
+  if (sparse) {
+    kmat <- Diagonal(n + 1) / 2
+  }
+  else {
+    kmat <- diag(n + 1) / 2
+  }
+
+  kmat[n + 1, n + 1]    <- 0 # if A and B both have "unknown" dad, this ensures
+  # that they won't end up 'related' in the matrix
+
+  # id number "n + 1" is a placeholder for missing parents
+  mrow <- match(mother.id, id, nomatch = n + 1) #row number of the mother
+  drow <- match(father.id, id, nomatch = n + 1) #row number of the dad
+
+  # Those at depth == 0 don't need to be processed
+  # Subjects with depth = i must be processed before those at depth i + 1.
+  # Any parent is guarranteed to be at a lower depth than their children
+  #  The inner loop on "i" can NOT be replaced with a vectorized expression:
+  # sibs' effect on each other is cumulative.
+  for (depth in 1:max(pdepth)) {
+    indx <- (1:n)[pdepth == depth]
+    for (i in indx) {
+      mom <- mrow[i]
+      dad <- drow[i]
+      kmat[i, ]  <- kmat[, i] <- (kmat[mom,] + kmat[dad, ]) / 2
+      kmat[i, i] <- (1 + kmat[mom, dad]) / 2
+    }
+  }
+
+  kmat <- kmat[1:n, 1:n]
+  dimnames(kmat) <- list(id, id)
+  kmat
+}
