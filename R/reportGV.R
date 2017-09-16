@@ -80,8 +80,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   }
 
   # Calculating founder equivalents and founder genome equivalents
-  fe <- calc.fe(ped)
-  fg <- calc.fg(ped, alleles)
+  fe <- calcFE(ped)
+  fg <- calcFG(ped, alleles)
 
   # Calculating known founders
   founders <- ped[is.na(ped$sire) & is.na(ped$dam), ]
