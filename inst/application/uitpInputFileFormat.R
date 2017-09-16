@@ -114,8 +114,10 @@ uitpInputFileFormat <-
           be written to the users home directory. Animals without birth dates
           are not considered."
         ),
-        actionButton("getData", "Read files now")
-      ),
+        actionButton("getData", "Read files now"),
+        checkboxInput("debugger", label = "Debug on", value = FALSE)#,
+        #verbatimTextOutput("dBug")
+        ),
       # Main Panel
       mainPanel(#style = "margin-left:425px;padding:10px;",
         includeHTML("../extdata/input_format.html"))

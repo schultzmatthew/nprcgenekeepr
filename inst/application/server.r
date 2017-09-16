@@ -1,5 +1,10 @@
 `%then%` <- shiny:::`%OR%`
+library(futile.logger)
 shinyServer(function(input, output, session) {
+  nprcmanager_log <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
+  flog.logger("nprcmanager", INFO,
+              appender = appender.file(nprcmanager_log))
+
   #############################################################################
   # Functions for handling initial pedigree upload and QC
 
@@ -7,51 +12,51 @@ shinyServer(function(input, output, session) {
   sb <- reactive({
     input$getData # This button starts it all
     isolate({
-      cat(paste0("1st. input$dataSource: ", input$dataSource,
-                 "; input$sepOne: ", input$sepOne,
-                 "; input$sepTwo: ", input$sepTwo,
-                 "; input$sepThree: ", input$sepThree,"\n"),
-          file = "~/shiny.txt", append = FALSE)
-
+      output$dBug <- renderText({input$debugger})
+      flog.debug(paste0("1st. input$dataSource: ", input$dataSource,
+                         "; input$sepOne: ", input$sepOne,
+                         "; input$sepTwo: ", input$sepTwo,
+                         "; input$sepThree: ", input$sepThree),
+                  name = "nprcmanager")
       if (input$dataSource == "pedFile") {
         sep <- input$sepOne
         pedigreeFile <- input$pedigreeFileOne
-        cat(paste0("pedigreeFileOne - pedigreeFile$name: ",
-                   pedigreeFile$name, "\n",
-                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("pedigreeFileOne - pedigreeFile$name: ",
+                          pedigreeFile$name,
+                          "pedigreeFile$datapath: ", pedigreeFile$datapath),
+                   name = "nprcmanager")
       } else if (input$dataSource == "commonPedGenoFile") {
         sep <- input$sepTwo
         pedigreeFile <- input$pedigreeFileTwo
-        cat(paste0("pedigreeFileTwo - pedigreeFile$name: ",
-                   pedigreeFile$name, "\n",
-                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("pedigreeFileTwo - pedigreeFile$name: ",
+                          pedigreeFile$name,
+                          "pedigreeFile$datapath: ", pedigreeFile$datapath),
+                   name = "nprcmanager")
       } else if (input$dataSource == "separatePedGenoFile") {
         sep <- input$sepThree
         pedigreeFile <- input$pedigreeFileThree
         genotypeFile <- input$genotypeFile
-        cat(paste0("pedigreeFileThree - pedigreeFile$name: ",
-                   pedigreeFile$name, "; ",
-                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n",
-                   "genotypeFile$name: ", genotypeFile$name,
-                   "; genotypeFile$datapath: ", genotypeFile$datapath),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("pedigreeFileThree - pedigreeFile$name: ",
+                          pedigreeFile$name, "; ",
+                          "pedigreeFile$datapath: ", pedigreeFile$datapath,
+                          "genotypeFile$name: ", genotypeFile$name,
+                          "; genotypeFile$datapath: ", genotypeFile$datapath),
+                   name = "nprcmanager")
       } else if (input$dataSource == "breeders") {
         sep <- input$sepFour
         pedigreeFile <- input$breederFile
-        cat(paste0("breederFile - pedigreeFile$name: ",
-                   pedigreeFile$name, "; ",
-                   "pedigreeFile$datapath: ", pedigreeFile$datapath, "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("breederFile - pedigreeFile$name: ",
+                          pedigreeFile$name, "; ",
+                          "pedigreeFile$datapath: ", pedigreeFile$datapath),
+                   name = "nprcmanager")
       } else {
         stop("Data source was not defined.")
       }
-      cat(paste0("sep: ", sep, "\n"), file = "~/shiny.txt", append = TRUE)
+      flog.debug("sep: %s", sep, name = "nprcmanager")
       minParentAge <- renderText({input$minParentAge})
-      cat(paste0("minParentAge: ",
-                 input$minParentAge, "\n"),
-          file = "~/shiny.txt", append = TRUE)
+      flog.debug(paste0("minParentAge: ",
+                        input$minParentAge),
+                 name = "nprcmanager")
       minParentAge <- tryCatch(as.numeric(input$minParentAge),
                                warning = function(cond) {
                                  return(NULL)
@@ -60,27 +65,25 @@ shinyServer(function(input, output, session) {
                                  return(NULL)
                                }
       )
-      cat(paste0("minParentAge: ", minParentAge, "\n"),
-          file = "~/shiny.txt", append = TRUE)
+      flog.debug(paste0("minParentAge: ", minParentAge),
+                 name = "nprcmanager")
 
       # pedigreeFile and breederFile will be NULL initially.
       # After the user selects a file, it will be a filepath.
       if (is.null(pedigreeFile)) {
         return(NULL)
       }
-      cat(paste0("before read.csv input$dataSource: ", input$dataSource, "\n"),
-          file = "~/shiny.txt", append = TRUE)
+      flog.debug(paste0("before read.csv input$dataSource: ", input$dataSource),
+                 name = "nprcmanager")
       # Load pedigree table
       if (input$dataSource == "breeders") {
-        cat(paste0("before getBreederPed: ", pedigreeFile$name,
-                   "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
+                   name = "nprcmanager")
         d <- getBreederPed(pedigreeFile$datapath, sep = sep)
-        cat(paste0("after getBreederPed: ", pedigreeFile$name,
-                   "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), ", col names: ", names(d),
-                   "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
+                           "; contents rows: ", nrow(d),
+                           ", columns: ", ncol(d), ", col names: ", names(d)),
+                   name = "nprcmanager")
       } else {
         d <- read.csv(pedigreeFile$datapath,
                       header = TRUE,
@@ -88,35 +91,33 @@ shinyServer(function(input, output, session) {
                       stringsAsFactors = FALSE,
                       na.strings = c("", "NA"),
                       check.names = FALSE)
-        cat(paste0("after read.csv pedigreeFile$name: ", pedigreeFile$name,
-                   "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), ", col names: ", names(d),
-                   "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("after read.csv pedigreeFile$name: ",
+                          pedigreeFile$name,
+                          "; contents rows: ", nrow(d),
+                          ", columns: ", ncol(d), ", col names: ", names(d)),
+                   name = "nprcmanager")
       }
 
       if (is.null(input$dataSource)) {
         stop("Did not expect input$dataSource to be NULL")
       } else if (input$dataSource == "separatePedGenoFile") {
         # Load pedigree table
-        cat(paste0("before read.csv genotypeFile$datapath: ",
-                   genotypeFile$datapath,
-                   "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), ", col names: ", names(d),
-                   "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("before read.csv genotypeFile$datapath: ",
+                          genotypeFile$datapath,
+                          "; contents rows: ", nrow(d),
+                          ", columns: ", ncol(d), ", col names: ", names(d)),
+                   name = "nprcmanager")
         genotype <- read.csv(genotypeFile$datapath,
                              header = TRUE,
                              sep = sep,
                              stringsAsFactors = FALSE,
                              na.strings = c("", "NA"),
                              check.names = FALSE)
-        cat(paste0("genotype$name: ", genotype$name,
-                   "; contents rows: ", nrow(genotype),
-                   ", columns: ", ncol(genotype), ", col names: ",
-                   names(genotype),
-                   "\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("genotype$name: ", genotype$name,
+                          "; contents rows: ", nrow(genotype),
+                          ", columns: ", ncol(genotype), ", col names: ",
+                          names(genotype)),
+                   name = "nprcmanager")
         genotype <- tryCatch(checkGenotypeFile(genotype),
                              warning = function(cond) {
                                return(NULL)
@@ -125,35 +126,35 @@ shinyServer(function(input, output, session) {
                                return(NULL)
                              },
                              finally = {
-                               cat(paste0("   tryCatch checkGenotype file. ",
-                                          geterrmessage(), "\n"),
-                                   file = "~/shiny.txt", append = TRUE)
+                               flog.debug(paste0("   tryCatch checkGenotype ",
+                                                 "file. ", geterrmessage()),
+                                          name = "nprcmanager")
                              }
         )
         d <- addGenotype(d, genotype)
-        cat(paste0("After addGenotype - genotypeFile$name: ",
+        flog.debug(paste0("After addGenotype - genotypeFile$name: ",
                    genotypeFile$name,
                    "; contents rows: ", nrow(d),
                    ", columns: ", ncol(d), "; col names: ",
-                   paste(names(d), sep = ", "), "\n"),
-            file = "~/shiny.txt", append = TRUE)
+                   paste(names(d), sep = ", ")),
+                   name = "nprcmanager")
       } else {
-        cat(paste0("Setting genotype to NULL.\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0("Setting genotype to NULL.\n"),
+            name = "nprcmanager")
         genotype <- NULL
       }
-      cat(paste0("Data files may have been read.\n",
+      flog.debug(paste0("Data files may have been read.\n",
                  "contents rows: ", nrow(d),
                  ", columns: ", ncol(d), "; col names: ",
                  paste(names(d), sep = ", "), "\n"),
-          file = "~/shiny.txt", append = TRUE)
+          name = "nprcmanager")
 
       if (!is.null(minParentAge)) {
-        cat(paste0("Before qcStudbook.\n",
+        flog.debug(paste0("Before qcStudbook.\n",
                    "contents rows: ", nrow(d),
                    ", columns: ", ncol(d), "; col names: ",
                    paste(names(d), sep = ", "), "\n"),
-            file = "~/shiny.txt", append = TRUE)
+            name = "nprcmanager")
         d <- tryCatch(qcStudbook(d, minParentAge),
                       warning = function(cond) {
                         return(NULL)
@@ -162,15 +163,15 @@ shinyServer(function(input, output, session) {
                         return(NULL)
                       }
         )
-        cat(paste0("After qcStudbook.\n",
+        flog.debug(paste0("After qcStudbook.\n",
                    "contents rows: ", nrow(d),
                    ", columns: ", ncol(d), "; col names: ",
                    paste(names(d), sep = ", "), "\n"),
-            file = "~/shiny.txt", append = TRUE)
+            name = "nprcmanager")
 
       }
-      cat(paste0("before validate().\n"),
-          file = "~/shiny.txt", append = TRUE)
+      flog.debug(paste0("before validate().\n"),
+          name = "nprcmanager")
    validate(need(!is.null(minParentAge),
                   paste0("   Error uploading data. ",
                          geterrmessage())) %then%
@@ -180,34 +181,34 @@ shinyServer(function(input, output, session) {
     if (!is.null(d)) {
       updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
     }
-    cat(paste0("After validate(); nrow(d) = ", nrow(d),
-               "; ncol(d): ", ncol(d), "\n"), file = "~/shiny.txt", append = TRUE)
+    flog.debug(paste0("After validate(); nrow(d) = ", nrow(d),
+               "; ncol(d): ", ncol(d), "\n"), name = "nprcmanager")
     d
     })
   })
 
   ped <- reactive({
-    cat(paste0("In ped <- reactive()\n"), file = "~/shiny.txt", append = TRUE)
+    flog.debug(paste0("In ped <- reactive()\n"), name = "nprcmanager")
     if (is.null(sb())) {
       return(NULL)
     }
-    cat(paste0("In ped <- reactive() and !is.null(sb()) == TRUE\n"),
-        file = "~/shiny.txt", append = TRUE)
+    flog.debug(paste0("In ped <- reactive() and !is.null(sb()) == TRUE\n"),
+        name = "nprcmanager")
 
     p <- sb()
-    cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
-    cat("\n", file = "~/shiny.txt", append = TRUE)
+    flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
+    flog.debug("\n", name = "nprcmanager")
 
     p <- tryCatch(
       {
         p <- sb()
-        cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
-        cat(" - in tryCatch before resetPopulation\n",
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
+        flog.debug(" - in tryCatch before resetPopulation\n",
+            name = "nprcmanager")
         p <- resetPopulation(specifyPopulation(), p)
-        cat(paste0(names(p), sep = ","), file = "~/shiny.txt", append = TRUE)
-        cat(paste0("resetPopulation() called\n"),
-            file = "~/shiny.txt", append = TRUE)
+        flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
+        flog.debug(paste0("resetPopulation() called\n"),
+            name = "nprcmanager")
 
         if (input$trim) {
           probands <- p$id[p$population]
@@ -215,8 +216,8 @@ shinyServer(function(input, output, session) {
                             addBackSingles = FALSE)
           #p <- trimPedigree(probands, p, removeUninformative = TRUE,
           #                  addBackSingles = TRUE)
-          cat(paste0("trimPedigree() called\n"),
-              file = "~/shiny.txt", append = TRUE)
+          flog.debug(paste0("trimPedigree() called\n"),
+              name = "nprcmanager")
         }
 
         p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)

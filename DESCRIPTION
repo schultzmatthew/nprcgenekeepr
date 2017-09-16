@@ -14,6 +14,7 @@ Depends:
     R (>= 3.2.1)
 Imports:
     dplyr,
+    futile.logger,
     lubridate,
     Matrix,
     plotrix,
