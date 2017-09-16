@@ -20,7 +20,7 @@ getBreederPed <- function(fileName, sep = ",") {
              nrow(breeders), "\n"),
       file = "~/shiny.txt", append = TRUE)
   breeders <- as.character(breeders[ , 1])
-  ped <- getLkDirectAncestors(ids = breeders)
+  ped <- getLkDirectRelatives(ids = breeders)
   names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")
   ped <- ped[!is.na(ped$id), ]
   ped$birth <- format(ped$birth, format = "%Y-%m-%d")
