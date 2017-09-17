@@ -11,8 +11,13 @@ shinyServer(function(input, output, session) {
   # Load/QC the pedigree once a file has been specified
   sb <- reactive({
     input$getData # This button starts it all
+    if (input$debugger) {
+      flog.threshold(DEBUG, name = "nprcmanager")
+    } else {
+      flog.threshold(INFO, name = "nprcmanager")
+    }
+
     isolate({
-      output$dBug <- renderText({input$debugger})
       flog.debug(paste0("1st. input$dataSource: ", input$dataSource,
                          "; input$sepOne: ", input$sepOne,
                          "; input$sepTwo: ", input$sepTwo,
