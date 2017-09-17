@@ -28,14 +28,14 @@ shinyServer(function(input, output, session) {
         pedigreeFile <- input$pedigreeFileOne
         flog.debug(paste0("pedigreeFileOne - pedigreeFile$name: ",
                           pedigreeFile$name,
-                          "pedigreeFile$datapath: ", pedigreeFile$datapath),
+                          "; pedigreeFile$datapath: ", pedigreeFile$datapath),
                    name = "nprcmanager")
       } else if (input$dataSource == "commonPedGenoFile") {
         sep <- input$sepTwo
         pedigreeFile <- input$pedigreeFileTwo
         flog.debug(paste0("pedigreeFileTwo - pedigreeFile$name: ",
                           pedigreeFile$name,
-                          "pedigreeFile$datapath: ", pedigreeFile$datapath),
+                          "; pedigreeFile$datapath: ", pedigreeFile$datapath),
                    name = "nprcmanager")
       } else if (input$dataSource == "separatePedGenoFile") {
         sep <- input$sepThree
@@ -43,8 +43,8 @@ shinyServer(function(input, output, session) {
         genotypeFile <- input$genotypeFile
         flog.debug(paste0("pedigreeFileThree - pedigreeFile$name: ",
                           pedigreeFile$name, "; ",
-                          "pedigreeFile$datapath: ", pedigreeFile$datapath,
-                          "genotypeFile$name: ", genotypeFile$name,
+                          "; pedigreeFile$datapath: ", pedigreeFile$datapath,
+                          "; genotypeFile$name: ", genotypeFile$name,
                           "; genotypeFile$datapath: ", genotypeFile$datapath),
                    name = "nprcmanager")
       } else if (input$dataSource == "breeders") {
@@ -87,7 +87,8 @@ shinyServer(function(input, output, session) {
         d <- getBreederPed(pedigreeFile$datapath, sep = sep)
         flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
                            "; contents rows: ", nrow(d),
-                           ", columns: ", ncol(d), ", col names: ", names(d)),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
       } else {
         d <- read.csv(pedigreeFile$datapath,
@@ -99,7 +100,8 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("after read.csv pedigreeFile$name: ",
                           pedigreeFile$name,
                           "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), ", col names: ", names(d)),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
       }
 
@@ -110,7 +112,8 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("before read.csv genotypeFile$datapath: ",
                           genotypeFile$datapath,
                           "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), ", col names: ", names(d)),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
         genotype <- read.csv(genotypeFile$datapath,
                              header = TRUE,
@@ -120,8 +123,9 @@ shinyServer(function(input, output, session) {
                              check.names = FALSE)
         flog.debug(paste0("genotype$name: ", genotype$name,
                           "; contents rows: ", nrow(genotype),
-                          ", columns: ", ncol(genotype), ", col names: ",
-                          names(genotype)),
+                          ", columns: ", ncol(genotype), "; col names: '",
+                          paste(names(genotype), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
         genotype <- tryCatch(checkGenotypeFile(genotype),
                              warning = function(cond) {
@@ -140,26 +144,26 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("After addGenotype - genotypeFile$name: ",
                    genotypeFile$name,
                    "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: ",
-                   paste(names(d), sep = ", ")),
+                   ", columns: ", ncol(d), "; col names: '",
+                   paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
       } else {
-        flog.debug(paste0("Setting genotype to NULL.\n"),
+        flog.debug(paste0("Setting genotype to NULL."),
             name = "nprcmanager")
         genotype <- NULL
       }
       flog.debug(paste0("Data files may have been read.\n",
                  "contents rows: ", nrow(d),
-                 ", columns: ", ncol(d), "; col names: ",
-                 paste(names(d), sep = ", "), "\n"),
-          name = "nprcmanager")
+                 ", columns: ", ncol(d), "; col names: '",
+                 paste(names(d), collapse = "', '"), "'", sep = ""),
+                 name = "nprcmanager")
 
       if (!is.null(minParentAge)) {
         flog.debug(paste0("Before qcStudbook.\n",
                    "contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: ",
-                   paste(names(d), sep = ", "), "\n"),
-            name = "nprcmanager")
+                   ", columns: ", ncol(d), "; col names: '",
+                   paste(names(d), collapse = "', '"), "'", sep = ""),
+                   name = "nprcmanager")
         d <- tryCatch(qcStudbook(d, minParentAge),
                       warning = function(cond) {
                         return(NULL)
@@ -170,12 +174,12 @@ shinyServer(function(input, output, session) {
         )
         flog.debug(paste0("After qcStudbook.\n",
                    "contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: ",
-                   paste(names(d), sep = ", "), "\n"),
-            name = "nprcmanager")
+                   ", columns: ", ncol(d), "; col names: '",
+                   paste(names(d), collapse = "', '"), "'", sep = ""),
+                   name = "nprcmanager")
 
       }
-      flog.debug(paste0("before validate().\n"),
+      flog.debug(paste0("before validate()."),
           name = "nprcmanager")
    validate(need(!is.null(minParentAge),
                   paste0("   Error uploading data. ",
@@ -187,7 +191,7 @@ shinyServer(function(input, output, session) {
       updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
     }
     flog.debug(paste0("After validate(); nrow(d) = ", nrow(d),
-               "; ncol(d): ", ncol(d), "\n"), name = "nprcmanager")
+               "; ncol(d): ", ncol(d)), name = "nprcmanager")
     d
     })
   })
@@ -201,17 +205,21 @@ shinyServer(function(input, output, session) {
         name = "nprcmanager")
 
     p <- sb()
-    flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
-    flog.debug("\n", name = "nprcmanager")
+    flog.debug(paste0("column names: '", paste(names(p), collapse = "', '"),
+                      "'"), name = "nprcmanager")
 
     p <- tryCatch(
       {
         p <- sb()
-        flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
-        flog.debug(" - in tryCatch before resetPopulation\n",
+        flog.debug(paste0("column names: '", paste(names(p),
+                                                   collapse = "', '"),
+                          "'"), name = "nprcmanager")
+        flog.debug(" - in tryCatch before resetPopulation.",
             name = "nprcmanager")
         p <- resetPopulation(specifyPopulation(), p)
-        flog.debug(paste0(names(p), sep = ","), name = "nprcmanager")
+        flog.debug(paste0("column names: '", paste0(names(p),
+                                                    collapse = "', '"),
+                          "'"), name = "nprcmanager")
         flog.debug(paste0("resetPopulation() called\n"),
             name = "nprcmanager")
 
