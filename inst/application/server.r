@@ -590,7 +590,7 @@ shinyServer(function(input, output, session) {
       kin <- convertRelationships(kmat(), ped(), updateProgress = updateProgress)
 
       progress$set(message = "Preparing Table", value = 1)
-      r <- relationClasses(kin)
+      r <- makeRelationClasseTable(kin)
 
       toCharacter(r)
     },
@@ -668,7 +668,7 @@ shinyServer(function(input, output, session) {
 
     threshold <- input$kin_thresh
     min.age <- input$min_age
-
+    withKin <- input$withKin
     iter <- input$gp_iter
     numGp <- ({input$numGp})
 
@@ -692,7 +692,8 @@ shinyServer(function(input, output, session) {
                            ignore = ignore,
                            min.age = min.age,
                            iter = iter,
-                           updateProgress = updateProgress)
+                           updateProgress = updateProgress,
+                           withKin = withKin)
     } else{
       grp <- groupAssign(candidates, kmat(), p,
                          threshold = threshold,
@@ -700,7 +701,8 @@ shinyServer(function(input, output, session) {
                          min.age = min.age,
                          iter = iter,
                          numGp = numGp,
-                         updateProgress = updateProgress)
+                         updateProgress = updateProgress,
+                         withKin = withKin)
     }
 
     return(grp$group)
@@ -727,13 +729,16 @@ shinyServer(function(input, output, session) {
         }
         gp["Unused"] <- x
 
-        updateSelectInput(session, "view_grp", label = "Enter the group to view:",
+        updateSelectInput(session, "view_grp",
+                          label = "Enter the group to view:",
                           choices = gp, selected = 1)
       } else if (x == 1) {
-        updateSelectInput(session, "view_grp", label = "Enter the group to view:",
+        updateSelectInput(session, "view_grp",
+                          label = "Enter the group to view:",
                           choices = list("Unused" = 1), selected = 1)
       } else{
-        updateSelectInput(session, "view_grp", label = "Enter the group to view:",
+        updateSelectInput(session, "view_grp",
+                          label = "Enter the group to view:",
                           choices = list(" " = 1), selected = 1)
       }
     }

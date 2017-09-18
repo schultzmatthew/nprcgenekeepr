@@ -80,6 +80,8 @@ uitpBreedingGroupFormation <-
           tags$textarea(id = "cur_grp", rows = 5, cols = 20, "")
         ),
         actionButton("grp_sim", label = "Make Groups"),
+        checkboxInput("withKin", label = "With Kinship Coefficents",
+                      value = FALSE),
         helpText(
           "If no candidate IDs are specified above or in the input pedigree,
           all population members will be used."
