@@ -17,6 +17,9 @@ assignAlleles <- function(alleles, parentType, parent, id, n) {
     alleles$alleles[[id]][[parentType]] <- rep(alleles$counter, n)
     alleles$counter <- alleles$counter + 1L
   } else {
+    if (is.null(alleles$alleles[[parent]][["sire"]]) |
+        is.null(alleles$alleles[[parent]][["dam"]]))
+      stop("sire and dam must have had alleles assigned: logic error")
     # Otherwise get his two sets of alleles and randomly select one
     # for each iteration
     p1 <- alleles$alleles[[parent]][["sire"]]
