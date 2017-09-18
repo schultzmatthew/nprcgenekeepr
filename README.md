@@ -1,4 +1,6 @@
 <h1>Genetic Tools for Colony Management</h1>
+[![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
+
 <h3>Genetic Value Analysis</h3>
 <p>
 	The genetic value analysis proceeds according to the following steps:
