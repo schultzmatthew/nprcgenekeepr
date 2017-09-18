@@ -1,15 +1,27 @@
 context("addUIds")
 library(testthat)
-library(stringi)
-ped_file <- system.file("extdata", "baboon_breeders_ped.csv",
-                           package = "nprcmanager")
-ped <- read.csv(ped_file, header = TRUE, sep = ",",
-                stringsAsFactors = FALSE, na.strings = c("", "NA"),
-                check.names = FALSE)
-names(ped) <- c("id", "dam", "sire", "sex", "birth")
+pedOne <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+                     sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
+                     dam = c(NA, "d0", "d4", NA, "d1", "d2", "d2", "d2"),
+                     sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
+                     stringsAsFactors = FALSE)
+pedTwo <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+                     sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
+                     dam = c("d0", "d0", "d4", NA, "d1", "d2", "d2", "d2"),
+                     sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
+                     stringsAsFactors = FALSE)
+
+pedThree <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+                       sire = c("s0", "s0", "s4", NA, "s1", "s1", "s2", "s2"),
+                       dam = c(NA, "d0", "d4", NA, "d1", "d2", "d2", "d2"),
+                       sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
+                       stringsAsFactors = FALSE)
+
 test_that("addUIds modifies the correct IDs in the right way", {
-  newPed <- addUIds(ped)
-  expect_equal(newPed$sire[newPed$id == "7150"], "U0002")
-  expect_true(is.na(newPed$sire[newPed$id == "6704"]))
-  expect_equal(newPed$sire[newPed$id == "9461"], "U0010")
+  newPed <- addUIds(pedOne)
+  expect_equal(newPed, pedOne)
+  newPed <- addUIds(pedTwo)
+  expect_equal(newPed$sire[newPed$id == "s1"], "U0001")
+  newPed <- addUIds(pedThree)
+  expect_equal(newPed$dam[newPed$id == "s1"], "U0001")
 })
