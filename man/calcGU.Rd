@@ -24,7 +24,7 @@ allele that can be present in the population for it to be considered rare.
 Default is 1.}
 
 \item{by.id}{logical varioable of length 1 that is passed through to
-eventually be used by \code{freq()}, which alculates the count of each
+eventually be used by \code{alleleFreq()}, which calculates the count of each
 allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
 the function will only count the unique alleles for an individual
 (homozygous alleles will be counted as 1).}

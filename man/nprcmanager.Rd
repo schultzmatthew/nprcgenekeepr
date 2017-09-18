@@ -43,7 +43,7 @@ Genetic Value Analysis Functions
 kinship matrix}
 \item {\link{calcA}} {--- Calculates \code{a}, the number of an individual's
 alleles that are rare in each simulation.}
-\item{\link{freq}} {--- Calculates the count of each allele in the provided vector.}
+\item{\link{alleleFreq}} {--- Calculates the count of each allele in the provided vector.}
 \item{\link{calcFE}} {--- Calculates founder equivalents.}
 \item{\link{calcFG}} {--- Calculates founder genome equivalents.}
 \item{\link{calcGU}} {--- Calculates genome uniqueness for each ID that is
@@ -52,7 +52,7 @@ part of the population.}
 pedigree information.}
 \item{\link{chooseAlleles}} {--- Combines two vectors of alleles by randomly
 selecting one allele or the other at each position.}
-\item{\link{calc.retention}} {--- Calculates allelic retention.}
+\item{\link{calcRetention}} {--- Calculates allelic retention.}
 \item{\link{filterKinMatrix}} {--- Filters a kinship matrix to include only the egos
 listed in 'ids'}
 \item{\link{kinship}} {--- Generates a kinship matrix}

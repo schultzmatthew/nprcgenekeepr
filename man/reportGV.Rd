@@ -21,7 +21,7 @@ if it is found in only 1 animal.}
 interest. The default is NULL.}
 
 \item{by.id}{logical varioable of length 1 that is passed through to
-eventually be used by \code{freq()}, which alculates the count of each
+eventually be used by \code{alleleFreq()}, which calculates the count of each
  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
   (homozygous alleles will be counted as 1).}

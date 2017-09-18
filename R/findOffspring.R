@@ -1,0 +1,25 @@
+#' Finds the number of total offspring for each animal in the provided pedigree.
+#'
+#' Part of Genetic Value Analysis
+#'
+#' @param probands character vector of egos for which offspring should be
+#' counted and returned.
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#' This requires complete pedigree information.
+#'
+#' @return a named vector containing the offpsring counts for each animal in
+#' \code{probands}. Rownames are set to the IDs from \code{probands}.
+#' @export
+findOffspring <- function(probands, ped) {
+  sires <- tapply(ped$id, as.factor(ped$sire), length)
+  dams <- tapply(ped$id, as.factor(ped$dam), length)
+  offspring <- c(sires, dams)
+
+  idx <- match(probands, names(offspring))
+  offspring <- offspring[idx]
+  names(offspring)[is.na(idx)] <- probands[is.na(idx)]
+  offspring[is.na(idx)] <- 0
+
+  return(offspring)
+}

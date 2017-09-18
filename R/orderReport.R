@@ -1,0 +1,81 @@
+
+#' Order the results of the genetic value analysis for use in a report.
+#'
+#' Part of Genetic Value Analysis
+#'
+#' Takes in the results from a genetic value analysis and orders the report
+#' according to the ranking scheme we have developed.
+#'
+#' @param rpt a dataframe with required colnames \code{id}, \code{gu},
+#' \code{z.scores}, \code{import}, \code{totalOffspring}, which is
+#' a data.frame of results from a genetic value analysis.
+#' @param ped the pedigree information in datatable format with required
+#' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
+#' This requires complete pedigree information..
+#'
+#' @return A dataframe, which is \code{rpt} sorted according to the ranking scheme:
+#' \itemize{
+#'  \item imported animals with no offspring
+#'  \item animals with genome uniqueness above 10%, ranked by descending gu
+#'  \item animals with mean kinship less than 0.25, ranked by ascending mk
+#'  \item all remaining animals, ranked by ascending mk
+#' }
+#' @export
+orderReport <- function(rpt, ped) {
+
+  finalRpt <- list()
+
+  founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
+
+  if ("origin" %in% names(rpt)) {
+    # imports with no offspring
+    i <- (!is.na(rpt$origin) & (rpt$totalOffspring == 0) &
+            (rpt$id %in% founders))
+
+    imports <- rpt[i, ]
+    rpt <- rpt[!i, ]
+    if ("age" %in% names(rpt)) {
+      finalRpt$imports <- imports[with(imports, order(age)), ]
+    }
+    else {
+      finalRpt$imports <- imports[with(imports, order(id)), ]
+    }
+
+    # ONPRC-born animals with no parentage
+    i <- (is.na(rpt$origin) & (rpt$totalOffspring == 0) &
+            (rpt$id %in% founders))
+
+    no.parentage <- rpt[i, ]
+    rpt <- rpt[!i, ]
+    if ("age" %in% names(rpt)) {
+      finalRpt$no.parentage <- no.parentage[with(no.parentage, order(age)), ]
+    }
+    else {
+      finalRpt$no.parentage <- no.parentage[with(no.parentage, order(id)), ]
+    }
+  }
+
+  # subjects with > 10% genome uniqueness
+  high.gu <- rpt[(rpt$gu > 10), ]
+  finalRpt$high.gu <- high.gu[with(high.gu, order(-trunc(gu), z.scores)), ]
+  rpt <- rpt[!(rpt$gu > 10), ]
+
+  # subjects with <= 10% genome uniqueness and <= 0.25 z-score
+  low.mk <- rpt[(rpt$z.scores <= 0.25), ]
+  finalRpt$low.mk <- low.mk[with(low.mk, order(z.scores)), ]
+
+  rpt <- rpt[!(rpt$z.scores <= 0.25), ]
+
+  # subjects with <= 10% genome uniqueness and > 0.25 z-score
+  finalRpt$low.val <- rpt[with(rpt, order(z.scores)), ]
+
+  include.cols <- intersect(c("imports", "high.gu", "low.mk",
+                              "low.val", "no.parentage"),
+                            names(finalRpt))
+
+  finalRpt <- finalRpt[include.cols]
+  finalRpt <- rankSubjects(finalRpt)
+  finalRpt <- do.call("rbind", finalRpt)
+  rownames(finalRpt) <- seq(nrow(finalRpt))
+  return(finalRpt)
+}
