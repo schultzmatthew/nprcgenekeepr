@@ -128,15 +128,16 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
 
   # Adding a group for the unused animals
   n <- length(saved.groupMembers) + 1
-  saved.groupMembers[[n]] <- ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
-                                    c(NA),
-                                    setdiff(candidates, unlist(saved.groupMembers)))
+  saved.groupMembers[[n]] <-
+    ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
+           c(NA), setdiff(candidates, unlist(saved.groupMembers)))
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.groupMembers)) {
       groupKin[[i]] <-   filterKinMatrix(saved.groupMembers[[i]], kmat)
     }
-    return(list(group = saved.groupMembers, score = saved.score, groupKin = groupKin))
+    return(list(group = saved.groupMembers, score = saved.score,
+                groupKin = groupKin))
   } else {
     return(list(group = saved.groupMembers, score = saved.score))
   }
