@@ -4,12 +4,12 @@ uitpBreedingGroupFormation <-
 
     #Side Panel
     div(
-      style = paste(
-        "float: left; width: 400px; height: 100vh; padding: 10px;",
-        "border: 1px solid lightgray; background-color: #EDEDED;",
-        "margin-left: 3px; margin-top: 3px; margin-bottom: 3px;",
-        "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-      ),
+     style = paste(
+       "float: left; width: 400px; height: 62vh; padding: 10px;",
+       "border: 1px solid lightgray; background-color: #EDEDED;",
+       "margin-left: 3px; margin-top: 3px; margin-bottom: 3px;",
+       "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+     ),
       includeHTML("../extdata/group_formation.html"),
       checkboxInput('low_val', label = "Include low-value animals in group formation",
                     value = FALSE),
@@ -101,6 +101,8 @@ uitpBreedingGroupFormation <-
         downloadButton("downloadGroup", "Export Current Group")
       ),
       #tableOutput("breeding_groups")
-      DT::dataTableOutput("breeding_groups")
+      DT::dataTableOutput("breeding_groups"),
+      DT::dataTableOutput("breeding_groupKin")
       )
+
     )

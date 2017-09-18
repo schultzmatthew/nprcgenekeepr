@@ -705,7 +705,8 @@ shinyServer(function(input, output, session) {
                          withKin = withKin)
     }
 
-    return(grp$group)
+    #return(grp$group)
+    return(grp)
   })
 
   getGrpIds <- reactive({
@@ -720,7 +721,7 @@ shinyServer(function(input, output, session) {
   # Functions to handle breeding group display
   observe({
     if (!is.null(bg())) {
-      x <- length(bg())
+      x <- length(bg()$group)
 
       if (x > 1) {
         gp <- list()
@@ -744,12 +745,12 @@ shinyServer(function(input, output, session) {
     }
   })
 
-  bg_view <- reactive({
+  bg_group_view <- reactive({
     if (is.null(bg())) {
       return(NULL)
     }
     i <- as.numeric(input$view_grp)
-    gp <- bg()[[i]]
+    gp <- bg()$group[[i]]
     gp <- as.data.frame(gp)
     colnames(gp) <- "Ego ID"
 
@@ -759,20 +760,39 @@ shinyServer(function(input, output, session) {
       return(gp[order(gp$`Ego ID`), , drop = FALSE])
     }
   })
+  bg_groupKin_view <- reactive({
+    if (is.null(bg()$groupKin)) {
+      return(NULL)
+    }
+    i <- as.numeric(input$view_grp)
+    kmat <- bg()$groupKin[[i]]
+    kmat <- as.data.frame(round(kmat, 6))
+
+    if (nrow(kmat) == 0) {
+      return(NULL)
+    } else{
+      return(kmat)
+    }
+  })
 
   output$breeding_groups <- DT::renderDataTable(DT::datatable({
     if (is.null(bg())) {
       return(NULL)
     }
-
-    return(bg_view())
+    return(bg_group_view())
+  }))
+  output$breeding_groupKin <- DT::renderDataTable(DT::datatable({
+    if (is.null(bg()$groupKin)) {
+      return(NULL)
+    }
+    return(bg_groupKin_view())
   }))
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
     filename = function() {paste("Group-", input$view_grp, ".csv", sep = "")},
     content = function(file) {
-      write.csv(bg_view(), file, na = "", row.names = FALSE)
+      write.csv(bg_group_view(), file, na = "", row.names = FALSE)
     }
   )
 
