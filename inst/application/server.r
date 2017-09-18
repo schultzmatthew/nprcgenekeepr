@@ -226,9 +226,9 @@ shinyServer(function(input, output, session) {
         if (input$trim) {
           probands <- p$id[p$population]
           p <- trimPedigree(probands, p, removeUninformative = FALSE,
-                            addBackSingles = FALSE)
+                            addBackParents = FALSE)
           #p <- trimPedigree(probands, p, removeUninformative = TRUE,
-          #                  addBackSingles = TRUE)
+          #                  addBackParents = TRUE)
           flog.debug(paste0("trimPedigree() called\n"),
               name = "nprcmanager")
         }
@@ -305,7 +305,7 @@ shinyServer(function(input, output, session) {
     p <- ped()
     probands <- p$id[p$population]
     p <- trimPedigree(probands, p, removeUninformative = FALSE,
-                      addBackSingles = FALSE)
+                      addBackParents = FALSE)
 
     validate(
       need(length(probands) != 0, "Error: No population specified")

@@ -7,29 +7,31 @@
 #' @param uPed a trimmed pedigree dataframe with uninformative founders removed.
 #' @param ped a trimmed pedigree
 #' @export
-addBackSingleParents <- function(uPed, ped) {
+addBackSecondParents <- function(uPed, ped) {
 
   # Adding back second parents where one is known
-  single_parents <- p$id[(is.na(p$sire) & !is.na(p$dam)) |
-                           (!is.na(p$sire) & is.na(p$dam))]
+  single_parents <- uPed$id[(is.na(uPed$sire) & !is.na(uPed$dam)) |
+                           (!is.na(uPed$sire) & is.na(uPed$dam))]
 
   add_back <- c()
   for (id in single_parents) {
     if (!is.na(ped$sire[ped$id == id]) & !is.na(ped$dam[ped$id == id])) {
 
-      if (is.na(p$sire[p$id == id])) {
+      if (is.na(uPed$sire[uPed$id == id])) {
         add_back <- c(add_back, ped$sire[ped$id == id])
-        p[(p$id == id), "sire"] <- ped$sire[ped$id == id]
+        uPed[(uPed$id == id), "sire"] <- ped$sire[ped$id == id]
       } else{
         add_back <- c(add_back, ped$dam[ped$id == id])
-        p[(p$id == id), "dam"] <- ped$dam[ped$id == id]
+        uPed[(uPed$id == id), "dam"] <- ped$dam[ped$id == id]
       }
     }
   }
-  add_back <- ped[(ped$id %in% add_back), ]
-  add_back$sire <- NA
-  add_back$dam <- NA
+  if (length(add_back) > 0) {
+    add_back <- ped[(ped$id %in% add_back), ]
+    add_back$sire <- NA
+    add_back$dam <- NA
 
-  p <- rbind(p, add_back)
-  return(p)
+    uPed <- rbind(uPed, add_back)
+  }
+  return(uPed)
 }

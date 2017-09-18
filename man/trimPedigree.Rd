@@ -6,7 +6,7 @@
 ancestors.}
 \usage{
 trimPedigree(probands, ped, removeUninformative = FALSE,
-  addBackSingles = FALSE)
+  addBackParents = FALSE)
 }
 \arguments{
 \item{probands}{a character vector with the list of animals whose ancestors
@@ -22,10 +22,10 @@ Founders (having unknown sire and dam) that appear only one time in a
 pedigree are uninformative and can be removed from a pedigree without loss
 of information.}
 
-\item{addBackSingles}{logical defaults to \code{FALSE}. If set to
+\item{addBackParents}{logical defaults to \code{FALSE}. If set to
 \code{TRUE}, the function adds back single parents to the \code{p} dataframe
 when one parent is known.
-The function \code{addBackSingleParents} uses the \code{ped} dataframe,
+The function \code{addBackSecondParents} uses the \code{ped} dataframe,
 which has full complement of parents and the
 \code{p} dataframe, which has all uninformative parents removed to add
 back single parents to the \code{p} dataframe.}

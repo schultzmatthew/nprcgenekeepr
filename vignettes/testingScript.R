@@ -18,7 +18,7 @@
 # p["gen"] <- findGeneration(p$id, p$sire, p$dam)
 # probands <- p$id[p$population]
 # p <- trimPedigree(probands, p, removeUninformative = FALSE,
-#                   addBackSingles = FALSE)
+#                   addBackParents = FALSE)
 # test <- reportGV(p, gu.iter = 100)
 library(RODBC)
 library(stringi)
@@ -63,7 +63,7 @@ probands <- stri_trim_both(probands)
 #           file = ped_file, row.names = FALSE)
 ped_qc <- qcStudbook(ped)
 p <- trimPedigree(probands, ped_qc, removeUninformative = FALSE,
-                  addBackSingles = FALSE)
+                  addBackParents = FALSE)
 # write.csv(p,
 #            file = qc_ped_file, row.names = FALSE)
 # p <- read.csv(qc_ped_file, header = TRUE, sep = ",",
