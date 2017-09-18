@@ -1,4 +1,4 @@
-context("addUIds")
+context("addParents")
 library(testthat)
 library(stringi)
 pedOne <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
