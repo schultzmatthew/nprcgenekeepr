@@ -790,11 +790,22 @@ shinyServer(function(input, output, session) {
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
-    filename = function() {paste("Group-", input$view_grp, ".csv", sep = "")},
+    filename = getDatedFilename(paste0("Group-", input$view_grp,
+                                      ".csv", sep = "")),
     content = function(file) {
-      write.csv(bg_group_view(), file, na = "", row.names = FALSE)
-    }
+      write.csv(bg_group_view(), file, na = "", row.names = FALSE)},
+    contentType = "text/csv"
   )
+    # output$downloadGroup <-
+    #   reactive(ifelse(is.null(bg()$groupKin), NULL,
+    #          downloadHandler(
+    #            filename = getDatedFilename(paste0("GroupKin-", input$view_grp,
+    #                                               ".csv", sep = "")),
+    #            content = function(file) {
+    #              write.csv(bg_groupKin_view(), file, na = "",
+    #                        row.names = FALSE)},
+    #            contentType = "text/csv"
+    #           )))
 
   #############################################################################
   # Function to handle display of pyramid plot
