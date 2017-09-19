@@ -796,19 +796,19 @@ shinyServer(function(input, output, session) {
       write.csv(bg_group_view(), file, na = "", row.names = FALSE)},
     contentType = "text/csv"
   )
-    # output$downloadGroup <-
-    #   reactive(ifelse(is.null(bg()$groupKin), NULL,
-    #          downloadHandler(
-    #            filename = getDatedFilename(paste0("GroupKin-", input$view_grp,
-    #                                               ".csv", sep = "")),
-    #            content = function(file) {
-    #              write.csv(bg_groupKin_view(), file, na = "",
-    #                        row.names = FALSE)},
-    #            contentType = "text/csv"
-    #           )))
+
+  output$downloadGroupKin <- downloadHandler(
+    filename = getDatedFilename(paste0("GroupKin-", input$view_grp,
+                                         ".csv", sep = "")),
+    content = function(file) {
+      write.csv(bg_groupKin_view(), file, na = "", row.names = TRUE)},
+    contentType = "text/csv"
+  )
 
   #############################################################################
   # Function to handle display of pyramid plot
+  flog.debug("before renderPlot(getPyramidPlot(ped)))", name = "nprcmanager")
   output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
+  flog.debug("after renderPlot(getPyramidPlot(ped)))", name = "nprcmanager")
 })
 

@@ -98,7 +98,9 @@ uitpBreedingGroupFormation <-
       ),
       div(
         style = "display:inline-block;width:250px;padding:5px",
-        downloadButton("downloadGroup", "Export Current Group")
+        downloadButton("downloadGroup", "Export Current Group"),
+        downloadButton("downloadGroupKin",
+                       "Export Current Group Kinship Matrix")
       ),
       #tableOutput("breeding_groups")
       DT::dataTableOutput("breeding_groups"),
