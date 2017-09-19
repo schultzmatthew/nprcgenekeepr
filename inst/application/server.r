@@ -361,6 +361,7 @@ shinyServer(function(input, output, session) {
     g <- gva_view()
     g$indiv.avgs <- round(g$indiv.avgs, 5)
     g$z.scores <- round(g$z.scores, 2)
+    g$gu <- round(g$gu, 5)
     g <- toCharacter(g)
     names(g) <- headerDisplayNames(names(g))
 
@@ -503,12 +504,12 @@ shinyServer(function(input, output, session) {
 
     g <- paste("<tr>",
                "<td>Genome Uniqueness</td>",
-               "<td>", as.character(gu["Min."]), "</td>",
-               "<td>", as.character(gu["1st Qu."]), "</td>",
-               "<td>", as.character(gu["Mean"]), "</td>",
-               "<td>", as.character(gu["Median"]), "</td>",
-               "<td>", as.character(gu["3rd Qu."]), "</td>",
-               "<td>", as.character(gu["Max."]), "</td>",
+               "<td>", as.character(round(gu["Min."], 4)), "</td>",
+               "<td>", as.character(round(gu["1st Qu."], 4)), "</td>",
+               "<td>", as.character(round(gu["Mean"], 4)), "</td>",
+               "<td>", as.character(round(gu["Median"], 4)), "</td>",
+               "<td>", as.character(round(gu["3rd Qu."], 4)), "</td>",
+               "<td>", as.character(round(gu["Max."], 4)), "</td>",
                "</tr>")
 
     return(paste(founder, "<br>", "<br>", "<table>", header, k, g, "</table>"))
