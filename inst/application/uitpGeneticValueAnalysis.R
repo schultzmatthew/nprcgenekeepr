@@ -41,7 +41,7 @@ uitpGeneticValueAnalysis <-
               "3" = 4,
               "4" = 5
             ),
-            selected = 1
+            selected = 4
           )
         ),
         helpText("The analysis may take a significant amount of time (>20 min)"),
