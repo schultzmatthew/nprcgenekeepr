@@ -4,7 +4,26 @@
 \name{ped1_alleles}
 \alias{ped1_alleles}
 \title{ped1_alleles is a dataframe created by the geneDrop function}
-\format{An object of class \code{data.frame} with 554 rows and 6 columns.}
+\format{A dataframe with 554 rows and 6 varialbes
+\describe{
+\item{V1}{alleles assigned to the parents of the animals identified in
+the \code{id} column during iteration 1 of gene dropping performed by
+\code{geneDrop}.}
+\item{V2}{alleles assigned to the parents of the animals identified in
+the \code{id} column during iteration 1 of gene dropping performed by
+\code{geneDrop}.}
+\item{V3}{alleles assigned to the parents of the animals identified in
+the \code{id} column during iteration 1 of gene dropping performed by
+\code{geneDrop}.}
+\item{V4}{alleles assigned to the parents of the animals identified in
+the \code{id} column during iteration 1 of gene dropping performed by
+\code{geneDrop}.}
+\item{id}{character vector of animal IDs provided to the gene dropping
+function \code{geneDrop}.}
+\item{parent}{the parent type ("sire" or "dam") of the parent who supplied
+the alleles as assigned during each of the 4 gene dropping iterations
+performed by \code{geneDrop}.}
+}}
 \source{
 example baboon pedigree file provided by Deborah Newman,
 Southwest National Primate Center.
