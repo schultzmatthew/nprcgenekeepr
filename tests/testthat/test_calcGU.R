@@ -9,5 +9,5 @@ test_that("calcGU forms dataframe with correct calculations", {
   gu_1 <- calcGU(alleles, threshold = 2, by.id = TRUE, pop = NULL)
   gu_3 <- calcGU(alleles, threshold = 3, by.id = FALSE, pop = alleles$id[20:60])
   expect_equal(length(gu_1$gu[gu_1$gu == 50]), 53)
-  expect_equal(length(gu_3$gu[gu_3$gu == 50]), 43)
+  expect_equal(length(gu_3$gu[gu_3$gu == 50]), 0)
 })

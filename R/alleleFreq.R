@@ -11,7 +11,7 @@
 #'
 #' @return a data.frame with columns \code{allele} and \code{freq}. This is a
 #'  table of allele counts within the population.
-#'  @export
+#' @export
 alleleFreq <- function(alleles, ids = NULL) {
   if (!is.null(ids)) {
     alleles <- unlist(tapply(alleles, as.factor(ids), unique))
