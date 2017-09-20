@@ -23,3 +23,21 @@
 #' @source example baboon pedigree file provided by Deborah Newman,
 #' Southwest National Primate Center.
 "ped1_alleles"
+#' baboon_ped is a dataframe with 277 rows and 6 columns
+#'
+#' \describe{
+#' \item{id}{character column of animal IDs}
+#' \item{sire}{the male parent of the animal indicated by the \code{id} column.}
+#' \item{dam}{the female parent of the animal indicated by the \code{id}
+#' column.}
+#' \item{sex}{sex of the animal indicated by the \code{id} column.}
+#' \item{gen}{generation number (integers beginning with 0 for the founder
+#' generation) of the animal indicated by the \code{id} column.}
+#' \item{birth}{birth date in \code{Date} format of the animal indicated by the
+#'  \code{id} column.}
+#' \item{exit}{exit date in \code{Date} format of the animal indicated by the
+#'  \code{id} column.}
+#' \item{age}{age in year (numeric) of the animal indicated by the \code{id}
+#' column.}
+#' }
+"baboon_ped"
