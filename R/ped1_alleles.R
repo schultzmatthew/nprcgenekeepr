@@ -19,6 +19,7 @@
 #' \item{parent} {the parent type ("sire" or "dam") of the parent who supplied
 #' the alleles as assigned during each of the 4 gene dropping iterations
 #' performed by \code{geneDrop}.
+#' }
 #' @source example baboon pedigree file provided by Deborah Newman,
 #' Southwest National Primate Center.
 "ped1_alleles"
