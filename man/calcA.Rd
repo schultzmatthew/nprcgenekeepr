@@ -5,7 +5,7 @@
 \title{Calculates \code{a}, the number of an individual's alleles that are rare in
 each simulation.}
 \usage{
-calcA(alleles, threshold = 1, by.id = FALSE)
+calcA(alleles, threshold = 1, byID = FALSE)
 }
 \arguments{
 \item{alleles}{a matrix with {id, parent, V1 ... Vn} providing the alleles
@@ -17,9 +17,9 @@ from. Remaining columns provide alleles.}
 allele that can be present in the population for it to be considered rare.
 Default is 1.}
 
-\item{by.id}{logical varioable of length 1 that is passed through to
+\item{byID}{logical varioable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
- allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+ allele in the provided vector. If \code{byID} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
   (homozygous alleles will be counted as 1).}
 }

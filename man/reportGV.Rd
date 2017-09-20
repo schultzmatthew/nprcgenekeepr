@@ -4,7 +4,7 @@
 \alias{reportGV}
 \title{Generates a genetic value report for a provided pedigree.}
 \usage{
-reportGV(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL, by.id = TRUE,
+reportGV(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL, byID = TRUE,
   updateProgress = NULL)
 }
 \arguments{
@@ -20,9 +20,9 @@ if it is found in only 1 animal.}
 \item{pop}{character vector with animal IDs to consider as the population of
 interest. The default is NULL.}
 
-\item{by.id}{logical varioable of length 1 that is passed through to
+\item{byID}{logical varioable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
- allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+ allele in the provided vector. If \code{byID} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
   (homozygous alleles will be counted as 1).}
 

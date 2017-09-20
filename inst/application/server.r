@@ -325,7 +325,7 @@ shinyServer(function(input, output, session) {
     #
     return(reportGV(p, gu.iter = input$iterations,
                     gu.thresh = as.integer(input$threshold),
-                    by.id = TRUE,
+                    byID = TRUE,
                     updateProgress = updateProgress))
   })
   # Returns the genetic_value() report
