@@ -1,7 +1,7 @@
 ---
-title: "Development Plans"
-author: "R. Mark Sharp"
-date: "Sept. 1, 2017"
+title: Development Plans
+author: R. Mark Sharp
+date: Sept. 1, 2017
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
    Completed initial version 20170907.
  
 4. Develop the appropriate UI - Completed 20170916.
-I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the “Debug on” checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named “nprcmanager.log”. Currently I am only logging events occurring the the server.R file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.
+I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named nprcmanager.log. Currently I am only logging events occurring the the server.R file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.
 
 I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.
 
@@ -40,7 +40,7 @@ I added code coverage reports to the automated build system running on Travis-CI
 
 ## Accomplishments thus far
 20170917
-I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the “Debug on” checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named “nprcmanager.log”. Currently I am only logging events occurring the the server.R file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.
+I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named nprcmanager.log. Currently I am only logging events occurring the the server.R file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.
 
 I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.
 
@@ -53,7 +53,7 @@ I have connected the Travis CI (continuous integration) tool to my github.com/rm
 I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use
 genetic data in a gene dropping simulation.
 
-From: "R. Mark Sharp" <msharp@TxBiomed.org>
+From: R. Mark Sharp <msharp@TxBiomed.org>
 
 Subject: Re: Genetic management of colonies
 
