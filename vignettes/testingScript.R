@@ -75,10 +75,10 @@ genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
                        second_name = stri_c("second", 1:20),
                        stringsAsFactors = FALSE)
 genotype_empty <- NULL
-alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 1000)
+alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 4)
 p_genotype <- addGenotype(p, genotype)
 report <- reportGV(p_genotype, gu.iter = 500, gu.thresh = 1, pop = NULL,
-                   by.id = TRUE, updateProgress = NULL)
+                   byID = TRUE, updateProgress = NULL)
 # write.csv(p_genotype,
 #          file = ped_genotype_file, row.names = FALSE)
 p_genotype <- read.csv(ped_genotype_file, header = TRUE, sep = ",",
@@ -88,7 +88,7 @@ alleles2 <- geneDrop(p_genotype$id, p_genotype$sire, p_genotype$dam,
                      p_genotype$gen, p_genotype[ , c("id", "first", "second",
                                                      "first_name",
                                                      "second_name")], n = 1000)
-gu <- calcGU(alleles, threshold = 1, by.id = TRUE, pop = probands)
+gu <- calcGU(alleles, threshold = 1, byID = TRUE, pop = probands)
 gu <- gu[probands, ,drop = FALSE]
 length(p$sex[p$sex == "F"])
 
