@@ -4,7 +4,7 @@
 \alias{calcGU}
 \title{Calculates genome uniqueness for each ID that is part of the population.}
 \usage{
-calcGU(alleles, threshold = 1, by.id = FALSE, pop = NULL)
+calcGU(alleles, threshold = 1, byID = FALSE, pop = NULL)
 }
 \arguments{
 \item{alleles}{dataframe of containing an \code{AlleleTable}. This is a
@@ -23,9 +23,9 @@ It contains the following columns:
 allele that can be present in the population for it to be considered rare.
 Default is 1.}
 
-\item{by.id}{logical varioable of length 1 that is passed through to
+\item{byID}{logical varioable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
-allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 the function will only count the unique alleles for an individual
 (homozygous alleles will be counted as 1).}
 
