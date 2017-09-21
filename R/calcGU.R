@@ -51,9 +51,9 @@
 #' @param threshold an integer indicating the maximum number of copies of an
 #' allele that can be present in the population for it to be considered rare.
 #' Default is 1.
-#' @param by.id logical varioable of length 1 that is passed through to
+#' @param byID logical varioable of length 1 that is passed through to
 #' eventually be used by \code{alleleFreq()}, which calculates the count of each
-#' allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#' allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 #' the function will only count the unique alleles for an individual
 #' (homozygous alleles will be counted as 1).
 #' @param pop character vector with animal IDs to consider as the population of
@@ -63,14 +63,14 @@
 #'  A single-column table of genome uniqueness values as percentages.
 #'  Rownames are set to 'id' values that are part of the population.
 #' @export
-calcGU <- function(alleles, threshold = 1, by.id = FALSE, pop = NULL) {
+calcGU <- function(alleles, threshold = 1, byID = FALSE, pop = NULL) {
   if (!is.null(pop)) {
     alleles <- alleles[alleles$id %in% pop, ]
   }
 
   # Calculate the number of an individual's alleles that are rare in
   # each simulation and average across all simulated alleles.
-  rare <- calcA(alleles, threshold, by.id)
+  rare <- calcA(alleles, threshold, byID)
   iterations <- sum(!(colnames(alleles) %in% c("id", "parent")))
   gu <- rowSums(rare) / (2*iterations)
 
