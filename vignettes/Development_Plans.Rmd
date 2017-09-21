@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
     incorporate that information into the gene dropping routine.
     This has been done at the function level in the _geneDrop_ function. 
     The next step is to allow the pedigree submitted via the UI to contain
-    the genetic information.
+    the genetic information. Completed by 20170916.
 2. Find some ways to use genetic marker data in the evaluation of genetic 
    value. This needs to be discussed.
 3. Develop a simplistic method of using data directly from LabKey via the 
@@ -25,9 +25,10 @@ knitr::opts_chunk$set(echo = TRUE)
    the application to get the primate center designation, the LabKey 
    baseUrl, a schemaName, a folderPath, and the queryName. 
    The file is structured so that more than one of each could be placed in the 
-   file. However, more design work is needed before this will be of use.
+   file. However, more design work is needed before this will be of use. 
+   Completed initial version 20170907.
  
-4. Develop the appropriate UI
+4. Develop the appropriate UI - Completed 20170916.
 
 ## To do
 1. It would be better to catalogue and report the changes made by qcStudbook()
