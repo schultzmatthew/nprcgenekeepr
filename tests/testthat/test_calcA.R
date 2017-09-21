@@ -1,19 +1,11 @@
 context("calcA")
 library(testthat)
-data("allelesFromGeneDrop")
-ids <- alleles$id
-alleles <- alleles[, !(names(alleles) %in% c("id", "parent"))]
+data("ped1_alleles")
+
 test_that("alleleFreq forms dataframe with correct calculations", {
-  aF <- calcA(alleles[[1]], threshold = 3, byID = FALSE)
-  expect_equal(aF$freq[aF$allele == 20004], 10)
-  expect_equal(aF$freq[aF$allele == 20012], 11)
-  aF <- alleleFreq(alleles[[4]], ids = NULL)
-  expect_equal(aF$freq[aF$allele == 20004], 14)
-  expect_equal(aF$freq[aF$allele == 20012], 9)
-  aF <- alleleFreq(alleles[[1]], ids = ids)
-  expect_equal(aF$freq[aF$allele == 20004], 10)
-  expect_equal(aF$freq[aF$allele == 20012], 10)
-  aF <- alleleFreq(alleles[[4]], ids = ids)
-  expect_equal(aF$freq[aF$allele == 20004], 13)
-  expect_equal(aF$freq[aF$allele == 20012], 9)
+  rare <- calcA(ped1_alleles, threshold = 3, byID = FALSE)
+  expect_equal(sum(rare[, 1]), 318)
+  expect_equal(sum(rare[, 2]), 325)
+  expect_equal(sum(rare[, 3]), 313)
+  expect_equal(sum(rare[, 4]), 328)
 })
