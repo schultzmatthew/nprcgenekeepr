@@ -2,7 +2,7 @@ context("calcA")
 library(testthat)
 data("ped1_alleles")
 
-test_that("alleleFreq forms dataframe with correct calculations", {
+test_that("calcA forms dataframe with correct calculations", {
   rare <- calcA(ped1_alleles, threshold = 3, byID = FALSE)
   expect_equal(sum(rare[, 1]), 318)
   expect_equal(sum(rare[, 2]), 325)

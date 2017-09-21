@@ -1,12 +1,9 @@
 context("addGenotype")
 library(testthat)
 library(stringi)
-qc_ped_file <- system.file("extdata", "baboon_breeders_qc_ped.csv",
-                           package = "nprcmanager")
-ped <- read.csv(qc_ped_file, header = TRUE, sep = ",",
-                     stringsAsFactors = FALSE, na.strings = c("", "NA"),
-                     check.names = FALSE)
-ped <- ped[order(ped$id), ]
+data("baboon_ped")
+baboon_ped <- baboon_ped[order(baboon_ped$id), ]
+ped <- baboon_ped
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first", 1:20),
                        second_name = stri_c("second", 1:20),
