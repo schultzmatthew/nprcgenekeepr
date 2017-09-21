@@ -1,0 +1,17 @@
+#' Calculate animal ages.
+#'
+#' Part of Pedigree Curation
+#'
+#' Given vectors of birth and exit dates, calculate an individuals age. If no
+#' exit date is provided, the calculation is based on the current date.
+#'
+#' @param birth Date vector of birth dates
+#' @param exit Date vector of exit dates.
+#'
+#' @return A numeric vector (\code{NA} allowed) indicating age in decimal years
+#' from "birth" to "exit" or the current date if "exit" is NA.
+#' @export
+calcAge <- function(birth, exit) {
+  exit[is.na(exit)] <- Sys.Date()
+  return(round((as.double(exit - birth) / 365.25), 1))
+}
