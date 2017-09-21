@@ -10,9 +10,9 @@
 #' if it is found in only 1 animal.
 #' @param pop character vector with animal IDs to consider as the population of
 #' interest. The default is NULL.
-#' @param by.id logical varioable of length 1 that is passed through to
+#' @param byID logical varioable of length 1 that is passed through to
 #' eventually be used by \code{alleleFreq()}, which calculates the count of each
-#'  allele in the provided vector. If \code{by.id} is TRUE and ids are provided,
+#'  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 #'  the function will only count the unique alleles for an individual
 #'   (homozygous alleles will be counted as 1).
 #' @param updateProgress function or NULL. If this function is defined, it
@@ -24,7 +24,7 @@
 #'
 #' @export
 reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
-                     by.id = TRUE, updateProgress = NULL) {
+                     byID = TRUE, updateProgress = NULL) {
   # Generates a genetic value report for a provided pedigree
 
   ## If user has limited the population of iterest by defining 'pop',
@@ -42,9 +42,9 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
                                             ped$gen))
 
   # Calculate the average kinship, and convert to z-scores
-  indiv.avgs <- avgKinship(kmat)
-  indiv.avgs <- indiv.avgs[probands] # making sure the order is correct
-  z.scores <- scale(indiv.avgs)
+  indivAvgs <- avgKinship(kmat)
+  indivAvgs <- indivAvgs[probands] # making sure the order is correct
+  z.scores <- scale(indivAvgs)
 
   # Perform the gene drop simulation
   alleles <- geneDrop(id = ped$id, sire = ped$sire, dam = ped$dam,
@@ -57,7 +57,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   }
 
   # Calculate genome uniqueness and order the rows of the returned data.frame
-  gu <- calcGU(alleles, threshold = gu.thresh, by.id = by.id, pop = probands)
+  gu <- calcGU(alleles, threshold = gu.thresh, byID = byID, pop = probands)
   gu <- gu[probands, , drop = FALSE]
 
   if (!is.null(updateProgress)) {
@@ -90,14 +90,14 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   females <- founders[(founders$sex == "F") & !grepl("^U", founders$id,
                                                      ignore.case = TRUE), ]
 
-  finalData <- cbind(demographics, indiv.avgs, z.scores, gu, offspring)
+  finalData <- cbind(demographics, indivAvgs, z.scores, gu, offspring)
   finalData <- list(report = orderReport(finalData, ped),
                     kinship = kmat,
                     gu = gu,
                     fe = fe,
                     fg = fg,
-                    male.founders = nrow(males),
-                    female.founders = nrow(females),
+                    maleFounders = nrow(males),
+                    femaleFounders = nrow(females),
                     total = (nrow(males) + nrow(females)))
   return(finalData)
 }
