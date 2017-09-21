@@ -23,8 +23,6 @@ hasGenotype <- function(genotype) {
     if (!any(class(genotype$first) %in% c("numeric", "integer"))) {
       return(FALSE)  # genotype representation (indirection) should be integer
       # at this point
-    } else if (!any(class(genotype$first) %in% c("numeric", "integer"))) {
-      return(FALSE)  # genotype representation (indirection) should be integer
     } else if (!any(class(genotype$second) %in% c("numeric", "integer"))) {
       return(FALSE)  # genotype representation (indirection) should be integer
     } else {
