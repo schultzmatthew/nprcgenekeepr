@@ -77,7 +77,7 @@ function.
 The function \code{addParents} is used to add records for parents missing
 their own record in the pedigree.
 
-The function \code{convertSexCodes} is used with \code{ignore.herm == TRUE}
+The function \code{convertSexCodes} is used with \code{ignoreHerm == TRUE}
 to convert sex codes according to the following factors of standardized
 codes:
 

@@ -4,12 +4,12 @@
 \alias{convertSexCodes}
 \title{Converts sex indicator for an individual to a standardized codes.}
 \usage{
-convertSexCodes(sex, ignore.herm = TRUE)
+convertSexCodes(sex, ignoreHerm = TRUE)
 }
 \arguments{
 \item{sex}{factor indicating sex of a set of individuals}
 
-\item{ignore.herm}{logical flag indicating if hermaphrodites should be
+\item{ignoreHerm}{logical flag indicating if hermaphrodites should be
 treated as unknown sex ("U"), default is \code{TRUE}.}
 }
 \description{
