@@ -12,7 +12,7 @@ source("../application/uitpReadme.R")
 if (getSiteInfo()$center == "ONPRC") {
   source("../application/uitpOripReporting.R")
   navbarPageArgs <- list(
-    title = NULL,
+    title = "Genetic Management Tools",
     uitpInputFileFormat,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
@@ -25,7 +25,7 @@ if (getSiteInfo()$center == "ONPRC") {
   )
 } else {
   navbarPageArgs <- list(
-    title = NULL,
+    title = "Genetic Management Tools",
     uitpInputFileFormat,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
