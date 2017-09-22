@@ -88,7 +88,7 @@ codes:
 \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
 \item{U} {-- replacing "UNKNOWN" or "3"}}
 
-The function \code{checkParentSex} is used to ensure no parent is both
+The function \code{correctParentSex} is used to ensure no parent is both
 a sire and a dam. If this error is detected, the function throws an error
 and halts the program.
 

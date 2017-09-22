@@ -1,4 +1,4 @@
-#' Updates sex for animals listed as either a sire or dam.
+#' Sets sex for animals listed as either a sire or dam.
 #'
 #' Part of Pedigree Curation
 #'
@@ -13,7 +13,7 @@
 #' @return A factor with levels: "M", "F", "H", and "U"
 #' representing the sex codes for the ids provided
 #' @export
-checkParentSex <- function(id, sire, dam, sex) {
+correctParentSex <- function(id, sire, dam, sex) {
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
