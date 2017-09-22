@@ -2,7 +2,6 @@
 #'
 #' Part of Pedigree Curation
 #'
-#'
 #' @param ped a dataframe of pedigree information that may contain birth,
 #' death, departure, or exit dates. The fields are optional, but will be used
 #' if present.(optional fields: birth, death, departure, and exit).

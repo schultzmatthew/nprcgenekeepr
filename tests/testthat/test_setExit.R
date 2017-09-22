@@ -6,8 +6,10 @@ death <- mdy(paste0(sample(1:12, 10, replace = TRUE), "-",
                    sample(1:28, 10, replace = TRUE), "-",
                    sample(seq(0, 15, by = 3), 10, replace = TRUE) + 2000))
 departure <- as.Date(rep(NA, 10), origin = as.Date("1970-01-01"))
-departure[c(1, 3)] <- as.Date(death[c(1, 3)], origin = as.Date("1970-01-01"))
+departure[c(1, 3, 6)] <- as.Date(death[c(1, 3, 6)],
+                                 origin = as.Date("1970-01-01"))
 death[c(1, 3, 5)] <- NA
+death[6] <- death[6] + days(1)
 ped <- data.frame(
   id = paste0(100 + 1:10),
   birth = mdy(paste0(sample(1:12, 10, replace = TRUE), "-",
@@ -26,7 +28,7 @@ test_that("setExit picks the correct date", {
   expect_true(all(is.na(ped_4$exit[c(1, 3, 5)])))
   expect_equal(format(ped_2$exit[[1]], format = "%Y-%m-%d"), "2015-07-19")
   expect_equal(format(ped_2$exit[[3]], format = "%Y-%m-%d"), "2012-06-04")
-  expect_true(all(is.na(ped_2$exit[c(2, 4:10)])))
+  expect_true(all(is.na(ped_2$exit[c(2, 4:5, 7:10)])))
   expect_equal(format(ped_1$exit[[6]], format = "%Y-%m-%d"), "2012-03-13")
   expect_equal(format(ped_1$exit[[7]], format = "%Y-%m-%d"), "2015-04-02")
   expect_true(all(!is.na(ped_1$exit[c(1:4, 6:10)])))
