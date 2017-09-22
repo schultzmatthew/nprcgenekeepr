@@ -1,2 +1,34 @@
-center, baseUrl, schemaName, folderPath, queryName
-"SNPRC", "https://boomer.txbiomed.org/labkey", "study", "/SNPRC", "demographics"
+# The formatting in this example file is intentionally sloppy to illustrate
+# the esssential features and to point out what has no effect.
+# Lines beginning with "#" are ignored.
+# Empty lines are ignored
+#
+# It is critical to have the term being defined immediately before an equals
+# symbol "=". The defining term(s) are to follow the equals symbol.
+# Multiple defining terms can be separated with one or more blank characters,
+# commas, semicolons, or newline characters. Parentheses may be used for
+# readability, but they are ignored.
+#
+# In many cases the defining term will need to be in quotes because they will
+# have characters that would serve to break up the definition into multiple
+# tokens. For example http://deepthought:8080/labkey would become a meaningless
+# collection of four terms: http, deepthought, 8080, and labkey.
+#
+# center is a term used to tell the application which features are to be
+# available and to allow custom branding with image files.
+#
+# The rest of the terms are used by the Rlabkey package and the labkey-api-r.
+# lkPedColumns are the names of the columns used by the LabKey instance
+# being queried.
+# mapPedColumns are a one to one mapping of the lkPedColumns to the columnn
+# names used by the nprcmanager package.
+
+center = "SNPRC"
+ baseUrl = "http://deepthought:8080/labkey"
+ schemaName = "study"
+ folderPath = "/snprcEHR"
+ queryName = "demographics"
+lkPedColumns = ("Id", "gender", "birth", "death",
+              "lastDayAtCenter", "dam", "sire")
+mapPedColumns = ("id", "sex", "birth", "death",
+  "exit", "dam", "sire")
