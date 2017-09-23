@@ -65,9 +65,11 @@ a list of candidates.
 
 
 **For more information see:**  
-Vinson A, Raboin MJ. 2015. Designing breeding groups to maximize genetic
-diversity in a large captive rhesus macaque colony: a practical approach.
-*J Am Assoc Lab Anim* **In Press**.
+A Practical Approach for Designing Breeding Groups to Maximize Genetic 
+Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*)
+Vinson, A ; Raboin, Mj
+*Journal Of The American Association For Laboratory Animal Science*, 
+2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]
 
 <h2 id="input">Input File Format</h2>
 The Input File Format tab is the starting point for all analyses. The file

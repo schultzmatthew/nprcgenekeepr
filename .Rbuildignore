@@ -8,3 +8,5 @@
 ^docs$
 tests/testthat/test_basic.R
 R/testingScript.R
+^README\.Rmd$
+^README-.*\.png$
