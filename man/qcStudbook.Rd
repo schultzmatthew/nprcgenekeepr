@@ -15,10 +15,10 @@ will be used if present, but are not required):
 
 \itemize{
 \item{id} {--- Character vector with Unique identifier for all individuals}
-\item{sire} {--- Character vector with unique identifier for the father of the
-current id}
-\item{dam} {--- Character vector with unique identifier for the mother of the
-current id}
+\item{sire} {--- Character vector with unique identifier for the father of
+the current id}
+\item{dam} {--- Character vector with unique identifier for the mother of
+the current id}
 \item{sex} {--- Factor {levels: "M", "F", "U"} Sex specifier for an
 individual}
 \item{birth} {--- Date or \code{NA} (optional) with the individual's birth
