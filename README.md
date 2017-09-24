@@ -1,4 +1,6 @@
 
+[![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 nprcmanager
 ===========
