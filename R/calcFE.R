@@ -8,19 +8,27 @@
 #' It is assumed that the pedigree has no partial parentage
 #' @export
 calcFE <- function(ped) {
+  ped$id <- as.character(ped$id)
+  ped$sire <- as.character(ped$sire)
+  ped$dam <- as.character(ped$dam)
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
-  UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
+  # UID.founders is not used; It may be a mistake, but it could be vestiges of
+  # something planned that was not done.
+  #UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
   descendants <- ped$id[!(ped$id %in% founders)]
 
   d <- matrix(0, nrow = length(descendants), ncol = length(founders))
   colnames(d) <- founders
   rownames(d) <- descendants
 
-  f <- diag(length(founders))
-  colnames(f) <- rownames(f) <- founders
+  founderMatrix <- diag(length(founders))
+  colnames(founderMatrix) <- rownames(founderMatrix) <- founders
 
-  d <- rbind(f, d)
-
+  d <- rbind(founderMatrix, d)
+  founderMatrix <- NULL
+  ## Note: skips generation 0.
+  ## The references inside matrix d do not work if ped$sire and ped$dam and
+  ## thus gen$sire and gen$dam are factors. See test_calcFE.R
   for (i in 1:max(ped$gen)) {
     gen <- ped[(ped$gen == i), ]
 
