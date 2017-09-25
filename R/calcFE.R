@@ -8,10 +8,7 @@
 #' It is assumed that the pedigree has no partial parentage
 #' @export
 calcFE <- function(ped) {
-  ped$id <- as.character(ped$id)
-  ped$sire <- as.character(ped$sire)
-  ped$dam <- as.character(ped$dam)
-  founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
+  ped <- toCharacter(ped, headers = c("id", "sire", "dam"))
   # UID.founders is not used; It may be a mistake, but it could be vestiges of
   # something planned that was not done.
   #UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
