@@ -41,3 +41,41 @@
 #' column.}
 #' }
 "baboon_ped"
+#' lacy1989Ped small example pedigree
+#'
+#' @source lacy1989Ped is a dataframe containing the small example pedigree used
+#' by Robert C. Lacy in "Analysis of Founder Representation in Pedigrees:
+#' Founder Equivalents and Founder Genome Equivalents" Zoo Biology 8:111-123
+#' (1989).
+#'
+#' \describe{
+#' \item{id}{character column of animal IDs}
+#' \item{sire}{the male parent of the animal indicated by the \code{id} column.
+#' Unknown sires are indicated with \code{NA}}
+#' \item{dam}{the female parent of the animal indicated by the \code{id}
+#' column.Unknown dams are indicated with \code{NA}}
+#' \item{gen}{generation number (integers beginning with 0 for the founder
+#' generation) of the animal indicated by the \code{id} column.}
+#' \item{population}{logical vector with all values set TRUE}
+#' }
+"lacy1989Ped"
+#' lacy1989PedAlleles is a dataframe produced by \code{geneDrop} on
+#' \code{lacy1989Ped} with 5000 iterations.
+#'
+#' @source lacy1989Ped is a dataframe containing the small example pedigree used
+#' by Robert C. Lacy in "Analysis of Founder Representation in Pedigrees:
+#' Founder Equivalents and Founder Genome Equivalents" Zoo Biology 8:111-123
+#' (1989).
+#'
+#' \describe{
+#' There are 5000 columns, one for each iteration in \code{geneDrop}
+#' containing alleles randomly selected at each
+#' generation of the pedigree using Mendelian rules.
+#'
+#' Column 5001 is the \code{id} column with two rows for each member of the
+#' pedigree (2 * 7).
+#'
+#' Column 5002 is the \code{parent} colun with values of \code{sire} and
+#' \code{dam} alternating.
+#' }
+"lacy1989PedAlleles"
