@@ -57,4 +57,4 @@ Use with LabKey
 
 Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named **\_netrc** on Microsoft Windows operating systems and **.netrc** otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by [LabKey documentation](https://www.labkey.org/Documentation/wiki-page.view?name=netrc)
 
-The second file is named **\_nprcmanager\_config** on Microsoft Windows operating systems and **.nprcmanager\_config** otherwise and is the nprcmanager [configuration file](../../../inst/extdata/example_nprcmanager_config).
+The second file is named **\_nprcmanager\_config** on Microsoft Windows operating systems and **.nprcmanager\_config** otherwise and is the nprcmanager [configuration file](https://github.com/rmsharp/nprcmanager/inst/extdata/example_nprcmanager_config).

@@ -103,4 +103,4 @@ described by [LabKey documentation](https://www.labkey.org/Documentation/wiki-pa
 
 The second file is named **\_nprcmanager_config** on Microsoft Windows 
 operating systems and **.nprcmanager_config** otherwise and is the nprcmanager 
-[configuration file](../../../inst/extdata/example_nprcmanager_config).
+[configuration file](https://github.com/rmsharp/nprcmanager/inst/extdata/example_nprcmanager_config).
