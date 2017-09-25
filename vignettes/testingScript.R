@@ -1,4 +1,7 @@
 ###library(nprcmanager)
+# UID.founders is not used; It may be a mistake, but it could be vestiges of
+# something planned that was not done.
+#UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
 # write.csv(ped, file = "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/snprc_baboon_ped.csv", row.names = FALSE)
 # d <- read.csv(
 #   "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/BaboonLivingForMetrics.csv",
