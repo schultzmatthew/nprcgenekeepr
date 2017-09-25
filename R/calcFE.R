@@ -9,9 +9,10 @@
 #' @export
 calcFE <- function(ped) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))
-  # UID.founders is not used; It may be a mistake, but it could be vestiges of
-  # something planned that was not done.
-  #UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
+  founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
+  ## UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
+  ## UID.founders is not used; It may be a mistake, but it could be vestiges of
+  ## something planned that was not done.
   descendants <- ped$id[!(ped$id %in% founders)]
 
   d <- matrix(0, nrow = length(descendants), ncol = length(founders))

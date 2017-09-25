@@ -1,4 +1,4 @@
-#' Calculates Founder Genome Equivalents
+#' Calculates Founder Equivalents and Founder Genome Equivalents
 #'
 #' Part of the Genetic Value Analysis
 #'
@@ -9,7 +9,7 @@
 #' @param alleles dataframe contains an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{geneDrop()}.
 #' @export
-calcFG <- function(ped, alleles) {
+calcFEFG <- function(ped, alleles) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))
   founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
   ## UID.founders <- founders[grepl("^U", founders, ignore.case = TRUE)]
@@ -45,5 +45,5 @@ calcFG <- function(ped, alleles) {
   p <- colMeans(d)
 
   r <- calcRetention(ped, alleles)
-  return(1 / sum((p^2) / r, na.rm = TRUE))
+  return(list(FE = 1 / sum(p^2), FG = 1 / sum((p^2) / r, na.rm = TRUE)))
 }

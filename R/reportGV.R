@@ -80,8 +80,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   }
 
   # Calculating founder equivalents and founder genome equivalents
-  fe <- calcFE(ped)
-  fg <- calcFG(ped, alleles)
+  feFg <- calcFEFG(ped, alleles)
 
   # Calculating known founders
   founders <- ped[is.na(ped$sire) & is.na(ped$dam), ]
@@ -94,8 +93,8 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   finalData <- list(report = orderReport(finalData, ped),
                     kinship = kmat,
                     gu = gu,
-                    fe = fe,
-                    fg = fg,
+                    fe = feFg$FE,
+                    fg = feFg$FG,
                     maleFounders = nrow(males),
                     femaleFounders = nrow(females),
                     total = (nrow(males) + nrow(females)))
