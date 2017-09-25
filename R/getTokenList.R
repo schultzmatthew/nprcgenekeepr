@@ -6,15 +6,13 @@
 #' @export
 getTokenList <- function(lines) {
   tokens <- character(0)
-  for (line in lines) {
-    line <- stri_replace_all_fixed(stri_trim_both(line), pattern = "\"",
-                                 replacement = "")
-    line <- stri_replace_all_fixed(line, pattern = "=",
-                                   replacement = " = ")
-    tokens <- c(tokens, stri_split_regex(
-      line, pattern = "[[\\p{WHITE_SPACE},]]+")[[1]])
-  }
-
+  line <- paste0(lines, collapse = " ")
+  line <- stri_replace_all_fixed(stri_trim_both(line), pattern = "\"",
+                               replacement = "")
+  line <- stri_replace_all_fixed(line, pattern = "=",
+                                 replacement = " = ")
+  tokens <- c(tokens, stri_split_regex(
+    line, pattern = "[[\\p{WHITE_SPACE},]]+")[[1]])
   tokens <- tokens[!tokens == ""]
   parLocations <- seq_along(tokens)[tokens == "="] - 1
   param <- tokens[parLocations]
