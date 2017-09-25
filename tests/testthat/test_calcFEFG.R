@@ -1,4 +1,4 @@
-context("calcFG")
+context("calcFEFG")
 library(testthat)
 ped <- data.frame(
   id = c("A", "B", "C", "D", "E", "F", "G"),
@@ -34,7 +34,7 @@ feFgFactors <- calcFEFG(pedFactors, allelesFactors)
 ## Zoo Biology 8:111-123, (1989) by Robert C. Lacy
 ## He presented 2.18 as the answer, which was truncated and not precise enough
 ## for this specific comparison.
-test_that("calcFG correctly calculates the number of founder genetic
+test_that("calcFEFG correctly calculates the number of founder genetic
 equivalents in the pedigree", {
             expect_true(abs(feFg$FG - feFgFactors$FG) < 0.2)
             expect_true(abs(feFg$FG - 2.18) < 0.2)
