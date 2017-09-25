@@ -40,6 +40,7 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {
   ## Sort the IDs by generation so older generations are first
   ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
+  ped <- toCharacter(ped, headers = c("id", "sire", "dam"))
   rownames(ped) <- id
   ped <- ped[order(gen), ]
   if (!is.null(genotype)) {
