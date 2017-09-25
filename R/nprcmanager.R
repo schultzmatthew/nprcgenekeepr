@@ -47,7 +47,7 @@
 #' \item{\link{alleleFreq}} {--- Calculates the count of each allele in the provided vector.}
 #' \item{\link{calcFE}} {--- Calculates founder equivalents.}
 #' \item{\link{calcFG}} {--- Calculates founder genome equivalents.}
-#' \item{\link{calcFEFG}{--- Returns founder equivalents \code{FE} and
+#' \item{\link{calcFEFG}}{--- Returns founder equivalents \code{FE} and
 #' \code{FG} as elements in a list.}
 #' \item{\link{calcGU}} {--- Calculates genome uniqueness for each ID that is
 #' part of the population.}
