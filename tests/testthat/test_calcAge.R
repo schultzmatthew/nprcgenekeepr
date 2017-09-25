@@ -1,6 +1,6 @@
 context("calcAge")
 library(testthat)
-library(lubridate)
+suppressMessages(library(lubridate))
 birth <- set.seed(10)
 exit <- mdy(paste0(sample(1:12, 10, replace = TRUE), "-",
                     sample(1:28, 10, replace = TRUE), "-",
