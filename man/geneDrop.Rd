@@ -4,16 +4,16 @@
 \alias{geneDrop}
 \title{Performs a gene drop simulation based on the provided pedigree information}
 \usage{
-geneDrop(id, sire, dam, gen, genotype = NULL, n = 5000,
+geneDrop(ids, sires, dams, gen, genotype = NULL, n = 5000,
   updateProgress = NULL)
 }
 \arguments{
-\item{id}{character vector of IDs for a set of animals.}
+\item{ids}{character vector of IDs for a set of animals.}
 
-\item{sire}{character vector with IDS of the sires for the set of
+\item{sires}{character vector with IDS of the sires for the set of
 animals. \code{NA} is used for missing sires.}
 
-\item{dam}{character vector with IDS of the dams for the set of
+\item{dams}{character vector with IDS of the dams for the set of
 animals. \code{NA} is used for missing dams.}
 
 \item{gen}{integer vector indicating the generation number for each animal.}

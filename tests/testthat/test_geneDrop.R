@@ -15,11 +15,14 @@ pedFactors <- data.frame(
   population = ped$population,
   stringsAsFactors = TRUE
 )
-genotype <- data.frame(first = c(NA, NA, "A001_B001", "A001_B002", NA,
+genotype <- data.frame(id = ped$id,
+                       first_allele = c(NA, NA, "A001_B001", "A001_B002", NA,
                                  "A002_B003", NA),
-                       second = c(NA, NA, "A010_B001", "A001_B001", NA,
+                       second_allele = c(NA, NA, "A010_B001", "A001_B001", NA,
                                   "A005_B002", NA),
                        stringsAsFactors = FALSE)
+pedGenotype <- addGenotype(ped, genotype)
+pedGenotype <- getGVGenotype(pedGenotype)
 allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
                            pedFactors$gen, genotype = NULL, n = 5000,
                            updateProgress = NULL)
@@ -27,7 +30,7 @@ allelesNew <- geneDrop(ped$id, ped$sire, ped$dam,
                        ped$gen, genotype = NULL, n = 5000,
                        updateProgress = NULL)
 allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
-                          genotype = genotype,
+                          genotype = pedGenotype,
                           n = 5000, updateProgress = NULL)
 
 test_that("geneDrop correctly drops gene down the pedigree using
@@ -39,11 +42,11 @@ test_that("geneDrop correctly drops gene down the pedigree using
             expect_equal(table(as.numeric(allelesFactors[7, 1:5000]))[[2]],
                          2514)
             expect_equal(table(as.numeric(allelesNewGen[7, 1:5000]))[[1]],
-                         2445)
-            expect_equal(table(as.numeric(allelesNewGen[7, 1:5000]))[[2]],
-                         2555)
+                         5000)
+            expect_equal(table(as.numeric(allelesNewGen[9, 1:5000]))[[1]],
+                         5000)
             expect_equal(table(as.numeric(allelesNewGen[13, 1:5000]))[[1]],
-                         1287)
+                         2555)
             expect_equal(table(as.numeric(allelesNewGen[13, 1:5000]))[[2]],
-                         1279)
+                         2445)
           })

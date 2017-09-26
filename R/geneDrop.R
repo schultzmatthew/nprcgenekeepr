@@ -1,9 +1,9 @@
 #' Performs a gene drop simulation based on the provided pedigree information
 #'
-#' @param id character vector of IDs for a set of animals.
-#' @param sire character vector with IDS of the sires for the set of
+#' @param ids character vector of IDs for a set of animals.
+#' @param sires character vector with IDS of the sires for the set of
 #'  animals. \code{NA} is used for missing sires.
-#' @param dam character vector with IDS of the dams for the set of
+#' @param dams character vector with IDS of the dams for the set of
 #'  animals. \code{NA} is used for missing dams.
 #' @param gen integer vector indicating the generation number for each animal.
 #' @param genotype is a dataframe containing known genotypes. It has three
@@ -36,12 +36,13 @@
 #' \code{n} columns indicating the allele for that iteration.
 #'
 #' @export
-geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
+geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {
   ## Sort the IDs by generation so older generations are first
-  ped <- data.frame(id, sire, dam, gen, stringsAsFactors = FALSE)
+  ped <- data.frame(id = ids, sire = sires, dam = dams, gen,
+                    stringsAsFactors = FALSE)
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))
-  rownames(ped) <- id
+  rownames(ped) <- ids
   ped <- ped[order(gen), ]
   if (!is.null(genotype)) {
     genotype <- genotype[!is.na(genotype$first), ]
@@ -61,8 +62,8 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
   ## Iterate through each ID and get the maternal and paternal alleles
   for (id in ped$id) {
     alleles$alleles[[id]] <- list()
-    s <- ped[id, "sire"]
-    d <- ped[id, "dam"]
+    sire <- ped[id, "sire"]
+    dam <- ped[id, "dam"]
     assigned <- FALSE
     if (genoDefined) {
       if (any(genotype$id == id)) {
@@ -74,8 +75,8 @@ geneDrop <- function(id, sire, dam, gen, genotype = NULL, n = 5000,
       }
     }
     if (!assigned) {
-      alleles <- assignAlleles(alleles, "sire", s, id, n)
-      alleles <- assignAlleles(alleles, "dam", d, id, n)
+      alleles <- assignAlleles(alleles, "sire", sire, id, n)
+      alleles <- assignAlleles(alleles, "dam", dam, id, n)
     }
 
     if (!is.null(updateProgress)) {

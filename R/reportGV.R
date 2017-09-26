@@ -47,7 +47,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   z.scores <- scale(indivAvgs)
 
   # Perform the gene drop simulation
-  alleles <- geneDrop(id = ped$id, sire = ped$sire, dam = ped$dam,
+  alleles <- geneDrop(ids = ped$id, sires = ped$sire, dams = ped$dam,
                       gen = ped$gen, genotype = genotype, n = gu.iter,
                       updateProgress = updateProgress)
 
