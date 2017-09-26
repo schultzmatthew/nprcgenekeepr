@@ -1,4 +1,4 @@
-context("addParents")
+context("getPossibleCols")
 library(testthat)
 library(stringi)
 cols <- c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",

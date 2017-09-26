@@ -1,4 +1,4 @@
-context("geneDrop")
+context("findGeneration")
 library(testthat)
 data(lacy1989Ped)
 ped <- lacy1989Ped
