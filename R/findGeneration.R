@@ -27,21 +27,21 @@ findGeneration <- function(id, sire, dam) {
   #' are given the incremented generation number.}
   #'
   #' Subsequent trips in the loop repeat what was done the second time
-  #' through until no further animals can be added to the \code{next.gen}
+  #' through until no further animals can be added to the \code{nextGen}
   #' vector.
   while (TRUE) {
-    cumulative.parents <- id[(is.na(sire) | (sire %in% parents)) &
+    cumulativeParents <- id[(is.na(sire) | (sire %in% parents)) &
                                (is.na(dam) | (dam %in% parents))]
-    next.gen <- setdiff(cumulative.parents, parents)
+    nextGen <- setdiff(cumulativeParents, parents)
 
-    if (isEmpty(next.gen)) {
+    if (isEmpty(nextGen)) {
       break
     }
 
-    gen[id %in% next.gen] <- i
+    gen[id %in% nextGen] <- i
     i <- i + 1
 
-    parents <- cumulative.parents
+    parents <- cumulativeParents
   }
   return(gen)
   }

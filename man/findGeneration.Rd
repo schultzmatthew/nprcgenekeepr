@@ -32,6 +32,6 @@ The ids that were not assigned as parents in the previous loop
 are given the incremented generation number.}
 
 Subsequent trips in the loop repeat what was done the second time
-through until no further animals can be added to the \code{next.gen}
+through until no further animals can be added to the \code{nextGen}
 vector.
 }
