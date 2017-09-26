@@ -1,7 +1,10 @@
-context("calcFEFG")
+context("geneDrop")
 library(testthat)
 data(lacy1989Ped)
 data(lacy1989PedAlleles)
+set.seed(10)
+## This test is entirely dependent on repeatable pseudorandom sequence
+## generation. If this is disturbed, it will need to be rewritten.
 ped <- lacy1989Ped
 alleles <- lacy1989PedAlleles
 pedFactors <- data.frame(
@@ -12,26 +15,35 @@ pedFactors <- data.frame(
   population = ped$population,
   stringsAsFactors = TRUE
 )
+genotype <- data.frame(first = c(NA, NA, "A001_B001", "A001_B002", NA,
+                                 "A002_B003", NA),
+                       second = c(NA, NA, "A010_B001", "A001_B001", NA,
+                                  "A005_B002", NA),
+                       stringsAsFactors = FALSE)
 allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
                            pedFactors$gen, genotype = NULL, n = 5000,
                            updateProgress = NULL)
-feFg <- calcFEFG(ped, alleles)
-feFgFactors <- calcFEFG(pedFactors, allelesFactors)
+allelesNew <- geneDrop(ped$id, ped$sire, ped$dam,
+                       ped$gen, genotype = NULL, n = 5000,
+                       updateProgress = NULL)
+allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+                          genotype = genotype,
+                          n = 5000, updateProgress = NULL)
 
-## Prior to forcing the pedigree to have id, sire, and dam as character vectors
-## inside calcFG, the two calculations above with ped (characters) and
-## feFactors (factors) resulted 2.189855 and 1.857998 respectively.
-##
-## Used example from Analysis of Founder Representation in Pedigrees: Founder
-## Equivalents and Founder Genome Equivalents.
-## Zoo Biology 8:111-123, (1989) by Robert C. Lacy
-## He presented 2.18 as the answer, which was truncated and not precise enough
-## for this specific comparison.
-test_that("calcFEFG correctly calculates the number of founder genetic
-equivalents in the pedigree", {
-            expect_true(abs(feFg$FG - feFgFactors$FG) < 0.2)
-            expect_true(abs(feFg$FG - 2.18) < 0.2)
-            expect_equal(feFg$FE, feFgFactors$FE)
-            expect_equal(feFg$FE, 2.9090909091)
-
-})
+test_that("geneDrop correctly drops gene down the pedigree using
+          random segregation by Mendelian rules", {
+            expect_equal(table(as.numeric(allelesNew[7, 1:5000]))[[1]], 2521)
+            expect_equal(table(as.numeric(allelesNew[7, 1:5000]))[[2]], 2479)
+            expect_equal(table(as.numeric(allelesFactors[7, 1:5000]))[[1]],
+                         2486)
+            expect_equal(table(as.numeric(allelesFactors[7, 1:5000]))[[2]],
+                         2514)
+            expect_equal(table(as.numeric(allelesNewGen[7, 1:5000]))[[1]],
+                         2445)
+            expect_equal(table(as.numeric(allelesNewGen[7, 1:5000]))[[2]],
+                         2555)
+            expect_equal(table(as.numeric(allelesNewGen[13, 1:5000]))[[1]],
+                         1287)
+            expect_equal(table(as.numeric(allelesNewGen[13, 1:5000]))[[2]],
+                         1279)
+          })
