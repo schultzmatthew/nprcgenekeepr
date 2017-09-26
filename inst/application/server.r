@@ -359,7 +359,7 @@ shinyServer(function(input, output, session) {
     }
 
     g <- gva_view()
-    g$indivAvgs <- round(g$indivAvgs, 5)
+    g$indivMeanKin <- round(g$indivMeanKin, 5)
     g$z.scores <- round(g$z.scores, 2)
     g$gu <- round(g$gu, 5)
     g <- toCharacter(g)
@@ -374,7 +374,7 @@ shinyServer(function(input, output, session) {
   #   }
   #
   #   g <- gva_view()
-  #   g$indivAvgs <- round(g$indivAvgs, 5)
+  #   g$indivMeanKin <- round(g$indivMeanKin, 5)
   #   g$z.scores <- round(g$z.scores, 2)
   #   g <- toCharacter(g)
   #   names(g) <- headerDisplayNames(names(g))
@@ -466,7 +466,7 @@ shinyServer(function(input, output, session) {
     fe <- genetic_value()[["fe"]]
     fg <- genetic_value()[["fg"]]
 
-    mk <- summary(rpt()[, "indivAvgs"])
+    mk <- summary(rpt()[, "indivMeanKin"])
     gu <- summary(rpt()[, "gu"])
 
     founder <- paste("Known Founders: ", as.character(f),
@@ -519,7 +519,7 @@ shinyServer(function(input, output, session) {
     if (is.null(rpt())) {
       return(NULL)
     }
-    mk <- rpt()[, "indivAvgs"]
+    mk <- rpt()[, "indivMeanKin"]
     avg <- mean(mk, na.rm = TRUE)
     std.dev <- sd(mk, na.rm = TRUE)
 

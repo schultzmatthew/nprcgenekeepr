@@ -20,7 +20,7 @@ headerDisplayNames <- function(headers) {
     population = "Breeding Colony Member",
     group = "Subset Member",
     origin = "Origin",
-    indivAvgs = "Individual Mean Kinship",
+    indivMeanKin = "Individual Mean Kinship",
     z.scores = "Z-score (Mean Kinship)",
     genome.unique = "Genome Uniqueness",
     totalOffspring = "Total Offspring",

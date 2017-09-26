@@ -41,10 +41,10 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   kmat <- filterKinMatrix(probands, kinship(ped$id, ped$sire, ped$dam,
                                             ped$gen))
 
-  # Calculate the average kinship, and convert to z-scores
-  indivAvgs <- avgKinship(kmat)
-  indivAvgs <- indivAvgs[probands] # making sure the order is correct
-  z.scores <- scale(indivAvgs)
+  # Calculate the mean kinship, and convert to z-scores
+  indivMeanKin <- meanKinship(kmat)
+  indivMeanKin <- indivMeanKin[probands] # making sure the order is correct
+  z.scores <- scale(indivMeanKin)
 
   # Perform the gene drop simulation
   alleles <- geneDrop(ids = ped$id, sires = ped$sire, dams = ped$dam,
@@ -89,7 +89,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   females <- founders[(founders$sex == "F") & !grepl("^U", founders$id,
                                                      ignore.case = TRUE), ]
 
-  finalData <- cbind(demographics, indivAvgs, z.scores, gu, offspring)
+  finalData <- cbind(demographics, indivMeanKin, z.scores, gu, offspring)
   finalData <- list(report = orderReport(finalData, ped),
                     kinship = kmat,
                     gu = gu,

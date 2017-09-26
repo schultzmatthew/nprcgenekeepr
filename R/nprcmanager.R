@@ -40,7 +40,7 @@
 #' Genetic Value Analysis Functions
 #'
 #' \itemize{
-#' \item{\link{avgKinship}} {--- Calculates the averages kinship for each animal in a
+#' \item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
 #' kinship matrix}
 #' \item {\link{calcA}} {--- Calculates \code{a}, the number of an individual's
 #' alleles that are rare in each simulation.}
