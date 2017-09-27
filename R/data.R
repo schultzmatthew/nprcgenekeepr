@@ -41,13 +41,16 @@
 #' column.}
 #' }
 "baboonPed"
-#' lacy1989Ped small example pedigree
+#' lacy1989Ped small hypothetical pedigree
 #'
-#' @source lacy1989Ped is a dataframe containing the small example pedigree used
+#' @source lacy1989Ped is a dataframe containing the small hypothetical
+#' pedigree of three founders and four descendants used
 #' by Robert C. Lacy in "Analysis of Founder Representation in Pedigrees:
 #' Founder Equivalents and Founder Genome Equivalents" Zoo Biology 8:111-123
 #' (1989).
 #'
+#' The founders (\code{A}, \code{B}, \code{E}) have unknown parentages and are
+#' assumed to have independent ancestries.
 #' \describe{
 #' \item{id}{character column of animal IDs}
 #' \item{sire}{the male parent of the animal indicated by the \code{id} column.

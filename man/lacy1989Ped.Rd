@@ -3,14 +3,17 @@
 \docType{data}
 \name{lacy1989Ped}
 \alias{lacy1989Ped}
-\title{lacy1989Ped small example pedigree}
+\title{lacy1989Ped small hypothetical pedigree}
 \format{An object of class \code{data.frame} with 7 rows and 5 columns.}
 \source{
-lacy1989Ped is a dataframe containing the small example pedigree used
+lacy1989Ped is a dataframe containing the small hypothetical
+pedigree of three founders and four descendants used
 by Robert C. Lacy in "Analysis of Founder Representation in Pedigrees:
 Founder Equivalents and Founder Genome Equivalents" Zoo Biology 8:111-123
 (1989).
 
+The founders (\code{A}, \code{B}, \code{E}) have unknown parentages and are
+assumed to have independent ancestries.
 \describe{
 \item{id}{character column of animal IDs}
 \item{sire}{the male parent of the animal indicated by the \code{id} column.
@@ -26,6 +29,6 @@ generation) of the animal indicated by the \code{id} column.}
 lacy1989Ped
 }
 \description{
-lacy1989Ped small example pedigree
+lacy1989Ped small hypothetical pedigree
 }
 \keyword{datasets}
