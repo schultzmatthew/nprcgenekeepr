@@ -51,17 +51,12 @@ ped_genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/"
 probands <- read.csv(proband_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)
-library(animalr)
-library(rmsutilityr)
-probands <- blank_fill_ids(probands$id)
-ped <- get_direct_ancestors(conn, probands)
-ped <- add_birth_date(conn, ped)
-ped$birth_date <- format(ped$birth_date, format = "%Y-%m-%d")
-ped$id <- stri_trim_both(ped$id)
-ped$sire_id <- stri_trim_both(ped$sire_id)
-ped$dam_id <- stri_trim_both(ped$dam_id)
-
-probands <- stri_trim_both(probands)
+probands <- (probands$id)
+#ped <- get_direct_ancestors(conn, probands)
+ped <- getLkDirectRelatives(stri_trim_both(probands))
+ped$birth <- format(ped$birth, format = "%Y-%m-%d")
+ped$death <- format(ped$death, format = "%Y-%m-%d")
+ped$exit <- format(ped$exit, format = "%Y-%m-%d")
 # write.csv(ped,
 #           file = ped_file, row.names = FALSE)
 ped_qc <- qcStudbook(ped)
