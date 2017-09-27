@@ -1,9 +1,9 @@
 context("addGenotype")
 library(testthat)
 library(stringi)
-data("baboon_ped")
-baboon_ped <- baboon_ped[order(baboon_ped$id), ]
-ped <- baboon_ped
+data("baboonPed")
+baboonPed <- baboonPed[order(baboonPed$id), ]
+ped <- baboonPed
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first", 1:20),
                        second_name = stri_c("second", 1:20),
