@@ -4,7 +4,7 @@
 \name{baboonPed}
 \alias{baboonPed}
 \title{baboonPed is a dataframe with 277 rows and 6 columns}
-\format{An object of class \code{data.frame} with 277 rows and 8 columns.}
+\format{An object of class \code{data.frame} with 236 rows and 7 columns.}
 \usage{
 baboonPed
 }
