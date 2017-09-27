@@ -18,6 +18,14 @@
 #' @import lubridate
 #' @export
 checkParentAge <- function(sb, minParentAge = 2) {
+  if (!any(class(sb$birth) %in% c("Date", "POSIXct", "character"))) {
+    stop("Birth column must be of class 'Date', 'POSIXct', or 'character'")
+  } else if (class(sb$birth) == "character") {
+    sb$birth <- anytime(sb$birth)
+  } else {
+    sb$birth <- as.Date(sb$birth)
+  }
+
   sireBirth <- data.frame(
     id = sb$id[sb$id %in% sb$sire & !is.na(sb$birth)],
     sireBirth = sb$birth[sb$id %in% sb$sire & !is.na(sb$birth)],

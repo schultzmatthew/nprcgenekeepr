@@ -4,7 +4,7 @@
 \alias{getPyramidAgeDist}
 \title{Get the age distribution for the pedigree}
 \usage{
-getPyramidAgeDist(ped = "null")
+getPyramidAgeDist(ped = NULL)
 }
 \arguments{
 \item{ped}{dataframe with pedigree}

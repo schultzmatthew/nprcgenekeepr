@@ -4,8 +4,7 @@
 \alias{fillBins}
 \title{Fill bins represented by list of two lists \code{males} and \code{females}.}
 \usage{
-fillBins(age_dist, lower_ages, upper_ages = lower_ages +
-  c(lower_ages[2:length(lower_ages)], 100))
+fillBins(age_dist, lower_ages, upper_ages = NULL)
 }
 \arguments{
 \item{age_dist}{dataframe with \code{sex} and \code{age} columns}

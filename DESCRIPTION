@@ -13,6 +13,7 @@ Description: Implements Genetic Tools for Colony Management.
 Depends:
     R (>= 3.2.1)
 Imports:
+    anytime,
     dplyr,
     futile.logger,
     lubridate,
