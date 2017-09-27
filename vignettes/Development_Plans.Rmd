@@ -39,13 +39,29 @@ I added code coverage reports to the automated build system running on Travis-CI
    so that the user knows how the provided pedigree was changed.
 2. Amanda Vinson wrote this in an e-mail on 20170901:
   
-I'm very interested in hearing about your idea of adding algorithms related to 
-selecting/maintaining specific alleles in a colony. 
-I think your idea could be related to what I need to work on next, 
-which is an algorithm for assessing the long-term impact on colony genetic 
-diversity of removing specific animals/alleles.  
-This is a need we have here at the ONPRC due to assigning animals to research, 
-and I have been tasked with implementing the solution.
+    I'm very interested in hearing about your idea of adding algorithms related 
+    to selecting/maintaining specific alleles in a colony. 
+    I think your idea could be related to what I need to work on next, 
+    which is an algorithm for assessing the long-term impact on colony genetic 
+    diversity of removing specific animals/alleles.  
+    This is a need we have here at the ONPRC due to assigning animals to  
+    research, and I have been tasked with implementing the solution.
+
+3. Remove individuals that can never breed again from genetic analyses.
+(From page 29 of \emph{PMx User Manual, version 1.0}).
+It is generally recommended to remove living individuals that can never breed 
+or will never be bred again (e.g., post reproductive, sterilized, poor health, 
+hybrid) from the genetic mean kinship calculations, as these individuals can no 
+longer pass on their genetic material to the next generation and their 
+inclusion influences the mean kinship values of other individuals in the 
+population. However, these non-reproductive individuals may occupy cage space 
+and need to be managed in other ways. In addition, their demographic 
+information is valuable. Managers therefore often chose to include these 
+individuals in the demographic analysis but to exclude them from genetic 
+analysis. 
+
+4. It would be nice to have multiple "selected populations" that could be 
+set up and easily selected for various analyses and plots.
 
 
 ## Accomplishments thus far
