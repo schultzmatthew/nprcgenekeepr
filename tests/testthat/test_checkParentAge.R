@@ -1,0 +1,15 @@
+context("checkParentAge")
+library(testthat)
+data("baboonPed")
+test_that("checkParentAge identifies the over aged parents", {
+  underAgeTwo <- checkParentAge(baboonPed, minParentAge = 2)
+  underAgeThree <- checkParentAge(baboonPed, minParentAge = 3)
+  underAgeFive <- checkParentAge(baboonPed, minParentAge = 5)
+  underAgeSix <- checkParentAge(baboonPed, minParentAge = 6)
+  expect_equal(nrow(underAgeTwo), 0)
+  expect_equal(nrow(underAgeThree), 0)
+  expect_equal(nrow(underAgeFive), 1)
+  expect_equal(nrow(underAgeSix), 6)
+  expect_true(all(underAgeSix$dam %in% c("15057", "16135", "1C0321", "8143",
+                                         "8846", "9859")))
+})

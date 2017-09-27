@@ -1,4 +1,4 @@
-#' ped1_alleles is a dataframe created by the geneDrop function
+#' ped1Alleles is a dataframe created by the geneDrop function
 #'
 #' @format A dataframe with 554 rows and 6 varialbes
 #' \describe{
@@ -22,8 +22,8 @@
 #' }
 #' @source example baboon pedigree file provided by Deborah Newman,
 #' Southwest National Primate Center.
-"ped1_alleles"
-#' baboon_ped is a dataframe with 277 rows and 6 columns
+"ped1Alleles"
+#' baboonPed is a dataframe with 277 rows and 6 columns
 #'
 #' \describe{
 #' \item{id}{character column of animal IDs}
@@ -40,7 +40,7 @@
 #' \item{age}{age in year (numeric) of the animal indicated by the \code{id}
 #' column.}
 #' }
-"baboon_ped"
+"baboonPed"
 #' lacy1989Ped small example pedigree
 #'
 #' @source lacy1989Ped is a dataframe containing the small example pedigree used
