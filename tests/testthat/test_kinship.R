@@ -1,0 +1,16 @@
+context("kinship")
+library(testthat)
+data("lacy1989Ped")
+ped <- lacy1989Ped
+
+test_that("kinship makes correct calculations", {
+  kmatSparse <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = TRUE)
+  kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = FALSE)
+  expect_equal(as.numeric(kmatSparse), as.numeric(kmat))
+  expect_equal(kmat[1, 1], 0.5)
+  expect_equal(kmat[1, 3], 0.25)
+  expect_equal(kmat[1, 5], 0.0)
+  expect_equal(kmat[1, 6], 0.125)
+  expect_equal(kmat[1, 2], 0.0)
+  expect_equal(kmat[6, 2], 0.125)
+})
