@@ -10,7 +10,7 @@ Introduction
 
 The goal of nprcmanager is implement Genetic Tools for Colony Management. It was initially conceived and developed at the Oregon National Primate Research Center (ONPRC) to facilitate some of the analyses they perform regularly.
 
-At present, the application is designed to support 3 functions:
+At present, the application is designed to support 4 functions:
 
     1. Quality control of uploaded studbooks
     2. Generation of Genetic Value Analysis Reports
