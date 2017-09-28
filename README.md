@@ -12,9 +12,15 @@ The goal of nprcmanager is implement Genetic Tools for Colony Management. It was
 
 At present, the application is designed to support 3 functions:
 
+<<<<<<< HEAD
     1. Quality control of uploaded studbooks
     2. Generation of Genetic Value Analysis Reports
     3. Creation of potential breeding groups
+=======
+    1.  Quality control of uploaded studbooks
+    2.  Generation of Genetic Value Analysis Reports
+    3.  Creation of potential breeding groups
+>>>>>>> 9bdd5d66b654242f2aa047bc0a926f0a67c17707
     4. Display of an age by sex pyramid plot
 
 Installation
