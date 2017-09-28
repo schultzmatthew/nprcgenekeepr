@@ -53,7 +53,7 @@ probands <- read.csv(proband_file, header = TRUE, sep = ",",
                      check.names = FALSE)
 probands <- (probands$id)
 #ped <- get_direct_ancestors(conn, probands)
-ped <- getLkDirectRelatives(stri_trim_both(probands))
+ped <- getLkDirectRelatives(stri_trim_both(probands), unrelatedParents = TRUE)
 ped$birth <- format(ped$birth, format = "%Y-%m-%d")
 ped$death <- format(ped$death, format = "%Y-%m-%d")
 ped$exit <- format(ped$exit, format = "%Y-%m-%d")
