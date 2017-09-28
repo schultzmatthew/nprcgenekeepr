@@ -36,13 +36,13 @@ getPyramidAgeDist <- function(ped = NULL) {
     stop("exit_date column must be of class 'Date', 'POSIXct', or 'character'")
   } else if (class(ped$exit_date) == "character") {
     ped$status[ped$exit_date == "9999999999"] <- "DECEASED"
-    ped$status[ped$exit_date == "" | is.na(ped$exit_date)] <- "ALIVE"
     ped$exit_date[ped$exit_date == "" | ped$exit_date == "9999999999"] <- NA
     ped$exit_date <- anytime(ped$exit_date)
   } else {
     ped$exit_date <- as.Date(ped$exit_date)
   }
-  ped$status[!is.na(ped$exit_date)] <- "DECEASED"
+  ped$status[is.na(ped$exit_date)] <- "ALIVE"
+  ped$status[!is.na(ped$exit_date) | is.na(ped$birth)] <- "DECEASED"
   ped$age[is.na(ped$exit_date) & !is.na(ped$birth)] <-
     interval(start = ped$birth[is.na(ped$exit_date) &
                                  !is.na(ped$birth)],
