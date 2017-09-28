@@ -21,7 +21,7 @@ starting at 0 for individuals lacking IDs for both parents.
 }
 \description{
 {This loops through the entire pedigree by one generation at a
-time. If finds the zeroth generation during first loop.
+time. It finds the zeroth generation during first loop.
 The first time through this loop no sire or dam is in parents.
 This means that the animals without a sire and without a dam are
 assigned to generation 0 and become the first parental genereation.
@@ -34,4 +34,6 @@ are given the incremented generation number.}
 Subsequent trips in the loop repeat what was done the second time
 through until no further animals can be added to the \code{nextGen}
 vector.
+
+This does not work if the pedigree does not have all parent IDs as ego IDs.
 }
