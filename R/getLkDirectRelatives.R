@@ -18,16 +18,17 @@ getLkDirectRelatives <- function(ids) {
   while (len > 0) {
     parents <- getParents(pedSourceDf, parents)
     offspring <- getOffspring(pedSourceDf, offspring)
-    len <- length(parents)
-    if (len > 0) {
+    if (length(parents) > 0) {
       relativesDf <- rbind(relativesDf,
                            pedSourceDf[pedSourceDf$id %in% parents, ],
                            stringsAsFactors = FALSE)
+    }
+    if (length(offspring) > 0) {
       relativesDf <- rbind(relativesDf,
                            pedSourceDf[pedSourceDf$id %in% offspring, ],
                            stringsAsFactors = FALSE)
-      relativesDf <- relativesDf[!duplicated(relativesDf$id), ]
     }
+    relativesDf <- relativesDf[!duplicated(relativesDf$id), ]
   }
   relativesDf[!duplicated(relativesDf$id), ]
 }
