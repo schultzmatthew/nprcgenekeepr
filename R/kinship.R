@@ -79,7 +79,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Any parent is guarranteed to be at a lower depth than their children
   #  The inner loop on "i" can NOT be replaced with a vectorized expression:
   # sibs' effect on each other is cumulative.
-  for (depth in 1:max(pdepth)) {
+  for (depth in 1:max(pdepth, na.rm = TRUE)) {
     indx <- (1:n)[pdepth == depth]
     for (i in indx) {
       mom <- mrow[i]
