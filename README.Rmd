@@ -21,10 +21,11 @@ the Oregon National Primate Research Center (ONPRC) to facilitate some of
 the analyses they perform regularly.
 
 At present, the application is designed to support 3 functions:
-1.	Quality control of uploaded studbooks
-2.	Generation of Genetic Value Analysis Reports
-3.	Creation of potential breeding groups
-4. Display of an age by sex pyramid plot
+
+    1. Quality control of uploaded studbooks
+    2. Generation of Genetic Value Analysis Reports
+    3. Creation of potential breeding groups
+    4. Display of an age by sex pyramid plot
 
 
 ## Installation
