@@ -4,10 +4,15 @@
 \alias{getLkDirectRelatives}
 \title{Get the direct ancestors of selected animals}
 \usage{
-getLkDirectRelatives(ids)
+getLkDirectRelatives(ids, unrelatedParents = FALSE)
 }
 \arguments{
 \item{ids}{character vector with Ids.}
+
+\item{unrelatedParents}{logical vector when \code{FALSE} the unrelated
+parents of offspring do not get a record as an ego; when \code{TRUE}
+a place holder record where parent (\code{sire},
+\code{dam}) IDs are set to \code{NA}.}
 }
 \value{
 dataframe with pedigree structure having all of the direct ancestors

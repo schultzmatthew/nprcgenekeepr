@@ -2,11 +2,17 @@
 #'
 #' Gets direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
+#'
 #' @return dataframe with pedigree structure having all of the direct ancestors
 #' for the Ids provided.
 #' @param ids character vector with Ids.
+#' @param unrelatedParents logical vector when \code{FALSE} the unrelated
+#' parents of offspring do not get a record as an ego; when \code{TRUE}
+#' a place holder record where parent (\code{sire},
+#' \code{dam}) IDs are set to \code{NA}.
+#'
 #' @export
-getLkDirectRelatives <- function(ids) {
+getLkDirectRelatives <- function(ids, unrelatedParents = FALSE) {
   siteInfo <- getSiteInfo()
   colSet <- siteInfo$lkPedColumns
   pedSourceDf <- getDemographics(colSelect = colSet)
@@ -18,17 +24,31 @@ getLkDirectRelatives <- function(ids) {
   while (len > 0) {
     parents <- getParents(pedSourceDf, parents)
     offspring <- getOffspring(pedSourceDf, offspring)
-    if (length(parents) > 0) {
-      relativesDf <- rbind(relativesDf,
-                           pedSourceDf[pedSourceDf$id %in% parents, ],
-                           stringsAsFactors = FALSE)
+    len <- length(parents) + length(offspring)
+    if (len > 0) {
+      if (length(parents) > 0) {
+        relativesDf <- rbind(relativesDf,
+                             pedSourceDf[pedSourceDf$id %in% parents, ],
+                             stringsAsFactors = FALSE)
+      }
+      if (length(offspring) > 0) {
+        relativesDf <- rbind(relativesDf,
+                             pedSourceDf[pedSourceDf$id %in% offspring, ],
+                             stringsAsFactors = FALSE)
+      }
+      relativesDf <- relativesDf[!duplicated(relativesDf$id), ]
     }
-    if (length(offspring) > 0) {
-      relativesDf <- rbind(relativesDf,
-                           pedSourceDf[pedSourceDf$id %in% offspring, ],
-                           stringsAsFactors = FALSE)
-    }
-    relativesDf <- relativesDf[!duplicated(relativesDf$id), ]
   }
+  unrelated <- unique(c(
+    relativesDf$sire[!relativesDf$sire %in% relativesDf$id],
+    relativesDf$dam[!relativesDf$dam %in% relativesDf$id]))
+  if (length(unrelated) > 0)
+  tempDf <- pedSourceDf[pedSourceDf$id %in% unrelated]
+  tempDf$sire <- NA
+  tempDf$dam <- NA
+  relativesDf <- rbind(relativesDf,
+                       tempDf,
+                       stringsAsFactors = FALSE)
+
   relativesDf[!duplicated(relativesDf$id), ]
 }
