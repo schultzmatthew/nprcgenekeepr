@@ -79,7 +79,6 @@ report <- reportGV(p_genotype, gu.iter = 500, gu.thresh = 1, pop = NULL,
                    byID = TRUE, updateProgress = NULL)
 #data(baboonPed)
 #kmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen)
-debug(groupAssign)
 groupAssignTest <- groupAssign(candidates = probands, kmat = report$kinship,
                                ped = p_genotype,
                                ignore = NULL, minAge = 1, numGp = 2,
@@ -91,7 +90,7 @@ newGroupAssignTest <- groupAddAssign(candidates = probands, currentGroup = NULL,
 groupAddTest <- groupAddition(candidates = probands,
                               currentGroup = probands[1:3],
                               kmat = report$kinship, ped = p_genotype,
-                              ignore = NULL, minAge = 1, numGp = 1,
+                              ignore = NULL, minAge = 1,
                               withKin = TRUE)
 newGroupAddTest <- groupAddAssign(candidates = probands,
                                   currentGroup = probands[1:3],

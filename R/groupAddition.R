@@ -26,7 +26,7 @@
 #' ignored.
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
-#' kinship should be ignored between certain sexes. 
+#' kinship should be ignored between certain sexes.
 #'   Default is to ignore all pairwise kinship between females.
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will
@@ -70,7 +70,7 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
   kin <- tapply(kin$id2, kin$id1, c)
 
   # Filtering out candidates related to current group members
-  conflicts <- unlist(kin[currentGroup])
+  conflicts <- unique(unlist(kin[currentGroup]))
   candidates <- setdiff(candidates, conflicts)
 
   # adding animals with no relatives
