@@ -2,9 +2,9 @@
 % Please edit documentation in R/filterAge.R
 \name{filterAge}
 \alias{filterAge}
-\title{Removes kinship values where an animal is less than the min.age}
+\title{Removes kinship values where an animal is less than the minAge}
 \usage{
-filterAge(kin, ped, min.age = 1)
+filterAge(kin, ped, minAge = 1)
 }
 \arguments{
 \item{kin}{a dataframe with columns \code{id1}, \code{id2}, and
@@ -14,7 +14,7 @@ to a long-format table.}
 \item{ped}{dataframe of pedigree information including the IDs listed
 in "candidates".}
 
-\item{min.age}{numeric value representing minimum years of age of
+\item{minAge}{numeric value representing minimum years of age of
 animals to retain.}
 }
 \description{

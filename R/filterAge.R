@@ -1,4 +1,4 @@
-#' Removes kinship values where an animal is less than the min.age
+#' Removes kinship values where an animal is less than the minAge
 #'
 #' Part of Group Formation
 #'
@@ -7,10 +7,10 @@
 #' to a long-format table.
 #' @param ped dataframe of pedigree information including the IDs listed
 #' in "candidates".
-#' @param min.age numeric value representing minimum years of age of
+#' @param minAge numeric value representing minimum years of age of
 #' animals to retain.
 #' @export
-filterAge <- function(kin, ped, min.age = 1) {
+filterAge <- function(kin, ped, minAge = 1) {
   kin$sort.col <- 1:nrow(kin)
 
   a1 <- merge(kin, ped, by.x = "id1", by.y = "id", all.x = TRUE, all.y = FALSE)
@@ -19,7 +19,7 @@ filterAge <- function(kin, ped, min.age = 1) {
   a1 <- a1[with(a1, order(sort.col)), "age"]
   a2 <- a2[with(a2, order(sort.col)), "age"]
 
-  keep <- (((a1 >= min.age) | is.na(a1)) & ((a2 >= min.age) | is.na(a2)))
+  keep <- (((a1 >= minAge) | is.na(a1)) & ((a2 >= minAge) | is.na(a2)))
 
   kin$sort.col <- NULL
   kin <- kin[keep, ]
