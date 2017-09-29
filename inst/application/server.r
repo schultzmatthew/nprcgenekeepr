@@ -668,7 +668,7 @@ shinyServer(function(input, output, session) {
     ignore <- if (ignore) list(c("F", "F")) else NULL
 
     threshold <- input$kin_thresh
-    min.age <- input$min_age
+    minAge <- input$min_age
     withKin <- input$withKin
     iter <- input$gp_iter
     numGp <- ({input$numGp})
@@ -691,7 +691,7 @@ shinyServer(function(input, output, session) {
                            p,
                            threshold = threshold,
                            ignore = ignore,
-                           min.age = min.age,
+                           minAge = minAge,
                            iter = iter,
                            updateProgress = updateProgress,
                            withKin = withKin)
@@ -699,7 +699,7 @@ shinyServer(function(input, output, session) {
       grp <- groupAssign(candidates, kmat(), p,
                          threshold = threshold,
                          ignore = ignore,
-                         min.age = min.age,
+                         minAge = minAge,
                          iter = iter,
                          numGp = numGp,
                          updateProgress = updateProgress,

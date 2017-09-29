@@ -1,9 +1,11 @@
-#' Add animals to an existing breeding group:
+#' Add animals to an existing breeding or form groups group:
 #'
 #' Part of Group Formation
 #'
-#' \code{groupAddition} finds the largest group that can be formed by adding
-#' unrelated animals from a set of candidate IDs to an existing group.
+#' \code{newGroupAddAssign} finds the largest group that can be formed by adding
+#' unrelated animals from a set of candidate IDs to an existing group, to a new
+#' group it has formed from a set of candidate IDs or if more than 1 group
+#' is desired, it finds the set of groups with the largest average size.
 #'
 #' The function implements a maximal independent set (MIS) algorithm to find
 #' groups of unrelated animals. A set of animals may have many different MISs of
@@ -16,7 +18,7 @@
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
 #' @param currentGroup character vector of IDs of animals currently assigned
-#' to the group.
+#' to the group. Defaults to NULL assuming no groups are existant.
 #' @param kmat numeric matrix of pairwise kinship values. Rows and columns
 #' are named with animal IDs.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
@@ -33,6 +35,8 @@
 #'  be ignored. Default is 1 year.
 #' @param iter integer indicating the number of times to perform the random
 #' group formation process. Default value is 1000 iterations.
+#' @param numGp integer value indicating the number of groups that should be
+#' formed from the list of IDs. Default is 1.
 #' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
@@ -49,10 +53,11 @@
 #' The list item \code{groupKin} contains the subset of the kinship matrix
 #' that is specific for each group formed.
 #' @export
-groupAddition <- function(candidates, currentGroup, kmat, ped,
-                          threshold = 0.015625, ignore = list(c("F", "F")),
-                          minAge = 1, iter = 1000, updateProgress = NULL,
-                          withKin = FALSE) {
+groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
+                            threshold = 0.015625, ignore = list(c("F", "F")),
+                            minAge = 1, iter = 1000,
+                            numGp = 1, updateProgress = NULL,
+                            withKin = FALSE) {
   kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
   kin <- reformatKinship(kmat)
 
@@ -83,30 +88,50 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
   saved.groupMembers <- list()
 
   for (k in 1:iter) {
-    groupMembers <- currentGroup
-    d <- candidates
+    groupMembers <- list()
+    available <- list()
+    for (i in 1:numGp) {
+      groupMembers[[i]] <- vector()
+      available[[i]] <- candidates
+    }
 
+    grpNum <- list()
+    grpNum[1:numGp] <- 1:numGp
     while (TRUE) {
-      if (isEmpty(d)) {
+      if (isEmpty(grpNum)) {
         break
       }
 
+      # Select a group at random
+      i <- sample(grpNum, 1)[[1]]
+
       # Select an animal that can be added to this group and add it
-      id <- sample(d, 1)
-      groupMembers <- c(groupMembers, id)
+      id <- sample(available[[i]], 1)
+      groupMembers[[i]] <- c(groupMembers[[i]], id)
 
       # Remove the selected animal from consideration
-      d <- setdiff(d, id)
+      for (j in 1:numGp) {
+        available[[j]] <- setdiff(available[[j]], id)
+      }
 
       # Remove all relatives from consideration for the group it was added to
-      d <- setdiff(d, kin[[id]])
+      # need to modify "kin" to include blank entries for animals with no
+      # relatives
+      available[[i]] <- setdiff(available[[i]], kin[[id]])
+
+      remainingGrpNum <- grpNum
+      for (i in remainingGrpNum) {
+        if (isEmpty(available[[i]])) {
+          grpNum <- setdiff(grpNum, i)
+        }
+      }
     }
 
-    # Score the resulting group
-    score <- length(groupMembers)
+    # Score the resulting groups
+    score <- min(sapply(groupMembers, length))
 
     if (score > saved.score) {
-      saved.groupMembers[[1]] <- groupMembers
+      saved.groupMembers <- groupMembers
       saved.score <- score
     }
 
@@ -118,7 +143,9 @@ groupAddition <- function(candidates, currentGroup, kmat, ped,
 
   # Adding a group for the unused animals
   n <- length(saved.groupMembers) + 1
-  saved.groupMembers[[n]] <- setdiff(candidates, unlist(saved.groupMembers))
+  saved.groupMembers[[n]] <-
+    ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
+           c(NA), setdiff(candidates, unlist(saved.groupMembers)))
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.groupMembers)) {

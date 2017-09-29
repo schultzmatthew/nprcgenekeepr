@@ -2,10 +2,9 @@
 #'
 #' Part of Group Formation
 #'
-#' Generating  from a list of candidates.
 #' \code{groupAssign} finds either the largest group of unrelated animals
-#' that can be formed from a set of candidate IDs or if more than 1 group is
-#' desired, it finds the set of groups with the largest average size.
+#' that can be formed from a set of candidate IDs or if more than 1 group
+#' is desired, it finds the set of groups with the largest average size.
 #'
 #' The function implements a maximal independent set (MIS) algorithm to find
 #' groups of unrelated animals. A set of animals may have many different MISs of
@@ -17,45 +16,51 @@
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
-#' @param kmat numeric matrix {row and column names: animal IDs} of
-#' pairwise kinship values. Rows and columns are named with animal IDs.
-#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' @param kmat numeric matrix of pairwise kinship values. Rows and columns
+#' are named with animal IDs.
+#' @param ped dataframe that is the `Pedigree`. It contains pedigree
 #' information including the IDs listed in \code{candidates}.
-#' @param threshold : float
-#'   Minimum kinship level to be considered in group formation. Pairwise
-#'   kinship below this level will be ignored.
-#' @param ignore : list <char>
-#'   List of sex combinations to be ignored. If provided, the vectors in the
-#'   list specify if pairwise kinship should be ignored between certain sexes.
+#' @param threshold numeric value indicating the minimum kinship level to be
+#' considered in group formation. Pairwise kinship below this level will be
+#' ignored.
+#' @param ignore list of character vectors representing the sex combinations
+#' to be ignored. If provided, the vectors in the list specify if pairwise
+#' kinship should be ignored between certain sexes. 
 #'   Default is to ignore all pairwise kinship between females.
-#' @param min.age
-#'   Minimum age to consider in group formation. Pairwise kinships involving
+#' @param minAge integer value indicating the minimum age to consider in group
+#' formation. Pairwise kinships involving an animal of this age or younger will
+#'  be ignored. Default is 1 year.
 #' @param iter integer indicating the number of times to perform the random
 #' group formation process. Default value is 1000 iterations.
-#' @param numGp : int
-#'   Number of groups that should be formed from the list of IDs. Default is 1.
+#' @param numGp integer value indicating the number of groups that should be
+#' formed from the list of IDs. Default is 1.
 #' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
-#' @param withKin logical varialbe when set to \code{TRUE} the kinship
+#' @param withKin logical variable when set to \code{TRUE} the kinship
 #' matrix for the group is returned along with the group and score.
 #' Defaults to not return the kinship matrix. This maintains compatability with
 #' earlier versions.
-#
-#' @return A list with fields \code{group} and \code{score}.
-#'   The field \code{group} contains a list of the best group(s) produced
-#'   during the simulation, while the field \code{score} provides the score
-#'   associated with the group(s).
+#'
+#' @return A list with list items \code{group}, \code{score} and optionally
+#' \code{groupKin}.
+#' The list item \code{group} contains a list of the best group(s) produced
+#' during the simulation.
+#' The list item \code{score} provides the score associated with the group(s).
+#' The list item \code{groupKin} contains the subset of the kinship matrix
+#' that is specific for each group formed.
 #' @export
-groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
-                        ignore = list(c("F", "F")), min.age = 1, iter = 1000,
-                        numGp = 1, updateProgress = NULL, withKin = FALSE) {
+groupAssign <- function(candidates, kmat, ped, 
+                        threshold = 0.015625, ignore = list(c("F", "F")), 
+                        minAge = 1, iter = 1000,
+                        numGp = 1, updateProgress = NULL, 
+                        withKin = FALSE) {
   kmat <- filterKinMatrix(candidates, kmat)
   kin <- reformatKinship(kmat)
 
   kin <- filterThreshold(kin, threshold = threshold)
   kin <- filterPairs(kin, ped, ignore = ignore)
-  kin <- filterAge(kin, ped, min.age = min.age)
+  kin <- filterAge(kin, ped, minAge = minAge)
 
   # Filter out self kinships
   kin <- kin[(kin$id1 != kin$id2), ]
@@ -68,7 +73,7 @@ groupAssign <- function(candidates, kmat, ped, threshold = 0.015625,
     kin[[cand]] <- c(NA)
   }
 
-  # Starting the group assignment simulation:
+  # Starting the group assignment simulation
   saved.score <- -1
   saved.groupMembers <- list()
 

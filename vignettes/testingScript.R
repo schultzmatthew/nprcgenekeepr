@@ -23,9 +23,9 @@
 # p <- trimPedigree(probands, p, removeUninformative = FALSE,
 #                   addBackParents = FALSE)
 # test <- reportGV(p, gu.iter = 100)
-library(RODBC)
+#library(RODBC)
 library(stringi)
-conn <- odbcConnect("frogstar-vortex-animal-msharp")
+#conn <- odbcConnect("frogstar-vortex-animal-msharp")
 proband_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                        "library/nprcmanager/inst/extdata/",
                        "baboon_breeders_only.csv")
@@ -51,9 +51,9 @@ ped_genotype_file <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/"
 probands <- read.csv(proband_file, header = TRUE, sep = ",",
                      stringsAsFactors = FALSE, na.strings = c("", "NA"),
                      check.names = FALSE)
-probands <- (probands$id)
+probands <- as.character(probands$id)
 #ped <- get_direct_ancestors(conn, probands)
-ped <- getLkDirectRelatives(stri_trim_both(probands), unrelatedParents = TRUE)
+ped <- getLkDirectRelatives(stri_trim_both(probands), unrelatedParents = FALSE)
 ped$birth <- format(ped$birth, format = "%Y-%m-%d")
 ped$death <- format(ped$death, format = "%Y-%m-%d")
 ped$exit <- format(ped$exit, format = "%Y-%m-%d")
@@ -77,6 +77,26 @@ alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 4)
 p_genotype <- addGenotype(p, genotype)
 report <- reportGV(p_genotype, gu.iter = 500, gu.thresh = 1, pop = NULL,
                    byID = TRUE, updateProgress = NULL)
+#data(baboonPed)
+#kmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen)
+groupAssignTest <- groupAssign(candidates = probands, kmat = report$kinship,
+                               ped = p_genotype,
+                               ignore = NULL, minAge = 1, numGp = 2,
+                               withKin = TRUE)
+newGroupAssignTest <- groupAddAssign(candidates = probands, currentGroup = NULL,
+                                     kmat = report$kinship, ped = p_genotype,
+                               ignore = NULL, minAge = 1, numGp = 2,
+                               withKin = TRUE)
+groupAddTest <- groupAddition(candidates = probands,
+                              currentGroup = probands[1:3],
+                              kmat = report$kinship, ped = p_genotype,
+                              ignore = NULL, minAge = 1,
+                              withKin = TRUE)
+newGroupAddTest <- groupAddAssign(candidates = probands,
+                                  currentGroup = probands[1:3],
+                                  kmat = report$kinship, ped = p_genotype,
+                                  ignore = NULL, minAge = 1, numGp = 1,
+                                  withKin = TRUE)
 # write.csv(p_genotype,
 #          file = ped_genotype_file, row.names = FALSE)
 p_genotype <- read.csv(ped_genotype_file, header = TRUE, sep = ",",
