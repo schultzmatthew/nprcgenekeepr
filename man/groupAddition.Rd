@@ -5,22 +5,21 @@
 \title{Add animals to an existing breeding group:}
 \usage{
 groupAddition(candidates, currentGroup, kmat, ped, threshold = 0.015625,
-  ignore = list(c("F", "F")), min.age = 1, iter = 1000,
+  ignore = list(c("F", "F")), minAge = 1, iter = 1000,
   updateProgress = NULL, withKin = FALSE)
 }
 \arguments{
-\item{candidates}{character vector of IDs of the animals available for use
-in the group.}
+\item{candidates}{character vector of IDs of the animals available for
+use in the group.}
 
 \item{currentGroup}{character vector of IDs of animals currently assigned
 to the group.}
 
-\item{kmat}{: matrix {row and column names: animal IDs}
-Matrix of pairwise kinship values. Rows and columns are named with
-animal IDs.}
+\item{kmat}{numeric matrix of pairwise kinship values. Rows and columns
+are named with animal IDs.}
 
-\item{ped}{Dataframe of pedigree information including the IDs listed in
-\code{candidates}.}
+\item{ped}{dataframe that is the `Pedigree`. It contains pedigree
+information including the IDs listed in \code{candidates}.}
 
 \item{threshold}{numeric value indicating the minimum kinship level to be
 considered in group formation. Pairwise kinship below this level will be
@@ -28,35 +27,40 @@ ignored.}
 
 \item{ignore}{list of character vectors representing the sex combinations
 to be ignored. If provided, the vectors in the list specify if pairwise
- kinship should be ignored between certain sexes. Default is to ignore all
- pairwise kinship between females.}
+kinship should be ignored between certain sexes. 
+  Default is to ignore all pairwise kinship between females.}
 
-\item{min.age}{integer value indicating the minimum age to consider in group
+\item{minAge}{integer value indicating the minimum age to consider in group
 formation. Pairwise kinships involving an animal of this age or younger will
  be ignored. Default is 1 year.}
 
-\item{iter}{integer value indicating number of times to perform the random
-group formation process. Default is 1000 iterations.}
+\item{iter}{integer indicating the number of times to perform the random
+group formation process. Default value is 1000 iterations.}
 
-\item{updateProgress}{optional function (may be NULL) that is called
-during each iteration to update a \code{shiny::Progress object}.}
+\item{updateProgress}{function or NULL. If this function is defined, it
+will be called during each iteration to update a
+\code{shiny::Progress} object.}
 
-\item{withKin}{logical varialbe when set to \code{TRUE} the kinship
+\item{withKin}{logical variable when set to \code{TRUE} the kinship
 matrix for the group is returned along with the group and score.
 Defaults to not return the kinship matrix. This maintains compatability with
 earlier versions.}
 }
 \value{
-a list with \code{group}, which contains a list of the best
-group(s) produced during the simulation and \code{score}, which provides
-the score associated with the group(s).
+A list with list items \code{group}, \code{score} and optionally
+\code{groupKin}.
+The list item \code{group} contains a list of the best group(s) produced
+during the simulation.
+The list item \code{score} provides the score associated with the group(s).
+The list item \code{groupKin} contains the subset of the kinship matrix
+that is specific for each group formed.
 }
 \description{
 Part of Group Formation
 }
 \details{
-Function to find the largest group that can be formed by adding unrelated
-animals from a set of candidate IDs to an existing group.
+\code{groupAddition} finds the largest group that can be formed by adding
+unrelated animals from a set of candidate IDs to an existing group.
 
 The function implements a maximal independent set (MIS) algorithm to find
 groups of unrelated animals. A set of animals may have many different MISs of
