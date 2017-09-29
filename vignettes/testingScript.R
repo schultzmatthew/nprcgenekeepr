@@ -113,3 +113,11 @@ rhesus_ped$dam_id <- stri_trim_both(rhesus_ped$dam_id)
 # write.csv(rhesus_ped,
 #           file = rhesus_ped_file, row.names = FALSE)
 
+library(rmsutilityr)
+
+files <- c(list.files(path = "../R/.", full.names = TRUE),
+           list.files(path = "../tests/testthat/.", full.names = TRUE)
+)
+test <- classify_code_lines(files)
+testthatCode <- classify_code_lines(list.files(path = "../tests/testthat/.",
+                                               full.names = TRUE))
