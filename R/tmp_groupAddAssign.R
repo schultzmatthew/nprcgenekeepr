@@ -2,8 +2,7 @@
 #'
 #' Part of Group Formation
 #'
-#' @description{
-#' \code{groupAddAssign} finds the largest group that can be formed by adding
+#' \code{newGroupAddAssign} finds the largest group that can be formed by adding
 #' unrelated animals from a set of candidate IDs to an existing group, to a new
 #' group it has formed from a set of candidate IDs or if more than 1 group
 #' is desired, it finds the set of groups with the largest average size.
@@ -15,15 +14,6 @@
 #' algorithm produces a random sample of the possible MISs, and selects from
 #' these. The size of the random sample is determined by the specified number
 #' of iterations.
-#'
-#' }
-#' @return A list with list items \code{group}, \code{score} and optionally
-#' \code{groupKin}.
-#' The list item \code{group} contains a list of the best group(s) produced
-#' during the simulation.
-#' The list item \code{score} provides the score associated with the group(s).
-#' The list item \code{groupKin} contains the subset of the kinship matrix
-#' that is specific for each group formed.
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
@@ -39,7 +29,7 @@
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
 #' kinship should be ignored between certain sexes.
-#' Default is to ignore all pairwise kinship between females.
+#'   Default is to ignore all pairwise kinship between females.
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will
 #'  be ignored. Default is 1 year.
@@ -55,6 +45,13 @@
 #' Defaults to not return the kinship matrix. This maintains compatability with
 #' earlier versions.
 #'
+#' @return A list with list items \code{group}, \code{score} and optionally
+#' \code{groupKin}.
+#' The list item \code{group} contains a list of the best group(s) produced
+#' during the simulation.
+#' The list item \code{score} provides the score associated with the group(s).
+#' The list item \code{groupKin} contains the subset of the kinship matrix
+#' that is specific for each group formed.
 #' @export
 groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
@@ -99,7 +96,7 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
       if (is.null(currentGroup)) {
         groupMembers[[i]] <- vector()
       } else {
-        groupMembers[[i]] <- currentGroup
+        groupMembers <- currentGroup
       }
       available[[i]] <- candidates
     }
@@ -116,8 +113,11 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
 
       # Select an animal that can be added to this group and add it
       id <- sample(available[[i]], 1)
-      groupMembers[[i]] <- c(groupMembers[[i]], id)
-
+      if (is.null(currentGroup)) {
+        groupMembers[[i]] <- c(groupMembers[[i]], id)
+      } else {
+        groupMembers <- c(groupMembers, id)
+      }
       # Remove the selected animal from consideration
       for (j in 1:numGp) {
         available[[j]] <- setdiff(available[[j]], id)
@@ -156,9 +156,11 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
 
   # Adding a group for the unused animals
   n <- length(saved.groupMembers) + 1
-  saved.groupMembers[[n]] <-
-    ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
-           c(NA), list(setdiff(candidates, unlist(saved.groupMembers))))[[1]]
+  if (isEmpty(setdiff(candidates, unlist(saved.groupMembers)))) {
+    saved.groupMembers[[n]] <- c(NA)
+  } else {
+    saved.groupMembers[[n]] <- setdiff(candidates, unlist(saved.groupMembers))
+  }
 
   if (withKin) {
     groupKin <- list()
