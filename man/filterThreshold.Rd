@@ -2,7 +2,8 @@
 % Please edit documentation in R/filterThreshold.R
 \name{filterThreshold}
 \alias{filterThreshold}
-\title{Filters kinship values less than the specified threshold}
+\title{Filters kinship to remove rows with kinship values less than the specified
+threshold}
 \usage{
 filterThreshold(kin, threshold = 0.015625)
 }

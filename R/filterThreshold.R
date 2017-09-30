@@ -1,4 +1,5 @@
-#' Filters kinship values less than the specified threshold
+#' Filters kinship to remove rows with kinship values less than the specified
+#' threshold
 #'
 #' Part of Group Formation
 #' Filters kinship values less than the specified threshold from a long-format
