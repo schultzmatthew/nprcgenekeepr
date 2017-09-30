@@ -38,5 +38,5 @@ filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
   kin <- kin[keep, ]
   if (nrow(kin) > 0)
     rownames(kin) <- 1:nrow(kin)
-  return(kin)
+  return(kin[!is.na(kin[[1]]), ])
 }
