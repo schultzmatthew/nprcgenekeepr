@@ -50,10 +50,10 @@
 #' The list item \code{groupKin} contains the subset of the kinship matrix
 #' that is specific for each group formed.
 #' @export
-groupAssign <- function(candidates, kmat, ped, 
-                        threshold = 0.015625, ignore = list(c("F", "F")), 
+groupAssign <- function(candidates, kmat, ped,
+                        threshold = 0.015625, ignore = list(c("F", "F")),
                         minAge = 1, iter = 1000,
-                        numGp = 1, updateProgress = NULL, 
+                        numGp = 1, updateProgress = NULL,
                         withKin = FALSE) {
   kmat <- filterKinMatrix(candidates, kmat)
   kin <- reformatKinship(kmat)
@@ -135,7 +135,7 @@ groupAssign <- function(candidates, kmat, ped,
   n <- length(saved.groupMembers) + 1
   saved.groupMembers[[n]] <-
     ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
-           c(NA), setdiff(candidates, unlist(saved.groupMembers)))
+           c(NA), list(setdiff(candidates, unlist(saved.groupMembers))))[[1]]
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.groupMembers)) {
