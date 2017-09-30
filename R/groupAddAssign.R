@@ -58,6 +58,8 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
                             minAge = 1, iter = 1000,
                             numGp = 1, updateProgress = NULL,
                             withKin = FALSE) {
+  if (!is.null(currentGroup) && numGp > 1)
+    stop("Cannot have more than one group formed when adding to a single group")
   kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
   kin <- reformatKinship(kmat)
 
@@ -91,7 +93,11 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
     groupMembers <- list()
     available <- list()
     for (i in 1:numGp) {
-      groupMembers[[i]] <- vector()
+      if (is.null(currentGroup)) {
+        groupMembers[[i]] <- vector()
+      } else {
+        groupMembers[[i]] <- currentGroup
+      }
       available[[i]] <- candidates
     }
 
@@ -131,7 +137,11 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
     score <- min(sapply(groupMembers, length))
 
     if (score > saved.score) {
-      saved.groupMembers <- groupMembers
+      if (is.null(currentGroup)) {
+        saved.groupMembers <- groupMembers
+      } else {
+        saved.groupMembers[[1]] <- groupMembers
+      }
       saved.score <- score
     }
 
