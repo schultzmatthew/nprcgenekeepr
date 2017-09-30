@@ -8,5 +8,7 @@
 ^docs$
 tests/testthat/test_basic.R
 R/testingScript.R
+R/groupAddition.R
+R/groupAssign.R
 ^README\.Rmd$
 ^README-.*\.png$

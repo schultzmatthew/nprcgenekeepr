@@ -685,25 +685,28 @@ shinyServer(function(input, output, session) {
     }
 
     if (length(currentGroup) > 0) {
-      grp <- groupAddition(candidates,
-                           currentGroup,
-                           kmat(),
-                           p,
+      grp <- groupAddAssign(candidates = candidates,
+                           currentGroup = currentGroup,
+                           kmat = kmat(),
+                           ped = p,
                            threshold = threshold,
                            ignore = ignore,
                            minAge = minAge,
                            iter = iter,
+                           numGp = 1,
                            updateProgress = updateProgress,
                            withKin = withKin)
     } else{
-      grp <- groupAssign(candidates, kmat(), p,
-                         threshold = threshold,
-                         ignore = ignore,
-                         minAge = minAge,
-                         iter = iter,
-                         numGp = numGp,
-                         updateProgress = updateProgress,
-                         withKin = withKin)
+      grp <- groupAddAssign(candidates = candidates,
+                           currentGroup = NULL,
+                           kmat = kmat(), ped = p,
+                           threshold = threshold,
+                           ignore = ignore,
+                           minAge = minAge,
+                           iter = iter,
+                           numGp = numGp,
+                           updateProgress = updateProgress,
+                           withKin = withKin)
     }
 
     #return(grp$group)
