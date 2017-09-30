@@ -73,7 +73,7 @@ genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
                        second_name = stri_c("second", 1:20),
                        stringsAsFactors = FALSE)
 genotype_empty <- NULL
-alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 4)
+#alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 4)
 p_genotype <- addGenotype(p, genotype)
 report <- reportGV(p_genotype, gu.iter = 500, gu.thresh = 1, pop = NULL,
                    byID = TRUE, updateProgress = NULL)
