@@ -155,7 +155,8 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
   n <- length(saved.groupMembers) + 1
   saved.groupMembers[[n]] <-
     ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
-           c(NA), setdiff(candidates, unlist(saved.groupMembers)))
+           c(NA), list(setdiff(candidates, unlist(saved.groupMembers))))[[1]]
+
   if (withKin) {
     groupKin <- list()
     for (i in seq_along(saved.groupMembers)) {
