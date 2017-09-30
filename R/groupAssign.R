@@ -25,7 +25,7 @@
 #' ignored.
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
-#' kinship should be ignored between certain sexes. 
+#' kinship should be ignored between certain sexes.
 #'   Default is to ignore all pairwise kinship between females.
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will
