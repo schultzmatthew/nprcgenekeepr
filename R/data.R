@@ -84,7 +84,7 @@
 "lacy1989PedAlleles"
 #' baboonBreeders is a list of 29 baboon IDs that are potential breeders
 #'
-#' @source baboonBreeders are a list of 3 male and 26 female baboons from
+#' @source baboonBreeders is a list of 3 male and 26 female baboons from
 #' the \code{baboonPed} data set.
 #'
 #' \describe{
@@ -110,3 +110,4 @@
 #' examples and unit tests.
 #' }
 "pedWithGenotypeReport"
+

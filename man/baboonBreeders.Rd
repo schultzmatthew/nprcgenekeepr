@@ -6,7 +6,7 @@
 \title{baboonBreeders is a list of 29 baboon IDs that are potential breeders}
 \format{An object of class \code{character} of length 29.}
 \source{
-baboonBreeders are a list of 3 male and 26 female baboons from
+baboonBreeders is a list of 3 male and 26 female baboons from
 the \code{baboonPed} data set.
 
 \describe{
