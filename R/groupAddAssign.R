@@ -80,7 +80,7 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
   kin <- tapply(kin$id2, kin$id1, c)
 
   # Filtering out candidates related to current group members
-  conflicts <- unique(unlist(kin[currentGroup]))
+  conflicts <- unique(c(unlist(kin[currentGroup]), currentGroup))
   candidates <- setdiff(candidates, conflicts)
 
   # adding animals with no relatives
