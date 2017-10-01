@@ -19,3 +19,17 @@ test_that("checkParentAge identifies the over aged parents", {
                       "28729", "1X1672", "1X0832", "1X3162", "1X0839", "1X1126", "1X2816",
                       "1X3818", "1X3026", "10173", "8780", "8653")))
 })
+test_that("checkParentAge requires birth column to be potential date", {
+  ped <- baboonPed
+  ped$birth <- ped$birth > "2000-01-01"
+  expect_error(checkParentAge(ped, minParentAge = 3))
+}
+)
+test_that("checkParentAge allows birth column to be character", {
+  ped <- baboonPed
+  ped$birth <- format(ped$birth, format = "%Y-%m-%d")
+  expect_equal(nrow(checkParentAge(ped, minParentAge = 6)), 6)
+  ped <- baboonPed
+  ped$birth <- format(ped$birth, format = "%m-%d-%Y")
+  expect_equal(nrow(checkParentAge(ped, minParentAge = 6)), 6)
+})
