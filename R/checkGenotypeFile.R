@@ -24,7 +24,7 @@ checkGenotypeFile <- function(genotype) {
         numberStr <- stri_c(format(numbers[numbers > 10000],
                                    scientific = FALSE), sep = ", ")
         stop(stri_c("Possible collision on allele(s) interpreted as a number
-                    > 10000: ", numberStr))
+                    > 10000: ", numberStr, collapse = ", "))
       }
       # Anything goes
       # if (any(stri_detect_regex(alleles, "[;:\"']+"))) {

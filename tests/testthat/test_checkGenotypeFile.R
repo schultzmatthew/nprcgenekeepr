@@ -53,3 +53,11 @@ genotype <- data.frame(id = ped$id[50 + 1:20],
 test_that("checkGenotypeFile detects illegal column name", {
   expect_error(checkGenotypeFile(genotype))
 })
+genotype <- data.frame(id = ped$id[50 + 1:20],
+                       first_name = stri_c(10001:10020),
+                       second_name = stri_c("second_name", 1:20),
+                       stringsAsFactors = FALSE)
+test_that(stri_c("checkGenotypeFile checks for ossible collision on allele(s) ",
+                 "interpreted as a number"), {
+  expect_error(checkGenotypeFile(genotype))
+})
