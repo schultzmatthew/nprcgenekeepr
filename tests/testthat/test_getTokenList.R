@@ -1,4 +1,4 @@
-context("getColumnVec")
+context("getTokenList")
 library(testthat)
 lines <- c("center = \"SNPRC\"",
            " baseUrl = \"https://boomer.txbiomed.org/labkey\"",
