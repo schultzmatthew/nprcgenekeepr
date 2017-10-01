@@ -82,3 +82,31 @@
 #' \code{dam} alternating.
 #' }
 "lacy1989PedAlleles"
+#' baboonBreeders is a list of 29 baboon IDs that are potential breeders
+#'
+#' @source baboonBreeders are a list of 3 male and 26 female baboons from
+#' the \code{baboonPed} data set.
+#'
+#' \describe{
+#' These 29 animal IDs are used for examples and unit tests.
+#' They were initially selected for having low kinship coefficients.
+#' }
+"baboonBreeders"
+#' pedWithGenotype is a dataframe produced from baboonPed by adding made up
+#' genotypes.
+#'
+#' \describe{
+#' A dataframe containing 277 records with 12 columns: \code{id}, \code{sire},
+#'  \code{dam}, \code{sex}, \code{gen}, \code{birth}, \code{exit}, \code{age},
+#'  \code{first}, \code{second}, \code{first_name}, and \code{second_name}.
+#' }
+"pedWithGenotype"
+#' pedWithGenotypeReport is a list containing the output of \code{reportGV}.
+#'
+#' @source pedWithGenotypeReport was made with pedWithGenotype as input into
+#' reportGV with 10,000 iterations.
+#' \describe{
+#' pedWithGenotypeReport is a simple example report for use in
+#' examples and unit tests.
+#' }
+"pedWithGenotypeReport"
