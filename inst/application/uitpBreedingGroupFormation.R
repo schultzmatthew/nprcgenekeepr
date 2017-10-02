@@ -11,9 +11,9 @@ uitpBreedingGroupFormation <-
     #    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
     #  ),
     fluidRow(
-      column(3,
+      column(width = 3,
              style = paste(
-               "border: 1px solid lightgray; background-color: #EDEDED;",
+               " padding: 10px; border: 1px solid lightgray; background-color: #EDEDED;",
                "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
              ),
              includeHTML("../extdata/group_formation.html"),
