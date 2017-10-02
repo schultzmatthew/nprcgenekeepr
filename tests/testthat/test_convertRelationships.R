@@ -17,7 +17,7 @@ ped <- structure(
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = FALSE)
 ids <- c("A", "B", "D", "E", "F", "G", "I", "J", "L", "M", "O", "P")
 relIds <- convertRelationships(kmat, ped, ids)
-rel <- convertRelationships(kmat, ped, NULL)
+rel <- convertRelationships(kmat, ped, updateProgress = function() {})
 data("baboonPed")
 bkmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen,
                  sparse = FALSE)
