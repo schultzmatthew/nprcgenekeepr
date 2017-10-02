@@ -13,6 +13,6 @@
 #' and \code{a2} according to Mendelian inheritance.
 #' @export
 chooseAllelesChar <- function(a1, a2) {
-  s = sample(1:(2 * length(a1)), replace = FALSE)
+  s = sample(1:(2 * length(a1)), length(a1), replace = FALSE)
   return(c(a1, a2)[s])
 }
