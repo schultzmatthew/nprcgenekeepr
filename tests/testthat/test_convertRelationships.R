@@ -48,6 +48,6 @@ test_that("convertRelationships makes correct transformations", {
                "Full-Cousins")
   expect_equal(rel$relation[rel$id1 == "L" & rel$id2 == "P"],
                "Cousin - Other")
-  expect_equal(relBIds$relation[relBIds$id1 == "1_0221" & relBIds$id2 == "33164"],
-               "Other")
+  expect_equal(relBIds$relation[relBIds$id1 == "1_0221" &
+                                  relBIds$id2 == "33164"], "Other")
 })
