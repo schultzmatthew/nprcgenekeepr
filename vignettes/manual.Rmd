@@ -1,6 +1,6 @@
 ---
 title: "Genetic Management Tools"
-author: "Michael Raboin and R. Mark Sharp"
+author: "Michael Raboin, Amanda Vinson, and R. Mark Sharp"
 date: "October 03, 2017"
 output: rmarkdown::html_vignette
 vignette: >
@@ -8,7 +8,7 @@ vignette: >
   %\VignetteIndexEntry{Genetic Management Tools}
   %\usepackage[UTF-8]{inputenc}
 ---
----
+# Genetic Management Tools
 
 <a href="#introduction">Introduction</a>  
 <a href="#summary_of_functions">Summary of Functions</a>  
