@@ -13,11 +13,12 @@ test_that("checkParentAge identifies the over aged parents", {
   expect_equal(nrow(underAgeSix), 6)
   expect_true(all(underAgeSix$dam %in% c("15057", "16135", "1C0321", "8143",
                                          "8846", "9859")))
-  expect_true(all(underAgeTen$sire[underAgeTen$sireAge < 10 &
-                                     !is.na(underAgeTen$sireAge)] %in%
-                    c("15797", "13644", "26318", "12656", "14991", "28279", "15010",
-                      "28729", "1X1672", "1X0832", "1X3162", "1X0839", "1X1126", "1X2816",
-                      "1X3818", "1X3026", "10173", "8780", "8653")))
+  expect_true(
+    all(underAgeTen$sire[underAgeTen$sireAge < 10 &
+                           !is.na(underAgeTen$sireAge)] %in%
+          c("15797", "13644", "26318", "12656", "14991", "28279", "15010",
+            "28729", "1X1672", "1X0832", "1X3162", "1X0839", "1X1126", "1X2816",
+            "1X3818", "1X3026", "10173", "8780", "8653")))
 })
 test_that("checkParentAge requires birth column to be potential date", {
   ped <- baboonPed
