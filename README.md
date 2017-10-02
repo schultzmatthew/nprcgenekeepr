@@ -8,11 +8,15 @@ nprcmanager
 Introduction
 ------------
 
-The goal of nprcmanager is implement Genetic Tools for Colony Management. It was initially conceived and developed at the Oregon National Primate Research Center (ONPRC) to facilitate some of the analyses they perform regularly. It is currently being enhanced and maintained by a joint effort between ONPRC and Southwest National Primate Research Center (SNPRC) with the coding being done by R. Mark Sharp of SNPRC.
+The goal of nprcmanager is to implement Genetic Tools for Colony Management. It was initially conceived and developed as a Shiny web application at the Oregon National Primate Research Center (ONPRC) to facilitate some of the analyses they perform regularly. It is currently being enhanced to have more capability as a Shiny application, to expose the functions so they can be used either interactively or in R scripts.
 
-At present, the application is designed to support 4 functions:
+It is now managed and maintained as a joint effort between ONPRC and Southwest National Primate Research Center (SNPRC) with the coding being done by R. Mark Sharp of SNPRC.
+
+At present, the application is designed to support 5 functions:
 
     1. Quality control of uploaded studbooks
+    2. Creation of pedigrees from a list of potential breeders and LabKey EHR 
+    integration
     2. Generation of Genetic Value Analysis Reports
     3. Creation of potential breeding groups
     4. Display of an age by sex pyramid plot

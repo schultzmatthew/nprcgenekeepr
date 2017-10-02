@@ -1,0 +1,23 @@
+---
+title: "Summary Statistics"
+author: "R. Mark Sharp"
+date: "10/2/2017"
+output: html_document
+---
+
+## Summary Statistics
+The Summary Statistics tab may, at some point, be merged with the ORIP 
+reporting tab.
+Currently this tab provides some descriptions of the population being examined.
+This tab may be expanded on in the future to contain additional information 
+relevant for management.
+
+After the genetic value analysis has been run, this tab will be populated with 
+a number of statistics, tables and histograms. 
+The tab will report the number of known founders, the estimate of founder 
+equivalents, and the estimate of founder genome equivalents.
+The tab will generate a table providing the mean and quartiles for the 
+individual mean kinship and genome uniqueness values. 
+Lastly, the tab will also display histograms
+of the individual mean kinship values, and their corresponding z-scores.
+

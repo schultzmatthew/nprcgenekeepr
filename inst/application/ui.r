@@ -2,37 +2,37 @@ library(shiny)
 if (!require("DT"))
   install.packages('DT')
 library(DT)
-source("../application/uitpInputFileFormat.R")
+source("../application/uitpInput.R")
 source("../application/uitpPedigreeBrowser.R")
 source("../application/uitpGeneticValueAnalysis.R")
 source("../application/uitpSummaryStatistics.R")
 source("../application/uitpBreedingGroupFormation.R")
 source("../application/uitpPyramidPlot.R")
-source("../application/uitpReadme.R")
+source("../application/uitpGvAndBgDesc.R")
 if (getSiteInfo()$center == "ONPRC") {
   source("../application/uitpOripReporting.R")
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
-    uitpInputFileFormat,
+    uitpInput,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
     uitpBreedingGroupFormation,
     uitpOripReporting,
     uitpPyramidPlot,
-    uitpReadme,
+    uitpGvAndBgDesc,
     id = "tab_pages"
   )
 } else {
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
-    uitpInputFileFormat,
+    uitpInput,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
     uitpBreedingGroupFormation,
     uitpPyramidPlot,
-    uitpReadme,
+    uitpGvAndBgDesc,
     id = "tab_pages"
   )
 }

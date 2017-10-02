@@ -1,6 +1,6 @@
-uitpInputFileFormat <-
+uitpInput <-
   tabPanel(
-    "Input File Format",
+    "Input",
 
     tags$style(
       type = "text/css",
