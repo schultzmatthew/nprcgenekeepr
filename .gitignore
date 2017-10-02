@@ -5,6 +5,8 @@
 inst/extdata/BaboonLivingForMetrics.csv
 inst/extdata/RhesusMasterForMetrics.csv
 inst/extdata/Notes.txt
+R/groupAssign.R
+R/groupAddition.R
 vignettes/*.html
 vignettes/*.md
 vignettes/Development_Plans.R
