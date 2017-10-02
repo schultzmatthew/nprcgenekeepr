@@ -19,6 +19,9 @@ The goal of nprcmanager is implement Genetic Tools for Colony Management.
 It was initially conceived and developed at
 the Oregon National Primate Research Center (ONPRC) to facilitate some of
 the analyses they perform regularly.
+It is currently being enhanced and maintained by a joint effort between ONPRC
+and Southwest National Primate Research Center (SNPRC) with the coding being 
+done by R. Mark Sharp of SNPRC.
 
 At present, the application is designed to support 4 functions:
 
