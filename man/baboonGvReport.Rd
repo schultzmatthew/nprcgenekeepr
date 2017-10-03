@@ -3,28 +3,26 @@
 \docType{data}
 \name{baboonGvReport}
 \alias{baboonGvReport}
-\title{baboonGvReport is the Genetic Value Report return from baboonPed}
+\title{baboonGvReport is a genetic value report}
 \format{An object of class \code{list} of length 8.}
 \usage{
 baboonGvReport
 }
 \description{
-baboonGvReport is the Genetic Value Report return from baboonPed
+baboonGvReport is a genetic value report for illustrative purposes only.
+It is used in examples and unit tests with the nprcmanager package.
+It was created using the following commands.
+  \itemize{
+    \item set.seed(10)
+    \item data(baboonPed)
+    \item baboonGvReport <- reportGV(baboonPed, gu.iter = 10000)
+    \item save(baboonGvReport, file = "data/baboonGvReport.RData")
+  }
 }
 \examples{
+\dontrun{
 library(nprcmanager)
 data("baboonGvReport")
-
-\\describe{
-baboonGvReport is a genetic value report for illustrative purposes only.
-It is used in examples and unit tests with the \\pkg{nprcmanager} package.
-It was created using the following commands.
-  \\itemize {
-    \\item set.seed(10)
-    \\item data(baboonPed)
-    \\item baboonGvReport <- reportGV(baboonPed, gu.iter = 10000)
-    \\item save(baboonGvReport, file = "data/baboonGvReport.RData")
-  }
 }
 }
 \keyword{datasets}
