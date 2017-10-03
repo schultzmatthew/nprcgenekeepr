@@ -113,6 +113,7 @@
 #' baboonGvReport is the Genetic Value Report return from baboonPed
 #'
 #' @examples
+#' library(nprcmanager)
 #' data("baboonGvReport")
 #'
 #' \describe{
