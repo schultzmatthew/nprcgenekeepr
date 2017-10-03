@@ -4,9 +4,9 @@ library(nprcmanager)
 data("baboonBreeders")
 data("pedWithGenotype")
 data("pedWithGenotypeReport")
-skip_if_not(exists(baboonBreeders))
-skip_if_not(exists(pedWithGenotype))
-skip_if_not(exists(pedWithGenotypeReport))
+skip_if_not(exists("baboonBreeders"))
+skip_if_not(exists("pedWithGenotype"))
+skip_if_not(exists("pedWithGenotypeReport"))
 set.seed(10)
 groupAddTest <- groupAddAssign(
   candidates = baboonBreeders,
@@ -60,3 +60,4 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$groupKin[[1]]), 81)
 }
 )
+

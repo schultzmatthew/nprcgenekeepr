@@ -44,8 +44,7 @@ Parents must be processed before their children, and then a child's
 {Main website} \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 
 {S-Plus/R Function Page}
-\url{http://www.mayo.edu/research/departments-divisions/department-health
- -sciences-research/division-biomedical-statistics-informatics/software/}
+\url{http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/}
 
  @description {s-plus-r-functions} {Downloaded 2014-08-26}
 
@@ -54,7 +53,7 @@ GNU General Public License (version 2 or later).
 
 The R version became the kinship2 package available on CRAN:
 
-\url{http://cran.r-project.org/web/packages/kinship2/index.html}
+\url{https://cran.r-project.org/package=kinship2}
 
 $Id: kinship.s,v 1.5 2003/01/04 19:07:53 therneau Exp $
 
