@@ -15,7 +15,7 @@ ped3$sire <- stri_c(ped$sire, "3")
 ped3$dam <- stri_c(ped$dam, "3")
 ped <- rbind(ped, ped2)
 ped <- rbind(ped, ped3)
-test_that("findPedigreeNumber counts generations correctly", {
+test_that("findPedigreeNumber identifies separate pedigrees correctly", {
   ped$pedigree <- findPedigreeNumber(ped$id, ped$sire, ped$dam)
   expect_true(all(ped$pedigree[stri_detect_fixed(ped$id, "1")] == 1))
   expect_true(all(ped$pedigree[stri_detect_fixed(ped$id, "2")] == 2))
