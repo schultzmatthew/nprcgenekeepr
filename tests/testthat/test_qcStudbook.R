@@ -39,6 +39,9 @@ test_that("qcStudbook detects errors in column names", {
   expect_error(qcStudbook(pedOne))
   expect_error(qcStudbook(pedOne[ , -1], minParentAge = NULL))
 })
+test_that("qcStudbook detects missing required column names", {
+  expect_error(qcStudbook(pedOne[ , -3]))
+})
 test_that("qcStudbook corrects column names", {
   newPedOne <- qcStudbook(pedOne, minParentAge = NULL)
   expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen", "birth",
