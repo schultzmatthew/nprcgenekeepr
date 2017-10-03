@@ -21,16 +21,17 @@ getProbandPedigree <- function(probands, ped) {
     parents <- unique(union(sires, dams))
     parents <- parents[!is.na(parents)]
     added <- setdiff(parents, probands)
-
-    if (identical(added, character(0))) {
+    if (length(added) == 0)
       break
-    }
-    if (identical(added, numeric(0))) {
-      break
-    }
-    if (identical(added, integer(0))) {
-      break
-    }
+    # if (identical(added, character(0))) {
+    #   break
+    # }
+    # if (identical(added, numeric(0))) {
+    #   break
+    # }
+    # if (identical(added, integer(0))) {
+    #   break
+    # }
     probands <- union(probands, parents)
   }
 
