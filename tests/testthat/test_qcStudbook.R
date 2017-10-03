@@ -31,10 +31,11 @@ pedFour <- data.frame(id = c("s1", NA, NA, "d2", "o1", "o2", "o3", "o4"),
                      sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
                      stringsAsFactors = FALSE)
 pedFour <- pedFour[!is.na(pedFour$id), ]
-
-test_that("qcStudbook corrects column names", {
+test_that("qcStudbook detects errors in column names", {
   expect_error(qcStudbook(pedOne))
-  expect_error(qcStudbook(pedOne[ , -1]), minParentAge = NULL)
+  expect_error(qcStudbook(pedOne[ , -1], minParentAge = NULL))
+})
+test_that("qcStudbook corrects column names", {
   newPedOne <- qcStudbook(pedOne, minParentAge = NULL)
   expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen", "birth",
                                    "exit", "age"))
