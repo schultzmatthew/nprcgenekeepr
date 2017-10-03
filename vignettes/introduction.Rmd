@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 author: "R. Mark Sharp"
-date: "10/2/2017"
+date: "10/03/2017"
 output: html_document
 ---
 ## Introduction
@@ -9,13 +9,13 @@ The goal of nprcmanager is to implement Genetic Tools for Colony Management.
 It was initially conceived and developed as a Shiny web application at
 the Oregon National Primate Research Center (ONPRC) to facilitate some of
 the analyses they perform regularly.
-It is currently being enhanced to have more capability as a Shiny application, 
-to expose the functions so they can be used either interactively or in R 
+It is currently being enhanced to have more capability as a Shiny application 
+and to expose the functions so they can be used either interactively or in R 
 scripts.
 
 It is now managed and maintained as a joint effort between ONPRC
 and Southwest National Primate Research Center (SNPRC) with the coding being 
-done by R. Mark Sharp of SNPRC.
+done by R. Mark Sharp, Ph.D. of SNPRC.
 
 At present, the application supports 5 functions:
 
