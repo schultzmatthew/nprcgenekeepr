@@ -110,4 +110,20 @@
 #' examples and unit tests.
 #' }
 "pedWithGenotypeReport"
-
+#' baboonGvReport is the Genetic Value Report return from baboonPed
+#'
+#' @examples
+#' data("baboonGvReport")
+#'
+#' \describe{
+#' baboonGvReport is a genetic value report for illustrative purposes only.
+#' It is used in examples and unit tests with the \pkg{nprcmanager} package.
+#' It was created using the following commands.
+#'   \itemize {
+#'     \item set.seed(10)
+#'     \item data(baboonPed)
+#'     \item baboonGvReport <- reportGV(baboonPed, gu.iter = 10000)
+#'     \item save(baboonGvReport, file = "data/baboonGvReport.RData")
+#'   }
+#' }
+"baboonGvReport"

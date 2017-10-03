@@ -6,7 +6,7 @@ output: html_document
 ---
 ## Installation
 
-You can install nprcmanager from github with:
+You can install **nprcmanager** from github with:
 
 ```{r gh-installation, eval = FALSE}
 install.packages("devtools")

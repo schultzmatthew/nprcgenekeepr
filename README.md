@@ -12,7 +12,7 @@ The goal of nprcmanager is to implement Genetic Tools for Colony Management. It 
 
 It is now managed and maintained as a joint effort between ONPRC and Southwest National Primate Research Center (SNPRC) with the coding being done by R. Mark Sharp of SNPRC.
 
-At present, the application is designed to support 5 functions:
+At present, the application supports 5 functions:
 
     1. Quality control of uploaded studbooks
     2. Creation of pedigrees from a list of potential breeders and LabKey EHR 
@@ -21,34 +21,35 @@ At present, the application is designed to support 5 functions:
     3. Creation of potential breeding groups
     4. Display of an age by sex pyramid plot
 
+**For more information see:**
+A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*) Vinson, A ; Raboin, Mj *Journal Of The American Association For Laboratory Animal Science*, 2015 Nov, Vol.54(6), pp.700-707 \[Peer Reviewed Journal\]
+
 Installation
 ------------
 
-You can install nprcmanager from github with:
+You can install **nprcmanager** from github with:
 
 ``` r
 install.packages("devtools")
 devtools::install_github("rmsharp/nprcmanager")
 ```
 
-Running the Shiny application in nprcmanager
---------------------------------------------
-
-The toolset available within nprcmanager can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:
-
-``` r
-library(nprcmanager)
-runManager()
-```
-
-Summary of Major Functions of Shiny Application
------------------------------------------------
+Summary of Major Functions
+--------------------------
 
 ### Quality Control
 
 Studbooks maintained by breeding colonies generally contain information of varying quality. The quality control functions of the toolkit check to ensure all animals listed as parents have their own line entries, all parents have the appropriate sex listed, no animals are listed as both a sire and a dam, duplicate entries are removed, and all dates are valid dates. In addition, exit dates are added if possible and are consistant with other information such as departure dates and death dates, parents with ages below a user selected threshold are identified, pedigree generation numbers are added, current ages of animals that are still alive are added, .
 
 Further quality control measures may be added later, such as checking to ensure parents' birthdates precede their children's.
+
+### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
+
+The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendents) via the function within the package.
+
+Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named **\_netrc** on Microsoft Windows operating systems and **.netrc** otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by [LabKey documentation](https://www.labkey.org/Documentation/wiki-page.view?name=netrc)
+
+The second file is named **\_nprcmanager\_config** on Microsoft Windows operating systems and **.nprcmanager\_config** otherwise and is the nprcmanager [configuration file](https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config)
 
 ### Genetic Value Analysis Reports
 
@@ -58,12 +59,15 @@ The Genetic Value Analysis is a ranking scheme developed at ONPRC to indicate th
 
 One of the goals in breeding group formation is to avoid the potential for mating of closely related animals. Since behavioral concerns and housing constraints will also be taken into account in the group formation process, it is our goal to provide the largest number of animals possible from a list of candidates that can be housed together without risk of consanguineous mating. To that end, this function uses information from the Genetic Value Analysis to search for the largest combinations of animals that can be produced from a list of candidates.
 
+Running Shiny Application
+-------------------------
+
+The toolset available within nprcmanager can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:
+
+``` r
+library(nprcmanager)
+runManager()
+```
+
 **For more information see:**
 A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*) Vinson, A ; Raboin, Mj *Journal Of The American Association For Laboratory Animal Science*, 2015 Nov, Vol.54(6), pp.700-707 \[Peer Reviewed Journal\]
-
-Use with LabKey
----------------
-
-Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named **\_netrc** on Microsoft Windows operating systems and **.netrc** otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by [LabKey documentation](https://www.labkey.org/Documentation/wiki-page.view?name=netrc)
-
-The second file is named **\_nprcmanager\_config** on Microsoft Windows operating systems and **.nprcmanager\_config** otherwise and is the nprcmanager [configuration file](https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config)
