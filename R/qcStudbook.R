@@ -140,6 +140,7 @@
 qcStudbook <- function(sb, minParentAge = 2) {
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
+  headers <- gsub(".", "", headers)
   headers <- gsub("_", "", headers)
   headers <- gsub("egoid", "id", headers)
   headers <- gsub("sireid", "sire", headers)
