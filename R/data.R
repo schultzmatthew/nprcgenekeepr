@@ -113,18 +113,17 @@
 #' baboonGvReport is the Genetic Value Report return from baboonPed
 #'
 #' @examples
-#' library(nprcmanager)
-#' data("baboonGvReport")
+#' \dontrun{library(nprcmanager)
+#' data("baboonGvReport")}
 #'
-#' \describe{
 #' baboonGvReport is a genetic value report for illustrative purposes only.
 #' It is used in examples and unit tests with the \pkg{nprcmanager} package.
 #' It was created using the following commands.
-#'   \itemize {
+#'   \itemize{
 #'     \item set.seed(10)
 #'     \item data(baboonPed)
 #'     \item baboonGvReport <- reportGV(baboonPed, gu.iter = 10000)
 #'     \item save(baboonGvReport, file = "data/baboonGvReport.RData")
 #'   }
-#' }
+#'
 "baboonGvReport"
