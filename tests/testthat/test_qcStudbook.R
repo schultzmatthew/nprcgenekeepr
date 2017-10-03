@@ -2,6 +2,7 @@ context("qcStudbook")
 library(testthat)
 library(lubridate)
 library(stringi)
+
 set.seed(10)
 pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                   `si re` = c(NA, NA, NA, NA, "s1", "s1", "s2", "s2"),
@@ -22,6 +23,10 @@ pedTwo <- data.frame(ego_id = c("UNKNOWN", "d1", "s2", "d2", "o1", "o2", "o3", "
                               sample(1:28, 8, replace = TRUE), "-",
                               sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                                 2000)),
+                     status = c("A", "alive", "Alive", "1", "S", "Sale", "sold",
+                                 "shipped"),
+                     ancestry = c("china", "india", "hybridized", NA, "human",
+                                   "gorilla", "human", "gorilla"),
                      stringsAsFactors = FALSE, check.names = FALSE)
 pedThree <- data.frame(id = c("s1", "d1", "s2", NA, "o1", "o2", "o3", "o4"),
                      sire = c(NA, NA, NA, NA, "s1", "s1", "s2", "s2"),
@@ -57,3 +62,17 @@ test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS",
   expect_equal(newPedTwo$sire[newPedTwo$id == "o1"], "U0001")
   expect_true(is.na(newPedTwo$sire[newPedTwo$id == "U0001"]))
           })
+test_that("qcStudbook corrects status", {
+            newPedTwo <- qcStudbook(pedTwo, minParentAge = NULL)
+            newPedTwo$status <- as.character(newPedTwo$status)
+            expect_equal(newPedTwo$status[newPedTwo$id == "s2"], "ALIVE")
+            expect_equal(newPedTwo$status[newPedTwo$id == "d2"], "ALIVE")
+            expect_equal(newPedTwo$status[newPedTwo$id == "o1"], "SHIPPED")
+          })
+test_that("qcStudbook corrects ancestry", {
+  newPedTwo <- qcStudbook(pedTwo, minParentAge = NULL)
+  newPedTwo$ancestry <- as.character(newPedTwo$ancestry)
+  expect_equal(newPedTwo$ancestry[newPedTwo$id == "s2"], "HYBRID")
+  expect_equal(newPedTwo$ancestry[newPedTwo$id == "d2"], "UNKNOWN")
+  expect_equal(newPedTwo$ancestry[newPedTwo$id == "o1"], "OTHER")
+})
