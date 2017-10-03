@@ -4,9 +4,9 @@ library(nprcmanager)
 data("baboonBreeders")
 data("pedWithGenotype")
 data("pedWithGenotypeReport")
-skip_if_not(object.size(baboonBreeders) == 1664)
-skip_if_not(object.size(pedWithGenotype) == 58000)
-skip_if_not(object.size(pedWithGenotypeReport) == 713216)
+skip_if_not(exists(baboonBreeders))
+skip_if_not(exists(pedWithGenotype))
+skip_if_not(exists(pedWithGenotypeReport))
 set.seed(10)
 groupAddTest <- groupAddAssign(
   candidates = baboonBreeders,

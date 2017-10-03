@@ -3,12 +3,10 @@ Type: Package
 Title: Implements Genetic Tools for Colony Management
 Version: 0.2.9
 Date: 2017-10-02
-Author: Michael Raboin
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("R. Mark", "Sharp", email = "msharp@txbiomed.org", , 
     role = c("ctb", "cre")))
-Maintainer: <msharp@txbiomed.org>
 Description: Implements Genetic Tools for Colony Management.
 Depends:
     R (>= 3.2.1)

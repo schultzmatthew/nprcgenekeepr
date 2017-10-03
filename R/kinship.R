@@ -34,8 +34,7 @@
 #'
 #'
 #' @references {S-Plus/R Function Page}
-#' \url{http://www.mayo.edu/research/departments-divisions/department-health
-#'  -sciences-research/division-biomedical-statistics-informatics/software/}
+#' \url{http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/}
 #'
 #'  @description {s-plus-r-functions} {Downloaded 2014-08-26}
 #'
@@ -43,7 +42,7 @@
 #' GNU General Public License (version 2 or later).
 #'
 #' The R version became the kinship2 package available on CRAN:
-#' @references \url{http://cran.r-project.org/web/packages/kinship2/index.html}
+#' @references \url{https://cran.r-project.org/package=kinship2}
 #'
 #' $Id: kinship.s,v 1.5 2003/01/04 19:07:53 therneau Exp $
 #'
