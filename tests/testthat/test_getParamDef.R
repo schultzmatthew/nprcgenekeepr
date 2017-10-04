@@ -21,4 +21,5 @@ test_that("getParamDef returns the correct values", {
   expect_equal(getParamDef(tokens, "baseUrl"), "http://vger/labkey")
   expect_equal(getParamDef(tokens, "center"), "SNPRC")
   expect_equal(getParamDef(tokens, "queryName"), "demographics")
+  expect_error(getParamDef(tokens, "thisIsNotAParam"))
 })

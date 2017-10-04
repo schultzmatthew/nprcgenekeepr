@@ -633,7 +633,7 @@ shinyServer(function(input, output, session) {
     currentGroup <- unlist(strsplit(input$cur_grp, "[ \t\n]"))
 
     if (length(ids) > 0) {
-      p <- resetGroup(ids, p)
+      p <- resetGroup(p, ids)
       candidates <- ids
     } else{
       candidates <- getGrpIds()

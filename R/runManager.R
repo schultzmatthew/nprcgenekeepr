@@ -1,6 +1,5 @@
 #' Allows running \code{shiny} application with \code{nprcmanager::runManager()}
 #'
-#' @import futile.logger
 #' @export
 runManager <- function() {
   appDir <- system.file("application", package = "nprcmanager")
