@@ -1,6 +1,6 @@
 context("getMaxAx")
 library(testthat)
-test_that("makeRoundup correctly rounded values based on integer and modulas", {
+test_that("getMaxAx correctly rounded values based on integer and modulas", {
   int1 <- nprcmanager:::getMaxAx(bins = list(male = 11, female = 5),
                                  ax_modulas = 5)
   expect_equal(int1, 15)
