@@ -11,7 +11,7 @@ fillBins <- function(
   age_dist, lower_ages,
   upper_ages = NULL) {
   if (is.null(upper_ages))
-    upper_ages <- lower_ages + c(lower_ages[2:length(lower_ages)], 100)
+    upper_ages <- c(lower_ages[-1], 100)
   male_bins <- c()
   female_bins <- c()
   for (bin in seq_along(lower_ages)) {
