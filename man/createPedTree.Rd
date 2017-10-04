@@ -10,7 +10,9 @@ createPedTree(ped)
 \item{ped}{dataframe of pedigree and demographic information potentially
 containing columns indicating the birth and death dates of an individual.
 The table may also contain dates of sale (departure). Optional columns
-are \code{birth}, \code{death}, \code{departure}.}
+are \code{birth}, \code{death}, \code{departure}.
+
+This function uses only \code{id}, \code{sire}, and \code{dam} columns.}
 }
 \value{
 A list of named lists forming a pedigree tree (PedTree or ptree).

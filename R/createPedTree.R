@@ -20,18 +20,20 @@
 #' The table may also contain dates of sale (departure). Optional columns
 #' are \code{birth}, \code{death}, \code{departure}.
 #'
+#' This function uses only \code{id}, \code{sire}, and \code{dam} columns.
+#'
 #' @return A list of named lists forming a pedigree tree (PedTree or ptree).
 #' Each sublist represents an ID in the pedigree and contains the sire ID and
 #' the dam ID as named elements.
 #' @export
 createPedTree <- function(ped) {
 
-  p <- rep(list(list(sire = NA, dam = NA)), nrow(ped))
-  names(p) <- ped$id
+  pedTree <- rep(list(list(sire = NA, dam = NA)), nrow(ped))
+  names(pedTree) <- ped$id
 
   for (i in 1:nrow(ped)) {
-    p[[ped$id[i]]]$sire <- ped$sire[i]
-    p[[ped$id[i]]]$dam <- ped$dam[i]
+    pedTree[[ped$id[i]]]$sire <- ped$sire[i]
+    pedTree[[ped$id[i]]]$dam <- ped$dam[i]
   }
-  return(p)
+  return(pedTree)
 }
