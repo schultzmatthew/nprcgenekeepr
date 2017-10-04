@@ -31,7 +31,7 @@ trimPedigree <- function(probands, ped, removeUninformative = FALSE,
                           addBackParents = FALSE) {
   ped <- getProbandPedigree(probands, ped)
   if (removeUninformative) {
-    p <- removeUniformativeFounders(ped)
+    p <- removeUninformativeFounders(ped)
     if (addBackParents)
       p <- addBackSecondParents(p, ped)
   } else {

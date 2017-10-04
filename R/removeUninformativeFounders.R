@@ -9,7 +9,7 @@
 #'
 #' @return A reduced pedigree.
 #' @export
-removeUniformativeFounders <- function(ped) {
+removeUninformativeFounders <- function(ped) {
 
   while (TRUE) {
     founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
