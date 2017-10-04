@@ -17,6 +17,6 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
 pedOne$age <- (now() - as.POSIXct(pedOne$birth)) / dyears(1)
 
 test_that("getPedMaxAge finds max age", {
-  expect_equal(getPedMaxAge(pedOne), 17.227146)
+  expect_equal(getPedMaxAge(pedOne), 17.227146, tolerance = 0.01)
   expect_equal(getPedMaxAge(pedOne[c(-1, -2), ]), 11.48742, tolerance = 0.01)
 })
