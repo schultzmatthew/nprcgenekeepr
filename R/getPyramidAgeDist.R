@@ -22,27 +22,27 @@ getPyramidAgeDist <- function(ped = NULL) {
   # ped <- ped[tolower(ped$EXIT) == "", c("EGO.ID", "SIRE.SIRE.ID",
   #                                              "DAM.ID", "SEX", "BIRTH",
   #                                              "EXIT")]
-  names(ped) <- c("id", "sire", "dam", "sex", "birth", "exit_date")
-  ped$age <- NA
-  ped$status <- NA
+  colNames <- c("id", "sire", "dam", "sex", "birth", "exit_date")
+  names(ped) <- colNames
+  ped <- ped[ , colNames]
   if (!any(class(ped$birth) %in% c("Date", "POSIXct", "character"))) {
     stop("Birth column must be of class 'Date', 'POSIXct', or 'character'")
-  } else if (class(ped$birth) == "character") {
+  } else if (class(ped$birth)[[1]] == "character") {
     ped$birth <- anytime(ped$birth)
   } else {
     ped$birth <- as.Date(ped$birth)
   }
+  ped$status[is.na(ped$exit_date)] <- "ALIVE"
+  ped$status[!is.na(ped$exit_date) | is.na(ped$birth)] <- "DECEASED"
   if (!any(class(ped$exit_date) %in% c("Date", "POSIXct", "character"))) {
     stop("exit_date column must be of class 'Date', 'POSIXct', or 'character'")
-  } else if (class(ped$exit_date) == "character") {
+  } else if (class(ped$exit_date)[[1]] == "character") {
     ped$status[ped$exit_date == "9999999999"] <- "DECEASED"
     ped$exit_date[ped$exit_date == "" | ped$exit_date == "9999999999"] <- NA
     ped$exit_date <- anytime(ped$exit_date)
   } else {
     ped$exit_date <- as.Date(ped$exit_date)
   }
-  ped$status[is.na(ped$exit_date)] <- "ALIVE"
-  ped$status[!is.na(ped$exit_date) | is.na(ped$birth)] <- "DECEASED"
   ped$age[is.na(ped$exit_date) & !is.na(ped$birth)] <-
     interval(start = ped$birth[is.na(ped$exit_date) &
                                  !is.na(ped$birth)],
