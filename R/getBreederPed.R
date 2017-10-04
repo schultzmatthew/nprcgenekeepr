@@ -1,14 +1,13 @@
 #' Get pedigree based on list of breeders
 #'
-#' @return A pedigree file compatible with pedigree other pedigree files in
-#' this package.
+#' @return A pedigree file compatible with others in this package.
 #'
 #' @param fileName character vector of temporary file path.
 #' @param sep column separator in CSV file
 #' @export
 getBreederPed <- function(fileName, sep = ",") {
-  cat(paste0("in getBreederPed\n"),
-      file = "~/shiny.txt", append = TRUE)
+  flog.debug(paste0("in getBreederPed\n"),
+             name = "nprcmanager")
 
   breeders <- read.csv(fileName,
                        header = TRUE,
@@ -16,9 +15,8 @@ getBreederPed <- function(fileName, sep = ",") {
                        stringsAsFactors = FALSE,
                        na.strings = c("", "NA"),
                        check.names = FALSE)
-  cat(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
-             nrow(breeders), "\n"),
-      file = "~/shiny.txt", append = TRUE)
+  flog.debug(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
+             nrow(breeders), "\n"), name = "nprcmanager")
   breeders <- as.character(breeders[ , 1])
   ped <- getLkDirectRelatives(ids = breeders)
   names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")
