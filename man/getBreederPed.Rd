@@ -12,8 +12,7 @@ getBreederPed(fileName, sep = ",")
 \item{sep}{column separator in CSV file}
 }
 \value{
-A pedigree file compatible with pedigree other pedigree files in
-this package.
+A pedigree file compatible with others in this package.
 }
 \description{
 Get pedigree based on list of breeders
