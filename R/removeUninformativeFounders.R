@@ -10,6 +10,11 @@
 #' @return A reduced pedigree.
 #' @export
 removeUninformativeFounders <- function(ped) {
+  required <- c("id", "sire", "dam")
+  if (!all(required %in% names(ped)))
+    stop(paste0("Pedigree is missing ",
+                paste0(required[!required %in% names(ped)],
+                collapse = ", ")))
 
   while (TRUE) {
     founders <- ped$id[is.na(ped$sire) & is.na(ped$dam)]
