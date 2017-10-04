@@ -2,7 +2,7 @@
 % Please edit documentation in R/chooseAllelesChar.R
 \name{chooseAllelesChar}
 \alias{chooseAllelesChar}
-\title{Combines two vectors of alleles}
+\title{Combines two vectors of alleles when alleles are character vectors.}
 \usage{
 chooseAllelesChar(a1, a2)
 }
@@ -21,4 +21,8 @@ and \code{a2} according to Mendelian inheritance.
 Combines two vectors by randomly selecting one allele
 or the other at each position. Alleles may be of any class that
 does not require attributes as the vectors are combined with \code{c()}.
+}
+\details{
+The current implementation is slower than the one using integer vectors
+(\code{chooseAlleles}).
 }

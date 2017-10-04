@@ -1,8 +1,11 @@
-#' Combines two vectors of alleles
+#' Combines two vectors of alleles when alleles are character vectors.
 #'
 #' Combines two vectors by randomly selecting one allele
 #' or the other at each position. Alleles may be of any class that
 #' does not require attributes as the vectors are combined with \code{c()}.
+#'
+#' The current implementation is slower than the one using integer vectors
+#' (\code{chooseAlleles}).
 #'
 #' @param a1 vector with first parent alleles for each individual
 #' @param a2 vector with second parent alleles for each individual

@@ -129,7 +129,9 @@
 #' data("baboonGvReport")
 #' }
 "baboonGvReport"
-#' smallPed is a hypothetical pedigree with the following structure:
+#' smallPed is a hypothetical pedigree
+#'
+#' It has the following structure:
 #' structure(list(id = c("A", "B", "C", "D", "E", "F", "G", "H",
 #' "I", "J", "K", "L", "M", "N", "O", "P", "Q"), sire = c("Q", NA,
 #'"A", "A", NA, "D", "D", "A", "A", NA, NA, "C", "A", NA, NA, "M", NA),
