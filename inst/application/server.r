@@ -216,7 +216,7 @@ shinyServer(function(input, output, session) {
                           "'"), name = "nprcmanager")
         flog.debug(" - in tryCatch before resetPopulation.",
             name = "nprcmanager")
-        p <- resetPopulation(specifyPopulation(), p)
+        p <- resetPopulation(p, specifyPopulation())
         flog.debug(paste0("column names: '", paste0(names(p),
                                                     collapse = "', '"),
                           "'"), name = "nprcmanager")

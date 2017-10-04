@@ -4,14 +4,14 @@
 \alias{resetPopulation}
 \title{Population designation function}
 \usage{
-resetPopulation(ids, ped)
+resetPopulation(ped, ids)
 }
 \arguments{
-\item{ids}{character vector of IDs to be flagged as part of the population
-under consideration.}
-
 \item{ped}{datatable that is the `Pedigree`. It contains pedigree
 information. The \code{id} column is required.}
+
+\item{ids}{character vector of IDs to be flagged as part of the population
+under consideration.}
 }
 \value{
 An updated pedigree with the \code{population} column added or
