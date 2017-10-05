@@ -26,7 +26,7 @@ getPyramidAgeDist <- function(ped = NULL) {
   names(ped) <- colNames
   ped <- ped[ , colNames]
   if (!any(class(ped$birth) %in% c("Date", "POSIXct", "character"))) {
-    stop("Birth column must be of class 'Date', 'POSIXct', or 'character'")
+    stop("birth column must be of class 'Date', 'POSIXct', or 'character'")
   } else if (class(ped$birth)[[1]] == "character") {
     ped$birth <- anytime(ped$birth)
   } else {
