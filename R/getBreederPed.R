@@ -4,6 +4,7 @@
 #'
 #' @param fileName character vector of temporary file path.
 #' @param sep column separator in CSV file
+#' @import futile.logger
 #' @export
 getBreederPed <- function(fileName, sep = ",") {
   flog.debug(paste0("in getBreederPed\n"),
