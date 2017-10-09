@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager) [![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
+[![Rdoc](http://www.rdocumentation.org/badges/version/roxygen2)](http://www.rdocumentation.org/packages/roxygen2) [![Build Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager) [![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 nprcmanager
