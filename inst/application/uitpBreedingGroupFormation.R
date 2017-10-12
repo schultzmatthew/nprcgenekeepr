@@ -13,13 +13,15 @@ uitpBreedingGroupFormation <-
     fluidRow(
       column(width = 3,
              style = paste(
-               " padding: 10px; border: 1px solid lightgray; background-color: #EDEDED;",
+               " padding: 10px; border: 1px solid lightgray; ",
+               "background-color: #EDEDED;",
                "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
              ),
              includeHTML("../extdata/group_formation.html"),
-      checkboxInput('low_val', label = "Include low-value animals in group formation",
+      checkboxInput("lowVal",
+                    label = "Include low-value animals in group formation",
                     value = FALSE),
-      checkboxInput('ff_rel', label = "Ignore relatedness between females",
+      checkboxInput("ffRel", label = "Ignore relatedness between females",
                     value = TRUE)
     ),
 
@@ -39,7 +41,7 @@ uitpBreedingGroupFormation <-
       div(
         style = "display:inline-block;width:250px;padding:10px",
         selectInput(
-          "kin_thresh",
+          "kinThresh",
           label = "Animal kinship will be ignored below:",
           choices = list(
             "0.015625" = 0.015625,
@@ -54,7 +56,7 @@ uitpBreedingGroupFormation <-
       div(
         style = "display:inline-block;width:250px;padding:10px",
         numericInput(
-          "min_age",
+          "minAge",
           label = "Animal age will be ignored at or below:",
           value = 1,
           min = 0,
@@ -65,7 +67,7 @@ uitpBreedingGroupFormation <-
       div(
         style = "display:inline-block;width:250px;padding:10px",
         numericInput(
-          "gp_iter",
+          "gpIter",
           label = "Number of simulations:",
           value = 10,
           min = 1,
@@ -78,14 +80,14 @@ uitpBreedingGroupFormation <-
         div(
           style = "display:inline-block;width:250px;padding:10px",
           helpText("Enter IDs of candidate group members:"),
-          tags$textarea(id = "grp_ids", rows = 5, cols = 20, "")
+          tags$textarea(id = "grpIds", rows = 5, cols = 20, "")
         ),
         div(
           style = "display:inline-block;width:250px;padding:10px",
           helpText("Enter IDs of animals currently in the group:"),
-          tags$textarea(id = "cur_grp", rows = 5, cols = 20, "")
+          tags$textarea(id = "curGrp", rows = 5, cols = 20, "")
         ),
-        actionButton("grp_sim", label = "Make Groups"),
+        actionButton("grpSim", label = "Make Groups"),
         checkboxInput("withKin", label = "With Kinship Coefficents",
                       value = FALSE),
         helpText(
@@ -96,7 +98,7 @@ uitpBreedingGroupFormation <-
       div(
         style = "display:inline-block;width:250px;padding:5px",
         selectInput(
-          "view_grp",
+          "viewGrp",
           label = "Enter the group to view:",
           choices = list("Group 1" = 1),
           selected = 1
@@ -108,7 +110,6 @@ uitpBreedingGroupFormation <-
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
       ),
-      #tableOutput("breeding_groups")
       DT::dataTableOutput("breeding_groups"),
       DT::dataTableOutput("breeding_groupKin")
       )

@@ -72,7 +72,7 @@ calcGU <- function(alleles, threshold = 1, byID = FALSE, pop = NULL) {
   # each simulation and average across all simulated alleles.
   rare <- calcA(alleles, threshold, byID)
   iterations <- sum(!(colnames(alleles) %in% c("id", "parent")))
-  gu <- rowSums(rare) / (2*iterations)
+  gu <- rowSums(rare) / (2 * iterations)
 
   # convert to a percentage
   gu <- gu * 100

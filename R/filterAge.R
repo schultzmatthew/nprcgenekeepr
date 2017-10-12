@@ -19,7 +19,7 @@ filterAge <- function(kin, ped, minAge = 1) {
   a1 <- a1[with(a1, order(sort.col)), "age"]
   a2 <- a2[with(a2, order(sort.col)), "age"]
 
-  keep <- (((a1 >= minAge) | is.na(a1)) & ((a2 >= minAge) | is.na(a2)))
+  keep <- ( ((a1 >= minAge) | is.na(a1)) & ( (a2 >= minAge) | is.na(a2)))
 
   kin$sort.col <- NULL
   kin <- kin[keep, ]

@@ -38,8 +38,8 @@ calcFE <- function(ped) {
     }
   }
 
-  current_desc <- ped$id[ped$population & !(ped$id %in% founders)]
-  d <- d[current_desc, ]
+  currentDesc <- ped$id[ped$population & !(ped$id %in% founders)]
+  d <- d[currentDesc, ]
   p <- colMeans(d)
 
   return(1 / sum(p^2))

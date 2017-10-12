@@ -40,10 +40,10 @@ calcFG <- function(ped, alleles) {
     }
   }
 
-  current_desc <- ped$id[ped$population & !(ped$id %in% founders)]
-  d <- d[current_desc, ]
+  currentDesc <- ped$id[ped$population & !(ped$id %in% founders)]
+  d <- d[currentDesc, ]
   p <- colMeans(d)
 
   r <- calcRetention(ped, alleles)
-  return(1 / sum((p^2) / r, na.rm = TRUE))
+  return(1 / sum( (p^2) / r, na.rm = TRUE))
 }

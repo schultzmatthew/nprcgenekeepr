@@ -4,7 +4,7 @@
 #' corresponding to the position in the vector
 #' @param females integer vector with the number of females in age groups
 #' corresponding to the position in the vector
-#' @param age_labels character vector of labels for the categories represented
+#' @param ageLabels character vector of labels for the categories represented
 #' by each pair of bars. There should be a label for each lx or rx value,
 #' even if empty. If labels is a matrix or data frame, the first two columns
 #' will be used for the left and right category labels respectively.
@@ -13,26 +13,26 @@
 #' @param laxlab label for the male (left) side of the plot
 #' @param raxlab label for the female (right) side of the plot
 #' @param gap numeric value for one half of the space between the two sets
-#' of bars for the \code{age_labels} in user units
-#' @param current_date POSIXct date object indicating the date corresponding to
+#' of bars for the \code{ageLabels} in user units
+#' @param currentDate POSIXct date object indicating the date corresponding to
 #' the date the pedigree census occurred.
 #' @import lubridate
 #' @import stringi
 #' @import plotrix
 #' @export
-agePyramidPlot <- function(males, females, age_labels, mcol, fcol, laxlab,
-                           raxlab, gap, current_date) {
-  pyramid.plot(lx = males, rx = females, labels = age_labels,
+agePyramidPlot <- function(males, females, ageLabels, mcol, fcol, laxlab,
+                           raxlab, gap, currentDate) {
+  pyramid.plot(lx = males, rx = females, labels = ageLabels,
                main = stri_c("Total on ",
-                             year(current_date), "-",
-                             month(current_date, label = TRUE), "-",
-                             day(current_date),
+                             year(currentDate), "-",
+                             month(currentDate, label = TRUE), "-",
+                             day(currentDate),
                              ": ", sum(c(males, females))),
                top.labels = c(
                  stri_c('Male = ', sum(males)),
                  'Age',
                  stri_c('Female = ', sum(females))),
-               lxcol = mcol,rxcol = fcol,
+               lxcol = mcol, rxcol = fcol,
                laxlab = laxlab,
                raxlab = raxlab,
                gap = gap,

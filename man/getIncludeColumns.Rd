@@ -14,3 +14,6 @@ get_inlcude_columns()
 \description{
 Part of Genetic Value Functions
 }
+\details{
+Replaces INCLUDE.COLUMNS data statement.
+}

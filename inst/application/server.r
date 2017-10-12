@@ -1,9 +1,9 @@
 `%then%` <- shiny:::`%OR%`
 library(futile.logger)
 shinyServer(function(input, output, session) {
-  nprcmanager_log <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
+  nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
-              appender = appender.file(nprcmanager_log))
+              appender = appender.file(nprcmanagerLog))
 
   #############################################################################
   # Functions for handling initial pedigree upload and QC
@@ -58,7 +58,7 @@ shinyServer(function(input, output, session) {
         stop("Data source was not defined.")
       }
       flog.debug("sep: %s", sep, name = "nprcmanager")
-      minParentAge <- renderText({input$minParentAge})
+      minParentAge <- renderText(input$minParentAge)
       flog.debug(paste0("minParentAge: ",
                         input$minParentAge),
                  name = "nprcmanager")
@@ -208,8 +208,7 @@ shinyServer(function(input, output, session) {
     flog.debug(paste0("column names: '", paste(names(p), collapse = "', '"),
                       "'"), name = "nprcmanager")
 
-    p <- tryCatch(
-      {
+    p <- tryCatch({
         p <- sb()
         flog.debug(paste0("column names: '", paste(names(p),
                                                    collapse = "', '"),
@@ -276,19 +275,22 @@ shinyServer(function(input, output, session) {
     p
   }))
 
-  specifyPopulation <- eventReactive(input$specify_pop, {
-    p <- unlist(strsplit(input$population_ids, "[ \t\n]"))
+  specifyPopulation <- eventReactive(input$specifyPop, {
+    p <- unlist(strsplit(input$populationIds, "[ \t\n]"))
 
     if (length(p) == 0) {
       return(NULL)
     } else{
       return(p)
     }
-  }, ignoreNULL = FALSE)
+  },
+  ignoreNULL = FALSE)
 
   # Download handler to download the full or trimmed pedigree
   output$downloadPedigree <- downloadHandler(
-    filename = function() {paste("Pedigree", ".csv", sep = "")},
+    filename = function() {
+      paste("Pedigree", ".csv", sep = "")
+    },
     content = function(file) {
       write.csv(ped(), file, na = "", row.names = FALSE)
     }
@@ -296,7 +298,7 @@ shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling the genetic value analysis generation
 
-  genetic_value <- eventReactive(input$analysis, {
+  geneticValue <- eventReactive(input$analysis, {
     if (is.null(ped())) {
       return(NULL)
     }
@@ -319,7 +321,7 @@ shinyServer(function(input, output, session) {
       if (reset) {
         progress$set(detail = detail, value = value)
       } else{
-        progress$inc(amount = 1/n)
+        progress$inc(amount = 1 / n)
       }
     }
     #
@@ -328,23 +330,23 @@ shinyServer(function(input, output, session) {
                     byID = TRUE,
                     updateProgress = updateProgress))
   })
-  # Returns the genetic_value() report
+  # Returns the geneticValue() report
   rpt <- reactive({
-    if (is.null(genetic_value())) {
+    if (is.null(geneticValue())) {
       return(NULL)
     }
-    return(genetic_value()[["report"]])
+    return(geneticValue()[["report"]])
   })
 
   # Functions for displaying the Genetic Value Analysis
-  gva_view <- reactive({
+  gvaView <- reactive({
     if (is.null(rpt())) {
       return(NULL)
     }
     if (input$view == 0) {
       return(rpt())
     } else{
-      ids <- unlist(strsplit(isolate(input$view_ids), "[ \t\n]"))
+      ids <- unlist(strsplit(isolate(input$viewIds), "[ \t\n]"))
       if (length(ids) == 0) {
         return(rpt())
       } else{
@@ -358,7 +360,7 @@ shinyServer(function(input, output, session) {
       return(NULL)
     }
 
-    g <- gva_view()
+    g <- gvaView()
     g$indivMeanKin <- round(g$indivMeanKin, 5)
     g$z.scores <- round(g$z.scores, 2)
     g$gu <- round(g$gu, 5)
@@ -368,71 +370,22 @@ shinyServer(function(input, output, session) {
     return(g)
   }))
 
-  # output$gva <- renderText({
-  #   if (is.null(rpt())) {
-  #     return(NULL)
-  #   }
-  #
-  #   g <- gva_view()
-  #   g$indivMeanKin <- round(g$indivMeanKin, 5)
-  #   g$z.scores <- round(g$z.scores, 2)
-  #   g <- toCharacter(g)
-  #   names(g) <- headerDisplayNames(names(g))
-  #
-  #   html <- "<table>"
-  #   html <- paste(html, makeHtmlRow(names(g), header = TRUE))
-  #
-  #   highlight <- which(gva_view()[,"value"] == "low value")
-  #
-  #   for(i in 1:nrow(g)) {
-  #     r <- g[i, ]
-  #     if (i %in% highlight) {
-  #       html <- paste(html, makeHtmlRow(r, color = "#FFD280"))
-  #     } else{
-  #       html <- paste(html, makeHtmlRow(r))
-  #     }
-  #   }
-  #
-  #   html <- paste(html, "</table>")
-  #
-  #   return(html)
-  # })
-
-  # makeHtmlRow <- function(r, header = FALSE, color = NULL) {
-  #   if (is.null(color)) {
-  #     html <- "<tr>"
-  #   } else{
-  #     html <- paste('<tr bgcolor = "', color, '">', sep = "")
-  #   }
-  #
-  #   for(i in 1:length(r)) {
-  #     d <- r[i]
-  #     if (is.na(d)) {
-  #       d <- ""
-  #     }
-  #
-  #     if (header) {
-  #       html <- paste(html, "<th>", as.character(d), "</th>")
-  #     } else{
-  #       html <- paste(html, "<td>", as.character(d), "</td>")
-  #     }
-  #   }
-  #   html <- paste(html, "</tr>")
-  #   return(html)
-  # }
-
   # Download handlers for all or a subset of the Genetic Value Analysis
-  output$downloadGVA_full <- downloadHandler(
-    filename = function() {paste("GVA_full", ".csv", sep = "")},
+  output$downloadGVAFull <- downloadHandler(
+    filename = function() {
+      paste("GVA_full", ".csv", sep = "")
+    },
     content = function(file) {
       write.csv(rpt(), file, na = "", row.names = FALSE)
     }
   )
 
-  output$downloadGVA_subset <- downloadHandler(
-    filename = function() {paste("GVA_subset", ".csv", sep = "")},
+  output$downloadGVASubset <- downloadHandler(
+    filename = function() {
+      paste("GVA_subset", ".csv", sep = "")
+    },
     content = function(file) {
-      write.csv(gva_view(), file, na = "", row.names = FALSE)
+      write.csv(gvaView(), file, na = "", row.names = FALSE)
     }
   )
 
@@ -441,30 +394,32 @@ shinyServer(function(input, output, session) {
   # kinship matrix
 
   kmat <- reactive({
-    if (is.null(genetic_value())) {
+    if (is.null(geneticValue())) {
       return(NULL)
     }
-    return(genetic_value()[["kinship"]])
+    return(geneticValue()[["kinship"]])
   })
 
   # Download handler for the kinship matrix
   output$downloadKinship <- downloadHandler(
-    filename = function() {paste("Kinship", ".csv", sep = "")},
+    filename = function() {
+      paste("Kinship", ".csv", sep = "")
+    },
     content = function(file) {
       write.csv(kmat(), file, na = "")
     }
   )
 
-  output$summary_stats <- renderText({
-    if (is.null(genetic_value())) {
+  output$summaryStats <- renderText({
+    if (is.null(geneticValue())) {
       return(NULL)
     }
 
-    f <- genetic_value()[["total"]]
-    mf <- genetic_value()[["maleFounders"]]
-    ff <- genetic_value()[["femaleFounders"]]
-    fe <- genetic_value()[["fe"]]
-    fg <- genetic_value()[["fg"]]
+    f <- geneticValue()[["total"]]
+    mf <- geneticValue()[["maleFounders"]]
+    ff <- geneticValue()[["femaleFounders"]]
+    fe <- geneticValue()[["fe"]]
+    fg <- geneticValue()[["fg"]]
 
     mk <- summary(rpt()[, "indivMeanKin"])
     gu <- summary(rpt()[, "gu"])
@@ -515,7 +470,7 @@ shinyServer(function(input, output, session) {
     return(paste(founder, "<br>", "<br>", "<table>", header, k, g, "</table>"))
   })
 
-  output$mk_plot <- renderPlot({
+  output$mkPlot <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
@@ -523,18 +478,18 @@ shinyServer(function(input, output, session) {
     avg <- mean(mk, na.rm = TRUE)
     std.dev <- sd(mk, na.rm = TRUE)
 
-    u <- avg + (2 * std.dev)
-    l <- avg - (2 * std.dev)
+    upper <- avg + (2 * std.dev)
+    lower <- avg - (2 * std.dev)
 
     hist(mk,
          breaks = 25,
          main = "Individual Mean Kinships",
          xlab = "Kinship",
          ylab = "Frequency")
-    abline(v = avg,col = "red",lty = "dashed", lwd = 2)
+    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
   })
 
-  output$zscore_plot <- renderPlot({
+  output$zscorePlot <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
@@ -542,17 +497,17 @@ shinyServer(function(input, output, session) {
     avg <- mean(z, na.rm = TRUE)
     std.dev <- sd(z, na.rm = TRUE)
 
-    u <- avg + (2 * std.dev)
-    l <- avg - (2 * std.dev)
+    upper <- avg + (2 * std.dev)
+    lower <- avg - (2 * std.dev)
 
     hist(z,
          breaks = 25,
          main = "Individual Mean Kinship Z-Scores",
          xlab = "Z-Score",
          ylab = "Frequency")
-    abline(v = avg,col = "red",lty = "dashed", lwd = 2)
+    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
   })
-  output$gu_plot <- renderPlot({
+  output$guPlot <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
@@ -560,15 +515,15 @@ shinyServer(function(input, output, session) {
     avg <- mean(gu, na.rm = TRUE)
     std.dev <- sd(gu, na.rm = TRUE)
 
-    u <- avg + (2 * std.dev)
-    l <- avg - (2 * std.dev)
+    upper <- avg + (2 * std.dev)
+    lower <- avg - (2 * std.dev)
 
     hist(gu,
          breaks = 25,
          main = "Genetic Uniqueness",
          xlab = "Genetic Uniqueness Score",
          ylab = "Frequency")
-    abline(v = avg,col = "red",lty = "dashed", lwd = 2)
+    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
   })
 
   output$relations <- eventReactive(input$relations, {
@@ -585,10 +540,11 @@ shinyServer(function(input, output, session) {
       progress$set(message = "Finding Relationship Designations", value = 0)
 
       updateProgress <- function() {
-        progress$inc(amount = 1/j)
+        progress$inc(amount = 1 / j)
       }
 
-      kin <- convertRelationships(kmat(), ped(), updateProgress = updateProgress)
+      kin <- convertRelationships(kmat(), ped(),
+                                  updateProgress = updateProgress)
 
       progress$set(message = "Preparing Table", value = 1)
       r <- makeRelationClasseTable(kin)
@@ -601,7 +557,9 @@ shinyServer(function(input, output, session) {
 
   # Download handler for the first-order relationships
   output$downloadFirstOrder <- downloadHandler(
-    filename = function() {paste("FirstOrder", ".csv", sep = "")},
+    filename = function() {
+      paste("FirstOrder", ".csv", sep = "")
+    },
     content = function(file) {
       p <- ped()
       r <- countFirstOrder(p, ids = p$id[p$population])
@@ -610,7 +568,9 @@ shinyServer(function(input, output, session) {
   )
 
   output$downloadRelations <- downloadHandler(
-    filename = function() {paste("Relations", ".csv", sep = "")},
+    filename = function() {
+      paste("Relations", ".csv", sep = "")
+    },
     content = function(file) {
       p <- ped()
       probands <- p$id[p$population]
@@ -623,14 +583,14 @@ shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling the breeding group formation process
 
-  bg <- eventReactive(input$grp_sim, {
+  bg <- eventReactive(input$grpSim, {
     if (is.null(rpt())) {
       return(NULL)
     }
 
     p <- ped()
-    ids <- unlist(strsplit(input$grp_ids, "[ \t\n]"))
-    currentGroup <- unlist(strsplit(input$cur_grp, "[ \t\n]"))
+    ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
+    currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
 
     if (length(ids) > 0) {
       p <- resetGroup(p, ids)
@@ -645,7 +605,7 @@ shinyServer(function(input, output, session) {
     }
 
     # Filter out low-value animals if desired
-    use.lv <- input$low_val
+    use.lv <- input$lowVal
     if (!use.lv) {
       rpt <- rpt()
       lv <- rpt$id[rpt$value == "low value"]
@@ -664,14 +624,16 @@ shinyServer(function(input, output, session) {
                  paste(setdiff(currentGroup, p$id), sep = "\n")))
     )
 
-    ignore <- input$ff_rel
+    ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
 
-    threshold <- input$kin_thresh
-    minAge <- input$min_age
+    threshold <- input$kinThresh
+    minAge <- input$minAge
     withKin <- input$withKin
-    iter <- input$gp_iter
-    numGp <- ({input$numGp})
+    iter <- input$gpIter
+    numGp <- ({
+      input$numGp
+      })
 
     # Setting up the progress bar
     progress <- shiny::Progress$new()
@@ -709,7 +671,6 @@ shinyServer(function(input, output, session) {
                            withKin = withKin)
     }
 
-    #return(grp$group)
     return(grp)
   })
 
@@ -734,33 +695,33 @@ shinyServer(function(input, output, session) {
         }
         gp["Unused"] <- x
 
-        updateSelectInput(session, "view_grp",
+        updateSelectInput(session, "viewGrp",
                           label = "Enter the group to view:",
                           choices = gp, selected = 1)
       } else if (x == 1) {
-        updateSelectInput(session, "view_grp",
+        updateSelectInput(session, "viewGrp",
                           label = "Enter the group to view:",
                           choices = list("Unused" = 1), selected = 1)
       } else{
-        updateSelectInput(session, "view_grp",
+        updateSelectInput(session, "viewGrp",
                           label = "Enter the group to view:",
                           choices = list(" " = 1), selected = 1)
       }
     }
   })
 
-  bg_group_view <- reactive({
+  bgGroupView <- reactive({
     if (is.null(bg())) {
       return(NULL)
     }
-    i <- as.numeric(input$view_grp)
+    i <- as.numeric(input$viewGrp)
     gp <- bg()$group[[i]]
     gp <- as.data.frame(gp)
     colnames(gp) <- "Ego ID"
 
     if (nrow(gp) == 0) {
       return(NULL)
-    } else{
+    } else {
       return(gp[order(gp$`Ego ID`), , drop = FALSE])
     }
   })
@@ -768,7 +729,7 @@ shinyServer(function(input, output, session) {
     if (is.null(bg()$groupKin)) {
       return(NULL)
     }
-    i <- as.numeric(input$view_grp)
+    i <- as.numeric(input$viewGrp)
     kmat <- bg()$groupKin[[i]]
     kmat <- as.data.frame(round(kmat, 6))
 
@@ -783,7 +744,7 @@ shinyServer(function(input, output, session) {
     if (is.null(bg())) {
       return(NULL)
     }
-    return(bg_group_view())
+    return(bgGroupView())
   }))
   output$breeding_groupKin <- DT::renderDataTable(DT::datatable({
     if (is.null(bg()$groupKin)) {
@@ -794,15 +755,16 @@ shinyServer(function(input, output, session) {
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
-    filename = getDatedFilename(paste0("Group-", input$view_grp,
+    filename = getDatedFilename(paste0("Group-", input$viewGrp,
                                       ".csv", sep = "")),
     content = function(file) {
-      write.csv(bg_group_view(), file, na = "", row.names = FALSE)},
+      write.csv(bgGroupView(), file, na = "", row.names = FALSE)
+    },
     contentType = "text/csv"
   )
 
   output$downloadGroupKin <- downloadHandler(
-    filename = getDatedFilename(paste0("GroupKin-", input$view_grp,
+    filename = getDatedFilename(paste0("GroupKin-", input$viewGrp,
                                          ".csv", sep = "")),
     content = function(file) {
       write.csv(bg_groupKin_view(), file, na = "", row.names = TRUE)},
@@ -815,4 +777,3 @@ shinyServer(function(input, output, session) {
   output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
   flog.debug("after renderPlot(getPyramidPlot(ped)))", name = "nprcmanager")
 })
-

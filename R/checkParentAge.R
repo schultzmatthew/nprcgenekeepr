@@ -49,4 +49,3 @@ checkParentAge <- function(sb, minParentAge = 2) {
               (sb$damAge < minParentAge & !is.na(sb$damBirth)), ]
   sb
 }
-

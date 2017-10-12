@@ -4,8 +4,8 @@
 \alias{agePyramidPlot}
 \title{Form age pyramid plot}
 \usage{
-agePyramidPlot(males, females, age_labels, mcol, fcol, laxlab, raxlab, gap,
-  current_date)
+agePyramidPlot(males, females, ageLabels, mcol, fcol, laxlab, raxlab, gap,
+  currentDate)
 }
 \arguments{
 \item{males}{integer vector with the number of males in age groups
@@ -14,7 +14,7 @@ corresponding to the position in the vector}
 \item{females}{integer vector with the number of females in age groups
 corresponding to the position in the vector}
 
-\item{age_labels}{character vector of labels for the categories represented
+\item{ageLabels}{character vector of labels for the categories represented
 by each pair of bars. There should be a label for each lx or rx value,
 even if empty. If labels is a matrix or data frame, the first two columns
 will be used for the left and right category labels respectively.}
@@ -28,9 +28,9 @@ will be used for the left and right category labels respectively.}
 \item{raxlab}{label for the female (right) side of the plot}
 
 \item{gap}{numeric value for one half of the space between the two sets
-of bars for the \code{age_labels} in user units}
+of bars for the \code{ageLabels} in user units}
 
-\item{current_date}{POSIXct date object indicating the date corresponding to
+\item{currentDate}{POSIXct date object indicating the date corresponding to
 the date the pedigree census occurred.}
 }
 \description{

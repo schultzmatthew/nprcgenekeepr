@@ -2,7 +2,7 @@
 #'
 #' Part of Group Formation
 #'
-#' @param kin_matrix numerical matrix of pairwise kinship values. The row and
+#' @param kinMatrix numerical matrix of pairwise kinship values. The row and
 #' column names correspond to animal IDs.
 #' @param rm.dups locigal value indication whether or not reverse-order ID
 #' pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
@@ -12,12 +12,12 @@
 #' This is the kinship data reformatted from a matrix, to a long-format table.
 #' @importFrom utils stack
 #' @export
-reformatKinship <- function(kin_matrix, rm.dups = FALSE) {
+reformatKinship <- function(kinMatrix, rm.dups = FALSE) {
   if (rm.dups) {
-    kin_matrix[upper.tri(kin_matrix)] <- NA
+    kinMatrix[upper.tri(kinMatrix)] <- NA
   }
 
-  kmat <- as.data.frame(kin_matrix)
+  kmat <- as.data.frame(kinMatrix)
   k <- stack(kmat)
   k["id2"] <- row.names(kmat)
 

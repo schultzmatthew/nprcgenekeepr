@@ -14,25 +14,25 @@ getPyramidPlot <- function(ped = NULL) {
   if (is.null(ped))
     ped <- getPyramidAgeDist()
   par(bg = "#FFF8DC")
-  bin_width <- 2
-  ax_modulas <- 5
-  upper_ages <- seq(bin_width,
-                    makeRoundUp(getPedMaxAge(ped), bin_width), bin_width)
-  lower_ages <- upper_ages - bin_width
+  binWidth <- 2
+  axModulas <- 5
+  upperAges <- seq(binWidth,
+                    makeRoundUp(getPedMaxAge(ped), binWidth), binWidth)
+  lowerAges <- upperAges - binWidth
 
-  bins <- fillBins(ped, lower_ages, upper_ages)
-  max_ax <- max(getMaxAx(bins, ax_modulas))
-  age_labels <- stri_c(lower_ages, " - ", upper_ages - 1)
+  bins <- fillBins(ped, lowerAges, upperAges)
+  maxAx <- max(getMaxAx(bins, axModulas))
+  ageLabels <- stri_c(lowerAges, " - ", upperAges - 1)
   mcol <- color.gradient(0, 0,   0.5)
   fcol <- color.gradient(1, 0.5, 0.5)
-  current_date <- now()
-  ax_by <- max_ax / ax_modulas
-  ax_gap <- ax_by * 0.6
-  gap <- ax_gap
-  laxlab <- seq(0, max_ax, by = ax_by)
-  raxlab <- seq(0, max_ax, by = ax_by)
-  agePyramidPlot(bins$males, bins$females, age_labels, mcol, fcol,
-                  laxlab, raxlab, gap, current_date)
+  currentDate <- now()
+  axBy <- maxAx / axModulas
+  axGap <- axBy * 0.6
+  gap <- axGap
+  laxlab <- seq(0, maxAx, by = axBy)
+  raxlab <- seq(0, maxAx, by = axBy)
+  agePyramidPlot(bins$males, bins$females, ageLabels, mcol, fcol,
+                  laxlab, raxlab, gap, currentDate)
 
   par(bg = "transparent")
 

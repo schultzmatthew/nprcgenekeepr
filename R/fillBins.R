@@ -1,4 +1,4 @@
-#maleBins Fill bins represented by list of two lists \code{males} and \code{females}.
+#' fillBins Fill bins represented by list of two lists \code{males} and \code{females}.
 #'
 #'
 #' @param ageDist dataframe with \code{sex} and \code{age} columns

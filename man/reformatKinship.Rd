@@ -4,10 +4,10 @@
 \alias{reformatKinship}
 \title{Reformats a kinship matrix into a long-format table.}
 \usage{
-reformatKinship(kin_matrix, rm.dups = FALSE)
+reformatKinship(kinMatrix, rm.dups = FALSE)
 }
 \arguments{
-\item{kin_matrix}{numerical matrix of pairwise kinship values. The row and
+\item{kinMatrix}{numerical matrix of pairwise kinship values. The row and
 column names correspond to animal IDs.}
 
 \item{rm.dups}{locigal value indication whether or not reverse-order ID

@@ -28,18 +28,18 @@ getAncestors <- function(id, ptree) {
   dam <- ptree[[id]]$dam
 
   if (!is.na(sire)) {
-    s_anc <- getAncestors(sire, ptree)
-    sire_lineage <- c(sire, s_anc)
+    sAnc <- getAncestors(sire, ptree)
+    sireLineage <- c(sire, sAnc)
   } else{
-    sire_lineage <- c()
+    sireLineage <- c()
   }
 
   if (!is.na(dam)) {
-    d_anc <- getAncestors(dam, ptree)
-    dam_lineage <- c(dam, d_anc)
+    dAnc <- getAncestors(dam, ptree)
+    damLineage <- c(dam, dAnc)
   } else{
-    dam_lineage <- c()
+    damLineage <- c()
   }
 
-  return(c(sire_lineage, dam_lineage))
+  return(c(sireLineage, damLineage))
 }

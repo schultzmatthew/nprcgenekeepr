@@ -23,7 +23,8 @@ uitpGeneticValueAnalysis <-
           style = "display:inline-block;width:250px;padding:10px",
           numericInput(
             "iterations",
-            label = "Enter the number of simulations for the gene-drop analysis:",
+            label = paste0("Enter the number of simulations for the ",
+                           "gene-drop analysis:"),
             value = 1000,
             min = 2,
             max = 100000
@@ -44,7 +45,7 @@ uitpGeneticValueAnalysis <-
             selected = 4
           )
         ),
-        helpText("The analysis may take a significant amount of time (>20 min)"),
+        helpText("Analysis may take a significant amount of time (>20 min)"),
         actionButton("analysis", label = "Begin Analysis"),
         br(),
         hr(),
@@ -53,19 +54,18 @@ uitpGeneticValueAnalysis <-
         helpText("(Leave blank to view all)"),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          tags$textarea(id = "view_ids", rows = 5, cols = 20, ""),
+          tags$textarea(id = "viewIds", rows = 5, cols = 20, ""),
           actionButton("view", label = "Filter View")
         ),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          downloadButton("downloadGVA_full", "Export All"),
+          downloadButton("downloadGVAFull", "Export All"),
           br(),
           br(),
-          downloadButton("downloadGVA_subset", "Export Current Subset")
+          downloadButton("downloadGVASubset", "Export Current Subset")
         )
 
       )
     ),
     DT::dataTableOutput("gva")
-    #htmlOutput("gva")
   )

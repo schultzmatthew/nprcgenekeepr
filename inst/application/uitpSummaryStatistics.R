@@ -27,11 +27,10 @@ uitpSummaryStatistics <-
     # Main Panel
     column(9,
       # style = "margin-left:425px;padding:10px;",
-      htmlOutput("summary_stats"),
-      plotOutput("mk_plot", width = "400px", height = "400px"),
-      plotOutput("zscore_plot", width = "400px", height = "400px"),
-      plotOutput("gu_plot", width = "400px", height = "400px"),
-      #tableOutput("relations")
+      htmlOutput("summaryStats"),
+      plotOutput("mkPlot", width = "400px", height = "400px"),
+      plotOutput("zscorePlot", width = "400px", height = "400px"),
+      plotOutput("guPlot", width = "400px", height = "400px"),
       DT::dataTableOutput("relations")
     )
   )

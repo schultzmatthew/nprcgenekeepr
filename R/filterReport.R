@@ -7,5 +7,5 @@
 #' @return A copy of report specific to the specified animals
 #' @export
 filterReport <- function(ids, rpt) {
-  return(rpt[rpt$id %in% ids,])
+  return(rpt[rpt$id %in% ids, ])
 }

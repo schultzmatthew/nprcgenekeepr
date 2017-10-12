@@ -10,28 +10,28 @@
 addBackSecondParents <- function(uPed, ped) {
 
   # Adding back second parents where one is known
-  single_parents <- uPed$id[(is.na(uPed$sire) & !is.na(uPed$dam)) |
+  singleParents <- uPed$id[(is.na(uPed$sire) & !is.na(uPed$dam)) |
                            (!is.na(uPed$sire) & is.na(uPed$dam))]
 
-  add_back <- c()
-  for (id in single_parents) {
+  addBack <- c()
+  for (id in singleParents) {
     if (!is.na(ped$sire[ped$id == id]) & !is.na(ped$dam[ped$id == id])) {
 
       if (is.na(uPed$sire[uPed$id == id])) {
-        add_back <- c(add_back, ped$sire[ped$id == id])
+        addBack <- c(addBack, ped$sire[ped$id == id])
         uPed[(uPed$id == id), "sire"] <- ped$sire[ped$id == id]
       } else{
-        add_back <- c(add_back, ped$dam[ped$id == id])
+        addBack <- c(addBack, ped$dam[ped$id == id])
         uPed[(uPed$id == id), "dam"] <- ped$dam[ped$id == id]
       }
     }
   }
-  if (length(add_back) > 0) {
-    add_back <- ped[(ped$id %in% add_back), ]
-    add_back$sire <- NA
-    add_back$dam <- NA
+  if (length(addBack) > 0) {
+    addBack <- ped[(ped$id %in% addBack), ]
+    addBack$sire <- NA
+    addBack$dam <- NA
 
-    uPed <- rbind(uPed, add_back)
+    uPed <- rbind(uPed, addBack)
   }
   return(uPed)
 }

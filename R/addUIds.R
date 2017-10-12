@@ -11,8 +11,8 @@ addUIds <- function(ped) {
 
   if (!identical(s, integer(0))) {
     k <- length(s)
-    sire_ids <- paste("U", sprintf("%04d", 1:k), sep = "")
-    ped[s, "sire"] <- sire_ids
+    sireIds <- paste("U", sprintf("%04d", 1:k), sep = "")
+    ped[s, "sire"] <- sireIds
   }
   else{
     k <- 0
@@ -21,8 +21,8 @@ addUIds <- function(ped) {
   if (!identical(d, integer(0))) {
     m <- k + 1
     n <- k + length(d)
-    dam_ids <- paste("U", sprintf("%04d", m:n), sep = "")
-    ped[d, "dam"] <- dam_ids
+    damIds <- paste("U", sprintf("%04d", m:n), sep = "")
+    ped[d, "dam"] <- damIds
   }
 
   return(ped)

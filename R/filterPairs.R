@@ -31,7 +31,8 @@ filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
 
   for (i in 1:length(ignore)) {
     rel <- ignore[[i]]
-    k <- !(((g1 == rel[1]) & (g2 == rel[2])) | ((g1 == rel[2]) & (g2 == rel[1])))
+    k <- !( ( (g1 == rel[1]) & (g2 == rel[2])) | ( (g1 == rel[2]) &
+                                                  (g2 == rel[1])))
     keep <- keep & k
   }
   kin$sort.col <- NULL

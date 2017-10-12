@@ -21,8 +21,8 @@ uitpPedigreeBrowser <-
                         "entered here (IDs may be pasted from Excel):")),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          tags$textarea(id = "population_ids", rows = 5, cols = 30, ""),
-          actionButton("specify_pop", label = "Update Breeding Colony")
+          tags$textarea(id = "populationIds", rows = 5, cols = 30, ""),
+          actionButton("specifyPop", label = "Update Breeding Colony")
         ),
         div(
           style = "display:inline-block;width:250px;padding:10px",
