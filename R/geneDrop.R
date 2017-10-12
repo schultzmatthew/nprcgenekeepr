@@ -95,7 +95,6 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
     id <- c(id, key[1])
     parent <- c(parent, key[2])
   }
-  #id <- gsub("X", "", id)
 
   alleles$id <- id
   alleles$parent <- parent

@@ -10,4 +10,3 @@
 #' offspring per year of exposure to male or female. (b) Number of months since
 #' last birth. (c) Number of months between births with range and standard
 #' deviation.
-#'
