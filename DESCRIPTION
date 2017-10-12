@@ -12,7 +12,6 @@ Depends:
     R (>= 3.2.1)
 Imports:
     anytime,
-    dplyr,
     futile.logger,
     lubridate,
     Matrix,
@@ -22,6 +21,7 @@ Imports:
     stringi,
     utils
 Suggests:
+    dplyr,
     knitr,
     testthat
 Encoding: UTF-8
