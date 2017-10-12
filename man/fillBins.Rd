@@ -2,19 +2,19 @@
 % Please edit documentation in R/fillBins.R
 \name{fillBins}
 \alias{fillBins}
-\title{Fill bins represented by list of two lists \code{males} and \code{females}.}
+\title{fillBins Fill bins represented by list of two lists \code{males} and \code{females}.}
 \usage{
-fillBins(age_dist, lower_ages, upper_ages = NULL)
+fillBins(ageDist, lowerAges, upperAges = NULL)
 }
 \arguments{
-\item{age_dist}{dataframe with \code{sex} and \code{age} columns}
+\item{ageDist}{dataframe with \code{sex} and \code{age} columns}
 
-\item{lower_ages}{integer vector of lower age boundaries; must be the same
-length as \code{upper_ages}}
+\item{lowerAges}{integer vector of lower age boundaries; must be the same
+length as \code{upperAges}}
 
-\item{upper_ages}{integer vector of upper age boundaries; must be the same
-length as \code{lower_ages}}
+\item{upperAges}{integer vector of upper age boundaries; must be the same
+length as \code{lowerAges}}
 }
 \description{
-Fill bins represented by list of two lists \code{males} and \code{females}.
+fillBins Fill bins represented by list of two lists \code{males} and \code{females}.
 }
