@@ -51,42 +51,42 @@ uitpInput <-
         conditionalPanel(
           condition = "input.dataSource == 'pedFile'",
           radioButtons(
-            'sepOne',
-            label = 'Separator',
+            "sepOne",
+            label = "Separator",
             choices = list(
-              'Comma' = ',',
-              'Semicolon' = ';',
-              'Tab' = '\t'
+              "Comma" = ",",
+              "Semicolon" = ";",
+              "Tab" = "\t"
             ),
-            selected = ','
+            selected = ","
           ),
           fileInput("pedigreeFileOne", label = "Select Pedigree File")
         ),
         conditionalPanel(
           condition = "input.dataSource == 'commonPedGenoFile'",
           radioButtons(
-            'sepTwo',
-            label = 'Separator',
+            "sepTwo",
+            label = "Separator",
             choices = list(
-              'Comma' = ',',
-              'Semicolon' = ';',
-              'Tab' = '\t'
+              "Comma" = ",",
+              "Semicolon" = ";",
+              "Tab" = "\t"
             ),
-            selected = ','
+            selected = ","
           ),
           fileInput("pedigreeFileTwo", label = "Select Pedigree-Genotype File")
         ),
         conditionalPanel(
           condition = "input.dataSource == 'separatePedGenoFile'",
           radioButtons(
-            'sepThree',
-            label = 'Separator',
+            "sepThree",
+            label = "Separator",
             choices = list(
-              'Comma' = ',',
-              'Semicolon' = ';',
-              'Tab' = '\t'
+              "Comma" = ",",
+              "Semicolon" = ";",
+              "Tab" = "\t"
             ),
-            selected = ','
+            selected = ","
           ),
           fileInput("pedigreeFileThree", label = "Select Pedigree File"),
           fileInput("genotypeFile", label = "Select Genotype File")
@@ -94,14 +94,14 @@ uitpInput <-
         conditionalPanel(
           condition = "input.dataSource == 'breeders'",
           radioButtons(
-            'sepFour',
-            label = 'Separator',
+            "sepFour",
+            label = "Separator",
             choices = list(
-              'Comma' = ',',
-              'Semicolon' = ';',
-              'Tab' = '\t'
+              "Comma" = ",",
+              "Semicolon" = ";",
+              "Tab" = "\t"
             ),
-            selected = ','
+            selected = ","
           ),
           fileInput("breederFile", label = "Select Breeder File")
         ),

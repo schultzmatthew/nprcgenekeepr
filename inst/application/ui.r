@@ -1,6 +1,6 @@
 library(shiny)
 if (!require("DT"))
-  install.packages('DT')
+  install.packages("DT")
 library(DT)
 source("../application/uitpInput.R")
 source("../application/uitpPedigreeBrowser.R")
