@@ -23,6 +23,7 @@ Imports:
 Suggests:
     dplyr,
     knitr,
+    roxygen2 (>= 6.0.0),
     testthat
 Encoding: UTF-8
 License: MIT + file LICENSE
