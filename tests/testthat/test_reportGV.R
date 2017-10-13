@@ -7,7 +7,7 @@ test_that("reportGV forms correct genetic value report", {
                                   "maleFounders", "femaleFounders", "total"))
   expect_equal(names(gvReport$report),
                c("id", "sex", "age", "birth", "exit", "population",
-                 "indivMeanKin", "z.scores", "gu", "totalOffspring",
+                 "indivMeanKin", "zScores", "gu", "totalOffspring",
                  "livingOffspring", "value", "rank"))
   expect_equal(nrow(gvReport$report), nrow(baboonPed))
   expect_equal(nrow(gvReport$gu), nrow(baboonPed))

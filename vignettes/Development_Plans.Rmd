@@ -82,7 +82,7 @@ in orderReport.R
     *    # ONPRC-born animals with no parentage
     *    i <- (is.na(rpt\$origin) & (rpt\$totalOffspring == 0) & 
  (rpt\$id %in% founders))
-    *    no.parentage <- rpt[i, ]
+    *    noPparentage <- rpt[i, ]
 
 
 ## Accomplishments thus far

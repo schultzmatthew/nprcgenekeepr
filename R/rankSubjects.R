@@ -21,13 +21,13 @@ rankSubjects <- function(rpt) {
 
     if (names(rpt[i]) == "low.val") {
       rpt[[i]][, "value"] <- "Low Value"
-    } else if (names(rpt[i]) == "no.parentage") {
+    } else if (names(rpt[i]) == "noParentage") {
       rpt[[i]][, "value"] <- "Undetermined"
     } else {
       rpt[[i]][, "value"] <- "High Value"
     }
 
-    if (names(rpt[i]) == "no.parentage") {
+    if (names(rpt[i]) == "noParentage") {
       rpt[[i]][, "rank"] <- NA
     } else {
       rpt[[i]][, "rank"] <- rnk:(rnk + nrow(rpt[[i]]) - 1)

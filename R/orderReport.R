@@ -45,24 +45,24 @@ orderReport <- function(rpt, ped) {
     i <- (is.na(rpt$origin) & (rpt$totalOffspring == 0) &
             (rpt$id %in% founders))
 
-    no.parentage <- rpt[i, ]
+    noParentage <- rpt[i, ]
     rpt <- rpt[!i, ]
     if ("age" %in% names(rpt)) {
-      finalRpt$no.parentage <- no.parentage[with(no.parentage, order(age)), ]
+      finalRpt$noParentage <- noParentage[with(noParentage, order(age)), ]
     }
     else {
-      finalRpt$no.parentage <- no.parentage[with(no.parentage, order(id)), ]
+      finalRpt$noParentage <- noParentage[with(noParentage, order(id)), ]
     }
   }
 
   # subjects with > 10% genome uniqueness
-  high.gu <- rpt[(rpt$gu > 10), ]
-  finalRpt$high.gu <- high.gu[with(high.gu, order(-trunc(gu), zScores)), ]
+  highGu <- rpt[(rpt$gu > 10), ]
+  finalRpt$highGu <- highGu[with(highGu, order(-trunc(gu), zScores)), ]
   rpt <- rpt[!(rpt$gu > 10), ]
 
   # subjects with <= 10% genome uniqueness and <= 0.25 z-score
-  low.mk <- rpt[(rpt$zScores <= 0.25), ]
-  finalRpt$low.mk <- low.mk[with(low.mk, order(zScores)), ]
+  lowMk <- rpt[(rpt$zScores <= 0.25), ]
+  finalRpt$lowMk <- lowMk[with(lowMk, order(zScores)), ]
 
   rpt <- rpt[!(rpt$zScores <= 0.25), ]
 
