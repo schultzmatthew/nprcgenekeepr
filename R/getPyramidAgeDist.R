@@ -9,7 +9,7 @@
 #' usage meaning that a person’s age should always be an integer that
 #' increases exactly on a birthday.
 #' @param ped dataframe with pedigree
-#' @import anytime
+#' @importFrom anytime anytime
 #' @import lubridate
 #' @importFrom utils read.csv
 #' @export
@@ -28,7 +28,7 @@ getPyramidAgeDist <- function(ped = NULL) {
   if (!any(class(ped$birth) %in% c("Date", "POSIXct", "character"))) {
     stop("birth column must be of class 'Date', 'POSIXct', or 'character'")
   } else if (class(ped$birth)[[1]] == "character") {
-    ped$birth <- anytime(ped$birth)
+    ped$birth <- anytime::anytime(ped$birth)
   } else {
     ped$birth <- as.Date(ped$birth)
   }
@@ -39,7 +39,7 @@ getPyramidAgeDist <- function(ped = NULL) {
   } else if (class(ped$exit_date)[[1]] == "character") {
     ped$status[ped$exit_date == "9999999999"] <- "DECEASED"
     ped$exit_date[ped$exit_date == "" | ped$exit_date == "9999999999"] <- NA
-    ped$exit_date <- anytime(ped$exit_date)
+    ped$exit_date <- anytime::anytime(ped$exit_date)
   } else {
     ped$exit_date <- as.Date(ped$exit_date)
   }
