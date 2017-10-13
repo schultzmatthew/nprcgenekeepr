@@ -2,8 +2,6 @@ context("filterReport")
 library(testthat)
 data("pedWithGenotypeReport")
 
-## set.seed(10) the report is deterministic and the pseudorandom number
-## generator does not affect it.
 rpt <- pedWithGenotypeReport$report
 test_that("filterReport correctly subsets reports based on provide IDs", {
   rpt1 <- filterReport(c("14712", "30624"), rpt)

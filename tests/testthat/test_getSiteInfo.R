@@ -7,4 +7,3 @@ test_that("getSiteInfo at least returns the right elements", {
                  "version", "nodename", "machine", "login", "user",
                  "effective_user", "homeDir", "configFile"))
 })
-

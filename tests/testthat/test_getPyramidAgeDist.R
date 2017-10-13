@@ -62,5 +62,3 @@ test_that("getPyramidAgeDist detect exit column of wrong type ", {
                stri_c("exit_date column must be of class 'Date', ",
                       "'POSIXct', or 'character'"))
 })
-
-

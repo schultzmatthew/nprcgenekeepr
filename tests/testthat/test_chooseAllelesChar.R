@@ -7,4 +7,3 @@ test_that("chooseAllelesChar returns a vector of characters of the right size
             expect_equal(length(chooseAllelesChar(LETTERS, letters)),
                          length(LETTERS))
 })
-
