@@ -41,14 +41,14 @@ pedFour <- data.frame(id = c("s1", NA, NA, "d2", "o1", "o2", "o3", "o4"),
                      stringsAsFactors = FALSE)
 pedFour <- pedFour[!is.na(pedFour$id), ]
 test_that("qcStudbook detects errors in column names", {
-  expect_error(qcStudbook(pedOne))
-  expect_error(qcStudbook(pedOne[ , -1], minParentAge = NULL))
+  expect_error(suppressWarnings(qcStudbook(pedOne)))
+  expect_error(suppressWarnings(qcStudbook(pedOne[ , -1], minParentAge = NULL)))
 })
 test_that("qcStudbook detects missing required column names", {
-  expect_error(qcStudbook(pedOne[ , -3]))
+  expect_error(suppressWarnings(qcStudbook(pedOne[ , -3])))
 })
 test_that("qcStudbook corrects column names", {
-  newPedOne <- qcStudbook(pedOne, minParentAge = NULL)
+  newPedOne <- suppressWarnings(qcStudbook(pedOne, minParentAge = NULL))
   expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen", "birth",
                                    "exit", "age"))
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "d1"]), "F")
@@ -56,23 +56,25 @@ test_that("qcStudbook corrects column names", {
 })
 test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS",
           {
-  newPedTwo <- qcStudbook(pedTwo, minParentAge = NULL)
+  newPedTwo <- suppressWarnings(qcStudbook(pedTwo, minParentAge = NULL))
   expect_equal(newPedTwo$sire[newPedTwo$id == "o1"], "U0001")
   expect_equal(newPedTwo$dam[newPedTwo$id == "o3"], "U0002")
   expect_equal(newPedTwo$sire[newPedTwo$id == "o1"], "U0001")
   expect_true(is.na(newPedTwo$sire[newPedTwo$id == "U0001"]))
           })
 test_that("qcStudbook corrects status", {
-            newPedTwo <- qcStudbook(pedTwo, minParentAge = NULL)
+            newPedTwo <- suppressWarnings(qcStudbook(pedTwo,
+                                                     minParentAge = NULL))
             newPedTwo$status <- as.character(newPedTwo$status)
             expect_equal(newPedTwo$status[newPedTwo$id == "s2"], "ALIVE")
             expect_equal(newPedTwo$status[newPedTwo$id == "d2"], "ALIVE")
             expect_equal(newPedTwo$status[newPedTwo$id == "o1"], "SHIPPED")
           })
 test_that("qcStudbook corrects ancestry", {
-  newPedTwo <- qcStudbook(pedTwo, minParentAge = NULL)
+  newPedTwo <- suppressWarnings(qcStudbook(pedTwo, minParentAge = NULL))
   newPedTwo$ancestry <- as.character(newPedTwo$ancestry)
   expect_equal(newPedTwo$ancestry[newPedTwo$id == "s2"], "HYBRID")
   expect_equal(newPedTwo$ancestry[newPedTwo$id == "d2"], "UNKNOWN")
   expect_equal(newPedTwo$ancestry[newPedTwo$id == "o1"], "OTHER")
 })
+
