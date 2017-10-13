@@ -8,7 +8,7 @@ orderReport(rpt, ped)
 }
 \arguments{
 \item{rpt}{a dataframe with required colnames \code{id}, \code{gu},
-\code{z.scores}, \code{import}, \code{totalOffspring}, which is
+\code{zScores}, \code{import}, \code{totalOffspring}, which is
 a data.frame of results from a genetic value analysis.}
 
 \item{ped}{the pedigree information in datatable format with required

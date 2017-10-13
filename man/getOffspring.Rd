@@ -4,10 +4,10 @@
 \alias{getOffspring}
 \title{Get offspring to corresponding animal IDs provided}
 \usage{
-getOffspring(ped_source_df, ids)
+getOffspring(pedSourceDf, ids)
 }
 \arguments{
-\item{ped_source_df}{dataframe with pedigree structure having at least the
+\item{pedSourceDf}{dataframe with pedigree structure having at least the
 columns id, sire, and dam.}
 
 \item{ids}{character vector of animal IDs}

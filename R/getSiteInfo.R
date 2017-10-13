@@ -18,9 +18,9 @@
 #' @import stringi
 #' @export
 getSiteInfo <- function() {
-  sys_info <- Sys.info()
-  if (stri_detect_fixed(toupper(sys_info[["sysname"]]), "WIND")) {
-    homeDir <- paste0("/Users/", sys_info[["user"]], "/")
+  sysInfo <- Sys.info()
+  if (stri_detect_fixed(toupper(sysInfo[["sysname"]]), "WIND")) {
+    homeDir <- paste0("/Users/", sysInfo[["user"]], "/")
     configFile <- paste0(homeDir, "_nprcmanager_config")
   } else {
     homeDir <- paste0("~/")
@@ -37,14 +37,14 @@ getSiteInfo <- function() {
       queryName = getParamDef(tokenList, "queryName"),
       lkPedColumns = getParamDef(tokenList, "lkPedColumns"),
       mapPedColumns = getParamDef(tokenList, "mapPedColumns"),
-      sysname  = sys_info[["sysname"]],
-      release = sys_info[["release"]],
-      version  = sys_info[["version"]],
-      nodename = sys_info[["nodename"]],
-      machine = sys_info[["machine"]],
-      login = sys_info[["login"]],
-      user = sys_info[["user"]],
-      effective_user = sys_info[["effective_user"]],
+      sysname  = sysInfo[["sysname"]],
+      release = sysInfo[["release"]],
+      version  = sysInfo[["version"]],
+      nodename = sysInfo[["nodename"]],
+      machine = sysInfo[["machine"]],
+      login = sysInfo[["login"]],
+      user = sysInfo[["user"]],
+      effective_user = sysInfo[["effective_user"]],
       homeDir = homeDir,
       configFile = configFile)
   } else {
@@ -58,14 +58,14 @@ getSiteInfo <- function() {
       lkPedColumns = c("Id", "gender", "birth", "death", "lastDayAtCenter",
                        "dam", "sire"),
       mapPedColumns = c("id", "sex", "birth", "death", "exit", "dam", "sire"),
-      sysname  = sys_info[["sysname"]],
-      release = sys_info[["release"]],
-      version  = sys_info[["version"]],
-      nodename = sys_info[["nodename"]],
-      machine = sys_info[["machine"]],
-      login = sys_info[["login"]],
-      user = sys_info[["user"]],
-      effective_user = sys_info[["effective_user"]],
+      sysname  = sysInfo[["sysname"]],
+      release = sysInfo[["release"]],
+      version  = sysInfo[["version"]],
+      nodename = sysInfo[["nodename"]],
+      machine = sysInfo[["machine"]],
+      login = sysInfo[["login"]],
+      user = sysInfo[["user"]],
+      effective_user = sysInfo[["effective_user"]],
       homeDir = homeDir,
       configFile = configFile)
   }

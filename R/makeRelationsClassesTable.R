@@ -16,8 +16,7 @@ makeRelationClasseTable <- function(kin) {
   kin <- kin[kin$relation != "Self", ]
   r <- as.data.frame(table(kin$relation))
   colnames(r) <- c("Relationship Class", "Frequency")
-  #r$Frequency <- r$Frequency/2
 
   rel.class <- rel.class[rel.class %in% r[, "Relationship Class"]]
-  return(r[match(rel.class, r[, "Relationship Class"]),])
+  return(r[match(rel.class, r[, "Relationship Class"]), ])
 }

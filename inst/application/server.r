@@ -362,7 +362,7 @@ shinyServer(function(input, output, session) {
 
     g <- gvaView()
     g$indivMeanKin <- round(g$indivMeanKin, 5)
-    g$z.scores <- round(g$z.scores, 2)
+    g$zScores <- round(g$z.scores, 2)
     g$gu <- round(g$gu, 5)
     g <- toCharacter(g)
     names(g) <- headerDisplayNames(names(g))
@@ -493,7 +493,7 @@ shinyServer(function(input, output, session) {
     if (is.null(rpt())) {
       return(NULL)
     }
-    z <- rpt()[, "z.scores"]
+    z <- rpt()[, "zScores"]
     avg <- mean(z, na.rm = TRUE)
     std.dev <- sd(z, na.rm = TRUE)
 
@@ -725,7 +725,7 @@ shinyServer(function(input, output, session) {
       return(gp[order(gp$`Ego ID`), , drop = FALSE])
     }
   })
-  bg_groupKin_view <- reactive({
+  bgGroupKinView <- reactive({
     if (is.null(bg()$groupKin)) {
       return(NULL)
     }
@@ -740,17 +740,17 @@ shinyServer(function(input, output, session) {
     }
   })
 
-  output$breeding_groups <- DT::renderDataTable(DT::datatable({
+  output$breedingGroups <- DT::renderDataTable(DT::datatable({
     if (is.null(bg())) {
       return(NULL)
     }
     return(bgGroupView())
   }))
-  output$breeding_groupKin <- DT::renderDataTable(DT::datatable({
+  output$breedingGroupKin <- DT::renderDataTable(DT::datatable({
     if (is.null(bg()$groupKin)) {
       return(NULL)
     }
-    return(bg_groupKin_view())
+    return(bgGroupKinView())
   }))
 
   # Download handler for the current group
@@ -767,7 +767,8 @@ shinyServer(function(input, output, session) {
     filename = getDatedFilename(paste0("GroupKin-", input$viewGrp,
                                          ".csv", sep = "")),
     content = function(file) {
-      write.csv(bg_groupKin_view(), file, na = "", row.names = TRUE)},
+      write.csv(bgGroupKinView(), file, na = "", row.names = TRUE)
+    },
     contentType = "text/csv"
   )
 

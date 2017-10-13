@@ -24,9 +24,9 @@
 #' @export
 makesLoop <- function(id, ptree) {
 
-  s_anc <- getAncestors(ptree[[id]]$sire, ptree)
-  d_anc <- getAncestors(ptree[[id]]$dam, ptree)
-  overlap <- intersect(s_anc, d_anc)
+  sAnc <- getAncestors(ptree[[id]]$sire, ptree)
+  dAnc <- getAncestors(ptree[[id]]$dam, ptree)
+  overlap <- intersect(sAnc, dAnc)
 
   return(length(overlap) > 0)
 }

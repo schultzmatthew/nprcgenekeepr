@@ -4,7 +4,7 @@
 \alias{offspringCounts}
 \title{Finds the total number of offspring for each animal in the pedigree}
 \usage{
-offspringCounts(probands, ped, consider.pop = FALSE)
+offspringCounts(probands, ped, considerPop = FALSE)
 }
 \arguments{
 \item{probands}{character vector of egos for which offspring should be
@@ -14,13 +14,13 @@ counted.}
 (req. fields: id, sire, dam, gen, population).
 This is the complete pedigree.}
 
-\item{consider.pop}{logical value indication whether or not the number of
+\item{considerPop}{logical value indication whether or not the number of
 offspring that are part of the focal population are to be counted?
 Default is \code{FALSE}.}
 }
 \value{
 A dataframe with at least \code{id} and \code{totalOffspring}
-required and \code{living.offspring} optional.
+required and \code{livingOffspring} optional.
 }
 \description{
 Optionally find the number that are part of the population of interest.

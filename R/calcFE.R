@@ -42,5 +42,5 @@ calcFE <- function(ped) {
   d <- d[currentDesc, ]
   p <- colMeans(d)
 
-  return(1 / sum(p^2))
+  return(1 / sum(p ^ 2))
 }

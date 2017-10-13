@@ -110,8 +110,8 @@ uitpBreedingGroupFormation <-
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
       ),
-      DT::dataTableOutput("breeding_groups"),
-      DT::dataTableOutput("breeding_groupKin")
+      DT::dataTableOutput("breedingGroups"),
+      DT::dataTableOutput("breedingGroupKin")
       )
 
     )

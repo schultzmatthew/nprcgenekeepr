@@ -156,11 +156,11 @@ qcStudbook <- function(sb, minParentAge = 2) {
   names(sb) <- headers
   ## An age column was required, however, code below creates it if it does
   ## not exists. Thus, it is not required as a prerequisit.
-  required_cols <- c("id", "sire", "dam", "sex", "birth")
-  required <- required_cols %in% headers
+  requiredCols <- c("id", "sire", "dam", "sex", "birth")
+  required <- requiredCols %in% headers
 
   if (!all(required)) {
-    stop(paste0("Required field missing (", paste0(required_cols[!required],
+    stop(paste0("Required field missing (", paste0(requiredCols[!required],
                                                    collapse = ", "), ")."))
   }
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))

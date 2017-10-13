@@ -116,7 +116,6 @@ uitpInput <-
         ),
         actionButton("getData", "Read files now"),
         checkboxInput("debugger", label = "Debug on", value = FALSE)#,
-        #verbatimTextOutput("dBug")
         ),
       # Main Panel
       mainPanel(#style = "margin-left:425px;padding:10px;",

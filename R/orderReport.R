@@ -7,7 +7,7 @@
 #' according to the ranking scheme we have developed.
 #'
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
-#' \code{z.scores}, \code{import}, \code{totalOffspring}, which is
+#' \code{zScores}, \code{import}, \code{totalOffspring}, which is
 #' a data.frame of results from a genetic value analysis.
 #' @param ped the pedigree information in datatable format with required
 #' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
@@ -57,23 +57,23 @@ orderReport <- function(rpt, ped) {
 
   # subjects with > 10% genome uniqueness
   high.gu <- rpt[(rpt$gu > 10), ]
-  finalRpt$high.gu <- high.gu[with(high.gu, order(-trunc(gu), z.scores)), ]
+  finalRpt$high.gu <- high.gu[with(high.gu, order(-trunc(gu), zScores)), ]
   rpt <- rpt[!(rpt$gu > 10), ]
 
   # subjects with <= 10% genome uniqueness and <= 0.25 z-score
-  low.mk <- rpt[(rpt$z.scores <= 0.25), ]
-  finalRpt$low.mk <- low.mk[with(low.mk, order(z.scores)), ]
+  low.mk <- rpt[(rpt$zScores <= 0.25), ]
+  finalRpt$low.mk <- low.mk[with(low.mk, order(zScores)), ]
 
-  rpt <- rpt[!(rpt$z.scores <= 0.25), ]
+  rpt <- rpt[!(rpt$zScores <= 0.25), ]
 
   # subjects with <= 10% genome uniqueness and > 0.25 z-score
-  finalRpt$low.val <- rpt[with(rpt, order(z.scores)), ]
+  finalRpt$lowVal <- rpt[with(rpt, order(zScores)), ]
 
-  include.cols <- intersect(c("imports", "high.gu", "low.mk",
-                              "low.val", "no.parentage"),
+  includeCols <- intersect(c("imports", "highGu", "lowMk",
+                              "lowVal", "noParentage"),
                             names(finalRpt))
 
-  finalRpt <- finalRpt[include.cols]
+  finalRpt <- finalRpt[includeCols]
   finalRpt <- rankSubjects(finalRpt)
   finalRpt <- do.call("rbind", finalRpt)
   rownames(finalRpt) <- seq(nrow(finalRpt))

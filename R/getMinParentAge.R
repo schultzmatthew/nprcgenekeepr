@@ -8,7 +8,9 @@
 #' @import shiny
 #' @export
 getMinParentAge <- function(input) {
-  minParentAge <- as.numeric(renderText({input$minParentAge}))
+  minParentAge <- as.numeric(renderText({
+    input$minParentAge
+  }))
   if (minParentAge < 0)
     stop("Minimum Parent Age must be >= 0.")
   else {

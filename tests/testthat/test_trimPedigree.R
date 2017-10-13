@@ -3,16 +3,16 @@ library(testthat)
 
 data("smallPed")
 ped <- smallPed
-trim1 <- trimPedigree(c("C","K", "L", "D", "E"), ped,
+trim1 <- trimPedigree(c("C", "K", "L", "D", "E"), ped,
                       removeUninformative = FALSE,
                       addBackParents = FALSE)
-trim2 <- trimPedigree(c("C","K", "L", "D", "E"), ped,
+trim2 <- trimPedigree(c("C", "K", "L", "D", "E"), ped,
                       removeUninformative = TRUE,
                       addBackParents = FALSE)
-trim3 <- trimPedigree(c("C","K", "L", "D", "E"), ped,
+trim3 <- trimPedigree(c("C", "K", "L", "D", "E"), ped,
                       removeUninformative = FALSE,
                       addBackParents = TRUE)
-trim4 <- trimPedigree(c("C","K", "L", "D", "E"), ped,
+trim4 <- trimPedigree(c("C", "K", "L", "D", "E"), ped,
                       removeUninformative = TRUE,
                       addBackParents = TRUE)
 eTrim1 <- c("A", "B", "C", "D", "E", "K", "L", "Q")

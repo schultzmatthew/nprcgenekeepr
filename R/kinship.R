@@ -83,7 +83,7 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
     for (i in indx) {
       mom <- mrow[i]
       dad <- drow[i]
-      kmat[i, ]  <- kmat[, i] <- (kmat[mom,] + kmat[dad, ]) / 2
+      kmat[i, ]  <- kmat[, i] <- (kmat[mom, ] + kmat[dad, ]) / 2
       kmat[i, i] <- (1 + kmat[mom, dad]) / 2
     }
   }

@@ -44,7 +44,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   # Calculate the mean kinship, and convert to z-scores
   indivMeanKin <- meanKinship(kmat)
   indivMeanKin <- indivMeanKin[probands] # making sure the order is correct
-  z.scores <- scale(indivMeanKin)
+  zScores <- scale(indivMeanKin)
 
   # Perform the gene drop simulation
   alleles <- geneDrop(ids = ped$id, sires = ped$sire, dams = ped$dam,
@@ -66,7 +66,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   }
 
   # Get a data.frame of offspring counts for the probands
-  offspring <- offspringCounts(probands, ped, consider.pop = TRUE)
+  offspring <- offspringCounts(probands, ped, considerPop = TRUE)
 
   include.cols <- intersect(getIncludeColumns(), names(ped))
 
@@ -89,7 +89,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   females <- founders[(founders$sex == "F") & !grepl("^U", founders$id,
                                                      ignore.case = TRUE), ]
 
-  finalData <- cbind(demographics, indivMeanKin, z.scores, gu, offspring)
+  finalData <- cbind(demographics, indivMeanKin, zScores, gu, offspring)
   finalData <- list(report = orderReport(finalData, ped),
                     kinship = kmat,
                     gu = gu,

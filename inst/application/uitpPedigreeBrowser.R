@@ -41,6 +41,5 @@ uitpPedigreeBrowser <-
         )
     ),
     hr(),
-    #DT::dataTableOutput("pedigree",width = "100%")
     DT::dataTableOutput("pedigree")
     )
