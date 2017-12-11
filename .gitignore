@@ -13,3 +13,4 @@ R/depricated_gene.drop.R
 vignettes/*.html
 vignettes/*.md
 vignettes/Development_Plans.R
+inst/extdata/PSCPO*.*
