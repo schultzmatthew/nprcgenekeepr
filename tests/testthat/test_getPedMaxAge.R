@@ -12,7 +12,7 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                     paste0(sample(1:12, 8, replace = TRUE), "-",
                            sample(1:28, 8, replace = TRUE), "-",
                            sample(seq(0, 15, by = 3), 8, replace = TRUE) +
-                             2000)),
+                             2000), tz = "America/Chicago"),
                   stringsAsFactors = FALSE, check.names = FALSE)
 pedOne$age <- (mdy("10-05-2017", tz = "America/Chicago") -
                  as.POSIXct(pedOne$birth)) / dyears(1)
