@@ -13,12 +13,11 @@ It is now managed and maintained as a joint effort between ONPRC and Southwest N
 
 At present, the application supports 5 functions:
 
-    1. Quality control of uploaded studbooks
-    2. Creation of pedigrees from a list of potential breeders and LabKey EHR 
-    integration
-    2. Generation of Genetic Value Analysis Reports
-    3. Creation of potential breeding groups
-    4. Display of an age by sex pyramid plot
+    1. Quality control of uploaded studbooks  
+    2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
+    3. Generation of Genetic Value Analysis Reports  
+    4. Creation of potential breeding groups  
+    5. Display of an age by sex pyramid plot  
 
 **For more information see:**
 A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*) Vinson, A ; Raboin, Mj *Journal Of The American Association For Laboratory Animal Science*, 2015 Nov, Vol.54(6), pp.700-707 \[Peer Reviewed Journal\]
