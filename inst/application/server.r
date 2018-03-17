@@ -8,7 +8,7 @@ shinyServer(function(input, output, session) {
   #############################################################################
   # Functions for handling initial pedigree upload and QC
 
-  # Load/QC the pedigree once a file has been specified
+  # Load and QA-QC the pedigree once a file has been specified
   sb <- reactive({
     input$getData # This button starts it all
     if (input$debugger) {
@@ -57,6 +57,9 @@ shinyServer(function(input, output, session) {
       } else {
         stop("Data source was not defined.")
       }
+      # The minParentAge -- numeric values to set the minimum age in years for
+      # an animal to have an offspring. Defaults to 2 years. The check is not
+      # performed for animals with missing birth dates. See qcStudbook().
       flog.debug("sep: %s", sep, name = "nprcmanager")
       minParentAge <- renderText(input$minParentAge)
       flog.debug(paste0("minParentAge: ",
