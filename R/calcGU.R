@@ -17,6 +17,7 @@
 #' to the population.
 #' The function below calculates genome uniqueness for all living animals
 #' and considers all alleles. It does not ignore living founders and their
+#' alleles.
 #'
 #' Our results for genome uniqueness will, therefore differ slightly from those
 #' returned by Pedscope. Pedscope calculates genome uniqueness only for
