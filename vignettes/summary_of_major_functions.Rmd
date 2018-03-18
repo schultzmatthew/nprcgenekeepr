@@ -12,13 +12,20 @@ information of varying quality. The quality control functions
 of the toolkit check to ensure all animals listed as parents
 have their own line entries, all parents have
 the appropriate sex listed, no animals are
-listed as both a sire and a dam, duplicate entries are removed,
+listed as both a sire and a dam, duplicate entries are removed, 
+pedigree generation numbers are added,
 and all dates are valid dates. 
 In addition, exit dates are
 added if possible and are consistant with other information such as 
-departure dates and death dates, parents with ages below a user selected
-threshold are identified, pedigree generation numbers are added, current
-ages of animals that are still alive are added, .
+departure dates and death dates. 
+Current ages of animals that are still alive are added.
+
+Parents with ages below a user selected threshold are identified.
+A minimum parent age in years is set by the user
+and is used to ensure each parent is at least that age on the birth date of
+an offspring. 
+The minimum parent age defaults to 2 years. 
+This check is not performed for animals with missing birth dates.
 
 Further quality control measures may be added later, such as
 checking to ensure parents' birthdates precede their children's.
