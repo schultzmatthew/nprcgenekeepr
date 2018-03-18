@@ -50,7 +50,7 @@ uitpGeneticValueAnalysis <-
         br(),
         hr(),
         helpText(h4("Results:")),
-        helpText("Enter IDs of specific animals to be viewed:"),
+        helpText("Enter IDs of animals to be viewed (separate with comma, semicolon, tab or return):"),
         helpText("(Leave blank to view all)"),
         div(
           style = "display:inline-block;width:250px;padding:10px",

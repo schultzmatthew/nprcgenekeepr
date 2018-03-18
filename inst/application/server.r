@@ -349,7 +349,7 @@ shinyServer(function(input, output, session) {
     if (input$view == 0) {
       return(rpt())
     } else{
-      ids <- unlist(strsplit(isolate(input$viewIds), "[ \t\n]"))
+      ids <- unlist(strsplit(isolate(input$viewIds), "[ ,;\t\n]"))
       if (length(ids) == 0) {
         return(rpt())
       } else{
