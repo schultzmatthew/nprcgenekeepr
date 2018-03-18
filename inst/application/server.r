@@ -365,7 +365,7 @@ shinyServer(function(input, output, session) {
 
     g <- gvaView()
     g$indivMeanKin <- round(g$indivMeanKin, 5)
-    g$zScores <- round(g$z.scores, 2)
+    g$zScores <- round(g$zScores, 2)
     g$gu <- round(g$gu, 5)
     g <- toCharacter(g)
     names(g) <- headerDisplayNames(names(g))
