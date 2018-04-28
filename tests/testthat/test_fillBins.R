@@ -17,6 +17,6 @@ pedOne$age <- (now() - as.POSIXct(pedOne$birth)) / dyears(1)
 test_that("fillBins adds correct number to each bin", {
   lower_ages <- seq(0, 20, by = 5)
   upper_ages <- NULL
-  expect_equal(fillBins(pedOne, lower_ages)$males, c(0, 0, 3, 0, 0))
+  expect_equal(fillBins(pedOne, lower_ages)$males, c(0, 0, 2, 1, 0))
   expect_equal(fillBins(pedOne, lower_ages)$females, c(2, 2, 0, 1, 0))
 })
