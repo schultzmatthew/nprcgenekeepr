@@ -33,6 +33,8 @@ headerDisplayNames <- function(headers) {
     pedNum = "Pedigree #",
     spf = "SPF",
     condition = "Condition",
+    first = "First Allele Code",
+    second = "Second Allele Code",
     first_name = "First Allele",
     second_name = "Second Allele"
   )
