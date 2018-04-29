@@ -1,5 +1,6 @@
 `%then%` <- shiny:::`%OR%`
 library(futile.logger)
+
 shinyServer(function(input, output, session) {
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
@@ -7,9 +8,8 @@ shinyServer(function(input, output, session) {
 
   #############################################################################
   # Functions for handling initial pedigree upload and QC
-
-  # Load and QA-QC the pedigree once a file has been specified
-  sb <- reactive({
+#  source("../application/sreactiveGetSelectedBreeders.R")
+  getSelectedBreeders <- reactive({
     input$getData # This button starts it all
     if (input$debugger) {
       flog.threshold(DEBUG, name = "nprcmanager")
@@ -19,10 +19,10 @@ shinyServer(function(input, output, session) {
 
     isolate({
       flog.debug(paste0("1st. input$dataSource: ", input$dataSource,
-                         "; input$sepOne: ", input$sepOne,
-                         "; input$sepTwo: ", input$sepTwo,
-                         "; input$sepThree: ", input$sepThree),
-                  name = "nprcmanager")
+                        "; input$sepOne: ", input$sepOne,
+                        "; input$sepTwo: ", input$sepTwo,
+                        "; input$sepThree: ", input$sepThree),
+                 name = "nprcmanager")
       if (input$dataSource == "pedFile") {
         sep <- input$sepOne
         pedigreeFile <- input$pedigreeFileOne
@@ -89,7 +89,7 @@ shinyServer(function(input, output, session) {
                    name = "nprcmanager")
         d <- getBreederPed(pedigreeFile$datapath, sep = sep)
         flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
-                           "; contents rows: ", nrow(d),
+                          "; contents rows: ", nrow(d),
                           ", columns: ", ncol(d), "; col names: '",
                           paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
@@ -145,27 +145,27 @@ shinyServer(function(input, output, session) {
         )
         d <- addGenotype(d, genotype)
         flog.debug(paste0("After addGenotype - genotypeFile$name: ",
-                   genotypeFile$name,
-                   "; contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: '",
-                   paste(names(d), collapse = "', '"), "'", sep = ""),
+                          genotypeFile$name,
+                          "; contents rows: ", nrow(d),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
       } else {
         flog.debug(paste0("Setting genotype to NULL."),
-            name = "nprcmanager")
+                   name = "nprcmanager")
         genotype <- NULL
       }
       flog.debug(paste0("Data files may have been read.\n",
-                 "contents rows: ", nrow(d),
-                 ", columns: ", ncol(d), "; col names: '",
-                 paste(names(d), collapse = "', '"), "'", sep = ""),
+                        "contents rows: ", nrow(d),
+                        ", columns: ", ncol(d), "; col names: '",
+                        paste(names(d), collapse = "', '"), "'", sep = ""),
                  name = "nprcmanager")
 
       if (!is.null(minParentAge)) {
         flog.debug(paste0("Before qcStudbook.\n",
-                   "contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: '",
-                   paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "contents rows: ", nrow(d),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
         d <- tryCatch(qcStudbook(d, minParentAge),
                       warning = function(cond) {
@@ -176,48 +176,56 @@ shinyServer(function(input, output, session) {
                       }
         )
         flog.debug(paste0("After qcStudbook.\n",
-                   "contents rows: ", nrow(d),
-                   ", columns: ", ncol(d), "; col names: '",
-                   paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "contents rows: ", nrow(d),
+                          ", columns: ", ncol(d), "; col names: '",
+                          paste(names(d), collapse = "', '"), "'", sep = ""),
                    name = "nprcmanager")
 
       }
       flog.debug(paste0("before validate()."),
-          name = "nprcmanager")
-   validate(need(!is.null(minParentAge),
-                  paste0("   Error uploading data. ",
-                         geterrmessage())) %then%
-               need(!is.null(d), paste0("   Error uploading data. ",
-                                        geterrmessage()))
-    )
-    if (!is.null(d)) {
-      updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
-    }
-    flog.debug(paste0("After validate(); nrow(d) = ", nrow(d),
-               "; ncol(d): ", ncol(d)), name = "nprcmanager")
-    d
+                 name = "nprcmanager")
+      validate(need(!is.null(minParentAge),
+                    paste0("   Error uploading data. ",
+                           geterrmessage())) %then%
+                 need(!is.null(d), paste0("   Error uploading data. ",
+                                          geterrmessage()))
+      )
+      if (!is.null(d)) {
+        updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
+      }
+      flog.debug(paste0("After validate(); nrow(d) = ", nrow(d),
+                        "; ncol(d): ", ncol(d)), name = "nprcmanager")
+      d
     })
   })
 
-  ped <- reactive({
+  # Load and QA-QC the pedigree once a file has been specified
+
+  getPed <- reactive({
     flog.debug(paste0("In ped <- reactive()\n"), name = "nprcmanager")
-    if (is.null(sb())) {
+    if (is.null(getSelectedBreeders())) {
       return(NULL)
     }
-    flog.debug(paste0("In ped <- reactive() and !is.null(sb()) == TRUE\n"),
+    flog.debug(paste0("In ped <- reactive() and !is.null(getSelectedBreeders()) == TRUE\n"),
         name = "nprcmanager")
 
-    p <- sb()
+    p <- getSelectedBreeders()
     flog.debug(paste0("column names: '", paste(names(p), collapse = "', '"),
                       "'"), name = "nprcmanager")
-
+    flog.debug(" - after p <- getSelectedBreeders() before tryCatch with resetPopulation.",
+               name = "nprcmanager")
     p <- tryCatch({
-        p <- sb()
+        p <- getSelectedBreeders()
         flog.debug(paste0("column names: '", paste(names(p),
                                                    collapse = "', '"),
                           "'"), name = "nprcmanager")
         flog.debug(" - in tryCatch before resetPopulation.",
             name = "nprcmanager")
+        ## resetPopulation adds the population column if not already present
+        ## resetPopulation indicates all id to be in the population if
+        ##  specifyPopulation() is NULL
+        ## otherwise ids returned by specifyPopulation() are set to TRUE and
+        ##  others become FALSE
         p <- resetPopulation(p, specifyPopulation())
         flog.debug(paste0("column names: '", paste0(names(p),
                                                     collapse = "', '"),
@@ -235,7 +243,7 @@ shinyServer(function(input, output, session) {
               name = "nprcmanager")
         }
 
-        p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
+        p["pedNum"] <- findPedigreeNumber(p$id, p$sire, p$dam)
         p["gen"] <- findGeneration(p$id, p$sire, p$dam)
 
         p
@@ -253,19 +261,19 @@ shinyServer(function(input, output, session) {
 
   # Changing the active tab to the "Pedigree Browser" tab
   observe({
-    if (!is.null(sb())) {
+    if (!is.null(getSelectedBreeders())) {
       updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
     }
   })
 
   # Creating the pedigree table to be displayed on the Pedigree Browser tab
   output$pedigree <- DT::renderDataTable(DT::datatable({
-    if (is.null(ped())) {
+    if (is.null(getPed())) {
       return(NULL)
     }
 
     # convert columns to "character" so xtables displays them properly
-    p <- toCharacter(ped())
+    p <- toCharacter(getPed())
 
     if (!input$uid) {
       p <- p[!grepl("^U", p$id, ignore.case = TRUE), ]
@@ -295,19 +303,19 @@ shinyServer(function(input, output, session) {
       paste("Pedigree", ".csv", sep = "")
     },
     content = function(file) {
-      write.csv(ped(), file, na = "", row.names = FALSE)
+      write.csv(getPed(), file, na = "", row.names = FALSE)
     }
   )
   #############################################################################
   # Functions for handling the genetic value analysis generation
 
   geneticValue <- eventReactive(input$analysis, {
-    if (is.null(ped())) {
+    if (is.null(getPed())) {
       return(NULL)
     }
     # Ensuring the pedigree has been trimmed
     # (if there are too many animals, the program will crash)
-    p <- ped()
+    p <- getPed()
     probands <- p$id[p$population]
     p <- trimPedigree(probands, p, removeUninformative = FALSE,
                       addBackParents = FALSE)
@@ -546,7 +554,7 @@ shinyServer(function(input, output, session) {
         progress$inc(amount = 1 / j)
       }
 
-      kin <- convertRelationships(kmat(), ped(),
+      kin <- convertRelationships(kmat(), getPed(),
                                   updateProgress = updateProgress)
 
       progress$set(message = "Preparing Table", value = 1)
@@ -564,7 +572,7 @@ shinyServer(function(input, output, session) {
       paste("FirstOrder", ".csv", sep = "")
     },
     content = function(file) {
-      p <- ped()
+      p <- getPed()
       r <- countFirstOrder(p, ids = p$id[p$population])
       write.csv(r, file, na = "")
     }
@@ -575,10 +583,10 @@ shinyServer(function(input, output, session) {
       paste("Relations", ".csv", sep = "")
     },
     content = function(file) {
-      p <- ped()
+      p <- getPed()
       probands <- p$id[p$population]
 
-      r <- convertRelationships(kmat(), ped(), ids = probands)
+      r <- convertRelationships(kmat(), getPed(), ids = probands)
       write.csv()
     }
   )
@@ -591,7 +599,7 @@ shinyServer(function(input, output, session) {
       return(NULL)
     }
 
-    p <- ped()
+    p <- getPed()
     ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
     currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
 
@@ -678,7 +686,7 @@ shinyServer(function(input, output, session) {
   })
 
   getGrpIds <- reactive({
-    p <- ped()
+    p <- getPed()
     if ("group" %in% colnames(p)) {
       return(p$id[p$group])
     } else{
@@ -778,6 +786,6 @@ shinyServer(function(input, output, session) {
   #############################################################################
   # Function to handle display of pyramid plot
   flog.debug("before renderPlot(getPyramidPlot(ped)))", name = "nprcmanager")
-  output$pyramidPlot <- renderPlot(getPyramidPlot(ped()))
+  output$pyramidPlot <- renderPlot(getPyramidPlot(getPed()))
   flog.debug("after renderPlot(getPyramidPlot(ped)))", name = "nprcmanager")
 })
