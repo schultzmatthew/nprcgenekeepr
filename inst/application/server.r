@@ -81,20 +81,22 @@ shinyServer(function(input, output, session) {
       if (is.null(pedigreeFile)) {
         return(NULL)
       }
-      flog.debug(paste0("before read.csv input$dataSource: ", input$dataSource),
+      flog.debug(paste0("before read.csv input$dataSource: ",
+                        input$dataSource),
                  name = "nprcmanager")
       # Load pedigree table
       if (input$dataSource == "breeders") {
         flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
                    name = "nprcmanager")
-        d <- getBreederPed(pedigreeFile$datapath, sep = sep)
+        breederPed <- getBreederPed(pedigreeFile$datapath, sep = sep)
         flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
-                          "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "; contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
       } else {
-        d <- read.csv(pedigreeFile$datapath,
+        breederPed <- read.csv(pedigreeFile$datapath,
                       header = TRUE,
                       sep = sep,
                       stringsAsFactors = FALSE,
@@ -102,9 +104,10 @@ shinyServer(function(input, output, session) {
                       check.names = FALSE)
         flog.debug(paste0("after read.csv pedigreeFile$name: ",
                           pedigreeFile$name,
-                          "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "; contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
       }
 
@@ -114,9 +117,10 @@ shinyServer(function(input, output, session) {
         # Load pedigree table
         flog.debug(paste0("before read.csv genotypeFile$datapath: ",
                           genotypeFile$datapath,
-                          "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "; contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
         genotype <- read.csv(genotypeFile$datapath,
                              header = TRUE,
@@ -143,12 +147,13 @@ shinyServer(function(input, output, session) {
                                           name = "nprcmanager")
                              }
         )
-        d <- addGenotype(d, genotype)
+        breederPed <- addGenotype(breederPed, genotype)
         flog.debug(paste0("After addGenotype - genotypeFile$name: ",
                           genotypeFile$name,
-                          "; contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "; contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
       } else {
         flog.debug(paste0("Setting genotype to NULL."),
@@ -156,18 +161,20 @@ shinyServer(function(input, output, session) {
         genotype <- NULL
       }
       flog.debug(paste0("Data files may have been read.\n",
-                        "contents rows: ", nrow(d),
-                        ", columns: ", ncol(d), "; col names: '",
-                        paste(names(d), collapse = "', '"), "'", sep = ""),
+                        "contents rows: ", nrow(breederPed),
+                        ", columns: ", ncol(breederPed), "; col names: '",
+                        paste(names(breederPed), collapse = "', '"), "'",
+                        sep = ""),
                  name = "nprcmanager")
 
       if (!is.null(minParentAge)) {
         flog.debug(paste0("Before qcStudbook.\n",
-                          "contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
-        d <- tryCatch(qcStudbook(d, minParentAge),
+        breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
                       warning = function(cond) {
                         return(NULL)
                       },
@@ -176,9 +183,10 @@ shinyServer(function(input, output, session) {
                       }
         )
         flog.debug(paste0("After qcStudbook.\n",
-                          "contents rows: ", nrow(d),
-                          ", columns: ", ncol(d), "; col names: '",
-                          paste(names(d), collapse = "', '"), "'", sep = ""),
+                          "contents rows: ", nrow(breederPed),
+                          ", columns: ", ncol(breederPed), "; col names: '",
+                          paste(names(breederPed), collapse = "', '"), "'",
+                          sep = ""),
                    name = "nprcmanager")
 
       }
@@ -187,15 +195,16 @@ shinyServer(function(input, output, session) {
       validate(need(!is.null(minParentAge),
                     paste0("   Error uploading data. ",
                            geterrmessage())) %then%
-                 need(!is.null(d), paste0("   Error uploading data. ",
+                 need(!is.null(breederPed), paste0("   Error uploading data. ",
                                           geterrmessage()))
       )
-      if (!is.null(d)) {
+      if (!is.null(breederPed)) {
         updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
       }
-      flog.debug(paste0("After validate(); nrow(d) = ", nrow(d),
-                        "; ncol(d): ", ncol(d)), name = "nprcmanager")
-      d
+      flog.debug(paste0("After validate(); nrow(breederPed) = ",
+                        nrow(breederPed), "; ncol(breederPed): ",
+                        ncol(breederPed)), name = "nprcmanager")
+      breederPed
     })
   })
 
@@ -206,17 +215,18 @@ shinyServer(function(input, output, session) {
     if (is.null(getSelectedBreeders())) {
       return(NULL)
     }
-    flog.debug(paste0("In ped <- reactive() and !is.null(getSelectedBreeders()) == TRUE\n"),
+    flog.debug(paste0("In ped <- reactive() and ",
+                      "!is.null(getSelectedBreeders()) == TRUE\n"),
         name = "nprcmanager")
 
-    p <- getSelectedBreeders()
-    flog.debug(paste0("column names: '", paste(names(p), collapse = "', '"),
+    ped <- getSelectedBreeders()
+    flog.debug(paste0("column names: '", paste(names(ped), collapse = "', '"),
                       "'"), name = "nprcmanager")
-    flog.debug(" - after p <- getSelectedBreeders() before tryCatch with resetPopulation.",
-               name = "nprcmanager")
-    p <- tryCatch({
-        p <- getSelectedBreeders()
-        flog.debug(paste0("column names: '", paste(names(p),
+    flog.debug(" - after ped <- getSelectedBreeders() before tryCatch with ",
+               "resetPopulation.", name = "nprcmanager")
+    ped <- tryCatch({
+        ped <- getSelectedBreeders()
+        flog.debug(paste0("column names: '", paste(names(ped),
                                                    collapse = "', '"),
                           "'"), name = "nprcmanager")
         flog.debug(" - in tryCatch before resetPopulation.",
@@ -226,37 +236,37 @@ shinyServer(function(input, output, session) {
         ##  specifyPopulation() is NULL
         ## otherwise ids returned by specifyPopulation() are set to TRUE and
         ##  others become FALSE
-        p <- resetPopulation(p, specifyPopulation())
-        flog.debug(paste0("column names: '", paste0(names(p),
+        ped <- resetPopulation(ped, specifyPopulation())
+        flog.debug(paste0("column names: '", paste0(names(ped),
                                                     collapse = "', '"),
                           "'"), name = "nprcmanager")
         flog.debug(paste0("resetPopulation() called\n"),
             name = "nprcmanager")
 
         if (input$trim) {
-          probands <- p$id[p$population]
-          p <- trimPedigree(probands, p, removeUninformative = FALSE,
+          probands <- ped$id[ped$population]
+          ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                             addBackParents = FALSE)
-          #p <- trimPedigree(probands, p, removeUninformative = TRUE,
+          #ped <- trimPedigree(probands, ped, removeUninformative = TRUE,
           #                  addBackParents = TRUE)
           flog.debug(paste0("trimPedigree() called\n"),
               name = "nprcmanager")
         }
 
-        p["pedNum"] <- findPedigreeNumber(p$id, p$sire, p$dam)
-        p["gen"] <- findGeneration(p$id, p$sire, p$dam)
+        ped["pedNum"] <- findPedigreeNumber(ped$id, ped$sire, ped$dam)
+        ped["gen"] <- findGeneration(ped$id, ped$sire, ped$dam)
 
-        p
+        ped
       },
       error = function(cond) {
         return(FALSE)
       })
 
     validate(
-      need(p, geterrmessage())
+      need(ped, geterrmessage())
     )
 
-    return(p)
+    return(ped)
   })
 
   # Changing the active tab to the "Pedigree Browser" tab
@@ -273,26 +283,26 @@ shinyServer(function(input, output, session) {
     }
 
     # convert columns to "character" so xtables displays them properly
-    p <- toCharacter(getPed())
+    ped <- toCharacter(getPed())
 
     if (!input$uid) {
-      p <- p[!grepl("^U", p$id, ignore.case = TRUE), ]
-      p$sire[grepl("^U", p$sire, ignore.case = TRUE)] <- NA
-      p$dam[grepl("^U", p$dam, ignore.case = TRUE)] <- NA
+      ped <- ped[!grepl("^U", ped$id, ignore.case = TRUE), ]
+      ped$sire[grepl("^U", ped$sire, ignore.case = TRUE)] <- NA
+      ped$dam[grepl("^U", ped$dam, ignore.case = TRUE)] <- NA
     }
 
-    names(p) <- headerDisplayNames(names(p))
+    names(ped) <- headerDisplayNames(names(ped))
 
-    p
+    ped
   }))
 
   specifyPopulation <- eventReactive(input$specifyPop, {
-    p <- unlist(strsplit(input$populationIds, "[ \t\n]"))
+    ped <- unlist(strsplit(input$populationIds, "[ \t\n]"))
 
-    if (length(p) == 0) {
+    if (length(ped) == 0) {
       return(NULL)
     } else{
-      return(p)
+      return(ped)
     }
   },
   ignoreNULL = FALSE)
@@ -315,9 +325,9 @@ shinyServer(function(input, output, session) {
     }
     # Ensuring the pedigree has been trimmed
     # (if there are too many animals, the program will crash)
-    p <- getPed()
-    probands <- p$id[p$population]
-    p <- trimPedigree(probands, p, removeUninformative = FALSE,
+    ped <- getPed()
+    probands <- ped$id[ped$population]
+    ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                       addBackParents = FALSE)
 
     validate(
@@ -336,7 +346,7 @@ shinyServer(function(input, output, session) {
       }
     }
     #
-    return(reportGV(p, gu.iter = input$iterations,
+    return(reportGV(ped, gu.iter = input$iterations,
                     gu.thresh = as.integer(input$threshold),
                     byID = TRUE,
                     updateProgress = updateProgress))
@@ -572,8 +582,8 @@ shinyServer(function(input, output, session) {
       paste("FirstOrder", ".csv", sep = "")
     },
     content = function(file) {
-      p <- getPed()
-      r <- countFirstOrder(p, ids = p$id[p$population])
+      ped <- getPed()
+      r <- countFirstOrder(ped, ids = ped$id[ped$population])
       write.csv(r, file, na = "")
     }
   )
@@ -583,8 +593,8 @@ shinyServer(function(input, output, session) {
       paste("Relations", ".csv", sep = "")
     },
     content = function(file) {
-      p <- getPed()
-      probands <- p$id[p$population]
+      ped <- getPed()
+      probands <- ped$id[ped$population]
 
       r <- convertRelationships(kmat(), getPed(), ids = probands)
       write.csv()
@@ -599,12 +609,12 @@ shinyServer(function(input, output, session) {
       return(NULL)
     }
 
-    p <- getPed()
+    ped <- getPed()
     ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
     currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
 
     if (length(ids) > 0) {
-      p <- resetGroup(p, ids)
+      ped <- resetGroup(ped, ids)
       candidates <- ids
     } else{
       candidates <- getGrpIds()
@@ -625,14 +635,14 @@ shinyServer(function(input, output, session) {
 
     validate(
       need(length(candidates == 0), "No candidates defined"),
-      need(!(length(setdiff(candidates, p$id)) > 0),
+      need(!(length(setdiff(candidates, ped$id)) > 0),
            paste("Group candidates present that are",
                  "not in the provided pedigree\n",
-                 paste(setdiff(candidates, p$id), sep = "\n"))),
-      need(!(length(setdiff(currentGroup, p$id)) > 0),
+                 paste(setdiff(candidates, ped$id), sep = "\n"))),
+      need(!(length(setdiff(currentGroup, ped$id)) > 0),
            paste("Current group members present that",
                  "are not in the provided pedigree\n",
-                 paste(setdiff(currentGroup, p$id), sep = "\n")))
+                 paste(setdiff(currentGroup, ped$id), sep = "\n")))
     )
 
     ignore <- input$ffRel
@@ -661,7 +671,7 @@ shinyServer(function(input, output, session) {
       grp <- groupAddAssign(candidates = candidates,
                            currentGroup = currentGroup,
                            kmat = kmat(),
-                           ped = p,
+                           ped = ped,
                            threshold = threshold,
                            ignore = ignore,
                            minAge = minAge,
@@ -672,7 +682,7 @@ shinyServer(function(input, output, session) {
     } else{
       grp <- groupAddAssign(candidates = candidates,
                            currentGroup = NULL,
-                           kmat = kmat(), ped = p,
+                           kmat = kmat(), ped = ped,
                            threshold = threshold,
                            ignore = ignore,
                            minAge = minAge,
@@ -686,11 +696,11 @@ shinyServer(function(input, output, session) {
   })
 
   getGrpIds <- reactive({
-    p <- getPed()
-    if ("group" %in% colnames(p)) {
-      return(p$id[p$group])
+    ped <- getPed()
+    if ("group" %in% colnames(ped)) {
+      return(ped$id[ped$group])
     } else{
-      return(p$id[p$population])
+      return(ped$id[ped$population])
     }
   })
 
