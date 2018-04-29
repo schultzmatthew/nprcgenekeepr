@@ -8,7 +8,7 @@ test_that("getSiteInfo at least returns the right elements", {
                  "effective_user", "homeDir", "configFile"))
 })
 test_that("getSiteInfo handled Windows and non-windows opperating systems", {
-  siteInfo <- getSiteInfo()
+  siteInfo <- suppressWarnings(getSiteInfo())
   if (stri_detect_fixed(toupper(siteInfo$sysname), "WIND")) {
     expect_equal(siteInfo$homeDir, paste0("/Users/", siteInfo$user))
     expect_equal(siteInfo$configFile, paste0(paste0("/Users/", siteInfo$user),
