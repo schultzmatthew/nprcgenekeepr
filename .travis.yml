@@ -2,7 +2,9 @@ language: r
 sudo: required
 cache: packages
 dist: trusty
-r: release
+r:
+    - oldrel
+    - release
 r_binary_packages:
     - devtools
 r_github_packages:
