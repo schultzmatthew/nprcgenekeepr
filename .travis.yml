@@ -5,7 +5,7 @@ dist: trusty
 r:
     - oldrel
     - release
-r_binary_packages:
+r_packages:
     - devtools
 r_github_packages:
     - r-lib/rcmdcheck
