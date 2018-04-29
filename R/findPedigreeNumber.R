@@ -11,7 +11,7 @@
 #' @export
 findPedigreeNumber <- function(id, sire, dam) {
   founders <- id[is.na(sire) & is.na(dam)]
-  ped.num <- rep(NA, length(id))
+  pedNum <- rep(NA, length(id))
   n <- 1
 
   while (!isEmpty(founders)) {
@@ -32,10 +32,10 @@ findPedigreeNumber <- function(id, sire, dam) {
 
       population <- union(population, union(parents, offspring))
     }
-    ped.num[id %in% population] <- n
+    pedNum[id %in% population] <- n
     n <- n + 1
 
     founders <- setdiff(founders, population)
   }
-  return(ped.num)
+  return(pedNum)
 }

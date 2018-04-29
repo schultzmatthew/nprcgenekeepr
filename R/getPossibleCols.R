@@ -32,16 +32,16 @@
 #' are generally assumed to be naive.}
 #' \item{spf} {-- character vector or \code{NA} (optional) indicating the
 #' specific pathogen-free status of an individual.}
-#' \item{vasx.ovx} {-- character vector indicating the vasectomy/overiectomy
+#' \item{vasxOvx} {-- character vector indicating the vasectomy/overiectomy
 #' status of an animal where \code{NA} indicates an intact animal and all other
 #' values inicate surgical alteration.}
-#' \item{ped.num} {-- integer vector indicating generation numbers for each id,
+#' \item{pedNum} {-- integer vector indicating generation numbers for each id,
 #' starting at 0 for individuals lacking IDs for both parents.}}
 #'
 #' @export
 getPossibleCols <- function() {
   c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
     "ancestry", "population", "origin", "status", "condition",
-    "spf", "vasx.ovx", "ped.num", "first", "second", "first_name",
+    "spf", "vasxOvx", "pedNum", "first", "second", "first_name",
     "second_name")
 }

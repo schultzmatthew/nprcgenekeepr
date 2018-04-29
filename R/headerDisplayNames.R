@@ -28,6 +28,7 @@ headerDisplayNames <- function(headers) {
     rank = "Rank",
     value = "Value Designation",
     status = "Status",
+    vasxOvx = "Vasectomy or Overiectomy Status",
     ancestry = "Ancestry",
     gu = "Genome Uniqueness (%)",
     pedNum = "Pedigree #",

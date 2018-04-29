@@ -31,7 +31,7 @@
 #'  Geographic population to which the individual belongs}
 #' \item{spf} {--- Character or \code{NA} (optional)
 #'  Specific pathogen-free status of an individual}
-#' \item{vasx.ovx} {--- Character or \code{NA} (optional)
+#' \item{vasxOvx} {--- Character or \code{NA} (optional)
 #'  Indicator of the vasectomy/ovariectomy status of an animal; \code{NA} if
 #'  animal is intact, assume all other values indicate surgical alteration}
 #' \item{condition} {--- Character or \code{NA} (optional)

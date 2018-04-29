@@ -17,7 +17,7 @@
 # d <- qcStudbook(d)
 # p <- d
 # p <- resetPopulation(p, ids = NULL)
-# p["ped.num"] <- findPedigreeNumber(p$id, p$sire, p$dam)
+# p["pedNum"] <- findPedigreeNumber(p$id, p$sire, p$dam)
 # p["gen"] <- findGeneration(p$id, p$sire, p$dam)
 # probands <- p$id[p$population]
 # p <- trimPedigree(probands, p, removeUninformative = FALSE,
