@@ -2,7 +2,11 @@
 title: Development Plans
 author: R. Mark Sharp
 date: Sept. 1, 2017
-output: rmarkdown::html_vignette
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
 vignette:
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Development Plans}
@@ -43,7 +47,7 @@ I added code coverage reports to the automated build system running on
 Travis-CI.org. Currently we only have 5.68% of the code being tested with the 
 unit tests I created thus far. I do not know the code well enough to know what 
 percentage we will have when I feel comfortable, but I know most of the 
-functions have no tests at all.
+functions have no tests at all. -- Have 86.32% as of 20180429
 
 
 ## To do
@@ -79,11 +83,20 @@ set up and easily selected for various analyses and plots.
 two known parents that are not founders. There are the following lines of code
 in orderReport.R
 
-    *    # ONPRC-born animals with no parentage
+    *    \# ONPRC-born animals with no parentage
     *    i <- (is.na(rpt\$origin) & (rpt\$totalOffspring == 0) & 
  (rpt\$id %in% founders))
     *    noPparentage <- rpt[i, ]
 
+6. There are some functions that are defined and not used. 
+They may be needed later.
+    1. findLoops
+    2. makeLoop
+    3. countLoops
+    4. createPedTree
+    
+I expect they are direct ports from kinship2. 
+I will check.
 
 ## Accomplishments thus far
 #### 20170911
@@ -128,8 +141,14 @@ Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.
 #### 20170921
 Unit test coverage is about 15%.
 
-## Meeting notes
+#### 20171004
+Unit test coverage is 84.79%.
 
+#### 20180429
+Test coverage is 86.32%.
+
+## Meeting notes
+### 20170323 Meeting
 I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use
 genetic data in a gene dropping simulation.
 
@@ -180,4 +199,5 @@ has provided to get feedback on preferences and additional requirements.
 at this time.
 
 Thanks again.
+
 
