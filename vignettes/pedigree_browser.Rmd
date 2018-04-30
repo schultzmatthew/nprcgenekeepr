@@ -2,9 +2,18 @@
 title: "Pedigree Browser"
 author: "R. Mark Sharp"
 date: "10/2/2017"
-output: html_document
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
-## Pedigree Browser
+## Pedigree Browser  
+
 The Pedigree Browser tab allows the user to view the input data, specify a population
 to examine, and output the cleaned studbook or trimmed pedigree.
 

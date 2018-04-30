@@ -2,10 +2,18 @@
 title: "Summary Statistics"
 author: "R. Mark Sharp"
 date: "10/2/2017"
-output: html_document
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
 
-## Summary Statistics
+## Summary Statistics  
 The Summary Statistics tab may, at some point, be merged with the ORIP 
 reporting tab.
 Currently this tab provides some descriptions of the population being examined.

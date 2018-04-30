@@ -1,60 +1,56 @@
 ---
-title: "Genetic Management Tools"
+title: "Genetic Management Tools Manual"
 author: "Michael Raboin, Amanda Vinson, and R. Mark Sharp"
 date: "October 03, 2017"
-output: rmarkdown::html_vignette
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
 vignette: >
   %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Genetic Management Tools}
+  %\VignetteIndexEntry{Genetic Management Tools Manual}
   %\usepackage[UTF-8]{inputenc}
 ---
-# Genetic Management Tools
 
-<a href="#introduction">Introduction</a>  
-<a href="#summary_of_functions">Summary of Functions</a>  
-<a href="#installation">Installation</a>  
-<a href="#running_shiny_application">Running Shiny Application</a>  
-<a href="#input">Input</a>  
-<a href="#pedigree_browser">Pedigree Browser</a>  
-<a href="#gva">Genetic Value Analysis</a>  
-<a href="#summary_statistics">Summary Statistics</a>  
-<a href="#breeding_group_formation">Breeding Group Formation</a>  
-<a href="#orip">ORIP Reporting</a>  
-<a href="#readme">README</a>  
-<a href="#breeding_group_algorithm">Algorithm: Breeding Group Formation</a>  
-<a href="#genome_uniqueness_algorithm">Algorithm: Genome Uniqueness</a>  
 
-```{r child = "introduction.Rmd", ref = "introduction"}
-```
-```{r child = "summary_of_major_functions.Rmd", ref = "summary_of_functions"}
-```
-```{r child = "installation.Rmd", ref = "installation"}
-```
-```{r child = "running_shiny_application.Rmd", ref = "running_shiny_application"}
-```
-```{r child = "input.Rmd", ref = "input"}
-```
-```{r child = "pedigree_browser.Rmd", ref = "pedigree_browser"}
-```
-```{r child = "genetic_value_analysis.Rmd", ref = "gva"}
-```
-```{r child = "summary_statistics.Rmd", ref = "summary_statistics"}
-```
-```{r child = "breeding_group_formation.Rmd", ref = "breeding_group_formation"}
-```
-```{r child = "gv_and_bg_desc.Rmd", ref = "gv_and_bg_desc"}
-```
-```{r child = "breeding_group_algorithm.Rmd", ref = "breeding_group_algorithm"}
-```
-```{r child = "genome_uniqueness_algorithm.Rmd", ref = "genome_uniqueness_algorithm"}
-```
+[Introduction]  
+[Summary of Major Functions]   
+[Installation]  
+[Running Shiny Application]   
+[Input]    
+[Pedigree Browser]   
+[Genetic Value Analysis]  
+[Summary Statistics]   
+[Breeding Group Formation]    
+[ORIP Reporting]    
+[Algorithm: Breeding Group Formation]   
+[Algorithm: Genome Uniqueness]   
 
-<h2 id="orip">ORIP Reporting</h2>
-The ORIP Reporting tab will eventually contain information for reporting to the
-Office of Research Infrastructure Programs (ORIP). This tab may end up being merged
-with the Summary Statistics tab and contain a number of statistics, tables and
-histograms. Alternatively, this may contain a subset of information from the
-Summary Statistics tab presented as a formatted report that can be exported and
-submitted to ORIP. The exact information that needs to be submitted for ORIP
-recordkeeping is still under discussion.
+```{r child = "introduction.Rmd", ref.label = "introduction"}
+```
+```{r child = "summary_of_major_functions.Rmd", ref.label = "summary-of-functions"}
+```
+```{r include = TRUE, echo = TRUE, child = "installation.Rmd", ref.label = "installation"}
+```
+```{r child = "running_shiny_application.Rmd", ref.label = "running-shiny-application"}
+```
+```{r child = "input.Rmd", ref.label = "input"}
+```
+```{r child = "pedigree_browser.Rmd", ref.label = "pedigree-browser"}
+```
+```{r child = "genetic_value_analysis.Rmd", ref.label = "genetic-value-analysis"}
+```
+```{r child = "summary_statistics.Rmd", ref.label = "summary-statistics"}
+```
+```{r child = "breeding_group_formation.Rmd", ref.label = "breeding-group-formation"}
+```
+```{r child = "gv_and_bg_desc.Rmd", ref.label = "gv-and-bg-desc"}
+```
+```{r child = "orip_reporting.Rmd", ref.label = "orip-reporting"}
+```
+```{r child = "breeding_group_algorithm.Rmd", ref.label = "breeding-group-algorithm"}
+```
+```{r child = "genome_uniqueness_algorithm.Rmd", ref.label = "genome-uniqueness-algorithm"}
+```
 

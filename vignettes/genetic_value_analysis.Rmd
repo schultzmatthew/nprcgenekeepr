@@ -2,9 +2,17 @@
 title: "Genetic Value Analysis"
 author: "R. Mark Sharp"
 date: "10/2/2017"
-output: html_document
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
-## Genetic Value Analysis
+## Genetic Value Analysis  
 
 The Genetic Value Analysis tab provides all of the options needed for producing 
 a genetic value analysis report. The specifics of generating the genetic value 

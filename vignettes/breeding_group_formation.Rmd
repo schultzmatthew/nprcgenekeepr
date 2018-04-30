@@ -2,10 +2,18 @@
 title: "Breeding Group Formation"
 author: "R. Mark Sharp"
 date: "10/2/2017"
-output: html_document
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
 
-## Breeding Group Formation
+## Breeding Group Formation  
 The last major function of the R-package is to aid in generating breeding 
 groups that avoid inter-animal relatedness. 
 This tab allows you to build a number of breeding groups
