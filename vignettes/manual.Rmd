@@ -31,7 +31,7 @@ vignette: >
 ```
 ```{r child = "summary_of_major_functions.Rmd", ref.label = "summary-of-functions"}
 ```
-```{r include = TRUE, echo = TRUE, child = "installation.Rmd", ref.label = "installation"}
+```{r child = "installation.Rmd", ref.label = "installation"}
 ```
 ```{r child = "running_shiny_application.Rmd", ref.label = "running-shiny-application"}
 ```
