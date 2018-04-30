@@ -15,3 +15,5 @@
 #' 7. Fix layout of "Enter the number of simulations for the gene-drop analysis:"
 #' and "Enter the genome uniqueness threshold:" so that they are level with each
 #' other.
+#' 8. Should "unique" be change to "rare" or "infrequent" since more than one
+#' individual may carry the gene?

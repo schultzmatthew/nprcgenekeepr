@@ -4,6 +4,7 @@
 ^.\inst\extdata\Example_Pedigree.txt
 ^.\inst\extdata\RhesusMasterForMetrics.txt
 .travis.yml
+.codecov.yml
 .gitignore
 ^docs$
 tests/testthat/test_basic.R
@@ -14,5 +15,6 @@ R/depricated_groupAddition.R
 R/depricated_gene.drop.R
 R/depricated_groupAssign.R
 R/groupAssign.R
+R/scratch.R
 ^README\.Rmd$
 ^README-.*\.png$

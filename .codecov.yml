@@ -11,5 +11,5 @@ coverage:
 # Used in Codecov after updating
 coverage:
   round: up
-  range: 70..100
+  range: 20..100
   precision: 2
