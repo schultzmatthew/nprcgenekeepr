@@ -16,6 +16,9 @@ vignettes/*.aux
 vignettes/*.fls
 vignettes/*.log
 vignettes/*.out
+vignettes/*.R
+!vignettes/*.Rmd
 vignettes/*.fdb_latexmk
 vignettes/Development_Plans.R
 inst/extdata/PSCPO*.*
+inst/doc/*
