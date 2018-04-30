@@ -16,5 +16,8 @@ R/depricated_gene.drop.R
 R/depricated_groupAssign.R
 R/groupAssign.R
 R/scratch.R
+vignettes/*.log
+vignettes/*.aux
+vignettes/*.out
 ^README\.Rmd$
 ^README-.*\.png$
