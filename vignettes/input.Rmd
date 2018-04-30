@@ -2,10 +2,18 @@
 title: "Input"
 author: "R. Mark Sharp"
 date: "10/2/2017"
-output: html_document
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
 
-## Input
+## Input  
 The Input tab is the starting point for all analyses. The file
 should be a delimited, regular text file with a header row specifying the
 columns. The tab provides information on the allowable columns in input
