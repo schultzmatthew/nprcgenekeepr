@@ -1,17 +1,17 @@
 ---
-title: Development Plans
-author: R. Mark Sharp
-date: Sept. 1, 2017
+title: "Development Plans"
+author: "R. Mark Sharp"
+date: "Sept. 1, 2017"
 output: 
    - rmarkdown::pdf_document
    - rmarkdown::latex_document
    - rmarkdown::html_vignette
    - rmarkdown::word_document
-vignette:
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Development Plans}
-%\usepackage[UTF-8]{inputenc}
-------
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Development Plans}
+  %\usepackage[UTF-8]{inputenc}
+---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -64,7 +64,7 @@ functions have no tests at all. -- Have 86.32% as of 20180429
     research, and I have been tasked with implementing the solution.
 
 3. Remove individuals that can never breed again from genetic analyses.
-(From page 29 of \emph{PMx User Manual, version 1.0}).
+(From page 29 of _PMx User Manual, version 1.0_).
 It is generally recommended to remove living individuals that can never breed 
 or will never be bred again (e.g., post reproductive, sterilized, poor health, 
 hybrid) from the genetic mean kinship calculations, as these individuals can no 
@@ -83,10 +83,9 @@ set up and easily selected for various analyses and plots.
 two known parents that are not founders. There are the following lines of code
 in orderReport.R
 
-    *    \# ONPRC-born animals with no parentage
-    *    i <- (is.na(rpt\$origin) & (rpt\$totalOffspring == 0) & 
- (rpt\$id %in% founders))
-    *    noPparentage <- rpt[i, ]
+    >    \# ONPRC-born animals with no parentage  
+    >    i <- (is.na(rpt\$origin) & (rpt\$totalOffspring == 0) & (rpt\$id %in% founders))  
+    >    noParentage <- rpt[i, ]  
 
 6. There are some functions that are defined and not used. 
 They may be needed later.
