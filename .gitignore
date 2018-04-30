@@ -10,15 +10,7 @@ R/groupAddition.R
 R/depricated_groupAssign.R
 R/depricated_groupAddition.R
 R/depricated_gene.drop.R
-vignettes/*.html
-vignettes/*.md
-vignettes/*.aux
-vignettes/*.fls
-vignettes/*.log
-vignettes/*.out
-vignettes/*.R
+vignettes/*
 !vignettes/*.Rmd
-vignettes/*.fdb_latexmk
-vignettes/Development_Plans.R
 inst/extdata/PSCPO*.*
 inst/doc/*
