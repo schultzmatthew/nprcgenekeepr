@@ -497,10 +497,9 @@ shinyServer(function(input, output, session) {
     }
     mk <- rpt()[, "indivMeanKin"]
     avg <- mean(mk, na.rm = TRUE)
-    std.dev <- sd(mk, na.rm = TRUE)
-
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
+    # std.dev <- sd(mk, na.rm = TRUE)
+    # upper <- avg + (2 * std.dev)
+    # lower <- avg - (2 * std.dev)
 
     brx <- pretty(range(mk), 25)
     ggplot(data.frame(mk = mk), aes(x = mk, y=..density..)) +
@@ -517,10 +516,9 @@ shinyServer(function(input, output, session) {
     }
     z <- rpt()[, "zScores"]
     avg <- mean(z, na.rm = TRUE)
-    std.dev <- sd(z, na.rm = TRUE)
-
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
+    # std.dev <- sd(z, na.rm = TRUE)
+    # upper <- avg + (2 * std.dev)
+    # lower <- avg - (2 * std.dev)
 
     brx <- pretty(range(z), 25)
     ggplot(data.frame(z = z), aes(x = z, y=..density..)) +
@@ -536,22 +534,17 @@ shinyServer(function(input, output, session) {
     }
     gu <- rpt()[, "gu"]
     avg <- mean(gu, na.rm = TRUE)
-    std.dev <- sd(gu, na.rm = TRUE)
+    # std.dev <- sd(gu, na.rm = TRUE)
+    # upper <- avg + (2 * std.dev)
+    # lower <- avg - (2 * std.dev)
 
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
-    brx <- pretty(range(gu), 60)
-                  #n = nclass.Sturges(gu), min.n = 1)
-    guPlot2 <- ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
+    brx <- pretty(range(gu), 25)
+    ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
       geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
       xlab("Genetic Uniqueness Score") + ylab("Frequency") +
       ggtitle("Genetic Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
-    #guPlot2 +
-    #  geom_text(aes(x = avg, label = "\nMean Uniqueness Score", y = 150),
-    #            color = "blue", angle = 90, size = 10)
-    guPlot2
   })
 
 
