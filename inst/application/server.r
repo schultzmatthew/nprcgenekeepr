@@ -491,61 +491,6 @@ shinyServer(function(input, output, session) {
     return(paste(founder, "<br>", "<br>", "<table>", header, k, g, "</table>"))
   })
 
-  output$mkPlotOld <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
-    mk <- rpt()[, "indivMeanKin"]
-    avg <- mean(mk, na.rm = TRUE)
-    std.dev <- sd(mk, na.rm = TRUE)
-
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
-
-    hist(mk,
-         breaks = 25,
-         main = "Individual Mean Kinships",
-         xlab = "Kinship",
-         ylab = "Frequency")
-    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
-  })
-
-  output$zscorePlotOld <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
-    z <- rpt()[, "zScores"]
-    avg <- mean(z, na.rm = TRUE)
-    std.dev <- sd(z, na.rm = TRUE)
-
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
-
-    hist(z,
-         breaks = 25,
-         main = "Individual Mean Kinship Z-Scores",
-         xlab = "Z-Score",
-         ylab = "Frequency")
-    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
-  })
-  output$guPlotOld <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
-    gu <- rpt()[, "gu"]
-    avg <- mean(gu, na.rm = TRUE)
-    std.dev <- sd(gu, na.rm = TRUE)
-
-    upper <- avg + (2 * std.dev)
-    lower <- avg - (2 * std.dev)
-
-    hist(gu,
-         breaks = 60,
-         main = "Genetic Uniqueness",
-         xlab = "Genetic Uniqueness Score",
-         ylab = "Frequency")
-    abline(v = avg, col = "red", lty = "dashed", lwd = 2)
-  })
   output$mkPlot <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
