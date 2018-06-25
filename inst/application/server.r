@@ -503,12 +503,15 @@ shinyServer(function(input, output, session) {
 
     brx <- pretty(range(mk), 25)
     ggplot(data.frame(mk = mk), aes(x = mk, y=..density..)) +
-      geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
+      geom_histogram(bins = 25, color="darkblue", fill="lightblue",
+                     breaks = brx) +
+      theme_classic() +
       xlab("Kinship") + ylab("Frequency") +
-      ggtitle("Individual Mean Kinships") +
+      ggtitle("Distribution of Individual Mean Kinship Coefficients") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
+
 
   output$zscorePlot <- renderPlot({
     if (is.null(rpt())) {
@@ -521,10 +524,11 @@ shinyServer(function(input, output, session) {
     # lower <- avg - (2 * std.dev)
 
     brx <- pretty(range(z), 25)
-    ggplot(data.frame(z = z), aes(x = z, y=..density..)) +
+    ggplot(data.frame(z = z), aes(x = z, y=..density.., )) +
       geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
+      theme_classic() +
       xlab("Z-Score") + ylab("Frequency") +
-      ggtitle("Individual Mean Kinship Z-Scores") +
+      ggtitle("Distribution of Mean Kinship Coefficients Z-scores") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
@@ -541,12 +545,15 @@ shinyServer(function(input, output, session) {
     brx <- pretty(range(gu), 25)
     ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
       geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
+      theme_classic() +
       xlab("Genetic Uniqueness Score") + ylab("Frequency") +
       ggtitle("Genetic Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
-
+  # addPopover(session, "guPlot", "Genetic Uniqueness",
+  #            content = paste0("Some information about genetic uniqueness"),
+  #            placement = "bottom", trigger = "hover", options = NULL)
 
   output$relations <- eventReactive(input$relations, {
     renderTable({

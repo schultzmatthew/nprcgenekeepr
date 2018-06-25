@@ -20,18 +20,28 @@ uitpSummaryStatistics <-
       downloadButton("downloadKinship", "Export Kinship Matrix"),
       br(),
       br(),
-      downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+      popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+             "Exports All First-Order Relationships as CSV",
+             "This exports all first-order relations to a CSV file in the users home directory"),
       br()
     ),
 
     # Main Panel
-    column(9,
+    column(6,
       # style = "margin-left:425px;padding:10px;",
       htmlOutput("summaryStats"),
       plotOutput("mkPlot", width = "400px", height = "400px"),
       plotOutput("zscorePlot", width = "400px", height = "400px"),
       plotOutput("guPlot", width = "400px", height = "400px"),
       DT::dataTableOutput("relations")
+    ),
+    column(9,
+           # style = "margin-left:425px;padding:10px;",
+           htmlOutput("summaryStats"),
+           plotOutput("mkPlot", width = "400px", height = "400px"),
+           plotOutput("zscorePlot", width = "400px", height = "400px"),
+           plotOutput("guPlot", width = "400px", height = "400px"),
+           DT::dataTableOutput("relations")
     )
-  )
+   )
 )
