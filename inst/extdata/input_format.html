@@ -8,11 +8,11 @@
 		colony can be accommodated within the same input file.
 	</li>
 	<li style="padding-bottom: 15px">
-		If an animal is missing information on one or both parents, that cell
+		If an animal is missing information on one parent, that cell
 		should be blank. For animals with no information on either parent,
 		both cells under "Sire ID" and "Dam ID" should be blank. For animals
-		with partial parentage information, unique "placeholder" IDs
-		(designated as UIDs in Pedigree Brower tab) will be assigned by the
+		with information on one parent a unique "placeholder" ID
+		(designated as UID in Pedigree Brower tab) will be assigned by the
 		software to represent the unknown parent.  <em>Please be aware that
 		animals with no parents will be treated as founders in these
 		calculations, i.e., sources of new genetic variation in the colony.</em>
@@ -39,8 +39,8 @@
 <p>Either <i>Age</i> or <i>Birth</i> must also be provided.
 <ul style="list-style-type:disc">
 	<li style="padding-bottom: 15px">
-		Use the column names listed in the table below. Column name case and
-		order are not significant. The first column name listed for
+		Use the Allowable Names listed in the table below. Allowable Name case and
+		order are not significant. The first Allowable Name listed for
 		each column is the name used internally and is the name used in
 		examples and output.
 	</li>
@@ -77,33 +77,28 @@
 
 <table>
 	<tr bgcolor="#7CFC00">
-		<th>Column</th>
-        <th>Column Name</th>
+    <th>Allowable Name</th>
 		<th>Description of Information</th>
 		<th>Data Format</th>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>Ego ID</td>
-        <td>id, egoid, ego_id</td>
-		<td>Unique animal identifier</td>
+		<td>id, egoid, ego_id</td>
+		<td>Ego ID: Unique animal identifier</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>Sire ID</td>
-        <td>sire, sireid, sire_id</td>
-		<td>Unique identifier of the ego's father</td>
+		<td>sire, sireid, sire_id</td>
+		<td>Sire ID: Unique identifier of the ego's father</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>Dam ID</td>
-        <td>dam, damid, dam_id</td>
-		<td>Unique identifier of the ego's mother</td>
+		<td>dam, damid, dam_id</td>
+		<td>Dam ID: Unique identifier of the ego's mother</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>Sex</td>
-        <td>sex</td>
-		<td>Ego's sex</td>
+		<td>sex</td>
+		<td>Sex: Ego's sex</td>
 		<td>
 			Sex can be indicated by any of the following:
 			<br>
@@ -114,68 +109,43 @@
 		</td>
 	</tr>
 	<tr bgcolor="#CCFFFF">
-		<td>Age</td>
-        <td>age</td>
-		<td>Age at exit, or current age of the ego.</td>
+		<td>age</td>
+		<td>Age: Age at exit, or current age of the ego.</td>
 		<td>Age in decimal years</td>
 	</tr>
 	<tr bgcolor="#CCFFFF">
-		<td>Birth</td>
-        <td>birth, birthdate, birth_date</td>
-		<td>Ego's date of birth</td>
+		<td>birth, birthdate, birth_date</td>
+		<td>Birth: Ego's date of birth</td>
 		<td>YYYY-MM-DD Format</td>
 	</tr>
 	<tr>
-		<td>Death</td>
-        <td>death</td>
-		<td>Ego's date of death</td>
+		<td>death</td>
+		<td>Death: Ego's date of death</td>
 		<td>YYYY-MM-DD Format</td>
 	</tr>
 	<tr>
-		<td>Departure</td>
-        <td>departure</td>
-		<td>Ego's date of sale</td>
+		<td>departure</td>
+		<td>Departure: Ego's date of sale</td>
 		<td>YYYY-MM-DD Format</td>
 	</tr>
 	<tr>
-		<td>Exit</td>
-        <td>exit</td>
-		<td>
-			Ego's date of exit from the colony.
+		<td>exit</td>
+		<td>Exit: Ego's date of exit from the colony.
 			<br>
 			(Supercedes Death or Departure information)
 		</td>
 		<td>YYYY-MM-DD Format</td>
 	</tr>
-	<tr bgcolor="#BFFF00">
-		<td>First</td>
-        <td>first</td>
-		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele or haplotype.
-		<br>Can be the same value as <i>second</i> if the individual is
-		homozygous at this locus
-		</td>
-	</tr>
-	<tr bgcolor="#BFFF00">
-		<td>Second</td>
-        <td>second</td>
-		<td>Unique integer greater than or equal to 10000</td>
-		<td>Represents one haploid and maps to a specific allele or haplotype.
-		<br>Can be the same value as <i>first</i> if the individual is
-		homozygous at this locus</td>
-	</tr>
 	<tr bgcolor="#FSFFCC">
-		<td>First Name</td>
-        <td>first_name</td>
-		<td>Alphanumeric representation of first allele</td>
+		<td>allele_1</td>
+		<td>Allele 1: Alphanumeric representation of first allele</td>
 		<td>Currently limited to alphanumeric values, underscores, spaces and
 		dashes. Other characters have not been tested.
 		</td>
 	</tr>
 	<tr bgcolor="#F2FFCC">
-		<td>Second Name</td>
-        <td>second_name</td>
-		<td>Alphanumeric representation of second allele</td>
+		<td>allele_2</td>
+		<td>Allele 2: Alphanumeric representation of second allele</td>
 		<td>Currently limited to alphanumeric values, underscores, spaces and
 		dashes. Other characters have not been tested.
 		</td>
@@ -209,12 +179,12 @@
 				A check for either Age or Birth information.
 			</li>
 			<li style="padding-bottom: 5px">
-				Any animals listed as a Sire or Dam that do not have their own
-				row or line entry as an Ego will be added.
+				A new row entry will be added for any Sire or Dam that do not
+				already have their own row as an Ego.
 			</li>
 			<li style="padding-bottom: 5px">
-				Parents will be checked to ensure their own Ego entry is the
-				correct sex.
+				Animals will be checked to ensure that their sex is consistent
+				throughout the file.
 			</li>
 			<li style="padding-bottom: 5px">
 				Duplicate rows will be removed.
@@ -253,8 +223,8 @@
 cannot be present.</p>.
 <ul style="list-style-type:disc">
 	<li style="padding-bottom: 15px">
-		Use the column names listed in the table below. Column name case and
-		order are not significant. The column name listed for
+		Use the Allowable Names listed in the table below. Allowable Name case and
+		order are not significant. The Allowable Name listed for
 		each column is the name used internally and is the name used in
 		examples and output.
 	</li>
@@ -271,29 +241,25 @@ cannot be present.</p>.
 
 <table>
 	<tr bgcolor="#7CFC00">
-		<th>Column</th>
-        <th>Column Name</th>
+		<th>Allowable Name</th>
 		<th>Description of Information</th>
 		<th>Data Format</th>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>ID</td>
-        <td>id</td>
-		<td>Unique animal identifier</td>
+		<td>id</td>
+		<td>ID: Unique animal identifier</td>
 		<td>Alphanumeric characters (no symbols)</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>First Name</td>
-        <td>first_name</td>
-		<td>Alphanumeric representation of first allele</td>
+		<td>allele_1</td>
+		<td>Allele 1: Alphanumeric representation of first allele</td>
 		<td>Currently limited to alphanumeric values, underscores, spaces and
-		dashes. Other characters have not been tested.
+		dashes.
 		</td>
 	</tr>
 	<tr bgcolor="#CCCCFF">
-		<td>Second Name</td>
-        <td>second_name</td>
-		<td>Alphanumeric representation of second allele</td>
+		<td>allele_2</td>
+		<td>Allele 2: Alphanumeric representation of second allele</td>
 		<td>Currently limited to alphanumeric values, underscores, spaces and
 		dashes. Other characters have not been tested.
 		</td>
