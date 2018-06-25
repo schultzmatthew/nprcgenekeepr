@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyBS)
 if (!require("DT"))
   install.packages("DT")
 library(DT)
