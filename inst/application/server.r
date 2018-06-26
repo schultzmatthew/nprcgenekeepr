@@ -2,12 +2,14 @@
 library(futile.logger)
 library(ggplot2)
 shinyServer(function(input, output, session) {
+  browser()
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
               appender = appender.file(nprcmanagerLog))
-
-  #############################################################################
-  # Functions for handling initial pedigree upload and QC
+  flog.threshold(DEBUG, name = "nprcmanager")
+  flog.debug("Starting application ", name = "nprcmanager")
+#############################################################################
+# Functions for handling initial pedigree upload and QC
 #  source("../application/sreactiveGetSelectedBreeders.R")
   getSelectedBreeders <- reactive({
     input$getData # This button starts it all
