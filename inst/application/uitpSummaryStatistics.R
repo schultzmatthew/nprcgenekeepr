@@ -20,9 +20,10 @@ uitpSummaryStatistics <-
       downloadButton("downloadKinship", "Export Kinship Matrix"),
       br(),
       br(),
-      popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
-             "Exports All First-Order Relationships as CSV",
-             "This exports all first-order relations to a CSV file in the users home directory"),
+      downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+      #popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+      #       "Exports All First-Order Relationships as CSV",
+      #       "This exports all first-order relations to a CSV file in the users home directory"),
       br()
     ),
 

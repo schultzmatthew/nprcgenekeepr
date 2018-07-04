@@ -8,6 +8,7 @@ Authors@R: c(
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
     role = c("ctb", "cre")))
 Description: Implements Genetic Tools for Colony Management.
+DisplayMode: Showcase
 Depends:
     R (>= 3.2.1)
 Imports:
@@ -22,10 +23,13 @@ Imports:
     stringi,
     utils
 Suggests:
+    covr,
     dplyr,
     knitr,
     roxygen2 (>= 6.0.0),
     testthat
+Remotes:
+    covr
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
