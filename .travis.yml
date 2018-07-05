@@ -1,5 +1,8 @@
 language: r
 sudo: required
+cache:
+  - r_packages
+  - github_packages
 dist: trusty
 r:
     - oldrel
