@@ -9,11 +9,10 @@ r_packages:
     - covr
 r_github_packages:
     - r-lib/rcmdcheck
-    - jimhester/lintr
 script:
   - R -e 'r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); devtools::test(); quit(save = "no", status = if (length(c(r$errors, r$warnings)) > 0) { 1 } else { 0 }, runLast = FALSE)'
 after_success:
-  - R -e 'library(covr);covr::codecov();covr::coveralls()'
+  - R -e 'covr::codecov()'
 env:
   - global:
     - CI=TRUE
