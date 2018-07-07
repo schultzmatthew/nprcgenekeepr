@@ -445,18 +445,20 @@ shinyServer(function(input, output, session) {
     mk <- summary(rpt()[, "indivMeanKin"])
     gu <- summary(rpt()[, "gu"])
 
-    founder <- paste("Known Founders: ", as.character(f),
-                     "<br>",
-                     "Known Female Founders: ", as.character(ff),
-                     "<br>",
-                     "Known Male Founders: ", as.character(mf),
-                     "<br>",
-                     "Founder Equivalents: ",
-                     as.character(round(fe, digits = 2)),
-                     "<br>",
-                     "Founder Genome Equivalents: ",
-                     as.character(round(fg, digits = 2))
-    )
+    founder <- paste("<table>",
+                     "<tr>",
+                     "<th>Known Founders</th>",
+                     "<th>Known Female Founders</th>",
+                     "<th>Known Male Founders</th>",
+                     "<th>Founder Equivalentss</th>",
+                     "<th>Founder Genome Equivalents</th></tr>",
+                     "<td>",as.character(f),"</td>",
+                     "<td>",as.character(ff),"</td>",
+                     "<td>",as.character(mf),"</td>",
+                     "<td>",as.character(round(fe, digits = 2)),"</td>",
+                     "<td>",as.character(round(fg, digits = 2)),"</td>",
+                     "</tr>",
+                     "</table>")
 
     header <- paste("<tr>",
                     "<th></th>",

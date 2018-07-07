@@ -16,17 +16,25 @@ uitpSummaryStatistics <-
              "border: 1px solid lightgray; background-color: #EDEDED;",
              "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
             ),
-      includeHTML("../extdata/summary_stats.html"),
-      downloadButton("downloadKinship", "Export Kinship Matrix"),
-      br(),
-      br(),
-      popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
-             "Exports All First-Order Relationships as CSV",
-             "This exports all first-order relations to a CSV file in the users home directory"),
-      br(),
-      htmlOutput("summaryStats")
-    )),
-    fluidRow(
+      includeHTML("../extdata/summary_stats.html")
+     )),
+   br(),
+   fluidRow(
+     column(3,
+            popify(downloadButton("downloadKinship", "Export Kinship Matrix"),
+                   NULL, #"Exports Kinship Matrix as CSV",
+                   "This exports the kinship matrix to a CSV file in the users home directory")),
+     column(3,
+            offset = 1,
+            popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+             NULL, #"Exports All First-Order Relationships as CSV",
+             "This exports all first-order relations to a CSV file in the users home directory")
+    )), br(),
+   fluidRow(
+     column(12,
+            htmlOutput("summaryStats")
+     )),br(),br(),
+   fluidRow(
     # Main Panel
     column(4,
       # style = "margin-left:425px;padding:10px;",
