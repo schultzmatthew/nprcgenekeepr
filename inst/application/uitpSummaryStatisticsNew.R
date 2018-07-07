@@ -11,7 +11,7 @@ uitpSummaryStatistics <-
     #    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
     #  ),
    fluidRow(
-     column(12,
+     column(3,
             style = paste(
              "border: 1px solid lightgray; background-color: #EDEDED;",
              "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
@@ -23,25 +23,25 @@ uitpSummaryStatistics <-
       popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
              "Exports All First-Order Relationships as CSV",
              "This exports all first-order relations to a CSV file in the users home directory"),
-      br(),
-      htmlOutput("summaryStats")
-    )),
-    fluidRow(
-    # Main Panel
-    column(4,
-      # style = "margin-left:425px;padding:10px;",
-      plotOutput("mkPlot", width = "400px", height = "400px"),
-      plotOutput("zscorePlot", width = "400px", height = "400px"),
-      plotOutput("guPlot", width = "400px", height = "400px"),
-      DT::dataTableOutput("relations")
+      br()
     ),
-    column(4,
+
+    # Main Panel
+    column(6,
+      # style = "margin-left:425px;padding:10px;",
+      htmlOutput("summaryStats"),
+     # plotOutput("mkPlot", width = "400px", height = "400px"),
+      plotOutput("zscorePlot", width = "400px", height = "400px"),
+     # plotOutput("guPlot", width = "400px", height = "400px"),
+     # DT::dataTableOutput("relations")
+    ),
+    column(9,
            # style = "margin-left:425px;padding:10px;",
-          # htmlOutput("summaryStats"),
-           #plotOutput("mkPlot", width = "400px", height = "400px"),
-           #plotOutput("zscorePlot", width = "400px", height = "400px"),
-           plotOutput("guPlot2", width = "400px", height = "400px")#,
-          # DT::dataTableOutput("relations")
+           htmlOutput("summaryStats"),
+           plotOutput("mkPlot", width = "400px", height = "400px"),
+          # plotOutput("zscorePlot", width = "400px", height = "400px"),
+           plotOutput("guPlot", width = "400px", height = "400px"),
+           DT::dataTableOutput("relations")
     )
    )
 )

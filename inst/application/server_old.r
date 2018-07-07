@@ -503,11 +503,9 @@ shinyServer(function(input, output, session) {
 
     brx <- pretty(range(mk), 25)
     ggplot(data.frame(mk = mk), aes(x = mk, y=..density..)) +
-      geom_histogram(bins = 25, color="darkblue", fill="lightblue",
-                     breaks = brx) +
-      theme_classic() +
+      geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
       xlab("Kinship") + ylab("Frequency") +
-      ggtitle("Distribution of Individual Mean Kinship Coefficients") +
+      ggtitle("Individual Mean Kinships") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
@@ -525,9 +523,8 @@ shinyServer(function(input, output, session) {
     brx <- pretty(range(z), 25)
     ggplot(data.frame(z = z), aes(x = z, y=..density..)) +
       geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
-      theme_classic() +
       xlab("Z-Score") + ylab("Frequency") +
-      ggtitle("Distribution of Mean Kinship Coefficients Z-scores") +
+      ggtitle("Individual Mean Kinship Z-Scores") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
@@ -544,34 +541,12 @@ shinyServer(function(input, output, session) {
     brx <- pretty(range(gu), 25)
     ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
       geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
-      theme_classic() +
       xlab("Genetic Uniqueness Score") + ylab("Frequency") +
       ggtitle("Genetic Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
-  output$guPlot2 <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
-    gu <- rpt()[, "gu"]
-    avg <- mean(gu, na.rm = TRUE)
-    # std.dev <- sd(gu, na.rm = TRUE)
-    # upper <- avg + (2 * std.dev)
-    # lower <- avg - (2 * std.dev)
 
-    brx <- pretty(range(gu), 25)
-    ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
-      geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
-      theme_classic() +
-      xlab("Genetic Uniqueness Score") + ylab("Frequency") +
-      ggtitle("Genetic Uniqueness") +
-      geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
-                 show.legend = FALSE)# +
-  })
-  # addPopover(session, "guPlot", "Genetic Uniqueness",
-  #            content = paste0("Some information about genetic uniqueness"),
-  #            placement = "bottom", trigger = "hover", options = NULL)
 
   output$relations <- eventReactive(input$relations, {
     renderTable({

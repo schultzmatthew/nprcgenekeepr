@@ -2,12 +2,14 @@
 library(futile.logger)
 library(ggplot2)
 shinyServer(function(input, output, session) {
+  browser()
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
               appender = appender.file(nprcmanagerLog))
-
-  #############################################################################
-  # Functions for handling initial pedigree upload and QC
+  flog.threshold(DEBUG, name = "nprcmanager")
+  flog.debug("Starting application ", name = "nprcmanager")
+#############################################################################
+# Functions for handling initial pedigree upload and QC
 #  source("../application/sreactiveGetSelectedBreeders.R")
   getSelectedBreeders <- reactive({
     input$getData # This button starts it all
@@ -512,6 +514,7 @@ shinyServer(function(input, output, session) {
                  show.legend = FALSE)# +
   })
 
+
   output$zscorePlot <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
@@ -523,7 +526,7 @@ shinyServer(function(input, output, session) {
     # lower <- avg - (2 * std.dev)
 
     brx <- pretty(range(z), 25)
-    ggplot(data.frame(z = z), aes(x = z, y=..density..)) +
+    ggplot(data.frame(z = z), aes(x = z, y=..density.., )) +
       geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
       theme_classic() +
       xlab("Z-Score") + ylab("Frequency") +
@@ -532,25 +535,6 @@ shinyServer(function(input, output, session) {
                  show.legend = FALSE)# +
   })
   output$guPlot <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
-    gu <- rpt()[, "gu"]
-    avg <- mean(gu, na.rm = TRUE)
-    # std.dev <- sd(gu, na.rm = TRUE)
-    # upper <- avg + (2 * std.dev)
-    # lower <- avg - (2 * std.dev)
-
-    brx <- pretty(range(gu), 25)
-    ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
-      geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
-      theme_classic() +
-      xlab("Genetic Uniqueness Score") + ylab("Frequency") +
-      ggtitle("Genetic Uniqueness") +
-      geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
-                 show.legend = FALSE)# +
-  })
-  output$guPlot2 <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
