@@ -458,7 +458,7 @@ shinyServer(function(input, output, session) {
           th("Known Founders"),
           th("Known Female Founders"),
           th("Known Male Founders"),
-          th(JS("Founder Equivalents", title = fe_title_txt)),
+          th(JS("Founder Equivalents")),
           th("Founder Genome Equivalents"))),
       tbody(td(as.character(f)), td(as.character(ff)), td(as.character(mf)),
             td(as.character(round(fe, digits = 2))),
@@ -556,24 +556,38 @@ shinyServer(function(input, output, session) {
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
-  output$guPlot2 <- renderPlot({
+  output$mkBox <- renderPlot({
+    if (is.null(rpt())) {
+      return(NULL)
+    }
+    gu <- rpt()[, "indivMeanKin"]
+    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+                   outlier.color = "red", outlier.shape = 1) +
+      theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
+      ylab("Kinship")  + ggtitle("Distribution of Individual Mean Kinship Coefficients")
+  })
+  output$zscoreBox <- renderPlot({
+    if (is.null(rpt())) {
+      return(NULL)
+    }
+    gu <- rpt()[, "zScores"]
+    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+                   outlier.color = "red", outlier.shape = 1) +
+      theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
+      ylab("Z-Score")  + ggtitle("Z-Score")
+  })
+  output$guBox <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
     gu <- rpt()[, "gu"]
-    avg <- mean(gu, na.rm = TRUE)
-    # std.dev <- sd(gu, na.rm = TRUE)
-    # upper <- avg + (2 * std.dev)
-    # lower <- avg - (2 * std.dev)
-
-    brx <- pretty(range(gu), 25)
-    ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
-      geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
-      theme_classic() +
-      xlab("Genetic Uniqueness Score") + ylab("Frequency") +
-      ggtitle("Genetic Uniqueness") +
-      geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
-                 show.legend = FALSE)# +
+    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+                   outlier.color = "red", outlier.shape = 1) +
+      theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
+      ylab("Score")  + ggtitle("Genetic Uniqueness")
   })
   # addPopover(session, "guPlot", "Genetic Uniqueness",
   #            content = paste0("Some information about genetic uniqueness"),
