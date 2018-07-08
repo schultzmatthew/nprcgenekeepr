@@ -11,12 +11,12 @@ uitpSummaryStatistics <-
     #    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
     #  ),
    fluidRow(
-     column(12,
+     column(11,
             style = paste(
              "border: 1px solid lightgray; background-color: #EDEDED;",
              "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
             ),
-      includeHTML("../extdata/summary_stats.html")
+            withMathJax(includeHTML("../extdata/summary_stats.html"))
      )),
    br(),
    fluidRow(
@@ -31,7 +31,7 @@ uitpSummaryStatistics <-
              "This exports all first-order relations to a CSV file in the users home directory")
     )), br(),
    fluidRow(
-     column(12,
+     column(11,
             htmlOutput("summaryStats")
      )),br(),br(),
    fluidRow(
@@ -51,5 +51,14 @@ uitpSummaryStatistics <-
            plotOutput("guPlot2", width = "400px", height = "400px")#,
           # DT::dataTableOutput("relations")
     )
-   )
+   ),
+   fluidRow(
+     column(11,
+            style = paste(
+              "border: 1px solid lightgray; background-color: #EDEDED;",
+              "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+            ),
+            withMathJax(includeHTML("../extdata/population_genetics_terms.html"))
+     ))
+
 )
