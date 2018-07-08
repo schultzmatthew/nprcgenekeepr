@@ -1,6 +1,10 @@
 ---
 title: "Interactive Use of nprcmanager"
 output: html_notebook
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
