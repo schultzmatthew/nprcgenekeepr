@@ -12,6 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, include = TRUE}
+library(nprcmanager)
+library(ggplot2)
+library(knitr)
+
 ## you will have to change this to point to a pedigree file that you have
 pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"
 sep <- ","
