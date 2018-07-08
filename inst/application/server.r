@@ -1,6 +1,7 @@
 `%then%` <- shiny:::`%OR%`
 library(futile.logger)
 library(ggplot2)
+library(DT)
 shinyServer(function(input, output, session) {
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
@@ -444,23 +445,26 @@ shinyServer(function(input, output, session) {
 
     mk <- summary(rpt()[, "indivMeanKin"])
     gu <- summary(rpt()[, "gu"])
+    fe_title_txt <- JS(paste("Founder equivalents estimates the expected number
+	of equally contributing founders that would be
+	required to produce the observed genetic diversity
+	in the current population. $f_e = 1 / \\sigma;(p_{i_{2}})$"))
+#  </MATH>Where <MATH>p<sub>i</sub></MATH>is the proportion of the genes of the living,
+#	descendant population contributed by founder <MATH>i</MATH>."))
+    founder <- htmltools::withTags(table(
+      class = "display",
+      thead(
+        tr(
+          th("Known Founders"),
+          th("Known Female Founders"),
+          th("Known Male Founders"),
+          th(JS("Founder Equivalents", title = fe_title_txt)),
+          th("Founder Genome Equivalents"))),
+      tbody(td(as.character(f)), td(as.character(ff)), td(as.character(mf)),
+            td(as.character(round(fe, digits = 2))),
+            td(as.character(round(fg, digits = 2))))))
 
-    founder <- paste("<table>",
-                     "<tr>",
-                     "<th>Known Founders</th>",
-                     "<th>Known Female Founders</th>",
-                     "<th>Known Male Founders</th>",
-                     "<th>Founder Equivalentss</th>",
-                     "<th>Founder Genome Equivalents</th></tr>",
-                     "<td>",as.character(f),"</td>",
-                     "<td>",as.character(ff),"</td>",
-                     "<td>",as.character(mf),"</td>",
-                     "<td>",as.character(round(fe, digits = 2)),"</td>",
-                     "<td>",as.character(round(fg, digits = 2)),"</td>",
-                     "</tr>",
-                     "</table>")
-
-    header <- paste("<tr>",
+      header <- paste("<tr>",
                     "<th></th>",
                     "<th>Min</th>",
                     "<th>1st Quartile</th>",
