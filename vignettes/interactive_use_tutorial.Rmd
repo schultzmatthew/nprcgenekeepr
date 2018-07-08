@@ -1,0 +1,57 @@
+---
+title: "Interactive Use of nprcmanager"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = TRUE}
+## you will have to change this to point to a pedigree file that you have
+pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"
+sep <- ","
+minParentAge <- 0
+breederPedCvs <- read.csv(pedigreeFile, sep = sep)
+breederPed <- qcStudbook(breederPedCvs, minParentAge)
+ped <- resetPopulation(breederPed, NULL)
+probands <- ped$id[ped$population]
+ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
+                    addBackParents = FALSE)
+geneticValue <- reportGV(ped, gu.iter = 500,
+                         gu.thresh = 3,
+                         byID = TRUE,
+                         updateProgress = NULL)
+rpt <- geneticValue[["report"]]
+g <- rpt
+g$indivMeanKin <- round(g$indivMeanKin, 5)
+g$zScores <- round(g$zScores, 2)
+g$gu <- round(g$gu, 5)
+g <- toCharacter(g)
+names(g) <- headerDisplayNames(names(g))
+knitr::kable(g) # needs more work for display purposes.
+gva <- g
+kmat <- geneticValue[["kinship"]]
+f <- geneticValue[["total"]]
+mf <- geneticValue[["maleFounders"]]
+ff <- geneticValue[["femaleFounders"]]
+fe <- geneticValue[["fe"]]
+fg <- geneticValue[["fg"]]
+
+mk <- rpt[, "indivMeanKin"]
+gu <- rpt[, "gu"]
+guBox <- ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+  geom_boxplot(
+    color = "darkblue",
+    fill = "lightblue",
+    notch = TRUE,
+    outlier.color = "red",
+    outlier.shape = 1
+  ) +
+  theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
+  ylab("Score")  + ggtitle("Genetic Uniqueness")
+print(guBox)
+
+gu <- rpt[, "indivMeanKin"]
+gu <- rpt[, "zScores"]
+```
