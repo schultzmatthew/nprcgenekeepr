@@ -11,7 +11,7 @@ uitpSummaryStatistics <-
     #    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
     #  ),
    fluidRow(
-     column(11,
+     column(10, offset = 1,
             style = paste(
              "border: 1px solid lightgray; background-color: #EDEDED;",
              "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
@@ -20,7 +20,7 @@ uitpSummaryStatistics <-
      )),
    br(),
    fluidRow(
-     column(3,
+     column(3, offset = 1,
             popify(downloadButton("downloadKinship", "Export Kinship Matrix"),
                    NULL, #"Exports Kinship Matrix as CSV",
                    "This exports the kinship matrix to a CSV file in the users home directory")),
@@ -31,29 +31,26 @@ uitpSummaryStatistics <-
              "This exports all first-order relations to a CSV file in the users home directory")
     )), br(),
    fluidRow(
-     column(11,
+     column(10, offset = 1,
             htmlOutput("summaryStats")
      )),br(),br(),
    fluidRow(
     # Main Panel
-    column(4,
+    column(5, offset = 1,
       # style = "margin-left:425px;padding:10px;",
       plotOutput("mkPlot", width = "400px", height = "400px"),
       plotOutput("zscorePlot", width = "400px", height = "400px"),
       plotOutput("guPlot", width = "400px", height = "400px"),
       DT::dataTableOutput("relations")
     ),
-    column(4,
-           # style = "margin-left:425px;padding:10px;",
-          # htmlOutput("summaryStats"),
-           #plotOutput("mkPlot", width = "400px", height = "400px"),
-           #plotOutput("zscorePlot", width = "400px", height = "400px"),
-           plotOutput("guPlot2", width = "400px", height = "400px")#,
-          # DT::dataTableOutput("relations")
+    column(5,
+           plotOutput("mkBox", width = "400px", height = "400px"),
+           plotOutput("zscoreBox", width = "400px", height = "400px"),
+           plotOutput("guBox", width = "400px", height = "400px")#,
     )
    ),
    fluidRow(
-     column(11,
+     column(10, offset = 1,
             style = paste(
               "border: 1px solid lightgray; background-color: #EDEDED;",
               "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
