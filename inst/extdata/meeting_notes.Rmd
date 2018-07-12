@@ -1,0 +1,45 @@
+# Meeting Notes and Things To Do
+
+Provided in reverse chronological order
+
+## 20180711 Meeting Notes
+
+### Summary Statistics tab
+
+1. Use default box and whisker plot with red dots for outliers.
+
+### Pedigree Browser tab
+1. Change Update breeding colony button to "" Waiting on Amanda.
+2. Add function to "Update Breeding Colony" button to browse for a file; add animal IDs to the window where they could be pasted.
+3. Change first bullet point to reflect change in function of the "Update Breeding Colony" button
+4. Move first bullet point to far right.
+5. Remove second bullet point. However, provide this information when the file has any type of error. 
+6. Change "Display UIDs for partial parentage" to "Display UIDs". Consider coming up with a better name than "UID". Add hovertext to explain what this button does. Proposed explanatory text: "UIDs are created by the application for all animals with only one parent."
+7. Change "Trim pedigree based on specified population" to "Trim Pedigree". Add hovertext to explain what this button does. See what "Trim Pedigree" button does. Does it remove animals? Its intent is to reduce the number of animals being examined. Does it change genetic analysis. The name of this button will likely follow from what the new name for "Update Breeing Colony" button.
+8. Add a better description for the Search field.
+
+### Error Handling
+1. Develop a full set of error messages appropriate for all types of input files.
+2. Amanda and Beth will provide me with some files with errors.
+
+### Multiple tabs
+1. Come up with a different word for "Breeders". What do you think about __Managed Animals__
+
+## 20180611 Meeting Notes
+### Input tab 
+
+1. Move Column content into description column separate with colon - Done
+2. Change Column Name to Allowable Name - Done
+3. Names have alphanumeric plus "_", "-", and " ". - Done
+4. Remove " Other characters have not been tested." - Done
+5. Change "Any animals listed as a Sire or Dam that do not have their own row or line entry as an Ego will be added." to
+A new row entry will be added for any Sire or Dam that do not already have their own row as an Ego. - Done
+6. Change "Parents will be checked to ensure their own Ego entry is the correct sex." to "Animals will be checked to ensure that their sex is consistent throughout the file."" - Done
+9. Use Allele_1 Allele_2 - Done
+
+### Summary Statistics tab
+
+1. Remove background on histograms - Done
+8. Add box and whisker plot to right of summary statistics histograms - Done
+10. Use Glossary for definition of terms
+
