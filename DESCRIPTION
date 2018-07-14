@@ -28,8 +28,7 @@ Suggests:
     knitr,
     roxygen2 (>= 6.0.0),
     testthat
-Remotes:
-    covr
+    rlib/covr
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
