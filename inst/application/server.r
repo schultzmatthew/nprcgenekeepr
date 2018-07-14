@@ -589,10 +589,24 @@ shinyServer(function(input, output, session) {
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
       ylab("Score")  + ggtitle("Genetic Uniqueness")
   })
-  addPopover(session, "guPlot", "Genetic Uniqueness",
-             content = paste0("Some information about genetic uniqueness. ",
-                              "Can I add a formula? $a = mx + b$ or ",
-                              "$\\sum b_{1}x_{1} + b_{2}x_{2} \\cdots b_{n}x_n$"),
+  box_and_whisker_desc <- paste0("The upper whisker extends from the hinge to
+                              the largest value no further than 1.5 * IQR
+                              from the hinge (where IQR is the
+                              inter-quartile range, or distance between
+                              the first and third quartiles). The lower
+                              whisker extends from the hinge to the
+                              smallest value at most 1.5 * IQR of the
+                              hinge. Data beyond the end of the whiskers
+                              are called \"outlying\" points and are plotted
+                              individually.")
+  addPopover(session, "mkBox", "Mean Kinship Coefficients",
+             content = box_and_whisker_desc,
+             placement = "bottom", trigger = "hover", options = NULL)
+  addPopover(session, "zscoreBox", "Z-scores",
+             content = box_and_whisker_desc,
+             placement = "bottom", trigger = "hover", options = NULL)
+  addPopover(session, "guBox", "Genetic Uniqueness",
+             content = box_and_whisker_desc,
              placement = "bottom", trigger = "hover", options = NULL)
 
   output$relations <- eventReactive(input$relations, {
@@ -600,14 +614,11 @@ shinyServer(function(input, output, session) {
       if (is.null(kmat())) {
         return(NULL)
       }
-
       j <- nrow(kmat()) * ncol(kmat())
-
       # Setting up the progress bar
       progress <- shiny::Progress$new()
       on.exit(progress$close())
       progress$set(message = "Finding Relationship Designations", value = 0)
-
       updateProgress <- function() {
         progress$inc(amount = 1 / j)
       }
