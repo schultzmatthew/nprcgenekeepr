@@ -21,3 +21,4 @@ vignettes/*.aux
 vignettes/*.out
 ^README\.Rmd$
 ^README-.*\.png$
+vignettes/interactive_use*
