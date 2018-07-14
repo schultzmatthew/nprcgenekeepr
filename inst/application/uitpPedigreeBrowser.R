@@ -26,7 +26,7 @@ uitpPedigreeBrowser <-
         ),
         div(
           style = "display:inline-block;width:250px;padding:10px",
-          checkboxInput("uid", label = "Display UIDs for partial parentage",
+          checkboxInput("uid", label = "Display UIDs",
                         value = TRUE),
           checkboxInput("trim",
                         label = "Trim pedigree based on specified population",

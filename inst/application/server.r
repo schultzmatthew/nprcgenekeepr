@@ -562,7 +562,7 @@ shinyServer(function(input, output, session) {
     }
     gu <- rpt()[, "indivMeanKin"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
-      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+      geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
       ylab("Kinship")  + ggtitle("Distribution of Individual Mean Kinship Coefficients")
@@ -573,7 +573,7 @@ shinyServer(function(input, output, session) {
     }
     gu <- rpt()[, "zScores"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
-      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+      geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
       ylab("Z-Score")  + ggtitle("Z-Score")
@@ -584,14 +584,16 @@ shinyServer(function(input, output, session) {
     }
     gu <- rpt()[, "gu"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
-      geom_boxplot(color="darkblue", fill="lightblue", notch = TRUE,
+      geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
       ylab("Score")  + ggtitle("Genetic Uniqueness")
   })
-  # addPopover(session, "guPlot", "Genetic Uniqueness",
-  #            content = paste0("Some information about genetic uniqueness"),
-  #            placement = "bottom", trigger = "hover", options = NULL)
+  addPopover(session, "guPlot", "Genetic Uniqueness",
+             content = paste0("Some information about genetic uniqueness. ",
+                              "Can I add a formula? $a = mx + b$ or ",
+                              "$\\sum b_{1}x_{1} + b_{2}x_{2} \\cdots b_{n}x_n$"),
+             placement = "bottom", trigger = "hover", options = NULL)
 
   output$relations <- eventReactive(input$relations, {
     renderTable({
