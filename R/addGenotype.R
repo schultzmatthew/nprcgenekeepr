@@ -1,5 +1,7 @@
 #' Add genotype data to pedigree file
 #'
+#' Assumes genotype has been opened by \code{checkGenotypeFile}
+#'
 #' @param ped pedigree dataframe. \code{ped} is to be provided by
 #' \code{qcStudbook} so it is not checked.
 #' @param genotype genotype dataframe. \code{genotype} is to be provided by
