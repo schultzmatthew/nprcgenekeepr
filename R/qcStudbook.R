@@ -152,24 +152,16 @@ qcStudbook <- function(sb, minParentAge = 2) {
   requiredCols <- getRequiredCols()
   # Checking for the 4 required fields (id, sire, dam, sex)
   if (!all(str_detect_fixed_all(headers, requiredCols))) {
-    stop(paste0("Required field missing (", paste0(requiredCols[!required],
-                                                   collapse = ", "), ")."))
+    stop(paste0("Required field(s) missing: ", paste0(requiredCols[
+      !str_detect_fixed_all(headers, requiredCols, ignore_na = TRUE)], collapse = ", "), "."))
   }
 
   names(sb) <- headers
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
-  # Removing erroneous IDs (someone started entering "unknown" for unknown
-  # parents instead of leaving the field blank in PRIMe)
-  sb <- sb[toupper(sb$id) != "UNKNOWN", ]
-  sb$sire[toupper(sb$sire) == "UNKNOWN"] <- NA
-  sb$dam[toupper(sb$dam) == "UNKNOWN"] <- NA
-
-  # Adding UIDs
+  sb <- unknown2NA(sb)
   sb <- addUIds(sb)
-
-  # Find any parents that don't have their own line entry
-  sb <- addParents(sb)
-
+  sb <- addParents(sb) # add parent record for parents that don't have
+                       #their own line entry
   # Add and standardize needed fields
   sb$sex <- convertSexCodes(sb$sex)
   sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
@@ -195,7 +187,7 @@ qcStudbook <- function(sb, minParentAge = 2) {
     stop(paste0("Parents with low age at birth of offspring are listed in ",
                 fileName, ".\n"))
   }
-  # setting age
+  # setting age:
   # uses current date as the end point if no exit date is available
   if (("birth" %in% headers) && !("age" %in% headers)) {
     sb["age"] <- calcAge(sb$birth, sb$exit)
