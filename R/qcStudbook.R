@@ -149,21 +149,14 @@ qcStudbook <- function(sb, minParentAge = 2) {
   headers <- gsub("birthdate", "birth", headers)
   headers <- gsub("deathdate", "death", headers)
 
+  requiredCols <- getRequiredCols()
   # Checking for the 4 required fields (id, sire, dam, sex)
-  if (!all(str_detect_fixed_all(headers, getRequiredHeaders))) {
-    stop("No valid headers found")
-  }
-
-  names(sb) <- headers
-  ## An age column was required, however, code below creates it if it does
-  ## not exists. Thus, it is not required as a prerequisit.
-  requiredCols <- c("id", "sire", "dam", "sex", "birth")
-  required <- requiredCols %in% headers
-
-  if (!all(required)) {
+  if (!all(str_detect_fixed_all(headers, requiredCols))) {
     stop(paste0("Required field missing (", paste0(requiredCols[!required],
                                                    collapse = ", "), ")."))
   }
+
+  names(sb) <- headers
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   # Removing erroneous IDs (someone started entering "unknown" for unknown
   # parents instead of leaving the field blank in PRIMe)
