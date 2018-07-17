@@ -19,6 +19,7 @@ Imports:
     Matrix,
     plotrix,
     Rlabkey,
+    rmsutilityr,
     shiny,
     stringi,
     utils
@@ -28,7 +29,8 @@ Suggests:
     knitr,
     pkgdown,
     roxygen2 (>= 6.0.0),
-    testthat,
+    testthat
+Remotes: github::rmsharp/rmsutilityr
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1

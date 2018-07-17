@@ -136,6 +136,7 @@
 #' character.
 #'
 #' @importFrom utils write.csv
+#' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
 qcStudbook <- function(sb, minParentAge = 2) {
   headers <- tolower(names(sb))
@@ -149,7 +150,7 @@ qcStudbook <- function(sb, minParentAge = 2) {
   headers <- gsub("deathdate", "death", headers)
 
   # Checking for the 4 required fields (id, sire, dam, sex)
-  if (is.na(match("id", headers))) {
+  if (!all(str_detect_fixed_all(headers, getRequiredHeaders))) {
     stop("No valid headers found")
   }
 

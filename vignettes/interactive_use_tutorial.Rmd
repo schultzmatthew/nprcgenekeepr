@@ -16,12 +16,15 @@ library(nprcmanager)
 library(ggplot2)
 library(knitr)
 
-## you will have to change this to point to a pedigree file that you have
-pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"
+## You can use a file browser
+pedigreeFile <- file.choose()
+## or you will have to change this to point to a pedigree file that you have
+#pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"
+
 sep <- ","
 minParentAge <- 0
-breederPedCvs <- read.csv(pedigreeFile, sep = sep)
-breederPed <- qcStudbook(breederPedCvs, minParentAge)
+breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE)
+breederPed <- qcStudbook(breederPedCsv, minParentAge)
 ped <- resetPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,

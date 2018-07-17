@@ -14,5 +14,5 @@ addGenotype(ped, genotype)
 \code{checkGenotypeFile} so it is not checked.}
 }
 \description{
-Add genotype data to pedigree file
+Assumes genotype has been opened by \code{checkGenotypeFile}
 }
