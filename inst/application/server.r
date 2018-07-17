@@ -82,7 +82,7 @@ shinyServer(function(input, output, session) {
       if (is.null(pedigreeFile)) {
         return(NULL)
       }
-      flog.debug(paste0("before read.csv input$dataSource: ",
+      flog.debug(paste0("before read.table input$dataSource: ",
                         input$dataSource),
                  name = "nprcmanager")
       # Load pedigree table
@@ -97,13 +97,13 @@ shinyServer(function(input, output, session) {
                           sep = ""),
                    name = "nprcmanager")
       } else {
-        breederPed <- read.csv(pedigreeFile$datapath,
+        breederPed <- read.table(pedigreeFile$datapath,
                       header = TRUE,
                       sep = sep,
                       stringsAsFactors = FALSE,
                       na.strings = c("", "NA"),
                       check.names = FALSE)
-        flog.debug(paste0("after read.csv pedigreeFile$name: ",
+        flog.debug(paste0("after read.table pedigreeFile$name: ",
                           pedigreeFile$name,
                           "; contents rows: ", nrow(breederPed),
                           ", columns: ", ncol(breederPed), "; col names: '",
@@ -116,14 +116,14 @@ shinyServer(function(input, output, session) {
         stop("Did not expect input$dataSource to be NULL")
       } else if (input$dataSource == "separatePedGenoFile") {
         # Load pedigree table
-        flog.debug(paste0("before read.csv genotypeFile$datapath: ",
+        flog.debug(paste0("before read.table genotypeFile$datapath: ",
                           genotypeFile$datapath,
                           "; contents rows: ", nrow(breederPed),
                           ", columns: ", ncol(breederPed), "; col names: '",
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
-        genotype <- read.csv(genotypeFile$datapath,
+        genotype <- read.table(genotypeFile$datapath,
                              header = TRUE,
                              sep = sep,
                              stringsAsFactors = FALSE,
