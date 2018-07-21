@@ -8,6 +8,8 @@
 #' @param time.origin date object used by \code{as.Date} to set \code{origin}.
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type.
+#' @importFrom rmsutilityr get_and_or_list
+#' @importFrom rmsutilityr is_valid_date_str
 #' @export
 convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <-  tolower(names(ped))
