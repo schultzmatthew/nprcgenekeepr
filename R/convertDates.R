@@ -13,7 +13,14 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   for (header in headers) {
-    ped[[header]] <- as.Date(ped[[header]], origin = time.origin)
+    for (format in formats) {
+      itIsDate <- is_valid_date_str(ped[[header]], format = format)
+      if (itIsDate) break
+    }
+    if (!itIsDate)
+      stop(paste0("Column '", header, "' does not contain valid dates."))
+
+    ped[[header]] <- as.Date(ped[[header]], format = format, origin = time.origin)
   }
   return(ped)
 }
