@@ -15,9 +15,11 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   for (header in headers) {
-    if (!all(is_valid_date_str(ped[[header]], format = "%Y-%m-%d"))) {
+    if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
+                               format = "%Y-%m-%d"))) {
       rowNums <- get_and_or_list(seq_along(ped[[header]])[
-        !is_valid_date_str(ped[[header]], format = "%Y-%m-%d")], "and")
+        !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
+                           format = "%Y-%m-%d")], "and")
       stop(paste0("Column '", header, "' has invalid dates on row(s) ",
                   rowNums, "."))
     }
