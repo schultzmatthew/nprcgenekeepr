@@ -8,6 +8,8 @@ test_that("getLogo returns reasonalble values", {
   expect_true(logo$width > 0)
   expect_true(is.character(logo$file))
 })
+## See also: Drop-in replacement for testthat::with_mock()
+## https://krlmlr.github.io/mockr
 ## mock getSiteInfo()
 test_that("getLogo returns reasonalble values with SNPRC mock", {
   with_mock(
