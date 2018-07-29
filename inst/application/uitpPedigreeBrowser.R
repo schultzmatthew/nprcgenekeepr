@@ -24,11 +24,11 @@ uitpPedigreeBrowser <-
           tags$textarea(id = "populationIds", rows = 5, cols = 30, ""),
           actionButton("specifyPop", label = "Update Breeding Colony")
         ),
-        # fileInput("breedingColonyUpdate", "Choose CSV File",
-        #           multiple = FALSE,
-        #           accept = c("text/csv",
-        #                      "text/comma-separated-values,text/plain",
-        #                      ".csv")),
+        fileInput("breedingColonyUpdate", "Choose CSV File",
+                  multiple = FALSE,
+                  accept = c("text/csv",
+                             "text/comma-separated-values,text/plain",
+                             ".csv")),
         div(
           style = "display:inline-block;width:250px;padding:10px",
           checkboxInput("uid", label = "Display UIDs",
