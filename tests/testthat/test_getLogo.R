@@ -11,7 +11,7 @@ test_that("getLogo returns reasonalble values", {
 ## mock getSiteInfo()
 test_that("getLogo returns reasonalble values with SNPRC mock", {
   with_mock(
-    getSiteInfo <- function() {list(center = "SNPRC")},
+    getSiteInfo = function() {list(center = "SNPRC")},
     logo <- suppressWarnings(getLogo()),
     expect_true(is.integer(logo$height)),
     expect_true(is.integer(logo$width)),
@@ -22,7 +22,7 @@ test_that("getLogo returns reasonalble values with SNPRC mock", {
 })
 test_that("getLogo returns reasonalble values with ONPRC mock", {
   with_mock(
-    getSiteInfo <- function() {list(center = "ONPRC")},
+    getSiteInfo = function() {list(center = "ONPRC")},
     logo <- suppressWarnings(getLogo()),
     expect_true(is.integer(logo$height)),
     expect_true(is.integer(logo$width)),
