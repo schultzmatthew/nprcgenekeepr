@@ -153,3 +153,20 @@
 #' data("smallPedTree")
 #' }
 "smallPedTree"
+#' finalRpt is a list object created from the list object \emph{rpt} prepared
+#' by \code{reportGV}. It is created inside \code{orderReport}. This version
+#' is at the state just prior to calling \code{rankSubjects} inside
+#' \code{orderReport}.
+#' @examples
+#' \dontrun{
+#' data("finalRpt")
+#' finalRpt <- rankSubjects(finalRpt)
+#' }
+"finalRpt"
+#' rpt is a dataframe created from the genetic analysis routine
+#' \code{reportGV}.
+#' @examples
+#' \dontrun{
+#' data("rpt")
+#' }
+"rpt"
