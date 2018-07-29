@@ -1,7 +1,5 @@
 context("rankSubjects")
 library(testthat)
-## Do not have a data structure to test with.
-## Considering breaking up reportGV() and rankSubjects()
 ## reportGV() unit test is weak.
 data("finalRpt")
 rpt <- rankSubjects(finalRpt)
