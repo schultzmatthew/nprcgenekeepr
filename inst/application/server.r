@@ -299,7 +299,17 @@ shinyServer(function(input, output, session) {
 
   specifyPopulation <- eventReactive(input$specifyPop, {
     ped <- unlist(strsplit(input$populationIds, "[ \t\n]"))
-
+    # breedingColonyUpdate <- input$breedingColonyUpdate
+    # flog.debug(paste0("breedingColonyUpdate - breedingColonyUpdate$name: ",
+    #                   breedingColonyUpdate$name, "; ",
+    #                   "breedingColonyUpdate$datapath: ", breedingColonyUpdate$datapath),
+    #            name = "nprcmanager")
+    # breedingColonyUpdateDf <- read.table(breedingColonyUpdate$datapath,
+    #                        header = TRUE,
+    #                        sep = sep,
+    #                        stringsAsFactors = FALSE,
+    #                        na.strings = c("", "NA"),
+    #                        check.names = FALSE)
     if (length(ped) == 0) {
       return(NULL)
     } else{
