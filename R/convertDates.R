@@ -16,7 +16,8 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
   for (header in headers) {
-    ped[[header]][ped[[header]] == ""] <- NA
+    if (class(ped[[header]]) == "character")
+      ped[[header]][ped[[header]] == ""] <- NA
     if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
                                format = format, optional = TRUE))) {
       rowNums <- get_and_or_list(seq_along(ped[[header]])[
