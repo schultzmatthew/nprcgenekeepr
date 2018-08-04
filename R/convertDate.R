@@ -11,12 +11,12 @@
 #' @importFrom rmsutilityr get_and_or_list
 #' @importFrom rmsutilityr is_valid_date_str
 #' @export
-convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
+convertDate <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
   for (header in headers) {
-    if (class(ped[[header]]) == "character")
+    if (class(ped[[header]]) == "character" | class(ped[[header]]) == "factor")
       ped[[header]][ped[[header]] == ""] <- NA
     if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
                                format = format, optional = TRUE))) {

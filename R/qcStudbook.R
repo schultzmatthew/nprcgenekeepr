@@ -109,7 +109,7 @@
 #' \item{"UNKNOWN"} {--- replacing \code{NA}}
 #' \item{"OTHER"} {--- replacing not matching any of the above}}
 #'
-#' The function \code{convertDates} converts character representations of
+#' The function \code{convertDate} converts character representations of
 #' dates in the columns \code{birth}, \code{death}, \code{departure}, and
 #' \code{exit} to dates using the \code{as.Date} function.
 #'
@@ -174,7 +174,7 @@ qcStudbook <- function(sb, minParentAge = 2) {
   }
 
   # converting date column entries from strings to date
-  sb <- convertDates(sb, time.origin = as.Date("1970-01-01"))
+  sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
   sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
 
   # ensure parents are older than offspring
