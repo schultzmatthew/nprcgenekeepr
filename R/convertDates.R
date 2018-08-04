@@ -16,8 +16,9 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
   for (header in headers) {
+    ped[[header]][ped[[header]] == ""] <- NA
     if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
-                               format = format))) {
+                               format = format, optional = TRUE))) {
       rowNums <- get_and_or_list(seq_along(ped[[header]])[
         !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
                            format = format)], "and")
@@ -25,7 +26,8 @@ convertDates <- function(ped, time.origin = as.Date("1970-01-01")) {
                   rowNums, "."))
     }
 
-    ped[[header]] <- as.Date(ped[[header]], format = format, origin = time.origin)
+    ped[[header]] <- as.Date(ped[[header]], format = format,
+                             origin = time.origin,, optional = TRUE)
   }
   return(ped)
 }

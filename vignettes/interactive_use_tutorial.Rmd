@@ -23,7 +23,7 @@ pedigreeFile <- file.choose()
 
 sep <- ","
 minParentAge <- 0
-breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE)
+breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE, stringsAsFactors = FALSE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
 ped <- resetPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
@@ -40,7 +40,7 @@ g$zScores <- round(g$zScores, 2)
 g$gu <- round(g$gu, 5)
 g <- toCharacter(g)
 names(g) <- headerDisplayNames(names(g))
-knitr::kable(g) # needs more work for display purposes.
+knitr::kable(g[1:10, ]) # needs more work for display purposes.
 gva <- g
 kmat <- geneticValue[["kinship"]]
 f <- geneticValue[["total"]]
@@ -66,3 +66,32 @@ print(guBox)
 gu <- rpt[, "indivMeanKin"]
 gu <- rpt[, "zScores"]
 ```
+
+To use the __findLoops__ function run the following code and select a pedigree as your input
+file that has a loop in it. I have used the example pedigree that comes with the software
+_Example_Pedigree.csv_.
+
+```{r findLoops}
+pedigreeFile <- file.choose() ## use example file
+examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
+                                   stringsAsFactors = FALSE)
+examplePedigree <- qcStudbook(examplePedigree_raw, minParentAge = 0)
+exampleTree <- createPedTree(examplePedigree)
+exampleLoops <- findLoops(exampleTree)
+
+```
+You can count how many loops you have with the following codel
+```{r countLoops}
+length(exampleLoops[exampleLoops == TRUE])
+
+```
+
+You can list the first 10 sets of ids, sires and dams in loops with the following line of code:
+
+```{r listLoops}
+
+examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
+
+
+```
+
