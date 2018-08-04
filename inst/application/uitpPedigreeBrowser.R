@@ -22,7 +22,7 @@ uitpPedigreeBrowser <-
         div(
           style = "display:inline-block;width:250px;padding:10px",
           tags$textarea(id = "populationIds", rows = 5, cols = 30, ""),
-          actionButton("specifyPop", label = "Update Breeding Colony")
+          actionButton("specifyPop", label = "Update Focal Animals")
         ),
         fileInput("breedingColonyUpdate", "Choose CSV File",
                   multiple = FALSE,
