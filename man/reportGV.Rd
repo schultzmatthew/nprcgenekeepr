@@ -4,8 +4,8 @@
 \alias{reportGV}
 \title{Generates a genetic value report for a provided pedigree.}
 \usage{
-reportGV(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL, byID = TRUE,
-  updateProgress = NULL)
+reportGV(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
+  byID = TRUE, updateProgress = NULL)
 }
 \arguments{
 \item{ped}{the pedigree information in datatable format}
