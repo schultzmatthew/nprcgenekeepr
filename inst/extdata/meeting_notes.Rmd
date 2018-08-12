@@ -7,6 +7,8 @@ Provided in reverse chronological order
 ### Summary Statistics tab
 
 1. Use default box and whisker plot with red dots for outliers.
+    a. Changes made 2018-07-14
+    b. Hover text to box and whisker plots added 2018-07-14
 
 ### Pedigree Browser tab
 1. Change Update breeding colony button to "" Waiting on Amanda.
@@ -20,10 +22,24 @@ Provided in reverse chronological order
 
 ### Error Handling
 1. Develop a full set of error messages appropriate for all types of input files.
+    a. Added improved error detection and reporting for missing required columns - 201807-17
 2. Amanda and Beth will provide me with some files with errors.
+   a. Beth provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. 
+   b. Both errors were caught, but the first error was only seen after correcting the first. It would be better to report all errors and set a flag that told the program to stop at the end of parsing the entire pedigree.
+3. Refactored some code within __qcStudbook__ to a separate function __unknown2NA__. 2018-07-18
 
 ### Multiple tabs
-1. Come up with a different word for "Breeders". What do you think about __Managed Animals__
+1. Come up with a different word for "Breeders". What do you think about _Managed Animals_
+  a. Amanda suggested _Focal Animals_ -- this was adopted.
+
+### Miscellaneous items
+1. Added automatic generation of a web site
+    a. 2018-07-17 first draft
+    b. Need to first move content that has been prepared to the correct location
+2. Changed read.csv to read.table in code to emphasize we are able to read multiple file types.
+    a. 2018-07-17
+3. Amended documentation for the __addGenotype__ function to indicate that it is assuming 
+the _genotype_ object was opened by __checkGenotypeFile__.
 
 ## 20180611 Meeting Notes
 ### Input tab 

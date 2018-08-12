@@ -317,7 +317,11 @@ $(document).ready(function () {
 <div id="summary-statistics-tab" class="section level3">
 <h3>Summary Statistics tab</h3>
 <ol style="list-style-type: decimal">
-<li>Use default box and whisker plot with red dots for outliers.</li>
+<li>Use default box and whisker plot with red dots for outliers.
+<ol style="list-style-type: lower-alpha">
+<li>Changes made 2018-07-14</li>
+<li>Hover text to box and whisker plots added 2018-07-14</li>
+</ol></li>
 </ol>
 </div>
 <div id="pedigree-browser-tab" class="section level3">
@@ -336,14 +340,40 @@ $(document).ready(function () {
 <div id="error-handling" class="section level3">
 <h3>Error Handling</h3>
 <ol style="list-style-type: decimal">
-<li>Develop a full set of error messages appropriate for all types of input files.</li>
-<li>Amanda and Beth will provide me with some files with errors.</li>
+<li>Develop a full set of error messages appropriate for all types of input files.
+<ol style="list-style-type: lower-alpha">
+<li>Added improved error detection and reporting for missing required columns - 201807-17</li>
+</ol></li>
+<li>Amanda and Beth will provide me with some files with errors.
+<ol style="list-style-type: lower-alpha">
+<li>Beth provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam.</li>
+<li>Both errors were caught, but the first error was only seen after correcting the first. It would be better to report all errors and set a flag that told the program to stop at the end of parsing the entire pedigree.</li>
+</ol></li>
+<li>Refactored some code within <strong>qcStudbook</strong> to a separate function <strong>unknown2NA</strong>. 2018-07-18</li>
 </ol>
 </div>
 <div id="multiple-tabs" class="section level3">
 <h3>Multiple tabs</h3>
 <ol style="list-style-type: decimal">
-<li>Come up with a different word for “Breeders”. What do you think about <strong>Managed Animals</strong></li>
+<li>Come up with a different word for “Breeders”. What do you think about <em>Managed Animals</em></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Amanda suggested <em>Focal Animals</em> – this was adopted.</li>
+</ol>
+</div>
+<div id="miscellaneous-items" class="section level3">
+<h3>Miscellaneous items</h3>
+<ol style="list-style-type: decimal">
+<li>Added automatic generation of a web site
+<ol style="list-style-type: lower-alpha">
+<li>2018-07-17 first draft</li>
+<li>Need to first move content that has been prepared to the correct location</li>
+</ol></li>
+<li>Changed read.csv to read.table in code to emphasize we are able to read multiple file types.
+<ol style="list-style-type: lower-alpha">
+<li>2018-07-17</li>
+</ol></li>
+<li>Amended documentation for the <strong>addGenotype</strong> function to indicate that it is assuming the <em>genotype</em> object was opened by <strong>checkGenotypeFile</strong>.</li>
 </ol>
 </div>
 </div>
