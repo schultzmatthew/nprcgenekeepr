@@ -346,15 +346,16 @@ $(document).ready(function () {
 </ol></li>
 <li>Amanda and Beth will provide me with some files with errors.
 <ol style="list-style-type: lower-alpha">
-<li>Beth provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam.</li>
+<li>Amanda provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. 20180720</li>
 <li>Both errors were caught, but the first error was only seen after correcting the first. It would be better to report all errors and set a flag that told the program to stop at the end of parsing the entire pedigree.</li>
+<li>Three files were added to the example files: <em>Example_Pedigree.csv</em>, <em>Pedigree_File_Example_134M_dam_removed.csv</em>, and <em>Pedigree_File_Example_CSV.csv</em> 20180721</li>
+<li>These files need to be documented.</li>
 </ol></li>
 <li>Refactored some code within <strong>qcStudbook</strong> to a separate function <strong>unknown2NA</strong>. 2018-07-18</li>
-</ol>
-</div>
-<div id="multiple-tabs" class="section level3">
-<h3>Multiple tabs</h3>
-<ol style="list-style-type: decimal">
+<li>Added bad date string format detection in <strong>convertDates</strong>, which is now <strong>convertDate</strong>. Also added unit tests for <strong>convertDate</strong>. 20180721</li>
+<li>Added ability to handle dates with NA to <strong>convertDates</strong> 20180722</li>
+<li>Added unit test coverage of <strong>updateProgress</strong> calls in <em>test_reportGV.R</em> 20180722</li>
+<li>Corrected a bug and added corralary unit test for <strong>rankSubjects</strong> ### Multiple tabs</li>
 <li>Come up with a different word for “Breeders”. What do you think about <em>Managed Animals</em></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
@@ -374,6 +375,7 @@ $(document).ready(function () {
 <li>2018-07-17</li>
 </ol></li>
 <li>Amended documentation for the <strong>addGenotype</strong> function to indicate that it is assuming the <em>genotype</em> object was opened by <strong>checkGenotypeFile</strong>.</li>
+<li>Added use of conveniece functions <strong>get_and_or_list</strong> and <strong>is_valid_data_str</strong> from the <em>github/rmsharp/rmsharp/rmsutilityr</em> repository.</li>
 </ol>
 </div>
 </div>
