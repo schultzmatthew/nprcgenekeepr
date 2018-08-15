@@ -327,9 +327,9 @@ $(document).ready(function () {
 <div id="pedigree-browser-tab" class="section level3">
 <h3>Pedigree Browser tab</h3>
 <ol style="list-style-type: decimal">
-<li>Change Update breeding colony button to &quot;&quot; Waiting on Amanda.</li>
-<li>Add function to “Update Breeding Colony” button to browse for a file; add animal IDs to the window where they could be pasted.</li>
-<li>Change first bullet point to reflect change in function of the “Update Breeding Colony” button</li>
+<li>Change Update breeding colony button to &quot;&quot; Waiting on Amanda. Changed to “Update Focal Animals” based on instructions from Amanda. 2018-08-04</li>
+<li>Add function to “Update Breeding Colony” button to browse for a file; add animal IDs to the window where they could be pasted. Started 2018-07-29 getting file not updating window. 2018-08-15</li>
+<li>Change first bullet point to reflect change in function of the “Update Focal Animal” button. 2018-08-15</li>
 <li>Move first bullet point to far right.</li>
 <li>Remove second bullet point. However, provide this information when the file has any type of error.</li>
 <li>Change “Display UIDs for partial parentage” to “Display UIDs”. Consider coming up with a better name than “UID”. Add hovertext to explain what this button does. Proposed explanatory text: “UIDs are created by the application for all animals with only one parent.”</li>
@@ -355,11 +355,20 @@ $(document).ready(function () {
 <li>Added bad date string format detection in <strong>convertDates</strong>, which is now <strong>convertDate</strong>. Also added unit tests for <strong>convertDate</strong>. 20180721</li>
 <li>Added ability to handle dates with NA to <strong>convertDates</strong> 20180722</li>
 <li>Added unit test coverage of <strong>updateProgress</strong> calls in <em>test_reportGV.R</em> 20180722</li>
-<li>Corrected a bug and added corralary unit test for <strong>rankSubjects</strong> ### Multiple tabs</li>
-<li>Come up with a different word for “Breeders”. What do you think about <em>Managed Animals</em></li>
+<li>Corrected a bug and added corralary unit test for <strong>rankSubjects</strong>.</li>
+<li>Added test for missing <strong>age</strong> column in <em>orderReport</em> function. This also allows correct ordering when the age column is missing. 2018-07-29</li>
+<li>Added unit tests for <em>findLoops</em> function.</li>
+<li>Added check for class on objects in <em>convertDates</em> function, because it was failing when objects were already dates. It now passes those objects through untouched. 2018-08-04</li>
+<li>Added some debug code for updating focal animals (still named breeding colony update in code) 2018-08-15</li>
 </ol>
+</div>
+<div id="multiple-tabs" class="section level3">
+<h3>Multiple tabs</h3>
+<ol style="list-style-type: decimal">
+<li>Come up with a different word for “Breeders”. What do you think about <em>Managed Animals</em>
 <ol style="list-style-type: lower-alpha">
 <li>Amanda suggested <em>Focal Animals</em> – this was adopted.</li>
+</ol></li>
 </ol>
 </div>
 <div id="miscellaneous-items" class="section level3">
@@ -374,8 +383,20 @@ $(document).ready(function () {
 <ol style="list-style-type: lower-alpha">
 <li>2018-07-17</li>
 </ol></li>
-<li>Amended documentation for the <strong>addGenotype</strong> function to indicate that it is assuming the <em>genotype</em> object was opened by <strong>checkGenotypeFile</strong>.</li>
-<li>Added use of conveniece functions <strong>get_and_or_list</strong> and <strong>is_valid_data_str</strong> from the <em>github/rmsharp/rmsharp/rmsutilityr</em> repository.</li>
+<li>Amended documentation for the <strong>addGenotype</strong> function to indicate that it is assuming the <em>genotype</em> object was opened by <strong>checkGenotypeFile</strong>. 2018-07-17</li>
+<li>Added use of conveniece functions <strong>get_and_or_list</strong> and <strong>is_valid_data_str</strong> from the <em>github/rmsharp/rmsharp/rmsutilityr</em> repository. 2018-07-21</li>
+<li>Added documentation for data elements <strong>finalRpt</strong> and <strong>rpt</strong>, which are both created by the <em>reportGV</em> function. 2018-07-29</li>
+<li>Added brief tutorial on how to use <em>findLoops</em> function. 2018-08-04</li>
+</ol>
+</div>
+<div id="questions-that-came-up-after-the-meeting" class="section level3">
+<h3>Questions that came up after the meeting</h3>
+<ol style="list-style-type: decimal">
+<li>What is the meaning of the following:
+<ol style="list-style-type: lower-alpha">
+<li>Text under <strong>Export</strong> button on <em>Pedigree Browser</em> tab. ``A population must be defined before proceeding to the Genetic Value Analysis’’.</li>
+<li>Check box above <strong>Export</strong> button on <em>Pedigree Browser</em> tab. ``Trim pedigree based on specified population’’.</li>
+</ol></li>
 </ol>
 </div>
 </div>

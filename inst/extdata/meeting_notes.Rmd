@@ -7,14 +7,14 @@ Provided in reverse chronological order
 ### Summary Statistics tab
 
 1. Use default box and whisker plot with red dots for outliers.
-    a. Changes made 2018-07-14
-    b. Hover text to box and whisker plots added 2018-07-14
+    a. Changes made. Done 2018-07-14
+    b. Hover text to box and whisker plots added. Done 2018-07-14
 
 ### Pedigree Browser tab
-1. Change Update breeding colony button to "" Waiting on Amanda. Changed to "Update Focal Animals" based on instructions from Amanda. 2018-08-04
-2. Add function to "Update Breeding Colony" button to browse for a file; add animal IDs to the window where they could be pasted. Started 2018-07-29 getting file not updating window.
-3. Change first bullet point to reflect change in function of the "Update Breeding Colony" button
-4. Move first bullet point to far right.
+1. Change Update breeding colony button to "" Waiting on Amanda. Changed to "Update Focal Animals" based on instructions from Amanda. Done 2018-08-04
+2. Add function to "Update Breeding Colony" button to browse for a file; add animal IDs to the window where they could be pasted. Started 2018-07-29 getting file not updating window. Done 2018-08-15
+3. Change first bullet point to reflect change in function of the "Update Focal Animal" button. Done 2018-08-15
+4. Move first bullet point to far right. Done 2018-08-15
 5. Remove second bullet point. However, provide this information when the file has any type of error. 
 6. Change "Display UIDs for partial parentage" to "Display UIDs". Consider coming up with a better name than "UID". Add hovertext to explain what this button does. Proposed explanatory text: "UIDs are created by the application for all animals with only one parent."
 7. Change "Trim pedigree based on specified population" to "Trim Pedigree". Add hovertext to explain what this button does. See what "Trim Pedigree" button does. Does it remove animals? Its intent is to reduce the number of animals being examined. Does it change genetic analysis. The name of this button will likely follow from what the new name for "Update Breeing Colony" button.
@@ -22,29 +22,29 @@ Provided in reverse chronological order
 
 ### Error Handling
 1. Develop a full set of error messages appropriate for all types of input files.
-    a. Added improved error detection and reporting for missing required columns - 201807-17
+    a. Added improved error detection and reporting for missing required columns - Done 2018-07-17
 2. Amanda and Beth will provide me with some files with errors.
-   a. Amanda provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. 20180720
+   a. Amanda provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. Done 20180720
    b. Both errors were caught, but the first error was only seen after correcting the first. It would be better to report all errors and set a flag that told the program to stop at the end of parsing the entire pedigree.
    c. Three files were added to the example files: _Example_Pedigree.csv_, 
-   _Pedigree_File_Example_134M_dam_removed.csv_, and _Pedigree_File_Example_CSV.csv_ 20180721
+   _Pedigree_File_Example_134M_dam_removed.csv_, and _Pedigree_File_Example_CSV.csv_ Done 20180721
    d. These files need to be documented.
-3. Refactored some code within __qcStudbook__ to a separate function __unknown2NA__. 2018-07-18
+3. Refactored some code within __qcStudbook__ to a separate function __unknown2NA__. Done 2018-07-18
 4. Added bad date string format detection in __convertDates__, which is now __convertDate__. 
-Also added unit tests for __convertDate__. 20180721
-5. Added ability to handle dates with NA to __convertDates__ 20180722
-6. Added unit test coverage of __updateProgress__ calls in _test_reportGV.R_ 20180722
-7. Corrected a bug and added corralary unit test for __rankSubjects__.
+Also added unit tests for __convertDate__. Done 2018-07-21
+5. Added ability to handle dates with NA to __convertDates__ Done 2018-07-22
+6. Added unit test coverage of __updateProgress__ calls in _test_reportGV.R_ Done 2018-07-22
+7. Corrected a bug and added corralary unit test for __rankSubjects__. Done 2018-07-29
 8. Added test for missing __age__ column in _orderReport_ function. This also allows correct
-ordering when the age column is missing. 2018-07-29
-9. Added unit tests for _findLoops_ function.
+ordering when the age column is missing. Done 2018-07-29
+9. Added unit tests for _findLoops_ function. Done 2018-07-30
 10. Added check for class on objects in _convertDates_ function, because it was failing when 
-objects were already dates. It now passes those objects through untouched. 2018-08-04
-11. Added some debug code for updating focal animals (still named breeding colony update in code) 2018-08-15
+objects were already dates. It now passes those objects through untouched. Done 2018-08-04
+11. Added some debug code for updating focal animals (still named breeding colony update in code) Done 2018-08-15
 
 ### Multiple tabs
 1. Come up with a different word for "Breeders". What do you think about _Managed Animals_
-  a. Amanda suggested _Focal Animals_ -- this was adopted.
+    a. Amanda suggested _Focal Animals_ -- this is being adopted.
 
 ### Miscellaneous items
 1. Added automatic generation of a web site
@@ -58,7 +58,16 @@ the _genotype_ object was opened by __checkGenotypeFile__. 2018-07-17
 5. Added documentation for data elements __finalRpt__ and __rpt__, which are both created by the _reportGV_ 
 function. 2018-07-29
 6. Added brief tutorial on how to use _findLoops_ function. 2018-08-04
+
+### Questions that came up after the meeting
+1. What is the meaning of the following:
+    a. Text under __Export__ button on _Pedigree Browser_ tab. 
+    ``A population must be defined before proceeding to the Genetic Value Analysis''.
+    b. Check box above __Export__ button on _Pedigree Browser_ tab. 
+    ``Trim pedigree based on specified population''.
+    
 ## 20180611 Meeting Notes
+
 ### Input tab 
 
 1. Move Column content into description column separate with colon - Done
