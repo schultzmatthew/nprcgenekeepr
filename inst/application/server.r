@@ -234,10 +234,10 @@ shinyServer(function(input, output, session) {
             name = "nprcmanager")
         ## resetPopulation adds the population column if not already present
         ## resetPopulation indicates all id to be in the population if
-        ##  specifyPopulation() is NULL
-        ## otherwise ids returned by specifyPopulation() are set to TRUE and
+        ##  specifyFocalAnimals() is NULL
+        ## otherwise ids returned by specifyFocalAnimals() are set to TRUE and
         ##  others become FALSE
-        ped <- resetPopulation(ped, specifyPopulation())
+        ped <- resetPopulation(ped, specifyFocalAnimals())
         flog.debug(paste0("column names: '", paste0(names(ped),
                                                     collapse = "', '"),
                           "'"), name = "nprcmanager")
@@ -297,27 +297,28 @@ shinyServer(function(input, output, session) {
     ped
   }))
 
-  specifyPopulation <- eventReactive(input$specifyPop, {
-    ped <- unlist(strsplit(input$populationIds, "[ \t\n]"))
-    if (!is.null(input$breedingColonyUpdate)) {
-      breedingColonyUpdate <- input$breedingColonyUpdate
-      flog.debug(paste0("breedingColonyUpdate - breedingColonyUpdate$name: ",
-                        breedingColonyUpdate$name, "; ",
-                        "breedingColonyUpdate$datapath: ", breedingColonyUpdate$datapath),
+  specifyFocalAnimals <- eventReactive(input$specifyFocalAnimal, {
+    browser()
+    ped <- unlist(strsplit(input$focalAnimalIds, "[ \t\n]"))
+    if (!is.null(input$focalAnimalUpdate)) {
+      focalAnimalUpdate <- input$focalAnimalUpdate
+      flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
+                        focalAnimalUpdate$name, "; ",
+                        "focalAnimalUpdate$datapath: ", focalAnimalUpdate$datapath),
                  name = "nprcmanager")
-      breedingColonyUpdateDf <- unlist(read.table(breedingColonyUpdate$datapath,
+      focalAnimalUpdateDf <- unlist(read.table(focalAnimalUpdate$datapath,
                                                   header = TRUE,
-                                                  sep = sep,
+                                                  sep = ",",
                                                   stringsAsFactors = FALSE,
                                                   na.strings = c("", "NA"),
                                                   check.names = FALSE))
-      flog.debug(paste0("breedingColonyUpdate - breedingColonyUpdateDf: ",
-                        breedingColonyUpdateDf),
+      flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdateDf: ",
+                        focalAnimalUpdateDf),
                  name = "nprcmanager")
-      updateTextAreaInput(session, "populationIds",
-                          label = paste("New label", breedingColonyUpdateDf),
-                          value = paste("New text", breedingColonyUpdateDf))
-      ped <- breedingColonyUpdateDf
+      updateTextAreaInput(session, "focalAnimalIds",
+                          label = paste0(focalAnimalUpdateDf),
+                          value = paste0(focalAnimalUpdateDf))
+      ped <- focalAnimalUpdateDf
     }
     if (length(ped) == 0) {
       return(NULL)

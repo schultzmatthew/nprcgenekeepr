@@ -17,18 +17,18 @@ uitpPedigreeBrowser <-
       div(
         style = "margin-left: 425px; width: 550px; padding: 10px;",
         helpText(paste0("If analysis of all individuals is not needed, IDs of ",
-                        "selected breeding population members may be manually ",
-                        "entered here (IDs may be pasted from Excel):")),
-        div(
-          style = "display:inline-block;width:250px;padding:10px",
-          tags$textarea(id = "populationIds", rows = 5, cols = 30, ""),
-          actionButton("specifyPop", label = "Update Focal Animals")
-        ),
-        fileInput("breedingColonyUpdate", "Choose CSV File",
-                  multiple = FALSE,
-                  accept = c("text/csv",
-                             "text/comma-separated-values,text/plain",
-                             ".csv")),
+                        "selected focal animals may be manually ",
+                        "entered here (IDs may be pasted from Excel) or ",
+                        "browse for and select a file containing the list ",
+                        "of focal animals.")),
+      tags$textarea(id = "focalAnimalIds", rows = 5, cols = 60, ""),
+      fileInput("focalAnimalUpdate", "Choose CSV file with focal animals",
+                multiple = FALSE,
+                accept = c("text/csv",
+                           "text/comma-separated-values,text/plain",
+                           ".csv")),
+      actionButton("specifyFocalAnimal", label = "Update Focal Animals")),
+      div(
         div(
           style = "display:inline-block;width:250px;padding:10px",
           checkboxInput("uid", label = "Display UIDs",
