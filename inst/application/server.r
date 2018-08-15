@@ -311,7 +311,13 @@ shinyServer(function(input, output, session) {
                                                   stringsAsFactors = FALSE,
                                                   na.strings = c("", "NA"),
                                                   check.names = FALSE))
-      ped <- breedingColonyUpdate
+      flog.debug(paste0("breedingColonyUpdate - breedingColonyUpdateDf: ",
+                        breedingColonyUpdateDf),
+                 name = "nprcmanager")
+      updateTextAreaInput(session, "populationIds",
+                          label = paste("New label", breedingColonyUpdateDf),
+                          value = paste("New text", breedingColonyUpdateDf))
+      ped <- breedingColonyUpdateDf
     }
     if (length(ped) == 0) {
       return(NULL)
