@@ -16,7 +16,7 @@ Provided in reverse chronological order
 3. Change first bullet point to reflect change in function of the "Update Focal Animal" button. Done 2018-08-15
 4. Move first bullet point to far right. Done 2018-08-15
 5. Remove second bullet point. However, provide this information when the file has any type of error. 
-6. Change "Display UIDs for partial parentage" to "Display UIDs". Consider coming up with a better name than "UID". Add hovertext to explain what this button does. Proposed explanatory text: "UIDs are created by the application for all animals with only one parent."
+6. Change "Display UIDs for partial parentage" to "Display UIDs". Consider coming up with a better name than "UID". Add hovertext to explain what this button does. Proposed explanatory text: "Unknown IDs are created by the application for all animals with only one parent. They begin with a capital __U__." Done 2018-08-15
 7. Change "Trim pedigree based on specified population" to "Trim Pedigree". Add hovertext to explain what this button does. See what "Trim Pedigree" button does. Does it remove animals? Its intent is to reduce the number of animals being examined. Does it change genetic analysis. The name of this button will likely follow from what the new name for "Update Breeing Colony" button.
 8. Add a better description for the Search field.
 

@@ -17,31 +17,39 @@ uitpPedigreeBrowser <-
                 accept = c("text/csv",
                            "text/comma-separated-values,text/plain",
                            ".csv")),
-      actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
-      checkboxInput("uid", label = "Display UIDs",
+      popify(actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
+             paste0("Read selected file of focal animals or list of animals entered ",
+             "and update the table below"))
+    #   div(
+    #     # Right Side Panel
+    #     style = paste("margin-left: 550px;",
+    #       "width: 500px; height: 180px; padding: 10px;",
+    #       "border: 1px solid lightgray; background-color: #EDEDED;",
+    #       "margin-left: 560px; margin-top: 3px; margin-bottom: 3px;",
+    #       "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+    #     )#,
+    #     #includeHTML("../extdata/pedigree_browser.html")
+    #   )
+    )
+    ),
+    div(
+    # Right Side Panel
+         style = paste("margin-left: 550px;",
+          "width: 500px; height: 180px; padding: 10px"),
+      popify(checkboxInput("uid", label = "Display Unknown IDs",
                         value = TRUE),
-      checkboxInput("trim",
+             paste0("Unknown IDs, beginning with a capital U, are created ",
+                    "by the application for all animals with only one parent.")),
+      popify(checkboxInput("trim",
                     label = "Trim pedigree based on specified population",
                     value = FALSE),
-      downloadButton("downloadPedigree", "Export"),
-      helpText(
-          "(A population must be defined before proceeding
-          to the Genetic Value Analysis.)", style = "color:blue")
-    ,
-    div(
-    hr(),
-    DT::dataTableOutput("pedigree")
-    )),
-      div(
-        # Right Side Panel
-        style = paste("margin-left: 550px;",
-          "width: 500px; height: 180px; padding: 10px;",
-          "border: 1px solid lightgray; background-color: #EDEDED;",
-          "margin-left: 560px; margin-top: 3px; margin-bottom: 3px;",
-          "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-        ),
-        includeHTML("../extdata/pedigree_browser.html")
-      )
-    )
+             paste0("Trim the pedigree to include only relatives of the focal ",
+                    "animals provided.")),
+      popify(downloadButton("downloadPedigree", "Export"),
+             paste0("Export the pedigree into a CSV (comma separted value) file.")),
+      helpText("(A population must be defined before proceeding
+               to the Genetic Value Analysis.)", style = "color:blue")
+    ),
+      DT::dataTableOutput("pedigree")
     ))
-    
+

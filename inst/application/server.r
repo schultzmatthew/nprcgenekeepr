@@ -295,7 +295,11 @@ shinyServer(function(input, output, session) {
     names(ped) <- headerDisplayNames(names(ped))
 
     ped
-  }))
+  }#, options = list(
+   #    initComplete = I("function(settings, json) {$('th:eq(1)').each( function(){this.setAttribute( 'title', 'TEST' );});$('th').tooltip();}")
+  #)
+  )
+  )
 
   specifyFocalAnimals <- eventReactive(input$specifyFocalAnimal, {
     ped <- unlist(strsplit(input$focalAnimalIds, "[ \t\n]"))
