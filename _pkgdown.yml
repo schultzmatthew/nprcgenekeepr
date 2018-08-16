@@ -13,7 +13,7 @@ reference:
   - '`pedWithGenotypeReport`'
   - '`smallPed`'
   - '`smallPedTree`'
-- title: "Primary interactive functions""
+- title: "Primary interactive functions"
   desc: "Funtions designed for interactive use"
   contents:
   - '`addBackSecondParents`'
