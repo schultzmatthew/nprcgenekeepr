@@ -1,0 +1,26 @@
+---
+title: "Installation"
+author: "R. Mark Sharp"
+date: "10/2/2017"
+output: 
+   - rmarkdown::pdf_document
+   - rmarkdown::latex_document
+   - rmarkdown::html_vignette
+   - rmarkdown::word_document
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Genetic Management Tools}
+  %\usepackage[UTF-8]{inputenc}
+---
+## Installation
+
+You can install **nprcmanager** from github with:
+
+```{r gh-installation, include = TRUE, eval = FALSE, results = "asis", echo=TRUE}
+install.packages("devtools")
+devtools::install_github("rmsharp/nprcmanager")
+
+```
+
+All missing dependencies should be automatically installed.
+

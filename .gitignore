@@ -10,8 +10,6 @@ R/groupAddition.R
 R/depricated_groupAssign.R
 R/depricated_groupAddition.R
 R/depricated_gene.drop.R
-vignettes/*
-!vignettes/*.Rmd
 inst/extdata/PSCPO*.*
 inst/doc/*
 docs/*
