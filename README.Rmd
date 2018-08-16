@@ -17,13 +17,13 @@ knitr::opts_chunk$set(
 ```
 
 # nprcmanager
-```{r child = "vignettes/introduction.Rmd", ref = "introduction"}
+```{r child = "vignettes/_introduction.Rmd", ref = "introduction"}
 ```
-```{r child = "vignettes/installation.Rmd", ref = "installation"}
+```{r child = "vignettes/_installation.Rmd", ref = "installation"}
 ```
-```{r child = "vignettes/summary_of_major_functions.Rmd", ref = "summary_of_functions"}
+```{r child = "vignettes/_summary_of_major_functions.Rmd", ref = "summary_of_functions"}
 ```
-```{r child = "vignettes/running_shiny_application.Rmd", ref = "running_shiny_application"}
+```{r child = "vignettes/_running_shiny_application.Rmd", ref = "running_shiny_application"}
 ```
 
 
