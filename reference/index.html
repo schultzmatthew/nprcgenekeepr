@@ -189,6 +189,13 @@ genotypes.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="rpt.html">rpt</a></code> </p>
+        </td>
+        <td><p>rpt is a dataframe created from the genetic analysis routine
+<code>reportGV</code>.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="smallPed.html">smallPed</a></code> </p>
         </td>
         <td><p>smallPed is a hypothetical pedigree</p></td>
@@ -198,6 +205,20 @@ genotypes.</p></td>
           <p><code><a href="smallPedTree.html">smallPedTree</a></code> </p>
         </td>
         <td><p>smallPedTree is a pedigree tree made from <code>smallPed</code></p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-codebook" class="hasAnchor"><a href="#section-codebook" class="anchor"></a>Codebook</h2>
+          <p class="section-desc"><p>Brief codebook</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="nprcmanager.html">nprcmanager</a></code> </p>
+        </td>
+        <td><p>Genetic Value Analysis Functions</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -542,24 +563,6 @@ IDs for the unknown parent.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="baboonBreeders.html">baboonBreeders</a></code> </p>
-        </td>
-        <td><p>baboonBreeders is a list of 29 baboon IDs that are potential breeders</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="baboonGvReport.html">baboonGvReport</a></code> </p>
-        </td>
-        <td><p>baboonGvReport is a genetic value report</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="baboonPed.html">baboonPed</a></code> </p>
-        </td>
-        <td><p>baboonPed is a dataframe with 277 rows and 6 columns</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="calcA.html">calcA()</a></code> </p>
         </td>
         <td><p>Calculates <code>a</code>, the number of an individual's alleles that are rare in
@@ -723,15 +726,6 @@ or the other at each position.</p></td>
         </td>
         <td><p>Filters kinship to remove rows with kinship values less than the specified
 threshold</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finalRpt.html">finalRpt</a></code> </p>
-        </td>
-        <td><p>finalRpt is a list object created from the list object <em>rpt</em> prepared
-by <code>reportGV</code>. It is created inside <code>orderReport</code>. This version
-is at the state just prior to calling <code>rankSubjects</code> inside
-<code>orderReport</code>.</p></td>
       </tr><tr>
         
         <td>
@@ -941,19 +935,6 @@ element.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="lacy1989Ped.html">lacy1989Ped</a></code> </p>
-        </td>
-        <td><p>lacy1989Ped small hypothetical pedigree</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lacy1989PedAlleles.html">lacy1989PedAlleles</a></code> </p>
-        </td>
-        <td><p>lacy1989PedAlleles is a dataframe produced by <code>geneDrop</code> on
-<code>lacy1989Ped</code> with 5000 iterations.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="makeCEPH.html">makeCEPH()</a></code> </p>
         </td>
         <td><p>Make a CEPH-style pedigree for each id</p></td>
@@ -985,12 +966,6 @@ element.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="nprcmanager.html">nprcmanager</a></code> </p>
-        </td>
-        <td><p>Genetic Value Analysis Functions</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="offspringCounts.html">offspringCounts()</a></code> </p>
         </td>
         <td><p>Finds the total number of offspring for each animal in the pedigree</p></td>
@@ -1000,25 +975,6 @@ element.</p></td>
           <p><code><a href="orderReport.html">orderReport()</a></code> </p>
         </td>
         <td><p>Order the results of the genetic value analysis for use in a report.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ped1Alleles.html">ped1Alleles</a></code> </p>
-        </td>
-        <td><p>ped1Alleles is a dataframe created by the geneDrop function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pedWithGenotype.html">pedWithGenotype</a></code> </p>
-        </td>
-        <td><p>pedWithGenotype is a dataframe produced from baboonPed by adding made up
-genotypes.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pedWithGenotypeReport.html">pedWithGenotypeReport</a></code> </p>
-        </td>
-        <td><p>pedWithGenotypeReport is a list containing the output of <code>reportGV</code>.</p></td>
       </tr><tr>
         
         <td>
@@ -1076,13 +1032,6 @@ genotypes.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="rpt.html">rpt</a></code> </p>
-        </td>
-        <td><p>rpt is a dataframe created from the genetic analysis routine
-<code>reportGV</code>.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="runManager.html">runManager()</a></code> </p>
         </td>
         <td><p>Allows running <code>shiny</code> application with <code>nprcmanager::runManager()</code></p></td>
@@ -1092,18 +1041,6 @@ genotypes.</p></td>
           <p><code><a href="setExit.html">setExit()</a></code> </p>
         </td>
         <td><p>Sets the exit date, if there is no exit column in the table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smallPed.html">smallPed</a></code> </p>
-        </td>
-        <td><p>smallPed is a hypothetical pedigree</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smallPedTree.html">smallPedTree</a></code> </p>
-        </td>
-        <td><p>smallPedTree is a pedigree tree made from <code>smallPed</code></p></td>
       </tr><tr>
         
         <td>
@@ -1132,6 +1069,7 @@ ancestors.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-data-objects">Data objects</a></li>
+      <li><a href="#section-codebook">Codebook</a></li>
       <li><a href="#section-primary-interactive-functions">Primary interactive functions</a></li>
       <li><a href="#section-all-functions">All functions</a></li>
     </ul>
