@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breeding Group Algorithm • nprcmanager</title>
+<title>ORIP Reporting • nprcmanager</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Breeding Group Algorithm">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ORIP Reporting">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -111,79 +111,22 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Breeding Group Algorithm</h1>
-                        <h4 class="author">Amanda Vinson</h4>
+      <h1>ORIP Reporting</h1>
+                        <h4 class="author">R. Mark Sharp</h4>
             
             <h4 class="date">10/2/2017</h4>
       
       
-      <div class="hidden name"><code>breeding_group_algorithm.Rmd</code></div>
+      <div class="hidden name"><code>orip_reporting.Rmd</code></div>
 
     </div>
 
     
     
-<div id="algorithm-breeding-group-formation" class="section level2">
+<div id="orip-reporting" class="section level2">
 <h2 class="hasAnchor">
-<a href="#algorithm-breeding-group-formation" class="anchor"></a>Algorithm: Breeding Group Formation</h2>
-<p>The group formation process is accomplished by using an algorithm for determining the maximal independent set (MIS). In graph theory, a maximal independent set is the largest set of vertices in a graph where no two share an edge. In breeding group formation, the vertices are animals, and the edges are the kinships that need to be considered. For a given group of animals and pairwise kinships, there are potentially many maximal independent sets, depending on which animals are included or excluded from the final group. In order to effectively sample the set of MISs, we use random selection of animals and repeat the MIS generation numerous times. This allows us to sample a number of MISs and then choose the one that best fits our selection criteria. For our purposes, we want the largest group that can be formed from this set of animals, where none have concerning relatedness to each other.</p>
-<p>The algorithm requires several pieces of information:</p>
-<ol style="list-style-type: decimal">
-<li>The candidate animals<br>
-</li>
-<li>A matrix of pairwise kinships between candidate animals<br>
-</li>
-<li>The number of groups desired from the list of candidate animals<br>
-</li>
-<li>The number of simulations to run.<br>
-* This is equivalent to the number of random MISs to generate and compare.<br>
-</li>
-<li>Information on which inter-animal relationships (if any) should be ignored.</li>
-</ol>
-<div id="data-pre-processing" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-pre-processing" class="anchor"></a>Data Pre-processing</h4>
-<p>Before the group formation algorithm begins generating MISs, the data is pre-processed to remove any animals and pairwise kinships that should not be considered.</p>
-<p>Specifically:</p>
-<ol style="list-style-type: decimal">
-<li>The candidate animals provided are checked, and any that were designated as low-value by the genetic value analysis will be removed from further consideration.<br>
-* This behavior can be toggled off to allow low-value animals in the formation process<br>
-</li>
-<li>The pairwise kinship data is filtered down to only the kinship between candidate animals.<br>
-</li>
-<li>If an age threshold has been set, kinships involving animals below the threshold will be filtered out.<br>
-* This allows the algorithm to ignore young animals, as young animals typically go to whatever social group their dam does.<br>
-* By default, we ignore animals under 1 year of age<br>
-</li>
-<li>Pairwise kinships below the specified level will be filtered out.<br>
-* By default, we ignore relatedness more distant than 2nd cousin<br>
-</li>
-<li>Pairwise kinships between females will be filtered out<br>
-* This allows females of the same matriline to be part of the same group like they would be in the wild.<br>
-* This behavior can be toggled off to prevent relatedness between females.</li>
-</ol>
-</div>
-<div id="random-maximum-independent-set-generation" class="section level4">
-<h4 class="hasAnchor">
-<a href="#random-maximum-independent-set-generation" class="anchor"></a>Random Maximum Independent Set Generation</h4>
-<p>After any animals and relationships that should be ignored are removed from the dataset, the algorithm begins using the remaining animals and kinship information to generate potential groups.</p>
-<p>The algorithm proceeds by the following steps:</p>
-<ol style="list-style-type: decimal">
-<li>For <strong>I</strong> iterations:<br>
-a. Generate <strong>N</strong> empty sets, where <strong>N</strong> is the desired number of groups to be created.<br>
-b. While there are candidate animals remaining:<br>
-i. Pick an animal <strong>A</strong> randomly from the set of candidate animals<br>
-ii. Choose a group <strong>G</strong> randomly from one of the <strong>N</strong> groups, and assign <strong>A</strong> to it<br>
-iii. Remove animal <strong>A</strong> from consideration for all <strong>N</strong> groups<br>
-iv. Remove all animals related to <strong>A</strong> from consideration from for group <strong>G</strong><br>
-c. Score the groups that were generated<br>
-* For our purposes, we calculate the average group size<br>
-d. If the score of the new groups is higher than groups that were previously generated, save the new groups.<br>
-</li>
-<li>Return the currently saved groups<br>
-* This should be the best groups encountered in <strong>I</strong> iterations.</li>
-</ol>
-</div>
+<a href="#orip-reporting" class="anchor"></a>ORIP Reporting</h2>
+<p>The ORIP Reporting tab will eventually contain information for reporting to the Office of Research Infrastructure Programs (ORIP). This tab may end up being merged with the Summary Statistics tab and contain a number of statistics, tables and histograms. Alternatively, this may contain a subset of information from the Summary Statistics tab presented as a formatted report that can be exported and submitted to ORIP. The exact information that needs to be submitted for ORIP recordkeeping is still under discussion.</p>
 </div>
   </div>
 
@@ -192,7 +135,7 @@ d. If the score of the new groups is higher than groups that were previously gen
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#algorithm-breeding-group-formation">Algorithm: Breeding Group Formation</a></li>
+<li><a href="#orip-reporting">ORIP Reporting</a></li>
       </ul>
 </div>
       </div>
