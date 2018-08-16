@@ -15,10 +15,10 @@ Provided in reverse chronological order
 2. Add function to "Update Breeding Colony" button to browse for a file; add animal IDs to the window where they could be pasted. Started 2018-07-29 getting file not updating window. Done 2018-08-15
 3. Change first bullet point to reflect change in function of the "Update Focal Animal" button. Done 2018-08-15
 4. Move first bullet point to far right. Done 2018-08-15
-5. Remove second bullet point. However, provide this information when the file has any type of error. 
+5. Remove second bullet point. However, provide this information when the file has any type of error. This is complete for one error at a time. Currently the __qcStudbook__ function does not continue scanning the file when an error is found. Done 2018-07-17
 6. Change "Display UIDs for partial parentage" to "Display UIDs". Consider coming up with a better name than "UID". Add hovertext to explain what this button does. Proposed explanatory text: "Unknown IDs are created by the application for all animals with only one parent. They begin with a capital __U__." Done 2018-08-15
-7. Change "Trim pedigree based on specified population" to "Trim Pedigree". Add hovertext to explain what this button does. See what "Trim Pedigree" button does. Does it remove animals? Its intent is to reduce the number of animals being examined. Does it change genetic analysis. The name of this button will likely follow from what the new name for "Update Breeing Colony" button.
-8. Add a better description for the Search field.
+7. Change "Trim pedigree based on specified population" to "Trim Pedigree". Add hovertext to explain what this button does. See what "Trim Pedigree" button does. Does it remove animals? Its intent is to reduce the number of animals being examined. It does reduce the number by removing all individuals not related to the focal animals. Does it change genetic analysis. It does not change the genetic analysis for the animals left. Obviously for animals removed, it does. The name of this button will likely follow from what the new name for "Update Breeding Colony" button. Done 2018-08-16
+8. Add a better description for the Search field. Done 2018-08-16
 
 ### Error Handling
 1. Develop a full set of error messages appropriate for all types of input files.
@@ -49,7 +49,7 @@ objects were already dates. It now passes those objects through untouched. Done 
 ### Miscellaneous items
 1. Added automatic generation of a web site
     a. 2018-07-17 first draft
-    b. Need to first move content that has been prepared to the correct location
+    b. Need to first move content that has been prepared to the correct location. Done 2018-08-16
 2. Changed read.csv to read.table in code to emphasize we are able to read multiple file types.
     a. 2018-07-17
 3. Amended documentation for the __addGenotype__ function to indicate that it is assuming 
@@ -64,7 +64,12 @@ function. 2018-07-29
     a. Text under __Export__ button on _Pedigree Browser_ tab. 
     ``A population must be defined before proceeding to the Genetic Value Analysis''.
     b. Check box above __Export__ button on _Pedigree Browser_ tab. 
-    ``Trim pedigree based on specified population''.
+    ``Trim pedigree based on specified population''. 
+    Its intent is to reduce the number of animals being examined. 
+    It does reduce the number by removing all individuals not related 
+    to the focal animals. Does it change genetic analysis. 
+    It does not change the genetic analysis for the animals left. 
+    Obviously for animals removed, it does. Done 2018-08-16
     
 ## 20180611 Meeting Notes
 

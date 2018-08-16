@@ -19,7 +19,10 @@ uitpPedigreeBrowser <-
                            ".csv")),
       popify(actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
              paste0("Read selected file of focal animals or list of animals entered ",
-             "and update the table below"))
+             "and update the table below")),
+      helpText(paste0("The search field below will search all columns for ",
+                      "matches to any text or number entered."),
+               style = "color:blue")
     #   div(
     #     # Right Side Panel
     #     style = paste("margin-left: 550px;",
@@ -47,8 +50,8 @@ uitpPedigreeBrowser <-
                     "animals provided.")),
       popify(downloadButton("downloadPedigree", "Export"),
              paste0("Export the pedigree into a CSV (comma separted value) file.")),
-      helpText("(A population must be defined before proceeding
-               to the Genetic Value Analysis.)", style = "color:blue")
+      helpText("A population must be defined before proceeding
+               to the Genetic Value Analysis.", style = "color:blue")
     ),
       DT::dataTableOutput("pedigree")
     ))
