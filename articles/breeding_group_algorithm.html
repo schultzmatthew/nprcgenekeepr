@@ -169,19 +169,28 @@
 <p>After any animals and relationships that should be ignored are removed from the dataset, the algorithm begins using the remaining animals and kinship information to generate potential groups.</p>
 <p>The algorithm proceeds by the following steps:</p>
 <ol style="list-style-type: decimal">
-<li>For <strong>I</strong> iterations:<br>
-a. Generate <strong>N</strong> empty sets, where <strong>N</strong> is the desired number of groups to be created.<br>
-b. While there are candidate animals remaining:<br>
+<li>For <strong>I</strong> iterations:
+<ol style="list-style-type: lower-alpha">
+<li>Generate <strong>N</strong> empty sets, where <strong>N</strong> is the desired number of groups to be created.<br>
+</li>
+<li>While there are candidate animals remaining:<br>
 i. Pick an animal <strong>A</strong> randomly from the set of candidate animals<br>
 ii. Choose a group <strong>G</strong> randomly from one of the <strong>N</strong> groups, and assign <strong>A</strong> to it<br>
 iii. Remove animal <strong>A</strong> from consideration for all <strong>N</strong> groups<br>
 iv. Remove all animals related to <strong>A</strong> from consideration from for group <strong>G</strong><br>
-c. Score the groups that were generated<br>
-* For our purposes, we calculate the average group size<br>
-d. If the score of the new groups is higher than groups that were previously generated, save the new groups.<br>
 </li>
-<li>Return the currently saved groups<br>
-* This should be the best groups encountered in <strong>I</strong> iterations.</li>
+<li>Score the groups that were generated<br>
+i. For our purposes, we calculate the average group size<br>
+</li>
+<li>If the score of the new groups is higher than groups that were previously generated, save the new groups.<br>
+</li>
+</ol>
+</li>
+<li>Return the currently saved groups
+<ol style="list-style-type: lower-alpha">
+<li>This should be the best groups encountered in <strong>I</strong> iterations.</li>
+</ol>
+</li>
 </ol>
 </div>
 </div>
