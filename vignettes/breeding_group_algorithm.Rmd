@@ -61,14 +61,14 @@ information to generate potential groups.
 The algorithm proceeds by the following steps:  
 
 1. For __I__ iterations:  
-       a. Generate __N__ empty sets, where __N__ is the desired number of groups to be created.  
-       b. While there are candidate animals remaining:  
-          i. Pick an animal __A__ randomly from the set of candidate animals   
-         ii. Choose a group __G__ randomly from one of the __N__ groups, and assign __A__ to it  
-        iii. Remove animal __A__ from consideration for all __N__ groups  
-         iv. Remove all animals related to __A__ from consideration from for group __G__  
-       c. Score the groups that were generated  
-          * For our purposes, we calculate the average group size  
-       d. If the score of the new groups is higher than groups that were previously generated, save the new groups.  
+    a. Generate __N__ empty sets, where __N__ is the desired number of groups to be created.  
+    b. While there are candidate animals remaining:  
+            i. Pick an animal __A__ randomly from the set of candidate animals   
+            ii. Choose a group __G__ randomly from one of the __N__ groups, and assign __A__ to it  
+            iii. Remove animal __A__ from consideration for all __N__ groups  
+            iv. Remove all animals related to __A__ from consideration from for group __G__  
+    c. Score the groups that were generated  
+            i. For our purposes, we calculate the average group size  
+    d. If the score of the new groups is higher than groups that were previously generated, save the new groups.  
 2. Return the currently saved groups  
-        * This should be the best groups encountered in __I__ iterations.  
+    a. This should be the best groups encountered in __I__ iterations.  
