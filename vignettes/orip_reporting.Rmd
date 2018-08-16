@@ -1,5 +1,5 @@
 ---
-  title: "ORIP Reporting"
+title: "ORIP Reporting"
 author: "R. Mark Sharp"
 date: "10/2/2017"
 output:

@@ -1,5 +1,5 @@
 ---
-title: 'Algorithm: Genome Uniqueness'
+title: "Algorithm: Genome Uniqueness"
 author: "Amanda Vinson"
 date: "10/2/2017"
 output: 

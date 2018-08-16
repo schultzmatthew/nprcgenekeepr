@@ -17,9 +17,9 @@ library(ggplot2)
 library(knitr)
 
 ## You can use a file browser
-pedigreeFile <- file.choose()
+#pedigreeFile <- file.choose()
 ## or you will have to change this to point to a pedigree file that you have
-#pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"
+pedigreeFile <- "../inst/extdata/baboon_breeders_qc_ped.csv"
 
 sep <- ","
 minParentAge <- 0
@@ -72,7 +72,8 @@ file that has a loop in it. I have used the example pedigree that comes with the
 _Example_Pedigree.csv_.
 
 ```{r findLoops}
-pedigreeFile <- file.choose() ## use example file
+##pedigreeFile <- file.choose() ## use example file
+pedigreefile <- pedigreeFile <- "../inst/extdata/Example_Pedigree.csv"
 examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
                                    stringsAsFactors = FALSE)
 examplePedigree <- qcStudbook(examplePedigree_raw, minParentAge = 0)

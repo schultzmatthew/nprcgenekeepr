@@ -1,0 +1,26 @@
+1. The second bullet point under the Input File Handling section of the Input tab says "Please be aware that animals with no parents will be treated as founders in these calculations, i.e., sources of new genetic variation in the colony."
+
+I am assuming that this is fine and stated only to keep users aware that if they have parental information it has to be entered.
+
+2. The third bullet point under the Input File Handling section of the Input tab says "Designation of two alleles is required as currently there is no accommodation for partial genetic information for an individual."
+
+Is this will be a problem that needs to be addressed?
+
+3. Reminder for Mark only: The third bullet point under the Input File Handling section of the Input tab says "If the Age column is provided, the program will use the user-specified age."
+
+Make sure this is true. I may also want to check for internal inconsistencies.
+
+4. In the Input File Handling section of the Input tab the last bullet point immediately above the first table says "Genotype data may be supplied within the pedigree file or in a separate genotype file. Only two additional columns (first and second) are required when the genotypes are provided within the pedigree file."
+
+This should be explained more fully and the program behavior may need to be changed. Currently the program assumes the columns first and second are there and are correctly formed. Currently there is no check to ensure that first_name and second_name data elements are consistant with first and second data elements.
+
+5. In the Input File Handling section of the Input tab and under the first table of column names, there is a section describing what is done by the qcStudbook function to correct data and create new columns. 
+
+Should we provide a summary of changes made to the input data such as changes in column names, sex identifiers, etc., removal of duplicated rows and columns that are added?
+
+Need name for genotype (first_name, second_name)
+Need new name for breeders only file type.
+Reword "Animals without birth dates are not considered."
+When minimum parent age is included, animals without birth dates are not rejected.
+
+Change update breeding colony (pedigree browser) by adding explanatory text.
