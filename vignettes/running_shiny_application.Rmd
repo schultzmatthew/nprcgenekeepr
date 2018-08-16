@@ -19,7 +19,7 @@ The toolset available within nprcmanager can be used inside standard R scripts.
 However, it was orginally designed to be used within a Shiny application 
 that can be started with:
 
-```{r example, eval = FALSE}
+```{r example, include = TRUE, eval = FALSE}
 library(nprcmanager)
 runManager()
 ```
