@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • nprcmanager</title>
+<title>Get the population of interest for the Genetic Value analysis. — getGVPopulation • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="Get the population of interest for the Genetic Value analysis. — getGVPopulation" />
+
+<meta property="og:description" content="If user has limited the population of iterest by defining pop,
+that information is incorporated via the ped$population column." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -57,7 +61,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">nprcmanager</a>
+        <a class="navbar-link" href="../index.html">nprcmanager</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.21</span>
       </span>
     </div>
@@ -65,13 +69,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -81,52 +85,52 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/Development_Plans.html">Development Plans</a>
+      <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="articles/breeding_group_algorithm.html">Breeding Group Algorithm</a>
+      <a href="../articles/breeding_group_algorithm.html">Breeding Group Algorithm</a>
     </li>
     <li>
-      <a href="articles/breeding_group_formation.html">Breeding Group Formation</a>
+      <a href="../articles/breeding_group_formation.html">Breeding Group Formation</a>
     </li>
     <li>
-      <a href="articles/genetic_value_analysis.html">Genetic Value Analysis</a>
+      <a href="../articles/genetic_value_analysis.html">Genetic Value Analysis</a>
     </li>
     <li>
-      <a href="articles/genome_uniqueness_algorithm.html">Algorithm: Genome Uniqueness</a>
+      <a href="../articles/genome_uniqueness_algorithm.html">Algorithm: Genome Uniqueness</a>
     </li>
     <li>
-      <a href="articles/gv_and_bg_desc.html">Genetic Value Analysis and Breeding Group Formation Description</a>
+      <a href="../articles/gv_and_bg_desc.html">Genetic Value Analysis and Breeding Group Formation Description</a>
     </li>
     <li>
-      <a href="articles/input.html">Input</a>
+      <a href="../articles/input.html">Input</a>
     </li>
     <li>
-      <a href="articles/installation.html">Installation</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
     <li>
-      <a href="articles/interactive_use_tutorial.html">Interactive Use of nprcmanager</a>
+      <a href="../articles/interactive_use_tutorial.html">Interactive Use of nprcmanager</a>
     </li>
     <li>
-      <a href="articles/introduction.html">Introduction</a>
+      <a href="../articles/introduction.html">Introduction</a>
     </li>
     <li>
-      <a href="articles/manual.html">Genetic Management Tools Manual</a>
+      <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="articles/orip_reporting.html">ORIP Reporting</a>
+      <a href="../articles/orip_reporting.html">ORIP Reporting</a>
     </li>
     <li>
-      <a href="articles/pedigree_browser.html">Pedigree Browser</a>
+      <a href="../articles/pedigree_browser.html">Pedigree Browser</a>
     </li>
     <li>
-      <a href="articles/running_shiny_application.html">Running Shiny Application</a>
+      <a href="../articles/running_shiny_application.html">Running Shiny Application</a>
     </li>
     <li>
-      <a href="articles/summary_of_major_functions.html">Summary of Major Functions</a>
+      <a href="../articles/summary_of_major_functions.html">Summary of Major Functions</a>
     </li>
     <li>
-      <a href="articles/summary_statistics.html">Summary Statistics</a>
+      <a href="../articles/summary_statistics.html">Summary Statistics</a>
     </li>
   </ul>
 </li>
@@ -144,26 +148,46 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Authors</h1>
+    <h1>Get the population of interest for the Genetic Value analysis.</h1>
+    
+    <div class="hidden name"><code>getGVPopulation.Rd</code></div>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Michael Raboin</strong>. Author. 
-        </p>
-      </li>
-      <li>
-        <p><strong>R. Mark Sharp</strong>. Contributor, maintainer. 
-        </p>
-      </li>
-    </ul>
+    <div class="ref-description">
+    
+    <p>If user has limited the population of iterest by defining <code>pop</code>,
+that information is incorporated via the <code>ped$population</code> column.</p>
+    
+    </div>
+
+    <pre class="usage"><span class='fu'>getGVPopulation</span>(<span class='no'>ped</span>, <span class='no'>pop</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ped</th>
+      <td><p>the pedigree information in datatable format</p></td>
+    </tr>
+    <tr>
+      <th>pop</th>
+      <td><p>character vector with animal IDs to consider as the population of
+interest. The default is NULL.</p></td>
+    </tr>
+    </table>
+    
 
   </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
 
+  </div>
 </div>
-
 
       <footer>
       <div class="copyright">
