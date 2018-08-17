@@ -29,25 +29,8 @@ knitr::opts_chunk$set(echo = TRUE)
    the application to get the primate center designation, the LabKey 
    baseUrl, a schemaName, a folderPath, and the queryName. 
    The file is structured so that more than one of each could be placed in the 
-   file. However, more design work is needed before this will be of use. 
-   Completed initial version 20170907.
+   file. Completed initial version 20170907.
  
-4. Develop the appropriate UI - Completed 20170916.
-I got the logging system integrated into the package. 
-I am using the package futile.logger (funny name). Note the checkbox at the 
-bottom of the side panel on the two attached images.
-When the Debug on checkbox is checked (it is not checked by default), 
-the application writes to a file in the users home directory named 
-nprcmanager.log. Currently I am only logging events occurring the the 
-server.R file, because that is where I tend to have most of my problems show up. 
-I have attached an example file in which turned on logging at the debug level
-and then read in a couple of pedigree files.
-
-I added code coverage reports to the automated build system running on 
-Travis-CI.org. Currently we only have 5.68% of the code being tested with the 
-unit tests I created thus far. I do not know the code well enough to know what 
-percentage we will have when I feel comfortable, but I know most of the 
-functions have no tests at all. -- Have 86.32% as of 20180429
 
 
 ## To do
