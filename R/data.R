@@ -178,6 +178,7 @@
 #' Users of LabKey's EHR can adapt it to their systems and put it
 #' in their home directory. Instructions are embedded as comments
 #' within the file.
+#' @examples
 #' \dontrun{
 #' data("exampleNprcmanagerConfig")
 #' View(exampleNprcmanagerConfig)
