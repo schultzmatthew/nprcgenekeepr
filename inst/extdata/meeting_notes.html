@@ -452,38 +452,38 @@ $(document).ready(function () {
 <h2>Miscellanious Accomplishments</h2>
 <p>These should be stored elsewhere</p>
 <div id="section" class="section level4">
-<h4>20170911</h4>
-<p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
+<h4>20180429</h4>
+<p>Test coverage is 86.32%.</p>
 </div>
 <div id="section-1" class="section level4">
-<h4>20170915</h4>
-<p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
+<h4>20171004</h4>
+<p>Unit test coverage is 84.79%.</p>
 </div>
 <div id="section-2" class="section level4">
-<h4>20170916</h4>
-<p>Can now assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The pedigree submitted via the UI can optionally contain genetic information.</p>
+<h4>20170921</h4>
+<p>Unit test coverage is about 15%.</p>
 </div>
 <div id="section-3" class="section level4">
+<h4>20170919</h4>
+<p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
+</div>
+<div id="section-4" class="section level4">
 <h4>20170917</h4>
 <p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amando Vinson’s paper indicated that ONPRC typically used.</p>
 <p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
 <p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
 </div>
-<div id="section-4" class="section level4">
-<h4>20170919</h4>
-<p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
-</div>
 <div id="section-5" class="section level4">
-<h4>20170921</h4>
-<p>Unit test coverage is about 15%.</p>
+<h4>20170916</h4>
+<p>Can now assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The pedigree submitted via the UI can optionally contain genetic information.</p>
 </div>
 <div id="section-6" class="section level4">
-<h4>20171004</h4>
-<p>Unit test coverage is 84.79%.</p>
+<h4>20170915</h4>
+<p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
 </div>
 <div id="section-7" class="section level4">
-<h4>20180429</h4>
-<p>Test coverage is 86.32%.</p>
+<h4>20170911</h4>
+<p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
 </div>
 </div>
 <div id="meeting-notes-3" class="section level2">
