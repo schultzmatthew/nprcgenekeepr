@@ -16,7 +16,7 @@ vignette: >
 
 You can install **nprcmanager** from github with:
 
-```{r gh-installation, include = TRUE, eval = FALSE, results = "asis", echo=TRUE}
+```{r gh-installation, eval = FALSE, echo=TRUE}
 install.packages("devtools")
 devtools::install_github("rmsharp/nprcmanager")
 
