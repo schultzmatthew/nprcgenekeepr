@@ -118,3 +118,114 @@ Reword "Animals without birth dates are not considered."
 When minimum parent age is included, animals without birth dates are not rejected.
 
 Change update breeding colony (pedigree browser) by adding explanatory text.
+
+## Miscellanious Accomplishments
+
+These should be stored elsewhere
+
+#### 20180429
+Test coverage is 86.32%.
+
+#### 20171004
+Unit test coverage is 84.79%.
+
+#### 20170921
+Unit test coverage is about 15%.
+
+#### 20170919
+We have successfully installed and used _nprcmanager_ on Microsoft (MS) 
+Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.
+
+#### 20170917
+I discovered why the plot of genetic uniqueness scores was not as expected. 
+It was from an analysis where 0 was the threshold setting, which I think we 
+should consider removing as an option. I have set the default to 3, 
+which is what Amando Vinson's paper indicated that ONPRC typically used.
+
+I got the logging system integrated into the package. 
+I am using the package futile.logger (funny name). Note the checkbox at the 
+bottom of the side panel on the two attached images. 
+When the Debug on checkbox is checked (it is not checked by default), 
+the application writes to a file in the users home directory named
+_nprcmanager.log_. Currently I am only logging events occurring the the 
+_server.R_ file, because that is where I tend to have most of my problems 
+show up. I have attached an example file in which turned on logging at the 
+debug level and then read in a couple of pedigree files.
+
+I added code coverage reports to the automated build system running on 
+Travis-CI.org. Currently we only have 5.68% of the code being tested with the 
+unit tests I created thus far. I do not know the code well enough to know what 
+percentage we will have when I feel comfortable, but I know most of the 
+functions have no tests at all.
+
+#### 20170916
+Can now assign known genotypes to individuals and to 
+incorporate that information into the gene dropping routine.
+This has been done at the function level in the _geneDrop_ function. 
+The pedigree submitted via the UI can optionally contain
+genetic information. 
+
+#### 20170915
+Added a genetic uniqueness plot to the Summary Statistics tab.
+
+#### 20170911
+I have connected the Travis CI (continuous integration) tool to my 
+github.com/rmsharp/nprcmanager so that when I check in code it automatically
+tries to build it from scratch using packages from CRAN. Travis CI is now 
+automatically building nprcmanager without errors or warnings. 
+This puts us considerably closer to being able to offer the package via 
+CRAN if we want.
+
+## 20170323 Meeting notes
+
+I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use
+genetic data in a gene dropping simulation.
+
+From: R. Mark Sharp <msharp@TxBiomed.org>
+
+Subject: Re: Genetic management of colonies
+
+Date: March 23, 2017 at 5:01:07 PM CDT
+
+To: Jack Kent <jkent@txbiomed.org>
+
+Cc: Deborah Newman <dnewman@txbiomedgenetics.org>, 
+Charles Peterson <charlesp@txbiomed.org>
+
+Jack, Debbie, and Charles,
+
+Thank you for meeting with me. I appreciate your help in clarifying the 
+various stages of the issues associated with providing genetic management 
+guidance via simulation with partially known MHC data. 
+
+1. I will look more closely into what will be needed to add genetic 
+information and gene frequency information into the gene dropping routines 
+in the kinship2 package. The initial implementation will use only a single 
+locus, which should be a sufficient for MHC data
+
+	A. First step will be to ensure we get expected proportions of genes in 
+	children of individuals when we provide genetic data to all founders using 
+	a gene frequency based algorithm.
+
+	B. Second step will be to ensure we get expected proportions of genes in 
+	children when all parental generations have fully known genotypes.
+
+	C. Third step will be to ensure we get expected proportions of genes in 
+	children when parental generations have partially known genotypes and all 
+	other genotypes are uninformative.
+
+	D. Fourth step will be to ensure we get expected proportions of genes in 
+	children when parental generations have partially known genotypes and 
+	remaining parental genes are determined by gene frequency.
+
+2. We will not worry about getting rid of genes in the pedigrees since colony 
+managers need only not breed animals that carry unwanted alleles.
+
+3. I will produce a small number of pedigree drawings using the data Debbie 
+has provided to get feedback on preferences and additional requirements.
+
+4. I will not deal with paternity and maternity issues within the pedigrees 
+at this time.
+
+Thanks again.
+

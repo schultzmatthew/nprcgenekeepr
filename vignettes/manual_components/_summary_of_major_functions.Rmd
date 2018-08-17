@@ -58,6 +58,14 @@ described by [LabKey documentation](https://www.labkey.org/Documentation/wiki-pa
 The second file is named **\_nprcmanager_config** on Microsoft Windows 
 operating systems and **.nprcmanager_config** otherwise and is the nprcmanager 
 [configuration file](https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config)
+An image of this example configuration file is included as a data object and can 
+be loaded and viewed with the following lines of R code in the R console.
+```{r include = TRUE, eval = FALSE}
+data("exampleNprcmanagerConfig")
+View(exampleNprcmanagerConfig)
+
+```
+
 
 
 ### Genetic Value Analysis Reports

@@ -3,9 +3,9 @@ title: "Genetic Management Tools Manual"
 author: "Michael Raboin, Amanda Vinson, and R. Mark Sharp"
 date: "October 03, 2017"
 output: 
+   - rmarkdown::html_vignette
    - rmarkdown::pdf_document
    - rmarkdown::latex_document
-   - rmarkdown::html_vignette
    - rmarkdown::word_document
 vignette: >
   %\VignetteEngine{knitr::knitr}
