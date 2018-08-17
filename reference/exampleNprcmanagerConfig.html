@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Determines the generation number for each id. — findPedigreeNumber • nprcmanager</title>
+<title>exampleNprcmanagerConfig is a loadable version of the example
+configuration file _example_nprcmanager_config_ — exampleNprcmanagerConfig • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +31,14 @@
 
 
 
-<meta property="og:title" content="Determines the generation number for each id. — findPedigreeNumber" />
+<meta property="og:title" content="exampleNprcmanagerConfig is a loadable version of the example
+configuration file _example_nprcmanager_config_ — exampleNprcmanagerConfig" />
 
-<meta property="og:description" content="One of Pedigree Curation functions" />
+<meta property="og:description" content="It contains a working version of a __nprcmanager__ configuration
+file created the SNPRC.
+Users of LabKey's EHR can adapt it to their systems and put it
+in their home directory. Instructions are embedded as comments
+within the file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,52 +118,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Determines the generation number for each id.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/findPedigreeNumber.R'><code>R/findPedigreeNumber.R</code></a></small>
-    <div class="hidden name"><code>findPedigreeNumber.Rd</code></div>
+    <h1>exampleNprcmanagerConfig is a loadable version of the example
+configuration file _example_nprcmanager_config_</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>exampleNprcmanagerConfig.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>One of Pedigree Curation functions</p>
+    <p>It contains a working version of a __nprcmanager__ configuration
+file created the SNPRC.
+Users of LabKey's EHR can adapt it to their systems and put it
+in their home directory. Instructions are embedded as comments
+within the file.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>findPedigreeNumber</span>(<span class='no'>id</span>, <span class='no'>sire</span>, <span class='no'>dam</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>id</th>
-      <td><p>character vector with unique identifier for an individual</p></td>
-    </tr>
-    <tr>
-      <th>sire</th>
-      <td><p>character vector with unique identifier for an
-individual's father (<code>NA</code> if unknown).</p></td>
-    </tr>
-    <tr>
-      <th>dam</th>
-      <td><p>character vector with unique identifier for an
-individual's mother (<code>NA</code> if unknown).</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>exampleNprcmanagerConfig</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Integer vector indicating generation numbers for each id,
-starting at 0 for individuals lacking IDs for both parents.</p>
+    <p>An object of class <code>character</code> of length 34.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>data</span>(<span class='st'>"exampleNprcmanagerConfig"</span>)
+<span class='fu'>View</span>(<span class='no'>exampleNprcmanagerConfig</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-          </ul>
+      <li><a href="#format">Format</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

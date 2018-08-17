@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.22</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.23</span>
       </span>
     </div>
 
@@ -94,11 +94,7 @@
 <div id="next-steps" class="section level2">
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
-<ol style="list-style-type: decimal">
-<li>Find out what is needed to assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The next step is to allow the pedigree submitted via the UI to contain the genetic information. Completed by 20170916.</li>
-<li>Find some ways to use genetic marker data in the evaluation of genetic value. This needs to be discussed.</li>
-<li>Develop a simplistic method of using data directly from LabKey via the labkey-api-r. There is now a configuration file that can be used by the application to get the primate center designation, the LabKey baseUrl, a schemaName, a folderPath, and the queryName. The file is structured so that more than one of each could be placed in the file. Completed initial version 20170907.</li>
-</ol>
+<p>To be determined</p>
 </div>
 <div id="to-do" class="section level2">
 <h2 class="hasAnchor">
@@ -128,79 +124,10 @@ noParentage &lt;- rpt[i, ]</p>
 <li>countLoops</li>
 <li>createPedTree</li>
 </ol>
-</li>
-</ol>
 <p>I expect they are direct ports from kinship2. I will check.</p>
-</div>
-<div id="accomplishments-thus-far" class="section level2">
-<h2 class="hasAnchor">
-<a href="#accomplishments-thus-far" class="anchor"></a>Accomplishments thus far</h2>
-<div id="section" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section" class="anchor"></a>20170911</h4>
-<p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
-</div>
-<div id="section-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-1" class="anchor"></a>20170915</h4>
-<p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
-</div>
-<div id="section-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-2" class="anchor"></a>20170917</h4>
-<p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amando Vinson’s paper indicated that ONPRC typically used.</p>
-<p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
-<p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
-</div>
-<div id="section-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-3" class="anchor"></a>20170919</h4>
-<p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
-</div>
-<div id="section-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-4" class="anchor"></a>20170921</h4>
-<p>Unit test coverage is about 15%.</p>
-</div>
-<div id="section-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-5" class="anchor"></a>20171004</h4>
-<p>Unit test coverage is 84.79%.</p>
-</div>
-<div id="section-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#section-6" class="anchor"></a>20180429</h4>
-<p>Test coverage is 86.32%.</p>
-</div>
-</div>
-<div id="meeting-notes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#meeting-notes" class="anchor"></a>Meeting notes</h2>
-<div id="meeting" class="section level3">
-<h3 class="hasAnchor">
-<a href="#meeting" class="anchor"></a>20170323 Meeting</h3>
-<p>I met with Jack Kent, Deborah Newman, and Charles Peterson about how to use genetic data in a gene dropping simulation.</p>
-<p>From: R. Mark Sharp <a href="mailto:msharp@TxBiomed.org">msharp@TxBiomed.org</a></p>
-<p>Subject: Re: Genetic management of colonies</p>
-<p>Date: March 23, 2017 at 5:01:07 PM CDT</p>
-<p>To: Jack Kent <a href="mailto:jkent@txbiomed.org">jkent@txbiomed.org</a></p>
-<p>Cc: Deborah Newman <a href="mailto:dnewman@txbiomedgenetics.org">dnewman@txbiomedgenetics.org</a>, Charles Peterson <a href="mailto:charlesp@txbiomed.org">charlesp@txbiomed.org</a></p>
-<p>Jack, Debbie, and Charles,</p>
-<p>Thank you for meeting with me. I appreciate your help in clarifying the various stages of the issues associated with providing genetic management guidance via simulation with partially known MHC data.</p>
-<ol style="list-style-type: decimal">
-<li>
-<p>I will look more closely into what will be needed to add genetic information and gene frequency information into the gene dropping routines in the kinship2 package. The initial implementation will use only a single locus, which should be a sufficient for MHC data</p>
-<p>A. First step will be to ensure we get expected proportions of genes in children of individuals when we provide genetic data to all founders using a gene frequency based algorithm.</p>
-<p>B. Second step will be to ensure we get expected proportions of genes in children when all parental generations have fully known genotypes.</p>
-<p>C. Third step will be to ensure we get expected proportions of genes in children when parental generations have partially known genotypes and all other genotypes are uninformative.</p>
-<p>D. Fourth step will be to ensure we get expected proportions of genes in children when parental generations have partially known genotypes and remaining parental genes are determined by gene frequency.</p>
 </li>
-<li><p>We will not worry about getting rid of genes in the pedigrees since colony managers need only not breed animals that carry unwanted alleles.</p></li>
-<li><p>I will produce a small number of pedigree drawings using the data Debbie has provided to get feedback on preferences and additional requirements.</p></li>
-<li><p>I will not deal with paternity and maternity issues within the pedigrees at this time.</p></li>
+<li><p>Find some ways to use genetic marker data in the evaluation of genetic value. This needs to be discussed.</p></li>
 </ol>
-<p>Thanks again.</p>
-</div>
 </div>
   </div>
 
@@ -211,8 +138,6 @@ noParentage &lt;- rpt[i, ]</p>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#next-steps">Next steps</a></li>
       <li><a href="#to-do">To do</a></li>
-      <li><a href="#accomplishments-thus-far">Accomplishments thus far</a></li>
-      <li><a href="#meeting-notes">Meeting notes</a></li>
       </ul>
 </div>
       </div>
