@@ -31,7 +31,7 @@ vignette: >
 ```
 ```{r child = "manual_components/_summary_of_major_functions.Rmd", ref.label = "summary-of-functions"}
 ```
-```{r child = "manual_components/_installation.Rmd", ref.label = "installation"}
+```{r child = "manual_components/_installation.Rmd", echo = TRUE, ref.label = "gh-installation"}
 ```
 ```{r child = "manual_components/_running_shiny_application.Rmd", ref.label = "running-shiny-application"}
 ```
