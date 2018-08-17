@@ -26,7 +26,10 @@ and all dates are valid dates.
 In addition, exit dates are
 added if possible and are consistant with other information such as 
 departure dates and death dates. 
-Current ages of animals that are still alive are added.
+Current ages of animals that are still alive are added if a database connection
+is provided via a configuration file and the user has read permission on a
+LabKey server with the demographic data in an __EHR__ (Electronic Health Record) 
+module. See 
 
 Parents with ages below a user selected threshold are identified.
 A minimum parent age in years is set by the user
@@ -35,14 +38,15 @@ an offspring.
 The minimum parent age defaults to 2 years. 
 This check is not performed for animals with missing birth dates.
 
-Further quality control measures may be added later, such as
-checking to ensure parents' birthdates precede their children's.
-
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
 The user can enter a list of breeders in a CSV file that will be used to 
 create a pedigree containing all direct relative (ancestors and descendents)
-via the **labkey.selectRows** function within the **Rlabkey** package.
+via the **labkey.selectRows** function within the **Rlabkey** package
+if a database connection
+is provided via a configuration file and the user has read permission on a
+LabKey server with the demographic data in an __EHR__ (Electronic Health Record) 
+module.
 
 Two configuration files are needed to use the database features of nprcmanager
 with LabKey. 

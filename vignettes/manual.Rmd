@@ -53,4 +53,6 @@ vignette: >
 ```
 ```{r child = "manual_components/_genome_uniqueness_algorithm.Rmd", ref.label = "genome-uniqueness-algorithm"}
 ```
+```{r child = "manual_components/_software_development.Rmd", ref.label = "software_development"}
+```
 
