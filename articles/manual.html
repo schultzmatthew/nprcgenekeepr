@@ -114,14 +114,13 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="quality-control" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quality-control" class="anchor"></a>Quality Control</h3>
-<p>Studbooks maintained by breeding colonies generally contain information of varying quality. The quality control functions of the toolkit check to ensure all animals listed as parents have their own line entries, all parents have the appropriate sex listed, no animals are listed as both a sire and a dam, duplicate entries are removed, pedigree generation numbers are added, and all dates are valid dates. In addition, exit dates are added if possible and are consistant with other information such as departure dates and death dates. Current ages of animals that are still alive are added.</p>
+<p>Studbooks maintained by breeding colonies generally contain information of varying quality. The quality control functions of the toolkit check to ensure all animals listed as parents have their own line entries, all parents have the appropriate sex listed, no animals are listed as both a sire and a dam, duplicate entries are removed, pedigree generation numbers are added, and all dates are valid dates. In addition, exit dates are added if possible and are consistant with other information such as departure dates and death dates. Current ages of animals that are still alive are added if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module. See</p>
 <p>Parents with ages below a user selected threshold are identified. A minimum parent age in years is set by the user and is used to ensure each parent is at least that age on the birth date of an offspring. The minimum parent age defaults to 2 years. This check is not performed for animals with missing birth dates.</p>
-<p>Further quality control measures may be added later, such as checking to ensure parents’ birthdates precede their children’s.</p>
 </div>
 <div id="creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="anchor"></a>Creation of Pedigree From a List of Potential Breeders and LabKey Integration</h3>
-<p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendents) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package.</p>
+<p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendents) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
 <p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
 <p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a></p>
 </div>
@@ -322,6 +321,26 @@ paternal allele vectors are added together.<br>
 </div>
 </div>
 </div>
+<div id="software-issues" class="section level2">
+<h2 class="hasAnchor">
+<a href="#software-issues" class="anchor"></a>Software Issues</h2>
+<p>Our goal is to use current R software development practices in an open software environment. Users can see all of the code at <a href="https://github.com/rmsharp/nprcmanager">github.com/rmsharp/nprcmanager</a> and can submit suggestions and bug reports on our issue tracker at <a href="https://github.com/rmsharp/nprcmanager/issues">github.com/rmsharp/nprcmanager/issues</a>.</p>
+<div id="travi-ci-use" class="section level3">
+<h3 class="hasAnchor">
+<a href="#travi-ci-use" class="anchor"></a>Travi-ci Use</h3>
+<p>The application and associated website is being continuously integrated at each push to the online repository. While often new features being added are not stable or complete, it is uncommon for the application not to run and perform fuctions that were working before. However, make sure the build was passing by looking for a green <em>Build Passing</em> badge at the top of the README file at <a href="https://travis-ci.org/rmsharp/nprcmanager">travis-ci.org/rmsharp/nprcmanager</a>.</p>
+</div>
+<div id="debug-logging" class="section level3">
+<h3 class="hasAnchor">
+<a href="#debug-logging" class="anchor"></a>Debug Logging</h3>
+<p>There is logging system integrated into the package using the package futile.logger. Note the checkbox at the bottom of the side panel on the <em>Input</em> tab. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named nprcmanager.log. Currently, events occurring the the server.R file are logged as this where most errors are exposed.</p>
+</div>
+<div id="code-coverage" class="section level3">
+<h3 class="hasAnchor">
+<a href="#code-coverage" class="anchor"></a>Code Coverage</h3>
+<p>Code coverage reports are part of the automated build system running on Travis-CI.org. We are using the <strong>testthat</strong> package for unit tests. Currently all code returning values that do not access a database or the file system have coverage with unit tests. Almost all of these have 100 percent of the lines covered. However, the unit tests are not exhaustive. The practice is to add further tests as errors are detected or when working on the code and a new unit test possibility is discovered.– Have 86.32% as of 20180429</p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -342,6 +361,7 @@ paternal allele vectors are added together.<br>
       <li><a href="#orip-reporting">ORIP Reporting</a></li>
       <li><a href="#algorithm-breeding-group-formation">Algorithm: Breeding Group Formation</a></li>
       <li><a href="#algorithm-genome-uniqueness">Algorithm: Genome Uniqueness</a></li>
+      <li><a href="#software-issues">Software Issues</a></li>
       </ul>
 </div>
       </div>
