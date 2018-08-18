@@ -13,3 +13,5 @@ R/depricated_gene.drop.R
 inst/extdata/PSCPO*.*
 inst/doc/*
 docs/*
+inst/extdata/notes.*
+!inst/extdata/notes.Rmd
