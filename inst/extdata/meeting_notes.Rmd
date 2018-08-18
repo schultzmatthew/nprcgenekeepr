@@ -23,6 +23,14 @@ Provided in reverse chronological order
 ### Error Handling
 1. Develop a full set of error messages appropriate for all types of input files.
     a. Added improved error detection and reporting for missing required columns - Done 2018-07-17
+    b. Added the ability to call qcStudbook interactively with a flag (__errors__) set to TRUE that 
+    causes qcStudbook to report back a list with all errors detected within the input file.
+    Not all errors can be detected in a single pass because some errors preclude checking for others.
+    For example, if the birth date column has an invalid format, the parental age cannot be checked.
+    If no errors are found with __errors__ set to TRUE and NULL value is returned.
+    __errors__ defaults to __FALSE__.
+    c. This emphsizes the need for a good set of corrupt input files for testing and unit test
+    development.
 2. Amanda and Beth will provide me with some files with errors.
    a. Amanda provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. Done 20180720
    b. Both errors were caught, but the first error was only seen after correcting the first. It would be better to report all errors and set a flag that told the program to stop at the end of parsing the entire pedigree.

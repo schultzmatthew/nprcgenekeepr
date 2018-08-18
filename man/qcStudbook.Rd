@@ -4,7 +4,7 @@
 \alias{qcStudbook}
 \title{Quality Control for the Studbook or pedigree}
 \usage{
-qcStudbook(sb, minParentAge = 2)
+qcStudbook(sb, minParentAge = 2, changes = FALSE, errors = FALSE)
 }
 \arguments{
 \item{sb}{A dataframe containing a table of pedigree and demographic
@@ -46,6 +46,14 @@ or shipped from the colony}
 \item{minParentAge}{numeric values to set the minimum age in years for
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.}
+
+\item{changes}{logical value that if \code{TRUE} the function will
+report back changes made to input. These will include column names,
+case of catagorical values (male, female, unknown), etc.}
+
+\item{errors}{logical value if TRUE will scan the entire file and
+make a list of all errors found. The errors will be returned in a
+list of list where each sublist is a type of error found.}
 }
 \value{
 A datatable with standardized and quality controlled pedigree

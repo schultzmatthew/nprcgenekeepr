@@ -6,6 +6,10 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
+#' @param errors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
+#' @param error_lst list where each sublist is a type of error found.
 #' @return A dataframe containing rows for each animal where one or more
 #' parent was less than \code{minParentAge}. It cantains all of the columns
 #' in the original \code{sb} dataframe with the following added columns:
@@ -17,9 +21,15 @@
 #' }
 #' @import lubridate
 #' @export
-checkParentAge <- function(sb, minParentAge = 2) {
+checkParentAge <- function(sb, minParentAge = 2, errors = FALSE,
+                           error_lst = NULL) {
   if (!any(class(sb$birth) %in% c("Date", "POSIXct", "character"))) {
-    stop("Birth column must be of class 'Date', 'POSIXct', or 'character'")
+    if (errors) {
+      ## Bad birth date column precludes checking parent age
+      return(NULL)
+    } else {
+      stop("Birth column must be of class 'Date', 'POSIXct', or 'character'")
+    }
   } else if (class(sb$birth) == "character") {
     sb$birth <- anytime(sb$birth)
   } else {

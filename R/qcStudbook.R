@@ -41,7 +41,12 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
-#'
+#' @param changes logical value that if \code{TRUE} the function will
+#' report back changes made to input. These will include column names,
+#' case of catagorical values (male, female, unknown), etc.
+#' @param errors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
 #' @return A datatable with standardized and quality controlled pedigree
 #' information.
 #'
@@ -138,7 +143,13 @@
 #' @importFrom utils write.csv
 #' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
-qcStudbook <- function(sb, minParentAge = 2) {
+qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
+                       errors = FALSE) {
+  error_lst <- list(missing_columns = character(0),
+                    invalid_date_rows = character(0),
+                    suspiciousParents = data.frame(),
+                    sire_is_dam = character(0),
+                    duplicate_ids = character(0))
   headers <- tolower(names(sb))
   headers <- gsub(" ", "", headers)
   headers <- gsub("\\.", "", headers)
@@ -152,8 +163,15 @@ qcStudbook <- function(sb, minParentAge = 2) {
   requiredCols <- getRequiredCols()
   # Checking for the 4 required fields (id, sire, dam, sex)
   if (!all(str_detect_fixed_all(headers, requiredCols))) {
-    stop(paste0("Required field(s) missing: ", paste0(requiredCols[
-      !str_detect_fixed_all(headers, requiredCols, ignore_na = TRUE)], collapse = ", "), "."))
+    if (errors) {
+      error_lst$missing_columns <-
+        requiredCols[!str_detect_fixed_all(headers, requiredCols,
+                                           ignore_na = TRUE)]
+    } else {
+      stop(paste0("Required field(s) missing: ", paste0(requiredCols[
+        !str_detect_fixed_all(headers, requiredCols, ignore_na = TRUE)],
+        collapse = ", "), "."))
+    }
   }
 
   names(sb) <- headers
@@ -164,7 +182,15 @@ qcStudbook <- function(sb, minParentAge = 2) {
                        #their own line entry
   # Add and standardize needed fields
   sb$sex <- convertSexCodes(sb$sex)
-  sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
+  if (errors) {
+    error_lst <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
+                                  errors, error_lst)
+    if (length(error_lst$sire_is_dam) == 0)
+      sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
+                                 errors = FALSE)
+  } else {
+    sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
+  }
 
   if ("status" %in% headers) {
     sb$status <- convertStatusCodes(sb$status)
@@ -174,18 +200,33 @@ qcStudbook <- function(sb, minParentAge = 2) {
   }
 
   # converting date column entries from strings to date
-  sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
+  if (errors) {
+    error_lst <- convertDate(sb, time.origin = as.Date("1970-01-01"),
+                             errors, error_lst)
+    if (length(error_lst$invalid_date_rows) == 0)
+      sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
+                        errors = FALSE)
+  } else {
+    sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
+  }
   sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
 
   # ensure parents are older than offspring
-  suspiciousParents <- checkParentAge(sb, minParentAge)
-  if (nrow(suspiciousParents) > 0) {
-    fileName <- paste0(getSiteInfo()$homeDir, "lowParentAge.csv")
-    write.csv(suspiciousParents,
-              file = fileName, row.names = FALSE)
+  suspiciousParents <- checkParentAge(sb, minParentAge, errors, error_lst)
+  if (errors) {
+    if (!is.null(suspiciousParents)) {
+      if (nrow(suspiciousParents) > 0)
+        error_lst$suspiciousParents <- suspiciousParents
+    }
+  } else {
+    if (nrow(suspiciousParents) > 0) {
+        fileName <- paste0(getSiteInfo()$homeDir, "lowParentAge.csv")
+        write.csv(suspiciousParents,
+                  file = fileName, row.names = FALSE)
 
-    stop(paste0("Parents with low age at birth of offspring are listed in ",
-                fileName, ".\n"))
+        stop(paste0("Parents with low age at birth of offspring are listed in ",
+                    fileName, ".\n"))
+    }
   }
   # setting age:
   # uses current date as the end point if no exit date is available
@@ -198,7 +239,14 @@ qcStudbook <- function(sb, minParentAge = 2) {
 
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
-  sb <- removeDuplicates(sb)
+  if (errors) {
+    error_lst <- removeDuplicates(sb, errors = errors, error_lst = error_lst)
+    if (length(error_lst$duplicate_ids) == 0)
+      sb <- sb <- removeDuplicates(sb, errors = FALSE)
+  } else {
+    sb <- sb <- removeDuplicates(sb)
+  }
+
   sb <- fixGenotypeCols(sb)
   cols <- intersect(getPossibleCols(), colnames(sb))
   sb <- sb[, cols]
@@ -209,6 +257,16 @@ qcStudbook <- function(sb, minParentAge = 2) {
   sb$id <- as.character(sb$id)
   sb$sire <- as.character(sb$sire)
   sb$dam <- as.character(sb$dam)
-
+  if (errors) {
+    if (length(error_lst$missing_columns) > 0 |
+        length(error_lst$invalid_date_rows) > 0 |
+        length(error_lst$sire_is_dam) > 0 |
+        length(error_lst$duplicate_ids) > 0 |
+        nrow(error_lst$suspiciousParents) > 0) {
+      return(error_lst)
+    }
+    else
+      return(NULL)
+  }
   return(sb)
 }

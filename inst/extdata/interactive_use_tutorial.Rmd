@@ -24,7 +24,7 @@ pedigreeFile <- "../inst/extdata/baboon_breeders_qc_ped.csv"
 sep <- ","
 minParentAge <- 0
 breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE, stringsAsFactors = FALSE)
-breederPed <- qcStudbook(breederPedCsv, minParentAge)
+breederPed <- qcStudbook(breederPedCsv, minParentAge, errors = TRUE)
 ped <- resetPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,

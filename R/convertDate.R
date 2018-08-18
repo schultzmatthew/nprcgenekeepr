@@ -6,12 +6,17 @@
 #' death, departure, or exit dates. The fields are optional, but will be used
 #' if present.(optional fields: birth, death, departure, and exit).
 #' @param time.origin date object used by \code{as.Date} to set \code{origin}.
+#' @param errors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
+#' @param error_lst list where each sublist is a type of error found.
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type.
 #' @importFrom rmsutilityr get_and_or_list
 #' @importFrom rmsutilityr is_valid_date_str
 #' @export
-convertDate <- function(ped, time.origin = as.Date("1970-01-01")) {
+convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE,
+                        error_lst = NULL) {
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
@@ -20,11 +25,18 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01")) {
       ped[[header]][ped[[header]] == ""] <- NA
     if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
                                format = format, optional = TRUE))) {
-      rowNums <- get_and_or_list(seq_along(ped[[header]])[
-        !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
-                           format = format)], "and")
-      stop(paste0("Column '", header, "' has invalid dates on row(s) ",
-                  rowNums, "."))
+      if (errors) {
+        error_lst$invalid_date_rows <- as.character(seq_along(ped[[header]])[
+          !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
+                             format = format)])
+        return(error_lst)
+      } else {
+        rowNums <- get_and_or_list(seq_along(ped[[header]])[
+          !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
+                             format = format)], "and")
+        stop(paste0("Column '", header, "' has invalid dates on row(s) ",
+                    rowNums, "."))
+      }
     }
 
     ped[[header]] <- as.Date(ped[[header]], format = format,

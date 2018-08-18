@@ -4,7 +4,8 @@
 \alias{checkParentAge}
 \title{Check parent age}
 \usage{
-checkParentAge(sb, minParentAge = 2)
+checkParentAge(sb, minParentAge = 2, errors = FALSE,
+  error_lst = NULL)
 }
 \arguments{
 \item{sb}{A dataframe containing a table of pedigree and demographic
@@ -13,6 +14,12 @@ information.}
 \item{minParentAge}{numeric values to set the minimum age in years for
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.}
+
+\item{errors}{logical value if TRUE will scan the entire file and
+make a list of all errors found. The errors will be returned in a
+list of list where each sublist is a type of error found.}
+
+\item{error_lst}{list where each sublist is a type of error found.}
 }
 \value{
 A dataframe containing rows for each animal where one or more

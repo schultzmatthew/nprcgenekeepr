@@ -10,10 +10,15 @@
 #' individual's mother (\code{NA} if unknown).
 #' @param sex factor with levels: "M", "F", "U". Sex specifier for an
 #' individual.
+#' @param errors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
+#' @param error_lst list where each sublist is a type of error found.
 #' @return A factor with levels: "M", "F", "H", and "U"
 #' representing the sex codes for the ids provided
 #' @export
-correctParentSex <- function(id, sire, dam, sex) {
+correctParentSex <- function(id, sire, dam, sex, errors = FALSE,
+                             error_lst = NULL) {
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
@@ -23,11 +28,19 @@ correctParentSex <- function(id, sire, dam, sex) {
   # Check if any ids are listed in both the sire and dam columns (error)
   err <- intersect(sires, dams)
   if (length(err > 0)) {
-    stop(err, " : Subject(s) listed as both sire and dam")
+    if (errors) {
+      error_lst$sire_is_dam <- err
+    } else {
+      stop(err, " : Subject(s) listed as both sire and dam")
+    }
   }
 
   # Update gender for sires and dams
   sex[((id %in% sires) & (sex != "M"))] <- "M"
   sex[((id %in% dams) & (sex != "F"))] <- "F"
-  return(sex)
+  if (errors) {
+    error_lst
+  } else {
+    return(sex)
+  }
 }
