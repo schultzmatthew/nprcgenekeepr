@@ -11,19 +11,20 @@
 #' @param errors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
-#' @param error_lst list where each sublist is a type of error found.
 #' @export
-removeDuplicates <- function(ped, errors = FALSE, error_lst = NULL) {
+removeDuplicates <- function(ped, errors = FALSE) {
   p <- unique(ped)
-
-  if (sum(duplicated(p$id)) == 0) {
-    return(p)
-  }
-  else{
-    if (errors) {
-      error_lst$duplicate_ids <- p$id[duplicated(p$id)]
-      return(error_lst)
+  if (errors) {
+    if (sum(duplicated(p$id)) == 0) {
+      return(NULL)
+    } else {
+      return(p$id[duplicated(p$id)])
     }
-    stop("Duplicate IDs with mismatched information present")
+  } else {
+    if (sum(duplicated(p$id)) == 0) {
+      return(p)
+    } else{
+      stop("Duplicate IDs with mismatched information present")
+    }
   }
 }

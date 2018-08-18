@@ -183,11 +183,14 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   # Add and standardize needed fields
   sb$sex <- convertSexCodes(sb$sex)
   if (errors) {
-    error_lst <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
-                                  errors, error_lst)
-    if (length(error_lst$sire_is_dam) == 0)
+    testVal <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
+                                  errors)
+    if (is.null(testVal)) {
       sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
                                  errors = FALSE)
+    } else {
+      error_lst$sire_is_dam <- testVal
+    }
   } else {
     sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
   }
@@ -201,18 +204,21 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
 
   # converting date column entries from strings to date
   if (errors) {
-    error_lst <- convertDate(sb, time.origin = as.Date("1970-01-01"),
-                             errors, error_lst)
-    if (length(error_lst$invalid_date_rows) == 0)
+    invalid_date_rows <- convertDate(sb, time.origin = as.Date("1970-01-01"),
+                             errors)
+    if (!is.null(invalid_date_rows)) {
+      error_lst$invalid_date_rows <- invalid_date_rows
+    } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                         errors = FALSE)
+    }
   } else {
     sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
   }
   sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
 
   # ensure parents are older than offspring
-  suspiciousParents <- checkParentAge(sb, minParentAge, errors, error_lst)
+  suspiciousParents <- checkParentAge(sb, minParentAge, errors)
   if (errors) {
     if (!is.null(suspiciousParents)) {
       if (nrow(suspiciousParents) > 0)
@@ -240,9 +246,10 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
   if (errors) {
-    error_lst <- removeDuplicates(sb, errors = errors, error_lst = error_lst)
-    if (length(error_lst$duplicate_ids) == 0)
-      sb <- sb <- removeDuplicates(sb, errors = FALSE)
+    testVal <- removeDuplicates(sb, errors = errors)
+    if (!is.null(testVal)) {
+      error_lst$duplicate_ids <- testVal
+    } ## else do not update sb, because it will fail
   } else {
     sb <- sb <- removeDuplicates(sb)
   }

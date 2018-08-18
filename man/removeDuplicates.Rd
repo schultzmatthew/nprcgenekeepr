@@ -4,7 +4,7 @@
 \alias{removeDuplicates}
 \title{Remove duplicate records from pedigree}
 \usage{
-removeDuplicates(ped, errors = FALSE, error_lst = NULL)
+removeDuplicates(ped, errors = FALSE)
 }
 \arguments{
 \item{ped}{dataframe that is the `Pedigree`. It contains pedigree
@@ -13,8 +13,6 @@ information. The \code{id} column is required.}
 \item{errors}{logical value if TRUE will scan the entire file and
 make a list of all errors found. The errors will be returned in a
 list of list where each sublist is a type of error found.}
-
-\item{error_lst}{list where each sublist is a type of error found.}
 }
 \description{
 Part of Pedigree Curation

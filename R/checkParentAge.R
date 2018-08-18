@@ -9,7 +9,6 @@
 #' @param errors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
-#' @param error_lst list where each sublist is a type of error found.
 #' @return A dataframe containing rows for each animal where one or more
 #' parent was less than \code{minParentAge}. It cantains all of the columns
 #' in the original \code{sb} dataframe with the following added columns:
@@ -21,8 +20,7 @@
 #' }
 #' @import lubridate
 #' @export
-checkParentAge <- function(sb, minParentAge = 2, errors = FALSE,
-                           error_lst = NULL) {
+checkParentAge <- function(sb, minParentAge = 2, errors = FALSE) {
   if (!any(class(sb$birth) %in% c("Date", "POSIXct", "character"))) {
     if (errors) {
       ## Bad birth date column precludes checking parent age

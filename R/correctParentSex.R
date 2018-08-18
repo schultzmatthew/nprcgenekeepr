@@ -13,12 +13,10 @@
 #' @param errors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
-#' @param error_lst list where each sublist is a type of error found.
 #' @return A factor with levels: "M", "F", "H", and "U"
 #' representing the sex codes for the ids provided
 #' @export
-correctParentSex <- function(id, sire, dam, sex, errors = FALSE,
-                             error_lst = NULL) {
+correctParentSex <- function(id, sire, dam, sex, errors = FALSE) {
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
@@ -29,18 +27,15 @@ correctParentSex <- function(id, sire, dam, sex, errors = FALSE,
   err <- intersect(sires, dams)
   if (length(err > 0)) {
     if (errors) {
-      error_lst$sire_is_dam <- err
+      return(err)
     } else {
       stop(err, " : Subject(s) listed as both sire and dam")
     }
   }
-
+  if (errors)
+    return(NULL)
   # Update gender for sires and dams
   sex[((id %in% sires) & (sex != "M"))] <- "M"
   sex[((id %in% dams) & (sex != "F"))] <- "F"
-  if (errors) {
-    error_lst
-  } else {
-    return(sex)
-  }
+  return(sex)
 }

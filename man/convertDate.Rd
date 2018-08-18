@@ -4,8 +4,7 @@
 \alias{convertDate}
 \title{Converts date columns formatted as characters to be of type datetime}
 \usage{
-convertDate(ped, time.origin = as.Date("1970-01-01"), errors = FALSE,
-  error_lst = NULL)
+convertDate(ped, time.origin = as.Date("1970-01-01"), errors = FALSE)
 }
 \arguments{
 \item{ped}{a dataframe of pedigree information that may contain birth,
@@ -17,8 +16,6 @@ if present.(optional fields: birth, death, departure, and exit).}
 \item{errors}{logical value if TRUE will scan the entire file and
 make a list of all errors found. The errors will be returned in a
 list of list where each sublist is a type of error found.}
-
-\item{error_lst}{list where each sublist is a type of error found.}
 }
 \value{
 A dataframe with an updated table with date columns converted from

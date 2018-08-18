@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,include=TRUE, results="markup")
 ```
 
 ```{r, include = TRUE}
@@ -16,15 +16,37 @@ library(nprcmanager)
 library(ggplot2)
 library(knitr)
 
+```
+
 ## You can use a file browser
-#pedigreeFile <- file.choose()
-## or you will have to change this to point to a pedigree file that you have
-pedigreeFile <- "../inst/extdata/baboon_breeders_qc_ped.csv"
+
+    pedigreeFile <- file.choose()
+    
+## You can point to a pedigree file that you have
+```{r tutorial-1 }
+pedigreeFile <- "baboon_breeders_qc_ped.csv"
 
 sep <- ","
 minParentAge <- 0
 breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE, stringsAsFactors = FALSE)
-breederPed <- qcStudbook(breederPedCsv, minParentAge, errors = TRUE)
+breederPed <- qcStudbook(breederPedCsv, minParentAge)
+
+```
+
+If __qcStudbook__ reports and error, change the call by adding the __errors__
+argument set to __TRUE__ and examine the returned object.
+
+```{r examine-errors}
+badPedigreeFile <- "pedigree_files_with_errors/Pedigree_File_Example_CSV.csv"
+badPedCsv <- read.table(badPedigreeFile, sep = ",", header = TRUE, stringsAsFactors = FALSE)
+error_lst <- qcStudbook(badPedCsv, minParentAge, errors = TRUE)
+str(error_lst)
+
+```
+
+Going back to where we were.
+
+```{r }
 ped <- resetPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
@@ -73,7 +95,7 @@ _Example_Pedigree.csv_.
 
 ```{r findLoops}
 ##pedigreeFile <- file.choose() ## use example file
-pedigreefile <- pedigreeFile <- "../inst/extdata/Example_Pedigree.csv"
+pedigreefile <- pedigreeFile <- "Example_Pedigree.csv"
 examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
                                    stringsAsFactors = FALSE)
 examplePedigree <- qcStudbook(examplePedigree_raw, minParentAge = 0)
