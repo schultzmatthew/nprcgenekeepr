@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.23</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.24</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>convertDate</span>(<span class='no'>ped</span>, <span class='kw'>time.origin</span> <span class='kw'>=</span> <span class='fu'>as.Date</span>(<span class='st'>"1970-01-01"</span>))</pre>
+    <pre class="usage"><span class='fu'>convertDate</span>(<span class='no'>ped</span>, <span class='kw'>time.origin</span> <span class='kw'>=</span> <span class='fu'>as.Date</span>(<span class='st'>"1970-01-01"</span>), <span class='kw'>errors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +137,12 @@ if present.(optional fields: birth, death, departure, and exit).</p></td>
     <tr>
       <th>time.origin</th>
       <td><p>date object used by <code>as.Date</code> to set <code>origin</code>.</p></td>
+    </tr>
+    <tr>
+      <th>errors</th>
+      <td><p>logical value if TRUE will scan the entire file and
+make a list of all errors found. The errors will be returned in a
+list of list where each sublist is a type of error found.</p></td>
     </tr>
     </table>
     

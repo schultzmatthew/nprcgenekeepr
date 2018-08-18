@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.23</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.24</span>
       </span>
     </div>
 
@@ -113,7 +113,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sets sex for animals listed as either a sire or dam.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/checkParentSex.R'><code>R/checkParentSex.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/correctParentSex.R'><code>R/correctParentSex.R</code></a></small>
     <div class="hidden name"><code>correctParentSex.Rd</code></div>
     </div>
 
@@ -123,7 +123,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>correctParentSex</span>(<span class='no'>id</span>, <span class='no'>sire</span>, <span class='no'>dam</span>, <span class='no'>sex</span>)</pre>
+    <pre class="usage"><span class='fu'>correctParentSex</span>(<span class='no'>id</span>, <span class='no'>sire</span>, <span class='no'>dam</span>, <span class='no'>sex</span>, <span class='kw'>errors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +146,12 @@ individual's mother (<code>NA</code> if unknown).</p></td>
       <th>sex</th>
       <td><p>factor with levels: "M", "F", "U". Sex specifier for an
 individual.</p></td>
+    </tr>
+    <tr>
+      <th>errors</th>
+      <td><p>logical value if TRUE will scan the entire file and
+make a list of all errors found. The errors will be returned in a
+list of list where each sublist is a type of error found.</p></td>
     </tr>
     </table>
     

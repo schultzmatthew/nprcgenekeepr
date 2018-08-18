@@ -62,7 +62,7 @@ pedigree information" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.23</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.24</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ pedigree information</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>qcStudbook</span>(<span class='no'>sb</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+    <pre class="usage"><span class='fu'>qcStudbook</span>(<span class='no'>sb</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>changes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>errors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,6 +171,18 @@ or shipped from the colony</p></li>
       <td><p>numeric values to set the minimum age in years for
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.</p></td>
+    </tr>
+    <tr>
+      <th>changes</th>
+      <td><p>logical value that if <code>TRUE</code> the function will
+report back changes made to input. These will include column names,
+case of catagorical values (male, female, unknown), etc.</p></td>
+    </tr>
+    <tr>
+      <th>errors</th>
+      <td><p>logical value if TRUE will scan the entire file and
+make a list of all errors found. The errors will be returned in a
+list of list where each sublist is a type of error found.</p></td>
     </tr>
     </table>
     
