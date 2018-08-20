@@ -302,7 +302,7 @@ shinyServer(function(input, output, session) {
   )
 
   specifyFocalAnimals <- eventReactive(input$specifyFocalAnimal, {
-    ped <- unlist(strsplit(input$focalAnimalIds, "[ \t\n]"))
+    ped <- unlist(strsplit(input$focalAnimalIds, "[ ,;\t\n]"))
     if (!is.null(input$focalAnimalUpdate)) {
       focalAnimalUpdate <- input$focalAnimalUpdate
       flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
