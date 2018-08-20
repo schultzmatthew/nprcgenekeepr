@@ -25,7 +25,7 @@ and can submit suggestions and bug reports on our issue tracker at
 The application and associated website is being continuously integrated 
 at each push to the online repository. While often new features being added
 are not stable or complete, it is uncommon for the application not to run 
-and perform fuctions that were working before. However, make sure the 
+and perform functions that were working before. However, make sure the 
 build was passing by looking for a green _Build Passing_ badge at the top
 of the README file at [travis-ci.org/rmsharp/nprcmanager](https://travis-ci.org/rmsharp/nprcmanager).
 

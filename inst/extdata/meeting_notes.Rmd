@@ -29,7 +29,7 @@ Provided in reverse chronological order
     For example, if the birth date column has an invalid format, the parental age cannot be checked.
     If no errors are found with __errors__ set to TRUE and NULL value is returned.
     __errors__ defaults to __FALSE__.
-    c. This emphsizes the need for a good set of corrupt input files for testing and unit test
+    c. This emphasizes the need for a good set of corrupt input files for testing and unit test
     development.
 2. Amanda and Beth will provide me with some files with errors.
    a. Amanda provided a file with two error types: bad birth date type - integer instead of character representation of a date and animal appearing as a sire and a dam. Done 20180720
@@ -42,7 +42,7 @@ Provided in reverse chronological order
 Also added unit tests for __convertDate__. Done 2018-07-21
 5. Added ability to handle dates with NA to __convertDates__ Done 2018-07-22
 6. Added unit test coverage of __updateProgress__ calls in _test_reportGV.R_ Done 2018-07-22
-7. Corrected a bug and added corralary unit test for __rankSubjects__. Done 2018-07-29
+7. Corrected a bug and added corollary unit test for __rankSubjects__. Done 2018-07-29
 8. Added test for missing __age__ column in _orderReport_ function. This also allows correct
 ordering when the age column is missing. Done 2018-07-29
 9. Added unit tests for _findLoops_ function. Done 2018-07-30
@@ -62,7 +62,7 @@ objects were already dates. It now passes those objects through untouched. Done 
     a. 2018-07-17
 3. Amended documentation for the __addGenotype__ function to indicate that it is assuming 
 the _genotype_ object was opened by __checkGenotypeFile__. 2018-07-17
-4. Added use of conveniece functions __get_and_or_list__ and __is_valid_data_str__ from the _github/rmsharp/rmsharp/rmsutilityr_ repository. 2018-07-21
+4. Added use of convenience functions __get_and_or_list__ and __is_valid_data_str__ from the _github/rmsharp/rmsharp/rmsutilityr_ repository. 2018-07-21
 5. Added documentation for data elements __finalRpt__ and __rpt__, which are both created by the _reportGV_ 
 function. 2018-07-29
 6. Added brief tutorial on how to use _findLoops_ function. 2018-08-04
@@ -114,7 +114,7 @@ Make sure this is true. I may also want to check for internal inconsistencies.
 
 4. In the Input File Handling section of the Input tab the last bullet point immediately above the first table says "Genotype data may be supplied within the pedigree file or in a separate genotype file. Only two additional columns (first and second) are required when the genotypes are provided within the pedigree file."
 
-This should be explained more fully and the program behavior may need to be changed. Currently the program assumes the columns first and second are there and are correctly formed. Currently there is no check to ensure that first_name and second_name data elements are consistant with first and second data elements.
+This should be explained more fully and the program behavior may need to be changed. Currently the program assumes the columns first and second are there and are correctly formed. Currently there is no check to ensure that first_name and second_name data elements are consistent with first and second data elements.
 
 5. In the Input File Handling section of the Input tab and under the first table of column names, there is a section describing what is done by the qcStudbook function to correct data and create new columns.
 
@@ -127,7 +127,7 @@ When minimum parent age is included, animals without birth dates are not rejecte
 
 Change update breeding colony (pedigree browser) by adding explanatory text.
 
-## Miscellanious Accomplishments
+## Miscellaneous Accomplishments
 
 These should be stored elsewhere
 
@@ -148,12 +148,12 @@ Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.
 I discovered why the plot of genetic uniqueness scores was not as expected. 
 It was from an analysis where 0 was the threshold setting, which I think we 
 should consider removing as an option. I have set the default to 3, 
-which is what Amando Vinson's paper indicated that ONPRC typically used.
+which is what Amanda Vinson's paper indicated that ONPRC typically used.
 
 I got the logging system integrated into the package. 
-I am using the package futile.logger (funny name). Note the checkbox at the 
+I am using the package futile.logger (funny name). Note the check box at the 
 bottom of the side panel on the two attached images. 
-When the Debug on checkbox is checked (it is not checked by default), 
+When the Debug on check box is checked (it is not checked by default), 
 the application writes to a file in the users home directory named
 _nprcmanager.log_. Currently I am only logging events occurring the the 
 _server.R_ file, because that is where I tend to have most of my problems 

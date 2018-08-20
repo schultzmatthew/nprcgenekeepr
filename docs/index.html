@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.23</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.24</span>
       </span>
     </div>
 
@@ -116,13 +116,13 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="quality-control" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quality-control" class="anchor"></a>Quality Control</h3>
-<p>Studbooks maintained by breeding colonies generally contain information of varying quality. The quality control functions of the toolkit check to ensure all animals listed as parents have their own line entries, all parents have the appropriate sex listed, no animals are listed as both a sire and a dam, duplicate entries are removed, pedigree generation numbers are added, and all dates are valid dates. In addition, exit dates are added if possible and are consistant with other information such as departure dates and death dates. Current ages of animals that are still alive are added if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module. See</p>
+<p>Studbooks maintained by breeding colonies generally contain information of varying quality. The quality control functions of the toolkit check to ensure all animals listed as parents have their own line entries, all parents have the appropriate sex listed, no animals are listed as both a sire and a dam, duplicate entries are removed, pedigree generation numbers are added, and all dates are valid dates. In addition, exit dates are added if possible and are consistent with other information such as departure dates and death dates. Current ages of animals that are still alive are added if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module. See</p>
 <p>Parents with ages below a user selected threshold are identified. A minimum parent age in years is set by the user and is used to ensure each parent is at least that age on the birth date of an offspring. The minimum parent age defaults to 2 years. This check is not performed for animals with missing birth dates.</p>
 </div>
 <div id="creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="anchor"></a>Creation of Pedigree From a List of Potential Breeders and LabKey Integration</h3>
-<p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendents) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
+<p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
 <p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
 <p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data</span>(<span class="st">"exampleNprcmanagerConfig"</span>)</a>

@@ -24,7 +24,7 @@ listed as both a sire and a dam, duplicate entries are removed,
 pedigree generation numbers are added,
 and all dates are valid dates. 
 In addition, exit dates are
-added if possible and are consistant with other information such as 
+added if possible and are consistent with other information such as 
 departure dates and death dates. 
 Current ages of animals that are still alive are added if a database connection
 is provided via a configuration file and the user has read permission on a
@@ -41,7 +41,7 @@ This check is not performed for animals with missing birth dates.
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
 The user can enter a list of breeders in a CSV file that will be used to 
-create a pedigree containing all direct relative (ancestors and descendents)
+create a pedigree containing all direct relative (ancestors and descendants)
 via the **labkey.selectRows** function within the **Rlabkey** package
 if a database connection
 is provided via a configuration file and the user has read permission on a
