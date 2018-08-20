@@ -1,6 +1,18 @@
 # Meeting Notes and Things To Do
 
 Provided in reverse chronological order
+## 20180820
+
+Meeting was canceled due to Amanda's family emergency.
+
+Topics I wanted to bring up.
+
+1. Check on ability of Beth and Amanda to install package.
+2. Demonstrate use of __qcStudbook__ in interactive mode.
+3. See if I should follow up with users who have had trouble loading a file.
+4. Demonstration to genetics and genomics group
+5. Breeding group formation. Workflow and goals
+6. Genetic value analyses. Workflow and goals
 
 ## 20180711 Meeting Notes
 

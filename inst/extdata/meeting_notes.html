@@ -311,7 +311,17 @@ $(document).ready(function () {
 
 <div id="meeting-notes-and-things-to-do" class="section level1">
 <h1>Meeting Notes and Things To Do</h1>
-<p>Provided in reverse chronological order</p>
+<p>Provided in reverse chronological order ## 20180820</p>
+<p>Meeting was canceled due to Amanda’s family emergency.</p>
+<p>Topics I wanted to bring up.</p>
+<ol style="list-style-type: decimal">
+<li>Check on ability of Beth and Amanda to install package.</li>
+<li>Demonstrate use of <strong>qcStudbook</strong> in interactive mode.</li>
+<li>See if I should follow up with users who have had trouble loading a file.</li>
+<li>Demonstration to genetics and genomics group</li>
+<li>Breeding group formation. Workflow and goals</li>
+<li>Genetic value analyses. Workflow and goals</li>
+</ol>
 <div id="meeting-notes" class="section level2">
 <h2>20180711 Meeting Notes</h2>
 <div id="summary-statistics-tab" class="section level3">
@@ -343,6 +353,8 @@ $(document).ready(function () {
 <li>Develop a full set of error messages appropriate for all types of input files.
 <ol style="list-style-type: lower-alpha">
 <li>Added improved error detection and reporting for missing required columns - Done 2018-07-17</li>
+<li>Added the ability to call qcStudbook interactively with a flag (<strong>errors</strong>) set to TRUE that causes qcStudbook to report back a list with all errors detected within the input file. Not all errors can be detected in a single pass because some errors preclude checking for others. For example, if the birth date column has an invalid format, the parental age cannot be checked. If no errors are found with <strong>errors</strong> set to TRUE and NULL value is returned. <strong>errors</strong> defaults to <strong>FALSE</strong>.</li>
+<li>This emphasizes the need for a good set of corrupt input files for testing and unit test development.</li>
 </ol></li>
 <li>Amanda and Beth will provide me with some files with errors.
 <ol style="list-style-type: lower-alpha">
@@ -355,7 +367,7 @@ $(document).ready(function () {
 <li>Added bad date string format detection in <strong>convertDates</strong>, which is now <strong>convertDate</strong>. Also added unit tests for <strong>convertDate</strong>. Done 2018-07-21</li>
 <li>Added ability to handle dates with NA to <strong>convertDates</strong> Done 2018-07-22</li>
 <li>Added unit test coverage of <strong>updateProgress</strong> calls in <em>test_reportGV.R</em> Done 2018-07-22</li>
-<li>Corrected a bug and added corralary unit test for <strong>rankSubjects</strong>. Done 2018-07-29</li>
+<li>Corrected a bug and added corollary unit test for <strong>rankSubjects</strong>. Done 2018-07-29</li>
 <li>Added test for missing <strong>age</strong> column in <em>orderReport</em> function. This also allows correct ordering when the age column is missing. Done 2018-07-29</li>
 <li>Added unit tests for <em>findLoops</em> function. Done 2018-07-30</li>
 <li>Added check for class on objects in <em>convertDates</em> function, because it was failing when objects were already dates. It now passes those objects through untouched. Done 2018-08-04</li>
@@ -384,7 +396,7 @@ $(document).ready(function () {
 <li>2018-07-17</li>
 </ol></li>
 <li>Amended documentation for the <strong>addGenotype</strong> function to indicate that it is assuming the <em>genotype</em> object was opened by <strong>checkGenotypeFile</strong>. 2018-07-17</li>
-<li>Added use of conveniece functions <strong>get_and_or_list</strong> and <strong>is_valid_data_str</strong> from the <em>github/rmsharp/rmsharp/rmsutilityr</em> repository. 2018-07-21</li>
+<li>Added use of convenience functions <strong>get_and_or_list</strong> and <strong>is_valid_data_str</strong> from the <em>github/rmsharp/rmsharp/rmsutilityr</em> repository. 2018-07-21</li>
 <li>Added documentation for data elements <strong>finalRpt</strong> and <strong>rpt</strong>, which are both created by the <em>reportGV</em> function. 2018-07-29</li>
 <li>Added brief tutorial on how to use <em>findLoops</em> function. 2018-08-04</li>
 </ol>
@@ -440,7 +452,7 @@ $(document).ready(function () {
 <ol start="4" style="list-style-type: decimal">
 <li>In the Input File Handling section of the Input tab the last bullet point immediately above the first table says “Genotype data may be supplied within the pedigree file or in a separate genotype file. Only two additional columns (first and second) are required when the genotypes are provided within the pedigree file.”</li>
 </ol>
-<p>This should be explained more fully and the program behavior may need to be changed. Currently the program assumes the columns first and second are there and are correctly formed. Currently there is no check to ensure that first_name and second_name data elements are consistant with first and second data elements.</p>
+<p>This should be explained more fully and the program behavior may need to be changed. Currently the program assumes the columns first and second are there and are correctly formed. Currently there is no check to ensure that first_name and second_name data elements are consistent with first and second data elements.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>In the Input File Handling section of the Input tab and under the first table of column names, there is a section describing what is done by the qcStudbook function to correct data and create new columns.</li>
 </ol>
@@ -448,8 +460,8 @@ $(document).ready(function () {
 <p>Need name for genotype (first_name, second_name) Need new name for breeders only file type. Reword “Animals without birth dates are not considered.” When minimum parent age is included, animals without birth dates are not rejected.</p>
 <p>Change update breeding colony (pedigree browser) by adding explanatory text.</p>
 </div>
-<div id="miscellanious-accomplishments" class="section level2">
-<h2>Miscellanious Accomplishments</h2>
+<div id="miscellaneous-accomplishments" class="section level2">
+<h2>Miscellaneous Accomplishments</h2>
 <p>These should be stored elsewhere</p>
 <div id="section" class="section level4">
 <h4>20180429</h4>
@@ -469,8 +481,8 @@ $(document).ready(function () {
 </div>
 <div id="section-4" class="section level4">
 <h4>20170917</h4>
-<p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amando Vinson’s paper indicated that ONPRC typically used.</p>
-<p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the checkbox at the bottom of the side panel on the two attached images. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
+<p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amanda Vinson’s paper indicated that ONPRC typically used.</p>
+<p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the check box at the bottom of the side panel on the two attached images. When the Debug on check box is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
 <p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
 </div>
 <div id="section-5" class="section level4">
