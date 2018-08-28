@@ -117,4 +117,3 @@ examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
 
 
 ```
-

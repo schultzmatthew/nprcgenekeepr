@@ -44,8 +44,19 @@ test_that("qcStudbook detects errors in column names", {
   expect_error(suppressWarnings(qcStudbook(pedOne)))
   expect_error(suppressWarnings(qcStudbook(pedOne[ , -1], minParentAge = NULL)))
 })
+test_that("qcStudbook detects returns list of bad column names when errors == TRUE", {
+  expect_equal(suppressWarnings(qcStudbook(pedOne, errors = TRUE)$suspiciousParents$id),
+               c("o2", "o3", "o4"))
+  expect_equal(suppressWarnings(
+    qcStudbook(pedOne[ , -1], minParentAge = NULL, errors = TRUE)$missingColumns),
+    "id")
+})
 test_that("qcStudbook detects missing required column names", {
   expect_error(suppressWarnings(qcStudbook(pedOne[ , -3])))
+})
+test_that("qcStudbook detects returns list of bad column names when errors == TRUE", {
+  expect_equal(qcStudbook(pedOne[ , -3], errors = TRUE)$missingColumns,
+  "dam")
 })
 test_that("qcStudbook corrects column names", {
   newPedOne <- suppressWarnings(qcStudbook(pedOne, minParentAge = NULL))
@@ -54,8 +65,14 @@ test_that("qcStudbook corrects column names", {
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "d1"]), "F")
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "s1"]), "M")
 })
-test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS",
-          {
+test_that("qcStudbook reports correction of column names with errors == TRUE", {
+  errorLst <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
+  expect_equal(errorLst$changedHeaders$spaceRemoved, c("si re"))
+  expect_equal(errorLst$changedHeaders$underScoreRemoved, c("ego_id", "dam_id", "birth_date"))
+  expect_equal(errorLst$changedHeaders$damIdToDam, c("damid"))
+  expect_equal(errorLst$changedHeaders$birthdateToBirth, c("birthdate"))
+})
+test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS", {
   newPedTwo <- suppressWarnings(qcStudbook(pedTwo, minParentAge = NULL))
   expect_equal(newPedTwo$sire[newPedTwo$id == "o1"], "U0001")
   expect_equal(newPedTwo$dam[newPedTwo$id == "o3"], "U0002")
@@ -77,4 +94,17 @@ test_that("qcStudbook corrects ancestry", {
   expect_equal(newPedTwo$ancestry[newPedTwo$id == "d2"], "UNKNOWN")
   expect_equal(newPedTwo$ancestry[newPedTwo$id == "o1"], "OTHER")
 })
-
+test_that("qcStudbook removes duplicates", {
+  pedDups <- rbind(pedOne, pedOne[1:3, ])
+  qcPedDups <- qcStudbook(pedDups, minParentAge = NULL)
+  expect_equal(nrow(pedOne), nrow(qcPedDups))
+})
+test_that("qcStudbook removes duplicates and reports them when errors == TRUE", {
+  pedDups <- rbind(pedOne, pedOne[1:3, ])
+  dups <- qcStudbook(pedDups, minParentAge = NULL, errors = TRUE)$duplicateIds
+  expect_equal(dups, c("s1", "d1", "s2"))
+})
+test_that("qcStudbook returns NULL with errors == TRUE and no errors present", {
+  pedClean <- qcStudbook(pedOne, minParentAge = NULL)
+  expect_true(is.null(qcStudbook(pedClean, minParentAge = NULL, errors = TRUE)))
+})

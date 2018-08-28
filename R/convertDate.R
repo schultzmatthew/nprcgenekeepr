@@ -18,7 +18,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
-  invalid_date_rows <- character(0)
+  invalid_date_rows <- NULL
   for (header in headers) {
     if (class(ped[[header]]) == "character" | class(ped[[header]]) == "factor")
       ped[[header]][ped[[header]] == ""] <- NA

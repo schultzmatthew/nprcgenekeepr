@@ -12,6 +12,8 @@
 #' from "birth" to "exit" or the current date if "exit" is NA.
 #' @export
 calcAge <- function(birth, exit) {
+  if (length(birth) == 0)
+    return(birth)
   exit[is.na(exit)] <- Sys.Date()
   return(round( (as.double(exit - birth) / 365.25), 1))
 }

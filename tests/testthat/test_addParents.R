@@ -22,8 +22,9 @@ pedFour <- data.frame(id = c("s1", NA, NA, "d2", "o1", "o2", "o3", "o4"),
                      sire = c(NA, NA, NA, NA, "s1", "s1", "s2", "s2"),
                      dam = c(NA, NA, NA, NA, "d1", "d2", "d2", "d2"),
                      sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
+                     age = c(10.1, 11.2, 12.3, 13.4, 1.5, 2.6, 3.7, 4.8),
                      stringsAsFactors = FALSE)
-pedFour <- pedFour[!is.na(pedFour$id), ]
+pedFive <- pedFour[!is.na(pedFour$id), ]
 
 test_that("addParents adds parents correctly", {
   newPed <- addParents(pedOne)
@@ -32,6 +33,16 @@ test_that("addParents adds parents correctly", {
   expect_equal(nrow(pedTwo) + 1, nrow(newPed)) # 1 sire added
   newPed <- addParents(pedThree)
   expect_equal(nrow(pedThree) + 1, nrow(newPed)) # 1 dam added
-  newPed <- addParents(pedFour)
-  expect_equal(nrow(pedFour) + 2, nrow(newPed)) # 1 sire and 1 dam added
+  newPed <- addParents(pedFive)
+  expect_equal(nrow(pedFive) + 2, nrow(newPed)) # 1 sire and 1 dam added
+})
+test_that("addParents adds parents correctly with numeric columns", {
+  newPed <- addParents(pedOne)
+  expect_equal(nrow(pedOne), nrow(newPed)) # no change
+  newPed <- addParents(pedTwo)
+  expect_equal(nrow(pedTwo) + 1, nrow(newPed)) # 1 sire added
+  newPed <- addParents(pedThree)
+  expect_equal(nrow(pedThree) + 1, nrow(newPed)) # 1 dam added
+  newPed <- addParents(pedFive)
+  expect_equal(nrow(pedFive) + 2, nrow(newPed)) # 1 sire and 1 dam added
 })

@@ -14,9 +14,10 @@
 #' @export
 setExit <- function(ped, time.origin = as.Date("1970-01-01")) {
   headers <- tolower(names(ped))
-
+  if (nrow(ped) == 0)
+    return(ped)
   if (("birth" %in% headers) && !("exit" %in% headers)) {
-    if (("death" %in% headers) && ("departure" %in% headers)) {
+    if (any("death" %in% headers) && any("departure" %in% headers)) {
       # mapply simplifies results by default
       # mapply would return a list, but simplification coerces this to a vector
       # consequently, the simplification also coerces Date columns to Numeric

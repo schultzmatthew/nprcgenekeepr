@@ -23,9 +23,16 @@ ped4 <- data.frame(birth = someNABirthDates, death = someNADeathDates, departure
 test_that("convertDate identifies bad dates", {
   expect_error(convertDate(ped1))
 })
+test_that("convertDate with error flag returns error list", {
+  expect_equal(convertDate(ped1, errors = TRUE), c("4", "8", "10"))
+})
 test_that("convertDate likes good dates", {
   expect_true(all(is.Date(convertDate(ped2)$birth)))
   expect_true(all(is.Date(convertDate(ped3)$birth)))
+})
+test_that("convertDate with error flag returns NULL with good dates", {
+  expect_true(all(is.null(convertDate(ped2, errors = TRUE))))
+  expect_true(all(is.null(convertDate(ped3, errors = TRUE))))
 })
 test_that("convertDate handles NA and empty character string values correctly", {
   expect_true(all(is.na(convertDate(ped4)$death[c(1, 3, 5)])))

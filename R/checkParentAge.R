@@ -21,6 +21,14 @@
 #' @import lubridate
 #' @export
 checkParentAge <- function(sb, minParentAge = 2, errors = FALSE) {
+  if (nrow(sb) == 0 |
+      !all(c("id", "sire", "dam") %in% names(sb))) {
+    if (errors == TRUE) {
+      return(NULL)
+    } else {
+      return(sb)
+    }
+  }
   if (!any(class(sb$birth) %in% c("Date", "POSIXct", "character"))) {
     if (errors) {
       ## Bad birth date column precludes checking parent age

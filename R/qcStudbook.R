@@ -145,28 +145,57 @@
 #' @export
 qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                        errors = FALSE) {
-  error_lst <- list(missing_columns = character(0),
-                    invalid_date_rows = character(0),
-                    suspiciousParents = data.frame(),
-                    sire_is_dam = character(0),
-                    duplicate_ids = character(0))
+  errorLst <- list(missingColumns = character(0),
+                   changedHeaders = list(caseChange = character(0),
+                                         spaceRemoved = character(0),
+                                         backslashRemoved = character(0),
+                                         underScoreRemoved = character(0),
+                                         egoidToId = character(0),
+                                         sireIdToSire = character(0),
+                                         damIdToDam = character(0),
+                                         birthdateToBirth = character(0),
+                                         deathdateToDeath = character(0)),
+                   invalidDateRows = character(0),
+                   suspiciousParents = data.frame(),
+                   sireIsDam = character(0),
+                   duplicateIds = character(0))
+  orgHeaders <- names(sb)
   headers <- tolower(names(sb))
-  headers <- gsub(" ", "", headers)
-  headers <- gsub("\\.", "", headers)
-  headers <- gsub("_", "", headers)
-  headers <- gsub("egoid", "id", headers)
-  headers <- gsub("sireid", "sire", headers)
-  headers <- gsub("damid", "dam", headers)
-  headers <- gsub("birthdate", "birth", headers)
-  headers <- gsub("deathdate", "death", headers)
+  errorLst$changedHeaders$caseChange <- orgHeaders[!orgHeaders %in% headers]
+  newHeaders <- gsub(" ", "", headers)
+  errorLst$changedHeaders$spaceRemoved <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("\\.", "", headers)
+  errorLst$changedHeaders$backslashRemoved <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("_", "", headers)
+  errorLst$changedHeaders$underScoreRemoved <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("egoid", "id", headers)
+  errorLst$changedHeaders$egoidToId <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("sireid", "sire", headers)
+  errorLst$changedHeaders$sireIdToSire <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("damid", "dam", headers)
+  errorLst$changedHeaders$damIdToDam <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("birthdate", "birth", headers)
+  errorLst$changedHeaders$birthdateToBirth <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
+  newHeaders <- gsub("deathdate", "death", headers)
+  errorLst$changedHeaders$deathdateToDeath <- headers[!headers %in% newHeaders]
+  headers <- newHeaders
 
   requiredCols <- getRequiredCols()
   # Checking for the 4 required fields (id, sire, dam, sex)
   if (!all(str_detect_fixed_all(headers, requiredCols))) {
     if (errors) {
-      error_lst$missing_columns <-
+      errorLst$missingColumns <-
         requiredCols[!str_detect_fixed_all(headers, requiredCols,
                                            ignore_na = TRUE)]
+      if (any(c("id", "sire", "dam") %in% errorLst$missingColumns))
+        return(errorLst)
     } else {
       stop(paste0("Required field(s) missing: ", paste0(requiredCols[
         !str_detect_fixed_all(headers, requiredCols, ignore_na = TRUE)],
@@ -189,7 +218,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
       sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
                                  errors = FALSE)
     } else {
-      error_lst$sire_is_dam <- testVal
+      errorLst$sireIsDam <- testVal
     }
   } else {
     sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
@@ -204,10 +233,10 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
 
   # converting date column entries from strings to date
   if (errors) {
-    invalid_date_rows <- convertDate(sb, time.origin = as.Date("1970-01-01"),
+    invalidDateRows <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                              errors)
-    if (!is.null(invalid_date_rows)) {
-      error_lst$invalid_date_rows <- invalid_date_rows
+    if (!is.null(invalidDateRows)) {
+      errorLst$invalidDateRows <- invalidDateRows
     } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                         errors = FALSE)
@@ -222,7 +251,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   if (errors) {
     if (!is.null(suspiciousParents)) {
       if (nrow(suspiciousParents) > 0)
-        error_lst$suspiciousParents <- suspiciousParents
+        errorLst$suspiciousParents <- suspiciousParents
     }
   } else {
     if (nrow(suspiciousParents) > 0) {
@@ -248,7 +277,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   if (errors) {
     testVal <- removeDuplicates(sb, errors = errors)
     if (!is.null(testVal)) {
-      error_lst$duplicate_ids <- testVal
+      errorLst$duplicateIds <- testVal
     } ## else do not update sb, because it will fail
   } else {
     sb <- sb <- removeDuplicates(sb)
@@ -261,16 +290,23 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   rownames(sb) <- seq(length.out = nrow(sb))
 
   # Ensuring the IDs are stored as characters
-  sb$id <- as.character(sb$id)
-  sb$sire <- as.character(sb$sire)
-  sb$dam <- as.character(sb$dam)
+  sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   if (errors) {
-    if (length(error_lst$missing_columns) > 0 |
-        length(error_lst$invalid_date_rows) > 0 |
-        length(error_lst$sire_is_dam) > 0 |
-        length(error_lst$duplicate_ids) > 0 |
-        nrow(error_lst$suspiciousParents) > 0) {
-      return(error_lst)
+    if (length(errorLst$missingColumns) > 0 |
+        length(errorLst$invalidDate_rows) > 0 |
+        length(errorLst$sireIsDam) > 0 |
+        length(errorLst$duplicateIds) > 0 |
+        nrow(errorLst$suspiciousParents) > 0 |
+        length(errorLst$changedHeaders$caseChange) > 0 |
+        length(errorLst$changedHeaders$spaceRemoved) > 0 |
+        length(errorLst$changedHeaders$backslashRemoved) > 0 |
+        length(errorLst$changedHeaders$underScoreRemoved) > 0 |
+        length(errorLst$changedHeaders$egoidToId) > 0 |
+        length(errorLst$changedHeaders$sireIdToSire) > 0 |
+        length(errorLst$changedHeaders$damIdToDam) > 0 |
+        length(errorLst$changedHeaders$birthdateToBirth) > 0 |
+        length(errorLst$changedHeaders$deathdateToDeath) > 0) {
+      return(errorLst)
     }
     else
       return(NULL)

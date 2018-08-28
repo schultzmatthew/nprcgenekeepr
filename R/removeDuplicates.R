@@ -13,14 +13,14 @@
 #' list of list where each sublist is a type of error found.
 #' @export
 removeDuplicates <- function(ped, errors = FALSE) {
-  p <- unique(ped)
   if (errors) {
-    if (sum(duplicated(p$id)) == 0) {
+    if (sum(duplicated(ped$id)) == 0) {
       return(NULL)
     } else {
-      return(p$id[duplicated(p$id)])
+      return(ped$id[duplicated(ped$id)])
     }
   } else {
+    p <- unique(ped)
     if (sum(duplicated(p$id)) == 0) {
       return(p)
     } else{
