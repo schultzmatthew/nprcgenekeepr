@@ -14,3 +14,7 @@ test_that("calcAge calculates ages correctly", {
   expect_equal(ages[c(1, 3, 5:10)], c(11.0, 3.5, 8.7, 15.4, 16.9, 19.6, 14.1,
                                       10.3))
 })
+test_that("calcAge returns empty vector if empty vector provided", {
+  emptyAges <- calcAge(as.Date(numeric(0), origin = "1-1-1970"), Date(0))
+  expect_equal(emptyAges, as.Date(numeric(0), origin = "1-1-1970"))
+})

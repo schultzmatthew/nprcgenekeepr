@@ -33,3 +33,12 @@ test_that("setExit picks the correct date", {
   expect_equal(format(ped_1$exit[[7]], format = "%Y-%m-%d"), "2015-04-02")
   expect_true(all(!is.na(ped_1$exit[c(1:4, 6:10)])))
 })
+test_that("setExit returns same empty dataframe as provided if nrow() == 0", {
+  emptyDf <- data.frame(
+    id = integer(0),
+    birth = as.Date(numeric(0), origin = "1-1-1970"),
+    death = as.Date(numeric(0), origin = "1-1-1970"),
+    departure = as.Date(numeric(0), origin = "1-1-1970"),
+    stringsAsFactors = FALSE)
+  expect_equal(setExit(emptyDf), emptyDf)
+})
