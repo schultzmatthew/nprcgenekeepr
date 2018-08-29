@@ -157,7 +157,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                                          deathdateToDeath = character(0)),
                    invalidDateRows = character(0),
                    suspiciousParents = data.frame(),
-                   sireIsDam = character(0),
+                   femaleSires = character(0),
+                   maleDams = character(0),
                    duplicateIds = character(0))
   orgHeaders <- names(sb)
   headers <- tolower(names(sb))
@@ -214,11 +215,12 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   if (errors) {
     testVal <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
                                   errors)
-    if (is.null(testVal)) {
+    if (is.null(testVal$femaleSires) & is.null(testVal$maleDams)) {
       sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
                                  errors = FALSE)
     } else {
-      errorLst$sireIsDam <- testVal
+      errorLst$femaleSires <- testVal$femaleSires
+      errorLst$maleDams <- testVal$maleDams
     }
   } else {
     sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)

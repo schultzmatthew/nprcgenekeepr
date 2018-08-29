@@ -24,11 +24,11 @@ test_that("correctParentSex makes correct changes", {
   expect_error(correctParentSex(pedThree$id, pedThree$sire, pedThree$dam,
                                 pedThree$sex))
 })
-test_that("correctParentSex returns NULL if no errors detected and errors flag is TRUE", {
-  pedOne$sex <- correctParentSex(pedOne$id, pedOne$sire, pedOne$dam, pedOne$sex, errors = TRUE)
-  expect_true(is.null(pedOne$sex))
-  pedTwo$sex <- correctParentSex(pedTwo$id, pedTwo$sire, pedTwo$dam, pedTwo$sex, errors = TRUE)
-  expect_true(is.null(pedTwo$sex))
+test_that("correctParentSex returns NULLs if no errors detected and errors flag is TRUE", {
+  test <- correctParentSex(pedOne$id, pedOne$sire, pedOne$dam, pedOne$sex, errors = TRUE)
+  expect_true(is.null(test$femaleSires) & is.null(test$maleDams))
+  test <- correctParentSex(pedTwo$id, pedTwo$sire, pedTwo$dam, pedTwo$sex, errors = TRUE)
+  expect_true(is.null(test$femaleSires) & is.null(test$maleDams))
 })
 test_that("correctParentSex returns character vector with ID where errors detected and errors flag is TRUE", {
   expect_equal(correctParentSex(pedThree$id, pedThree$sire, pedThree$dam,

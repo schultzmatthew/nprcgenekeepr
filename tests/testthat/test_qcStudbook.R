@@ -108,3 +108,13 @@ test_that("qcStudbook returns NULL with errors == TRUE and no errors present", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
   expect_true(is.null(qcStudbook(pedClean, minParentAge = NULL, errors = TRUE)))
 })
+pedOne <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+                     sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
+                     dam = c(NA, "d0", "d4", NA, "d1", "d2", "d2", "d2"),
+                     sex = c("F", "F", "M", "F", "F", "F", "F", "M"),
+                     stringsAsFactors = FALSE)
+test_that("qcStudbook returns parent sex errors with errors == TRUE and no errors present", {
+  pedClean <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
+  expect_true(is.null(pedClean$maleDams))
+  expect_equal(pedClean$femaleSires, "s1")
+})

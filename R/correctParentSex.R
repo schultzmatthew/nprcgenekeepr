@@ -32,10 +32,22 @@ correctParentSex <- function(id, sire, dam, sex, errors = FALSE) {
       stop(err, " : Subject(s) listed as both sire and dam")
     }
   }
-  if (errors)
-    return(NULL)
-  # Update gender for sires and dams
-  sex[((id %in% sires) & (sex != "M"))] <- "M"
-  sex[((id %in% dams) & (sex != "F"))] <- "F"
-  return(sex)
+  if (errors) {
+    femaleSires <- id[((id %in% sires) & (sex != "M"))]
+    maleDams <- id[((id %in% dams) & (sex != "F"))]
+    if (length(femaleSires) > 0 & length(maleDams) > 0) {
+      list(femaleSires = femaleSires, maleDams = maleDams)
+    } else if (length(femaleSires) > 0) {
+      list(femaleSires = femaleSires, maleDams = NULL)
+    } else if (length(maleDams) > 0) {
+      list(femaleSires = NULL, maleDams = maleDams)
+    } else {
+      list(femaleSires = NULL, maleDams = NULL)
+    }
+  } else {
+    # Update gender for sires and dams
+    sex[((id %in% sires) & (sex != "M"))] <- "M"
+    sex[((id %in% dams) & (sex != "F"))] <- "F"
+    return(sex)
+  }
 }
