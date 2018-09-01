@@ -106,6 +106,8 @@ exampleLoops <- findLoops(exampleTree)
 You can count how many loops you have with the following codel
 ```{r countLoops}
 length(exampleLoops[exampleLoops == TRUE])
+nLoops <- countLoops(exampleLoops, exampleTree)
+sum(unlist(nLoops[nLoops > 0]))
 
 ```
 
