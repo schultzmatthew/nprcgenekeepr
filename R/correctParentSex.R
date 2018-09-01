@@ -26,9 +26,7 @@ correctParentSex <- function(id, sire, dam, sex, errors = FALSE) {
   # Check if any ids are listed in both the sire and dam columns (error)
   err <- intersect(sires, dams)
   if (length(err > 0)) {
-    if (errors) {
-      return(err)
-    } else {
+    if (!errors) {
       stop(err, " : Subject(s) listed as both sire and dam")
     }
   }
@@ -36,13 +34,13 @@ correctParentSex <- function(id, sire, dam, sex, errors = FALSE) {
     femaleSires <- id[((id %in% sires) & (sex != "M"))]
     maleDams <- id[((id %in% dams) & (sex != "F"))]
     if (length(femaleSires) > 0 & length(maleDams) > 0) {
-      list(femaleSires = femaleSires, maleDams = maleDams)
+      list(sireAndDam = err, femaleSires = femaleSires, maleDams = maleDams)
     } else if (length(femaleSires) > 0) {
-      list(femaleSires = femaleSires, maleDams = NULL)
+      list(sireAndDam = err, femaleSires = femaleSires, maleDams = NULL)
     } else if (length(maleDams) > 0) {
-      list(femaleSires = NULL, maleDams = maleDams)
+      list(sireAndDam = err, femaleSires = NULL, maleDams = maleDams)
     } else {
-      list(femaleSires = NULL, maleDams = NULL)
+      list(sireAndDam = err, femaleSires = NULL, maleDams = NULL)
     }
   } else {
     # Update gender for sires and dams

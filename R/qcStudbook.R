@@ -239,6 +239,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                              errors)
     if (!is.null(invalidDateRows)) {
       errorLst$invalidDateRows <- invalidDateRows
+      sb <- convertDate(sb[-as.integer(invalidDateRows), ], time.origin = as.Date("1970-01-01"),
+                        errors = FALSE)
     } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                         errors = FALSE)
@@ -295,7 +297,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   if (errors) {
     if (length(errorLst$missingColumns) > 0 |
-        length(errorLst$invalidDate_rows) > 0 |
+        length(errorLst$invalidDateRows) > 0 |
         length(errorLst$sireIsDam) > 0 |
         length(errorLst$duplicateIds) > 0 |
         nrow(errorLst$suspiciousParents) > 0 |

@@ -60,4 +60,12 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$groupKin[[1]]), 81)
 }
 )
+test_that("groupAddAssign returns an error with numGp > 1 and currentGroup not NULL", {
+  expect_error(groupAddAssign(candidates = baboonBreeders,
+                              currentGroup = baboonBreeders[1:3],
+                              kmat = pedWithGenotypeReport$kinship,
+                              ped = pedWithGenotype,
+                              ignore = NULL, minAge = 1, numGp = 2,
+                              withKin = TRUE))
+})
 

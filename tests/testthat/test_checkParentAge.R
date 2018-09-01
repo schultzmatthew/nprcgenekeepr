@@ -34,8 +34,16 @@ test_that("checkParentAge allows birth column to be character", {
   ped$birth <- format(ped$birth, format = "%m-%d-%Y")
   expect_equal(nrow(checkParentAge(ped, minParentAge = 6)), 6)
 })
-test_that("checkParentAge returns unchanged dataframe is require column is missing", {
-  ped <- baboonPed[ , !names(baboonPed) %in% "id"]
+test_that("checkParentAge returns unchanged dataframe if required column is missing", {
+  ped <- checkParentAge(baboonPed[ , !names(baboonPed) %in% "id"])
   expect_equal(ncol(ped), ncol(baboonPed[ , !names(baboonPed) %in% "id"]))
   expect_equal(ped, baboonPed[ , !names(baboonPed) %in% "id"])
+})
+test_that("checkParentAge returns NULL if required column is missing and errors == TRUE", {
+  ped <- checkParentAge(baboonPed[ , !names(baboonPed) %in% "id"], errors = TRUE)
+  expect_true(is.null(ped))
+})
+test_that("checkParentAge returns NULL if required dataframe has no rows and errors == TRUE", {
+  ped <- checkParentAge(baboonPed[0, ], errors = TRUE)
+  expect_true(is.null(ped))
 })
