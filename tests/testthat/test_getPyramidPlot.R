@@ -9,7 +9,7 @@ recPlot <- function(expr) {
   recordPlot()
 }
 agePlot <- recPlot(getPyramidPlot(baboonPed))
-test_that("getPyramidPlot generates a plot", {
-
+test_that("getPyramidPlot generates a plot with or without pedigree", {
   expect_equal(class(agePlot), "recordedplot")
+  expect_equal(class(recPlot(getPyramidPlot(NULL))), "recordedplot")
 })
