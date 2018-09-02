@@ -147,7 +147,7 @@ reference:
   - '`orderReport`'
   - '`qcStudbook`'
   - '`rankSubjects`'
-  - '`rebindFill`'
+  - '`rbindFill`'
   - '`reformatKinship`'
   - '`removeDuplicates`'
   - '`removeUninformativeFounders`'

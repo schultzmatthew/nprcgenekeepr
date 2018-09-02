@@ -50,11 +50,11 @@
 #' @return A datatable with standardized and quality controlled pedigree
 #' information.
 #'
-#' The following changes are made to the headers.
+#' The following changes are made to the cols.
 #'
 #' \itemize{
-#' \item {Column headers are converted to all lower case}
-#' \item {Periods (".") within column headers are collapsed to no space ""}
+#' \item {Column cols are converted to all lower case}
+#' \item {Periods (".") within column cols are collapsed to no space ""}
 #' \item {\code{egoid} is converted to \code{id}}
 #' \item {\code{sireid} is convert to \code{sire}}
 #' \item {\code{damid} is converted to \code{dam}}}
@@ -145,66 +145,17 @@
 #' @export
 qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                        errors = FALSE) {
-  errorLst <- list(missingColumns = character(0),
-                   changedHeaders = list(caseChange = character(0),
-                                         spaceRemoved = character(0),
-                                         backslashRemoved = character(0),
-                                         underScoreRemoved = character(0),
-                                         egoidToId = character(0),
-                                         sireIdToSire = character(0),
-                                         damIdToDam = character(0),
-                                         birthdateToBirth = character(0),
-                                         deathdateToDeath = character(0)),
-                   invalidDateRows = character(0),
-                   suspiciousParents = data.frame(),
-                   femaleSires = character(0),
-                   maleDams = character(0),
-                   duplicateIds = character(0))
-  orgHeaders <- names(sb)
-  headers <- tolower(names(sb))
-  errorLst$changedHeaders$caseChange <- orgHeaders[!orgHeaders %in% headers]
-  newHeaders <- gsub(" ", "", headers)
-  errorLst$changedHeaders$spaceRemoved <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("\\.", "", headers)
-  errorLst$changedHeaders$backslashRemoved <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("_", "", headers)
-  errorLst$changedHeaders$underScoreRemoved <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("egoid", "id", headers)
-  errorLst$changedHeaders$egoidToId <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("sireid", "sire", headers)
-  errorLst$changedHeaders$sireIdToSire <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("damid", "dam", headers)
-  errorLst$changedHeaders$damIdToDam <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("birthdate", "birth", headers)
-  errorLst$changedHeaders$birthdateToBirth <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-  newHeaders <- gsub("deathdate", "death", headers)
-  errorLst$changedHeaders$deathdateToDeath <- headers[!headers %in% newHeaders]
-  headers <- newHeaders
-
-  requiredCols <- getRequiredCols()
-  # Checking for the 4 required fields (id, sire, dam, sex)
-  if (!all(str_detect_fixed_all(headers, requiredCols))) {
-    if (errors) {
-      errorLst$missingColumns <-
-        requiredCols[!str_detect_fixed_all(headers, requiredCols,
-                                           ignore_na = TRUE)]
-      if (any(c("id", "sire", "dam") %in% errorLst$missingColumns))
-        return(errorLst)
-    } else {
-      stop(paste0("Required field(s) missing: ", paste0(requiredCols[
-        !str_detect_fixed_all(headers, requiredCols, ignore_na = TRUE)],
-        collapse = ", "), "."))
-    }
+  orgCols <- names(sb)
+  newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
+  cols <- newColumns$newColNames
+  errorLst <- newColumns$errorLst
+  missingColumns <- checkRequiredCols(cols, errors)
+  if (errors & !is.null(missingColumns)) {
+    errorLst$missingColumns <- missingColumns
+    return(errorLst)
   }
+  names(sb) <- cols
 
-  names(sb) <- headers
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   sb <- unknown2NA(sb)
   sb <- addUIds(sb)
@@ -226,10 +177,10 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
     sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
   }
 
-  if ("status" %in% headers) {
+  if ("status" %in% cols) {
     sb$status <- convertStatusCodes(sb$status)
   }
-  if ("ancestry" %in% headers) {
+  if ("ancestry" %in% cols) {
     sb$ancestry <- convertAncestry(sb$ancestry)
   }
 
@@ -269,7 +220,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   }
   # setting age:
   # uses current date as the end point if no exit date is available
-  if (("birth" %in% headers) && !("age" %in% headers)) {
+  if (("birth" %in% cols) && !("age" %in% cols)) {
     sb["age"] <- calcAge(sb$birth, sb$exit)
   }
 
@@ -296,24 +247,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   # Ensuring the IDs are stored as characters
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   if (errors) {
-    if (length(errorLst$missingColumns) > 0 |
-        length(errorLst$invalidDateRows) > 0 |
-        length(errorLst$sireIsDam) > 0 |
-        length(errorLst$duplicateIds) > 0 |
-        nrow(errorLst$suspiciousParents) > 0 |
-        length(errorLst$changedHeaders$caseChange) > 0 |
-        length(errorLst$changedHeaders$spaceRemoved) > 0 |
-        length(errorLst$changedHeaders$backslashRemoved) > 0 |
-        length(errorLst$changedHeaders$underScoreRemoved) > 0 |
-        length(errorLst$changedHeaders$egoidToId) > 0 |
-        length(errorLst$changedHeaders$sireIdToSire) > 0 |
-        length(errorLst$changedHeaders$damIdToDam) > 0 |
-        length(errorLst$changedHeaders$birthdateToBirth) > 0 |
-        length(errorLst$changedHeaders$deathdateToDeath) > 0) {
-      return(errorLst)
-    }
-    else
-      return(NULL)
+    return(checkErrorLst(errorLst))
+  } else {
+    return(sb)
   }
-  return(sb)
 }

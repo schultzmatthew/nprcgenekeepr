@@ -59,11 +59,11 @@ list of list where each sublist is a type of error found.}
 A datatable with standardized and quality controlled pedigree
 information.
 
-The following changes are made to the headers.
+The following changes are made to the cols.
 
 \itemize{
-\item {Column headers are converted to all lower case}
-\item {Periods (".") within column headers are collapsed to no space ""}
+\item {Column cols are converted to all lower case}
+\item {Periods (".") within column cols are collapsed to no space ""}
 \item {\code{egoid} is converted to \code{id}}
 \item {\code{sireid} is convert to \code{sire}}
 \item {\code{damid} is converted to \code{dam}}}

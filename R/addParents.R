@@ -29,14 +29,14 @@ addParents <- function(ped) {
     a1$sire <- NA
     a1$dam <- NA
     a1$sex <- "M"
-    ped <- rebindFill(ped, a1)
+    ped <- rbindFill(ped, a1)
   }
 
   if (nrow(a2) > 0) {
     a2$sire <- NA
     a2$dam <- NA
     a2$sex <- "F"
-    ped <- rebindFill(ped, a2)
+    ped <- rbindFill(ped, a2)
   }
   return(ped)
 }
