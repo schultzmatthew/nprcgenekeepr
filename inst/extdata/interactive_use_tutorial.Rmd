@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE,include=TRUE, results="markup")
 library(nprcmanager)
 library(ggplot2)
 library(knitr)
+library(rmsutilityr)
 
 ```
 
@@ -98,6 +99,11 @@ _Example_Pedigree.csv_.
 pedigreefile <- pedigreeFile <- "Example_Pedigree.csv"
 examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
                                    stringsAsFactors = FALSE)
+errorLst <- qcStudbook(examplePedigree_raw, minParentAge = 0, errors = TRUE)
+print(stri_c("Non-female dams: ", get_and_or_list(errorLst$maleDams), 
+             ". These happen to be classified as hermaphrodites."))
+```
+```{r look-at-loops}
 examplePedigree <- qcStudbook(examplePedigree_raw, minParentAge = 0)
 exampleTree <- createPedTree(examplePedigree)
 exampleLoops <- findLoops(exampleTree)
