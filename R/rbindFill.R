@@ -11,7 +11,7 @@
 #' @return The appended dataframe with \code{NA} inserted into columns as
 #' needed.
 #' @export
-rebindFill <- function(df1, df2) {
+rbindFill <- function(df1, df2) {
 
   # Find columns in df1 not in df2
   add.headers <- setdiff(names(df1), names(df2))
