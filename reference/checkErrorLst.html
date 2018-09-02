@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filters kinship values from a long-format kinship table based on the sexes
- of the two animals involved. — filterPairs • nprcmanager</title>
+<title>checkErrorLst examines list for non-empty fields — checkErrorLst • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Filters kinship values from a long-format kinship table based on the sexes
- of the two animals involved. — filterPairs" />
+<meta property="og:title" content="checkErrorLst examines list for non-empty fields — checkErrorLst" />
 
-<meta property="og:description" content="Part of Group Formation" />
+<meta property="og:description" content="checkErrorLst examines list for non-empty fields" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,45 +112,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Filters kinship values from a long-format kinship table based on the sexes
- of the two animals involved.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/filterPairs.R'><code>R/filterPairs.R</code></a></small>
-    <div class="hidden name"><code>filterPairs.Rd</code></div>
+    <h1>checkErrorLst examines list for non-empty fields</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/checkErrorLst.R'><code>R/checkErrorLst.R</code></a></small>
+    <div class="hidden name"><code>checkErrorLst.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Group Formation</p>
+    <p>checkErrorLst examines list for non-empty fields</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>filterPairs</span>(<span class='no'>kin</span>, <span class='no'>ped</span>, <span class='kw'>ignore</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='st'>"F"</span>, <span class='st'>"F"</span>)))</pre>
+    <pre class="usage"><span class='fu'>checkErrorLst</span>(<span class='no'>errorLst</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>kin</th>
-      <td><p>a dataframe with columns <code>id1</code>, <code>id2</code>, and
-<code>kinship</code>. This is the kinship data reformatted from a matrix,
-to a long-format table.</p></td>
-    </tr>
-    <tr>
-      <th>ped</th>
-      <td><p>Dataframe of pedigree information including the IDs listed in
-<code>candidates</code>.</p></td>
-    </tr>
-    <tr>
-      <th>ignore</th>
-      <td><p>a list coontaining zero or more character vectors of length 2
-indicating which sex pairs should be ignored with regard to kinship.
-Defaults to <code>list(c("F", "F"))</code>.</p></td>
+      <th>errorLst</th>
+      <td><p>list with fields for each type of error detectable by
+<code>qcStudbook</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe representing a filtered long-format kinship table.</p>
+    <p>Returns <code>NULL</code> is all fields are empty
+else the entire list is returned.</p>
     
 
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Append the rows of one dataframe to another. — rebindFill • nprcmanager</title>
+<title>fixColumnNames changes original column names and into standardized names. — fixColumnNames • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Append the rows of one dataframe to another. — rebindFill" />
+<meta property="og:title" content="fixColumnNames changes original column names and into standardized names. — fixColumnNames" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="fixColumnNames changes original column names and into standardized names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.27</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.28</span>
       </span>
     </div>
 
@@ -112,41 +112,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Append the rows of one dataframe to another.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/rbindFill.R'><code>R/rbindFill.R</code></a></small>
-    <div class="hidden name"><code>rebindFill.Rd</code></div>
+    <h1>fixColumnNames changes original column names and into standardized names.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/fixColumnNames.R'><code>R/fixColumnNames.R</code></a></small>
+    <div class="hidden name"><code>fixColumnNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p>fixColumnNames changes original column names and into standardized names.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>rebindFill</span>(<span class='no'>df1</span>, <span class='no'>df2</span>)</pre>
+    <pre class="usage"><span class='fu'>fixColumnNames</span>(<span class='no'>orgCols</span>, <span class='no'>errorLst</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df1</th>
-      <td><p>the target dataframe to append to.</p></td>
+      <th>orgCols</th>
+      <td><p>character vector with ordered list of column names
+found in a pedigree file.</p></td>
     </tr>
     <tr>
-      <th>df2</th>
-      <td><p>the the donor dataframe information should be appended from</p></td>
+      <th>errorLst</th>
+      <td><p>list object with places to store the various column
+name changes.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The appended dataframe with <code>NA</code> inserted into columns as
-needed.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Appends the rows of df2 to df1, can handle cases where df2
-has a subset of the columns of df1</p>
+    <p>list object with <code>newColNames</code> and <code>errorLst</code> with
+a record of all changes made.</p>
     
 
   </div>
@@ -156,8 +153,6 @@ has a subset of the columns of df1</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
