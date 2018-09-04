@@ -63,26 +63,29 @@ to ensure all animals listed as parents have their own line entries, all
 parents have the appropriate sex listed, no animals are listed as both a
 sire and a dam, duplicate entries are removed, pedigree generation
 numbers are added, and all dates are valid dates. In addition, exit
-dates are added if possible and are consistant with other information
+dates are added if possible and are consistent with other information
 such as departure dates and death dates. Current ages of animals that
-are still alive are added.
+are still alive are added if a database connection is provided via a
+configuration file and the user has read permission on a LabKey server
+with the demographic data in an **EHR** (Electronic Health Record)
+module. See
 
 Parents with ages below a user selected threshold are identified. A
 minimum parent age in years is set by the user and is used to ensure
 each parent is at least that age on the birth date of an offspring. The
 minimum parent age defaults to 2 years. This check is not performed for
-animals with missing birth dates.
-
-Further quality control measures may be added later, such as checking to
-ensure parents’ birthdates precede their
-children’s.
+animals with missing birth
+dates.
 
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
 The user can enter a list of breeders in a CSV file that will be used to
 create a pedigree containing all direct relative (ancestors and
-descendents) via the **labkey.selectRows** function within the
-**Rlabkey** package.
+descendants) via the **labkey.selectRows** function within the
+**Rlabkey** package if a database connection is provided via a
+configuration file and the user has read permission on a LabKey server
+with the demographic data in an **EHR** (Electronic Health Record)
+module.
 
 Two configuration files are needed to use the database features of
 nprcmanager with LabKey. The first file is named **\_netrc** on
@@ -95,6 +98,14 @@ The second file is named **\_nprcmanager\_config** on Microsoft Windows
 operating systems and **.nprcmanager\_config** otherwise and is the
 nprcmanager [configuration
 file](https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config)
+An image of this example configuration file is included as a data object
+and can be loaded and viewed with the following lines of R code in the R
+console.
+
+``` r
+data("exampleNprcmanagerConfig")
+View(exampleNprcmanagerConfig)
+```
 
 ### Genetic Value Analysis Reports
 
@@ -128,6 +139,8 @@ application that can be started with:
 library(nprcmanager)
 runManager()
 ```
+
+Find online documentation at <https://rmsharp.github.io/nprcmanager/>.
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic

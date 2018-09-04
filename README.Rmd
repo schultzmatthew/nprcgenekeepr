@@ -26,6 +26,8 @@ knitr::opts_chunk$set(
 ```{r child = "vignettes/manual_components/_running_shiny_application.Rmd", ref = "running_shiny_application"}
 ```
 
+Find online documentation at [https://rmsharp.github.io/nprcmanager/](https://rmsharp.github.io/nprcmanager/).
+
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic 
