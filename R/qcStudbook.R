@@ -145,7 +145,6 @@
 #' @export
 qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                        errors = FALSE) {
-  orgCols <- names(sb)
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
   cols <- newColumns$newColNames
   errorLst <- newColumns$errorLst

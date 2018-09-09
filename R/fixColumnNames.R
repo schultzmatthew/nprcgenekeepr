@@ -14,7 +14,7 @@ fixColumnNames <- function(orgCols, errorLst) {
   errorLst$changedCols$spaceRemoved <- cols[!cols %in% newCols]
   cols <- newCols
   newCols <- gsub("\\.", "", cols)
-  errorLst$changedCols$backslashRemoved <- cols[!cols %in% newCols]
+  errorLst$changedCols$periodRemoved <- cols[!cols %in% newCols]
   cols <- newCols
   newCols <- gsub("_", "", cols)
   errorLst$changedCols$underScoreRemoved <- cols[!cols %in% newCols]

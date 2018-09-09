@@ -14,7 +14,7 @@ checkErrorLst <- function(errorLst) {
       nrow(errorLst$suspiciousParents) > 0 |
       length(errorLst$changedCols$caseChange) > 0 |
       length(errorLst$changedCols$spaceRemoved) > 0 |
-      length(errorLst$changedCols$backslashRemoved) > 0 |
+      length(errorLst$changedCols$periodRemoved) > 0 |
       length(errorLst$changedCols$underScoreRemoved) > 0 |
       length(errorLst$changedCols$egoidToId) > 0 |
       length(errorLst$changedCols$sireIdToSire) > 0 |

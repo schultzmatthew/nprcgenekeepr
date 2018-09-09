@@ -1,10 +1,10 @@
 ---
 title: "Interactive Use of nprcmanager"
-output: html_notebook
-vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Genetic Management Tools}
-  %\usepackage[UTF-8]{inputenc}
+output:
+  html_document:
+    df_print: paged
+vignette: |
+  %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{Genetic Management Tools} %\usepackage[UTF-8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE,include=TRUE, results="markup")
 
 ```{r, include = TRUE}
 library(nprcmanager)
+library(stringi)
 library(ggplot2)
 library(knitr)
 library(rmsutilityr)
