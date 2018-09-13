@@ -67,10 +67,11 @@ test_that("qcStudbook corrects column names", {
 })
 test_that("qcStudbook reports correction of column names with errors == TRUE", {
   errorLst <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
-  expect_equal(errorLst$changedCols$spaceRemoved, c("si re"))
-  expect_equal(errorLst$changedCols$underScoreRemoved, c("ego_id", "dam_id", "birth_date"))
-  expect_equal(errorLst$changedCols$damIdToDam, c("damid"))
-  expect_equal(errorLst$changedCols$birthdateToBirth, c("birthdate"))
+  expect_equal(errorLst$changedCols$spaceRemoved, c("si re to sire"))
+  expect_equal(errorLst$changedCols$underScoreRemoved,
+               c("ego_id, dam_id, and birth_date to egoid, damid, and birthdate"))
+  expect_equal(errorLst$changedCols$damIdToDam, c("damid to dam"))
+  expect_equal(errorLst$changedCols$birthdateToBirth, c("birthdate to birth"))
 })
 test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS", {
   newPedTwo <- suppressWarnings(qcStudbook(pedTwo, minParentAge = NULL))

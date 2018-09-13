@@ -9,29 +9,29 @@
 #' @export
 fixColumnNames <- function(orgCols, errorLst) {
   cols <- tolower(orgCols)
-  errorLst$changedCols$caseChange <- orgCols[!orgCols %in% cols]
+  errorLst$changedCols$caseChange <- colChange(orgCols, cols)
   newCols <- gsub(" ", "", cols)
-  errorLst$changedCols$spaceRemoved <- cols[!cols %in% newCols]
+  errorLst$changedCols$spaceRemoved <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("\\.", "", cols)
-  errorLst$changedCols$periodRemoved <- cols[!cols %in% newCols]
+  errorLst$changedCols$periodRemoved <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("_", "", cols)
-  errorLst$changedCols$underScoreRemoved <- cols[!cols %in% newCols]
+  errorLst$changedCols$underScoreRemoved <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("egoid", "id", cols)
-  errorLst$changedCols$egoidToId <- cols[!cols %in% newCols]
+  errorLst$changedCols$egoidToId <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("sireid", "sire", cols)
-  errorLst$changedCols$sireIdToSire <- cols[!cols %in% newCols]
+  errorLst$changedCols$sireIdToSire <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("damid", "dam", cols)
-  errorLst$changedCols$damIdToDam <- cols[!cols %in% newCols]
+  errorLst$changedCols$damIdToDam <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("birthdate", "birth", cols)
-  errorLst$changedCols$birthdateToBirth <- cols[!cols %in% newCols]
+  errorLst$changedCols$birthdateToBirth <- colChange(cols, newCols)
   cols <- newCols
   newCols <- gsub("deathdate", "death", cols)
-  errorLst$changedCols$deathdateToDeath <- cols[!cols %in% newCols]
+  errorLst$changedCols$deathdateToDeath <- colChange(cols, newCols)
   list(newColNames = newCols, errorLst = errorLst)
 }
