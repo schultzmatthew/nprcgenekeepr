@@ -4,7 +4,7 @@
 #' file by \code{qcStudbook}.
 #' @export
 getEmptyErrorLst <- function() {
-  list(missingColumns = character(0),
+  emptyErrorLst <- list(missingColumns = character(0),
        invalidDateRows = character(0),
        suspiciousParents = data.frame(),
        femaleSires = character(0),
@@ -20,4 +20,6 @@ getEmptyErrorLst <- function() {
                              birthdateToBirth = character(0),
                              deathdateToDeath = character(0))
   )
+  class(emptyErrorLst) <- append(class(emptyErrorLst),"nprcmanagerErr")
+  emptyErrorLst
 }
