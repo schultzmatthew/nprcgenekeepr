@@ -42,7 +42,7 @@ argument set to __TRUE__ and examine the returned object.
 badPedigreeFile <- "pedigree_files_with_errors/Pedigree_File_Example_CSV.csv"
 badPedCsv <- read.table(badPedigreeFile, sep = ",", header = TRUE, stringsAsFactors = FALSE)
 error_lst <- qcStudbook(badPedCsv, minParentAge, errors = TRUE)
-str(error_lst)
+summary(error_lst)
 
 ```
 

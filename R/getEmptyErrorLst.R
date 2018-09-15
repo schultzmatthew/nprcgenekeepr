@@ -20,6 +20,6 @@ getEmptyErrorLst <- function() {
                              birthdateToBirth = character(0),
                              deathdateToDeath = character(0))
   )
-  class(emptyErrorLst) <- append(class(emptyErrorLst),"nprcmanagerErr")
+  class(emptyErrorLst) <- append(class(emptyErrorLst),"nprcmanagErr")
   emptyErrorLst
 }

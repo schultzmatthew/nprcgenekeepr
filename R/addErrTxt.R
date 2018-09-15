@@ -1,18 +1,25 @@
-#' addErrTxt Concatenates any errors from nprcmanagerErr into narrative form
+#' addErrTxt Concatenates any errors from nprcmanagErr into narrative form
 #'
-#' @returns Error from nprcmaager
-#' @param tex character string with initial error description value
+#' @return Error from nprcmaager
+#' @param txt character string with initial error description value
 #' @param err ve from errorLst
 #' @param singularTxt character string with text used when the
 #' length of err is 1
 #' @param pluralTxt character string with text used when the
 #' length of err is greater than 1.
 #' @importFrom stringi stri_c
+#' @importFrom stringi stri_detect_fixed
 #' @export
-addErrorTxt <- function(txt, err, singularTxt, pluralTxt) {
+addErrTxt <- function(txt, err, singularTxt, pluralTxt) {
   if (length(err) == 1) {
-    txt <- stri_c(txt, "The ", singularTxt, ": ", err, ".\n")
+    if (stri_detect_fixed(err, "and")) {
+      txt <- stri_c(txt, "The ", pluralTxt, ": ", err, ".\n")
+    } else {
+      txt <- stri_c(txt, "The ", singularTxt, ": ", err, ".\n")
+    }
   } else if (length(err) > 1) {
+    if (length(err) > 5)
+      err <- err[1:5]
     txt <- stri_c(txt, "The ", pluralTxt, ": ",
                   get_and_or_list(err), ".\n")
   }
