@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get parameter definitions from tokens found in configuration file. — getParamDef • nprcmanager</title>
+<title>addErrTxt Concatenates any errors from nprcmanagErr into narrative form — addErrTxt • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get parameter definitions from tokens found in configuration file. — getParamDef" />
+<meta property="og:title" content="addErrTxt Concatenates any errors from nprcmanagErr into narrative form — addErrTxt" />
 
-<meta property="og:description" content="Get parameter definitions from tokens found in configuration file." />
+<meta property="og:description" content="addErrTxt Concatenates any errors from nprcmanagErr into narrative form" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,32 +112,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get parameter definitions from tokens found in configuration file.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getParamDef.R'><code>R/getParamDef.R</code></a></small>
-    <div class="hidden name"><code>getParamDef.Rd</code></div>
+    <h1>addErrTxt Concatenates any errors from nprcmanagErr into narrative form</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/addErrTxt.R'><code>R/addErrTxt.R</code></a></small>
+    <div class="hidden name"><code>addErrTxt.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get parameter definitions from tokens found in configuration file.</p>
+    <p>addErrTxt Concatenates any errors from nprcmanagErr into narrative form</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>getParamDef</span>(<span class='no'>tokenList</span>, <span class='no'>param</span>)</pre>
+    <pre class="usage"><span class='fu'>addErrTxt</span>(<span class='no'>txt</span>, <span class='no'>err</span>, <span class='no'>singularTxt</span>, <span class='no'>pluralTxt</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tokenList</th>
-      <td><p>list of parameters and their definitions, which are
-character vectors</p></td>
+      <th>txt</th>
+      <td><p>character string with initial error description value</p></td>
     </tr>
     <tr>
-      <th>param</th>
-      <td><p>character vector representing the parameter being defined.</p></td>
+      <th>err</th>
+      <td><p>ve from errorLst</p></td>
+    </tr>
+    <tr>
+      <th>singularTxt</th>
+      <td><p>character string with text used when the
+length of err is 1</p></td>
+    </tr>
+    <tr>
+      <th>pluralTxt</th>
+      <td><p>character string with text used when the
+length of err is greater than 1.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Error from nprcmaager</p>
     
 
   </div>
@@ -145,7 +158,9 @@ character vectors</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
