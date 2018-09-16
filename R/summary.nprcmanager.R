@@ -17,7 +17,7 @@ summary.nprcmanagErr <- function(object, ...) {
                    "missing columns are")
   txt <- addErrTxt(txt, errorLst$invalidDateRows,
                    "row having an invalid date is",
-                   "row (up to the first 5) having an invalid date are")
+                   "rows (up to the first 5) having an invalid date are")
   txt <- addErrTxt(txt, errorLst$sireIsDam,
                    "animal listed as both a sire and dam is",
                    "animals listed as both sire and dam are")
