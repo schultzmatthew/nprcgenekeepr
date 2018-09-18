@@ -1,6 +1,16 @@
 # Meeting Notes and Things To Do
-
 Provided in reverse chronological order
+
+## 20180917 
+1.  Change Pedigree browser button label to say "Trim pedigree based on focal animals". Done 20180917
+2.  Give user the option to save a skeleton configuration file to their home directory if they do not have a configuration file.
+3.  Incorporate the error detection functions into the shiny application so that if a defective pedigree file is selected by the user a new tab is created with a description of the errors detected.
+    a. The user should be moved to the error report tab.
+    b. The error report tab should be placed immediately after the input tab.
+4.  Beth is to try the current (0.3.31) or later version of nprcmanager with the pedigree file that has been failing. 
+    a. If that file still causes an error, Beth is to send it to Mark.
+    b. Mark will change the code to better handle the issues observed, update the package, and have Beth test again.
+    
 ## 20180820
 
 Meeting was canceled due to Amanda's family emergency.

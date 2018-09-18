@@ -44,7 +44,7 @@ uitpPedigreeBrowser <-
              paste0("Unknown IDs, beginning with a capital U, are created ",
                     "by the application for all animals with only one parent.")),
       popify(checkboxInput("trim",
-                    label = "Trim pedigree based on specified population",
+                    label = "Trim pedigree based on focal animals",
                     value = FALSE),
              paste0("Trim the pedigree to include only relatives of the focal ",
                     "animals provided.")),
