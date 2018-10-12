@@ -11,7 +11,7 @@
 summary.nprcmanagErr <- function(object, ...) {
   errorLst <- object
   stopifnot(inherits(errorLst, "nprcmanagErr"))
-  txt <- "Changes made to pedigree file during import are listed below.\n"
+  txt <- ""
   txt <- addErrTxt(txt, errorLst$missingColumns,
                    "missing column is",
                    "missing columns are")

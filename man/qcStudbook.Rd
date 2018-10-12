@@ -47,13 +47,16 @@ or shipped from the colony}
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.}
 
-\item{changes}{logical value that if \code{TRUE} the function will
-report back changes made to input. These will include column names,
-case of catagorical values (male, female, unknown), etc.}
+\item{changes}{logical value that if \code{TRUE}}
 
-\item{errors}{logical value if TRUE will scan the entire file and
-make a list of all errors found. The errors will be returned in a
-list of list where each sublist is a type of error found.}
+\item{errors}{logical value if \code{TRUE} will scan the entire file and
+report back changes made to input and errors in a
+list of list where each sublist is a type of change or error found.
+Changes will include column names, case of catagorical values (male,
+female, unknown), etc.
+Errors will include missing columns, invalid date rows, male dams,
+female sires, and records with one or more parents  below minimum age
+of parents.}
 }
 \value{
 A datatable with standardized and quality controlled pedigree
@@ -131,7 +134,7 @@ The function \code{setExit} uses huristics and the columns \code{death}
 and \code{departure} to set \code{exit} if it is not already defined.
 
 The function \code{calcAge} uses the \code{birth} and the \code{exit}
-columns to define the \code{age} columnn. The numerical values is rounded
+columns to define the \code{age} column. The numerical values is rounded
 to the nearest 0.1 of a year. If \code{exit} is not defined, the
 current system date (\code{Sys.Date()}) is used.
 

@@ -4,6 +4,7 @@ if (!require("DT"))
   install.packages("DT")
 library(DT)
 source("../application/uitpInput.R")
+source("../application/uitpErrorLst.R")
 source("../application/uitpPedigreeBrowser.R")
 source("../application/uitpGeneticValueAnalysis.R")
 source("../application/uitpSummaryStatistics.R")
@@ -15,6 +16,7 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
     uitpInput,
+    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
@@ -28,6 +30,7 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
     uitpInput,
+    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,

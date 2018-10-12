@@ -1,5 +1,5 @@
 # The formatting in this example file is intentionally sloppy to illustrate
-# the esssential features and to point out what has no effect.
+# the essential features and to point out what has no effect.
 # Lines beginning with "#" are ignored.
 # Empty lines are ignored
 #
@@ -20,7 +20,7 @@
 # The rest of the terms are used by the Rlabkey package and the labkey-api-r.
 # lkPedColumns are the names of the columns used by the LabKey instance
 # being queried.
-# mapPedColumns are a one to one mapping of the lkPedColumns to the columnn
+# mapPedColumns are a one to one mapping of the lkPedColumns to the column
 # names used by the nprcmanager package.
 
 center = "SNPRC"

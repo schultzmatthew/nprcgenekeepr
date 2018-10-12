@@ -41,12 +41,15 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
-#' @param changes logical value that if \code{TRUE} the function will
-#' report back changes made to input. These will include column names,
-#' case of catagorical values (male, female, unknown), etc.
-#' @param errors logical value if TRUE will scan the entire file and
-#' make a list of all errors found. The errors will be returned in a
-#' list of list where each sublist is a type of error found.
+#' @param changes logical value that if \code{TRUE}
+#' @param errors logical value if \code{TRUE} will scan the entire file and
+#' report back changes made to input and errors in a
+#' list of list where each sublist is a type of change or error found.
+#' Changes will include column names, case of catagorical values (male,
+#' female, unknown), etc.
+#' Errors will include missing columns, invalid date rows, male dams,
+#' female sires, and records with one or more parents  below minimum age
+#' of parents.
 #' @return A datatable with standardized and quality controlled pedigree
 #' information.
 #'
@@ -122,7 +125,7 @@
 #' and \code{departure} to set \code{exit} if it is not already defined.
 #'
 #' The function \code{calcAge} uses the \code{birth} and the \code{exit}
-#' columns to define the \code{age} columnn. The numerical values is rounded
+#' columns to define the \code{age} column. The numerical values is rounded
 #' to the nearest 0.1 of a year. If \code{exit} is not defined, the
 #' current system date (\code{Sys.Date()}) is used.
 #'
@@ -246,7 +249,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   # Ensuring the IDs are stored as characters
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
   if (errors) {
-    return(checkErrorLst(errorLst))
+    return(checkChangedColAndErrorLst(errorLst))
   } else {
     return(sb)
   }

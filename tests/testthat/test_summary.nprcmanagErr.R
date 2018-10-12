@@ -21,5 +21,5 @@ test_that("summary.qcStudbook provides expected classes of output", {
 test_that("summary.qcStudbook provides expected output", {
   expect_equal(length(summary(qcStudbook(pedOne, errors = TRUE))$txt), 1)
   expect_equal(nrow(summary(qcStudbook(pedOne, errors = TRUE))$sp), 3)
-  expect_equal(stri_count_regex(summary(qcStudbook(pedOne, errors = TRUE))$txt, "\\n"), 8)
+  expect_equal(stri_count_regex(summary(qcStudbook(pedOne, errors = TRUE))$txt, "\\n"), 7)
 })
