@@ -175,14 +175,15 @@ shinyServer(function(input, output, session) {
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
+        errorLst <- tryCatch(qcStudbook(breederPed, minParentAge, errors = TRUE),
+                             warning = function(cond) {return(NULL)},
+                             error = function(cond) {return(NULL)})
+        if (checkErrorLst(errorLst))
+          return(insertErrorTab(errorLst))
+
         breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
-                      warning = function(cond) {
-                        return(NULL)
-                      },
-                      error = function(cond) {
-                        return(NULL)
-                      }
-        )
+                               warning = function(cond) {return(NULL)},
+                               error = function(cond) {return(NULL)})
         flog.debug(paste0("After qcStudbook.\n",
                           "contents rows: ", nrow(breederPed),
                           ", columns: ", ncol(breederPed), "; col names: '",
@@ -272,8 +273,13 @@ shinyServer(function(input, output, session) {
 
   # Changing the active tab to the "Pedigree Browser" tab
   observe({
-    if (!is.null(getSelectedBreeders())) {
-      updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
+    status <- getSelectedBreeders()
+    if (!is.null(status)) {
+      if (class(status) == "function") {
+        getErrorTab <- status
+        updateTabsetPanel(session, "tab_pages", selected = "Error List")
+      } else
+        updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
     }
   })
 
