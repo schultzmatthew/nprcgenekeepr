@@ -11,7 +11,7 @@ checkChangedColsLst(changedCols)
 \code{qcStudbook}.}
 }
 \value{
-Returns \code{NULL} is all fields are empty
+Returns \code{NULL} if all fields are empty
 else the entire list is returned.
 }
 \description{

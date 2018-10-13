@@ -1,6 +1,6 @@
 #' checkChangedColsLst examines list for non-empty fields
 #'
-#' @return Returns \code{NULL} is all fields are empty
+#' @return Returns \code{NULL} if all fields are empty
 #' else the entire list is returned.
 #' @param changedCols list with fields for each type of column change
 #' \code{qcStudbook}.

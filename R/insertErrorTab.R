@@ -19,4 +19,5 @@ insertErrorTab <- function(errorLst) {
   function() {
     newText
   }
+
 }
