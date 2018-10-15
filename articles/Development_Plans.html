@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.31</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
 <h2 class="hasAnchor">
 <a href="#to-do" class="anchor"></a>To do</h2>
 <ol style="list-style-type: decimal">
-<li>It would be better to catalogue and report the changes made by qcStudbook() so that the user knows how the provided pedigree was changed. Completed by developing the functions <strong>summary.nprcmangErr</strong> and <strong>print.summary.nprcmanagErr</strong>, which when combind with using <strong>qcStudbook</strong> with the <em>error</em> argument set to <strong>TRUE</strong>. 20180915</li>
+<li><p>It would be better to catalogue and report the changes made by qcStudbook() so that the user knows how the provided pedigree was changed. Completed by developing the functions <strong>summary.nprcmangErr</strong> and <strong>print.summary.nprcmanagErr</strong>, which when combind with using <strong>qcStudbook</strong> with the <em>error</em> argument set to <strong>TRUE</strong>. 20180915 An <strong>Error List</strong> tab is now being generated and opened when pedigree errors are detected. 20181014</p></li>
 <li>
 <p>Amanda Vinson wrote this in an e-mail on 20170901:</p>
 <p>I’m very interested in hearing about your idea of adding algorithms related to selecting/maintaining specific alleles in a colony. I think your idea could be related to what I need to work on next, which is an algorithm for assessing the long-term impact on colony genetic diversity of removing specific animals/alleles.<br>
@@ -127,6 +127,35 @@ noParentage &lt;- rpt[i, ]</p>
 <p>I expect they are direct ports from kinship2. I will check.</p>
 </li>
 <li><p>Find some ways to use genetic marker data in the evaluation of genetic value. This needs to be discussed.</p></li>
+<li><p>Add breeding productivity measure calculations. For example, (a) number of offspring per year of exposure to male or female. (b) Number of months since last birth. (c) Number of months between births with range and standard deviation.</p></li>
+<li>Consider developing a simulation module to allow uses to simulate breeding decisions.
+<ol style="list-style-type: lower-alpha">
+<li>Need to be able to set the following values.
+<ol style="list-style-type: lower-alpha">
+<li>Number desired males produced each year</li>
+<li>Frequency of matings that produce offspring that can successfully breed</li>
+<li>Number of animals of each sex and age removed from breeding each year. This would not necessarily be constant, it could be a list with sublist for each year.</li>
+<li>Ability to choose among various mating strategies based on age, mean kinship,</li>
+<li>Practical numbers of each sex in a breeding group</li>
+<li>Percent of year needed to adapt to new mating structure after a change.</li>
+<li>Loss due to mortality rate by age and sex</li>
+<li>Ability to use historical data for mating success</li>
+</ol>
+</li>
+<li>Breeding methods based on mean kinship (MK)
+<ol style="list-style-type: lower-alpha">
+<li>Static MK
+<ol style="list-style-type: lower-alpha">
+<li>At each timestep, all individual MKs for animals of breeding age are calculated and 2 sex-specific lists created that rank individuals from lowest MKs to highest.</li>
+<li>Breeding groups are formed with breeding pairs having to have a kinship coefficient (<em>f</em>) less than the average <em>f</em> in the population to avoid close inbreeding. When a pair is rejected, remaining females, running from lowest MK to highest become the next potential mates. If a suitable female is not found, that male is removed from the pool of potential breeders and an attempt is made to pair the next lowest MK male with the MK list of females.</li>
+<li>Offspring are simulated and stored.</li>
+</ol>
+</li>
+<li>See jhered.esr129.full.pdf page 188 for other breeding strategies.</li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 </div>
   </div>

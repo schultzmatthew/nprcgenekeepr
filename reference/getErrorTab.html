@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get demographic data — getDemographics • nprcmanager</title>
+<title>getErrorTab skeleton of list of errors — getErrorTab • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get demographic data — getDemographics" />
+<meta property="og:title" content="getErrorTab skeleton of list of errors — getErrorTab" />
 
-<meta property="og:description" content="This is a thin wrapper around labkey.selectRows()." />
+<meta property="og:description" content="getErrorTab skeleton of list of errors" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,28 +112,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get demographic data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getDemographics.R'><code>R/getDemographics.R</code></a></small>
-    <div class="hidden name"><code>getDemographics.Rd</code></div>
+    <h1>getErrorTab skeleton of list of errors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getErrorTab.R'><code>R/getErrorTab.R</code></a></small>
+    <div class="hidden name"><code>getErrorTab.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a thin wrapper around <code>labkey.selectRows()</code>.</p>
+    <p>getErrorTab skeleton of list of errors</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>getDemographics</span>(<span class='kw'>colSelect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>getErrorTab</span>(<span class='no'>errorLst</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>colSelect</th>
-      <td><p>(optional) a vector of comma separated strings specifying
-which columns of a dataset or view to import</p></td>
+      <th>errorLst</th>
+      <td><p>list of errors and changes made by <code>qcStudbook</code></p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>HTML formated error list</p>
     
 
   </div>
@@ -141,7 +144,9 @@ which columns of a dataset or view to import</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
