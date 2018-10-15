@@ -26,6 +26,7 @@ To be determined
    developing the functions __summary.nprcmangErr__ and
    __print.summary.nprcmanagErr__, which when combind with using 
    __qcStudbook__ with the _error_ argument set to __TRUE__. 20180915
+   
    An __Error List__ tab is now being generated and opened when pedigree errors 
    are detected. 20181014
    
