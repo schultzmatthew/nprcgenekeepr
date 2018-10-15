@@ -22,3 +22,6 @@ vignettes/*.out
 ^README\.Rmd$
 ^README-.*\.png$
 vignettes/interactive_use*
+inst/extdata/*.docx
+inst/extdata/rhesus_studbook*
+

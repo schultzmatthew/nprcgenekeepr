@@ -26,6 +26,9 @@ To be determined
    developing the functions __summary.nprcmangErr__ and
    __print.summary.nprcmanagErr__, which when combind with using 
    __qcStudbook__ with the _error_ argument set to __TRUE__. 20180915
+   An __Error List__ tab is now being generated and opened when pedigree errors 
+   are detected. 20181014
+   
 2. Amanda Vinson wrote this in an e-mail on 20170901:
   
     I'm very interested in hearing about your idea of adding algorithms related 
@@ -72,6 +75,37 @@ in orderReport.R
    
 7. Find some ways to use genetic marker data in the evaluation of genetic 
    value. This needs to be discussed.
+
+8. Add breeding productivity measure calculations. For example, (a) number of
+   offspring per year of exposure to male or female. (b) Number of months since
+   last birth. (c) Number of months between births with range and standard
+   deviation.
+
+9. Consider developing a simulation module to allow uses to simulate breeding decisions.
+    a. Need to be able to set the following values.
+        a. Number desired males produced each year
+        b. Frequency of matings that produce offspring that can successfully breed
+        c. Number of animals of each sex and age removed from breeding each year. 
+        This would not necessarily be constant, it could be a list with sublist for each year.
+        d. Ability to choose among various mating strategies based on age, mean kinship,
+        e. Practical numbers of each sex in a breeding group
+        f. Percent of year needed to adapt to new mating structure after a change.
+        g. Loss due to mortality rate by age and sex
+        h. Ability to use historical data for mating success
+    b. Breeding methods based on mean kinship (MK)
+        a. Static MK
+            a. At each timestep, all individual MKs for animals of breeding age
+            are calculated and 2 sex-specific lists 
+            created that rank individuals from lowest MKs to highest.
+            b. Breeding groups are formed with breeding pairs having to have a kinship
+            coefficient (_f_) less than the average _f_ in the population to avoid
+            close inbreeding. When a pair is rejected, remaining females, running from
+            lowest MK to highest become the next potential mates. 
+            If a suitable female is not found, that male is removed from the pool of
+            potential breeders and an attempt is made to pair the next lowest MK male 
+            with the MK list of females.
+            c. Offspring are simulated and stored.
+         b. See jhered.esr129.full.pdf page 188 for other breeding strategies.
 
 
 
