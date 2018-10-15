@@ -7,17 +7,16 @@
 #' @export
 insertErrorTab <- function(errorLst) {
   text <- summary(errorLst)
-  lines <- stri_split_regex(text$txt, pattern = "\\n")[[1]]
-  newText <- stri_c("<h4>Errors Detected and Changes to be Made to Pedigree ",
-                    "File:</h4>\\n<p>\\n<ul style=\"list-style-type:disc\"\\n")
+  lines <- stri_split_regex(text$txt, pattern = "\n")[[1]]
+  newText <- stri_c("<h3>Errors Detected and Changes to be Made to Pedigree ",
+                    "File:</h3>\n<p>\n<ul style=\"list-style-type:disc\">\n")
 
-    for (line in lines) {
-    newText <- stri_c(newText, "	<li style=\"padding-bottom: 15px\">\\n",
-                      line, "</li>\\n")
+  for (line in lines) {
+    if (stri_trim_both(line) == "")
+      next
+    newText <- stri_c(newText, "	<li style=\"padding-bottom: 15px\">\n",
+                      line, "</li>\n")
   }
-  newText <- stri_c(newText, "</ul>\\n</p>\\n")
-  function() {
-    newText
-  }
-
+  newText <- stri_c(newText, "</ul>\n</p>\n")
+  newText
 }

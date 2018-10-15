@@ -3,6 +3,7 @@ library(futile.logger)
 library(ggplot2)
 library(DT)
 shinyServer(function(input, output, session) {
+
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
               appender = appender.file(nprcmanagerLog))
@@ -17,7 +18,6 @@ shinyServer(function(input, output, session) {
     } else {
       flog.threshold(INFO, name = "nprcmanager")
     }
-
     isolate({
       flog.debug(paste0("1st. input$dataSource: ", input$dataSource,
                         "; input$sepOne: ", input$sepOne,
@@ -175,22 +175,27 @@ shinyServer(function(input, output, session) {
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
-        errorLst <- tryCatch(qcStudbook(breederPed, minParentAge, errors = TRUE),
-                             warning = function(cond) {return(NULL)},
-                             error = function(cond) {return(NULL)})
-        if (checkErrorLst(errorLst))
-          return(insertErrorTab(errorLst))
 
-        breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
-                               warning = function(cond) {return(NULL)},
-                               error = function(cond) {return(NULL)})
-        flog.debug(paste0("After qcStudbook.\n",
-                          "contents rows: ", nrow(breederPed),
-                          ", columns: ", ncol(breederPed), "; col names: '",
-                          paste(names(breederPed), collapse = "', '"), "'",
-                          sep = ""),
-                   name = "nprcmanager")
-
+        errorLst <- tryCatch(
+          qcStudbook(breederPed, minParentAge, errors = TRUE),
+          warning = function(cond) {return(NULL)},
+          error = function(cond) {return(NULL)})
+        if (checkErrorLst(errorLst)) {
+          insertTab(inputId = "tab_pages",
+                    getErrorTab(errorLst), target = "Input",
+                    position = "before", select = TRUE)
+          breederPed <- NULL
+        } else {
+          breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
+                                 warning = function(cond) {return(NULL)},
+                                 error = function(cond) {return(NULL)})
+          flog.debug(paste0("After qcStudbook.\n",
+                            "contents rows: ", nrow(breederPed),
+                            ", columns: ", ncol(breederPed), "; col names: '",
+                            paste(names(breederPed), collapse = "', '"), "'",
+                            sep = ""),
+                     name = "nprcmanager")
+        }
       }
       flog.debug(paste0("before validate()."),
                  name = "nprcmanager")
@@ -274,13 +279,8 @@ shinyServer(function(input, output, session) {
   # Changing the active tab to the "Pedigree Browser" tab
   observe({
     status <- getSelectedBreeders()
-    if (!is.null(status)) {
-      if (class(status) == "function") {
-        getErrorTab <- status
-        updateTabsetPanel(session, "tab_pages", selected = "Error List")
-      } else
-        updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
-    }
+    if (!is.null(status))
+      updateTabsetPanel(session, "tab_pages", selected = "Pedigree Browser")
   })
 
   # Creating the pedigree table to be displayed on the Pedigree Browser tab

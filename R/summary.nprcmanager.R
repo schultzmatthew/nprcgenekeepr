@@ -43,20 +43,20 @@ summary.nprcmanagErr <- function(object, ...) {
                    "column where underscore was removed is",
                    "columns where underscore was removed are")
   txt <- addErrTxt(txt, errorLst$changedCols$egoidToId,
-                   "column changed from egoid to id is",
-                   "columns changed from egoid to id are")
+                   "column changed from",
+                   "columns changed from")
   txt <- addErrTxt(txt, errorLst$changedCols$sireIdToSire,
-                   "column changed from sireid to sire is",
-                   "columns changed from sireid to sire are")
+                   "column changed from",
+                   "columns changed from")
   txt <- addErrTxt(txt, errorLst$changedCols$damIdToDam,
-                   "column changed from damid to dam is",
-                   "columns changed from damid to dam are")
+                   "column changed from",
+                   "columns changed from")
   txt <- addErrTxt(txt, errorLst$changedCols$birthdateToBirth,
-                   "column changed from birthdate to birth is",
-                   "columns changed from birthdate to birth are")
+                   "column changed from",
+                   "columns changed from")
   txt <- addErrTxt(txt, errorLst$changedCols$deathdateToDeath,
-                   "column changed from deathdate to death is",
-                   "columns changed from deathdate to death are")
+                   "column changed from",
+                   "columns changed from")
   txt <- list(txt = txt, sp = errorLst$suspiciousParents)
 
   class(txt) <- "summary.nprcmanagErr"

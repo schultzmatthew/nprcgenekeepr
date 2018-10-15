@@ -4,7 +4,10 @@
 \alias{getErrorTab}
 \title{getErrorTab skeleton of list of errors}
 \usage{
-getErrorTab()
+getErrorTab(errorLst)
+}
+\arguments{
+\item{errorLst}{list of errors and changes made by \code{qcStudbook}}
 }
 \value{
 HTML formated error list

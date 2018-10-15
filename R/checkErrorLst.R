@@ -6,6 +6,8 @@
 #' \code{qcStudbook}.
 #' @export
 checkErrorLst <- function(errorLst) {
+  if (is.null(errorLst))
+    return(FALSE)
   if (length(errorLst$missingColumns) > 0 |
       length(errorLst$invalidDateRows) > 0 |
       length(errorLst$sireIsDam) > 0 |

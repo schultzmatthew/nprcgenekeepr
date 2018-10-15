@@ -4,7 +4,7 @@ if (!require("DT"))
   install.packages("DT")
 library(DT)
 source("../application/uitpInput.R")
-source("../application/uitpErrorLst.R")
+#source("../application/uitpErrorTab.R")
 source("../application/uitpPedigreeBrowser.R")
 source("../application/uitpGeneticValueAnalysis.R")
 source("../application/uitpSummaryStatistics.R")
@@ -16,7 +16,7 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
     uitpInput,
-    uitpErrorTab,
+#    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
@@ -30,7 +30,7 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = "Genetic Management Tools",
     uitpInput,
-    uitpErrorTab,
+#    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
@@ -43,5 +43,11 @@ if (getSiteInfo()$center == "ONPRC") {
 
 shinyUI(tagList(
   tags$head(tags$style(src = "app_style.js")),
+  #tags$head(tags$script(src = "add_tabs.js")),
+  # Important! : 'Freshly baked' tabs first enter here.
+  # uiOutput("navbarPage", style = "display: none;"),
+  # End Important
+
   do.call(navbarPage, navbarPageArgs)
+
   ))
