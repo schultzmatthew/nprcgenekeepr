@@ -18,13 +18,6 @@ reference:
   desc: "Brief codebook"
   contents:
     - '`nprcmanager`'
-articles:
-- title: All vignettes
-  desc: ~
-  contents:
-  - '`Development_Plans`'
-  - '`manual`'
-
 - title: "Primary interactive functions"
   desc: "Funtions designed for interactive use"
   contents:
