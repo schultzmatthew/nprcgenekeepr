@@ -4,10 +4,12 @@
 \alias{insertErrorTab}
 \title{insertErrorTab insert a list of errors found by \code{qcStudbook} in the pedigree file}
 \usage{
-insertErrorTab(errorLst)
+insertErrorTab(errorLst, pedigreeFileName)
 }
 \arguments{
 \item{errorLst}{list of errors and changes made by \code{qcStudbook}}
+
+\item{pedigreeFileName}{name of file provided by user on Input tab}
 }
 \value{
 text of the error list formated as an HTML page

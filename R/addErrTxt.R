@@ -13,14 +13,14 @@
 addErrTxt <- function(txt, err, singularTxt, pluralTxt) {
   if (length(err) == 1) {
     if (stri_detect_fixed(err, "and")) {
-      txt <- stri_c(txt, "The ", pluralTxt, ": ", err, ".\n")
+      txt <- stri_c(txt, pluralTxt, ": ", err, ".\n")
     } else {
-      txt <- stri_c(txt, "The ", singularTxt, ": ", err, ".\n")
+      txt <- stri_c(txt, singularTxt, ": ", err, ".\n")
     }
   } else if (length(err) > 1) {
     if (length(err) > 5)
       err <- err[1:5]
-    txt <- stri_c(txt, "The ", pluralTxt, ": ",
+    txt <- stri_c(txt, pluralTxt, ": ",
                   get_and_or_list(err), ".\n")
   }
   txt

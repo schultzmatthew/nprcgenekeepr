@@ -182,7 +182,7 @@ shinyServer(function(input, output, session) {
           error = function(cond) {return(NULL)})
         if (checkErrorLst(errorLst)) {
           insertTab(inputId = "tab_pages",
-                    getErrorTab(errorLst), target = "Input",
+                    getErrorTab(errorLst, pedigreeFile$name), target = "Input",
                     position = "before", select = TRUE)
           breederPed <- NULL
         } else {

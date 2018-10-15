@@ -6,17 +6,17 @@ test_that("addErrTxt adds correct text", {
   expect_equal(addErrTxt("", "egoid to id",
                          "column changed is",
                          "columns changed are"),
-               "The column changed is: egoid to id.\n")
+               "column changed is: egoid to id.\n")
   expect_equal(addErrTxt("", "egoid and sireid to id and sire",
                          "column changed is",
                          "columns changed are"),
-               "The columns changed are: egoid and sireid to id and sire.\n")
+               "columns changed are: egoid and sireid to id and sire.\n")
   expect_equal(addErrTxt("", c("id", "sire"),
                          "missing column is",
                          "missing columns are"),
-                         "The missing columns are: id and sire.\n")
+                         "missing columns are: id and sire.\n")
   expect_equal(addErrTxt("", c("1", "2", "3", "4", "5", "6", "7"),
                          "row having an invalid date is",
                          "rows (up to the first 5) having an invalid date are"),
-               "The rows (up to the first 5) having an invalid date are: 1, 2, 3, 4, and 5.\n")
+               "rows (up to the first 5) having an invalid date are: 1, 2, 3, 4, and 5.\n")
 })

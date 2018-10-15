@@ -16,13 +16,13 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                      stringsAsFactors = FALSE, check.names = FALSE)
 errorLst <- qcStudbook(pedOne, errors = TRUE)
 test_that("insertErrorTab forms a character vector", {
-  expect_equal(class(insertErrorTab(qcStudbook(pedOne, errors = TRUE))), "character")
+  expect_equal(class(insertErrorTab(errorLst, "test_file")), "character")
 })
 test_that("insertErrorTab provides expected output", {
-  expect_equal(stri_sub(insertErrorTab(errorLst), 1, 5), "<h3>E")
-  expect_true(stri_detect_fixed(insertErrorTab(errorLst),
-                                pattern = "The animal listed as a sire and female is: s1."))
+  expect_equal(stri_sub(insertErrorTab(errorLst, "test_file"), 1, 5), "<h3>E")
+  expect_true(stri_detect_fixed(insertErrorTab(errorLst, "test_file"),
+                                pattern = "Error: The animal listed as a sire and female is: s1."))
 
-  expect_true(stri_detect_fixed(insertErrorTab(errorLst),
-                                pattern = "The animal listed as a dam and male is: d1."))
+  expect_true(stri_detect_fixed(insertErrorTab(errorLst, "test_file"),
+                                pattern = "Error: The animal listed as a dam and male is: d1."))
 })

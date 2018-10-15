@@ -4,10 +4,12 @@
 \alias{getErrorTab}
 \title{getErrorTab skeleton of list of errors}
 \usage{
-getErrorTab(errorLst)
+getErrorTab(errorLst, pedigreeFileName)
 }
 \arguments{
 \item{errorLst}{list of errors and changes made by \code{qcStudbook}}
+
+\item{pedigreeFileName}{name of file provided by user on Input tab}
 }
 \value{
 HTML formated error list

@@ -2,8 +2,9 @@
 #'
 #' @return HTML formated error list
 #' @param errorLst list of errors and changes made by \code{qcStudbook}
+#' @param pedigreeFileName name of file provided by user on Input tab
 #' @export
-getErrorTab <- function(errorLst) {
+getErrorTab <- function(errorLst, pedigreeFileName) {
   tabPanel("Error List",
            # tags$style(
            #   type = "text/css",
@@ -17,5 +18,5 @@ getErrorTab <- function(errorLst) {
            #   div(style = "float:right;text-align:right;width:45%",
            #       "Errors")
            # )),
-           div(HTML(insertErrorTab(errorLst))))
+           div(HTML(insertErrorTab(errorLst, pedigreeFileName))))
 }
