@@ -142,3 +142,4 @@ test_that("qcStudbook returns pedigree date errors with errors == TRUE", {
   ped6 <- qcStudbook(pedSix, minParentAge = NULL, errors = TRUE)
   expect_equal(ped6$invalidDateRows, c("2", "4", "5", "6", "7", "8", "10", "12"))
 })
+

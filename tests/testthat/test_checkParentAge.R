@@ -47,3 +47,4 @@ test_that("checkParentAge returns NULL if required dataframe has no rows and err
   ped <- checkParentAge(baboonPed[0, ], errors = TRUE)
   expect_true(is.null(ped))
 })
+
