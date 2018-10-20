@@ -186,6 +186,11 @@ shinyServer(function(input, output, session) {
                     position = "before", select = TRUE)
           breederPed <- NULL
         } else {
+          if (checkChangedColsLst(errorLst$changedCols)) {
+            insertTab(inputId = "tab_pages",
+                      getChangedColsTab(errorLst, pedigreeFile$name), target = "Input",
+                      position = "before", select = FALSE)
+          }
           breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
                                  warning = function(cond) {return(NULL)},
                                  error = function(cond) {return(NULL)})

@@ -109,17 +109,22 @@ test_that("qcStudbook returns NULL with errors == TRUE and no errors present", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
   expect_true(is.null(qcStudbook(pedClean, minParentAge = NULL, errors = TRUE)))
 })
-pedOne <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+pedFive <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                      sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
                      dam = c(NA, "d0", "d4", NA, "d1", "d2", "d2", "d2"),
                      sex = c("F", "F", "M", "F", "F", "F", "F", "M"),
+                     birth = mdy(
+                       paste0(sample(1:12, 8, replace = TRUE), "-",
+                              sample(1:28, 8, replace = TRUE), "-",
+                              sample(seq(0, 15, by = 3), 8, replace = TRUE) +
+                                2000)),
                      stringsAsFactors = FALSE)
 test_that("qcStudbook returns NULL errors with errors == TRUE and errors not present", {
-  pedClean <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
+  pedClean <- qcStudbook(pedFive, minParentAge = NULL, errors = TRUE)
   expect_true(is.null(pedClean$maleDams))
 })
 test_that("qcStudbook returns parent sex errors with errors == TRUE and errors present", {
-  pedClean <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
+  pedClean <- qcStudbook(pedFive, minParentAge = NULL, errors = TRUE)
   expect_equal(pedClean$femaleSires, "s1")
 })
 test_that("qcStudbook returns pedigree date errors with errors == TRUE", {
@@ -133,7 +138,7 @@ test_that("qcStudbook returns pedigree date errors with errors == TRUE", {
   someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
   someDepartureDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
   ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates, departure = someDepartureDates)
-  pedSix <- data.frame(pedOne, ped1)
+  pedSix <- data.frame(pedFive[ , names(pedFive) != "birth"], ped1)
   ped6 <- qcStudbook(pedSix, minParentAge = NULL, errors = TRUE)
   expect_equal(ped6$invalidDateRows, c("2", "4", "5", "6", "7", "8", "10", "12"))
 })

@@ -30,6 +30,9 @@ To be determined
    An __Error List__ tab is now being generated and opened when pedigree errors 
    are detected. 20181014
    
+   An __Changed Columns__ is now being generated and made when a pedigree has no 
+   errors, but the column names are being changed during processing. 20181020
+   
 2. Amanda Vinson wrote this in an e-mail on 20170901:
   
     I'm very interested in hearing about your idea of adding algorithms related 

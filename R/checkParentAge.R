@@ -52,16 +52,17 @@ checkParentAge <- function(sb, minParentAge = 2, errors = FALSE) {
     stringsAsFactors = FALSE)
   sb <- merge(sb, sireBirth, by.x = "sire", by.y = "id", all = TRUE)
   sb <- merge(sb, damBirth, by.x = "dam", by.y = "id", all = TRUE)
-  sb$sireAge <- NA
-  sb$sireAge[!is.na(sb$sireBirth)] <- (sb$birth[!is.na(sb$sireBirth)] -
-                                         sb$sireBirth[!is.na(sb$sireBirth)]) /
-    dyears(1)
-  sb$damAge <- NA
-  sb$damAge[!is.na(sb$damBirth)] <- (sb$birth[!is.na(sb$damBirth)] -
-                                         sb$damBirth[!is.na(sb$damBirth)]) /
-    dyears(1)
+  sb$sireAge <- ""
+  sb$sireAge[!is.na(sb$sireBirth)] <-
+    round((sb$birth[!is.na(sb$sireBirth)] -
+       sb$sireBirth[!is.na(sb$sireBirth)]) / dyears(1), 2)
+  sb$damAge <- ""
+  sb$damAge[!is.na(sb$damBirth)] <-
+    round((sb$birth[!is.na(sb$damBirth)] -
+       sb$damBirth[!is.na(sb$damBirth)]) / dyears(1), 2)
   sb <- sb[!is.na(sb$birth), ]
   sb <- sb[(sb$sireAge < minParentAge & !is.na(sb$sireBirth)) |
               (sb$damAge < minParentAge & !is.na(sb$damBirth)), ]
+  sb$exit <- as.character(sb$exit)
   sb
 }

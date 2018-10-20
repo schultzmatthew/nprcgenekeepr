@@ -12,13 +12,14 @@
 #' @export
 checkRequiredCols <- function(cols, errors) {
   requiredCols <- getRequiredCols()
-  # Checking for the 4 required fields (id, sire, dam, sex)
+  # Checking for the required fields (id, sire, dam, sex)
   if (!all(str_detect_fixed_all(cols, requiredCols))) {
     if (errors) {
       missingColumns <-
         requiredCols[!str_detect_fixed_all(cols, requiredCols,
                                            ignore_na = TRUE)]
-      if (any(c("id", "sire", "dam") %in% missingColumns))
+#      if (any(c("id", "sire", "dam") %in% missingColumns))
+      if (length(missingColumns) > 0)
         return(missingColumns)
     } else {
       stop(paste0("Required field(s) missing: ", paste0(requiredCols[
