@@ -19,15 +19,10 @@
 #' @export
 getSiteInfo <- function() {
   sysInfo <- Sys.info()
-  if (stri_detect_fixed(toupper(sysInfo[["sysname"]]), "WIND")) {
-    homeDir <- paste0("/Users/", sysInfo[["user"]], "/")
-    configFile <- paste0(homeDir, "_nprcmanager_config")
-  } else {
-    homeDir <- paste0("~/")
-    configFile <- paste0(homeDir, ".nprcmanager_config")
-  }
-  if (file.exists(configFile)) {
-    lines <- readLines(configFile, skipNul = TRUE)
+  config <- getConfigFileName(sysInfo)
+
+  if (file.exists(config[["configFile"]])) {
+    lines <- readLines(config[["configFile"]], skipNul = TRUE)
     tokenList <- getTokenList(lines)
     list(
       center = getParamDef(tokenList, "center"),
@@ -45,11 +40,12 @@ getSiteInfo <- function() {
       login = sysInfo[["login"]],
       user = sysInfo[["user"]],
       effective_user = sysInfo[["effective_user"]],
-      homeDir = homeDir,
-      configFile = configFile)
+      homeDir = config[["homeDir"]],
+      configFile = config[["configFile"]])
   } else {
     warning(paste0("The nprcmananger configuration file is missing.\n",
-                   "The file should be named: ", configFile, ".\n"))
+                   "The file should be named: ",
+                   config[["configFile"]], ".\n"))
     list(center = "ONPRC",
       baseUrl = "https://boomer.txbiomed.org/labkey",
       schemaName = "study",
@@ -66,7 +62,7 @@ getSiteInfo <- function() {
       login = sysInfo[["login"]],
       user = sysInfo[["user"]],
       effective_user = sysInfo[["effective_user"]],
-      homeDir = homeDir,
-      configFile = configFile)
+      homeDir = config[["homeDir"]],
+      configFile = config[["configFile"]])
   }
 }
