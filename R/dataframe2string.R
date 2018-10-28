@@ -8,6 +8,7 @@
 #' @param right	logical, indicating whether or not strings should be right-aligned. The default is right-alignment.
 
 #' @param row.names	logical (or character vector), indicating whether (or what) row names should be printed.
+#' @importFrom stringi stri_length
 #' @export
 dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
                               right = TRUE, row.names = TRUE) {
@@ -39,7 +40,7 @@ dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
     if (isTRUE(row.names))
       m <- cbind(rowNames, m)
     # max-length per-column
-    maxLen <- apply(apply(m, c(1,2), stringr::str_length), 2, max, na.rm = TRUE)
+    maxLen <- apply(apply(m, c(1,2), stri_length), 2, max, na.rm = TRUE)
 
     # add right padding
     ##  t is needed because "If each call to FUN returns a vector of length n, then apply returns an array of dimension c(n, dim(X)[MARGIN])"

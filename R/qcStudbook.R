@@ -159,6 +159,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   names(sb) <- cols
 
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
+  if (is.numeric(sb$birth))
+    sb$birth <- as.character(sb$birth)
   sb <- unknown2NA(sb)
   sb <- addUIds(sb)
   sb <- addParents(sb) # add parent record for parents that don't have

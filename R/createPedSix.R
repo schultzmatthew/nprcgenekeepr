@@ -1,6 +1,7 @@
 #' createPedSix makes the pedSix data object
 #'
-#'
+#' @importFrom lubridate mdy
+#' @export
 createPedSix <- function() {
   set.seed(123)
   pedFive <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),

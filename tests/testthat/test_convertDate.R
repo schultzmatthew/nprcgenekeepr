@@ -24,7 +24,8 @@ test_that("convertDate identifies bad dates", {
   expect_error(convertDate(ped1))
 })
 test_that("convertDate with error flag returns error list", {
-  expect_equal(convertDate(ped1, errors = TRUE), c("4", "8", "10"))
+  expect_equal(convertDate(ped1, errors = TRUE),
+               c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
 })
 test_that("convertDate likes good dates", {
   expect_true(all(is.Date(convertDate(ped2)$birth)))

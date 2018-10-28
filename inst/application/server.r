@@ -585,8 +585,8 @@ shinyServer(function(input, output, session) {
     ggplot(data.frame(gu = gu), aes(x = gu, y=..density..)) +
       geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
       theme_classic() +
-      xlab("Genetic Uniqueness Score") + ylab("Frequency") +
-      ggtitle("Genetic Uniqueness") +
+      xlab("Genome Uniqueness Score") + ylab("Frequency") +
+      ggtitle("Genome Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })

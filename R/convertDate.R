@@ -20,26 +20,47 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
   format = "%Y-%m-%d"
   invalid_date_rows <- NULL
   for (header in headers) {
-    if (class(ped[[header]]) == "character" | class(ped[[header]]) == "factor")
-      ped[[header]][ped[[header]] == ""] <- NA
-    if (!all(is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
-                               format = format, optional = TRUE))) {
-      if (errors) {
-        t_invalid_date_rows <- as.character(seq_along(ped[[header]])[
-          !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
-                             format = format)])
-        invalid_date_rows <- c(invalid_date_rows, t_invalid_date_rows)
-        next
+    dates <- ped[[header]]
+    if (class(dates) == "factor") {
+      dates <- as.character(dates)
+    }
+    if (class(dates) == "character") {
+      dates[dates == ""] <- NA
+    }
+    if (!all(is.na(dates))) {
+      if (!any(stri_detect_regex(dates[!is.na(dates)], pattern = "[-/]"))) {
+        if (all(suppressWarnings(as.integer(dates[!is.na(dates)]) &
+                                 !is.na(as.integer(dates[!is.na(dates)]))))) {
+          dates <- sapply(dates, function(x) {
+            stri_c(stri_sub(x, from = 1, to = 4), "-",
+                   stri_sub(x, from = 5, to = 6), "-",
+                   stri_sub(x, from = 7, to = 8))
+          })
+        }
       }
-      rowNums <- get_and_or_list(seq_along(ped[[header]])[
-        !is_valid_date_str(ped[[header]][!is.na(ped[[header]])],
-                           format = format)], "and")
-      stop(paste0("Column '", header, "' has invalid dates on row(s) ",
-                  rowNums, "."))
+      dates[year(as.Date(dates, format = format,
+                        origin = time.origin, optional = TRUE)) < 1000 |
+              is.na(dates)] <- NA
+      if (!all(is_valid_date_str(dates[!is.na(dates)],
+                                 format = format, optional = FALSE))) {
+        if (errors) {
+          t_invalid_date_rows <- as.character(seq_along(dates)[
+            !is_valid_date_str(dates, format = format, optional = FALSE)])
+          invalid_date_rows <- c(invalid_date_rows, t_invalid_date_rows)
+          next
+        }
+        rowNums <- get_and_or_list(seq_along(dates)[
+          !is_valid_date_str(dates[!is.na(dates)],
+                             format = format)], "and")
+        stop(paste0("Column '", header, "' has invalid dates on row(s) ",
+                    rowNums, "."))
+      }
     }
 
-    ped[[header]] <- as.Date(ped[[header]], format = format,
-                             origin = time.origin,, optional = TRUE)
+    ## Check for bad dates detected by anytime
+    #dates <- anytime(dates, oldHeuristic = TRUE)
+    ped[[header]] <- as.Date(dates, format = format,
+                             origin = time.origin, optional = TRUE)
   }
   if (errors) {
     return(invalid_date_rows)

@@ -10,6 +10,7 @@ checkChangedColsLst <- function(changedCols) {
       length(changedCols$spaceRemoved) > 0 |
       length(changedCols$periodRemoved) > 0 |
       length(changedCols$underScoreRemoved) > 0 |
+      length(changedCols$egoToId) > 0 |
       length(changedCols$egoidToId) > 0 |
       length(changedCols$sireIdToSire) > 0 |
       length(changedCols$damIdToDam) > 0 |

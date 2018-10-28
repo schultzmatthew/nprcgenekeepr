@@ -42,6 +42,9 @@ summary.nprcmanagErr <- function(object, ...) {
   txt <- addErrTxt(txt, errorLst$changedCols$underScoreRemoved,
                    "Change: The column where underscore was removed is",
                    "Change: The columns where underscore was removed are")
+  txt <- addErrTxt(txt, errorLst$changedCols$egoToId,
+                   "Change: The column changed from",
+                   "Change: The columns changed from")
   txt <- addErrTxt(txt, errorLst$changedCols$egoidToId,
                    "Change: The column changed from",
                    "Change: The columns changed from")

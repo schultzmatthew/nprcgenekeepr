@@ -28,9 +28,9 @@ library(rmsutilityr)
 ```{r tutorial-1 }
 pedigreeFile <- "baboon_breeders_qc_ped.csv"
 
-sep <- ","
+sep <- "\t"
 minParentAge <- 0
-breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE, stringsAsFactors = FALSE)
+breederPedCsv <- read.table(file.choose(), sep = sep, header = TRUE, stringsAsFactors = FALSE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
 
 ```
@@ -40,7 +40,7 @@ argument set to __TRUE__ and examine the returned object.
 
 ```{r examine-errors}
 badPedigreeFile <- "pedigree_files_with_errors/Pedigree_File_Example_CSV.csv"
-badPedCsv <- read.table(badPedigreeFile, sep = "\t", header = TRUE, stringsAsFactors = FALSE)
+badPedCsv <- read.table(breederPedCsv, sep = "\t", header = TRUE, stringsAsFactors = FALSE)
 errorLst <- qcStudbook(badPedCsv, minParentAge, errors = TRUE)
 str(errorLst)
 

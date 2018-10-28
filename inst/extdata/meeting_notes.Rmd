@@ -1,6 +1,48 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20181022 
+1.  Allow the use of Ego for ID. Done 20181022
+2.  Remove the display of the change columns.
+3.  Remove old error tabs each time a file browsing occurs.
+4.  List columns that should be there id, sire, dam, sex, birth when columns 
+    are listed as missing.
+5.  Improve the reporting of multiple errors of the same type. 
+    Perhaps "The first 5 records have the following errors: <then list the errors
+    followed by the next sentence>. In total there were <number of records> records
+    with the same type of error. Please check and correct the pedigree file."
+6.  Correct "Genetic Uniqueness Score" to "Genome Uniqueness Score". 
+    Done 20181022
+7.  Item 2 from last meeting list: Give user the option to save a skeleton 
+    configuration file to their home directory if they do not have a 
+    configuration file.
+8.  During the next meeting, we will work with Beth on clearly defining how 
+    breeding group formation tab should work. In the mean time, Mark will examine
+    the current behavior and code so that he understands exactly what is being
+    done.
+9.  The near term goal is to produce a technical paper within the next six months 
+    that describes the software. Mark will get this started by completing two tutorial
+    documents. The first will be a tutorial on how to use the major functions from the 
+    R console in an interactive mode. The second will be a tutorial on how to use the 
+    Shiny application. The first tutorial should be completed some time in December.
+10. Amanda and Mark discussed the goal of enhancing the scope of software to include 
+    the ability to do phenotype -- genotype association studies. Amanda has some 
+    ideas regarding direction. Mark needs some guidance as to what techniques to 
+    investigate.
+    
+    Below are some relevant articles found from a simple
+    web search with the Google search engine using the search elements:
+    "genetic association studies in pedigrees"
+    *   https://www.stats.ox.ac.uk/~mcvean/gwa4.pdf
+    *   https://dx.doi.org/10.1186%2F1753-6561-8-S1-S26
+    *   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1459209/
+    *   https://www.ncbi.nlm.nih.gov/pubmed/12687644
+11. Not mentioned during the meeting but taken from other correspondence. Mark will
+    Contact Daniel Nicolalde (fdnicolalde@primate.wisc.edu; (608) 890-4592; 
+    INFORMATICS AND DATA SERVICES) to see if he will assist in getting the LabKey 
+    interface working with the Wisconsin National Primate Research Center system.
+12. The next meeting is scheduled for November 5, 2018 at 4 PM Pacific Time.
+    
 ## 20180917
 
 1.  Change Pedigree browser button label to say "Trim pedigree based on focal animals". Done 20180917

@@ -10,7 +10,7 @@ getLogo <- function() {
   } else {
     logo$file <- "../ONPRC_Logo.png"
     logo$height <- 80L
-    logo$width <- 250L
+    logo$width <- 200L
   }
   logo
 }

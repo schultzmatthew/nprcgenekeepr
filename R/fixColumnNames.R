@@ -22,6 +22,9 @@ fixColumnNames <- function(orgCols, errorLst) {
   newCols <- gsub("egoid", "id", cols)
   errorLst$changedCols$egoidToId <- colChange(cols, newCols)
   cols <- newCols
+  newCols <- gsub("ego", "id", cols)
+  errorLst$changedCols$egoToId <- colChange(cols, newCols)
+  cols <- newCols
   newCols <- gsub("sireid", "sire", cols)
   errorLst$changedCols$sireIdToSire <- colChange(cols, newCols)
   cols <- newCols
