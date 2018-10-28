@@ -9,6 +9,7 @@
 
 #' @param row.names	logical (or character vector), indicating whether (or what) row names should be printed.
 #' @importFrom stringi stri_length
+#' @importFrom stringi stri_pad_both
 #' @export
 dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
                               right = TRUE, row.names = TRUE) {
@@ -44,8 +45,7 @@ dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
 
     # add right padding
     ##  t is needed because "If each call to FUN returns a vector of length n, then apply returns an array of dimension c(n, dim(X)[MARGIN])"
-    m <- t(apply(m, 1, stringr::str_pad, width = maxLen, side = "right"))
-    m <- t(apply(m, 1, stringr::str_pad, width = maxLen + 3, side = "left"))
+    m <- t(apply(m, 1, stringi::stri_pad_both, width = maxLen))
     # merge columns
     m <- apply(m, 1, paste, collapse = "")
     # merge rows (and return)
