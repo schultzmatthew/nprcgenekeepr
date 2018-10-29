@@ -7,6 +7,9 @@ dist: trusty
 r:
     - oldrel
     - release
+addons:
+  apt:
+    packages: ['gfortran = false']
 r_packages:
     - devtools
     - covr
