@@ -7,14 +7,15 @@ dist: trusty
 r:
     - oldrel
     - release
-addons:
-  apt:
-    packages: ['gfortran = false']
 r_packages:
     - devtools
     - covr
-r_github_packages:
-    - r-lib/rcmdcheck
+    - rcmdcheck
+matrix:
+     include:
+#         - os: linux
+         - os: osx
+           fortran: false
 script:
   - R -e 'r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); devtools::test(); quit(save = "no", status = if (length(c(r$errors, r$warnings)) > 0) { 1 } else { 0 }, runLast = FALSE)'
 after_success:
