@@ -36,8 +36,6 @@ test_that("convertDate with error flag returns NULL with good dates", {
   expect_true(all(is.null(convertDate(ped3, errors = TRUE))))
 })
 test_that("convertDate handles NA and empty character string values correctly", {
-  expect_true(all(is.na(convertDate(ped4)$death[c(1, 3, 5)])))
-  expect_true(all(is.na(convertDate(ped4)$birth[c(2,4,6)])))
-  expect_false(all(is.na(convertDate(ped4)$birth[c(1, 3, 5)])))
+  expect_equal(convertDate(ped4, errors = TRUE), as.character(1:6))
 })
 
