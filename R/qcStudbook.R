@@ -194,8 +194,10 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                              errors)
     if (!is.null(invalidDateRows)) {
       errorLst$invalidDateRows <- invalidDateRows
-      sb <- convertDate(sb[-as.integer(invalidDateRows), ], time.origin = as.Date("1970-01-01"),
-                        errors = FALSE)
+      sb[-as.integer(invalidDateRows), ] <-
+        convertDate(sb[-as.integer(invalidDateRows), ],
+                    time.origin = as.Date("1970-01-01"),
+                    errors = FALSE)
     } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                         errors = FALSE)
