@@ -1,6 +1,9 @@
 #' Eliminates partial parentage situations by adding unique placeholder
 #' IDs for the unknown parent.
 #'
+#' This must be run prior to \code{addParents} since the IDs made herein are
+#' used by \code{addParents}
+#'
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information. The fields \code{sire} and \code{dam} are required.
 #' @return The updated pedigree with partial parentage removed.

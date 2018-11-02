@@ -4,6 +4,9 @@
 #' Given a pedigree, find any IDs listed in the "sire" or "dam" columns
 #' that lack their own line entry and generate one.
 #'
+#' This must be run after to \code{addUIds} since the IDs made there are
+#' used by \code{addParents}
+
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information including the IDs listed in \code{candidates}.
 #'
