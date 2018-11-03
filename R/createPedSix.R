@@ -12,7 +12,8 @@ createPedSix <- function() {
                               sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000))
   someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
   someDepartureDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
-  ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates, departure = someDepartureDates)
+  pedOne <- data.frame(birth = someBadBirthDates, death = someDeathDates,
+                     departure = someDepartureDates, stringsAsFactors = FALSE)
   pedFive <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                         sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
                         dam = c(NA, "d0", "d4", NA, "d1", "d2", "d2", "d2"),
@@ -23,7 +24,7 @@ createPedSix <- function() {
                                  sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                                    2000)),
                         stringsAsFactors = FALSE)
-  pedSix <- data.frame(pedFive[ , names(pedFive) != "birth"], ped1,
+  pedSix <- data.frame(pedFive[ , names(pedFive) != "birth"], pedOne,
                        stringsAsFactors = FALSE)
   pedSix$birth[pedSix$id %in% c("s1", "s2", "d1", "d2")] <-
     pedSix$birth[pedSix$id %in% c("s1", "s2", "d1", "d2")] - dyears(20)

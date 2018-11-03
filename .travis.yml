@@ -13,7 +13,6 @@ r_packages:
     - rcmdcheck
 matrix:
      include:
-#         - os: linux
          - os: osx
            fortran: false
 script:
