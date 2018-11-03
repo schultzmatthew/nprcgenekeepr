@@ -20,3 +20,7 @@ Pedigree curation function
 Given a pedigree, find any IDs listed in the "sire" or "dam" columns
 that lack their own line entry and generate one.
 }
+\details{
+This must be run after to \code{addUIds} since the IDs made there are
+used by \code{addParents}
+}

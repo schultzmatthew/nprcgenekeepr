@@ -14,8 +14,17 @@
 #' conform to the format %Y%m%d are set to NA. NA values are left as NA.
 #' @importFrom rmsutilityr get_and_or_list
 #' @importFrom rmsutilityr is_valid_date_str
+#' @importFrom stringi stri_trim_both
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE) {
+  ## Ignore records added because of unknown parents
+  if (any("record_status" %in% names(ped))) {
+    addedPed <- ped[ped$record_status == "added", ]
+    ped <- ped[ped$record_status == "original", ]
+    if (nrow(ped) == 0)
+      return(rbind(ped, addedPed))
+  }
+
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
   format = "%Y-%m-%d"
@@ -25,33 +34,49 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
     if (class(dates) == "factor") {
       dates <- as.character(dates)
     }
-    if (class(dates) == "Date")
-      dates <- as.character(dates, format = "%Y-%m-%d")
-    if (class(dates) == "character") {
-      dates[dates == ""] <- NA
+    if (class(dates) == "Date") {
+      originalNAs <- is.na(dates)
+      dates <- dates[!originalNAs]
+    } else if (class(dates) == "character") {
+      dates[stri_trim_both(dates) == ""] <- NA
+      ped[[header]] <- dates
+      originalNAs <- is.na(dates)
+      dates <- dates[!originalNAs]
+
       dates <- insertSeparators(dates)
       dates <- as.Date(dates, format = format, origin = time.origin,
                       optional = TRUE)
       dates <- removeEarlyDates(dates, 1000)
+    } else {
+      stop(stri_c("class(dates) is not character it is == ", class(dates)))
     }
+
     if (any(is.na(dates))) {
+      goodAndBadDates <- ifelse(is.na(dates), "bad", "good")
+      originalDates <- ped[[header]]
+      originalDates[originalNAs] <- "good"
+      originalDates[!originalNAs] <- goodAndBadDates
       if (errors) {
         invalid_date_rows <- c(invalid_date_rows,
-                               seq_along(dates)[is.na(dates)])
+                               seq_along(originalDates)[originalDates == "bad"])
         next
       }
-      rowNums <- get_and_or_list(seq_along(dates)[is.na(dates)], "and")
+      rowNums <- get_and_or_list(
+        seq_along(originalDates)[originalDates == "bad"], "and")
       stop(paste0("Column '", header, "' has invalid dates on row(s) ",
                   rowNums, "."))
     }
-
-    ped[[header]] <- dates
+    ped[!originalNAs, header] <- dates
+    ped[[header]] <- as.Date(as.integer(ped[[header]]), origin = time.origin)
   }
   if (errors) {
     if (!is.null(invalid_date_rows))
       invalid_date_rows <- as.character(sort(invalid_date_rows))
     return(invalid_date_rows)
   } else {
+    ## Add back records of unknown parents
+    if (any("record_status" %in% names(ped)))
+      ped <- rbind(ped, addedPed)
     return(ped)
   }
 }

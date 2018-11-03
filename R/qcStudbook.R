@@ -194,18 +194,23 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
                              errors)
     if (!is.null(invalidDateRows)) {
       errorLst$invalidDateRows <- invalidDateRows
-      sb[-as.integer(invalidDateRows), ] <-
-        convertDate(sb[-as.integer(invalidDateRows), ],
-                    time.origin = as.Date("1970-01-01"),
-                    errors = FALSE)
+      invalidAndAdded <- c(as.integer(invalidDateRows),
+                           getRecordStatusIndex(sb, "added"))
+      if (nrow(sb[-invalidAndAdded, ]) > 0) {
+        sb[-invalidAndAdded, ] <-
+          convertDate(sb[-invalidAndAdded, ],
+                      time.origin = as.Date("1970-01-01"),
+                      errors = FALSE)
+      }
     } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
                         errors = FALSE)
+      sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
     }
   } else {
     sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
+    sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
   }
-  sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
 
   # ensure parents are older than offspring
   suspiciousParents <- checkParentAge(sb, minParentAge, errors)

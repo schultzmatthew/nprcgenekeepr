@@ -44,10 +44,12 @@ test_that("qcStudbook detects errors in column names", {
   expect_error(suppressWarnings(qcStudbook(pedOne)))
   expect_error(suppressWarnings(qcStudbook(pedOne[ , -1], minParentAge = NULL)))
 })
-test_that("qcStudbook detects returns list of bad column names when errors == TRUE", {
+test_that("qcStudbook returns list of suspicious parents when errors == TRUE", {
   expect_equal(suppressWarnings(qcStudbook(pedOne, errors = TRUE)$suspiciousParents$id),
                c("o2", "o3", "o4"))
-  expect_equal(suppressWarnings(
+})
+test_that("qcStudbook returns list of missing column names when errors == TRUE", {
+    expect_equal(suppressWarnings(
     qcStudbook(pedOne[ , -1], minParentAge = NULL, errors = TRUE)$missingColumns),
     "id")
 })
@@ -139,9 +141,9 @@ test_that("qcStudbook returns pedigree date errors with errors == TRUE", {
   someDepartureDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
   ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates, departure = someDepartureDates)
   pedSix <- data.frame(pedFive[ , names(pedFive) != "birth"], ped1)
-  ped6 <- qcStudbook(pedSix, minParentAge = NULL, errors = TRUE)
+  ped6 <- suppressWarnings(qcStudbook(pedSix, minParentAge = NULL, errors = TRUE))
   expect_equal(
     ped6$invalidDateRows,
-    c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"))
+    c("1", "2", "3", "4", "5", "6", "7", "8"))
 })
 

@@ -15,6 +15,6 @@ information. The fields \code{sire} and \code{dam} are required.}
 The updated pedigree with partial parentage removed.
 }
 \description{
-Eliminates partial parentage situations by adding unique placeholder
-IDs for the unknown parent.
+This must be run prior to \code{addParents} since the IDs made herein are
+used by \code{addParents}
 }
