@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.4</span>
       </span>
     </div>
 
@@ -176,6 +176,12 @@ is at the state just prior to calling <code>rankSubjects</code> inside
       </tr><tr>
         
         <td>
+          <p><code><a href="pedSix.html">pedSix</a></code> </p>
+        </td>
+        <td><p>pedSix is a loadable version of the pedigree file fragment used for testing</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="pedWithGenotype.html">pedWithGenotype</a></code> </p>
         </td>
         <td><p>pedWithGenotype is a dataframe produced from baboonPed by adding made up
@@ -233,6 +239,12 @@ genotypes.</p></td>
           <p><code><a href="addBackSecondParents.html">addBackSecondParents()</a></code> </p>
         </td>
         <td><p>Add back single parents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addErrTxt.html">addErrTxt()</a></code> </p>
+        </td>
+        <td><p>addErrTxt Concatenates any errors from nprcmanagErr into narrative form</p></td>
       </tr><tr>
         
         <td>
@@ -503,6 +515,12 @@ is at the state just prior to calling <code>rankSubjects</code> inside
         </td>
         <td><p>Trim pedigree to ancestors of provided group removing uninformative
 ancestors.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="summary.html">summary(<i>&lt;nprcmanagErr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>summary.nprcmanagerErr Summary function for class nprcmanagErr</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -545,15 +563,15 @@ IDs for the unknown parent.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="allTrueNoNA.html">allTrueNoNA()</a></code> </p>
-        </td>
-        <td><p>Returns <code>TRUE</code> if every member of the vector is <code>TRUE</code>.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="alleleFreq.html">alleleFreq()</a></code> </p>
         </td>
         <td><p>Calculates the count of each allele in the provided vector.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="allTrueNoNA.html">allTrueNoNA()</a></code> </p>
+        </td>
+        <td><p>Returns <code>TRUE</code> if every member of the vector is <code>TRUE</code>.</p></td>
       </tr><tr>
         
         <td>
@@ -606,6 +624,25 @@ each simulation.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="checkChangedColAndErrorLst.html">checkChangedColAndErrorLst()</a></code> </p>
+        </td>
+        <td><p>checkChangedColAndErrorLst examines errorLst for errors and
+errorLst$changeCols non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkChangedColsLst.html">checkChangedColsLst()</a></code> </p>
+        </td>
+        <td><p>checkChangedColsLst examines list for non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkErrorLst.html">checkErrorLst()</a></code> </p>
+        </td>
+        <td><p>checkErrorLst examines list for non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="checkGenotypeFile.html">checkGenotypeFile()</a></code> </p>
         </td>
         <td><p>Check genotype file</p></td>
@@ -615,6 +652,13 @@ each simulation.</p></td>
           <p><code><a href="checkParentAge.html">checkParentAge()</a></code> </p>
         </td>
         <td><p>Check parent age</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkRequiredCols.html">checkRequiredCols()</a></code> </p>
+        </td>
+        <td><p>checkRequiredCols examines column names, <code>cols</code>, to see if all
+required column names are present.</p></td>
       </tr><tr>
         
         <td>
@@ -634,6 +678,12 @@ or the other at each position.</p></td>
           <p><code><a href="chooseDate.html">chooseDate()</a></code> </p>
         </td>
         <td><p>Choose date based on <code>earlier</code> flag.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="colChange.html">colChange()</a></code> </p>
+        </td>
+        <td><p>colChange internal function to describe column names transformation</p></td>
       </tr><tr>
         
         <td>
@@ -685,9 +735,28 @@ or the other at each position.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="createPedSix.html">createPedSix()</a></code> </p>
+        </td>
+        <td><p>createPedSix makes the pedSix data object</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="createPedTree.html">createPedTree()</a></code> </p>
         </td>
         <td><p>Create a pedigree tree (PedTree).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dataframe2string.html">dataframe2string()</a></code> </p>
+        </td>
+        <td><p>dataframe2string converts a data.frame object to a character vector</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="exampleNprcmanagerConfig.html">exampleNprcmanagerConfig</a></code> </p>
+        </td>
+        <td><p>exampleNprcmanagerConfig is a loadable version of the example
+configuration file _example_nprcmanager_config_</p></td>
       </tr><tr>
         
         <td>
@@ -753,6 +822,12 @@ threshold</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="fixColumnNames.html">fixColumnNames()</a></code> </p>
+        </td>
+        <td><p>fixColumnNames changes original column names and into standardized names.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="fixGenotypeCols.html">fixGenotypeCols()</a></code> </p>
         </td>
         <td><p>Reformat names of observed genotype columns</p></td>
@@ -777,6 +852,12 @@ threshold</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="getChangedColsTab.html">getChangedColsTab()</a></code> </p>
+        </td>
+        <td><p>getChangedColsTab skeleton of list of errors</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getDatedFilename.html">getDatedFilename()</a></code> </p>
         </td>
         <td><p>Returns a character vector with an file name having the date prepended.</p></td>
@@ -786,6 +867,18 @@ threshold</p></td>
           <p><code><a href="getDemographics.html">getDemographics()</a></code> </p>
         </td>
         <td><p>Get demographic data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getEmptyErrorLst.html">getEmptyErrorLst()</a></code> </p>
+        </td>
+        <td><p>getEmptyErrorLst</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getErrorTab.html">getErrorTab()</a></code> </p>
+        </td>
+        <td><p>getErrorTab skeleton of list of errors</p></td>
       </tr><tr>
         
         <td>
@@ -923,6 +1016,19 @@ element.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="insertChangedColsTab.html">insertChangedColsTab()</a></code> </p>
+        </td>
+        <td><p>insertChangedColsTab insert a list of changed columns found by
+<code>qcStudbook</code> in the pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="insertErrorTab.html">insertErrorTab()</a></code> </p>
+        </td>
+        <td><p>insertErrorTab insert a list of errors found by <code>qcStudbook</code> in the pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="isEmpty.html">isEmpty()</a></code> </p>
         </td>
         <td><p>Is vector empty or all NA values.</p></td>
@@ -975,6 +1081,12 @@ element.</p></td>
           <p><code><a href="orderReport.html">orderReport()</a></code> </p>
         </td>
         <td><p>Order the results of the genetic value analysis for use in a report.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="print.html">print(<i>&lt;summary.nprcmanagErr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>print.summary.nprcmanagErr</p></td>
       </tr><tr>
         
         <td>
@@ -1041,6 +1153,12 @@ element.</p></td>
           <p><code><a href="setExit.html">setExit()</a></code> </p>
         </td>
         <td><p>Sets the exit date, if there is no exit column in the table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="summary.html">summary(<i>&lt;nprcmanagErr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>summary.nprcmanagerErr Summary function for class nprcmanagErr</p></td>
       </tr><tr>
         
         <td>
