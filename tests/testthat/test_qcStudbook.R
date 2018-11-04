@@ -146,4 +146,13 @@ test_that("qcStudbook returns pedigree date errors with errors == TRUE", {
     ped6$invalidDateRows,
     c("1", "2", "3", "4", "5", "6", "7", "8"))
 })
+test_that("qcStudbook passes through nonessential date columns with all == NA", {
+  pedSeven <- cbind(pedSix, exit = NA, stringsAsFactors = FALSE)
+  ped7 <- qcStudbook(pedSeven, minParentAge = NULL, errors = TRUE)
+  expect_equal(ped7$invalidDateRows, character(0))
+  ped7 <- qcStudbook(pedSeven, minParentAge = NULL, errors = FALSE)
+  expect_true(all(is.na(ped7$exit)))
+  expect_equal(length(ped7$exit), 12)
+})
+
 

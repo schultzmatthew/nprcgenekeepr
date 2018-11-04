@@ -31,7 +31,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
   invalid_date_rows <- NULL
   for (header in headers) {
     dates <- ped[[header]]
-    if (class(dates) == "factor") {
+    if (class(dates) == "factor" | class(dates) == "logical") {
       dates <- as.character(dates)
     }
     if (class(dates) == "Date") {
@@ -42,11 +42,12 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
       ped[[header]] <- dates
       originalNAs <- is.na(dates)
       dates <- dates[!originalNAs]
-
-      dates <- insertSeparators(dates)
-      dates <- as.Date(dates, format = format, origin = time.origin,
-                      optional = TRUE)
-      dates <- removeEarlyDates(dates, 1000)
+      if (length(dates) > 0) {
+        dates <- insertSeparators(dates)
+        dates <- as.Date(dates, format = format, origin = time.origin,
+                         optional = TRUE)
+        dates <- removeEarlyDates(dates, 1000)
+      }
     } else {
       stop(stri_c("class(dates) is not character it is == ", class(dates)))
     }
