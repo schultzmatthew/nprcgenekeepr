@@ -2,7 +2,7 @@ context("getRecordStatusIndex")
 library(testthat)
 test_that(
   "getRecordStatusIndex handles dataframe without a record_status column", {
-    pedSix <- createPedSix()
+    data("pedSix")
     expect_equal(nprcmanager:::getRecordStatusIndex(pedSix), integer(0))
     pedSix <- cbind(pedSix, record_status = c(rep("original", 5),
                                               rep("added", 3)))
