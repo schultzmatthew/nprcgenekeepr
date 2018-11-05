@@ -7,6 +7,7 @@
 #' @param object object of class nprcmanagErr and class list
 #' @param ... additional arguments for the \code{summary.default} statement
 #' @importFrom stringi stri_c
+#' @importFrom rmsutilityr get_and_or_list
 #' @export
 summary.nprcmanagErr <- function(object, ...) {
   errorLst <- object
@@ -15,18 +16,31 @@ summary.nprcmanagErr <- function(object, ...) {
   txt <- addErrTxt(txt, errorLst$missingColumns,
                    "Error: The missing column is",
                    "Error: The missing columns are")
-  txt <- addErrTxt(txt, errorLst$invalidDateRows,
-                   "Error: The row having an invalid date is",
-                   "Error: The rows (up to the first 5) having an invalid date are")
+  if (length(errorLst$missingColumns) > 0)
+    txt <- stri_c(txt, " The required columns are: ",
+                  get_and_or_list(getRequiredCols()), ".\n")
+  if (length(errorLst$invalidDateRows) > 5) {
+    manyErrorsTxt <- stri_c(
+      "There are ", length(errorLst$invalidDateRows), " rows having an ",
+      "invalid date. The first five records having bad dates are on rows ",
+      get_and_or_list(errorLst$invalidDateRows[1:5]), ".\n")
+    txt <- stri_c(txt, manyErrorsTxt)
+  } else if (length(errorLst$invalidDateRows) > 0) {
+    txt <- addErrTxt(txt, errorLst$invalidDateRows,
+                     "Error: There is one row having an invalid date. It is",
+                     stri_c("Error: There are ", length(errorLst$invalidDateRows),
+                            " rows having an invalid date. The rows having an ",
+                            "invalid date are"))
+  }
   txt <- addErrTxt(txt, errorLst$sireIsDam,
                    "Error: The animal listed as both a sire and dam is",
                    "Error: The animals listed as both sire and dam are")
   txt <- addErrTxt(txt, errorLst$femaleSires,
-                   "Error: The animal listed as a sire and female is",
-                   "Error: The animals listed as sires and female are")
+                   "Error: The animal listed as a sire and also listed as a female is",
+                   "Error: The animals listed as sires and also listed as females are")
   txt <- addErrTxt(txt, errorLst$maleDams,
-                   "Error: The animal listed as a dam and male is",
-                   "Error: The animals listed as dams and male are")
+                   "Error: The animal listed as a dam and also listed as a male is",
+                   "Error: The animals listed as dams and also listed as males are")
   txt <- addErrTxt(txt, errorLst$duplicateIds,
                    "Error: The animal listed more than once is",
                    "Error: The animals listed more than once are")
@@ -60,6 +74,9 @@ summary.nprcmanagErr <- function(object, ...) {
   txt <- addErrTxt(txt, errorLst$changedCols$deathdateToDeath,
                    "Change: The column changed from",
                    "Change: The columns changed from")
+  if (stri_length(txt) > 0)
+    txt <- stri_c(txt, "\nPlease check and correct the pedigree file.\n")
+
   txt <- list(txt = txt, sp = errorLst$suspiciousParents)
 
   class(txt) <- "summary.nprcmanagErr"
