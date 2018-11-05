@@ -20,9 +20,11 @@ test_that("insertErrorTab forms a character vector", {
 })
 test_that("insertErrorTab provides expected output", {
   expect_equal(stri_sub(insertErrorTab(errorLst, "test_file"), 1, 5), "<h3>E")
-  expect_true(stri_detect_fixed(insertErrorTab(errorLst, "test_file"),
-                                pattern = "Error: The animal listed as a sire and female is: s1."))
+  expect_true(stri_detect_fixed(
+    insertErrorTab(errorLst, "test_file"),
+    pattern = "Error: The animal listed as a sire and also listed as a female is: s1."))
 
-  expect_true(stri_detect_fixed(insertErrorTab(errorLst, "test_file"),
-                                pattern = "Error: The animal listed as a dam and male is: d1."))
+  expect_true(stri_detect_fixed(
+    insertErrorTab(errorLst, "test_file"),
+    pattern = "Error: The animal listed as a dam and also listed as a male is: d1."))
 })

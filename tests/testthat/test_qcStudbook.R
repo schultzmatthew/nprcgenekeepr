@@ -68,7 +68,7 @@ test_that("qcStudbook corrects column names", {
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "s1"]), "M")
 })
 test_that("qcStudbook reports correction of column names with errors == TRUE", {
-  errorLst <- qcStudbook(pedOne, minParentAge = NULL, errors = TRUE)
+  errorLst <- qcStudbook(pedOne, minParentAge = NULL, changes = TRUE, errors = TRUE)
   expect_equal(errorLst$changedCols$spaceRemoved, c("si re to sire"))
   expect_equal(errorLst$changedCols$underScoreRemoved,
                c("ego_id, dam_id, and birth_date to egoid, damid, and birthdate"))

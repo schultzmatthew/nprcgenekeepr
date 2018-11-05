@@ -21,5 +21,18 @@ test_that("summary.qcStudbook provides expected classes of output", {
 test_that("summary.qcStudbook provides expected output", {
   expect_equal(length(summary(qcStudbook(pedOne, errors = TRUE))$txt), 1)
   expect_equal(nrow(summary(qcStudbook(pedOne, errors = TRUE))$sp), 3)
-  expect_equal(stri_count_regex(summary(qcStudbook(pedOne, errors = TRUE))$txt, "\\n"), 7)
+  expect_equal(stri_count_regex(
+    summary(qcStudbook(pedOne, changes = TRUE, errors = TRUE))$txt, "\\n"), 9)
+  pedTwo <- pedOne
+  pedTwo$sex <- NULL
+  expect_true(stri_detect_regex(
+    summary(qcStudbook(pedTwo, changes = TRUE, errors = TRUE))$txt,
+    pattern = "sex.\\n The required columns are: id, sire, dam, sex, and birth"))
+  pedTwo <- pedOne
+  pedTwo$birth_date <- "badDate"
+  expect_true(stri_detect_regex(
+    summary(qcStudbook(pedTwo, changes = TRUE, errors = TRUE))$txt,
+    pattern = stri_c("There are 8 rows having an invalid date. ",
+                     "The first five records having bad dates are ",
+                     "on rows 1, 2, 3, 4, and 5.")))
 })
