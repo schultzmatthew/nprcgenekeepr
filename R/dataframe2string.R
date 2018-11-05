@@ -1,33 +1,33 @@
 #' dataframe2string converts a data.frame object to a character vector
 #'
+#' Adapted from print.data.frame
 #' @param object dataframe
 #' @param ... optional arguments to print or plot methods.
-#' @param digits the minimum number of significant digits to be used: see print.default.
-#' @param quote	logical, indicating whether or not entries should be printed with surrounding quotes.
-
-#' @param right	logical, indicating whether or not strings should be right-aligned. The default is right-alignment.
-
-#' @param row.names	logical (or character vector), indicating whether (or what) row names should be printed.
+#' @param digits the minimum number of significant digits to be used:
+#' see print.default.
+#' @param row.names	logical (or character vector), indicating whether (or what)
+#'  row names should be printed.
 #' @importFrom stringi stri_length
 #' @importFrom stringi stri_pad_both
 #' @export
-dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
-                              right = TRUE, row.names = TRUE) {
+dataframe2string <- function (object, ..., digits = NULL, row.names = TRUE) {
   nRows = length(row.names(object))
-  if (length(object) == 0) {
+  if (length(object) == 0L) {
     return(paste(
-      sprintf(ngettext(nRows, "data frame with 0 columns and %d row", "data frame with 0 columns and %d rows")
+      sprintf(ngettext(nRows, "data frame with 0 columns and %d row",
+                       "data frame with 0 columns and %d rows")
               , nRows)
       , "\\n", sep = "")
     )
-  } else if (nRows == 0) {
+  } else if (nRows == 0L) {
     return(gettext("<0 rows> (or 0-length row.names)\\n"))
   } else {
     # get text-formatted version of the data.frame
-    m <- as.matrix(format.data.frame(object, digits = digits, na.encode = TRUE))
+    m <- as.matrix(format.data.frame(object, digits = digits,
+                                     na.encode = TRUE))
     # define row-names (if required)
     if (isTRUE(row.names)) {
-      rowNames <- dimnames(object)[[1]]
+      rowNames <- dimnames(object)[[1L]]
       if(is.null(rowNames)) {
         # no row header available -> use row numbers
         rowNames <- as.character(1:NROW(m))
@@ -41,10 +41,13 @@ dataframe2string <- function (object, ..., digits = NULL, quote = FALSE,
     if (isTRUE(row.names))
       m <- cbind(rowNames, m)
     # max-length per-column
-    maxLen <- apply(apply(m, c(1,2), stri_length), 2, max, na.rm = TRUE)
+    maxLen <- apply(apply(m, c(1,2), stri_length), 2, max,
+                    na.rm = TRUE)
 
     # add right padding
-    ##  t is needed because "If each call to FUN returns a vector of length n, then apply returns an array of dimension c(n, dim(X)[MARGIN])"
+    ##  t is needed because "If each call to FUN returns a vector
+    ##  of length n, then apply returns an array of dimension
+    ##  c(n, dim(X)[MARGIN])"
     m <- t(apply(m, 1, stringi::stri_pad_both, width = maxLen))
     # merge columns
     m <- apply(m, 1, paste, collapse = "")

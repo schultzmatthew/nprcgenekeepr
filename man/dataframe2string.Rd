@@ -4,22 +4,19 @@
 \alias{dataframe2string}
 \title{dataframe2string converts a data.frame object to a character vector}
 \usage{
-dataframe2string(object, ..., digits = NULL, quote = FALSE,
-  right = TRUE, row.names = TRUE)
+dataframe2string(object, ..., digits = NULL, row.names = TRUE)
 }
 \arguments{
 \item{object}{dataframe}
 
 \item{...}{optional arguments to print or plot methods.}
 
-\item{digits}{the minimum number of significant digits to be used: see print.default.}
+\item{digits}{the minimum number of significant digits to be used:
+see print.default.}
 
-\item{quote}{logical, indicating whether or not entries should be printed with surrounding quotes.}
-
-\item{right}{logical, indicating whether or not strings should be right-aligned. The default is right-alignment.}
-
-\item{row.names}{logical (or character vector), indicating whether (or what) row names should be printed.}
+\item{row.names}{logical (or character vector), indicating whether (or what)
+row names should be printed.}
 }
 \description{
-dataframe2string converts a data.frame object to a character vector
+Adapted from print.data.frame
 }
