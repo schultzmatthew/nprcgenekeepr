@@ -34,5 +34,4 @@ test_that("dataframe2string forms single character vector from dataframe", {
   expect_true(stri_detect_regex(dataframe2string(
     data.frame(text$sp, row.names = NULL), row.names = FALSE,
     digits = 2), "Age\\nd2"))
-
 })
