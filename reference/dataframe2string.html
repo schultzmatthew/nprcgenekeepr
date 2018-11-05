@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="dataframe2string converts a data.frame object to a character vector — dataframe2string" />
 
-<meta property="og:description" content="dataframe2string converts a data.frame object to a character vector" />
+<meta property="og:description" content="Adapted from print.data.frame" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,12 +119,11 @@
 
     <div class="ref-description">
     
-    <p>dataframe2string converts a data.frame object to a character vector</p>
+    <p>Adapted from print.data.frame</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dataframe2string</span>(<span class='no'>object</span>, <span class='no'>...</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quote</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>right</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>dataframe2string</span>(<span class='no'>object</span>, <span class='no'>...</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,19 +138,13 @@
     </tr>
     <tr>
       <th>digits</th>
-      <td><p>the minimum number of significant digits to be used: see print.default.</p></td>
-    </tr>
-    <tr>
-      <th>quote</th>
-      <td><p>logical, indicating whether or not entries should be printed with surrounding quotes.</p></td>
-    </tr>
-    <tr>
-      <th>right</th>
-      <td><p>logical, indicating whether or not strings should be right-aligned. The default is right-alignment.</p></td>
+      <td><p>the minimum number of significant digits to be used:
+see print.default.</p></td>
     </tr>
     <tr>
       <th>row.names</th>
-      <td><p>logical (or character vector), indicating whether (or what) row names should be printed.</p></td>
+      <td><p>logical (or character vector), indicating whether (or what)
+row names should be printed.</p></td>
     </tr>
     </table>
     
