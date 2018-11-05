@@ -177,9 +177,11 @@ shinyServer(function(input, output, session) {
                    name = "nprcmanager")
 
         errorLst <- tryCatch(
-          qcStudbook(breederPed, minParentAge, errors = TRUE),
+          qcStudbook(breederPed, minParentAge, changes = FALSE, errors = TRUE),
           warning = function(cond) {return(NULL)},
           error = function(cond) {return(NULL)})
+        removeTab(inputId = "tab_pages", target = "Changed Columns")
+        removeTab(inputId = "tab_pages", target = "Error List")
         if (checkErrorLst(errorLst)) {
           insertTab(inputId = "tab_pages",
                     getErrorTab(errorLst, pedigreeFile$name), target = "Input",
