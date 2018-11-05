@@ -31,8 +31,8 @@ correctParentSex <- function(id, sire, dam, sex, errors = FALSE) {
     }
   }
   if (errors) {
-    femaleSires <- id[((id %in% sires) & (sex != "M"))]
-    maleDams <- id[((id %in% dams) & (sex != "F"))]
+    femaleSires <- id[(id %in% sires) & (!sex %in% c("H", "U", "M"))]
+    maleDams <- id[(id %in% dams) & (!sex %in% c("H", "U", "F"))]
     if (length(femaleSires) > 0 & length(maleDams) > 0) {
       list(sireAndDam = err, femaleSires = femaleSires, maleDams = maleDams)
     } else if (length(femaleSires) > 0) {
