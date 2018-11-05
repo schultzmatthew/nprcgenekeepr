@@ -38,4 +38,3 @@ test_that("convertDate with error flag returns NULL with good dates", {
 test_that("convertDate handles NA and empty character string values correctly", {
   expect_null(convertDate(ped4, errors = TRUE))
 })
-
