@@ -25,7 +25,7 @@ rbindFill <- function(df1, df2) {
         if (class(col) == "Date") {
           df2[, add.headers[i]] <- as.Date(NA, origin = as.Date("1970-01-01"))
         } else{
-          df2[, add.headers[i]] <- NaN
+          df2[, add.headers[i]] <- NA
         }
       }
       else if (col.type %in% c("character", "logical")) {
