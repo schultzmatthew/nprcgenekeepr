@@ -3,14 +3,15 @@ Provided in reverse chronological order
 
 ## 20181022 
 1.  Allow the use of Ego for ID. Done 20181022
-2.  Remove the display of the change columns.
-3.  Remove old error tabs each time a file browsing occurs.
+2.  Remove the display of the change columns. Done 20181103
+3.  Remove old error tabs each time a file browsing occurs. Done 20181103
 4.  List columns that should be there id, sire, dam, sex, birth when columns 
-    are listed as missing.
+    are listed as missing. Done 20181103
 5.  Improve the reporting of multiple errors of the same type. 
     Perhaps "The first 5 records have the following errors: <then list the errors
     followed by the next sentence>. In total there were <number of records> records
     with the same type of error. Please check and correct the pedigree file."
+    Changes are improved over the suggestions above, but similar. Done 20181103
 6.  Correct "Genetic Uniqueness Score" to "Genome Uniqueness Score". 
     Done 20181022
 7.  Item 2 from last meeting list: Give user the option to save a skeleton 
