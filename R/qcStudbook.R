@@ -151,6 +151,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
   cols <- newColumns$newColNames
   errorLst <- newColumns$errorLst
+  if (changes == FALSE)
+    errorLst$changedCols <- getEmptyErrorLst()$changedCols # remove changed columns
   missingColumns <- checkRequiredCols(cols, errors)
   if (errors & !is.null(missingColumns)) {
     errorLst$missingColumns <- missingColumns
@@ -232,7 +234,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   # setting age:
   # uses current date as the end point if no exit date is available
   if (("birth" %in% cols) && !("age" %in% cols)) {
-    sb["age"] <- calcAge(sb$birth, sb$exit)
+    if (all(is.Date(sb$birth)))
+      sb["age"] <- calcAge(sb$birth, sb$exit)
   }
 
   # Adding generation numbers
