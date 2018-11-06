@@ -15,5 +15,6 @@ addBackSecondParents(uPed, ped)
 Uses the \code{ped} dataframe, which has full complement of parents and the
 \code{uPed} dataframe, which has all uninformative parents removed to
 add back single parents to the \code{uPed} dataframe where one parent is
-known.
+known. The parents are added back to the pedigree as an ID record with
+NA for both sire and dam of the added back ID.
 }

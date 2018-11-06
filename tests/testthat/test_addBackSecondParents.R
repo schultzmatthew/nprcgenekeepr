@@ -37,7 +37,7 @@ pedThree <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
 uPedThree <- uPedThree[!is.na(uPedThree$id), ]
 test_that("addBackSecondParents adds parents correctly", {
   newPed <- addBackSecondParents(uPedOne, pedOne)
-  expect_equal(nrow(uPedOne), nrow(newPed)) # "s1" added back
+  expect_equal(nrow(uPedOne), nrow(newPed)) # no change
   newPed <- addBackSecondParents(uPedTwo, pedTwo)
   expect_equal(nrow(uPedTwo) + 1, nrow(newPed)) # "s1" added back
   newPed <- addBackSecondParents(uPedThree, pedThree)
