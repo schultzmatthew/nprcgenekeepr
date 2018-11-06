@@ -13,6 +13,8 @@ addBackSecondParents <- function(uPed, ped) {
   # Adding back second parents where one is known
   idsWithSingleParents <- getIdsWithSingleParents(uPed)
   addBack <- c()
+  ## Within this loop, the second parent is added to uPed as the sire
+  ## or dam as is found in ped.
   for (id in idsWithSingleParents) {
     if (hasBothParents(id, ped)) {
       if (is.na(uPed$sire[uPed$id == id])) {
