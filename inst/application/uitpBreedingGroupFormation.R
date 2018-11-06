@@ -17,18 +17,23 @@ uitpBreedingGroupFormation <-
                "background-color: #EDEDED;",
                "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
              ),
-             includeHTML("../extdata/group_formation.html"),
-      checkboxInput("lowVal",
-                    label = "Include low-value animals in group formation",
-                    value = FALSE),
-      checkboxInput("ffRel", label = "Ignore relatedness between females",
-                    value = TRUE)
-    ),
+             includeHTML("../extdata/group_formation.html")    ),
 
     #Main Panel
     column(9,
-      #style = "margin-left: 425px; padding: 10px; width: 550px;",
       div(
+        style = "display:inline-block;width:550px;padding:10px",
+        div(
+          style = "display:inline-block;width:250px;padding:10px",
+          helpText("Enter IDs of seed animals for the new group(s):"),
+          tags$textarea(id = "curGrp", rows = 10, cols = 40, "")
+        ),
+        div(
+          style = "display:inline-block;width:250px;padding:10px",
+          helpText("Enter IDs of candidates to be added to new group(s):"),
+          tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
+        ),
+        div(
         style = "display:inline-block;width:250px;padding:10px",
         numericInput(
           "numGp",
@@ -52,7 +57,6 @@ uitpBreedingGroupFormation <-
           selected = 1
         )
       ),
-
       div(
         style = "display:inline-block;width:250px;padding:10px",
         numericInput(
@@ -74,19 +78,12 @@ uitpBreedingGroupFormation <-
           max = 1000000
         )
       ),
+      checkboxInput("lowVal",
+                    label = "Include low-value animals in group formation",
+                    value = FALSE),
+      checkboxInput("ffRel", label = "Ignore relatedness between females",
+                    value = TRUE),
 
-      div(
-        style = "display:inline-block;width:550px;padding:10px",
-        div(
-          style = "display:inline-block;width:250px;padding:10px",
-          helpText("Enter IDs of candidate group members:"),
-          tags$textarea(id = "grpIds", rows = 5, cols = 20, "")
-        ),
-        div(
-          style = "display:inline-block;width:250px;padding:10px",
-          helpText("Enter IDs of animals currently in the group:"),
-          tags$textarea(id = "curGrp", rows = 5, cols = 20, "")
-        ),
         actionButton("grpSim", label = "Make Groups"),
         checkboxInput("withKin", label = "With Kinship Coefficents",
                       value = FALSE),

@@ -128,6 +128,41 @@ $(document).ready(function () {
 <h1>Meeting Notes and Things To Do</h1>
 <p>Provided in reverse chronological order</p>
 <div id="section" class="section level2">
+<h2>20181105</h2>
+<ol style="list-style-type: decimal">
+<li>Do not report as an error the wrong sex for animals added into the pedigree and appear as both a sire and dam without an ego record. These need to be reported as an error because they are both a sire and a dam.</li>
+<li><p>Make a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and green. Check on the University of Oregon website for a color palette. Have ONPRC in the lighter color similar to the SNPRC color scheme. Have the macaque and oval in the same blue color. Clean up the resolution of the Oregon logo as it is currently fuzzy. Some research found the following link <a href="https://www.ohsu.edu/xd/digital-identity/global-elements-design/color-palette.cfm" title="Palette">OHSU Color Palette</a>.</p>
+<ul>
+<li>Alert #C34D36</li>
+<li>Body text #555555</li>
+<li>Button text #805B16</li>
+<li>Button pre-fade #FFD769</li>
+<li>Button post-fade #FFC529</li>
+<li>“Currently accepting patients” marker #67B445</li>
+<li>Desktop navigation hover (darker blue) #093561</li>
+<li>Desktop primary navigation #0E4D8F</li>
+<li>Footer background #0E4D8F</li>
+<li>Footer link text #B9B5B5</li>
+<li>Form error handling #C34D36</li>
+<li>Glossary Definition background #FDFDE2</li>
+<li>Glossary Definition border #F5F26B</li>
+<li>Link #0072FF</li>
+<li>Link hover state #0E4D8F</li>
+<li>Navigation active (current page) link #A4CAFA</li>
+<li>Navigation background darker #E5E4E4</li>
+<li>Navigation background lighter #F3F3F3</li>
+<li>Promo background #F3F3F3</li>
+<li>Subsite name in header type #0E4D8F</li>
+</ul></li>
+<li>Check the outliers found in the first box and whisker plot when the file “Example_Pedigree.csv” is analyzed.</li>
+<li>Add the ability to select a sex ratio for group formation. Ratios are to be female to male starting with 1:1 and progressing by 0.5 on the female side, holding the male side at 1. Go up to a ratio of 10:1. The progression will look something like 1:1, 1.5:1, 2:1, 2.5:1 … 10:1.</li>
+<li>Add the ability to use harems 1 male and any number of females. One way to do this would be to put any number of males in with the females in the list of candidates and then specify that single male harems are to be formed with a specified number of groups formed. This will allow the select of the best males to be selected from the excess male candidates.</li>
+<li>Beth is to contact Mark at least a week prior to the next meeting to set up a time to diagnose why her installation of the software is not working.</li>
+<li>We reaffirmed the plan for Mark to finish the tutorials (one for an interactive use of the software and one for using the Shiny application) and to get a draft of a technical paper written by the end of the year.</li>
+<li><p>The next meeting is scheduled for 11-26-2018.</p></li>
+</ol>
+</div>
+<div id="section-1" class="section level2">
 <h2>20181022</h2>
 <ol style="list-style-type: decimal">
 <li>Allow the use of Ego for ID. Done 20181022</li>
@@ -151,7 +186,7 @@ Below are some relevant articles found from a simple web search with the Google 
 <li><p>The next meeting is scheduled for November 5, 2018 at 4 PM Pacific Time.</p></li>
 </ol>
 </div>
-<div id="section-1" class="section level2">
+<div id="section-2" class="section level2">
 <h2>20180917</h2>
 <ol style="list-style-type: decimal">
 <li>Change Pedigree browser button label to say “Trim pedigree based on focal animals”. Done 20180917</li>
@@ -168,7 +203,7 @@ Below are some relevant articles found from a simple web search with the Google 
 </ol></li>
 </ol>
 </div>
-<div id="section-2" class="section level2">
+<div id="section-3" class="section level2">
 <h2>20180820</h2>
 <p>Meeting was canceled.</p>
 <p>Topics I wanted to bring up.</p>
@@ -324,37 +359,37 @@ Below are some relevant articles found from a simple web search with the Google 
 <div id="miscellaneous-accomplishments" class="section level2">
 <h2>Miscellaneous Accomplishments</h2>
 <p>These should be stored elsewhere</p>
-<div id="section-3" class="section level4">
+<div id="section-4" class="section level4">
 <h4>20180429</h4>
 <p>Test coverage is 86.32%.</p>
 </div>
-<div id="section-4" class="section level4">
+<div id="section-5" class="section level4">
 <h4>20171004</h4>
 <p>Unit test coverage is 84.79%.</p>
 </div>
-<div id="section-5" class="section level4">
+<div id="section-6" class="section level4">
 <h4>20170921</h4>
 <p>Unit test coverage is about 15%.</p>
 </div>
-<div id="section-6" class="section level4">
+<div id="section-7" class="section level4">
 <h4>20170919</h4>
 <p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
 </div>
-<div id="section-7" class="section level4">
+<div id="section-8" class="section level4">
 <h4>20170917</h4>
 <p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amanda Vinson’s paper indicated that ONPRC typically used.</p>
 <p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the check box at the bottom of the side panel on the two attached images. When the Debug on check box is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
 <p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
 </div>
-<div id="section-8" class="section level4">
+<div id="section-9" class="section level4">
 <h4>20170916</h4>
 <p>Can now assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The pedigree submitted via the UI can optionally contain genetic information.</p>
 </div>
-<div id="section-9" class="section level4">
+<div id="section-10" class="section level4">
 <h4>20170915</h4>
 <p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
 </div>
-<div id="section-10" class="section level4">
+<div id="section-11" class="section level4">
 <h4>20170911</h4>
 <p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
 </div>

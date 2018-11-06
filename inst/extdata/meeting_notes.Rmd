@@ -1,6 +1,60 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20181105
+1.  Do not report as an error the wrong sex for animals added into the pedigree
+    and appear as both a sire and dam without an ego record. 
+    These need to be reported as an error because they are both a sire and a
+    dam.
+2.  Make a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and
+    green. Check on the University of Oregon website for a color palette. 
+    Have ONPRC in the lighter color similar to the SNPRC color scheme. 
+    Have the macaque and oval in the same blue color. 
+    Clean up the resolution of the Oregon logo as it is currently fuzzy.
+    Some research found the following link [OHSU Color Palette][ohsupalette].
+    
+    [ohsupalette]: https://www.ohsu.edu/xd/digital-identity/global-elements-design/color-palette.cfm "Palette"
+    
+    -  Alert #C34D36 
+    -  Body text #555555 
+    -  Button text #805B16 
+    -  Button pre-fade #FFD769 
+    -  Button post-fade #FFC529 
+    -  "Currently accepting patients" marker #67B445 
+    -  Desktop navigation hover (darker blue) #093561 
+    -  Desktop primary navigation #0E4D8F 
+    -  Footer background #0E4D8F 
+    -  Footer link text #B9B5B5 
+    -  Form error handling #C34D36 
+    -  Glossary Definition background #FDFDE2 
+    -  Glossary Definition border #F5F26B 
+    -  Link #0072FF 
+    -  Link hover state #0E4D8F 
+    -  Navigation active (current page) link #A4CAFA 
+    -  Navigation background darker #E5E4E4 
+    -  Navigation background lighter #F3F3F3 
+    -  Promo background #F3F3F3 
+    -  Subsite name in header type #0E4D8F
+
+3.  Check the outliers found in the first box and whisker plot when the file
+    "Example_Pedigree.csv" is analyzed.
+4.  Add the ability to select a sex ratio for group formation. 
+    Ratios are to be female to male starting with 1:1 and progressing by 0.5
+    on the female side, holding the male side at 1. Go up to a ratio of 10:1.
+    The progression will look something like 1:1, 1.5:1, 2:1, 2.5:1 ... 10:1.
+5.  Add the ability to use harems 1 male and any number of females. One way 
+    to do this would be to put any number of males in with the females in 
+    the list of candidates and then specify that single male harems are to 
+    be formed with a specified number of groups formed. This will allow the
+    select of the best males to be selected from the excess male candidates. 
+6.  Beth is to contact Mark at least a week prior to the next meeting to set 
+    up a time to diagnose why her installation of the software is not working.
+7.  We reaffirmed the plan for Mark to finish the tutorials (one for an
+    interactive use of the software and one for using the Shiny application)
+    and to get a draft of a technical paper written by the end of the year.
+8.  The next meeting is scheduled for 11-26-2018.
+
+
 ## 20181022 
 1.  Allow the use of Ego for ID. Done 20181022
 2.  Remove the display of the change columns. Done 20181103
