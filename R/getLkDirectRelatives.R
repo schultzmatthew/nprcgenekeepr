@@ -42,13 +42,14 @@ getLkDirectRelatives <- function(ids, unrelatedParents = FALSE) {
   unrelated <- unique(c(
     relativesDf$sire[!relativesDf$sire %in% relativesDf$id],
     relativesDf$dam[!relativesDf$dam %in% relativesDf$id]))
-  if (length(unrelated) > 0) {
-    tempDf <- pedSourceDf[pedSourceDf$id %in% unrelated, ]
-    tempDf$sire <- NA
-    tempDf$dam <- NA
-    relativesDf <- rbind(relativesDf,
-                         tempDf,
-                         stringsAsFactors = FALSE)
-  }
-  relativesDf[!duplicated(relativesDf$id), ]
+  addIdRecords(ids = unrelated, fullPed = pedSourceDf, partialPed = relativesDf)
+  # if (length(unrelated) > 0) {
+  #   tempDf <- pedSourceDf[pedSourceDf$id %in% unrelated, ]
+  #   tempDf$sire <- NA
+  #   tempDf$dam <- NA
+  #   relativesDf <- rbind(relativesDf,
+  #                        tempDf,
+  #                        stringsAsFactors = FALSE)
+  # }
+  # relativesDf[!duplicated(relativesDf$id), ]
 }

@@ -26,12 +26,13 @@ addBackSecondParents <- function(uPed, ped) {
       }
     }
   }
-  if (length(addBack) > 0) {
-    addBack <- ped[(ped$id %in% addBack), ]
-    addBack$sire <- NA
-    addBack$dam <- NA
-
-    uPed <- rbind(uPed, addBack)
-  }
-  return(uPed)
+  addIdRecords(ids = addBack, fullPed = ped, partialPed = uPed)
+  # if (length(addBack) > 0) {
+  #   addBack <- ped[(ped$id %in% addBack), ]
+  #   addBack$sire <- NA
+  #   addBack$dam <- NA
+  #
+  #   uPed <- rbind(uPed, addBack)
+  # }
+  # return(uPed)
 }
