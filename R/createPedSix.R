@@ -1,8 +1,10 @@
 #' createPedSix makes the pedSix data object
 #'
+#' @param savePed logical value if TRUE the pedigree is saved into the
+#' packages \code{data} directory
 #' @importFrom lubridate mdy
 #' @export
-createPedSix <- function() {
+createPedSix <- function(savePed = TRUE) {
   set.seed(10)
   someBirthDates <- ymd(paste0(sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000, "-",
                            sample(1:12, 8, replace = TRUE), "-",
@@ -30,7 +32,8 @@ createPedSix <- function() {
     pedSix$birth[pedSix$id %in% c("s1", "s2", "d1", "d2")] - dyears(20)
   names(pedSix) <- c("Ego Id", "Sire Id", "Dam", "Sex", "Birth Date",
                      "Departure", "Death")
-  save(pedSix, file = "data/pedSix.RData")
+  if (savePed)
+    save(pedSix, file = "data/pedSix.RData")
   pedSix
 }
 

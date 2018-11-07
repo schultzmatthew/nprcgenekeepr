@@ -4,7 +4,11 @@
 \alias{createPedSix}
 \title{createPedSix makes the pedSix data object}
 \usage{
-createPedSix()
+createPedSix(savePed = TRUE)
+}
+\arguments{
+\item{savePed}{logical value if TRUE the pedigree is saved into the
+packages \code{data} directory}
 }
 \description{
 createPedSix makes the pedSix data object

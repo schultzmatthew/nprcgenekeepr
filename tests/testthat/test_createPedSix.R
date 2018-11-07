@@ -1,6 +1,6 @@
 context("createPedSix")
 library(testthat)
-data("pedSix")
+pedSix <- createPedSix(savePed = FALSE)
 test_that("createPedSix makes the right pedigree", {
   expect_equal(nrow(pedSix), 8)
   expect_equal(ncol(pedSix), 7)
