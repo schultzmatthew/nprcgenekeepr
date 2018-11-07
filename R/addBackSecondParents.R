@@ -1,4 +1,4 @@
-#' Add back single parents
+#' addBackSecondParents Add back single parents trimmed pedigree
 #'
 #' Uses the \code{ped} dataframe, which has full complement of parents and the
 #' \code{uPed} dataframe, which has all uninformative parents removed to
@@ -11,11 +11,11 @@
 addBackSecondParents <- function(uPed, ped) {
 
   # Adding back second parents where one is known
-  idsWithSingleParents <- getIdsWithSingleParents(uPed)
+  idsWithOneParent <- getIdsWithOneParent(uPed)
   addBack <- c()
   ## Within this loop, the second parent is added to uPed as the sire
   ## or dam as is found in ped.
-  for (id in idsWithSingleParents) {
+  for (id in idsWithOneParent) {
     if (hasBothParents(id, ped)) {
       if (is.na(uPed$sire[uPed$id == id])) {
         addBack <- c(addBack, ped$sire[ped$id == id])

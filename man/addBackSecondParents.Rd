@@ -2,7 +2,7 @@
 % Please edit documentation in R/addBackSecondParents.R
 \name{addBackSecondParents}
 \alias{addBackSecondParents}
-\title{Add back single parents}
+\title{addBackSecondParents Add back single parents trimmed pedigree}
 \usage{
 addBackSecondParents(uPed, ped)
 }
