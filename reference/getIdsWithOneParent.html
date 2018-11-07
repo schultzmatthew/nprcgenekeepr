@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count first-order relatives. — countFirstOrder • nprcmanager</title>
+<title>getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam — getIdsWithOneParent • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +31,11 @@
 
 
 
-<meta property="og:title" content="Count first-order relatives. — countFirstOrder" />
+<meta property="og:title" content="getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam — getIdsWithOneParent" />
 
-<meta property="og:description" content="Part of Relations" />
+<meta property="og:description" content="getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,49 +115,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count first-order relatives.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/countFirstOrder.R'><code>R/countFirstOrder.R</code></a></small>
-    <div class="hidden name"><code>countFirstOrder.Rd</code></div>
+    <h1>getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getIdsWithOneParent.R'><code>R/getIdsWithOneParent.R</code></a></small>
+    <div class="hidden name"><code>getIdsWithOneParent.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Relations</p>
+    <p>getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>countFirstOrder</span>(<span class='no'>ped</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>getIdsWithOneParent</span>(<span class='no'>uPed</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ped</th>
-      <td><p>: `Pedigree`
-Standardized pedigree information in a table.</p></td>
-    </tr>
-    <tr>
-      <th>ids</th>
-      <td><p>character vector of IDs or NULL
-These are the IDs to which the analysis should be restricted. First-order
-relationships will only be tallied for the listed IDs and will only
-consider relationships within the subset. If NULL, the analysis will
-include all IDs in the pedigree.</p></td>
+      <th>uPed</th>
+      <td><p>a trimmed pedigree dataframe with uninformative founders removed.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe with column <code>id</code>, <code>parents</code>, <code>offspring</code>,
-<code>siblings</code>, and <code>total</code>. A table of first-order relationship
-counts, broken down to indicate the number of parents, offspring, and
-siblings that are part of the subset under consideration.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Tallies the number of first-order relatives for each member of the provided
-pedigree. If 'ids' is provided, the analysis is restricted to only the
-specified subset.</p>
+    <p>character vector of all single parents</p>
     
 
   </div>
@@ -164,8 +151,6 @@ specified subset.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.6</span>
       </span>
     </div>
 
@@ -238,7 +238,7 @@ genotypes.</p></td>
         <td>
           <p><code><a href="addBackSecondParents.html">addBackSecondParents()</a></code> </p>
         </td>
-        <td><p>Add back single parents</p></td>
+        <td><p>addBackSecondParents Add back single parents trimmed pedigree</p></td>
       </tr><tr>
         
         <td>
@@ -534,13 +534,19 @@ ancestors.</p></td>
         <td>
           <p><code><a href="addBackSecondParents.html">addBackSecondParents()</a></code> </p>
         </td>
-        <td><p>Add back single parents</p></td>
+        <td><p>addBackSecondParents Add back single parents trimmed pedigree</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="addGenotype.html">addGenotype()</a></code> </p>
         </td>
         <td><p>Add genotype data to pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addIdRecords.html">addIdRecords()</a></code> </p>
+        </td>
+        <td><p>addIdRecords Adds Ego records added having NAs for parent IDs</p></td>
       </tr><tr>
         
         <td>
@@ -858,6 +864,13 @@ threshold</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="getConfigFileName.html">getConfigFileName()</a></code> </p>
+        </td>
+        <td><p>getConfigFileName returns the configuration file name appropriate for
+the system.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getDatedFilename.html">getDatedFilename()</a></code> </p>
         </td>
         <td><p>Returns a character vector with an file name having the date prepended.</p></td>
@@ -891,6 +904,13 @@ threshold</p></td>
           <p><code><a href="getGVPopulation.html">getGVPopulation()</a></code> </p>
         </td>
         <td><p>Get the population of interest for the Genetic Value analysis.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getIdsWithOneParent.html">getIdsWithOneParent()</a></code> </p>
+        </td>
+        <td><p>getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam</p></td>
       </tr><tr>
         
         <td>
@@ -979,6 +999,12 @@ threshold</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="getRecordStatusIndex.html">getRecordStatusIndex()</a></code> </p>
+        </td>
+        <td><p>getRecordStatusIndex returns record numbers with selected <code>record_status</code>.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getRequiredCols.html">getRequiredCols()</a></code> </p>
         </td>
         <td><p>Get required column names for a studbook.</p></td>
@@ -1010,6 +1036,12 @@ element.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="hasBothParents.html">hasBothParents()</a></code> </p>
+        </td>
+        <td><p>hasBothParents checks to see if both parents are identified.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="headerDisplayNames.html">headerDisplayNames()</a></code> </p>
         </td>
         <td><p>Convert internal column names to display or header names.</p></td>
@@ -1026,6 +1058,13 @@ element.</p></td>
           <p><code><a href="insertErrorTab.html">insertErrorTab()</a></code> </p>
         </td>
         <td><p>insertErrorTab insert a list of errors found by <code>qcStudbook</code> in the pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="insertSeparators.html">insertSeparators()</a></code> </p>
+        </td>
+        <td><p>insertSeparators inserts the character "-" between year and month and
+between month and day portions of a date string in %Y%m%d format.</p></td>
       </tr><tr>
         
         <td>
@@ -1117,6 +1156,12 @@ element.</p></td>
           <p><code><a href="removeDuplicates.html">removeDuplicates()</a></code> </p>
         </td>
         <td><p>Remove duplicate records from pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeEarlyDates.html">removeEarlyDates()</a></code> </p>
+        </td>
+        <td><p>removeEarlyDates removes dates before a specified year</p></td>
       </tr><tr>
         
         <td>

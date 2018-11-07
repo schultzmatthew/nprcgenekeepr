@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count first-order relatives. — countFirstOrder • nprcmanager</title>
+<title>hasBothParents checks to see if both parents are identified. — hasBothParents • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Count first-order relatives. — countFirstOrder" />
+<meta property="og:title" content="hasBothParents checks to see if both parents are identified. — hasBothParents" />
 
-<meta property="og:description" content="Part of Relations" />
+<meta property="og:description" content="hasBothParents checks to see if both parents are identified." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,49 +112,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count first-order relatives.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/countFirstOrder.R'><code>R/countFirstOrder.R</code></a></small>
-    <div class="hidden name"><code>countFirstOrder.Rd</code></div>
+    <h1>hasBothParents checks to see if both parents are identified.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/hasBothParents.R'><code>R/hasBothParents.R</code></a></small>
+    <div class="hidden name"><code>hasBothParents.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Relations</p>
+    <p>hasBothParents checks to see if both parents are identified.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>countFirstOrder</span>(<span class='no'>ped</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>hasBothParents</span>(<span class='no'>id</span>, <span class='no'>ped</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ped</th>
-      <td><p>: `Pedigree`
-Standardized pedigree information in a table.</p></td>
+      <th>id</th>
+      <td><p>character vector of IDs to examine for parents</p></td>
     </tr>
     <tr>
-      <th>ids</th>
-      <td><p>character vector of IDs or NULL
-These are the IDs to which the analysis should be restricted. First-order
-relationships will only be tallied for the listed IDs and will only
-consider relationships within the subset. If NULL, the analysis will
-include all IDs in the pedigree.</p></td>
+      <th>ped</th>
+      <td><p>a pedigree</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe with column <code>id</code>, <code>parents</code>, <code>offspring</code>,
-<code>siblings</code>, and <code>total</code>. A table of first-order relationship
-counts, broken down to indicate the number of parents, offspring, and
-siblings that are part of the subset under consideration.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Tallies the number of first-order relatives for each member of the provided
-pedigree. If 'ids' is provided, the analysis is restricted to only the
-specified subset.</p>
+    <p>TRUE if ID has both sire and dam identified in <code>ped</code>.</p>
     
 
   </div>
@@ -164,8 +150,6 @@ specified subset.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

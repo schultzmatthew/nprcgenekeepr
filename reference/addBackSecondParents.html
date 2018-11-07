@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add back single parents — addBackSecondParents • nprcmanager</title>
+<title>addBackSecondParents Add back single parents trimmed pedigree — addBackSecondParents • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,12 +30,13 @@
 
 
 
-<meta property="og:title" content="Add back single parents — addBackSecondParents" />
+<meta property="og:title" content="addBackSecondParents Add back single parents trimmed pedigree — addBackSecondParents" />
 
 <meta property="og:description" content="Uses the ped dataframe, which has full complement of parents and the
 uPed dataframe, which has all uninformative parents removed to
 add back single parents to the uPed dataframe where one parent is
-known." />
+known. The parents are added back to the pedigree as an ID record with
+NA for both sire and dam of the added back ID." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,7 +65,7 @@ known." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.6</span>
       </span>
     </div>
 
@@ -115,7 +116,7 @@ known." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add back single parents</h1>
+    <h1>addBackSecondParents Add back single parents trimmed pedigree</h1>
     <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/addBackSecondParents.R'><code>R/addBackSecondParents.R</code></a></small>
     <div class="hidden name"><code>addBackSecondParents.Rd</code></div>
     </div>
@@ -125,7 +126,8 @@ known." />
     <p>Uses the <code>ped</code> dataframe, which has full complement of parents and the
 <code>uPed</code> dataframe, which has all uninformative parents removed to
 add back single parents to the <code>uPed</code> dataframe where one parent is
-known.</p>
+known. The parents are added back to the pedigree as an ID record with
+NA for both sire and dam of the added back ID.</p>
     
     </div>
 
