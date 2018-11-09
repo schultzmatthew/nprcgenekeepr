@@ -38,3 +38,9 @@ test_that("convertDate with error flag returns NULL with good dates", {
 test_that("convertDate handles NA and empty character string values correctly", {
   expect_null(convertDate(ped4, errors = TRUE))
 })
+test_that("convertDate ignores added records", {
+  ped5 <- cbind(ped4, record_status = c(rep("added", 10)),
+                stringsAsFactors = FALSE)
+  expect_equal(nrow(convertDate(ped5)), 10)
+  expect_true(all(convertDate(ped5)$record_status == "added"))
+})
