@@ -49,6 +49,12 @@ Provided in reverse chronological order
     select of the best males to be selected from the excess male candidates. 
 6.  Beth is to contact Mark at least a week prior to the next meeting to set 
     up a time to diagnose why her installation of the software is not working.
+    Rcpp package was not being replaced during installation and update of 
+    other packages. This prevented nprcmanager from being installed. Beth
+    manually removed the old version of the Rcpp package, installed a newer
+    version and then installed nprcmanager and rmsutilityr. Mark will do 
+    some research to see if others have reported similar problems.
+    Done 20181109.
 7.  We reaffirmed the plan for Mark to finish the tutorials (one for an
     interactive use of the software and one for using the Shiny application)
     and to get a draft of a technical paper written by the end of the year.
