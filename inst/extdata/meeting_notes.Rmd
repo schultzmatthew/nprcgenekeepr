@@ -54,11 +54,23 @@ Provided in reverse chronological order
     manually removed the old version of the Rcpp package, installed a newer
     version and then installed nprcmanager and rmsutilityr. Mark will do 
     some research to see if others have reported similar problems.
+    Working with Beth prompted the development of a function that reports
+    the version of the application on the input tab so users can easily 
+    find out which version they are using.
     Done 20181109.
-7.  We reaffirmed the plan for Mark to finish the tutorials (one for an
+7.  Until we work on LabKey connectivity again, we have decided to postpone 
+    Item 2 from two meetings ago: Give user the option to save a skeleton 
+    configuration file to their home directory if they do not have a 
+    configuration file.
+8.  We reaffirmed the plan for Mark to finish the tutorials (one for an
     interactive use of the software and one for using the Shiny application)
     and to get a draft of a technical paper written by the end of the year.
-8.  The next meeting is scheduled for 11-26-2018.
+9.  Not discussed during the meeting was the need to develop additional unit 
+    tests to cover all of the new functions created to handle the PEDSYS and
+    military formated dates (YYYYMMDD), which look like an integer. 
+    Most of those unit tests have been made, but additional ones are needed to
+    provide full or near full coverage.
+10.  The next meeting is scheduled for 11-26-2018.
 
 
 ## 20181022 
