@@ -4,7 +4,8 @@
 \alias{qcStudbook}
 \title{Quality Control for the Studbook or pedigree}
 \usage{
-qcStudbook(sb, minParentAge = 2, changes = FALSE, errors = FALSE)
+qcStudbook(sb, minParentAge = 2, reportChanges = FALSE,
+  reportErrors = FALSE)
 }
 \arguments{
 \item{sb}{A dataframe containing a table of pedigree and demographic
@@ -47,9 +48,9 @@ or shipped from the colony}
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.}
 
-\item{changes}{logical value that if \code{TRUE}}
+\item{reportChanges}{logical value that if \code{TRUE}}
 
-\item{errors}{logical value if \code{TRUE} will scan the entire file and
+\item{reportErrors}{logical value if \code{TRUE} will scan the entire file and
 report back changes made to input and errors in a
 list of list where each sublist is a type of change or error found.
 Changes will include column names, case of catagorical values (male,

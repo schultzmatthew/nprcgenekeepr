@@ -35,13 +35,13 @@ breederPed <- qcStudbook(breederPedCsv, minParentAge)
 
 ```
 
-If __qcStudbook__ reports and error, change the call by adding the __errors__
+If __qcStudbook__ reports and error, change the call by adding the __reportErrors__
 argument set to __TRUE__ and examine the returned object.
 
 ```{r examine-errors}
 badPedigreeFile <- "pedigree_files_with_errors/Pedigree_File_Example_CSV.csv"
 badPedCsv <- read.table(breederPedCsv, sep = "\t", header = TRUE, stringsAsFactors = FALSE)
-errorLst <- qcStudbook(badPedCsv, minParentAge, errors = TRUE)
+errorLst <- qcStudbook(badPedCsv, minParentAge, reportErrors = TRUE)
 str(errorLst)
 
 ```
@@ -100,7 +100,7 @@ _Example_Pedigree.csv_.
 pedigreefile <- pedigreeFile <- "Example_Pedigree.csv"
 examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
                                    stringsAsFactors = FALSE)
-errorLst <- qcStudbook(examplePedigree_raw, minParentAge = 0, errors = TRUE)
+errorLst <- qcStudbook(examplePedigree_raw, minParentAge = 0, reportErrors = TRUE)
 print(stri_c("Non-female dams: ", get_and_or_list(errorLst$maleDams), 
              ". These happen to be classified as hermaphrodites."))
 ```

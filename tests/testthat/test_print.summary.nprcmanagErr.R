@@ -17,7 +17,7 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
 test_that("print.summary.nprcmanagErr prints expected output", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
   expect_success(expect_output(summary(qcStudbook(
-    pedClean, minParentAge = NULL, errors = TRUE)), NA))
-  expect_failure(expect_output(print(summary(qcStudbook(pedOne, errors = TRUE))), NA),
+    pedClean, minParentAge = NULL, reportErrors = TRUE)), NA))
+  expect_failure(expect_output(print(summary(qcStudbook(pedOne, reportErrors = TRUE))), NA),
                  "produced output")
   })

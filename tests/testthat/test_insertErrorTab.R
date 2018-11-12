@@ -14,7 +14,7 @@ pedOne <- data.frame(
                           sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                             2000)),
   stringsAsFactors = FALSE, check.names = FALSE)
-errorLst <- qcStudbook(pedOne, errors = TRUE)
+errorLst <- qcStudbook(pedOne, reportErrors = TRUE)
 test_that("insertErrorTab forms a character vector", {
   expect_equal(class(insertErrorTab(errorLst, "test_file")), "character")
 })

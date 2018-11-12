@@ -39,12 +39,12 @@ test_that("checkParentAge returns unchanged dataframe if required column is miss
   expect_equal(ncol(ped), ncol(baboonPed[ , !names(baboonPed) %in% "id"]))
   expect_equal(ped, baboonPed[ , !names(baboonPed) %in% "id"])
 })
-test_that("checkParentAge returns NULL if required column is missing and errors == TRUE", {
-  ped <- checkParentAge(baboonPed[ , !names(baboonPed) %in% "id"], errors = TRUE)
+test_that("checkParentAge returns NULL if required column is missing and reportErrors == TRUE", {
+  ped <- checkParentAge(baboonPed[ , !names(baboonPed) %in% "id"], reportErrors = TRUE)
   expect_true(is.null(ped))
 })
-test_that("checkParentAge returns NULL if required dataframe has no rows and errors == TRUE", {
-  ped <- checkParentAge(baboonPed[0, ], errors = TRUE)
+test_that("checkParentAge returns NULL if required dataframe has no rows and reportErrors == TRUE", {
+  ped <- checkParentAge(baboonPed[0, ], reportErrors = TRUE)
   expect_true(is.null(ped))
 })
 

@@ -15,23 +15,23 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                                 2000)),
                      stringsAsFactors = FALSE, check.names = FALSE)
 test_that("summary.qcStudbook provides expected classes of output", {
-  expect_equal(class(summary(qcStudbook(pedOne, errors = TRUE))$txt), "character")
-  expect_equal(class(summary(qcStudbook(pedOne, errors = TRUE))$sp), "data.frame")
+  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$txt), "character")
+  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$sp), "data.frame")
 })
 test_that("summary.qcStudbook provides expected output", {
-  expect_equal(length(summary(qcStudbook(pedOne, errors = TRUE))$txt), 1)
-  expect_equal(nrow(summary(qcStudbook(pedOne, errors = TRUE))$sp), 3)
+  expect_equal(length(summary(qcStudbook(pedOne, reportErrors = TRUE))$txt), 1)
+  expect_equal(nrow(summary(qcStudbook(pedOne, reportErrors = TRUE))$sp), 3)
   expect_equal(stri_count_regex(
-    summary(qcStudbook(pedOne, changes = TRUE, errors = TRUE))$txt, "\\n"), 9)
+    summary(qcStudbook(pedOne, reportChanges = TRUE, reportErrors = TRUE))$txt, "\\n"), 9)
   pedTwo <- pedOne
   pedTwo$sex <- NULL
   expect_true(stri_detect_regex(
-    summary(qcStudbook(pedTwo, changes = TRUE, errors = TRUE))$txt,
+    summary(qcStudbook(pedTwo, reportChanges = TRUE, reportErrors = TRUE))$txt,
     pattern = "sex.\\n The required columns are: id, sire, dam, sex, and birth"))
   pedTwo <- pedOne
   pedTwo$birth_date <- "badDate"
   expect_true(stri_detect_regex(
-    summary(qcStudbook(pedTwo, changes = TRUE, errors = TRUE))$txt,
+    summary(qcStudbook(pedTwo, reportChanges = TRUE, reportErrors = TRUE))$txt,
     pattern = stri_c("There are 8 rows having an invalid date. ",
                      "The first five records having bad dates are ",
                      "on rows 1, 2, 3, 4, and 5.")))

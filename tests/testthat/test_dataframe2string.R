@@ -14,7 +14,7 @@ pedOne <- data.frame(
                           sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                             2000)),
   stringsAsFactors = FALSE, check.names = FALSE)
-errorLst <- qcStudbook(pedOne, errors = TRUE)
+errorLst <- qcStudbook(pedOne, reportErrors = TRUE)
 text <- summary(errorLst)
 lines <- dataframe2string(text$sp, row.names = FALSE, digits = 2)
 test_that("dataframe2string forms single character vector from dataframe", {

@@ -37,13 +37,16 @@ Provided in reverse chronological order
     -  Subsite name in header type #0E4D8F
 
 3.  Check the outliers found in the first box and whisker plot when the file
-    "Example_Pedigree.csv" is analyzed.
+    "Example_Pedigree.csv" is analyzed. The outliers are exactly as described:
+    Data beyond the end of the whiskers are called "outlying" points and are 
+    plotted individually. The jittered points are overlayed on top of the 
+    boxplot and its outliers. Done 20181112
 4.  Add the ability to select a sex ratio for group formation. 
     Ratios are to be female to male starting with 1:1 and progressing by 0.5
     on the female side, holding the male side at 1. Go up to a ratio of 10:1.
     The progression will look something like 1:1, 1.5:1, 2:1, 2.5:1 ... 10:1.
-5.  Add the ability to use harems 1 male and any number of females. One way 
-    to do this would be to put any number of males in with the females in 
+5.  Add the ability to use harems with 1 male and any number of females. One 
+    way to do this would be to put any number of males in with the females in 
     the list of candidates and then specify that single male harems are to 
     be formed with a specified number of groups formed. This will allow the
     select of the best males to be selected from the excess male candidates. 
@@ -163,12 +166,12 @@ Topics I wanted to bring up.
 ### Error Handling
 1. Develop a full set of error messages appropriate for all types of input files.
     a. Added improved error detection and reporting for missing required columns - Done 2018-07-17
-    b. Added the ability to call qcStudbook interactively with a flag (__errors__) set to TRUE that 
+    b. Added the ability to call qcStudbook interactively with a flag (__reportErrors__) set to TRUE that 
     causes qcStudbook to report back a list with all errors detected within the input file.
     Not all errors can be detected in a single pass because some errors preclude checking for others.
     For example, if the birth date column has an invalid format, the parental age cannot be checked.
-    If no errors are found with __errors__ set to TRUE and NULL value is returned.
-    __errors__ defaults to __FALSE__.
+    If no errors are found with __reportErrors__ set to TRUE and NULL value is returned.
+    __reportErrors__ defaults to __FALSE__.
     c. This emphasizes the need for a good set of corrupt input files for testing and unit test
     development.
 2. Amanda and Beth will provide me with some files with errors.

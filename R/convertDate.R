@@ -6,7 +6,7 @@
 #' death, departure, or exit dates. The fields are optional, but will be used
 #' if present.(optional fields: birth, death, departure, and exit).
 #' @param time.origin date object used by \code{as.Date} to set \code{origin}.
-#' @param errors logical value if TRUE will scan the entire file and
+#' @param reportErrors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
 #' @return A dataframe with an updated table with date columns converted from
@@ -16,7 +16,7 @@
 #' @importFrom rmsutilityr is_valid_date_str
 #' @importFrom stringi stri_trim_both
 #' @export
-convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE) {
+convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors = FALSE) {
   ## Ignore records added because of unknown parents
   if (any("record_status" %in% names(ped))) {
     addedPed <- ped[ped$record_status == "added", ]
@@ -57,7 +57,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
       originalDates <- ped[[header]]
       originalDates[originalNAs] <- "good"
       originalDates[!originalNAs] <- goodAndBadDates
-      if (errors) {
+      if (reportErrors) {
         invalid_date_rows <- c(invalid_date_rows,
                                seq_along(originalDates)[originalDates == "bad"])
         next
@@ -70,7 +70,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), errors = FALSE
     ped[!originalNAs, header] <- dates
     ped[[header]] <- as.Date(as.integer(ped[[header]]), origin = time.origin)
   }
-  if (errors) {
+  if (reportErrors) {
     if (!is.null(invalid_date_rows))
       invalid_date_rows <- as.character(sort(invalid_date_rows))
     return(invalid_date_rows)

@@ -4,7 +4,7 @@
 \alias{correctParentSex}
 \title{Sets sex for animals listed as either a sire or dam.}
 \usage{
-correctParentSex(id, sire, dam, sex, errors = FALSE)
+correctParentSex(id, sire, dam, sex, reportErrors = FALSE)
 }
 \arguments{
 \item{id}{character vector with unique identifier for an individual}
@@ -18,7 +18,7 @@ individual's mother (\code{NA} if unknown).}
 \item{sex}{factor with levels: "M", "F", "U". Sex specifier for an
 individual.}
 
-\item{errors}{logical value if TRUE will scan the entire file and
+\item{reportErrors}{logical value if TRUE will scan the entire file and
 make a list of all errors found. The errors will be returned in a
 list of list where each sublist is a type of error found.}
 }

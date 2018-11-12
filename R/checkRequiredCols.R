@@ -2,19 +2,19 @@
 #' required column names are present.
 #'
 #' @return NULL is returned if all required columns are present. See description
-#' of \code{errors} for return values when required columns are missing.
+#' of \code{reportErrors} for return values when required columns are missing.
 #' @param cols character vector of column names
-#' @param errors logical value when \code{TRUE} and missing columns are found
+#' @param reportErrors logical value when \code{TRUE} and missing columns are found
 #' the \code{errorLst} object is updated with the names of the missing
 #' columns and returned and when \code{FALSE} and missing columns are found
 #' the program is stopped.
 #' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
-checkRequiredCols <- function(cols, errors) {
+checkRequiredCols <- function(cols, reportErrors) {
   requiredCols <- getRequiredCols()
   # Checking for the required fields (id, sire, dam, sex)
   if (!all(str_detect_fixed_all(cols, requiredCols))) {
-    if (errors) {
+    if (reportErrors) {
       missingColumns <-
         requiredCols[!str_detect_fixed_all(cols, requiredCols,
                                            ignore_na = TRUE)]

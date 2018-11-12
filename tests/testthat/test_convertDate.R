@@ -24,7 +24,7 @@ test_that("convertDate identifies bad dates", {
   expect_error(convertDate(ped1))
 })
 test_that("convertDate with error flag returns error list", {
-  expect_equal(convertDate(ped1, errors = TRUE),
+  expect_equal(convertDate(ped1, reportErrors = TRUE),
                c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
 })
 test_that("convertDate likes good dates", {
@@ -32,11 +32,11 @@ test_that("convertDate likes good dates", {
   expect_true(all(is.Date(convertDate(ped3)$birth)))
 })
 test_that("convertDate with error flag returns NULL with good dates", {
-  expect_true(all(is.null(convertDate(ped2, errors = TRUE))))
-  expect_true(all(is.null(convertDate(ped3, errors = TRUE))))
+  expect_true(all(is.null(convertDate(ped2, reportErrors = TRUE))))
+  expect_true(all(is.null(convertDate(ped3, reportErrors = TRUE))))
 })
 test_that("convertDate handles NA and empty character string values correctly", {
-  expect_null(convertDate(ped4, errors = TRUE))
+  expect_null(convertDate(ped4, reportErrors = TRUE))
 })
 test_that("convertDate ignores added records", {
   ped5 <- cbind(ped4, record_status = c(rep("added", 10)),

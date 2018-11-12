@@ -41,8 +41,8 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
-#' @param changes logical value that if \code{TRUE}
-#' @param errors logical value if \code{TRUE} will scan the entire file and
+#' @param reportChanges logical value that if \code{TRUE}
+#' @param reportErrors logical value if \code{TRUE} will scan the entire file and
 #' report back changes made to input and errors in a
 #' list of list where each sublist is a type of change or error found.
 #' Changes will include column names, case of catagorical values (male,
@@ -146,35 +146,33 @@
 #' @importFrom utils write.csv
 #' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
-qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
-                       errors = FALSE) {
+qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
+                       reportErrors = FALSE) {
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
   cols <- newColumns$newColNames
   errorLst <- newColumns$errorLst
-  if (changes == FALSE)
+  if (reportChanges == FALSE)
     errorLst$changedCols <- getEmptyErrorLst()$changedCols # remove changed columns
-  missingColumns <- checkRequiredCols(cols, errors)
-  if (errors & !is.null(missingColumns)) {
+  missingColumns <- checkRequiredCols(cols, reportErrors)
+  if (reportErrors & !is.null(missingColumns)) {
     errorLst$missingColumns <- missingColumns
     return(errorLst)
   }
   names(sb) <- cols
 
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
-  if (is.numeric(sb$birth))
-    sb$birth <- as.character(sb$birth)
   sb <- unknown2NA(sb)
   sb <- addUIds(sb)
   sb <- addParents(sb) # add parent record for parents that don't have
                        #their own line entry
   # Add and standardize needed fields
   sb$sex <- convertSexCodes(sb$sex)
-  if (errors) {
+  if (reportErrors) {
     testVal <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
-                                  errors)
+                                  reportErrors)
     if (is.null(testVal$femaleSires) & is.null(testVal$maleDams)) {
       sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
-                                 errors = FALSE)
+                                 reportErrors = FALSE)
     } else {
       errorLst$femaleSires <- testVal$femaleSires
       errorLst$maleDams <- testVal$maleDams
@@ -190,10 +188,10 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
     sb$ancestry <- convertAncestry(sb$ancestry)
   }
 
-  # converting date column entries from strings to date
-  if (errors) {
+  # converting date column entries from strings and integers to date
+  if (reportErrors) {
     invalidDateRows <- convertDate(sb, time.origin = as.Date("1970-01-01"),
-                             errors)
+                                   reportErrors)
     if (!is.null(invalidDateRows)) {
       errorLst$invalidDateRows <- invalidDateRows
       invalidAndAdded <- c(as.integer(invalidDateRows),
@@ -202,11 +200,11 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
         sb[-invalidAndAdded, ] <-
           convertDate(sb[-invalidAndAdded, ],
                       time.origin = as.Date("1970-01-01"),
-                      errors = FALSE)
+                      reportErrors = FALSE)
       }
     } else {
       sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
-                        errors = FALSE)
+                        reportErrors = FALSE)
       sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
     }
   } else {
@@ -215,8 +213,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
   }
 
   # ensure parents are older than offspring
-  suspiciousParents <- checkParentAge(sb, minParentAge, errors)
-  if (errors) {
+  suspiciousParents <- checkParentAge(sb, minParentAge, reportErrors)
+  if (reportErrors) {
     if (!is.null(suspiciousParents)) {
       if (nrow(suspiciousParents) > 0)
         errorLst$suspiciousParents <- suspiciousParents
@@ -243,8 +241,8 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
 
   # Cleaning-up the data.frame
   # Filtering unnecessary columns and ordering the data
-  if (errors) {
-    testVal <- removeDuplicates(sb, errors = errors)
+  if (reportErrors) {
+    testVal <- removeDuplicates(sb, reportErrors = reportErrors)
     if (!is.null(testVal)) {
       errorLst$duplicateIds <- testVal
     } ## else do not update sb, because it will fail
@@ -260,7 +258,7 @@ qcStudbook <- function(sb, minParentAge = 2, changes = FALSE,
 
   # Ensuring the IDs are stored as characters
   sb <- toCharacter(sb, headers = c("id", "sire", "dam"))
-  if (errors) {
+  if (reportErrors) {
     return(checkChangedColAndErrorLst(errorLst))
   } else {
     return(sb)
