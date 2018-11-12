@@ -36,3 +36,14 @@ test_that("summary.qcStudbook provides expected output", {
                      "The first five records having bad dates are ",
                      "on rows 1, 2, 3, 4, and 5.")))
 })
+test_that("qcStudbook identifies individual bad dates in date columns", {
+  birth <- as.character(pedOne$birth_date, format = "%Y-%m-%d")
+  birth[5] <- "04-02-2015"
+  birth[6] <- "03-17-2009"
+  pedEight <- pedOne
+  pedEight$birth_date <- NULL
+  pedEight$birth <- birth
+  ped8 <- qcStudbook(pedEight, minParentAge = NULL, reportErrors = TRUE)
+  summary(ped8)
+  expect_true(stri_detect_fixed(summary(ped8)$txt, "rows having an invalid date are: 5 and 6"))
+})
