@@ -44,3 +44,8 @@ test_that("convertDate ignores added records", {
   expect_equal(nrow(convertDate(ped5)), 10)
   expect_true(all(convertDate(ped5)$record_status == "added"))
 })
+test_that("convertDate fails when date column class is real", {
+  ped5 <- ped3
+  ped5$birth <- rnorm(10, 10, 100)
+  expect_error(convertDate(ped5))
+})

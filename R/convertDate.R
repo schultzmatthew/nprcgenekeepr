@@ -49,7 +49,8 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors =
         dates <- removeEarlyDates(dates, 1000)
       }
     } else {
-      stop(stri_c("class(dates) is not character it is == ", class(dates)))
+      stop(stri_c("class(dates) is not 'character', 'factor', 'integer', or ",
+                  "'Date' it is == ", class(dates)))
     }
 
     if (any(is.na(dates))) {
