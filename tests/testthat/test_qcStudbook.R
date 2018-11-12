@@ -154,5 +154,14 @@ test_that("qcStudbook passes through nonessential date columns with all == NA", 
   expect_true(all(is.na(ped7$exit)))
   expect_equal(length(ped7$exit), 12)
 })
-
+test_that("qcStudbook identifies individual bad dates in date columns", {
+  birth <- as.character(pedOne$birth_date, format = "%Y-%m-%d")
+  birth[5] <- "04-02-2015"
+  birth[6] <- "03-17-2009"
+  pedEight <- pedOne
+  pedEight$birth_date <- NULL
+  pedEight$birth <- birth
+  ped8 <- qcStudbook(pedEight, minParentAge = NULL, reportErrors = TRUE)
+  expect_equal(ped8$invalidDateRows, c("5", "6"))
+})
 
