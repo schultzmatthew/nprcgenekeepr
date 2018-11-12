@@ -3,6 +3,7 @@ library(shinyBS)
 if (!require("DT"))
   install.packages("DT")
 library(DT)
+library(stringi)
 source("../application/uitpInput.R")
 #source("../application/uitpErrorTab.R")
 source("../application/uitpPedigreeBrowser.R")
@@ -14,7 +15,7 @@ source("../application/uitpGvAndBgDesc.R")
 if (getSiteInfo()$center == "ONPRC") {
   source("../application/uitpOripReporting.R")
   navbarPageArgs <- list(
-    title = "Genetic Management Tools",
+    title = stri_c("Genetic Management Tools - Version ", getVersion()),
     uitpInput,
 #    uitpErrorTab,
     uitpPedigreeBrowser,
@@ -28,7 +29,7 @@ if (getSiteInfo()$center == "ONPRC") {
   )
 } else {
   navbarPageArgs <- list(
-    title = "Genetic Management Tools",
+    title = stri_c("Genetic Management Tools - Version ", getVersion()),
     uitpInput,
 #    uitpErrorTab,
     uitpPedigreeBrowser,
