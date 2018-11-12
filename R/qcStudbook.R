@@ -190,23 +190,9 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
 
   # converting date column entries from strings and integers to date
   if (reportErrors) {
-    invalidDateRows <- convertDate(sb, time.origin = as.Date("1970-01-01"),
-                                   reportErrors)
-    if (!is.null(invalidDateRows)) {
-      errorLst$invalidDateRows <- invalidDateRows
-      invalidAndAdded <- c(as.integer(invalidDateRows),
-                           getRecordStatusIndex(sb, "added"))
-      if (nrow(sb[-invalidAndAdded, ]) > 0) {
-        sb[-invalidAndAdded, ] <-
-          convertDate(sb[-invalidAndAdded, ],
-                      time.origin = as.Date("1970-01-01"),
-                      reportErrors = FALSE)
-      }
-    } else {
-      sb <- convertDate(sb, time.origin = as.Date("1970-01-01"),
-                        reportErrors = FALSE)
-      sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
-    }
+    sbAndErrors <- getDateErrorsAndConvertDatesInPed(sb, errorLst)
+    sb <- sbAndErrors$sb
+    errorLst <- sbAndErrors$errorLst
   } else {
     sb <- convertDate(sb, time.origin = as.Date("1970-01-01"))
     sb <- setExit(sb, time.origin = as.Date("1970-01-01"))
