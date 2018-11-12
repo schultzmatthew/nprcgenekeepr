@@ -7,7 +7,7 @@ Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://tr
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager
+# nprcmanager 0.4.0.9 (20181109)
 
 ## Introduction
 
