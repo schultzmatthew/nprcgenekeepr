@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# nprcmanager `r nprcmanager::getVersion()`
+# nprcmanager -- Version `r nprcmanager::getVersion()`
 ```{r child = "vignettes/manual_components/_introduction.Rmd", ref = "introduction"}
 ```
 ```{r child = "vignettes/manual_components/_installation.Rmd", ref = "installation"}
