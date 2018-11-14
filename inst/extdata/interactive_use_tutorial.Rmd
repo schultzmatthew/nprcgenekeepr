@@ -4,7 +4,9 @@ output:
   html_document:
     df_print: paged
 vignette: |
-  %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{Genetic Management Tools} %\usepackage[UTF-8]{inputenc}
+  %\VignetteEngine{knitr::knitr} 
+  %\VignetteIndexEntry{Genetic Management Tools} 
+  %\usepackage[UTF-8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
@@ -21,14 +23,15 @@ library(rmsutilityr)
 ```
 
 ## You can use a file browser
+```{r tutorial-0}
+badPedigreeFile <- file.choose()
+```
 
-    badPedigreeFile <- file.choose()
-    
 ## You can point to a pedigree file that you have
 ```{r tutorial-1 }
 pedigreeFile <- "baboon_breeders_qc_ped.csv"
 
-sep <- "\t"
+sep <- ","
 minParentAge <- 0
 breederPedCsv <- read.table(file.choose(), sep = sep, header = TRUE, stringsAsFactors = FALSE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
@@ -40,7 +43,7 @@ argument set to __TRUE__ and examine the returned object.
 
 ```{r examine-errors}
 badPedigreeFile <- "pedigree_files_with_errors/Pedigree_File_Example_CSV.csv"
-badPedCsv <- read.table(breederPedCsv, sep = "\t", header = TRUE, stringsAsFactors = FALSE)
+badPedCsv <- read.table(badPedigreeFile, sep = ",", header = TRUE, stringsAsFactors = FALSE)
 errorLst <- qcStudbook(badPedCsv, minParentAge, reportErrors = TRUE)
 str(errorLst)
 
