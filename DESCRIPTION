@@ -23,6 +23,7 @@ Imports:
     Rlabkey,
     rmsutilityr (>= 1.0.64),
     shiny,
+    shinyBS,
     stringi,
     utils
 Suggests:
