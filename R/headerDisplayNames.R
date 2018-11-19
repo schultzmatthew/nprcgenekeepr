@@ -37,7 +37,8 @@ headerDisplayNames <- function(headers) {
     first = "First Allele Code",
     second = "Second Allele Code",
     first_name = "First Allele",
-    second_name = "Second Allele"
+    second_name = "Second Allele",
+    record_status = "Original/ Added"
   )
   return(as.character(nameConversion[headers]))
 }

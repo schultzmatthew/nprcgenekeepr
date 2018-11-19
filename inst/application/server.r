@@ -705,6 +705,9 @@ shinyServer(function(input, output, session) {
     }
 
     ped <- getPed()
+    # Filter out unknown animals added into ped
+    browser()
+    ped <- removeUnknownAnimals(ped)
     ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
     currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
 
@@ -718,6 +721,7 @@ shinyServer(function(input, output, session) {
     # Assume an animal that is in the group can't also be a candidate
     if (length(currentGroup) > 0) {
       candidates <- setdiff(candidates, currentGroup)
+      candidates <- intersect(candidates, ped$id)
     }
 
     # Filter out low-value animals if desired

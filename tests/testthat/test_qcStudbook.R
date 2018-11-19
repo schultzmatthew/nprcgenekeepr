@@ -62,8 +62,8 @@ test_that("qcStudbook detects returns list of bad column names when reportErrors
 })
 test_that("qcStudbook corrects column names", {
   newPedOne <- suppressWarnings(qcStudbook(pedOne, minParentAge = NULL))
-  expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen", "birth",
-                                   "exit", "age"))
+  expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen",
+                                   "birth", "exit", "age", "record_status"))
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "d1"]), "F")
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "s1"]), "M")
 })

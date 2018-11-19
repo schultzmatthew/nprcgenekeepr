@@ -10,41 +10,56 @@ uitpBreedingGroupFormation <-
     #    "margin-left: 3px; margin-top: 3px; margin-bottom: 3px;",
     #    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
     #  ),
-    fluidRow(
-      column(width = 3,
-             style = paste(
-               " padding: 10px; border: 1px solid lightgray; ",
-               "background-color: #EDEDED;",
-               "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-             ),
-             includeHTML("../extdata/group_formation.html")    ),
-
-    #Main Panel
-    column(9,
+    div(
       div(
-        style = "display:inline-block;width:550px;padding:10px",
+        style = "display:inline-block;width:800px;padding:10px",
         div(
-          style = "display:inline-block;width:250px;padding:10px",
+          style = "display:inline-block;width:350px;padding:10px",
           helpText("Enter IDs of seed animals for the new group(s):"),
           tags$textarea(id = "curGrp", rows = 10, cols = 40, "")
         ),
         div(
-          style = "display:inline-block;width:250px;padding:10px",
+          style = "display:inline-block;width:350px;padding:10px",
           helpText("Enter IDs of candidates to be added to new group(s):"),
           tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
-        ),
+        )
+      ),
+      fluidRow(
+        column(width = 3,
         div(
-        style = "display:inline-block;width:250px;padding:10px",
+        style = "display:inline-block;width:800px;padding:10px",
+        div(
+        style = "display:inline-block;width:150px;padding:10px",
         numericInput(
           "numGp",
           label = "Groups Desired:",
           value = 1,
           min = 1,
           max = 10
+        ),
+
+        style = "display:inline-block;width:150px;padding:10px",
+        numericInput(
+          "minAge",
+          label = "Animal age will be ignored at or below:",
+          value = 1,
+          min = 0,
+          max = 40,
+          step = 0.1
+        ),
+
+        style = "display:inline-block;width:150px;padding:10px",
+        numericInput(
+          "gpIter",
+          label = "Number of simulations:",
+          value = 10,
+          min = 1,
+          max = 1000000
         )
-      ),
+      ))),
+        column(width = 3,
       div(
-        style = "display:inline-block;width:250px;padding:10px",
+        style = "display:inline-block;width:150px;padding:10px",
         selectInput(
           "kinThresh",
           label = "Animal kinship will be ignored below:",
@@ -56,33 +71,18 @@ uitpBreedingGroupFormation <-
           ),
           selected = 1
         )
-      ),
+      ))),
       div(
         style = "display:inline-block;width:250px;padding:10px",
-        numericInput(
-          "minAge",
-          label = "Animal age will be ignored at or below:",
-          value = 1,
-          min = 0,
-          max = 40,
-          step = 0.1
-        )
-      ),
-      div(
-        style = "display:inline-block;width:250px;padding:10px",
-        numericInput(
-          "gpIter",
-          label = "Number of simulations:",
-          value = 10,
-          min = 1,
-          max = 1000000
-        )
-      ),
-      checkboxInput("lowVal",
+        checkboxInput("lowVal",
                     label = "Include low-value animals in group formation",
-                    value = FALSE),
-      checkboxInput("ffRel", label = "Ignore relatedness between females",
-                    value = TRUE),
+                    value = FALSE)
+      ),
+      div(
+        style = "display:inline-block;width:250px;padding:10px",
+        checkboxInput("ffRel", label = "Ignore relatedness between females",
+                    value = TRUE)
+      ),
 
         actionButton("grpSim", label = "Make Groups"),
         checkboxInput("withKin", label = "With Kinship Coefficents",
@@ -108,8 +108,14 @@ uitpBreedingGroupFormation <-
                        "Export Current Group Kinship Matrix")
       ),
       DT::dataTableOutput("breedingGroups"),
-      DT::dataTableOutput("breedingGroupKin")
-      )
+      DT::dataTableOutput("breedingGroupKin"),
 
+    div(
+      style = paste(
+        " padding: 10px; border: 1px solid lightgray; ",
+        "background-color: #EDEDED;",
+        "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+      ),
+      includeHTML("../extdata/group_formation.html")    )
     )
-  )
+

@@ -26,7 +26,7 @@ test_that("checkGenotypeFile ensures 'id' as the first column.", {
   expect_error(checkGenotypeFile(genotype),
                "Genotype file must have 'id' as the first column.")
 })
-test_that("checkGenotypeFile ensures 'id' as the first column.", {
+test_that("checkGenotypeFile ensures cannot have a column named 'first' or 'second'.", {
   names(genotype) <- c("id", "first", "second_name")
   expect_error(checkGenotypeFile(genotype),
                "Genotype file cannot have a column named 'first' or 'second'.")
