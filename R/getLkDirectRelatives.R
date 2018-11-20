@@ -13,7 +13,6 @@
 #'
 #' @export
 getLkDirectRelatives <- function(ids, unrelatedParents = FALSE) {
-  browser()
   siteInfo <- getSiteInfo()
   colSet <- siteInfo$lkPedColumns
   pedSourceDf <- getDemographics(colSelect = colSet)
