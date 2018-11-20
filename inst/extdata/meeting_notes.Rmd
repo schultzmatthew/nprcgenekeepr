@@ -77,6 +77,12 @@ Provided in reverse chronological order
     -  Found that breeding groups being formed included unknown animals that 
        had been added as placeholders for unknown parents. Those were removed
        from consideration. Done 20181119
+    -  Worked with Terry Hawkins on 20181119 and 20181120 to make sure the 
+       LabKey code was working. He had an error in his
+       base URL specification so that initial efforts failed and the error
+       message was misleading. I have trapped the erorr with a tryCatch 
+       function and am sending a message to the log file. This needs to be
+       tested.
 11.  The next meeting is scheduled for 11-26-2018.
 
 

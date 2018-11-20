@@ -90,12 +90,18 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
                    name = "nprcmanager")
         breederPed <- getBreederPed(pedigreeFile$datapath, sep = sep)
-        flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
-                          "; contents rows: ", nrow(breederPed),
-                          ", columns: ", ncol(breederPed), "; col names: '",
-                          paste(names(breederPed), collapse = "', '"), "'",
-                          sep = ""),
-                   name = "nprcmanager")
+        if (is.null(breederPed)) {
+          flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
+                            "; NULL was returned by getBreederPed function"),
+                     name = "nprcmanager")
+        } else {
+          flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
+                            "; contents rows: ", nrow(breederPed),
+                            ", columns: ", ncol(breederPed), "; col names: '",
+                            paste(names(breederPed), collapse = "', '"), "'",
+                            sep = ""),
+                     name = "nprcmanager")
+        }
       } else {
         breederPed <- read.table(pedigreeFile$datapath,
                       header = TRUE,
@@ -706,7 +712,6 @@ shinyServer(function(input, output, session) {
 
     ped <- getPed()
     # Filter out unknown animals added into ped
-    browser()
     ped <- removeUnknownAnimals(ped)
     ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
     currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))

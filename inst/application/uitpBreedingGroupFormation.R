@@ -58,6 +58,7 @@ uitpBreedingGroupFormation <-
         )
       ))),
         column(width = 3,
+               div(
       div(
         style = "display:inline-block;width:150px;padding:10px",
         selectInput(
@@ -71,26 +72,27 @@ uitpBreedingGroupFormation <-
           ),
           selected = 1
         )
-      ))),
+      ),
       div(
         style = "display:inline-block;width:250px;padding:10px",
         checkboxInput("lowVal",
-                    label = "Include low-value animals in group formation",
-                    value = FALSE)
+                      label = "Include low-value animals in group formation",
+                      value = FALSE)
       ),
       div(
         style = "display:inline-block;width:250px;padding:10px",
         checkboxInput("ffRel", label = "Ignore relatedness between females",
-                    value = TRUE)
+                      value = TRUE)
       ),
-
+      checkboxInput("withKin", label = "With Kinship Coefficents",
+                    value = FALSE)
+        )),
+      column(width = 3,
+        div(
         actionButton("grpSim", label = "Make Groups"),
-        checkboxInput("withKin", label = "With Kinship Coefficents",
-                      value = FALSE),
         helpText(
           "If no candidate IDs are specified above or in the input pedigree,
           all population members will be used."
-        )
         ),
       div(
         style = "display:inline-block;width:250px;padding:5px",
@@ -106,7 +108,7 @@ uitpBreedingGroupFormation <-
         downloadButton("downloadGroup", "Export Current Group"),
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
-      ),
+      )))),
       DT::dataTableOutput("breedingGroups"),
       DT::dataTableOutput("breedingGroupKin"),
 
@@ -116,6 +118,7 @@ uitpBreedingGroupFormation <-
         "background-color: #EDEDED;",
         "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
       ),
-      includeHTML("../extdata/group_formation.html")    )
+      includeHTML("../extdata/group_formation.html")
     )
-
+  )
+)
