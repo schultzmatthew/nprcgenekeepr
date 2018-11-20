@@ -7,6 +7,7 @@
 #' @param ids character vector with Ids.
 #' @export
 getLkDirectAncestors <- function(ids) {
+  browser()
   siteInfo <- getSiteInfo()
   colSet <- siteInfo$lkPedColumns
   pedSourceDf <- getDemographics(colSelect = colSet)
