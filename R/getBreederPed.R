@@ -20,6 +20,14 @@ getBreederPed <- function(fileName, sep = ",") {
              nrow(breeders), "\n"), name = "nprcmanager")
   breeders <- as.character(breeders[ , 1])
   ped <- getLkDirectRelatives(ids = breeders)
+  if (is.null(ped)) {
+    flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
+                      "returned NULL.\n"), name = "nprcmanager")
+    return(NULL)
+  }
+  flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
+                    "returned ped with ", nrow(ped), "rows.\n"),
+             name = "nprcmanager")
   names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")
   ped <- ped[!is.na(ped$id), ]
   ped$birth <- format(ped$birth, format = "%Y-%m-%d")

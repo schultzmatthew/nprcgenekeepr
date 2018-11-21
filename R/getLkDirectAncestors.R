@@ -5,6 +5,7 @@
 #' @return dataframe with pedigree structure having all of the direct ancestors
 #' for the Ids provided.
 #' @param ids character vector with Ids.
+#' @import futile.logger
 #' @export
 getLkDirectAncestors <- function(ids) {
   siteInfo <- getSiteInfo()

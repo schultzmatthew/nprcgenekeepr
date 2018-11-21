@@ -11,6 +11,7 @@
 #' a place holder record where parent (\code{sire},
 #' \code{dam}) IDs are set to \code{NA}.
 #'
+#' @import futile.logger
 #' @importFrom stringi stri_c
 #' @export
 getLkDirectRelatives <- function(ids, unrelatedParents = FALSE) {
