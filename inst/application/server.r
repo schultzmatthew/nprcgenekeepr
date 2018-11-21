@@ -726,7 +726,6 @@ shinyServer(function(input, output, session) {
     # Assume an animal that is in the group can't also be a candidate
     if (length(currentGroup) > 0) {
       candidates <- setdiff(candidates, currentGroup)
-      candidates <- intersect(candidates, ped$id)
     }
 
     # Filter out low-value animals if desired
@@ -736,6 +735,7 @@ shinyServer(function(input, output, session) {
       lv <- rpt$id[rpt$value == "low value"]
       candidates <- setdiff(candidates, lv)
     }
+    candidates <- intersect(candidates, ped$id)
 
     validate(
       need(length(candidates == 0), "No candidates defined"),

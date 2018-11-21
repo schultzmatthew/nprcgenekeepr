@@ -1,4 +1,4 @@
-#' Add animals to an existing breeding or form groups group:
+#' Add animals to an existing breeding group or form groups:
 #'
 #' Part of Group Formation
 #'

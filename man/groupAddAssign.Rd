@@ -2,7 +2,7 @@
 % Please edit documentation in R/groupAddAssign.R
 \name{groupAddAssign}
 \alias{groupAddAssign}
-\title{Add animals to an existing breeding or form groups group:}
+\title{Add animals to an existing breeding group or form groups:}
 \usage{
 groupAddAssign(candidates, currentGroup = NULL, kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
