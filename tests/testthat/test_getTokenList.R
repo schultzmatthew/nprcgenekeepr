@@ -1,7 +1,7 @@
 context("getTokenList")
 library(testthat)
 lines <- c("center = \"SNPRC\"",
-           " baseUrl = \"https://boomer.txbiomed.org/labkey\"",
+           " baseUrl = \"https://boomer.txbiomed.local:8080/labkey\"",
            " schemaName = \"study\"", " folderPath = \"/SNPRC\"",
            " queryName = \"demographics\"",
            "lkPedColumns = (\"Id\", \"gender\", \"birth\", \"death\",",
@@ -19,7 +19,7 @@ test_that("getTokenList returns correct lines and vectors", {
   expect_equal(params, c("center", "baseUrl", "schemaName", "folderPath",
                          "queryName", "lkPedColumns", "mapPedColumns"))
   expect_equal(tokenVectors[[1]], "SNPRC")
-  expect_equal(tokenVectors[[2]], "https://boomer.txbiomed.org/labkey")
+  expect_equal(tokenVectors[[2]], "https://boomer.txbiomed.local:8080/labkey")
   expect_equal(tokenVectors[[3]], "study")
   expect_equal(tokenVectors[[4]],"/SNPRC")
   expect_equal(tokenVectors[[5]], "demographics")

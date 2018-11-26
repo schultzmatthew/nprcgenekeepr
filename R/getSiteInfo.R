@@ -6,9 +6,9 @@
 #' \enumerate{
 #'   \item{center}{One of "SNPRC" or "ONPRC"}
 #'   \item{baseUrl}{If \code{center} is "SNPRC", baseUrl is one of
-#'   "https://boomer.txbiomed.org/labkey" or "https://vger.txbiomed.org/labkey".
+#'   "https://boomer.txbiomed.local:8080/labkey" or "https://vger.txbiomed.local:8080/labkey".
 #'   To allow testing, if \code{center} is "ONPRC" baseUrl is
-#'   "https://boomer.txbiomed.org/labkey".}
+#'   "https://boomer.txbiomed.local:8080/labkey".}
 #'   \item{schemaName}{If \code{center} is "SNPRC", schemaName is "study".
 #'   If \code{center} is "ONPRC", schemaName is "study"}
 #'   \item{folderPath} {If \code{center} is "SNPRC", folderPath is "/SNPRC".
@@ -47,7 +47,7 @@ getSiteInfo <- function() {
                    "The file should be named: ",
                    config[["configFile"]], ".\n"))
     list(center = "ONPRC",
-      baseUrl = "https://boomer.txbiomed.org/labkey",
+      baseUrl = "https://boomer.txbiomed.local:8080/labkey",
       schemaName = "study",
       folderPath = "/SNPRC",
       queryName = "demographics",
