@@ -41,7 +41,7 @@ uitpBreedingGroupFormation <-
         style = "display:inline-block;width:150px;padding:10px",
         numericInput(
           "minAge",
-          label = "Animal age will be ignored at or below:",
+          label = "Animals will be ignored below age:",
           value = 1,
           min = 0,
           max = 40,
@@ -63,7 +63,7 @@ uitpBreedingGroupFormation <-
         style = "display:inline-block;width:150px;padding:10px",
         selectInput(
           "kinThresh",
-          label = "Animal kinship will be ignored below:",
+          label = "Animals will be ignored with kinship below:",
           choices = list(
             "0.015625" = 0.015625,
             "0.0625" = 0.0625,

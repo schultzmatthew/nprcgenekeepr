@@ -346,6 +346,11 @@ $(document).ready(function () {
 <li>Until we work on LabKey connectivity again, we have decided to postpone Item 2 from two meetings ago: Give user the option to save a skeleton configuration file to their home directory if they do not have a configuration file.</li>
 <li>We reaffirmed the plan for Mark to finish the tutorials (one for an interactive use of the software and one for using the Shiny application) and to get a draft of a technical paper written by the end of the year.</li>
 <li>Not discussed during the meeting was the need to develop additional unit tests to cover all of the new functions created to handle the PEDSYS and military formated dates (YYYYMMDD), which look like an integer. Most of those unit tests have been made, but additional ones are needed to provide full or near full coverage.</li>
+<li>Miscellaneous
+<ul>
+<li>Found that breeding groups being formed included unknown animals that had been added as placeholders for unknown parents. Those were removed from consideration. Done 20181119</li>
+<li>Worked with Terry Hawkins on 20181119 and 20181120 to make sure the LabKey code was working. He had an error in his base URL specification so that initial efforts failed and the error message was misleading. I have trapped the erorr with a tryCatch function and am sending a message to the log file. This needs to be tested.</li>
+</ul></li>
 <li><p>The next meeting is scheduled for 11-26-2018.</p></li>
 </ol>
 </div>
@@ -434,7 +439,7 @@ Below are some relevant articles found from a simple web search with the Google 
 <li>Develop a full set of error messages appropriate for all types of input files.
 <ol style="list-style-type: lower-alpha">
 <li>Added improved error detection and reporting for missing required columns - Done 2018-07-17</li>
-<li>Added the ability to call qcStudbook interactively with a flag (<strong>errors</strong>) set to TRUE that causes qcStudbook to report back a list with all errors detected within the input file. Not all errors can be detected in a single pass because some errors preclude checking for others. For example, if the birth date column has an invalid format, the parental age cannot be checked. If no errors are found with <strong>errors</strong> set to TRUE and NULL value is returned. <strong>errors</strong> defaults to <strong>FALSE</strong>.</li>
+<li>Added the ability to call qcStudbook interactively with a flag (<strong>reportErrors</strong>) set to TRUE that causes qcStudbook to report back a list with all errors detected within the input file. Not all errors can be detected in a single pass because some errors preclude checking for others. For example, if the birth date column has an invalid format, the parental age cannot be checked. If no errors are found with <strong>reportErrors</strong> set to TRUE and NULL value is returned. <strong>reportErrors</strong> defaults to <strong>FALSE</strong>.</li>
 <li>This emphasizes the need for a good set of corrupt input files for testing and unit test development.</li>
 </ol></li>
 <li>Amanda and Beth will provide me with some files with errors.
