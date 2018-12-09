@@ -17,23 +17,24 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Next steps
-To be determined
+1.  Allow the user to provide multiple seed groups for the breeding groups.
+    1.  Have user select number of breeding groups to form.
+    1.  Have user place seed animals in any number of those groups.
+    1.  Calculate the average number of animals in each group and round down
+        to the nearest integer (truncate). Use this integer for the total number
+        of animals to place in the groups with seed animals.
+    1.  Loop through each of the groups with seed animals placing the single
+        best fitting animal from the candidate list in that group 
+        (young pre-weanlings animals are 
+        being ignored with regard to selection and count) until all of 
+        these groups are filled. 
+    1.  Form the best possible groups with the remaining animals by selecting
+        the groups which provide the lowest mean kinship coefficients. This
+        is not a trivial problem.
 
 
 ## To do
-1. It would be better to catalogue and report the changes made by qcStudbook()
-   so that the user knows how the provided pedigree was changed. Completed by
-   developing the functions __summary.nprcmangErr__ and
-   __print.summary.nprcmanagErr__, which when combind with using 
-   __qcStudbook__ with the _error_ argument set to __TRUE__. 20180915
-   
-   An __Error List__ tab is now being generated and opened when pedigree errors 
-   are detected. 20181014
-   
-   An __Changed Columns__ is now being generated and made when a pedigree has no 
-   errors, but the column names are being changed during processing. 20181020
-   
-2. Amanda Vinson wrote this in an e-mail on 20170901:
+1. Amanda Vinson wrote this in an e-mail on 20170901:
   
     I'm very interested in hearing about your idea of adding algorithms related 
     to selecting/maintaining specific alleles in a colony. 
@@ -43,7 +44,7 @@ To be determined
     This is a need we have here at the ONPRC due to assigning animals to  
     research, and I have been tasked with implementing the solution.
 
-3. Remove individuals that can never breed again from genetic analyses.
+1. Remove individuals that can never breed again from genetic analyses.
 (From page 29 of _PMx User Manual, version 1.0_).
 It is generally recommended to remove living individuals that can never breed 
 or will never be bred again (e.g., post reproductive, sterilized, poor health, 
@@ -56,10 +57,10 @@ information is valuable. Managers therefore often chose to include these
 individuals in the demographic analysis but to exclude them from genetic 
 analysis. 
 
-4. It would be nice to have multiple "selected populations" that could be 
+1. It would be nice to have multiple "selected populations" that could be 
 set up and easily selected for various analyses and plots.
 
-5. Talk to Amanda about developing a general way to handle animals without 
+1. Talk to Amanda about developing a general way to handle animals without 
 two known parents that are not founders. There are the following lines of code
 in orderReport.R
 
@@ -67,7 +68,7 @@ in orderReport.R
     >    i <- (is.na(rpt\$origin) & (rpt\$totalOffspring == 0) & (rpt\$id %in% founders))  
     >    noParentage <- rpt[i, ]  
 
-6. There are some functions that are defined and not used. 
+1. There are some functions that are defined and not used. 
    They may be needed later.
     1. findLoops
     2. makeLoop
@@ -77,15 +78,15 @@ in orderReport.R
    I expect they are direct ports from kinship2. 
    I will check.
    
-7. Find some ways to use genetic marker data in the evaluation of genetic 
+1. Find some ways to use genetic marker data in the evaluation of genetic 
    value. This needs to be discussed.
 
-8. Add breeding productivity measure calculations. For example, (a) number of
+1. Add breeding productivity measure calculations. For example, (a) number of
    offspring per year of exposure to male or female. (b) Number of months since
    last birth. (c) Number of months between births with range and standard
    deviation.
 
-9. Consider developing a simulation module to allow uses to simulate breeding decisions.
+1. Consider developing a simulation module to allow uses to simulate breeding decisions.
     a. Need to be able to set the following values.
         a. Number desired males produced each year
         b. Frequency of matings that produce offspring that can successfully breed
@@ -111,5 +112,19 @@ in orderReport.R
             c. Offspring are simulated and stored.
          b. See jhered.esr129.full.pdf page 188 for other breeding strategies.
 
+## Done
+
+1. It would be better to catalogue and report the changes made by qcStudbook()
+   so that the user knows how the provided pedigree was changed. Completed by
+   developing the functions __summary.nprcmangErr__ and
+   __print.summary.nprcmanagErr__, which when combind with using 
+   __qcStudbook__ with the _error_ argument set to __TRUE__. 20180915
+   
+   An __Error List__ tab is now being generated and opened when pedigree errors 
+   are detected. 20181014
+   
+   An __Changed Columns__ is now being generated and made when a pedigree has no 
+   errors, but the column names are being changed during processing. 20181020
+   
 
 
