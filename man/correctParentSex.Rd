@@ -4,7 +4,7 @@
 \alias{correctParentSex}
 \title{Sets sex for animals listed as either a sire or dam.}
 \usage{
-correctParentSex(id, sire, dam, sex, reportErrors = FALSE)
+correctParentSex(id, sire, dam, sex, recordStatus, reportErrors = FALSE)
 }
 \arguments{
 \item{id}{character vector with unique identifier for an individual}
@@ -17,6 +17,10 @@ individual's mother (\code{NA} if unknown).}
 
 \item{sex}{factor with levels: "M", "F", "U". Sex specifier for an
 individual.}
+
+\item{recordStatus}{character vector with value of \code{"added"} or
+\code{"original"}, which indicates whether an animal was added or an
+original animal.}
 
 \item{reportErrors}{logical value if TRUE will scan the entire file and
 make a list of all errors found. The errors will be returned in a

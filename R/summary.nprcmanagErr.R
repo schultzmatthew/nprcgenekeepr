@@ -32,7 +32,7 @@ summary.nprcmanagErr <- function(object, ...) {
                             " rows having an invalid date. The rows having an ",
                             "invalid date are"))
   }
-  txt <- addErrTxt(txt, errorLst$sireIsDam,
+  txt <- addErrTxt(txt, errorLst$sireAndDam,
                    "Error: The animal listed as both a sire and dam is",
                    "Error: The animals listed as both sire and dam are")
   txt <- addErrTxt(txt, errorLst$femaleSires,

@@ -1,8 +1,8 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.4.16
-Date: 2018-11-20
+Version: 0.4.17
+Date: 2018-12-08
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
@@ -36,6 +36,6 @@ Suggests:
 Remotes: github::rmsharp/rmsutilityr
 Encoding: UTF-8
 License: MIT + file LICENSE
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 LazyData: TRUE
 VignetteBuilder: knitr

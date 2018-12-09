@@ -10,7 +10,7 @@ checkErrorLst <- function(errorLst) {
     return(FALSE)
   if (length(errorLst$missingColumns) > 0 |
       length(errorLst$invalidDateRows) > 0 |
-      length(errorLst$sireIsDam) > 0 |
+      length(errorLst$sireAndDam) > 0 |
       length(errorLst$femaleSires) > 0 |
       length(errorLst$maleDams) > 0 |
       length(errorLst$duplicateIds) > 0 |

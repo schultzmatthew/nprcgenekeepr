@@ -63,7 +63,7 @@ test_that("qcStudbook detects returns list of bad column names when reportErrors
 test_that("qcStudbook corrects column names", {
   newPedOne <- suppressWarnings(qcStudbook(pedOne, minParentAge = NULL))
   expect_equal(names(newPedOne), c("id", "sire", "dam", "sex", "gen",
-                                   "birth", "exit", "age", "record_status"))
+                                   "birth", "exit", "age", "recordStatus"))
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "d1"]), "F")
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "s1"]), "M")
 })
@@ -164,4 +164,24 @@ test_that("qcStudbook identifies individual bad dates in date columns", {
   ped8 <- qcStudbook(pedEight, minParentAge = NULL, reportErrors = TRUE)
   expect_equal(ped8$invalidDateRows, c("5", "6"))
 })
-
+pedNine <-
+  data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+             `si re` = c("s0", NA, NA, NA, "s1", "s1", "s2", "s2"),
+             dam_id = c(NA, "s0", NA, NA, "d1", "d2", "d2", "d2"),
+             sex = c("M", "F", "M", "F", "F", "F", "F", "M"),
+             birth_date = mdy(
+               paste0(sample(1:12, 8, replace = TRUE), "-",
+                      sample(1:28, 8, replace = TRUE), "-",
+                      sample(seq(0, 15, by = 3), 8, replace = TRUE) +
+                        2000)),
+             stringsAsFactors = FALSE, check.names = FALSE)
+test_str <- stri_c("qcStudbook does not report as an error the wrong sex ",
+                   "for animals added into the pedigree and appear as both ",
+                   "a sire and dam without an ego record. These need to ",
+                   "be reported as an error because they are both a sire ",
+                   "and a dam.")
+test_that(test_str, {
+  ped9 <- qcStudbook(pedNine, minParentAge = NULL, reportErrors = TRUE)
+  expect_true(ped9$sireAndDam == "s0")
+  expect_true(length(ped9$duplicateIds) == 0)
+})

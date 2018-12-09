@@ -9,6 +9,7 @@ getEmptyErrorLst <- function() {
                         suspiciousParents = data.frame(),
                         femaleSires = character(0),
                         maleDams = character(0),
+                        sireAndDam = character(0),
                         duplicateIds = character(0),
                         changedCols = list(caseChange = character(0),
                                            spaceRemoved = character(0),

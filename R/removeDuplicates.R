@@ -13,11 +13,13 @@
 #' list of list where each sublist is a type of error found.
 #' @export
 removeDuplicates <- function(ped, reportErrors = FALSE) {
+  if (!all(c("id", "recordStatus") %in% names(ped)))
+    stop("ped must have columns \"id\" and \"recordStatus\".")
   if (reportErrors) {
-    if (sum(duplicated(ped$id)) == 0) {
+    if (sum(duplicated(ped$id[ped$recordStatus == "original"])) == 0) {
       return(NULL)
     } else {
-      return(ped$id[duplicated(ped$id)])
+      return(ped$id[duplicated(ped$id[ped$recordStatus == "original"])])
     }
   } else {
     p <- unique(ped)

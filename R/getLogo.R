@@ -4,13 +4,13 @@
 getLogo <- function() {
   logo <- list()
   if (getSiteInfo()$center == "SNPRC") {
-    logo$file <- "../snprc-new2color.png"
-    logo$height <- 80L
+    logo$file <- "../combined_ONPRC_SNPRC.png"
+    logo$height <- 160L
     logo$width <- 400L
   } else {
-    logo$file <- "../ONPRC_Logo.png"
-    logo$height <- 80L
-    logo$width <- 200L
+    logo$file <- "../combined_ONPRC_SNPRC.png"
+    logo$height <- 160L
+    logo$width <- 350L
   }
   logo
 }

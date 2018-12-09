@@ -1,0 +1,26 @@
+---
+title: "NEWS"
+author: "R. Mark Sharp"
+date: "12/8/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# nprcmanager 0.4.17 (20181208)
+-   Changed error reporting so as not to report as an error the wrong sex when 
+    animals are added into the pedigree
+    and appear as both a sire and dam without an ego record. 
+    The error report now indicates these are both a sire and a dam. Done 20181208
+-   Made a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and
+    green. Done 20181208
+-   Additional unit 
+    tests to cover all of the new functions created to handle the PEDSYS and
+    military formated dates (YYYYMMDD) have been made. Done 20181112
+-   Corrected breeding groups formation, which was including unknown animals that 
+    had been added as placeholders for unknown parents. Done 20181119
+-   Hardened LabKey code by trapping a bad base URL in the configuration file
+    with a tryCatch function and send a message to the log file. This needs to be
+    tested with a working LabKey system.

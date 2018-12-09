@@ -169,16 +169,18 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
   sb$sex <- convertSexCodes(sb$sex)
   if (reportErrors) {
     testVal <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
-                                  reportErrors)
-    if (is.null(testVal$femaleSires) & is.null(testVal$maleDams)) {
+                                sb$recordStatus, reportErrors)
+    if (is.null(testVal$femaleSires) & is.null(testVal$maleDams)
+        & is.null(testVal$sireAndDam)) {
       sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex,
-                                 reportErrors = FALSE)
+                                 sb$recordStatus, reportErrors = FALSE)
     } else {
       errorLst$femaleSires <- testVal$femaleSires
       errorLst$maleDams <- testVal$maleDams
+      errorLst$sireAndDam <- testVal$sireAndDam
     }
   } else {
-    sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex)
+    sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex, sb$recordStatus)
   }
 
   if ("status" %in% cols) {

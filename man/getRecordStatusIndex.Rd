@@ -2,18 +2,18 @@
 % Please edit documentation in R/getRecordStatusIndex.R
 \name{getRecordStatusIndex}
 \alias{getRecordStatusIndex}
-\title{getRecordStatusIndex returns record numbers with selected \code{record_status}.}
+\title{getRecordStatusIndex returns record numbers with selected \code{recordStatus}.}
 \usage{
 getRecordStatusIndex(ped, status = "added")
 }
 \arguments{
 \item{ped}{pedigree dataframe}
 
-\item{status}{character vector with value of \code{added} or \code{original}.}
+\item{status}{character vector with value of \code{"added"} or \code{"original"}.}
 }
 \value{
-integer vector of records with \code{record_status} == \code{status}.
+integer vector of records with \code{recordStatus} == \code{status}.
 }
 \description{
-getRecordStatusIndex returns record numbers with selected \code{record_status}.
+getRecordStatusIndex returns record numbers with selected \code{recordStatus}.
 }

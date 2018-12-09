@@ -1,28 +1,36 @@
 ^_pkgdown\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^.\inst\extdata\Notes.txt
-^.\inst\extdata\Example_Pedigree.txt
-^.\inst\extdata\RhesusMasterForMetrics.txt
-.travis.yml
-.codecov.yml
-.gitignore
+^\.inst\extdata\Notes\.txt
+^\.inst\extdata\Example_Pedigree\.txt
+^\.inst\extdata\RhesusMasterForMetrics\.txt
+^\.codecov\.yml$
+^\.gitignore$
 ^docs$
-tests/testthat/test_basic.R
-R/testingScript.R
-R/tmp_groupAddAssign.R
-R/groupAddition.R
-R/depricated_groupAddition.R
-R/depricated_gene.drop.R
-R/depricated_groupAssign.R
-R/groupAssign.R
-R/scratch.R
-vignettes/*.log
-vignettes/*.aux
-vignettes/*.out
-^README\.Rmd$
-^README-.*\.png$
-vignettes/interactive_use*
-inst/extdata/*.docx
-inst/extdata/rhesus_studbook*
+tests/testthat/test_basic\.R$
+R/testingScript\.R$
+R/tmp_groupAddAssign\.R$
+R/groupAddition\.R$
+R/depricated_groupAddition\.R$
+R/depricated_gene\.drop\.R$
+R/depricated_groupAssign\.R$
+R/groupAssign\.R$
+R/scratch\.R$
+vignettes/*\.log$
+vignettes/*\.aux$
+vignettes/*\.out$
+^README\.*\.png$
+^README\.Rmd$       # An Rmarkdown file used to generate README.md
+^cran-comments\.md$ # Comments for CRAN submission
+^NEWS\.md$          # A news file written in Markdown
+^NEWS\.Rmd$          # A news file written in RMarkdown
+^\.travis\.yml$     # Used for continuous integration testing with travis
+vignettes/interactive_use*$
+inst/extdata/*\.docx$
+inst/extdata/rhesus_studbook*$
+inst/extdata/*\.idraw$
+inst/extdata/onprc_rms\.pdf$
+inst/extdata/interactive*$
+inst/extdata/*\.png$
+
 

@@ -13,10 +13,14 @@
 #' @param reportErrors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
+#' @param recordStatus character vector with value of \code{"added"} or
+#' \code{"original"}, which indicates whether an animal was added or an
+#' original animal.
 #' @return A factor with levels: "M", "F", "H", and "U"
 #' representing the sex codes for the ids provided
 #' @export
-correctParentSex <- function(id, sire, dam, sex, reportErrors = FALSE) {
+correctParentSex <- function(id, sire, dam, sex, recordStatus,
+                             reportErrors = FALSE) {
   # Get all sires and dams
   sires <- unique(sire)
   sires <- sires[!is.na(sires)]
@@ -24,24 +28,25 @@ correctParentSex <- function(id, sire, dam, sex, reportErrors = FALSE) {
   dams <- dams[!is.na(dams)]
 
   # Check if any ids are listed in both the sire and dam columns (error)
-  err <- intersect(sires, dams)
-  if (length(err > 0)) {
+  sireAndDam <- intersect(sires, dams)
+  if (length(sireAndDam > 0)) {
     if (!reportErrors) {
-      stop(err, " : Subject(s) listed as both sire and dam")
+      stop(sireAndDam, " : Subject(s) listed as both sire and dam")
     }
   }
   if (reportErrors) {
-    femaleSires <- id[(id %in% sires) & (!sex %in% c("H", "U", "M"))]
-    maleDams <- id[(id %in% dams) & (!sex %in% c("H", "U", "F"))]
-    if (length(femaleSires) > 0 & length(maleDams) > 0) {
-      list(sireAndDam = err, femaleSires = femaleSires, maleDams = maleDams)
-    } else if (length(femaleSires) > 0) {
-      list(sireAndDam = err, femaleSires = femaleSires, maleDams = NULL)
-    } else if (length(maleDams) > 0) {
-      list(sireAndDam = err, femaleSires = NULL, maleDams = maleDams)
-    } else {
-      list(sireAndDam = err, femaleSires = NULL, maleDams = NULL)
-    }
+    femaleSires <- id[(id %in% sires) & (!sex %in% c("H", "U", "M")) &
+                        recordStatus == "original"]
+    maleDams <- id[(id %in% dams) & (!sex %in% c("H", "U", "F")) &
+                     recordStatus == "original"]
+    if (length(femaleSires) == 0)
+      femaleSires <- NULL
+    if (length(maleDams) == 0)
+      maleDams <- NULL
+    if (length(sireAndDam) == 0)
+      sireAndDam <- NULL
+    list(sireAndDam = sireAndDam, femaleSires = femaleSires,
+         maleDams = maleDams)
   } else {
     # Update gender for sires and dams
     sex[((id %in% sires) & (sex != "M"))] <- "M"

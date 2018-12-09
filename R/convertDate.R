@@ -18,9 +18,9 @@
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors = FALSE) {
   ## Ignore records added because of unknown parents
-  if (any("record_status" %in% names(ped))) {
-    addedPed <- ped[ped$record_status == "added", ]
-    ped <- ped[ped$record_status == "original", ]
+  if (any("recordStatus" %in% names(ped))) {
+    addedPed <- ped[ped$recordStatus == "added", ]
+    ped <- ped[ped$recordStatus == "original", ]
     if (nrow(ped) == 0)
       return(rbind(ped, addedPed))
   }
@@ -77,7 +77,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors =
     return(invalid_date_rows)
   } else {
     ## Add back records of unknown parents
-    if (any("record_status" %in% names(ped)))
+    if (any("recordStatus" %in% names(ped)))
       ped <- rbind(ped, addedPed)
     return(ped)
   }

@@ -39,10 +39,10 @@ test_that("convertDate handles NA and empty character string values correctly", 
   expect_null(convertDate(ped4, reportErrors = TRUE))
 })
 test_that("convertDate ignores added records", {
-  ped5 <- cbind(ped4, record_status = c(rep("added", 10)),
+  ped5 <- cbind(ped4, recordStatus = c(rep("added", 10)),
                 stringsAsFactors = FALSE)
   expect_equal(nrow(convertDate(ped5)), 10)
-  expect_true(all(convertDate(ped5)$record_status == "added"))
+  expect_true(all(convertDate(ped5)$recordStatus == "added"))
 })
 test_that("convertDate fails when date column class is real", {
   ped5 <- ped3

@@ -10,7 +10,7 @@ uitpInput <-
       "hr {border-width:2px;border-color:#A9A9A9;}"
     ),
     titlePanel(div(
-      style = "height:125px;width:100%",
+      style = "height:200px;width:100%",
       div(
         style = "float:left;width:45%",
         img(

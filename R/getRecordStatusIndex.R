@@ -1,12 +1,12 @@
-#' getRecordStatusIndex returns record numbers with selected \code{record_status}.
+#' getRecordStatusIndex returns record numbers with selected \code{recordStatus}.
 #'
-#' @return integer vector of records with \code{record_status} == \code{status}.
+#' @return integer vector of records with \code{recordStatus} == \code{status}.
 #'
 #' @param ped pedigree dataframe
-#' @param status character vector with value of \code{added} or \code{original}.
+#' @param status character vector with value of \code{"added"} or \code{"original"}.
 getRecordStatusIndex <- function(ped, status = "added") {
-  if (any("record_status" %in% names(ped)))
-    seq_along(ped$record_status)[ped$record_status == status]
+  if (any("recordStatus" %in% names(ped)))
+    seq_along(ped$recordStatus)[ped$recordStatus == status]
   else
     integer(0)
 }
