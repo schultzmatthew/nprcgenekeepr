@@ -13,10 +13,31 @@ uitpBreedingGroupFormation <-
     div(
       div(
         style = "display:inline-block;width:800px;padding:10px",
+
         div(
           style = "display:inline-block;width:350px;padding:10px",
           helpText("Enter IDs of seed animals for the new group(s):"),
-          tags$textarea(id = "curGrp", rows = 10, cols = 40, "")
+          tags$textarea(id = "curGrp", rows = 10, cols = 40, "")#,
+          # selectInput(
+          #   "groupNum",
+          #   label = "Current Group:",
+          #   choices = list(
+          #     "0" = 0,
+          #     "1" = 1,
+          #     "2" = 2,
+          #     "3" = 3,
+          #     "4" = 4,
+          #     "5" = 5,
+          #     "6" = 6,
+          #     "7" = 7,
+          #     "8" = 8,
+          #     "9" = 9,
+          #     "10" = 10,
+          #     "11" = 11,
+          #     "12" = 12
+          #   ),
+          #   selected = 0
+          # )
         ),
         div(
           style = "display:inline-block;width:350px;padding:10px",
