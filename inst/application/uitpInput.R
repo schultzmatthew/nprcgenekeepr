@@ -114,7 +114,7 @@ uitpInput <-
           be written to the users home directory. Animals without birth dates
           are not considered."
         ),
-        actionButton("getData", "Examine and use files now"),
+        actionButton("getData", "Read and Test Pedigree"),
         checkboxInput("debugger", label = "Debug on", value = FALSE)#,
         ),
       # Main Panel
