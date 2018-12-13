@@ -1,6 +1,95 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20181210
+
+1.  Mark reported that he was having trouble implementing the user interface 
+    elements needed for items 4 and 5 of the 20181105 meeting notes.
+    Specifically the need to have dynamically generated text input boxes
+    for the number of groups to be formed is the issue. 
+    He has not figured out either
+    the desired interface behavior or the technical methods needed for 
+    this feature. This is going to delay getting the tutorials written,
+    which he had hoped to complete in first draft form during December. 
+    
+    After some discussion, all agreed that the features described in items 
+    4 and 5 are sufficiently important to delay the preparation of the 
+    tutorials and subsequent technical paper a few weeks. Thus, Mark
+    will work on getting these implemented in December with plans on 
+    working on the tutorials in January.
+1.  Amanda and Mark had fairly extensive discussions regarding how group
+    selection is to be done. The current software forms groups so that 
+    there is no overlap of animals among any of the groups. The plan
+    is for Mark to implement a group selection procedure that will make
+    two types of groups. 
+    
+    One group type is what is currently done by the software (no overlap
+    of animals among any of the groups formed.) These groups will
+    be made up of all of the animals that can be used in groups based
+    on kinship and sex ratio criteria such that none of the groups have
+    any individuals in common.
+    
+    The second type of group is a collection of sub-groups where each
+    sub-group is a group of the first type. Thus, there is no overlap
+    of animals within any one sub-group of groups and there is 
+    potential overlay among the various subgroups. This is complecated
+    and hard to follow so it is illustrated 
+    with the list below where each letter represent a specific animal.
+    Overlapping Groups 1-4 have within
+    them sets of animal that have no animals in common with other unique
+    sets within the group.
+    
+    For example, animal __H__ appears in set 1 of each overlapping group, 
+    but it does not appear more than once in any on group. Also, animal
+    __E__ appears in group 1, 2, and 4 and not in group 3.
+
+```{r group-formation, include = FALSE, echo = FALSE}
+library(stringi)
+overlapping_groups <- list()
+for (i in 1:4) {
+  unique <- sample(LETTERS, 15, replace = FALSE)
+  group <- stri_c("Overlap_Group_", i)
+  overlapping_groups[[group]] <- data.frame(unique_set_1 = unique[1:5], 
+                               unique_set_2 = unique[6:10],
+                               unique_set_3 = unique[11:15], 
+                               stringsAsFactors = FALSE )
+}
+overlapping_str <- sapply(overlapping_groups, function(x) {
+  stri_c("Unique Set 1: ", stri_c(x[[1]], collapse = ","), "\n",
+         "Unique Set 2: ", stri_c(x[[2]], collapse = ","), "\n",
+         "Unique Set 3: ", stri_c(x[[3]], collapse = ","), "\n")
+})
+cat(overlapping_str)
+
+```
+
+    -   Overlapping Group 1
+        -   Unique Set 1: I,B,J,L,H
+        -   Unique Set 2: D,G,U,S,Q
+        -   Unique Set 3: E,P,F,A,C
+    -   Overlapping Group 2
+        -   Unique Set 1: M,V,H,Z,K
+        -   Unique Set 2: O,T,W,D,X
+        -   Unique Set 3: C,J,E,F,B
+    -   Overlapping Group 3
+        -   Unique Set 1: H,I,F,X,K
+        -   Unique Set 2: Q,Y,A,D,S
+        -   Unique Set 3: T,B,C,G,M
+    -   Overlapping Group 4
+        -   Unique Set 1: H,V,I,T,Z
+        -   Unique Set 2: E,W,M,N,O
+        -   Unique Set 3: P,Q,J,G,U
+
+
+1.   Amanda and Mark are to develop a better descriptor for the button that causes
+     the pedigree information to be read in tested and sent to the pedigree
+     browser function. Mark has changed it to _Read and Test Pedigree_ for now.
+1.   Mark is to reorganize the __Input__ tab to place the description of the 
+     minimum parent age in hovertext and make the check pedigree button more 
+     evident.
+1.   The next meeting will be 20190114 at 4 PM Pacific time.        
+
+
 ## 20181105
 1.  Do not report as an error the wrong sex for animals added into the pedigree
     and appear as both a sire and dam without an ego record. 

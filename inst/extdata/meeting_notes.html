@@ -281,6 +281,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -288,14 +291,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -313,9 +376,49 @@ $(document).ready(function () {
 <h1>Meeting Notes and Things To Do</h1>
 <p>Provided in reverse chronological order</p>
 <div id="section" class="section level2">
+<h2>20181210</h2>
+<ol style="list-style-type: decimal">
+<li><p>Mark reported that he was having trouble implementing the user interface elements needed for items 4 and 5 of the 20181105 meeting notes. Specifically the need to have dynamically generated text input boxes for the number of groups to be formed is the issue. He has not figured out either the desired interface behavior or the technical methods needed for this feature. This is going to delay getting the tutorials written, which he had hoped to complete in first draft form during December.</p>
+After some discussion, all agreed that the features described in items 4 and 5 are sufficiently important to delay the preparation of the tutorials and subsequent technical paper a few weeks. Thus, Mark will work on getting these implemented in December with plans on working on the tutorials in January.</li>
+<li><p>Amanda and Mark had fairly extensive discussions regarding how group selection is to be done. The current software forms groups so that there is no overlap of animals among any of the groups. The plan is for Mark to implement a group selection procedure that will make two types of groups.</p>
+<p>One group type is what is currently done by the software (no overlap of animals among any of the groups formed.) These groups will be made up of all of the animals that can be used in groups based on kinship and sex ratio criteria such that none of the groups have any individuals in common.</p>
+<p>The second type of group is a collection of sub-groups where each sub-group is a group of the first type. Thus, there is no overlap of animals within any one sub-group of groups and there is potential overlay among the various subgroups. This is complecated and hard to follow so it is illustrated with the list below where each letter represent a specific animal. Overlapping Groups 1-4 have within them sets of animal that have no animals in common with other unique sets within the group.</p>
+<p>For example, animal <strong>H</strong> appears in set 1 of each overlapping group, but it does not appear more than once in any on group. Also, animal <strong>E</strong> appears in group 1, 2, and 4 and not in group 3.</p>
+<ul>
+<li>Overlapping Group 1
+<ul>
+<li>Unique Set 1: I,B,J,L,H</li>
+<li>Unique Set 2: D,G,U,S,Q</li>
+<li>Unique Set 3: E,P,F,A,C</li>
+</ul></li>
+<li>Overlapping Group 2
+<ul>
+<li>Unique Set 1: M,V,H,Z,K</li>
+<li>Unique Set 2: O,T,W,D,X</li>
+<li>Unique Set 3: C,J,E,F,B</li>
+</ul></li>
+<li>Overlapping Group 3
+<ul>
+<li>Unique Set 1: H,I,F,X,K</li>
+<li>Unique Set 2: Q,Y,A,D,S</li>
+<li>Unique Set 3: T,B,C,G,M</li>
+</ul></li>
+<li>Overlapping Group 4
+<ul>
+<li>Unique Set 1: H,V,I,T,Z</li>
+<li>Unique Set 2: E,W,M,N,O</li>
+<li>Unique Set 3: P,Q,J,G,U</li>
+</ul></li>
+</ul></li>
+<li>Amanda and Mark are to develop a better descriptor for the button that causes the pedigree information to be read in tested and sent to the pedigree browser function. Mark has changed it to <em>Read and Test Pedigree</em> for now.</li>
+<li>Mark is to reorganize the <strong>Input</strong> tab to place the description of the minimum parent age in hovertext and make the check pedigree button more evident.</li>
+<li><p>The next meeting will be 20190114 at 4 PM Pacific time.</p></li>
+</ol>
+</div>
+<div id="section-1" class="section level2">
 <h2>20181105</h2>
 <ol style="list-style-type: decimal">
-<li>Do not report as an error the wrong sex for animals added into the pedigree and appear as both a sire and dam without an ego record. These need to be reported as an error because they are both a sire and a dam.</li>
+<li>Do not report as an error the wrong sex for animals added into the pedigree and appear as both a sire and dam without an ego record. These need to be reported as an error because they are both a sire and a dam. Done 20181208</li>
 <li><p>Make a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and green. Check on the University of Oregon website for a color palette. Have ONPRC in the lighter color similar to the SNPRC color scheme. Have the macaque and oval in the same blue color. Clean up the resolution of the Oregon logo as it is currently fuzzy. Some research found the following link <a href="https://www.ohsu.edu/xd/digital-identity/global-elements-design/color-palette.cfm" title="Palette">OHSU Color Palette</a>.</p>
 <ul>
 <li>Alert #C34D36</li>
@@ -337,7 +440,7 @@ $(document).ready(function () {
 <li>Navigation background darker #E5E4E4</li>
 <li>Navigation background lighter #F3F3F3</li>
 <li>Promo background #F3F3F3</li>
-<li>Subsite name in header type #0E4D8F</li>
+<li>Subsite name in header type #0E4D8F Done 20181208</li>
 </ul></li>
 <li>Check the outliers found in the first box and whisker plot when the file “Example_Pedigree.csv” is analyzed. The outliers are exactly as described: Data beyond the end of the whiskers are called “outlying” points and are plotted individually. The jittered points are overlayed on top of the boxplot and its outliers. Done 20181112</li>
 <li>Add the ability to select a sex ratio for group formation. Ratios are to be female to male starting with 1:1 and progressing by 0.5 on the female side, holding the male side at 1. Go up to a ratio of 10:1. The progression will look something like 1:1, 1.5:1, 2:1, 2.5:1 … 10:1.</li>
@@ -351,10 +454,10 @@ $(document).ready(function () {
 <li>Found that breeding groups being formed included unknown animals that had been added as placeholders for unknown parents. Those were removed from consideration. Done 20181119</li>
 <li>Worked with Terry Hawkins on 20181119 and 20181120 to make sure the LabKey code was working. He had an error in his base URL specification so that initial efforts failed and the error message was misleading. I have trapped the erorr with a tryCatch function and am sending a message to the log file. This needs to be tested.</li>
 </ul></li>
-<li><p>The next meeting is scheduled for 11-26-2018.</p></li>
+<li><p>The next meeting is scheduled for 20181126. Due to conflicts in Mark’s schedule, we rescheduled for 20181210.</p></li>
 </ol>
 </div>
-<div id="section-1" class="section level2">
+<div id="section-2" class="section level2">
 <h2>20181022</h2>
 <ol style="list-style-type: decimal">
 <li>Allow the use of Ego for ID. Done 20181022</li>
@@ -378,7 +481,7 @@ Below are some relevant articles found from a simple web search with the Google 
 <li><p>The next meeting is scheduled for November 5, 2018 at 4 PM Pacific Time.</p></li>
 </ol>
 </div>
-<div id="section-2" class="section level2">
+<div id="section-3" class="section level2">
 <h2>20180917</h2>
 <ol style="list-style-type: decimal">
 <li>Change Pedigree browser button label to say “Trim pedigree based on focal animals”. Done 20180917</li>
@@ -395,7 +498,7 @@ Below are some relevant articles found from a simple web search with the Google 
 </ol></li>
 </ol>
 </div>
-<div id="section-3" class="section level2">
+<div id="section-4" class="section level2">
 <h2>20180820</h2>
 <p>Meeting was canceled.</p>
 <p>Topics I wanted to bring up.</p>
@@ -549,37 +652,37 @@ Below are some relevant articles found from a simple web search with the Google 
 <div id="miscellaneous-accomplishments" class="section level2">
 <h2>Miscellaneous Accomplishments</h2>
 <p>These should be stored elsewhere</p>
-<div id="section-4" class="section level4">
+<div id="section-5" class="section level4">
 <h4>20180429</h4>
 <p>Test coverage is 86.32%.</p>
 </div>
-<div id="section-5" class="section level4">
+<div id="section-6" class="section level4">
 <h4>20171004</h4>
 <p>Unit test coverage is 84.79%.</p>
 </div>
-<div id="section-6" class="section level4">
+<div id="section-7" class="section level4">
 <h4>20170921</h4>
 <p>Unit test coverage is about 15%.</p>
 </div>
-<div id="section-7" class="section level4">
+<div id="section-8" class="section level4">
 <h4>20170919</h4>
 <p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
 </div>
-<div id="section-8" class="section level4">
+<div id="section-9" class="section level4">
 <h4>20170917</h4>
 <p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amanda Vinson’s paper indicated that ONPRC typically used.</p>
 <p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the check box at the bottom of the side panel on the two attached images. When the Debug on check box is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
 <p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
 </div>
-<div id="section-9" class="section level4">
+<div id="section-10" class="section level4">
 <h4>20170916</h4>
 <p>Can now assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The pedigree submitted via the UI can optionally contain genetic information.</p>
 </div>
-<div id="section-10" class="section level4">
+<div id="section-11" class="section level4">
 <h4>20170915</h4>
 <p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
 </div>
-<div id="section-11" class="section level4">
+<div id="section-12" class="section level4">
 <h4>20170911</h4>
 <p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
 </div>
