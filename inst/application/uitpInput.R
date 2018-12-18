@@ -105,15 +105,16 @@ uitpInput <-
           ),
           fileInput("breederFile", label = "Select Breeder File")
         ),
-        textInput("minParentAge", label = "Minimum Parent Age (years)",
-                  value = "0.0"),
-        helpText(
-          "If a parent is not at least as old as the minimum parent age
-          on the birth date of an offspring in the pedigree, the input
-          file will not be accepted and a file named lowParentAge.csv will
-          be written to the users home directory. Animals without birth dates
-          are not considered."
-        ),
+        popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
+                  value = "0.0"), NULL,
+               paste("Parents must be at least as old as the minimum parent",
+                     "age on the birth date of an offspring. If not, the",
+                     "filed will not be accepted and a file named",
+                     "<b>lowParentAge.csv</b> containing a list of parents",
+                     "below the minimum age will",
+                     "be written to the users home directory. Animals",
+                     "without birth dates are not affected by this rule.")),
+
         actionButton("getData", "Read and Test Pedigree"),
         checkboxInput("debugger", label = "Debug on", value = FALSE)#,
         ),
