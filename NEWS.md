@@ -3,6 +3,22 @@ NEWS
 R. Mark Sharp
 12/8/2018
 
+# nprcmanager 0.4.19 (20181217)
+
+  - All minor interface changes
+      - Substituted hovertext for description of minimum parental age
+      - Added meeting notes for 20181210 meeting
+      - Changed label on button controling reading of pedigree
+        information
+      - Updated logo
+  - Added code of conduct file.
+  - Corrected license text
+
+# nprcmanager 0.4.18 (20181210)
+
+  - Added unit test for removing animals added to pedigree because they
+    are unknown parents
+
 # nprcmanager 0.4.17 (20181208)
 
   - Changed error reporting so as not to report as an error the wrong
