@@ -63,7 +63,7 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
                             withKin = FALSE) {
   if (!is.null(currentGroup) && numGp > 1)
     stop("Cannot have more than one group formed when adding to a single group")
-  kmat <- kinMatrix2LongForm(union(candidates, currentGroup), kmat)
+  kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
   kin <- kinMatrix2LongForm(kmat)
 
   kin <- filterThreshold(kin, threshold = threshold)
