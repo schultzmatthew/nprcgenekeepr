@@ -12,7 +12,7 @@
 #' This is the kinship data reformatted from a matrix, to a long-format table.
 #' @importFrom utils stack
 #' @export
-reformatKinship <- function(kinMatrix, rm.dups = FALSE) {
+kinMatrix2LongForm <- function(kinMatrix, rm.dups = FALSE) {
   if (rm.dups) {
     kinMatrix[upper.tri(kinMatrix)] <- NA
   }

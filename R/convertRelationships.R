@@ -21,7 +21,7 @@ convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
   if (!is.null(ids)) {
     kmat <- filterKinMatrix(ids, kmat)
   }
-  kin <- reformatKinship(kmat, rm.dups = TRUE)
+  kin <- kinMatrix2LongForm(kmat, rm.dups = TRUE)
   ped <- makeCEPH(ped$id, ped$sire, ped$dam)
   r <- c()
 

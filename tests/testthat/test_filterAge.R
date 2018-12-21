@@ -5,7 +5,7 @@ ped <- baboonPed
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
                 sparse = FALSE)
-kin <- reformatKinship(kmat)
+kin <- kinMatrix2LongForm(kmat)
 filteredKin1 <- filterAge(kin, ped, minAge = 1)
 filteredKin5 <- filterAge(kin, ped, minAge = 5)
 lessThan5 <- c("35315", "32732", "33873", "33895", "34163", "34183", "34984",
