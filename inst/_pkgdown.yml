@@ -177,7 +177,7 @@ reference:
   - '`removeDuplicates`'
   - '`removeEarlyDates`'
   - '`removeUninformativeFounders`'
-  - '`removedUnknownAnimals`'
+  - '`removeUnknownAnimals`'
   - '`reportGV`'
   - '`resetGroup`'
   - '`resetPopulation`'
