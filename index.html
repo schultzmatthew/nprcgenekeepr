@@ -87,9 +87,9 @@
     
     
 
-<div id="nprcmanager-version-0-4-20-20181218" class="section level1">
+<div id="nprcmanager-version-0-4-19-20181217" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#nprcmanager-version-0-4-20-20181218" class="anchor"></a>nprcmanager – Version 0.4.20 (20181218)</h1></div>
+<a href="#nprcmanager-version-0-4-19-20181217" class="anchor"></a>nprcmanager – Version 0.4.19 (20181217)</h1></div>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -110,8 +110,8 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install <strong>nprcmanager</strong> from github with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 </div>
 <div id="summary-of-major-functions" class="section level2">
@@ -129,8 +129,8 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
 <p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
 <p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"exampleNprcmanagerConfig"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/View">View</a></span>(exampleNprcmanagerConfig)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"exampleNprcmanagerConfig"</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/View">View</a></span>(exampleNprcmanagerConfig)</a></code></pre></div>
 </div>
 <div id="genetic-value-analysis-reports" class="section level3">
 <h3 class="hasAnchor">
@@ -147,8 +147,8 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <h2 class="hasAnchor">
 <a href="#running-shiny-application" class="anchor"></a>Running Shiny Application</h2>
 <p>The toolset available within nprcmanager can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nprcmanager)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/runManager.html">runManager</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nprcmanager)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="reference/runManager.html">runManager</a></span>()</a></code></pre></div>
 <p>Find online documentation at <a href="https://rmsharp.github.io/nprcmanager/">https://rmsharp.github.io/nprcmanager/</a>.</p>
 <p><strong>For more information see:</strong><br>
 A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (<em>Macaca mulatto</em>) Vinson, A ; Raboin, Mj <em>Journal Of The American Association For Laboratory Animal Science</em>, 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]</p>
