@@ -13,13 +13,6 @@
 #' ignored.
 #' @param currentGroup character vector of IDs of animals currently assigned
 #' to the group. Defaults to NULL assuming no groups are existant.
-#' @param kmat numeric matrix of pairwise kinship values. Rows and columns
-#' are named with animal IDs.
-#' @param ped dataframe that is the `Pedigree`. It contains pedigree
-#' information including the IDs listed in \code{candidates}.
-#' @param threshold numeric value indicating the minimum kinship level to be
-#' considered in group formation. Pairwise kinship below this level will be
-#' ignored.
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
 #' kinship should be ignored between certain sexes.
