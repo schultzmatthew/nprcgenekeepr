@@ -17,5 +17,11 @@ dataframe with kinships in long form after adding a row for each
 animal without a relative.
 }
 \description{
-addAnimalsWithNoRelative adds an NA value for all animals without a relative
+This allows \code{kin} to be used with \code{setdiff} when there are no
+relatives otherwise an error would occur because
+\code{kin[['animal_with_no_relative']]} would not be found. See the following:
+in \strong{groupAddAssign}
+}
+\details{
+\code{available[[i]] <- setdiff(available[[i]], kin[[id]])}
 }

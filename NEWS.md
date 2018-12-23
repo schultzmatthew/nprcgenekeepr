@@ -3,6 +3,14 @@ NEWS
 R. Mark Sharp
 12/8/2018
 
+# nprcmanager 0.4.20 (20181222)
+
+  - Refactor of **groupAddAssign** function by extracting much of the
+    function into separate functions. One such function,
+    **fillGroupMembers** isolates the group formation code to allow
+    adding the ability to satisfy sex ratio requirements and harem
+    creation.
+
 # nprcmanager 0.4.19 (20181217)
 
   - All minor interface changes

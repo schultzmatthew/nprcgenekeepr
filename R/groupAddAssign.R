@@ -74,63 +74,19 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
   kin <- addAnimalsWithNoRelative(kin, candidates)
 
   # Starting the group assignment simulation
-  saved.score <- -1
+  savedScore <- -1
   savedGroupMembers <- list()
 
   for (k in 1:iter) {
-    groupMembers <- list()
-    available <- list()
-    for (i in 1:numGp) {
-      if (is.null(currentGroup)) {
-        groupMembers[[i]] <- vector()
-      } else {
-        groupMembers[[i]] <- currentGroup
-      }
-      available[[i]] <- candidates
-    }
-
-    grpNum <- list()
-    grpNum[1:numGp] <- 1:numGp
-    while (TRUE) {
-      if (isEmpty(grpNum)) {
-        break
-      }
-
-      # Select a group at random
-      i <- sample(grpNum, 1)[[1]]
-
-      # Select an animal that can be added to this group and add it
-      id <- sample(available[[i]], 1)
-      groupMembers[[i]] <- c(groupMembers[[i]], id)
-
-      # Remove the selected animal from consideration
-      for (j in 1:numGp) {
-        available[[j]] <- setdiff(available[[j]], id)
-      }
-
-      # Remove all relatives from consideration for the group it was added to
-      # need to modify "kin" to include blank entries for animals with no
-      # relatives
-      available[[i]] <- setdiff(available[[i]], kin[[id]])
-
-      remainingGrpNum <- grpNum
-      for (i in remainingGrpNum) {
-        if (isEmpty(available[[i]])) {
-          grpNum <- setdiff(grpNum, i)
-        }
-      }
-    }
+    groupMembers <- fillGroupMembers(candidates, currentGroup, kin, numGp)
 
     # Score the resulting groups
     score <- min(sapply(groupMembers, length))
 
-    if (score > saved.score) {
-      if (is.null(currentGroup)) {
-        savedGroupMembers <- groupMembers
-      } else {
-        savedGroupMembers[[1]] <- groupMembers
-      }
-      saved.score <- score
+    if (score > savedScore) {
+      savedGroupMembers <-
+        updateSavedGroupMembers(savedGroupMembers, currentGroup, groupMembers)
+      savedScore <- score
     }
 
     # Updating the progress bar, if applicable
@@ -145,9 +101,9 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
     for (i in seq_along(savedGroupMembers)) {
       groupKin[[i]] <-   filterKinMatrix(savedGroupMembers[[i]], kmat)
     }
-    return(list(group = savedGroupMembers, score = saved.score,
+    return(list(group = savedGroupMembers, score = savedScore,
                 groupKin = groupKin))
   } else {
-    return(list(group = savedGroupMembers, score = saved.score))
+    return(list(group = savedGroupMembers, score = savedScore))
   }
 }
