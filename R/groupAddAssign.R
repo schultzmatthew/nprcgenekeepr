@@ -64,33 +64,18 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
   if (!is.null(currentGroup) && numGp > 1)
     stop("Cannot have more than one group formed when adding to a single group")
   kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
-  kin <- kinMatrix2LongForm(kmat)
-
-  kin <- filterThreshold(kin, threshold = threshold)
-  kin <- filterPairs(kin, ped, ignore = ignore)
-  kin <- filterAge(kin, ped, minAge = minAge)
-
-  # Filter out self kinships
-  kin <- kin[(kin$id1 != kin$id2), ]
-
-  # Ignore kinship between current group members
-  kin <- kin[!((kin$id1 %in% currentGroup) & (kin$id2 %in% currentGroup)), ]
-
-  # Converting the kinships to a list
-  kin <- tapply(kin$id2, kin$id1, c)
+  kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroup, ignore,
+                                               minAge)
 
   # Filtering out candidates related to current group members
   conflicts <- unique(c(unlist(kin[currentGroup]), currentGroup))
   candidates <- setdiff(candidates, conflicts)
 
-  # adding animals with no relatives
-  for (cand in setdiff(candidates, names(kin))) {
-    kin[[cand]] <- c(NA)
-  }
+  kin <- addAnimalsWithNoRelative(kin, candidates)
 
   # Starting the group assignment simulation
   saved.score <- -1
-  saved.groupMembers <- list()
+  savedGroupMembers <- list()
 
   for (k in 1:iter) {
     groupMembers <- list()
@@ -141,9 +126,9 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
 
     if (score > saved.score) {
       if (is.null(currentGroup)) {
-        saved.groupMembers <- groupMembers
+        savedGroupMembers <- groupMembers
       } else {
-        saved.groupMembers[[1]] <- groupMembers
+        savedGroupMembers[[1]] <- groupMembers
       }
       saved.score <- score
     }
@@ -154,20 +139,15 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
     }
   }
 
-  # Adding a group for the unused animals
-  n <- length(saved.groupMembers) + 1
-  saved.groupMembers[[n]] <-
-    ifelse(isEmpty(setdiff(candidates, unlist(saved.groupMembers))),
-           c(NA), list(setdiff(candidates, unlist(saved.groupMembers))))[[1]]
-
+  savedGroupMembers <- addGroupOfUnusedAnimals(savedGroupMembers, candidates)
   if (withKin) {
     groupKin <- list()
-    for (i in seq_along(saved.groupMembers)) {
-      groupKin[[i]] <-   filterKinMatrix(saved.groupMembers[[i]], kmat)
+    for (i in seq_along(savedGroupMembers)) {
+      groupKin[[i]] <-   filterKinMatrix(savedGroupMembers[[i]], kmat)
     }
-    return(list(group = saved.groupMembers, score = saved.score,
+    return(list(group = savedGroupMembers, score = saved.score,
                 groupKin = groupKin))
   } else {
-    return(list(group = saved.groupMembers, score = saved.score))
+    return(list(group = savedGroupMembers, score = saved.score))
   }
 }
