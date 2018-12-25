@@ -96,14 +96,6 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
   }
 
   savedGroupMembers <- addGroupOfUnusedAnimals(savedGroupMembers, candidates)
-  if (withKin) {
-    groupKin <- list()
-    for (i in seq_along(savedGroupMembers)) {
-      groupKin[[i]] <-   filterKinMatrix(savedGroupMembers[[i]], kmat)
-    }
-    return(list(group = savedGroupMembers, score = savedScore,
-                groupKin = groupKin))
-  } else {
-    return(list(group = savedGroupMembers, score = savedScore))
-  }
+
+  groupMembersReturn(savedGroupMembers, savedScore)
 }

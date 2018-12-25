@@ -1,7 +1,12 @@
 NEWS
 ================
 R. Mark Sharp
-12/8/2018
+12/24/2018
+
+# nprcmanager 0.4.22 (20181224)
+
+  - Minor text changes to Input tab. Refactored groupAddAssign function
+    to have a function create the return list.
 
 # nprcmanager 0.4.20 (20181222)
 

@@ -1,13 +1,17 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "12/8/2018"
+date: "12/24/2018"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.4.22 (20181224)
+-   Minor text changes to Input tab. Refactored groupAddAssign function to
+    have a function create the return list.
+    
 # nprcmanager 0.4.20 (20181222)
 -   Refactor of __groupAddAssign__ function by extracting much of the function
     into separate functions. One such function, __fillGroupMembers__ isolates
