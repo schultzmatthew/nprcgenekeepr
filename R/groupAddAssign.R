@@ -97,5 +97,5 @@ groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
 
   savedGroupMembers <- addGroupOfUnusedAnimals(savedGroupMembers, candidates)
 
-  groupMembersReturn(savedGroupMembers, savedScore)
+  groupMembersReturn(savedGroupMembers, savedScore, withKin, kmat)
 }
