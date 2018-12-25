@@ -112,8 +112,8 @@ uitpInput <-
                      "file will not be accepted and a file named",
                      "<b>lowParentAge.csv</b> containing a list of parents",
                      "below the minimum age will",
-                     "be written to the user's home directory. Animals",
-                     "without birth dates are not affected by this rule.")),
+                     "be written to the user&#39s home directory. Animals",
+                     "without birthdates are not affected by this rule.")),
 
         actionButton("getData", "Read and Check Pedigree"),
         checkboxInput("debugger", label = "Debug on", value = FALSE)#,
