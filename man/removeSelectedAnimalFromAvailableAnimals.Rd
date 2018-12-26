@@ -4,12 +4,12 @@
 \alias{removeSelectedAnimalFromAvailableAnimals}
 \title{Updates list of available animals by removing the selected animal}
 \usage{
-removeSelectedAnimalFromAvailableAnimals(available, id, numGp)
+removeSelectedAnimalFromAvailableAnimals(available, ids, numGp)
 }
 \arguments{
 \item{available}{list of available animals for each group}
 
-\item{id}{character vector of length one having the selected animals Id}
+\item{ids}{character vector having the selected animal Ids}
 
 \item{numGp}{integer indicating the number of groups being formed.}
 }

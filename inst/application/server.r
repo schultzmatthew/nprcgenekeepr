@@ -771,7 +771,7 @@ shinyServer(function(input, output, session) {
       n <<- n + 1
     }
 
-    if (length(currentGroup) > 0) {
+#    if (length(currentGroup) > 0) {
       grp <- groupAddAssign(candidates = candidates,
                            currentGroup = currentGroup,
                            kmat = kmat(),
@@ -783,18 +783,18 @@ shinyServer(function(input, output, session) {
                            numGp = 1,
                            updateProgress = updateProgress,
                            withKin = withKin)
-    } else{
-      grp <- groupAddAssign(candidates = candidates,
-                           currentGroup = NULL,
-                           kmat = kmat(), ped = ped,
-                           threshold = threshold,
-                           ignore = ignore,
-                           minAge = minAge,
-                           iter = iter,
-                           numGp = numGp,
-                           updateProgress = updateProgress,
-                           withKin = withKin)
-    }
+#    } else{
+      # grp <- groupAddAssign(candidates = candidates,
+      #                      currentGroup = NULL,
+      #                      kmat = kmat(), ped = ped,
+      #                      threshold = threshold,
+      #                      ignore = ignore,
+      #                      minAge = minAge,
+      #                      iter = iter,
+      #                      numGp = numGp,
+      #                      updateProgress = updateProgress,
+      #                      withKin = withKin)
+#    }
 
     return(grp)
   })

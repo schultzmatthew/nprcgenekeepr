@@ -56,12 +56,12 @@
 #' earlier versions.
 #'
 #' @export
-groupAddAssign <- function(candidates, currentGroup = NULL, kmat, ped,
+groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
                             numGp = 1, updateProgress = NULL,
                             withKin = FALSE) {
-  if (!is.null(currentGroup) && numGp > 1)
+  if (length(currentGroup) > 0 && numGp > 1)
     stop("Cannot have more than one group formed when adding to a single group")
   kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
   kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroup, ignore,

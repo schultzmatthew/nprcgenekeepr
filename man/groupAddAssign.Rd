@@ -4,7 +4,7 @@
 \alias{groupAddAssign}
 \title{Add animals to an existing breeding group or form groups:}
 \usage{
-groupAddAssign(candidates, currentGroup = NULL, kmat, ped,
+groupAddAssign(candidates, currentGroup = character(0), kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
   iter = 1000, numGp = 1, updateProgress = NULL, withKin = FALSE)
 }
