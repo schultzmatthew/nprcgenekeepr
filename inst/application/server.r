@@ -90,7 +90,10 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
                    name = "nprcmanager")
         breederPed <- getBreederPed(pedigreeFile$datapath, sep = sep)
-        if (is.null(breederPed)) {
+        if (any("nprcmanagErr" %in% class(breederPed))) {
+            errorLst <- breederPed
+            breederPed <- NULL
+        } else if (is.null(breederPed)) {
           flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
                             "; NULL was returned by getBreederPed function"),
                      name = "nprcmanager")
@@ -181,11 +184,12 @@ shinyServer(function(input, output, session) {
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
-
-        errorLst <- tryCatch(
-          qcStudbook(breederPed, minParentAge, reportChanges = FALSE, reportErrors = TRUE),
-          warning = function(cond) {return(NULL)},
-          error = function(cond) {return(NULL)})
+        if (is.null(errorLst)) {
+          errorLst <- tryCatch(
+            qcStudbook(breederPed, minParentAge, reportChanges = FALSE, reportErrors = TRUE),
+            warning = function(cond) {return(NULL)},
+            error = function(cond) {return(NULL)})
+        }
         removeTab(inputId = "tab_pages", target = "Changed Columns")
         removeTab(inputId = "tab_pages", target = "Error List")
         if (checkErrorLst(errorLst)) {
@@ -771,30 +775,17 @@ shinyServer(function(input, output, session) {
       n <<- n + 1
     }
 
-#    if (length(currentGroup) > 0) {
-      grp <- groupAddAssign(candidates = candidates,
-                           currentGroup = currentGroup,
-                           kmat = kmat(),
-                           ped = ped,
-                           threshold = threshold,
-                           ignore = ignore,
-                           minAge = minAge,
-                           iter = iter,
-                           numGp = 1,
-                           updateProgress = updateProgress,
-                           withKin = withKin)
-#    } else{
-      # grp <- groupAddAssign(candidates = candidates,
-      #                      currentGroup = NULL,
-      #                      kmat = kmat(), ped = ped,
-      #                      threshold = threshold,
-      #                      ignore = ignore,
-      #                      minAge = minAge,
-      #                      iter = iter,
-      #                      numGp = numGp,
-      #                      updateProgress = updateProgress,
-      #                      withKin = withKin)
-#    }
+    grp <- groupAddAssign(candidates = candidates,
+                         currentGroup = currentGroup,
+                         kmat = kmat(),
+                         ped = ped,
+                         threshold = threshold,
+                         ignore = ignore,
+                         minAge = minAge,
+                         iter = iter,
+                         numGp = 1,
+                         updateProgress = updateProgress,
+                         withKin = withKin)
 
     return(grp)
   })

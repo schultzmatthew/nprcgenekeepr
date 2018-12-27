@@ -76,7 +76,8 @@ summary.nprcmanagErr <- function(object, ...) {
                    "Change: The columns changed from")
   if (stri_length(txt) > 0)
     txt <- stri_c(txt, "\nPlease check and correct the pedigree file.\n")
-
+  if (length(errorLst$failedDatabaseConnection) > 0)
+    txt <- stri_c(txt, "\n", errorLst$failedDatabaseConnection, "\n")
   txt <- list(txt = txt, sp = errorLst$suspiciousParents)
 
   class(txt) <- "summary.nprcmanagErr"

@@ -4,7 +4,8 @@
 #' file by \code{qcStudbook}.
 #' @export
 getEmptyErrorLst <- function() {
-  emptyErrorLst <- list(missingColumns = character(0),
+  emptyErrorLst <- list(failedDatabaseConnection = character(0),
+                        missingColumns = character(0),
                         invalidDateRows = character(0),
                         suspiciousParents = data.frame(),
                         femaleSires = character(0),

@@ -23,7 +23,10 @@ getBreederPed <- function(fileName, sep = ",") {
   if (is.null(ped)) {
     flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
                       "returned NULL.\n"), name = "nprcmanager")
-    return(NULL)
+    errorLst <- getEmptyErrorLst()
+    errorLst$failedDatabaseConnection <-
+      "Database connection failed: configuration or permissions are invalid."
+    return(errorLst)
   }
   flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
                     "returned ped with ", nrow(ped), "rows.\n"),

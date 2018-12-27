@@ -8,7 +8,8 @@
 checkErrorLst <- function(errorLst) {
   if (is.null(errorLst))
     return(FALSE)
-  if (length(errorLst$missingColumns) > 0 |
+  if (length(errorLst$failedDatabaseConnection) > 0 |
+      length(errorLst$missingColumns) > 0 |
       length(errorLst$invalidDateRows) > 0 |
       length(errorLst$sireAndDam) > 0 |
       length(errorLst$femaleSires) > 0 |

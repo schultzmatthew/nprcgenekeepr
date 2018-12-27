@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 12/24/2018
 
+# nprcmanager 0.4.23 (20181226)
+
+  - Added code to detect LabKey connection failure and report it on an
+    Error tab
+
 # nprcmanager 0.4.22 (20181224)
 
   - Minor text changes to Input tab. Refactored groupAddAssign function

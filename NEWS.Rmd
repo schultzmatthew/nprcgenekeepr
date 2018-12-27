@@ -8,6 +8,9 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.4.23 (20181226)
+-   Added code to detect LabKey connection failure and report it on an Error tab
+
 # nprcmanager 0.4.22 (20181224)
 -   Minor text changes to Input tab. Refactored groupAddAssign function to
     have a function create the return list.
