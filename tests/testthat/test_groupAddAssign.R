@@ -14,7 +14,7 @@ groupAddTest <- groupAddAssign(
   kmat = pedWithGenotypeReport$kinship,
   ped = pedWithGenotype,
   ignore = NULL, minAge = 1, numGp = 1,
-  withKin = FALSE)
+  harem = FALSE, withKin = FALSE)
 test_that("groupAddAssign forms the correct groups", {
   #expect_equal(length(groupAddTest$group[[1]]), 11)
   expect_equal(length(groupAddTest$group[[2]]), 10)
@@ -27,7 +27,7 @@ groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
                                   kmat = pedWithGenotypeReport$kinship,
                                   ped = pedWithGenotype,
                                   ignore = NULL, minAge = 1, numGp = 2,
-                                  withKin = FALSE)
+                                  harem = FALSE, withKin = FALSE)
 test_that("groupAddAssign forms the correct groups", {
   expect_equal(length(groupAssignTest$group[[1]]), 9)
   expect_equal(length(groupAssignTest$group[[2]]), 10)
@@ -40,7 +40,7 @@ groupAddKTest <- groupAddAssign(candidates = baboonBreeders,
                                 kmat = pedWithGenotypeReport$kinship,
                                 ped = pedWithGenotype,
                                 ignore = NULL, minAge = 1, numGp = 1,
-                                withKin = TRUE)
+                                harem = FALSE, withKin = TRUE)
 test_that("groupAddAssign forms the correct groups with kinship matrices", {
   #expect_equal(length(groupAddKTest$group[[1]]), 11)
   expect_equal(length(groupAddKTest$group[[2]]), 10)
@@ -53,7 +53,7 @@ groupAssignKTest <- groupAddAssign(candidates = baboonBreeders,
                                    kmat = pedWithGenotypeReport$kinship,
                                    ped = pedWithGenotype,
                                    ignore = NULL, minAge = 1, numGp = 2,
-                                   withKin = TRUE)
+                                   harem = FALSE, withKin = TRUE)
 test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$group[[1]]), 9)
   expect_equal(length(groupAssignKTest$group[[2]]), 10)
@@ -66,6 +66,6 @@ test_that("groupAddAssign returns an error with numGp > 1 and currentGroup not N
                               kmat = pedWithGenotypeReport$kinship,
                               ped = pedWithGenotype,
                               ignore = NULL, minAge = 1, numGp = 2,
-                              withKin = TRUE))
+                              harem = FALSE, withKin = TRUE))
 })
 

@@ -4,7 +4,7 @@
 \alias{fillGroupMembers}
 \title{Forms and fills list of animals groups based on provided constraints}
 \usage{
-fillGroupMembers(candidates, currentGroup, kin, numGp)
+fillGroupMembers(candidates, currentGroup, kin, ped, harem, minAge, numGp)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for
@@ -15,6 +15,16 @@ to the group. Defaults to NULL assuming no groups are existant.}
 
 \item{kin}{list of animals and those animals who are related above a
 threshold value.}
+
+\item{ped}{dataframe that is the `Pedigree`. It contains pedigree
+information including the IDs listed in \code{candidates}.}
+
+\item{harem}{logical variable when set to \code{TRUE}, the formed groups
+have a single male at least \code{minAge} old.}
+
+\item{minAge}{integer value indicating the minimum age to consider in group
+formation. Pairwise kinships involving an animal of this age or younger will
+ be ignored. Default is 1 year.}
 
 \item{numGp}{integer value indicating the number of groups that should be
 formed from the list of IDs. Default is 1.}

@@ -51,6 +51,9 @@ uitpBreedingGroupFormation <-
         style = "display:inline-block;width:800px;padding:10px",
         div(
         style = "display:inline-block;width:150px;padding:10px",
+        popify(checkboxInput("harem", label = "Form Harem(s)",
+                      value = FALSE),
+               "If selected, one male per group is added."),
         numericInput(
           "numGp",
           label = "Groups Desired:",

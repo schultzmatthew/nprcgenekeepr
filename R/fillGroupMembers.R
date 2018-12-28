@@ -8,12 +8,30 @@
 #' to the group. Defaults to NULL assuming no groups are existant.
 #' @param kin list of animals and those animals who are related above a
 #' threshold value.
+#' @param ped dataframe that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
+#' @param harem logical variable when set to \code{TRUE}, the formed groups
+#' have a single male at least \code{minAge} old.
+#' @param minAge integer value indicating the minimum age to consider in group
+#' formation. Pairwise kinships involving an animal of this age or younger will
+#'  be ignored. Default is 1 year.
 #' @param numGp integer value indicating the number of groups that should be
 #' formed from the list of IDs. Default is 1.
 #'
 #' @export
-fillGroupMembers <- function(candidates, currentGroup, kin, numGp) {
-  groupMembers <- makeGroupMembers(numGp, currentGroup)
+fillGroupMembers <- function(candidates, currentGroup, kin, ped, harem, minAge,
+                             numGp) {
+  groupMembers <- makeGroupMembers(numGp, currentGroup, candidates, ped, harem,
+                                   minAge)
+  if (harem) {
+    if (length(potentialSires(currentGroup, minAge, ped)) > 0) {
+      candidates <- removePotentialSires(candidates, minAge, ped)
+    } else if (length(potentialSires(candidates, minAge, ped)) < numGp){
+      stop(paste0("User selected to form harems with fewer than ",
+                  numGp, " males at least ",
+                  minAge, " years old in the list of candidates."))
+    }
+  }
   available <- makeAvailable(numGp, candidates)
   grpNum <- makeGrpNum(numGp)
   while (TRUE) {

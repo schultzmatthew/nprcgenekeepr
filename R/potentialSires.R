@@ -1,0 +1,16 @@
+#' Provides list of potential sires
+#'
+#' @return character vector of potential sire Ids
+#'
+#' @param ids character vector of IDs of the animals
+#' @param minAge integer value indicating the minimum age to consider in group
+#' formation. Pairwise kinships involving an animal of this age or younger will
+#'  be ignored. Default is 1 year.
+#' @param ped dataframe that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
+#' @export
+potentialSires <- function(ids, minAge = 1, ped) {
+  ped <- ped[!is.na(ped$birth), ]
+  ped$id[ped$id %in% ids & ped$sex == "M" &
+                  currentAge(ped$birth) >= minAge]
+}

@@ -6,7 +6,8 @@
 \usage{
 groupAddAssign(candidates, currentGroup = character(0), kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
-  iter = 1000, numGp = 1, updateProgress = NULL, withKin = FALSE)
+  iter = 1000, numGp = 1, updateProgress = NULL, harem = FALSE,
+  withKin = FALSE)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for
@@ -44,7 +45,10 @@ formed from the list of IDs. Default is 1.}
 will be called during each iteration to update a
 \code{shiny::Progress} object.}
 
-\item{withKin}{logical variable when set to \code{TRUE} the kinship
+\item{harem}{logical variable when set to \code{TRUE}, the formed groups
+have a single male at least \code{minAge} old.}
+
+\item{withKin}{logical variable when set to \code{TRUE}, the kinship
 matrix for the group is returned along with the group and score.
 Defaults to not return the kinship matrix. This maintains compatability with
 earlier versions.}

@@ -50,7 +50,9 @@
 #' @param updateProgress function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
-#' @param withKin logical variable when set to \code{TRUE} the kinship
+#' @param harem logical variable when set to \code{TRUE}, the formed groups
+#' have a single male at least \code{minAge} old.
+#' @param withKin logical variable when set to \code{TRUE}, the kinship
 #' matrix for the group is returned along with the group and score.
 #' Defaults to not return the kinship matrix. This maintains compatability with
 #' earlier versions.
@@ -59,7 +61,7 @@
 groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
-                            numGp = 1, updateProgress = NULL,
+                            numGp = 1, updateProgress = NULL, harem = FALSE,
                             withKin = FALSE) {
   if (length(currentGroup) > 0 && numGp > 1)
     stop("Cannot have more than one group formed when adding to a single group")
@@ -71,14 +73,25 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
   conflicts <- unique(c(unlist(kin[currentGroup]), currentGroup))
   candidates <- setdiff(candidates, conflicts)
 
+
   kin <- addAnimalsWithNoRelative(kin, candidates)
+  if (harem) {
+    if (length(potentialSires(candidates, minAge, ped)) < numGp) {
+      stop(paste0("User selected to form ", numGp, " harems with only ",
+                  length(potentialSires(candidates, minAge, ped)),
+                  " males at least ",
+                  minAge, " years old in the list of candidates."))
+
+    }
+  }
 
   # Starting the group assignment simulation
   savedScore <- -1
   savedGroupMembers <- list()
 
   for (k in 1:iter) {
-    groupMembers <- fillGroupMembers(candidates, currentGroup, kin, numGp)
+    groupMembers <- fillGroupMembers(candidates, currentGroup, kin, ped, harem,
+                                     minAge, numGp)
 
     # Score the resulting groups
     score <- min(sapply(groupMembers, length))

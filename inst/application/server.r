@@ -755,7 +755,7 @@ shinyServer(function(input, output, session) {
 
     ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
-
+    harem <- input$harem
     threshold <- input$kinThresh
     minAge <- input$minAge
     withKin <- input$withKin
@@ -785,6 +785,7 @@ shinyServer(function(input, output, session) {
                          iter = iter,
                          numGp = 1,
                          updateProgress = updateProgress,
+                         harem = harem,
                          withKin = withKin)
 
     return(grp)
