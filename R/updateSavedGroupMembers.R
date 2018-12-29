@@ -9,7 +9,7 @@
 updateSavedGroupMembers <- function(savedGroupMembers, currentGroup,
                                     groupMembers) {
 
-  if (is.null(currentGroup)) {
+  if (is.null(currentGroup) | length(currentGroup) < 1) {
     savedGroupMembers <- groupMembers
   } else {
     savedGroupMembers[[1]] <- groupMembers

@@ -120,11 +120,12 @@ uitpBreedingGroupFormation <-
         ),
       div(
         style = "display:inline-block;width:250px;padding:5px",
-        selectInput(
+        numericInput(
           "viewGrp",
           label = "Enter the group to view:",
-          choices = list("Group 1" = 1),
-          selected = 1
+          value = 1,
+          min = 1,
+          max = 10
         )
       ),
       div(

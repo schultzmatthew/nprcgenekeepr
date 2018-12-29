@@ -3,7 +3,7 @@ library(futile.logger)
 library(ggplot2)
 library(DT)
 shinyServer(function(input, output, session) {
-
+  errorLst <- getEmptyErrorLst()
   nprcmanagerLog <- paste0(getSiteInfo()$homeDir, "nprcmanager.log")
   flog.logger("nprcmanager", INFO,
               appender = appender.file(nprcmanagerLog))
@@ -783,7 +783,7 @@ shinyServer(function(input, output, session) {
                          ignore = ignore,
                          minAge = minAge,
                          iter = iter,
-                         numGp = 1,
+                         numGp = numGp,
                          updateProgress = updateProgress,
                          harem = harem,
                          withKin = withKin)
@@ -833,8 +833,9 @@ shinyServer(function(input, output, session) {
     }
     i <- as.numeric(input$viewGrp)
     gp <- bg()$group[[i]]
-    gp <- as.data.frame(gp)
-    colnames(gp) <- "Ego ID"
+    ped <- getPed()
+    gp <- addSexAndAgeToGroup(gp, ped)
+    colnames(gp) <- c("Ego ID", "Sex", "Age in Years")
 
     if (nrow(gp) == 0) {
       return(NULL)

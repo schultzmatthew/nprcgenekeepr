@@ -11,6 +11,6 @@
 #' @export
 potentialSires <- function(ids, minAge = 1, ped) {
   ped <- ped[!is.na(ped$birth), ]
-  ped$id[ped$id %in% ids & ped$sex == "M" &
-                  currentAge(ped$birth) >= minAge]
+  ped$id[ped$id %in% ids & ped$sex == "M" & currentAge(ped$birth) >= minAge &
+           !is.na(ped$birth)]
 }
