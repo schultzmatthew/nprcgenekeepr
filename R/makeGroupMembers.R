@@ -20,8 +20,9 @@ makeGroupMembers <- function(numGp, currentGroup, candidates, ped, harem,
   groupMembers <- list()
   if (harem) {
     if (length(potentialSires(currentGroup, minAge, ped)) > 1)
-      stop(paste0("User selected to form harems with more than one male (",
-                  length(potentialSires(currentGroup, minAge, ped)), ") at ",
+      stop(paste0("User selected to form harems with more than one male, ",
+                  "There are ",
+                  length(potentialSires(currentGroup, minAge, ped)), " at ",
                   " least ", minAge, " years old in the current group."))
     if (length(potentialSires(candidates, minAge, ped)) < numGp &
         length(potentialSires(currentGroup, minAge, ped)) == 0)
@@ -39,11 +40,21 @@ makeGroupMembers <- function(numGp, currentGroup, candidates, ped, harem,
       }
     }
   }
-  for (i in 1:numGp) {
-    if (is.null(currentGroup)) {
-      groupMembers[[i]] <- vector()
-    } else {
-      groupMembers[[i]] <- currentGroup
+  if (harem) {
+    for (i in 1:numGp) {
+      if (length(currentGroup) > 0) {
+        groupMembers[[i]] <- currentGroup
+      }
+    }
+  } else {
+    for (i in 1:numGp) {
+      if (is.null(currentGroup)) { # should not occur
+        groupMembers[[i]] <- vector()
+      } else if (length(currentGroup) == 0) {
+        groupMembers[[i]] <- vector()
+      } else {
+        groupMembers[[i]] <- currentGroup
+      }
     }
   }
   groupMembers

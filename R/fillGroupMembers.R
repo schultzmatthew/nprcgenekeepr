@@ -23,14 +23,8 @@ fillGroupMembers <- function(candidates, currentGroup, kin, ped, harem, minAge,
                              numGp) {
   groupMembers <- makeGroupMembers(numGp, currentGroup, candidates, ped, harem,
                                    minAge)
-  if (harem) {
-    if (length(potentialSires(currentGroup, minAge, ped)) > 0) {
-      candidates <- removePotentialSires(candidates, minAge, ped)
-    } else if (length(potentialSires(candidates, minAge, ped)) < numGp){
-      stop(paste0("User selected to form harems with fewer than ",
-                  numGp, " males at least ",
-                  minAge, " years old in the list of candidates."))
-    }
+  if (harem) { # Sires were added to groupMembers
+    candidates <- removePotentialSires(candidates, minAge, ped)
   }
   available <- makeAvailable(numGp, candidates)
   grpNum <- makeGrpNum(numGp)

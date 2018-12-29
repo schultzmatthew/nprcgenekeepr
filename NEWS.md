@@ -1,7 +1,28 @@
 NEWS
 ================
 R. Mark Sharp
-12/24/2018
+12/28/2018
+
+# nprcmanager 0.5.00 (20181228)
+
+  - First draft with harem group creation working.
+      - Fails if more than one potential sire (male and at least of
+        minimum age) is in the current group.
+      - Fails if there are insufficient males to have one per breeding
+        group being formed.
+      - Requires the user to provide males in the candidate set that are
+        appropriate for breeding as the current code does not check to
+        ensure the animals are still alive. This could easily be added.
+      - Males are selected for each group randomly at each iteration
+        just as are all other members. The only difference betweeen
+        animal selection for harems is that sex is part of the selection
+        process.
+      - This required the creation of a few functions and modification
+        of others. Unit tests were updated to reflect changes, but not
+        additions. New unit tests are needed.
+      - The format of the breeding group creation page must be improved.
+      - The changes made and the new unit tests will serve to simplify
+        adding the sex ratio criterion to breeding group formation.
 
 # nprcmanager 0.4.23 (20181226)
 
