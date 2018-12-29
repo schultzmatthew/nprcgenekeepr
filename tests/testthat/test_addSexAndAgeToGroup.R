@@ -1,0 +1,17 @@
+context("addSexAndAgeToGroup")
+library(testthat)
+library(nprcmanager)
+data("baboonBreeders")
+data("pedWithGenotype")
+skip_if_not(exists("baboonBreeders"))
+skip_if_not(exists("pedWithGenotype"))
+test_that("addSexAndAgeToGroup forms the correct dataframe", {
+  df <- addSexAndAgeToGroup(ids = baboonBreeders, ped = pedWithGenotype)
+  expect_equal(length(df), 3)
+  expect_equal(length(df[["ids"]]), 29)
+  expect_equal(names(df), c("ids", "sex", "age"))
+  expect_equal(df$ids[1], "16808")
+  expect_equal(as.character(df$sex[1]), "M")
+  expect_equal(df$age[1], 17.92877, tolerance = 0.002, scale = 18)
+}
+)

@@ -9,7 +9,7 @@
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
 #' information including the IDs listed in \code{candidates}.
 #' @export
-potentialSires <- function(ids, minAge = 1, ped) {
+getPotentialSires <- function(ids, minAge = 1, ped) {
   ped <- ped[!is.na(ped$birth), ]
   ped$id[ped$id %in% ids & ped$sex == "M" & currentAge(ped$birth) >= minAge &
            !is.na(ped$birth)]

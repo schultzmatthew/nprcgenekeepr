@@ -171,9 +171,9 @@
 #' }
 "rpt"
 #' exampleNprcmanagerConfig is a loadable version of the example
-#' configuration file _example_nprcmanager_config_
+#' configuration file \code{example_nprcmanager_config}
 #'
-#' It contains a working version of a __nprcmanager__ configuration
+#' It contains a working version of a \strong{nprcmanager} configuration
 #' file created the SNPRC.
 #' Users of LabKey's EHR can adapt it to their systems and put it
 #' in their home directory. Instructions are embedded as comments

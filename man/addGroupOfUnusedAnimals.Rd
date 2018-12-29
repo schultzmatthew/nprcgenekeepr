@@ -4,7 +4,7 @@
 \alias{addGroupOfUnusedAnimals}
 \title{addGroupOfUnusedAnimals adds a group to the saved groups if needed}
 \usage{
-addGroupOfUnusedAnimals(savedGroupMembers, candidates)
+addGroupOfUnusedAnimals(savedGroupMembers, candidates, ped, minAge, harem)
 }
 \arguments{
 \item{savedGroupMembers}{list of groups of animals in the form of a vector
@@ -12,6 +12,16 @@ of animal Ids.}
 
 \item{candidates}{character vector of IDs of the animals available for
 use in the group.}
+
+\item{ped}{dataframe that is the `Pedigree`. It contains pedigree
+information including the IDs listed in \code{candidates}.}
+
+\item{minAge}{integer value indicating the minimum age to consider in group
+formation. Pairwise kinships involving an animal of this age or younger will
+ be ignored. Default is 1 year.}
+
+\item{harem}{logical variable when set to \code{TRUE}, the formed groups
+have a single male at least \code{minAge} old.}
 }
 \value{
 list of groups, which are each lists of animal Ids.

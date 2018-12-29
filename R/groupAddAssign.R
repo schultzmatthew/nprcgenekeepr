@@ -76,9 +76,9 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
 
   kin <- addAnimalsWithNoRelative(kin, candidates)
   if (harem) {
-    if (length(potentialSires(candidates, minAge, ped)) < numGp) {
+    if (length(getPotentialSires(candidates, minAge, ped)) < numGp) {
       stop(paste0("User selected to form ", numGp, " harems with only ",
-                  length(potentialSires(candidates, minAge, ped)),
+                  length(getPotentialSires(candidates, minAge, ped)),
                   " males at least ",
                   minAge, " years old in the list of candidates."))
 
@@ -108,7 +108,8 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
     }
   }
 
-  savedGroupMembers <- addGroupOfUnusedAnimals(savedGroupMembers, candidates)
+  savedGroupMembers <- addGroupOfUnusedAnimals(savedGroupMembers, candidates,
+                                               ped, minAge, harem)
 
   groupMembersReturn(savedGroupMembers, savedScore, withKin, kmat)
 }

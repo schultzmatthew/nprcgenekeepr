@@ -23,7 +23,7 @@ test_that("groupAddAssign forms the correct groups", {
 )
 set.seed(10)
 groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
-                                  currentGroup = NULL,
+                                  currentGroup = character(0),
                                   kmat = pedWithGenotypeReport$kinship,
                                   ped = pedWithGenotype,
                                   ignore = NULL, minAge = 1, numGp = 2,
@@ -49,7 +49,7 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
 )
 set.seed(10)
 groupAssignKTest <- groupAddAssign(candidates = baboonBreeders,
-                                   currentGroup = NULL,
+                                   currentGroup = character(0),
                                    kmat = pedWithGenotypeReport$kinship,
                                    ped = pedWithGenotype,
                                    ignore = NULL, minAge = 1, numGp = 2,
@@ -68,4 +68,30 @@ test_that("groupAddAssign returns an error with numGp > 1 and currentGroup not N
                               ignore = NULL, minAge = 1, numGp = 2,
                               harem = FALSE, withKin = TRUE))
 })
+set.seed(10)
+noSires <- removePotentialSires(baboonBreeders, minAge = 2,
+                                            pedWithGenotype)
+sires <- getPotentialSires(baboonBreeders, minAge = 2, pedWithGenotype)
+
+test_that(paste0("groupAddAssign fails when no potential sires exist for ",
+                 "harem creation"), {
+  expect_error(groupAddAssign(candidates = noSires, currentGroup = character(0),
+                              kmat = pedWithGenotypeReport$kinship,
+                              ped = pedWithGenotype,
+                              ignore = NULL, minAge = 1, numGp = 2,
+                              harem = TRUE, withKin = TRUE))
+}
+)
+test_that(paste0("groupAddAssign when there are multiple potential sires in ",
+                 "the candidates during harem creation"), {
+  group <- groupAddAssign(candidates = baboonBreeders, currentGroup = character(0),
+                          kmat = pedWithGenotypeReport$kinship,
+                          ped = pedWithGenotype,
+                          ignore = NULL, minAge = 1, numGp = 2,
+                          harem = TRUE, withKin = TRUE)
+  expect_true(length(group) == 3)
+  expect_equal(sum(seq_along(group[[1]][[3]])[group[[1]][[3]] %in% sires]), 0)
+  expect_equal(sum(seq_along(group[[1]][[3]])[group[[1]][[2]] %in% sires]), 1)
+                 }
+)
 

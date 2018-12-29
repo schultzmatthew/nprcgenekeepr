@@ -10,5 +10,5 @@
 #' information including the IDs listed in \code{candidates}.
 #' @export
 removePotentialSires <- function(ids, minAge, ped) {
-  setdiff(ids, potentialSires(ids, minAge, ped))
+  setdiff(ids, getPotentialSires(ids, minAge, ped))
 }

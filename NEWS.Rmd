@@ -1,13 +1,16 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "12/28/2018"
+date: "12/30/2018"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.01 (20181230)
+-   Correction of some bugs in harem creation and provided additional
+    unit tests for harem creation to prevent regression.
 # nprcmanager 0.5.00 (20181228)
 -   First draft with harem group creation working.
     -   Fails if more than one potential sire (male and at least of minimum 

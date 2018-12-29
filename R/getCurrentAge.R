@@ -6,7 +6,7 @@
 #' @param birth birth date(s)
 #' @import lubridate
 #' @export
-currentAge <- function(birth) {
+getCurrentAge <- function(birth) {
   interval(start = birth, end = today()) /
     duration(num = 1, units = "years")
 }

@@ -1,10 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-12/28/2018
+12/30/2018
 
-# nprcmanager 0.5.00 (20181228)
+# nprcmanager 0.5.01 (20181230)
 
+  - Correction of some bugs in harem creation and provided additional
+    unit tests for harem creation to prevent regression. \# nprcmanager
+    0.5.00 (20181228)
   - First draft with harem group creation working.
       - Fails if more than one potential sire (male and at least of
         minimum age) is in the current group.
