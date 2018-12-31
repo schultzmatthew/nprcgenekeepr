@@ -9,7 +9,7 @@
 addSexAndAgeToGroup <- function(ids, ped) {
   group <- data.frame(ids,
              sex = sapply(ids, function(id) {ped$sex[ped$id == id]}),
-             age = sapply(ids, function(id) {currentAge(ped$birth[ped$id == id])}),
+             age = sapply(ids, function(id) {getCurrentAge(ped$birth[ped$id == id])}),
              stringsAsFactors = FALSE)
   group
 }
