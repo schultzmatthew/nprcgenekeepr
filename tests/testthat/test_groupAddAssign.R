@@ -14,7 +14,7 @@ groupAddTest <- groupAddAssign(
   kmat = pedWithGenotypeReport$kinship,
   ped = pedWithGenotype,
   ignore = NULL, minAge = 1, numGp = 1,
-  harem = FALSE, withKin = FALSE)
+  harem = FALSE, sexRatio = 0, withKin = FALSE)
 test_that("groupAddAssign forms the correct groups", {
   #expect_equal(length(groupAddTest$group[[1]]), 11)
   expect_equal(length(groupAddTest$group[[2]]), 10)
@@ -27,7 +27,7 @@ groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
                                   kmat = pedWithGenotypeReport$kinship,
                                   ped = pedWithGenotype,
                                   ignore = NULL, minAge = 1, numGp = 2,
-                                  harem = FALSE, withKin = FALSE)
+                                  harem = FALSE, sexRatio = 0, withKin = FALSE)
 test_that("groupAddAssign forms the correct groups", {
   expect_equal(length(groupAssignTest$group[[1]]), 9)
   expect_equal(length(groupAssignTest$group[[2]]), 10)
@@ -40,7 +40,7 @@ groupAddKTest <- groupAddAssign(candidates = baboonBreeders,
                                 kmat = pedWithGenotypeReport$kinship,
                                 ped = pedWithGenotype,
                                 ignore = NULL, minAge = 1, numGp = 1,
-                                harem = FALSE, withKin = TRUE)
+                                harem = FALSE, sexRatio = 0, withKin = TRUE)
 test_that("groupAddAssign forms the correct groups with kinship matrices", {
   #expect_equal(length(groupAddKTest$group[[1]]), 11)
   expect_equal(length(groupAddKTest$group[[2]]), 10)
@@ -53,7 +53,7 @@ groupAssignKTest <- groupAddAssign(candidates = baboonBreeders,
                                    kmat = pedWithGenotypeReport$kinship,
                                    ped = pedWithGenotype,
                                    ignore = NULL, minAge = 1, numGp = 2,
-                                   harem = FALSE, withKin = TRUE)
+                                   harem = FALSE, sexRatio = 0, withKin = TRUE)
 test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$group[[1]]), 9)
   expect_equal(length(groupAssignKTest$group[[2]]), 10)
@@ -66,7 +66,7 @@ test_that("groupAddAssign returns an error with numGp > 1 and currentGroup not N
                               kmat = pedWithGenotypeReport$kinship,
                               ped = pedWithGenotype,
                               ignore = NULL, minAge = 1, numGp = 2,
-                              harem = FALSE, withKin = TRUE))
+                              harem = FALSE, sexRatio = 0, withKin = TRUE))
 })
 set.seed(10)
 noSires <- removePotentialSires(baboonBreeders, minAge = 2,
@@ -79,7 +79,7 @@ test_that(paste0("groupAddAssign fails when no potential sires exist for ",
                               kmat = pedWithGenotypeReport$kinship,
                               ped = pedWithGenotype,
                               ignore = NULL, minAge = 1, numGp = 2,
-                              harem = TRUE, withKin = TRUE))
+                              harem = TRUE, sexRatio = 0, withKin = TRUE))
 }
 )
 test_that(paste0("groupAddAssign when there are multiple potential sires in ",
@@ -88,7 +88,7 @@ test_that(paste0("groupAddAssign when there are multiple potential sires in ",
                           kmat = pedWithGenotypeReport$kinship,
                           ped = pedWithGenotype,
                           ignore = NULL, minAge = 1, numGp = 2,
-                          harem = TRUE, withKin = TRUE)
+                          harem = TRUE, sexRatio = 0, withKin = TRUE)
   expect_true(length(group) == 3)
   expect_equal(sum(seq_along(group[[1]][[3]])[group[[1]][[3]] %in% sires]), 0)
   expect_equal(sum(seq_along(group[[1]][[3]])[group[[1]][[2]] %in% sires]), 1)

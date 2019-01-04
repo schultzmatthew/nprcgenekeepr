@@ -4,14 +4,14 @@
 \alias{makeAvailable}
 \title{Convenience function to make the initial available animal list}
 \usage{
-makeAvailable(numGp, candidates)
+makeAvailable(candidates, numGp)
 }
 \arguments{
-\item{numGp}{integer value indicating the number of groups that should be
-formed from the list of IDs. Default is 1.}
-
 \item{candidates}{character vector of IDs of the animals available for
 use in the group.}
+
+\item{numGp}{integer value indicating the number of groups that should be
+formed from the list of IDs. Default is 1.}
 }
 \value{
 initial available animals list

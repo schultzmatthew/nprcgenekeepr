@@ -71,7 +71,7 @@ reference:
   - '`runManager`'
   - '`trimPedigree`'
   - '`summary.nprcmanagErr`'
-- title: All functions
+- title: All exposed functions
   desc: ~
   contents:
   - '`addAnimalsWithNoRelative`'
@@ -167,6 +167,7 @@ reference:
   - '`hasGenotype`'
   - '`hasBothParents`'
   - '`headerDisplayNames`'
+  - '`initializeHaremGroups`'
   - '`insertChangedColsTab`'
   - '`insertErrorTab`'
   - '`insertSeparators`'

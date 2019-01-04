@@ -7,7 +7,8 @@
 #' use in the group.
 #' @param numGp integer value indicating the number of groups that should be
 #' formed from the list of IDs. Default is 1.
-makeAvailable <- function(numGp, candidates) {
+#' @export
+makeAvailable <- function(candidates, numGp) {
   available <- list()
   for (i in 1:numGp) {
     available[[i]] <- candidates

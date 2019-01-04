@@ -3,11 +3,11 @@
 [![Build
 Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager)
 [![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
-[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
-[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager – Version 0.5.01 (20181230)
+# nprcmanager – Version 0.5.02 (20190103)
 
 ## Introduction
 
@@ -128,6 +128,12 @@ animals possible from a list of candidates that can be housed together
 without risk of consanguineous mating. To that end, this function uses
 information from the Genetic Value Analysis to search for the largest
 combinations of animals that can be produced from a list of candidates.
+
+The default options do not consider the sex of individuals when forming
+the groups, though this has likely been a consideration by the user in
+selecting the candidate group members. Optionally the user may select to
+form harem groups, which considers the sex of individuals when forming
+groups and restricts the number of males to one per group.
 
 ## Running Shiny Application
 

@@ -62,7 +62,7 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
                             numGp = 1, updateProgress = NULL, harem = FALSE,
-                            withKin = FALSE) {
+                            sexRatio = 0, withKin = FALSE) {
   if (length(currentGroup) > 0 && numGp > 1)
     stop("Cannot have more than one group formed when adding to a single group")
   kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
@@ -91,7 +91,7 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
 
   for (k in 1:iter) {
     groupMembers <- fillGroupMembers(candidates, currentGroup, kin, ped, harem,
-                                     minAge, numGp)
+                                     minAge, numGp, sexRatio)
 
     # Score the resulting groups
     score <- min(sapply(groupMembers, length))

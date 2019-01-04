@@ -763,7 +763,7 @@ shinyServer(function(input, output, session) {
     numGp <- ({
       input$numGp
       })
-
+    sexRatio <- input$sexRatio
     # Setting up the progress bar
     progress <- shiny::Progress$new()
     on.exit(progress$close())
@@ -785,7 +785,7 @@ shinyServer(function(input, output, session) {
                          iter = iter,
                          numGp = numGp,
                          updateProgress = updateProgress,
-                         harem = harem,
+                         harem = harem, sexRatio,
                          withKin = withKin)
 
     return(grp)
@@ -835,6 +835,7 @@ shinyServer(function(input, output, session) {
     gp <- bg()$group[[i]]
     ped <- getPed()
     gp <- addSexAndAgeToGroup(gp, ped)
+    gp$sex <- round(gp$sex, 1)
     colnames(gp) <- c("Ego ID", "Sex", "Age in Years")
 
     if (nrow(gp) == 0) {

@@ -54,6 +54,18 @@ uitpBreedingGroupFormation <-
         popify(checkboxInput("harem", label = "Form Harem(s)",
                       value = FALSE),
                "If selected, one male per group is added."),
+
+        popify(numericInput(
+          "sexRatio",
+          label = "Sex Ratio (F/M):",
+          value = 0.0,
+          min = 0.5,
+          max = 10,
+          step = 0.5
+        ), NULL, paste0(
+          "Final sex ratios are approximate but are guaranteed to be the ",
+          "nearest possible value given creation of the largest group ",
+          "possible.")),
         numericInput(
           "numGp",
           label = "Groups Desired:",

@@ -7,7 +7,7 @@
 groupAddAssign(candidates, currentGroup = character(0), kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
   iter = 1000, numGp = 1, updateProgress = NULL, harem = FALSE,
-  withKin = FALSE)
+  sexRatio = 0, withKin = FALSE)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for

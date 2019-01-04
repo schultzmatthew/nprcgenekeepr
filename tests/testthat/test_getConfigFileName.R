@@ -1,4 +1,4 @@
-context("alleleFreq")
+context("getConfigFileName")
 library(testthat)
 
 ## These are just stub values

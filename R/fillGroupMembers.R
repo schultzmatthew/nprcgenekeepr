@@ -20,14 +20,22 @@
 #'
 #' @export
 fillGroupMembers <- function(candidates, currentGroup, kin, ped, harem, minAge,
-                             numGp) {
+                             numGp, sexRatio) {
   groupMembers <- makeGroupMembers(numGp, currentGroup, candidates, ped, harem,
                                    minAge)
+  grpNum <- makeGrpNum(numGp)
+
   if (harem) { # Sires were added to groupMembers
     candidates <- removePotentialSires(candidates, minAge, ped)
   }
-  available <- makeAvailable(numGp, candidates)
-  grpNum <- makeGrpNum(numGp)
+  if (sexRatio != 0) {
+    groupMembers <- fillGroupMembersWithSexRatio(
+      candidates, groupMembers, grpNum, kin, ped, minAge, numGp, sexRatio)
+    return(groupMembers)
+  } else {
+    available <- makeAvailable(candidates, numGp)
+  }
+
   while (TRUE) {
     if (isEmpty(grpNum)) {
       break
