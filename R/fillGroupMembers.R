@@ -17,7 +17,8 @@
 #'  be ignored. Default is 1 year.
 #' @param numGp integer value indicating the number of groups that should be
 #' formed from the list of IDs. Default is 1.
-#'
+#' @param sexRatio numeric value indicating the ratio of females to males x
+#' from 0.5 to 10 by increments of 0.5.
 #' @export
 fillGroupMembers <- function(candidates, currentGroup, kin, ped, harem, minAge,
                              numGp, sexRatio) {

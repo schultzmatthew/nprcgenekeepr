@@ -14,6 +14,6 @@ nonMales <- c("32743", "32771", "33088", "26450", "31937", "32732", "32798",
 male <- "27647"
 expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype), 0)
 expect_equal(calculateSexRatio(ids = male, ped = pedWithGenotype), 0)
-expect_equal(calculateSexRatio(ids = nonMales, ped = pedWithGenotype), 1)
+expect_equal(calculateSexRatio(ids = nonMales, ped = pedWithGenotype), Inf)
 expect_equal(calculateSexRatio(ids = available, ped = pedWithGenotype),
              17)

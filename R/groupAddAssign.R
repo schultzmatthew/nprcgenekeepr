@@ -52,6 +52,8 @@
 #' \code{shiny::Progress} object.
 #' @param harem logical variable when set to \code{TRUE}, the formed groups
 #' have a single male at least \code{minAge} old.
+#' @param sexRatio numeric value indicating the ratio of females to males x
+#' from 0.5 to 10 by increments of 0.5.
 #' @param withKin logical variable when set to \code{TRUE}, the kinship
 #' matrix for the group is returned along with the group and score.
 #' Defaults to not return the kinship matrix. This maintains compatability with

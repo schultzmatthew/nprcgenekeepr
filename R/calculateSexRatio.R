@@ -14,7 +14,8 @@
 #' information including the IDs listed in \code{candidates}.
 #' @export
 calculateSexRatio <- function(ids, ped) {
-  if (length(ids) == 0 | length(ped$sex[ped$id %in% ids & ped$sex != "M"]) == 0) {
+  if (length(ids) == 0 | length(ped$sex[ped$id %in% ids &
+                                        ped$sex != "M"]) == 0) {
     ratio <- 0.0
   } else if (length(ped$sex[ped$id %in% ids & ped$sex == "M"]) == 0) {
     ratio <- Inf

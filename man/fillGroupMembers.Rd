@@ -29,6 +29,9 @@ formation. Pairwise kinships involving an animal of this age or younger will
 
 \item{numGp}{integer value indicating the number of groups that should be
 formed from the list of IDs. Default is 1.}
+
+\item{sexRatio}{numeric value indicating the ratio of females to males x
+from 0.5 to 10 by increments of 0.5.}
 }
 \value{
 list of animal groups and their member animals
