@@ -835,7 +835,7 @@ shinyServer(function(input, output, session) {
     gp <- bg()$group[[i]]
     ped <- getPed()
     gp <- addSexAndAgeToGroup(gp, ped)
-    gp$sex <- round(gp$sex, 1)
+    gp$age <- round(gp$age, 1)
     colnames(gp) <- c("Ego ID", "Sex", "Age in Years")
 
     if (nrow(gp) == 0) {

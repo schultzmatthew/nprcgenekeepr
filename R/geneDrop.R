@@ -53,7 +53,6 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
 
   alleles <- list(alleles = list(), counter = 1)
 
-
   if (!is.null(updateProgress)) {
     updateProgress(detail = "Performing Gene-drop Simulation", value = 0,
                    reset = TRUE)

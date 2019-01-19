@@ -2,7 +2,6 @@ uitpBreedingGroupFormation <-
   tabPanel(
     "Breeding Group Formation",
 
-    #Side Panel
     # div(
     #  style = paste(
     #    "float: left; width: 400px; height: 62vh; padding: 10px;",
@@ -45,15 +44,24 @@ uitpBreedingGroupFormation <-
           tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
         )
       ),
-      fluidRow(
-        column(width = 3,
-        div(
-        style = "display:inline-block;width:800px;padding:10px",
-        div(
-        style = "display:inline-block;width:150px;padding:10px",
+      sidebarLayout(
+        sidebarPanel(
+          style = paste(
+            "float: left; width: 500px; height: 100%; padding: 10px;",
+            "border: 1px solid lightgray; background-color: #EDEDED;",
+            "margin-left: 3px;",
+            "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+          ),
+          helpText(
+            "Instead of assignment of animals to groups without regard to
+            the sex of animals, you may choose to form <em>harem</em> groups
+            or groups with a specified sex ratio."
+          ),
+          helpText("Adjust Group Sex Ratio: harem(s) or other sex ratios."),
+
         popify(checkboxInput("harem", label = "Form Harem(s)",
                       value = FALSE),
-               "If selected, one male per group is added."),
+               "When selected each group will have one male."),
 
         popify(numericInput(
           "sexRatio",
@@ -91,11 +99,7 @@ uitpBreedingGroupFormation <-
           value = 10,
           min = 1,
           max = 1000000
-        )
-      ))),
-        column(width = 3,
-               div(
-      div(
+        ),
         style = "display:inline-block;width:150px;padding:10px",
         selectInput(
           "kinThresh",
@@ -107,8 +111,7 @@ uitpBreedingGroupFormation <-
             "0.25" = 0.25
           ),
           selected = 1
-        )
-      ),
+        ),
       div(
         style = "display:inline-block;width:250px;padding:10px",
         checkboxInput("lowVal",
@@ -121,15 +124,11 @@ uitpBreedingGroupFormation <-
                       value = TRUE)
       ),
       checkboxInput("withKin", label = "With Kinship Coefficents",
-                    value = FALSE)
-        )),
-      column(width = 3,
-        div(
-        actionButton("grpSim", label = "Make Groups"),
-        helpText(
-          "If no candidate IDs are specified above or in the input pedigree,
-          all population members will be used."
-        ),
+                    value = FALSE),
+      actionButton("grpSim", label = "Make Groups"),
+      helpText(
+        "If no candidate IDs are specified above or in the input pedigree,
+        all population members will be used."),
       div(
         style = "display:inline-block;width:250px;padding:5px",
         numericInput(
@@ -145,9 +144,11 @@ uitpBreedingGroupFormation <-
         downloadButton("downloadGroup", "Export Current Group"),
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
-      )))),
-      DT::dataTableOutput("breedingGroups"),
-      DT::dataTableOutput("breedingGroupKin"),
+      )),
+      # Main Panel
+      mainPanel(#style = "margin-left:425px;padding:10px;",
+        DT::dataTableOutput("breedingGroups"),
+        DT::dataTableOutput("breedingGroupKin"),
 
     div(
       style = paste(
@@ -157,5 +158,5 @@ uitpBreedingGroupFormation <-
       ),
       includeHTML("../extdata/group_formation.html")
     )
-  )
-)
+  ), position = "left", fluid = TRUE
+)))

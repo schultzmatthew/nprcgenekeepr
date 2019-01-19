@@ -1,6 +1,7 @@
 context("addSexAndAgeToGroup")
 library(testthat)
 library(nprcmanager)
+library(lubridate)
 data("baboonBreeders")
 data("pedWithGenotype")
 skip_if_not(exists("baboonBreeders"))
@@ -12,6 +13,9 @@ test_that("addSexAndAgeToGroup forms the correct dataframe", {
   expect_equal(names(df), c("ids", "sex", "age"))
   expect_equal(df$ids[1], "16808")
   expect_equal(as.character(df$sex[1]), "M")
-  expect_equal(df$age[1], 17.92877, tolerance = 0.002, scale = 18)
+  birth_16808 <- lubridate::ymd("2001-01-29")
+  age <- interval(start = birth_16808, end = today()) /
+    duration(num = 1, units = "years")
+  expect_equal(df$age[1], age, tolerance = 0.002, scale = 18)
 }
 )
