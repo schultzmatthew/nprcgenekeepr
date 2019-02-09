@@ -11,38 +11,29 @@ uitpBreedingGroupFormation <-
     #  ),
     div(
       div(
-        style = "display:inline-block;width:800px;padding:10px",
+        fluidRow(
+          column(10, offset = 1,
+                 style = paste(
+                   "border: 1px solid lightgray; background-color: #EDEDED;",
+                   "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+                 ),
+                 radioButtons("group_formation_rb",
+                              "Choose one group formation workflow:",
+                              choiceNames = list(
+                                paste0("Randomly select from only high-value ",
+                                       "animals in genetic value analysis"),
+                                paste0("Randomly select from all animals in  ",
+                                       "genetic value analysis"),
+                                paste0("Use candidate animals entered below  ",
+                                       "to form groups")
+                              ),
+                              choiceValues = list(
+                                "high-value", "all", "candidates"
+                              ),
+                              width = "650px"),
+                 textOutput("group_formation_txt")
 
-        div(
-          style = "display:inline-block;width:350px;padding:10px",
-          helpText("Enter IDs of seed animals for the new group(s):"),
-          tags$textarea(id = "curGrp", rows = 10, cols = 40, "")#,
-          # selectInput(
-          #   "groupNum",
-          #   label = "Current Group:",
-          #   choices = list(
-          #     "0" = 0,
-          #     "1" = 1,
-          #     "2" = 2,
-          #     "3" = 3,
-          #     "4" = 4,
-          #     "5" = 5,
-          #     "6" = 6,
-          #     "7" = 7,
-          #     "8" = 8,
-          #     "9" = 9,
-          #     "10" = 10,
-          #     "11" = 11,
-          #     "12" = 12
-          #   ),
-          #   selected = 0
-          # )
-        ),
-        div(
-          style = "display:inline-block;width:350px;padding:10px",
-          helpText("Enter IDs of candidates to be added to new group(s):"),
-          tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
-        )
+          ))
       ),
       sidebarLayout(
         sidebarPanel(
