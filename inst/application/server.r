@@ -717,7 +717,9 @@ shinyServer(function(input, output, session) {
     ped <- getPed()
     # Filter out unknown animals added into ped
     ped <- removeUnknownAnimals(ped)
-    ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
+    ids <- character(0)
+    if (input$group_formation_rb == "candidates")
+      ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
     currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
 
     if (length(ids) > 0) {
@@ -733,13 +735,16 @@ shinyServer(function(input, output, session) {
     }
 
     # Filter out low-value animals if desired
-    use.lv <- input$lowVal
-    if (!use.lv) {
+    useLv <- reactive({input$group_formation_rb != "high-value"})
+
+    if (!useLv) {
       rpt <- rpt()
       lv <- rpt$id[rpt$value == "low value"]
       candidates <- setdiff(candidates, lv)
     }
     candidates <- intersect(candidates, ped$id)
+
+    harem <- reactive({input$group_sex_rb == "harems"})
 
     validate(
       need(length(candidates == 0), "No candidates defined"),
@@ -755,7 +760,6 @@ shinyServer(function(input, output, session) {
 
     ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
-    harem <- input$harem
     threshold <- input$kinThresh
     minAge <- input$minAge
     withKin <- input$withKin
