@@ -732,8 +732,8 @@ shinyServer(function(input, output, session) {
       }
 
       # Filter out low-value animals if desired
-      use.lv <- input$lowVal
-      if (!use.lv) {
+      useLv <- input$lowVal
+      if (!useLv) {
         rpt <- rpt()
         lv <- rpt$id[rpt$value == "low value"]
         candidates <- setdiff(candidates, lv)
