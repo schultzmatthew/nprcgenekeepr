@@ -1,7 +1,6 @@
 uitpBreedingGroupFormation <-
   tabPanel(
     "Breeding Group Formation",
-    div(
       div(
         fluidRow(
           column(10, offset = 1,
@@ -26,30 +25,50 @@ uitpBreedingGroupFormation <-
           )),
         fluidRow(
           column(10, offset = 1,
+        checkboxInput("seedAnimals", label = "Add seed animals to group",
+                      value = FALSE),
           conditionalPanel(
-            condition = "input.group_formation_rb == 'candidates'",
+            condition = paste0("input.group_formation_rb == 'candidates' ",
+                               " & !input.seedAnimals"),
             div(
-              style = "display:inline-block;width:350px;padding:10px",
+              style = "display:inline-block;width:400px;padding:10px",
               helpText("Enter IDs of candidates to be added to new group(s):"),
               tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
             )
           ))),
         fluidRow(
           column(10, offset = 1,
-                 style = "display:inline-block;width:250px;padding:10px",
-        checkboxInput("seedAnimals", label = "Add seed animals to group",
-                      value = FALSE),
+                 style = "display:inline-block;width:400px;padding:10px",
 
       conditionalPanel(
-        condition = "input.seedAnimals",
+        condition = paste0("input.group_formation_rb != 'candidates' ",
+                           " & input.seedAnimals"),
         div(
-        style = "display:inline-block;width:350px;padding:10px",
+        style = "display:inline-block;width:400px;padding:10px",
+        helpText("Enter IDs of seed animals for the new group(s):"),
+        tags$textarea(id = "curGrp", rows = 10, cols = 40, "")
+        )
+      ))),
+        fluidRow(
+          conditionalPanel(
+            condition = paste0("input.group_formation_rb == 'candidates' ",
+                               " & input.seedAnimals"),
+          column(5, offset = 1,
+            div(
+              style = "display:inline-block;width:400px;padding:10px",
+              helpText("Enter IDs of candidates to be added to new group(s):"),
+              tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
+            )
+          ),
+          column(5, offset = 1,
+        div(
+        style = "display:inline-block;width:400px;padding:10px",
         helpText("Enter IDs of seed animals for the new group(s):"),
         tags$textarea(id = "curGrp", rows = 10, cols = 40, "")
         )
       ))),
      fluidRow(
-          column(5, offset = 0,
+          column(4, offset = 1,
                  style = paste(
                    "border: 1px solid lightgray; background-color: #EDEDED;",
                    "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
@@ -59,7 +78,6 @@ uitpBreedingGroupFormation <-
             the sex of animals, you may choose to form <em>harem</em> groups
             or groups with a specified sex ratio.</p>"
           ),
-          helpText("Adjust Group Sex Ratio: harem(s) or other sex ratios."),
           radioButtons("group_sex_rb",
                        "Sex of animals in groups:",
                        choiceNames = list(
@@ -71,7 +89,6 @@ uitpBreedingGroupFormation <-
                          "ignore-sex", "harems", "sex-ratio"
                        ),
                        width = "350px", selected = "ignore-sex"),
-         div(
           conditionalPanel(
             condition = "input.group_sex_rb == 'sex-ratio'",
             div(
@@ -83,13 +100,14 @@ uitpBreedingGroupFormation <-
                 max = 10,
                 step = 0.5
               ), NULL, paste0(
-                "Final sex ratios are approximate but are guaranteed to be the ",
-                "nearest possible value given creation of the largest group ",
-                "possible."))
+                "Final sex ratios are approximate but are guaranteed to be ",
+                "the nearest possible value given creation of the largest ",
+                "group possible."))
             )
-          ),
-          div(
-          style = "display:inline-block;width:150px;padding:10px",
+          ))),
+     fluidRow(
+          column(3, offset = 1, align = "center", 
+          style = "height:200px;padding-top:20px;",
           numericInput(
             "minAge",
             label = "Animals will be ignored below age:",
@@ -98,7 +116,8 @@ uitpBreedingGroupFormation <-
             max = 40,
             step = 0.1
           )),
-         style = "display:inline-block;width:150px;padding:10px",
+          column(3, offset = 0, 
+          style = "height:200px;padding-top:20px;",
          selectInput(
            "kinThresh",
            label = "Animals will be ignored with kinship below:",
@@ -110,21 +129,21 @@ uitpBreedingGroupFormation <-
            ),
            selected = 1
          ),
-         div(
-           style = "display:inline-block;width:250px;padding:10px",
+                  div(
            checkboxInput("ffRel", label = "Ignore relatedness between females",
                          value = TRUE)
-         ),
+         ))),
+     fluidRow(
+          column(2, offset = 1,
          numericInput(
           "numGp",
           label = "Groups Desired:",
           value = 1,
           min = 1,
           max = 10
-        ),
+        )),
 
-
-        style = "display:inline-block;width:150px;padding:10px",
+          column(2, offset = 0,
         numericInput(
           "gpIter",
           label = "Number of simulations:",
@@ -132,36 +151,28 @@ uitpBreedingGroupFormation <-
           min = 1,
           max = 1000000
         )),
-        column(5, offset = 1,
-               style = paste(
-                 "border: 1px solid lightgray; background-color: #EDEDED;",
-                 "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-               ),
+        column(2, offset = 0,
                checkboxInput("withKin", label = "With Kinship Coefficents",
                     value = FALSE),
-      actionButton("grpSim", label = "Make Groups"),
-      helpText(
-        "If no candidate IDs are specified above or in the input pedigree,
-        all population members will be used."),
-      div(
-        style = "display:inline-block;width:250px;padding:5px",
+      actionButton("grpSim", label = "Make Groups")
+      ),
+         column(3, offset = 1,
         numericInput(
           "viewGrp",
           label = "Enter the group to view:",
           value = 1,
           min = 1,
           max = 10
-        )
       ),
       div(
-        style = "display:inline-block;width:250px;padding:5px",
+        style = "display:inline-block;width:350px;padding:5px",
         downloadButton("downloadGroup", "Export Current Group"),
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
       ))
-      )),
+      ),
       fluidRow(
-        column(width = 12, offset = 0,
+        column(width = 10, offset = 1,
                style = paste(
                  "border: 1px solid lightgray; background-color: #EDEDED;",
                  "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
@@ -171,12 +182,12 @@ uitpBreedingGroupFormation <-
         DT::dataTableOutput("breedingGroupKin"),
 
     div(
-      style = paste(
-        " padding: 10px; border: 1px solid lightgray; ",
-        "background-color: #EDEDED;",
-        "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
-      ),
+      # style = paste(
+      #   " padding: 10px; border: 1px solid lightgray; ",
+      #   "background-color: #EDEDED;",
+      #   "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+      # ),
       includeHTML("../extdata/group_formation.html")
     )
   )
-))))
+)))
