@@ -735,8 +735,7 @@ shinyServer(function(input, output, session) {
     }
 
     # Filter out low-value animals if desired
-    useLv <- reactive({input$group_formation_rb != "high-value"})
-
+    useLv <- input$group_formation_rb != "high-value"
     if (!useLv) {
       rpt <- rpt()
       lv <- rpt$id[rpt$value == "low value"]
@@ -744,7 +743,7 @@ shinyServer(function(input, output, session) {
     }
     candidates <- intersect(candidates, ped$id)
 
-    harem <- reactive({input$group_sex_rb == "harems"})
+    harem <- input$group_sex_rb == "harems"
 
     validate(
       need(length(candidates == 0), "No candidates defined"),

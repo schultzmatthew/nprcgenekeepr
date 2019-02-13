@@ -71,7 +71,7 @@ uitpBreedingGroupFormation <-
           column(4, offset = 1,
                  style = paste(
                    "border: 1px solid lightgray; background-color: #EDEDED;",
-                   "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
+                   "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
                  ),
           HTML(
             "<p>Instead of assignment of animals to groups without regard to
@@ -104,9 +104,8 @@ uitpBreedingGroupFormation <-
                 "the nearest possible value given creation of the largest ",
                 "group possible."))
             )
-          ))),
-     fluidRow(
-          column(3, offset = 1, align = "center", 
+          )),
+         column(3, offset = 1, align = "center",
           style = "height:200px;padding-top:20px;",
           numericInput(
             "minAge",
@@ -116,7 +115,7 @@ uitpBreedingGroupFormation <-
             max = 40,
             step = 0.1
           )),
-          column(3, offset = 0, 
+          column(3, offset = 0,
           style = "height:200px;padding-top:20px;",
          selectInput(
            "kinThresh",
@@ -128,14 +127,18 @@ uitpBreedingGroupFormation <-
              "0.25" = 0.25
            ),
            selected = 1
-         ),
+         ))),
+     fluidRow(
+            column(4, offset = 1,
                   div(
-           checkboxInput("ffRel", label = "Ignore relatedness between females",
+                    style = "height:100px;padding-top:20px;",
+                    checkboxInput("ffRel", label = "Ignore relatedness between females",
                          value = TRUE)
          ))),
      fluidRow(
           column(2, offset = 1,
-         numericInput(
+                 style = "height:150px;padding-top:20px;",
+                 numericInput(
           "numGp",
           label = "Groups Desired:",
           value = 1,
@@ -144,7 +147,8 @@ uitpBreedingGroupFormation <-
         )),
 
           column(2, offset = 0,
-        numericInput(
+                 style = "height:150px;padding-top:20px;",
+                 numericInput(
           "gpIter",
           label = "Number of simulations:",
           value = 10,
@@ -152,12 +156,14 @@ uitpBreedingGroupFormation <-
           max = 1000000
         )),
         column(2, offset = 0,
+               style = "height:150px;padding-top:20px;",
                checkboxInput("withKin", label = "With Kinship Coefficents",
                     value = FALSE),
       actionButton("grpSim", label = "Make Groups")
       ),
          column(3, offset = 1,
-        numericInput(
+                style = "height:150px;padding-top:20px;",
+                numericInput(
           "viewGrp",
           label = "Enter the group to view:",
           value = 1,
@@ -165,7 +171,7 @@ uitpBreedingGroupFormation <-
           max = 10
       ),
       div(
-        style = "display:inline-block;width:350px;padding:5px",
+        style = "display:inline-block;width:150px;padding:5px",
         downloadButton("downloadGroup", "Export Current Group"),
         downloadButton("downloadGroupKin",
                        "Export Current Group Kinship Matrix")
