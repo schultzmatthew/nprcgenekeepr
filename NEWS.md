@@ -1,16 +1,25 @@
 NEWS
 ================
 R. Mark Sharp
-12/30/2018
+02/15/2019
+
+# nprcmanager 0.5.03 (20190215)
+
+  - Adding new version of breeding group formation UI and related server
+    code.
 
 # nprcmanager 0.5.02 (20190103)
 
   - Added ability to specify sex ratio in increments of 0.5
-    (Female/Male) from 0.5 to 10 in increments of 0.5. \# nprcmanager
-    0.5.01 (20181230)
+    (Female/Male) from 0.5 to 10 in increments of 0.5.
+
+# nprcmanager 0.5.01 (20181230)
+
   - Correction of some bugs in harem creation and provided additional
-    unit tests for harem creation to prevent regression. \# nprcmanager
-    0.5.00 (20181228)
+    unit tests for harem creation to prevent regression.
+
+# nprcmanager 0.5.00 (20181228)
+
   - First draft with harem group creation working.
       - Fails if more than one potential sire (male and at least of
         minimum age) is in the current group.
