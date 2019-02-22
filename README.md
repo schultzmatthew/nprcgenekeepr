@@ -29,7 +29,7 @@ At present, the application supports 5 functions:
 
 ``` 
 1. Quality control of uploaded studbooks  
-2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
+2. Creation of pedigrees from a list of potential breeders and LabKey EHR integratin  
 3. Generation of Genetic Value Analysis Reports  
 4. Creation of potential breeding groups  
 5. Display of an age by sex pyramid plot  
