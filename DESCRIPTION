@@ -6,7 +6,7 @@ Date: 2019-02-15
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
-    role = c("ctb", "cre")))
+    role = c("aut", "ctb", "cre")))
 Description: Implements Genetic Tools for Colony Management.
 URL: https://rmsharp.github.io/nprcmanager/, https://github.com/rmsharp/nprcmanager
 BugReports: https://github.com/rmsharp/nprcmanager/issues

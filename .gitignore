@@ -11,7 +11,6 @@ R/depricated_groupAssign.R
 R/depricated_groupAddition.R
 R/depricated_gene.drop.R
 inst/extdata/PSCPO*.*
-inst/doc/*
 docs/*
 !docs/*.css
 !docs/*.js
