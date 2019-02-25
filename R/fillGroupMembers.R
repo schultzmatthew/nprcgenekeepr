@@ -4,8 +4,8 @@
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
-#' @param currentGroup character vector of IDs of animals currently assigned
-#' to the group. Defaults to NULL assuming no groups are existant.
+#' @param currentGroups list of character vectors of IDs of animals currently assigned
+#' to the group. Defaults to character(0) assuming no groups are existant.
 #' @param kin list of animals and those animals who are related above a
 #' threshold value.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
@@ -20,9 +20,9 @@
 #' @param sexRatio numeric value indicating the ratio of females to males x
 #' from 0.5 to 10 by increments of 0.5.
 #' @export
-fillGroupMembers <- function(candidates, currentGroup, kin, ped, harem, minAge,
+fillGroupMembers <- function(candidates, currentGroups, kin, ped, harem, minAge,
                              numGp, sexRatio) {
-  groupMembers <- makeGroupMembers(numGp, currentGroup, candidates, ped, harem,
+  groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem,
                                    minAge)
   grpNum <- makeGrpNum(numGp)
 

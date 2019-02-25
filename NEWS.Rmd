@@ -8,6 +8,12 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.04 (20190225)
+-   Adding ability to have up to six seed animal groups.
+-   Added conditional appearance of Make Groups action button that is 
+    dependent on the user having select on of the optional group formation
+    workflows.
+    
 # nprcmanager 0.5.03 (20190215)
 -   Adding new version of breeding group formation UI and related server
     code.

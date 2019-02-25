@@ -4,15 +4,15 @@
 \alias{fillGroupMembers}
 \title{Forms and fills list of animals groups based on provided constraints}
 \usage{
-fillGroupMembers(candidates, currentGroup, kin, ped, harem, minAge, numGp,
+fillGroupMembers(candidates, currentGroups, kin, ped, harem, minAge, numGp,
   sexRatio)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for
 use in the group.}
 
-\item{currentGroup}{character vector of IDs of animals currently assigned
-to the group. Defaults to NULL assuming no groups are existant.}
+\item{currentGroups}{list of character vectors of IDs of animals currently assigned
+to the group. Defaults to character(0) assuming no groups are existant.}
 
 \item{kin}{list of animals and those animals who are related above a
 threshold value.}

@@ -4,7 +4,7 @@
 \alias{getAnimalsWithHighKinship}
 \title{Forms a list of animal Ids and animals related to them}
 \usage{
-getAnimalsWithHighKinship(kmat, ped, threshold, currentGroup, ignore,
+getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups, ignore,
   minAge)
 }
 \arguments{
@@ -18,8 +18,8 @@ information including the IDs listed in \code{candidates}.}
 considered in group formation. Pairwise kinship below this level will be
 ignored.}
 
-\item{currentGroup}{character vector of IDs of animals currently assigned
-to the group. Defaults to NULL assuming no groups are existant.}
+\item{currentGroups}{list of character vectors of IDs of animals currently assigned
+to the group. Defaults to character(0) assuming no groups are existant.}
 
 \item{ignore}{list of character vectors representing the sex combinations
 to be ignored. If provided, the vectors in the list specify if pairwise

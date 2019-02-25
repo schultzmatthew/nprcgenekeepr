@@ -713,15 +713,21 @@ shinyServer(function(input, output, session) {
     if (is.null(rpt())) {
       return(NULL)
     }
-
+    MAX_CURRENT_GROUPS <- 6
+    currentGroups <- list(MAX_CURRENT_GROUPS)
     ped <- getPed()
     # Filter out unknown animals added into ped
     ped <- removeUnknownAnimals(ped)
     ids <- character(0)
     if (input$group_formation_rb == "candidates")
       ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
-    currentGroup <- unlist(strsplit(input$curGrp, "[ \t\n]"))
-
+    currentGroups[[1]] <- unlist(strsplit(input$curGrp1, "[ \t\n]"))
+    currentGroups[[2]] <- unlist(strsplit(input$curGrp2, "[ \t\n]"))
+    currentGroups[[3]] <- unlist(strsplit(input$curGrp3, "[ \t\n]"))
+    currentGroups[[4]] <- unlist(strsplit(input$curGrp4, "[ \t\n]"))
+    currentGroups[[5]] <- unlist(strsplit(input$curGrp5, "[ \t\n]"))
+    currentGroups[[6]] <- unlist(strsplit(input$curGrp6, "[ \t\n]"))
+    currentGroups <- nprcmanager:::compactCurrentGroups(currentGroups)
     if (length(ids) > 0) {
       ped <- resetGroup(ped, ids)
       candidates <- ids
@@ -730,8 +736,8 @@ shinyServer(function(input, output, session) {
     }
 
     # Assume an animal that is in the group can't also be a candidate
-    if (length(currentGroup) > 0) {
-      candidates <- setdiff(candidates, currentGroup)
+    if (length(unlist(currentGroups)) > 0) {
+      candidates <- setdiff(candidates, unlist(currentGroups))
     }
 
     # Filter out low-value animals if desired
@@ -751,10 +757,10 @@ shinyServer(function(input, output, session) {
            paste("Group candidates present that are",
                  "not in the provided pedigree\n",
                  paste(setdiff(candidates, ped$id), sep = "\n"))),
-      need(!(length(setdiff(currentGroup, ped$id)) > 0),
+      need(!(length(setdiff(unlist(currentGroups), ped$id)) > 0),
            paste("Current group members present that",
                  "are not in the provided pedigree\n",
-                 paste(setdiff(currentGroup, ped$id), sep = "\n")))
+                 paste(setdiff(unlist(currentGroups), ped$id), sep = "\n")))
     )
 
     ignore <- input$ffRel
@@ -779,7 +785,7 @@ shinyServer(function(input, output, session) {
     }
 
     grp <- groupAddAssign(candidates = candidates,
-                         currentGroup = currentGroup,
+                         currentGroups = currentGroups,
                          kmat = kmat(),
                          ped = ped,
                          threshold = threshold,

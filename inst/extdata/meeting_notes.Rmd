@@ -1,43 +1,64 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190225
+1.  Items to add to instructions:
+    a.   Discuss what to do about overlapping group formation. 
+         Instruct the user to run the Make Groups command again to get 
+         a new set of groups. The new set will overlap with the prior results,
+         but will be mutually exclussive within a run.
+         
 ## 20190114
 
 1.  Amanda provided a new logo to use, which represents all of the National 
     Primate Research Centers. This is necessary because the ONPRC parent
     organization does not allow them to have a logo. Mark will incorporate
     that logo into the application and add some comments regarding development
-    supported by ONPRC and SNPRC.
+    supported by ONPRC and SNPRC. Added 20190119.
     
 1.  Discussed harem formation and formation of groups with a set sex ratio.
+    Done 20190103.
 
 1.  Discussed what to do about overlapping group formation. 
     Decided to instruct the user to run the Make Groups command again to get 
     a new set of groups. The new set will overlap with the prior results, 
-    but will be mutually exclussive within a run.
+    but will be mutually exclussive within a run.  Added to things to do
+    for 20190225 meeting 20190224
 
 1.  Discussed layout of breeding group formation tab by using a mockup tool.
     Decided to have six workflows selectable in a radio button configuration. 
     The user interface
     will redraw based on the radio button selected to reflect the user 
-    interface elements needed within the selected workflow.
+    interface elements needed within the selected workflow. Done 20190224
 
-1.  Need to test group formation with an animal not in the pedigree or
+1.  Need to test group formation with a candidate animal not in the pedigree or
     not in the genetic analysis.
-    Make an error reporting function that informs the user what has occurred.
+    Found that this causes a application crash. Done 20190224
 
+1.  Need to test group formation with a candidate animal not in the pedigree or
+    not in the genetic analysis.
+    Found that groups are not formed, but an error is not displayed. 
+    The user must remove the false Id to get group formation to work.
+    Done 20190224.
+
+1.  Make an error reporting function that informs the user what has occurred
+    when an animal not in the pedigree or not in the genetic analysis is 
+    entered as a seed animal or a candidate animal.
+    
 1.  Change "Animals will be ignored below this age" to "Animals will be 
-    grouped with the mother below age". 
+    grouped with the mother below age". Done 20190224.
 
 1.  Change to Animals with kinship above this value will be excluded.
+    Done 20190224.
 
-1.  Change to Include kinship in display of groups
+1.  Change to Include kinship in display of groups. Done 20190224.
 
 1.  Disable breeding group formation tab until genetic value analysis has
     occurred. Have disabled tab display text explaining that genetic 
     value analysis must be performed first.
     
-1.  Have 6 boxes for seed animals. User can provide seed animals for upto six animals.
+1.  Have 6 boxes for seed animals. User can provide seed animals for up to 
+    six groups. Done 20190224
 
 1.  The next meeting will be 20190211 at 4 PM Pacific time.        
 

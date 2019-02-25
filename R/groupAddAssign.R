@@ -27,8 +27,8 @@
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
-#' @param currentGroup character vector of IDs of animals currently assigned
-#' to the group. Defaults to NULL assuming no groups are existant.
+#' @param currentGroups list of character vectors of IDs of animals currently assigned
+#' to the group. Defaults to character(0) assuming no groups are existant.
 #' @param kmat numeric matrix of pairwise kinship values. Rows and columns
 #' are named with animal IDs.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
@@ -60,19 +60,20 @@
 #' earlier versions.
 #'
 #' @export
-groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
+groupAddAssign <- function(candidates, currentGroups = character(0), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
                             numGp = 1, updateProgress = NULL, harem = FALSE,
                             sexRatio = 0, withKin = FALSE) {
-  if (length(currentGroup) > 0 && numGp > 1)
-    stop("Cannot have more than one group formed when adding to a single group")
-  kmat <- filterKinMatrix(union(candidates, currentGroup), kmat)
-  kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroup, ignore,
+  if (length(currentGroups) > numGp)
+    stop(paste0("Cannot have more groups with seed animals than number of ",
+                "groups to be formed."))
+  kmat <- filterKinMatrix(union(candidates, unlist(currentGroups)), kmat)
+  kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups, ignore,
                                                minAge)
 
   # Filtering out candidates related to current group members
-  conflicts <- unique(c(unlist(kin[currentGroup]), currentGroup))
+  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
   candidates <- setdiff(candidates, conflicts)
 
 
@@ -92,15 +93,14 @@ groupAddAssign <- function(candidates, currentGroup = character(0), kmat, ped,
   savedGroupMembers <- list()
 
   for (k in 1:iter) {
-    groupMembers <- fillGroupMembers(candidates, currentGroup, kin, ped, harem,
+    groupMembers <- fillGroupMembers(candidates, currentGroups, kin, ped, harem,
                                      minAge, numGp, sexRatio)
 
     # Score the resulting groups
     score <- min(sapply(groupMembers, length))
 
     if (score > savedScore) {
-      savedGroupMembers <-
-        updateSavedGroupMembers(savedGroupMembers, currentGroup, groupMembers)
+      savedGroupMembers <- groupMembers
       savedScore <- score
     }
 
