@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>initializeHaremGroups</span>(<span class='no'>numGp</span>, <span class='no'>currentGroup</span>, <span class='no'>candidates</span>, <span class='no'>ped</span>, <span class='no'>minAge</span>)</pre>
+    <pre class="usage"><span class='fu'>initializeHaremGroups</span>(<span class='no'>numGp</span>, <span class='no'>currentGroups</span>, <span class='no'>candidates</span>, <span class='no'>ped</span>, <span class='no'>minAge</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,9 +139,9 @@
 formed from the list of IDs. Default is 1.</p></td>
     </tr>
     <tr>
-      <th>currentGroup</th>
-      <td><p>character vector of IDs of animals currently assigned
-to the group. Defaults to NULL assuming no groups are existant.</p></td>
+      <th>currentGroups</th>
+      <td><p>list of character vectors of IDs of animals currently assigned
+to the group. Defaults to character(0) assuming no groups are existant.</p></td>
     </tr>
     <tr>
       <th>candidates</th>

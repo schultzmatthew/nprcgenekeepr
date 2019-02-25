@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove duplicate records from pedigree — removeDuplicates • nprcmanager</title>
+<title>Takes list of currentGroups and removes all empty vectors — compactCurrentGroups • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Remove duplicate records from pedigree — removeDuplicates" />
+<meta property="og:title" content="Takes list of currentGroups and removes all empty vectors — compactCurrentGroups" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="compactCurrentGroup takes the list currentGroups and removes
+all empty character vectors. This allows the user to place seed animals
+in current groups without regard to order." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,39 +119,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove duplicate records from pedigree</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/removeDuplicates.R'><code>R/removeDuplicates.R</code></a></small>
-    <div class="hidden name"><code>removeDuplicates.Rd</code></div>
+    <h1>Takes list of currentGroups and removes all empty vectors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/compactCurrentGroups.R'><code>R/compactCurrentGroups.R</code></a></small>
+    <div class="hidden name"><code>compactCurrentGroups.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p><code>compactCurrentGroup</code> takes the list <code>currentGroups</code> and removes
+all empty character vectors. This allows the user to place seed animals
+in current groups without regard to order.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>removeDuplicates</span>(<span class='no'>ped</span>, <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>compactCurrentGroups</span>(<span class='kw'>currentGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ped</th>
-      <td><p>dataframe that is the `Pedigree`. It contains pedigree
-information. The <code>id</code> column is required.</p></td>
-    </tr>
-    <tr>
-      <th>reportErrors</th>
-      <td><p>logical value if TRUE will scan the entire file and
-make a list of all errors found. The errors will be returned in a
-list of list where each sublist is a type of error found.</p></td>
+      <th>currentGroups</th>
+      <td><p>list of character vectors of IDs of animals currently assigned
+to the group. Defaults to character(0) assuming no groups are existant.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A version of <code>currentGroups</code> with empty character vectors
+removed. If no character vectors remain <code>currentGroups</code> gets defined
+as <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(0)</a></code>.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Returns an updated dataframe with duplicate rows removed.</p>
-<p>Returns an error if the table has duplicate IDs with differing data.</p>
+    <p>Part of Group Formation</p>
     
 
   </div>
@@ -158,6 +161,8 @@ list of list where each sublist is a type of error found.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
           </ul>
 
