@@ -16,7 +16,7 @@
 #' @export
 initializeHaremGroups <- function(numGp, currentGroups, candidates, ped, minAge) {
   groupMembers <- list()
-  if (length(currentGroups > 0)) {
+  if (length(currentGroups) > 0) {
     for (i in 1:length(currentGroups)) {
       currentGroup <- currentGroups[[i]]
       if (length(getPotentialSires(currentGroup, minAge, ped)) > 1)

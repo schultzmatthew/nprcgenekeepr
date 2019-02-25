@@ -8,9 +8,11 @@ skip_if_not(exists("baboonBreeders"))
 skip_if_not(exists("pedWithGenotype"))
 skip_if_not(exists("pedWithGenotypeReport"))
 set.seed(10)
+currentGroups <- list(1)
+currentGroups[[1]] <- baboonBreeders[1:3]
 groupAddTest <- groupAddAssign(
   candidates = baboonBreeders,
-  currentGroup = baboonBreeders[1:3],
+  currentGroups = currentGroups,
   kmat = pedWithGenotypeReport$kinship,
   ped = pedWithGenotype,
   ignore = NULL, minAge = 1, numGp = 1,
@@ -23,7 +25,7 @@ test_that("groupAddAssign forms the correct groups", {
 )
 set.seed(10)
 groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
-                                  currentGroup = character(0),
+                                  currentGroups = character(0),
                                   kmat = pedWithGenotypeReport$kinship,
                                   ped = pedWithGenotype,
                                   ignore = NULL, minAge = 1, numGp = 2,
@@ -35,8 +37,10 @@ test_that("groupAddAssign forms the correct groups", {
 }
 )
 set.seed(10)
+currentGroups <- list(1)
+currentGroups[[1]] <- baboonBreeders[1:3]
 groupAddKTest <- groupAddAssign(candidates = baboonBreeders,
-                                currentGroup = baboonBreeders[1:3],
+                                currentGroups = currentGroups,
                                 kmat = pedWithGenotypeReport$kinship,
                                 ped = pedWithGenotype,
                                 ignore = NULL, minAge = 1, numGp = 1,
@@ -49,7 +53,7 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
 )
 set.seed(10)
 groupAssignKTest <- groupAddAssign(candidates = baboonBreeders,
-                                   currentGroup = character(0),
+                                   currentGroups = character(0),
                                    kmat = pedWithGenotypeReport$kinship,
                                    ped = pedWithGenotype,
                                    ignore = NULL, minAge = 1, numGp = 2,
@@ -60,14 +64,6 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$groupKin[[1]]), 81)
 }
 )
-test_that("groupAddAssign returns an error with numGp > 1 and currentGroup not NULL", {
-  expect_error(groupAddAssign(candidates = baboonBreeders,
-                              currentGroup = baboonBreeders[1:3],
-                              kmat = pedWithGenotypeReport$kinship,
-                              ped = pedWithGenotype,
-                              ignore = NULL, minAge = 1, numGp = 2,
-                              harem = FALSE, sexRatio = 0, withKin = TRUE))
-})
 set.seed(10)
 noSires <- removePotentialSires(baboonBreeders, minAge = 2,
                                             pedWithGenotype)
@@ -75,7 +71,7 @@ sires <- getPotentialSires(baboonBreeders, minAge = 2, pedWithGenotype)
 
 test_that(paste0("groupAddAssign fails when no potential sires exist for ",
                  "harem creation"), {
-  expect_error(groupAddAssign(candidates = noSires, currentGroup = character(0),
+  expect_error(groupAddAssign(candidates = noSires, currentGroups = character(0),
                               kmat = pedWithGenotypeReport$kinship,
                               ped = pedWithGenotype,
                               ignore = NULL, minAge = 1, numGp = 2,
@@ -84,7 +80,7 @@ test_that(paste0("groupAddAssign fails when no potential sires exist for ",
 )
 test_that(paste0("groupAddAssign when there are multiple potential sires in ",
                  "the candidates during harem creation"), {
-  group <- groupAddAssign(candidates = baboonBreeders, currentGroup = character(0),
+  group <- groupAddAssign(candidates = baboonBreeders, currentGroups = character(0),
                           kmat = pedWithGenotypeReport$kinship,
                           ped = pedWithGenotype,
                           ignore = NULL, minAge = 1, numGp = 2,
