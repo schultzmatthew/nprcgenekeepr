@@ -766,6 +766,10 @@ shinyServer(function(input, output, session) {
     ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
     threshold <- input$kinThresh
+    if (useMinParentAge)
+      minAge <- minParentAge
+    else
+
     minAge <- input$minAge
     withKin <- input$withKin
     iter <- input$gpIter

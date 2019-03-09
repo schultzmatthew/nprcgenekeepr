@@ -25,36 +25,39 @@ uitpBreedingGroupFormation <-
           choiceValues = list("high-value", "all", "candidates"),
           width = "650px",
           selected = character(0)
+        ),
+        conditionalPanel(
+          condition = paste0("input.group_formation_rb == 'candidates' "),
+          div(
+            style = "display:inline-block;width:400px;padding:5px",
+            helpText("Enter IDs of candidates to be added to new group(s):"),
+            tags$textarea(id = "grpIds", rows = 10, cols = 50, "")
+          )
         )
       ),
       column(
         2,
         offset = 1,
-        conditionalPanel(condition = "input.group_formation_rb == 'high-value' |
+        conditionalPanel(
+          condition = "input.group_formation_rb == 'high-value' |
                        input.group_formation_rb == 'all' |
                        input.group_formation_rb == 'candidates'",
-                       div(
-                         style = paste0(
-                           "border: 1px solid lightgray; background-color: #EDEDED; ",
-                           "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
-                         ),
-                         actionButton("grpSim", label = "Make Groups", width = "100%")
-                       )
-                       )
+          div(
+            style = paste0(
+              "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
+              "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
+            ),
+            actionButton("grpSim", label = "Make Groups", width = "100%",
+                         style = "color: #fff; background-color: #4BCEEF;
+                                      border-color: #4BCEEF")
+          )
+        )
       )),
       fluidRow(column(
         10,
         offset = 1,
         checkboxInput("seedAnimals", label = "Add seed animals to group",
-                      value = FALSE),
-        conditionalPanel(
-          condition = paste0("input.group_formation_rb == 'candidates' "),
-          div(
-            style = "display:inline-block;width:400px;padding:10px",
-            helpText("Enter IDs of candidates to be added to new group(s):"),
-            tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
-          )
-        )
+                      value = FALSE)
       )),
       fluidRow(
         column(
@@ -119,29 +122,40 @@ uitpBreedingGroupFormation <-
             width = "350px",
             selected = "ignore-sex"
           ),
-          conditionalPanel(condition = "input.group_sex_rb == 'sex-ratio'",
-                           div(popify(
-                             numericInput(
-                               "sexRatio",
-                               label = "Sex Ratio (F/M):",
-                               value = 0.0,
-                               min = 0.5,
-                               max = 10,
-                               step = 0.5
-                             ),
-                             NULL,
-                             paste0(
-                               "Final sex ratios are approximate but are guaranteed to be ",
-                               "the nearest possible value given creation of the largest ",
-                               "group possible."
-                             )
-                           )))
+          conditionalPanel(
+            condition = "input.group_sex_rb == 'sex-ratio'",
+            div(popify(
+              numericInput(
+                "sexRatio",
+                label = "Sex Ratio (F/M):",
+                value = 0.0,
+                min = 0.5,
+                max = 10,
+                step = 0.5
+              ),
+              NULL,
+              paste0(
+                "Final sex ratios are approximate but are guaranteed to be ",
+                "the nearest possible value given creation of the largest ",
+                "group possible."
+              )
+            )))
         ),
         column(
           3,
           offset = 1,
           align = "center",
           style = "height:200px;padding-top:20px;",
+          div(
+             style = "height:100px;padding-top:20px;",
+            checkboxInput("useMinParentAge", 
+            label = paste0("Animals will be grouped with the mother below the ",
+                           "minimum parent age ("),# input.minParentAge, ")."),
+                          value = FALSE)
+          ),
+          conditionalPanel(
+            condition = "!input.useMinParentAge",
+            div(popify(
           numericInput(
             "minAge",
             label = "Animals will be grouped with the mother below age:",
@@ -150,6 +164,12 @@ uitpBreedingGroupFormation <-
             max = 40,
             step = 0.1
           ),
+              NULL,
+              paste0(
+                "Animals will be groups with the mother below the age you ",
+                "select."
+              )
+            ))),
           div(
             style = "height:100px;padding-top:20px;",
             checkboxInput("ffRel", label = "Ignore relatedness between females",
@@ -166,8 +186,8 @@ uitpBreedingGroupFormation <-
             choices = list(
               "0.015625" = 0.015625,
               "0.0625" = 0.0625,
-              "0.125" = 0.125,
-              "0.25" = 0.25
+              "Grandparent-Offspring" = 0.125,
+              "0.25 (Parent-Offspring)" = 0.25
             ),
             selected = 1
           )
@@ -185,7 +205,8 @@ uitpBreedingGroupFormation <-
             min = 1,
             max = 10
           ),
-          checkboxInput("withKin", label = "Include kinship in display of groups",
+          checkboxInput("withKin",
+                        label = "Include kinship in display of groups",
                         value = FALSE)
         ),
         column(

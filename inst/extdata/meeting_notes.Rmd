@@ -2,12 +2,43 @@
 Provided in reverse chronological order
 
 ## 20190225
+1.  Mark to add additional unit tests for new seed group formation code.
 1.  Items to add to instructions:
     a.   Discuss what to do about overlapping group formation. 
          Instruct the user to run the Make Groups command again to get 
          a new set of groups. The new set will overlap with the prior results,
          but will be mutually exclussive within a run.
-         
+1.  Mark to send an invoice at end of February. Amanda will send the amount of
+    funding available.
+1.  Seed Groups
+    -   Have user enter number of seed groups to form and then present that number
+        of windows.
+    -   Change label to "Optional: Seed Groups with Specific Animals"
+    -   Have it in its own gray box
+
+1.  Pull downs to right in one column:
+    a.  Number of groups desired
+    b.  Animals will be grouped with mother that are below age (years):
+        [] Use minimum parent age. <-- default
+        Have dropdown disappear if checkbox above is selected.
+    c.  Animals with kinship above ....
+    d.  Dropdown with 
+        -   Ignore females at or above the minimum parent age
+        -   Do not ignore females at or above the minimum parent age
+    e.  Modify kinship dropdown to add common relationship nomenclature in parentheses.
+    f.  Number of simulations
+1.  Left column input
+    a.   Make Groups in color and larger
+    b.   Enter the group to view
+    c.   Export Current Group
+    d.   Export Current Group Kinship Matrix
+1.  Example email
+    a.   Example: Whether or not one of 10 females would work with a
+         particular male.
+    a.   Amanda is to collect other similar emails to use as ideas for
+         development of vignettes.
+1.  Next meeting March 11, 2019, at 4PM PAC.
+
 ## 20190114
 
 1.  Amanda provided a new logo to use, which represents all of the National 
