@@ -34,71 +34,8 @@ uitpBreedingGroupFormation <-
             tags$textarea(id = "grpIds", rows = 10, cols = 50, "")
           )
         )
-      ),
-      column(
-        2,
-        offset = 1,
-        conditionalPanel(
-          condition = "input.group_formation_rb == 'high-value' |
-                       input.group_formation_rb == 'all' |
-                       input.group_formation_rb == 'candidates'",
-          div(
-            style = paste0(
-              "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
-              "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
-            ),
-            actionButton("grpSim", label = "Make Groups", width = "100%",
-                         style = "color: #fff; background-color: #4BCEEF;
-                                      border-color: #4BCEEF")
-          )
-        )
-      )),
-      fluidRow(column(
-        10,
-        offset = 1,
-        checkboxInput("seedAnimals", label = "Add seed animals to group",
-                      value = FALSE)
-      )),
-      fluidRow(
-        column(
-          5,
-          offset = 1,
-          style = "display:inline-block;width:400px;padding:10px",
-
-          conditionalPanel(
-            condition = paste0("input.seedAnimals"),
-            div(
-              style = "display:inline-block;width:400px;padding:10px",
-              helpText("Enter IDs of seed animals for the new group 1:"),
-              tags$textarea(id = "curGrp1", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 3:"),
-              tags$textarea(id = "curGrp3", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 5:"),
-              tags$textarea(id = "curGrp5", rows = 5, cols = 40, "")
-            )
-          )
         ),
-        column(
-          5,
-          offset = 1,
-          style = "display:inline-block;width:400px;padding:10px",
-
-          conditionalPanel(
-            condition = paste0("input.seedAnimals"),
-            div(
-              style = "display:inline-block;width:400px;padding:10px",
-              helpText("Enter IDs of seed animals for the new group 2:"),
-              tags$textarea(id = "curGrp2", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 4:"),
-              tags$textarea(id = "curGrp4", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 6:"),
-              tags$textarea(id = "curGrp6", rows = 5, cols = 40, "")
-            )
-          )
-        )
-      ),
-      fluidRow(
-        column(
+                column(
           4,
           offset = 1,
           style = paste(
@@ -139,15 +76,53 @@ uitpBreedingGroupFormation <-
                 "the nearest possible value given creation of the largest ",
                 "group possible."
               )
-            )))
-        ),
-        column(
-          3,
-          offset = 1,
-          align = "center",
-          style = "height:200px;padding-top:20px;",
+            ))))),
+      fluidRow(column(
+        5,
+        offset = 1,
+        checkboxInput("seedAnimals", label = "Add seed animals to group",
+                      value = FALSE),
+          conditionalPanel(
+          condition = "input.group_formation_rb == 'high-value' |
+                       input.group_formation_rb == 'all' |
+                       input.group_formation_rb == 'candidates'",
           div(
-             style = "height:100px;padding-top:20px;",
+            style = paste0("padding-top:5px;padding-bottom:5px;",
+              "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
+              "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
+            ),
+            actionButton("grpSim", label = "Make Groups", width = "100%",
+                          height = "120%",
+                         style = "color: #fff; background-color: #4BCEEF;
+                                 border-color: #4BCEEF;font-size:150%; 
+                                 font:bold")
+          ),
+          div(style = "display:inline-block;width:250px;padding:5px",
+          numericInput(
+            "viewGrp",
+            label = "Enter the group to view:",
+            value = 1,
+            min = 1,
+            max = 10
+          ),
+#            style = "display:inline-block;width:250px;padding:5px",
+            downloadButton("downloadGroup", "Export Current Group"),
+            downloadButton("downloadGroupKin",
+                           "Export Current Group Kinship Matrix")
+          )
+        )),
+      column(
+        4,
+        offset = 1,
+        style = "padding-top:5px",
+      numericInput(
+            "numGp",
+            label = "Number of Groups Desired:",
+            value = 1,
+            min = 1,
+            max = 10
+          ),
+        div(
             checkboxInput("useMinParentAge", 
             label = paste0("Animals will be grouped with the mother below the ",
                            "minimum parent age ("),# input.minParentAge, ")."),
@@ -170,76 +145,70 @@ uitpBreedingGroupFormation <-
                 "select."
               )
             ))),
-          div(
-            style = "height:100px;padding-top:20px;",
-            checkboxInput("ffRel", label = "Ignore relatedness between females",
-                          value = TRUE)
-          )
-        ),
-        column(
-          3,
-          offset = 0,
-          style = "height:200px;padding-top:20px;",
           selectInput(
             "kinThresh",
             label = "Animals with kinship above this value will be excluded:",
             choices = list(
               "0.015625" = 0.015625,
-              "0.0625" = 0.0625,
-              "Grandparent-Offspring" = 0.125,
-              "0.25 (Parent-Offspring)" = 0.25
+              "0.0625 (great-grandparent - great-grandchild)" = 0.0625,
+              "0.125 (grandparent - grandchild, half-sibling -- half-sibling)" = 0.125,
+              "0.25 (parent-child)" = 0.25
             ),
             selected = 1
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          2,
-          offset = 1,
-          style = "height:250px;padding-top:20px;",
-          numericInput(
-            "numGp",
-            label = "Groups Desired:",
-            value = 1,
-            min = 1,
-            max = 10
           ),
-          checkboxInput("withKin",
+          div(
+            checkboxInput("ffRel", label = "Ignore relatedness between females",
+                          value = TRUE)
+          ),
+           checkboxInput("withKin",
                         label = "Include kinship in display of groups",
-                        value = FALSE)
-        ),
-        column(
-          2,
-          offset = 0,
-          style = "height:250px;padding-top:20px;",
-          numericInput(
+                        value = FALSE),
+        numericInput(
             "gpIter",
             label = "Number of simulations:",
             value = 10,
             min = 1,
             max = 1000000
+          ))
+      ),
+      fluidRow(
+        column(
+          5,
+          offset = 1,
+          style = "display:inline-block;width:400px;padding:10px",
+
+          conditionalPanel(
+            condition = paste0("input.seedAnimals"),
+            div(
+              style = "display:inline-block;width:400px;padding:10px",
+              helpText("Enter IDs of seed animals for the new group 1:"),
+              tags$textarea(id = "curGrp1", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 3:"),
+              tags$textarea(id = "curGrp3", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 5:"),
+              tags$textarea(id = "curGrp5", rows = 5, cols = 40, "")
+            )
           )
         ),
         column(
-          3,
-          offset = 2,
-          style = "height:250px;padding-top:20px;",
-          numericInput(
-            "viewGrp",
-            label = "Enter the group to view:",
-            value = 1,
-            min = 1,
-            max = 10
-          ),
-          div(
-            style = "display:inline-block;width:250px;padding:5px",
-            downloadButton("downloadGroup", "Export Current Group"),
-            downloadButton("downloadGroupKin",
-                           "Export Current Group Kinship Matrix")
+          4,
+          offset = 1,
+          style = "display:inline-block;width:400px;padding:10px",
+
+          conditionalPanel(
+            condition = paste0("input.seedAnimals"),
+            div(
+              style = "display:inline-block;width:400px;padding:10px",
+              helpText("Enter IDs of seed animals for the new group 2:"),
+              tags$textarea(id = "curGrp2", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 4:"),
+              tags$textarea(id = "curGrp4", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 6:"),
+              tags$textarea(id = "curGrp6", rows = 5, cols = 40, "")
+            )
           )
         )
-      ),
+      )),
       fluidRow(
         column(
           width = 10,
@@ -259,5 +228,4 @@ uitpBreedingGroupFormation <-
           includeHTML("../extdata/group_formation.html")
         )
       )
-    )
   )
