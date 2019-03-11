@@ -16,10 +16,11 @@ Provided in reverse chronological order
     -   Change label to "Optional: Seed Groups with Specific Animals"
     -   Have it in its own gray box
 
-1.  Pull downs to right in one column:
+1.  Pull downs to right in one column: Done 20190309
     a.  Number of groups desired
     b.  Animals will be grouped with mother that are below age (years):
-        [] Use minimum parent age. <-- default
+        [] Use minimum parent age. <-- default -- Have not figured out how to have
+        __minParentAge__ from Input tab to show up in the BreedingGroupFormation tab.
         Have dropdown disappear if checkbox above is selected.
     c.  Animals with kinship above ....
     d.  Dropdown with 
@@ -27,12 +28,12 @@ Provided in reverse chronological order
         -   Do not ignore females at or above the minimum parent age
     e.  Modify kinship dropdown to add common relationship nomenclature in parentheses.
     f.  Number of simulations
-1.  Left column input
+1.  Left column input: Done 20190309
     a.   Make Groups in color and larger
     b.   Enter the group to view
     c.   Export Current Group
     d.   Export Current Group Kinship Matrix
-1.  Example email
+1.  Example emails
     a.   Example: Whether or not one of 10 females would work with a
          particular male.
     a.   Amanda is to collect other similar emails to use as ideas for

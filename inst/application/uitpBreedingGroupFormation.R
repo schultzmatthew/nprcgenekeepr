@@ -125,9 +125,9 @@ uitpBreedingGroupFormation <-
         div(
             checkboxInput("useMinParentAge", 
             label = paste0("Animals will be grouped with the mother below the ",
-                           "minimum parent age ("),# input.minParentAge, ")."),
-                          value = FALSE)
+                           "minimum parent age."), value = FALSE)
           ),
+          textOutput("minParentAge"),
           conditionalPanel(
             condition = "!input.useMinParentAge",
             div(popify(
@@ -151,14 +151,22 @@ uitpBreedingGroupFormation <-
             choices = list(
               "0.015625" = 0.015625,
               "0.0625 (great-grandparent - great-grandchild)" = 0.0625,
-              "0.125 (grandparent - grandchild, half-sibling -- half-sibling)" = 0.125,
+              "0.125 (grandparent - grandchild, half-sibling -- half-sibling)"
+               = 0.125,
               "0.25 (parent-child)" = 0.25
             ),
             selected = 1
           ),
           div(
-            checkboxInput("ffRel", label = "Ignore relatedness between females",
-                          value = TRUE)
+          selectInput(
+            "ffRel",
+            label = paste0("Ignore or do not ignore females at or above the ",
+                            "minimum parent age:"),
+            choices = list(
+              "Ignore" = TRUE,
+              "Do not ignore" = FALSE
+            ),
+            selected = 0
           ),
            checkboxInput("withKin",
                         label = "Include kinship in display of groups",
@@ -170,7 +178,7 @@ uitpBreedingGroupFormation <-
             min = 1,
             max = 1000000
           ))
-      ),
+      )),
       fluidRow(
         column(
           5,

@@ -62,10 +62,6 @@ shinyServer(function(input, output, session) {
       # an animal to have an offspring. Defaults to 2 years. The check is not
       # performed for animals with missing birth dates. See qcStudbook().
       flog.debug("sep: %s", sep, name = "nprcmanager")
-      minParentAge <- renderText(input$minParentAge)
-      flog.debug(paste0("minParentAge: ",
-                        input$minParentAge),
-                 name = "nprcmanager")
       minParentAge <- tryCatch(as.numeric(input$minParentAge),
                                warning = function(cond) {
                                  return(NULL)
@@ -74,6 +70,7 @@ shinyServer(function(input, output, session) {
                                  return(NULL)
                                }
       )
+      globalMinParentAge <<- minParentAge
       flog.debug(paste0("minParentAge: ", minParentAge),
                  name = "nprcmanager")
 
@@ -762,15 +759,16 @@ shinyServer(function(input, output, session) {
                  "are not in the provided pedigree\n",
                  paste(setdiff(unlist(currentGroups), ped$id), sep = "\n")))
     )
-
     ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
     threshold <- input$kinThresh
-    if (useMinParentAge)
-      minAge <- minParentAge
-    else
+    if (input$useMinParentAge) {
+      minAge <- globalMinParentAge
+      output$minParentAge <- renderText({paste0(minAge)})
+    } else {
+      minAge <- input$minAge
+    }
 
-    minAge <- input$minAge
     withKin <- input$withKin
     iter <- input$gpIter
     numGp <- ({
