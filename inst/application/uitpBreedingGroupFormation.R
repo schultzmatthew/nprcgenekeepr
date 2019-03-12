@@ -35,7 +35,7 @@ uitpBreedingGroupFormation <-
           )
         )
         ),
-                column(
+        column(
           4,
           offset = 1,
           style = paste(
@@ -80,7 +80,8 @@ uitpBreedingGroupFormation <-
       fluidRow(column(
         5,
         offset = 1,
-        checkboxInput("seedAnimals", label = "Optional: Seed Groups with Specific Animals",
+        checkboxInput("seedAnimals",
+                      label = "Optional: Seed Groups with Specific Animals",
                       value = FALSE),
           conditionalPanel(
           condition = "input.group_formation_rb == 'high-value' |
@@ -160,8 +161,8 @@ uitpBreedingGroupFormation <-
           div(
           selectInput(
             "ffRel",
-            label = paste0("Ignore kinship between females at or above the ",
-                            "minimum parent age (Yes/No):"),
+            label = paste0("Ignore or do not ignore females at or above the ",
+                            "minimum parent age:"),
             choices = list(
               "Yes" = TRUE,
               "No" = FALSE

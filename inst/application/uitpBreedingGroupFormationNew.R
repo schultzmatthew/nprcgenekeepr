@@ -42,11 +42,11 @@ uitpBreedingGroupFormation <-
             "border: 1px solid lightgray; background-color: #EDEDED;",
             "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
           ),
-          HTML(
-            "<p>Instead of assignment of animals to groups without regard to
-            the sex of animals, you may choose to form <em>harem</em> groups
-            or groups with a specified sex ratio.</p>"
-          ),
+          # HTML(
+          #   "<p>Instead of assignment of animals to groups without regard to
+          #   the sex of animals, you may choose to form <em>harem</em> groups
+          #   or groups with a specified sex ratio.</p>"
+          # ),
           radioButtons(
             "group_sex_rb",
             "Sex of animals in groups:",
@@ -155,26 +155,26 @@ uitpBreedingGroupFormation <-
                 "select."
               )
             ))),
+          div(
           selectInput(
             "kinThresh",
             label = "Animals with kinship above this value will be excluded:",
             choices = list(
-              "0.015625" = 0.015625,
-              "0.0625 (great-grandparent - great-grandchild)" = 0.0625,
-              "0.125 (grandparent - grandchild, half-sibling -- half-sibling)"
-               = 0.125,
-              "0.25 (parent-child)" = 0.25
+              "0.015625 (second cousins)" = 0.015625,
+              "0.0625 (great-grandparent/great-grandchild; first cousins)" = 0.0625,
+              "0.125 (grandparent/grandchild; half-siblings; avuncular)" = 0.125,
+              "0.25 (parent/child)" = 0.25
             ),
             selected = 1
-          ),
+          )),
           div(
           selectInput(
             "ffRel",
             label = paste0("Ignore or do not ignore females at or above the ",
                             "minimum parent age:"),
             choices = list(
-              "Ignore" = TRUE,
-              "Do not ignore" = FALSE
+              "Yes" = TRUE,
+              "No" = FALSE
             ),
             selected = 0
           ),
