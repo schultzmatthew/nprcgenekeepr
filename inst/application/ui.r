@@ -19,11 +19,11 @@ if (getSiteInfo()$center == "ONPRC") {
     uitpInput,
 #    uitpErrorTab,
     uitpPedigreeBrowser,
+    uitpPyramidPlot,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
     uitpBreedingGroupFormation,
-    uitpOripReporting,
-    uitpPyramidPlot,
+#    uitpOripReporting,
     uitpGvAndBgDesc,
     id = "tab_pages"
   )
@@ -33,10 +33,10 @@ if (getSiteInfo()$center == "ONPRC") {
     uitpInput,
 #    uitpErrorTab,
     uitpPedigreeBrowser,
+    uitpPyramidPlot,
     uitpGeneticValueAnalysis,
     uitpSummaryStatistics,
     uitpBreedingGroupFormation,
-    uitpPyramidPlot,
     uitpGvAndBgDesc,
     id = "tab_pages"
   )

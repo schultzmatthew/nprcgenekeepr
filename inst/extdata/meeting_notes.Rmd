@@ -1,6 +1,26 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190311
+
+1.  Remove explanatory text above sex ratio radio buttons. Done 20190311
+1.  Ignore kinship between females at or above the minimum parent age (Yes/No). 
+    Done 20190311.
+1.  Invoice for Jan 12 - Mar 11, 2019 sent 20190311.
+1.  Renamed (Pyramid Plot to Age Pyramid Plot) and moved to the right of Pedigree 
+    Browser. Done 20190311
+1.  Amanda sent Mark the 2015-02-14_Genetic_metrics_white paper_Final.docx paper for
+    him to review and collect ideas for a renewed ORIP Reporting tab.
+    Amanda suggested that we need to propose collection of these metrics from all
+    primate centers. Genetic and Genomics Working Group website: https://nprcresearch.org/primate/genetics-genomics/genetics-genomics-working-group.php
+1.  Still have two features to add and one graphic element to correct.
+    -   Allow user to enter the number of groups of seed animals to be entered.
+        See _Seed Groups_ from last month's notes.
+    -   Add __minParentAge__ to check box for _Use minimum parent age for age
+        of animals to be grouped with the mother_.
+1.  To meet again on 20190325 if Mark makes sufficient progress otherwise we will
+    meet on 20190408 at 4PM PAC.
+    
 ## 20190225
 1.  Mark to add additional unit tests for new seed group formation code.
 1.  Items to add to instructions:
@@ -9,11 +29,11 @@ Provided in reverse chronological order
          a new set of groups. The new set will overlap with the prior results,
          but will be mutually exclussive within a run.
 1.  Mark to send an invoice at end of February. Amanda will send the amount of
-    funding available.
+    funding available. Done 20190311
 1.  Seed Groups
     -   Have user enter number of seed groups to form and then present that number
         of windows.
-    -   Change label to "Optional: Seed Groups with Specific Animals"
+    -   Change label to "Optional: Seed Groups with Specific Animals". Done 20190311
     -   Have it in its own gray box
 
 1.  Pull downs to right in one column: Done 20190309

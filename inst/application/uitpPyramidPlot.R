@@ -1,5 +1,5 @@
 uitpPyramidPlot <-
-  tabPanel("Pyramid Plot",
+  tabPanel("Pedigree Age Plot",
            div(
              style = "min-width:1000px",
              # Side Panel

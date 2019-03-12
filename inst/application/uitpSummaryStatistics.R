@@ -1,6 +1,6 @@
 uitpSummaryStatistics <-
   tabPanel(
-    "Summary Statistics",
+    "Summary Statistics and Plots",
 
     # Side Panel
     # div(

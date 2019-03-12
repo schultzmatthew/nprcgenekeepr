@@ -35,18 +35,18 @@ uitpBreedingGroupFormation <-
           )
         )
         ),
-                column(
+        column(
           4,
           offset = 1,
           style = paste(
             "border: 1px solid lightgray; background-color: #EDEDED;",
             "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
           ),
-          # HTML(
-          #   "<p>Instead of assignment of animals to groups without regard to
-          #   the sex of animals, you may choose to form <em>harem</em> groups
-          #   or groups with a specified sex ratio.</p>"
-          # ),
+          HTML(
+            "<p>Instead of assignment of animals to groups without regard to
+            the sex of animals, you may choose to form <em>harem</em> groups
+            or groups with a specified sex ratio.</p>"
+          ),
           radioButtons(
             "group_sex_rb",
             "Sex of animals in groups:",
@@ -80,8 +80,18 @@ uitpBreedingGroupFormation <-
       fluidRow(column(
         5,
         offset = 1,
-        checkboxInput("seedAnimals", label = "Optional: Seed Groups with Specific Animals",
+        checkboxInput("seedAnimals",
+                      label = "Optional: Seed Groups with Specific Animals",
                       value = FALSE),
+       style = "display:inline-block;width:400px;padding:10px",
+        conditionalPanel(
+        condition = paste0("input.seedAnimals"),
+        div(
+          style = "display:inline-block;width:400px;padding:10px",
+          helpText("Enter IDs of seed animals for the new group:"),
+          uiOutput("textAreas")
+        )
+          ),
           conditionalPanel(
           condition = "input.group_formation_rb == 'high-value' |
                        input.group_formation_rb == 'all' |
@@ -145,26 +155,26 @@ uitpBreedingGroupFormation <-
                 "select."
               )
             ))),
-          div(
           selectInput(
             "kinThresh",
             label = "Animals with kinship above this value will be excluded:",
             choices = list(
-              "0.015625 (second cousins)" = 0.015625,
-              "0.0625 (great-grandparent/great-grandchild; first cousins)" = 0.0625,
-              "0.125 (grandparent/grandchild; half-siblings; avuncular)" = 0.125,
-              "0.25 (parent/child)" = 0.25
+              "0.015625" = 0.015625,
+              "0.0625 (great-grandparent - great-grandchild)" = 0.0625,
+              "0.125 (grandparent - grandchild, half-sibling -- half-sibling)"
+               = 0.125,
+              "0.25 (parent-child)" = 0.25
             ),
             selected = 1
-          )),
+          ),
           div(
           selectInput(
             "ffRel",
-            label = paste0("Ignore kinship between females at or above the ",
-                            "minimum parent age (Yes/No):"),
+            label = paste0("Ignore or do not ignore females at or above the ",
+                            "minimum parent age:"),
             choices = list(
-              "Yes" = TRUE,
-              "No" = FALSE
+              "Ignore" = TRUE,
+              "Do not ignore" = FALSE
             ),
             selected = 0
           ),
@@ -178,45 +188,7 @@ uitpBreedingGroupFormation <-
             min = 1,
             max = 1000000
           ))
-      )),
-      fluidRow(
-        column(
-          5,
-          offset = 1,
-          style = "display:inline-block;width:400px;padding:10px",
-
-          conditionalPanel(
-            condition = paste0("input.seedAnimals"),
-            div(
-              style = "display:inline-block;width:400px;padding:10px",
-              helpText("Enter IDs of seed animals for the new group 1:"),
-              tags$textarea(id = "curGrp1", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 3:"),
-              tags$textarea(id = "curGrp3", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 5:"),
-              tags$textarea(id = "curGrp5", rows = 5, cols = 40, "")
-            )
-          )
-        ),
-        column(
-          4,
-          offset = 1,
-          style = "display:inline-block;width:400px;padding:10px",
-
-          conditionalPanel(
-            condition = paste0("input.seedAnimals"),
-            div(
-              style = "display:inline-block;width:400px;padding:10px",
-              helpText("Enter IDs of seed animals for the new group 2:"),
-              tags$textarea(id = "curGrp2", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 4:"),
-              tags$textarea(id = "curGrp4", rows = 5, cols = 40, ""),
-              helpText("Enter IDs of seed animals for the new group 6:"),
-              tags$textarea(id = "curGrp6", rows = 5, cols = 40, "")
-            )
-          )
-        )
-      )),
+      ))),
       fluidRow(
         column(
           width = 10,
