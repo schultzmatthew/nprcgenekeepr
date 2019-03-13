@@ -83,15 +83,6 @@ uitpBreedingGroupFormation <-
         checkboxInput("seedAnimals",
                       label = "Optional: Seed Groups with Specific Animals",
                       value = FALSE),
-       style = "display:inline-block;width:400px;padding:10px",
-        conditionalPanel(
-        condition = paste0("input.seedAnimals"),
-        div(
-          style = "display:inline-block;width:400px;padding:10px",
-          helpText("Enter IDs of seed animals for the new group:"),
-          uiOutput("textAreas")
-        )
-          ),
           conditionalPanel(
           condition = "input.group_formation_rb == 'high-value' |
                        input.group_formation_rb == 'all' |
@@ -188,7 +179,45 @@ uitpBreedingGroupFormation <-
             min = 1,
             max = 1000000
           ))
-      ))),
+      )),
+      fluidRow(
+        column(
+          5,
+          offset = 1,
+          style = "display:inline-block;width:400px;padding:10px",
+
+          conditionalPanel(
+            condition = paste0("input.seedAnimals"),
+            div(
+              style = "display:inline-block;width:400px;padding:10px",
+              helpText("Enter IDs of seed animals for the new group 1:"),
+              tags$textarea(id = "curGrp1", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 3:"),
+              tags$textarea(id = "curGrp3", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 5:"),
+              tags$textarea(id = "curGrp5", rows = 5, cols = 40, "")
+            )
+          )
+        ),
+        column(
+          4,
+          offset = 1,
+          style = "display:inline-block;width:400px;padding:10px",
+
+          conditionalPanel(
+            condition = paste0("input.seedAnimals"),
+            div(
+              style = "display:inline-block;width:400px;padding:10px",
+              helpText("Enter IDs of seed animals for the new group 2:"),
+              tags$textarea(id = "curGrp2", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 4:"),
+              tags$textarea(id = "curGrp4", rows = 5, cols = 40, ""),
+              helpText("Enter IDs of seed animals for the new group 6:"),
+              tags$textarea(id = "curGrp6", rows = 5, cols = 40, "")
+            )
+          )
+        )
+      )),
       fluidRow(
         column(
           width = 10,

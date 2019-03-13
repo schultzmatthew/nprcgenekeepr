@@ -710,21 +710,33 @@ shinyServer(function(input, output, session) {
     if (is.null(rpt())) {
       return(NULL)
     }
-    MAX_CURRENT_GROUPS <- 6
-    currentGroups <- list(MAX_CURRENT_GROUPS)
+    output$textAreas <- renderUI({
+      numGp <- input$numGp # default 1
+      lapply(1:numGp, function(i) {
+        textAreaInput(inputId = paste0("curGrp", i), rows = 5, cols = 40)
+      })
+    })
+    browser()
+    currentGroups <- reactive({
+      numGp <- as.integer(input$numGp)
+      currentGroups <- sapply(1:numGp, function(i) {
+        unlist(strsplit(input[[paste0("curGrp", i)]], "[ \t\n]"))
+      })
+      currentGroups
+    })
     ped <- getPed()
     # Filter out unknown animals added into ped
     ped <- removeUnknownAnimals(ped)
     ids <- character(0)
     if (input$group_formation_rb == "candidates")
       ids <- unlist(strsplit(input$grpIds, "[ \t\n]"))
-    currentGroups[[1]] <- unlist(strsplit(input$curGrp1, "[ \t\n]"))
-    currentGroups[[2]] <- unlist(strsplit(input$curGrp2, "[ \t\n]"))
-    currentGroups[[3]] <- unlist(strsplit(input$curGrp3, "[ \t\n]"))
-    currentGroups[[4]] <- unlist(strsplit(input$curGrp4, "[ \t\n]"))
-    currentGroups[[5]] <- unlist(strsplit(input$curGrp5, "[ \t\n]"))
-    currentGroups[[6]] <- unlist(strsplit(input$curGrp6, "[ \t\n]"))
-    currentGroups <- nprcmanager:::compactCurrentGroups(currentGroups)
+    # currentGroups[[1]] <- unlist(strsplit(input$curGrp1, "[ \t\n]"))
+    # currentGroups[[2]] <- unlist(strsplit(input$curGrp2, "[ \t\n]"))
+    # currentGroups[[3]] <- unlist(strsplit(input$curGrp3, "[ \t\n]"))
+    # currentGroups[[4]] <- unlist(strsplit(input$curGrp4, "[ \t\n]"))
+    # currentGroups[[5]] <- unlist(strsplit(input$curGrp5, "[ \t\n]"))
+    # currentGroups[[6]] <- unlist(strsplit(input$curGrp6, "[ \t\n]"))
+    # currentGroups <- nprcmanager:::compactCurrentGroups(currentGroups)
     if (length(ids) > 0) {
       ped <- resetGroup(ped, ids)
       candidates <- ids
