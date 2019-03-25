@@ -34,121 +34,117 @@ uitpBreedingGroupFormation <-
             tags$textarea(id = "grpIds", rows = 10, cols = 50, "")
           )
         )
+      ),
+      column(
+        4,
+        offset = 1,
+        style = paste(
+          "border: 1px solid lightgray; background-color: #EDEDED;",
+          "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
         ),
-        column(
-          4,
-          offset = 1,
-          style = paste(
-            "border: 1px solid lightgray; background-color: #EDEDED;",
-            "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
+        radioButtons(
+          "group_sex_rb",
+          "Sex of animals in groups:",
+          choiceNames = list(
+            "Ignore sex when forming groups ",
+            "Form harems (one male)",
+            "User specified sex ratio"
           ),
-          # HTML(
-          #   "<p>Instead of assignment of animals to groups without regard to
-          #   the sex of animals, you may choose to form <em>harem</em> groups
-          #   or groups with a specified sex ratio.</p>"
-          # ),
-          radioButtons(
-            "group_sex_rb",
-            "Sex of animals in groups:",
-            choiceNames = list(
-              "Ignore sex when forming groups ",
-              "Form harems (one male)",
-              "User specified sex ratio"
+          choiceValues = list("ignore-sex", "harems", "sex-ratio"),
+          width = "350px",
+          selected = "ignore-sex"
+        ),
+        conditionalPanel(
+          condition = "input.group_sex_rb == 'sex-ratio'",
+          div(popify(
+            numericInput(
+              "sexRatio",
+              label = "Sex Ratio (F/M):",
+              value = 0.0,
+              min = 0.5,
+              max = 10,
+              step = 0.5
             ),
-            choiceValues = list("ignore-sex", "harems", "sex-ratio"),
-            width = "350px",
-            selected = "ignore-sex"
-          ),
-          conditionalPanel(
-            condition = "input.group_sex_rb == 'sex-ratio'",
-            div(popify(
-              numericInput(
-                "sexRatio",
-                label = "Sex Ratio (F/M):",
-                value = 0.0,
-                min = 0.5,
-                max = 10,
-                step = 0.5
-              ),
-              NULL,
-              paste0(
-                "Final sex ratios are approximate but are guaranteed to be ",
-                "the nearest possible value given creation of the largest ",
-                "group possible."
-              )
-            ))))),
+            NULL,
+            paste0(
+              "Final sex ratios are approximate but are guaranteed to be ",
+              "the nearest possible value given creation of the largest ",
+              "group possible."
+            )
+          ))))),
+      fluidRow(
+        column(10, offset = 1,
+               checkboxInput("seedAnimals",
+                             label = "Optional: Seed Groups with Specific Animals",
+                             value = FALSE),
+               conditionalPanel(
+                 condition = "input.seedAnimals",
+                 div(
+                   uiOutput("currentGroups")
+                   )
+                 )
+               )
+        ),
       fluidRow(column(
         5,
         offset = 1,
-        checkboxInput("seedAnimals",
-                      label = "Optional: Seed Groups with Specific Animals",
-                      value = FALSE),
-       style = "display:inline-block;width:400px;padding:10px",
         conditionalPanel(
-        condition = paste0("input.seedAnimals"),
-        div(
-          style = "display:inline-block;width:400px;padding:10px",
-          helpText("Enter IDs of seed animals for the new group:"),
-          uiOutput("textAreas")
-        )
-          ),
-          conditionalPanel(
           condition = "input.group_formation_rb == 'high-value' |
                        input.group_formation_rb == 'all' |
                        input.group_formation_rb == 'candidates'",
           div(
             style = paste0("padding-top:5px;padding-bottom:5px;",
-              "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
-              "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
+                           "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
+                           "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
             ),
             actionButton("grpSim", label = "Make Groups", width = "100%",
-                          height = "120%",
+                         height = "120%",
                          style = "color: #fff; background-color: #4BCEEF;
                                  border-color: #4BCEEF;font-size:150%;
                                  font:bold")
           ),
           div(style = "display:inline-block;width:250px;padding:5px",
-          numericInput(
-            "viewGrp",
-            label = "Enter the group to view:",
-            value = 1,
-            min = 1,
-            max = 10
-          ),
-#            style = "display:inline-block;width:250px;padding:5px",
-            downloadButton("downloadGroup", "Export Current Group"),
-            downloadButton("downloadGroupKin",
-                           "Export Current Group Kinship Matrix")
+              numericInput(
+                "viewGrp",
+                label = "Enter the group to view:",
+                value = 1,
+                min = 1,
+                max = 10
+              ),
+              #            style = "display:inline-block;width:250px;padding:5px",
+              downloadButton("downloadGroup", "Export Current Group"),
+              downloadButton("downloadGroupKin",
+                             "Export Current Group Kinship Matrix")
           )
         )),
-      column(
-        4,
-        offset = 1,
-        style = "padding-top:5px",
-      numericInput(
+        column(
+          4,
+          offset = 1,
+          style = "padding-top:5px",
+          numericInput(
             "numGp",
             label = "Number of Groups Desired:",
             value = 1,
             min = 1,
             max = 10
           ),
-        div(
+          div(
             checkboxInput("useMinParentAge",
-            label = paste0("Animals will be grouped with the mother below the ",
-                           "minimum parent age."), value = FALSE)
+                          label = paste0("Animals will be grouped with the mother below the ",
+                                         "minimum parent age."), value = FALSE)
           ),
           textOutput("minParentAge"),
           conditionalPanel(
             condition = "!input.useMinParentAge",
             div(popify(
-          numericInput(
-            "minAge",
-            label = "Animals will be grouped with the mother below age:",
-            value = 1,
-            min = 0,
-            max = 40,
-            step = 0.1
-          ),
+              numericInput(
+                "minAge",
+                label = "Animals will be grouped with the mother below age:",
+                value = 1,
+                min = 0,
+                max = 40,
+                step = 0.1
+              ),
               NULL,
               paste0(
                 "Animals will be groups with the mother below the age you ",
@@ -156,56 +152,56 @@ uitpBreedingGroupFormation <-
               )
             ))),
           div(
-          selectInput(
-            "kinThresh",
-            label = "Animals with kinship above this value will be excluded:",
-            choices = list(
-              "0.015625 (second cousins)" = 0.015625,
-              "0.0625 (great-grandparent/great-grandchild; first cousins)" = 0.0625,
-              "0.125 (grandparent/grandchild; half-siblings; avuncular)" = 0.125,
-              "0.25 (parent/child)" = 0.25
-            ),
-            selected = 1
-          )),
+            selectInput(
+              "kinThresh",
+              label = "Animals with kinship above this value will be excluded:",
+              choices = list(
+                "0.015625 (second cousins)" = 0.015625,
+                "0.0625 (great-grandparent/great-grandchild; first cousins)" = 0.0625,
+                "0.125 (grandparent/grandchild; half-siblings; avuncular)" = 0.125,
+                "0.25 (parent/child)" = 0.25
+              ),
+              selected = 1
+            )),
           div(
-          selectInput(
-            "ffRel",
-            label = paste0("Ignore or do not ignore females at or above the ",
-                            "minimum parent age:"),
-            choices = list(
-              "Yes" = TRUE,
-              "No" = FALSE
+            selectInput(
+              "ffRel",
+              label = paste0("Ignore or do not ignore females at or above the ",
+                             "minimum parent age:"),
+              choices = list(
+                "Yes" = TRUE,
+                "No" = FALSE
+              ),
+              selected = 0
             ),
-            selected = 0
-          ),
-           checkboxInput("withKin",
-                        label = "Include kinship in display of groups",
-                        value = FALSE),
-        numericInput(
-            "gpIter",
-            label = "Number of simulations:",
-            value = 10,
-            min = 1,
-            max = 1000000
-          ))
-      ))),
-      fluidRow(
-        column(
-          width = 10,
-          offset = 1,
-          DT::dataTableOutput("breedingGroups"),
-          DT::dataTableOutput("breedingGroupKin")
-        )
-      ),
-      fluidRow(
-        column(
-          width = 10,
-          offset = 1,
-          style = paste0(
-            "border: 1px solid lightgray; background-color: #EDEDED; ",
-            "border-radius: 15px; box-shadow: 0 0 5px 2px #888"
-          ),
-          includeHTML("../extdata/group_formation.html")
-        )
+            checkboxInput("withKin",
+                          label = "Include kinship in display of groups",
+                          value = FALSE),
+            numericInput(
+              "gpIter",
+              label = "Number of simulations:",
+              value = 10,
+              min = 1,
+              max = 1000000
+            ))
+        ))),
+    fluidRow(
+      column(
+        width = 10,
+        offset = 1,
+        DT::dataTableOutput("breedingGroups"),
+        DT::dataTableOutput("breedingGroupKin")
       )
+    ),
+    fluidRow(
+      column(
+        width = 10,
+        offset = 1,
+        style = paste0(
+          "border: 1px solid lightgray; background-color: #EDEDED; ",
+          "border-radius: 15px; box-shadow: 0 0 5px 2px #888"
+        ),
+        includeHTML("../extdata/group_formation.html")
+      )
+    )
   )

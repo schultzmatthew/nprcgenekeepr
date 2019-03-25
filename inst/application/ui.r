@@ -17,7 +17,6 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = stri_c("Genetic Management Tools - Version ", getVersion()),
     uitpInput,
-#    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpPyramidPlot,
     uitpGeneticValueAnalysis,
@@ -31,7 +30,6 @@ if (getSiteInfo()$center == "ONPRC") {
   navbarPageArgs <- list(
     title = stri_c("Genetic Management Tools - Version ", getVersion()),
     uitpInput,
-#    uitpErrorTab,
     uitpPedigreeBrowser,
     uitpPyramidPlot,
     uitpGeneticValueAnalysis,
