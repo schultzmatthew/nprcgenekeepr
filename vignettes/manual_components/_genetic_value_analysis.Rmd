@@ -16,7 +16,8 @@ vignette: >
 
 The Genetic Value Analysis tab provides all of the options needed for producing 
 a genetic value analysis report. The specifics of generating the genetic value 
-analysis report are described on the README tab.
+analysis report are described on the ___Genetic Value Analysis and Breeding Group
+Description___ tab.
 
 When the analysis is begun, it will generate a genetic value analysis for the
 currently-specified population in the pedigree. 
