@@ -27,8 +27,10 @@
 #'
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
-#' @param currentGroups list of character vectors of IDs of animals currently assigned
-#' to the group. Defaults to character(0) assuming no groups are existant.
+#' @param currentGroups list of character vectors of IDs of animals currently
+#' assigned to groups.
+#' Defaults to a list with character(0) in each sublist element (one for each
+#' group being formed) assuming no groups are prepopulated
 #' @param kmat numeric matrix of pairwise kinship values. Rows and columns
 #' are named with animal IDs.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
@@ -60,7 +62,7 @@
 #' earlier versions.
 #'
 #' @export
-groupAddAssign <- function(candidates, currentGroups = character(0), kmat, ped,
+groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
                             numGp = 1, updateProgress = NULL, harem = FALSE,

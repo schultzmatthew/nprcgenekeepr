@@ -707,31 +707,46 @@ shinyServer(function(input, output, session) {
   # Functions for handling the breeding group formation process
   textAreaWidget <- eventReactive(input$seedAnimals,{
     seedAnimalList <- lapply(1:input$numGp, function(i) {
-      inputName <- paste0("curGrp", i)
-      textInputRow<-function (inputId,value) {
+        inputName <- paste0("curGrp", i)
+      textInputRow <-function (inputId,value) {
         textAreaInput(inputId = inputName, paste0("Seed animals ", i),
                       value = "", rows = 5, cols = 40, resize = "both")
       }
-      column(5, textInputRow(inputName, ""))
+      column(3, textInputRow(inputName, ""))
     })
-    do.call(tagList, seedAnimalList)}, ignoreInit = TRUE)
+    do.call(tagList, seedAnimalList)}, ignoreInit = FALSE)
+
   getCurrentGroups <- reactive({
-    currentGroups <- c()
-    for (i in 1:input$numGp) {
+    currentGroups <- sapply(1:(input$numGp), function(i){character(0)})
+    for (i in 1:(input$numGp)) {
       inputName <- paste0("curGrp", i)
-      currentGroups <- c(currentGroups, unlist(strsplit(input[[inputName]], "[, \t\n]")))
+      if (is.null(input[[inputName]])) # seed animal option is not selected
+        break
+      currentGroups[[i]] <-
+        stri_remove_empty(unlist(strsplit(input[[inputName]], "[, \t\n]")))
     }
     currentGroups
   })
   output$currentGroups = renderUI({textAreaWidget()})
-  output$getCurrentGroups <- renderText({getCurrentGroups})
+  output$getCurrentGroups <- renderText({getCurrentGroups()})
+  textMinParentAge <- eventReactive(input$group_formation_rb,{
+    minParentAgeLine <-
+      checkboxInput("useMinParentAge",
+                    label = paste0("Animals will be grouped with the mother below the minimum ",
+                                   "parent age of ", globalMinParentAge, "."),
+                    value = FALSE)
+    do.call(tagList, list(minParentAgeLine))}, ignoreInit = FALSE)
 
+  output$minParentAge <- renderUI({textMinParentAge()})
 
   bg <- eventReactive(input$grpSim, {
     if (is.null(rpt())) {
       return(NULL)
     }
+    #browser()
+    #currentGroups <- getCurrentGroups()
     currentGroups <- getCurrentGroups()
+    currentGroupIds <- unlist(currentGroups)
 
     ped <- getPed()
     # Filter out unknown animals added into ped
@@ -748,9 +763,8 @@ shinyServer(function(input, output, session) {
     }
 
     # Assume an animal that is in the group can't also be a candidate
-    if (length(currentGroups) > 0) {
-      browser()
-      candidates <- setdiff(candidates, currentGroups)
+    if (length(currentGroupIds) > 0) {
+      candidates <- setdiff(candidates, currentGroupIds)
     }
 
     # Filter out low-value animals if desired
@@ -770,10 +784,10 @@ shinyServer(function(input, output, session) {
            paste("Group candidates present that are",
                  "not in the provided pedigree\n",
                  paste(setdiff(candidates, ped$id), sep = "\n"))),
-      need(!(length(setdiff(currentGroups, ped$id)) > 0),
+      need(!(length(setdiff(currentGroupIds, ped$id)) > 0),
            paste("Current group members present that",
                  "are not in the provided pedigree\n",
-                 paste(setdiff(currentGroups, ped$id), sep = "\n")))
+                 paste(setdiff(currentGroupIds, ped$id), sep = "\n")))
     )
     ignore <- input$ffRel
     ignore <- if (ignore) list(c("F", "F")) else NULL
@@ -817,28 +831,6 @@ shinyServer(function(input, output, session) {
 
     return(grp)
   })
-  # Widgets <- eventReactive(input$bgfView,{
-  #   input_list <- lapply(1:(input$count), function(i) {
-  #     inputName <- paste("id", i, sep = "")
-  #     textInputRow <- function (inputId, value) {
-  #       textAreaInput(inputName, "", width = "200px", height = "43px",
-  #                     resize = "horizontal")
-  #     }
-  #     column(4, textInputRow(inputName, ""))
-  #   })
-  #   do.call(tagList, input_list)}, ignoreInit = TRUE)
-  #
-  # getvalues <- reactive({
-  #   val <- 0
-  #   for(lim in 1:input$count){
-  #     val <- sumN(val, as.numeric(input[[paste0("id", lim)]]))
-  #   }
-  #   val
-  # })
-  #
-  # output$text3 <- renderText({getvalues()})
-  #
-  # output$inputGroup = renderUI({Widgets()})
 
   getGrpIds <- reactive({
     ped <- getPed()

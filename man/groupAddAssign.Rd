@@ -4,7 +4,7 @@
 \alias{groupAddAssign}
 \title{Add animals to an existing breeding group or forms groups:}
 \usage{
-groupAddAssign(candidates, currentGroups = character(0), kmat, ped,
+groupAddAssign(candidates, currentGroups = list(character(0)), kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
   iter = 1000, numGp = 1, updateProgress = NULL, harem = FALSE,
   sexRatio = 0, withKin = FALSE)
@@ -13,8 +13,10 @@ groupAddAssign(candidates, currentGroups = character(0), kmat, ped,
 \item{candidates}{character vector of IDs of the animals available for
 use in the group.}
 
-\item{currentGroups}{list of character vectors of IDs of animals currently assigned
-to the group. Defaults to character(0) assuming no groups are existant.}
+\item{currentGroups}{list of character vectors of IDs of animals currently
+assigned to groups.
+Defaults to a list with character(0) in each sublist element (one for each
+group being formed) assuming no groups are prepopulated}
 
 \item{kmat}{numeric matrix of pairwise kinship values. Rows and columns
 are named with animal IDs.}

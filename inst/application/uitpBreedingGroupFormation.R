@@ -78,7 +78,8 @@ uitpBreedingGroupFormation <-
                              label = "Optional: Seed Groups with Specific Animals",
                              value = FALSE),
                conditionalPanel(
-                 condition = "input.seedAnimals",
+                 condition = "input.seedAnimals == true",
+#                 helpText("currentGroups is next"),
                  div(
                    uiOutput("currentGroups")
                    )
@@ -109,7 +110,7 @@ uitpBreedingGroupFormation <-
                 label = "Enter the group to view:",
                 value = 1,
                 min = 1,
-                max = 10
+                max = MAXGROUPS
               ),
               #            style = "display:inline-block;width:250px;padding:5px",
               downloadButton("downloadGroup", "Export Current Group"),
@@ -126,14 +127,14 @@ uitpBreedingGroupFormation <-
             label = "Number of Groups Desired:",
             value = 1,
             min = 1,
-            max = 10
+            max = MAXGROUPS
           ),
-          div(
-            checkboxInput("useMinParentAge",
-                          label = paste0("Animals will be grouped with the mother below the ",
-                                         "minimum parent age."), value = FALSE)
-          ),
-          textOutput("minParentAge"),
+#          div(
+#            checkboxInput("useMinParentAge",
+#                          label = "",
+#                          value = FALSE)
+#          ),
+          uiOutput("minParentAge", inline = FALSE),
           conditionalPanel(
             condition = "!input.useMinParentAge",
             div(popify(

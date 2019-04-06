@@ -31,7 +31,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors =
   invalid_date_rows <- NULL
   for (header in headers) {
     dates <- ped[[header]]
-    if (class(dates) == "factor" | class(dates) == "logical") {
+    if (any(class(dates) %in% c("factor","logical", "integer"))) {
       dates <- as.character(dates)
     }
     if (class(dates) == "Date") {

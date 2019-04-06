@@ -74,7 +74,7 @@ of iterations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@ of iterations.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>groupAddAssign</span>(<span class='no'>candidates</span>, <span class='kw'>currentGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>), <span class='no'>kmat</span>, <span class='no'>ped</span>,
+    <pre class="usage"><span class='fu'>groupAddAssign</span>(<span class='no'>candidates</span>, <span class='kw'>currentGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>)), <span class='no'>kmat</span>, <span class='no'>ped</span>,
   <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.015625</span>, <span class='kw'>ignore</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"F"</span>, <span class='st'>"F"</span>)), <span class='kw'>minAge</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>numGp</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>updateProgress</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>harem</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>sexRatio</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>withKin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
@@ -165,8 +165,10 @@ use in the group.</p></td>
     </tr>
     <tr>
       <th>currentGroups</th>
-      <td><p>list of character vectors of IDs of animals currently assigned
-to the group. Defaults to character(0) assuming no groups are existant.</p></td>
+      <td><p>list of character vectors of IDs of animals currently
+assigned to groups.
+Defaults to a list with character(0) in each sublist element (one for each
+group being formed) assuming no groups are prepopulated</p></td>
     </tr>
     <tr>
       <th>kmat</th>

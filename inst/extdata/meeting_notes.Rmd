@@ -15,9 +15,9 @@ Provided in reverse chronological order
     primate centers. Genetic and Genomics Working Group website: https://nprcresearch.org/primate/genetics-genomics/genetics-genomics-working-group.php
 1.  Still have two features to add and one graphic element to correct.
     -   Allow user to enter the number of groups of seed animals to be entered.
-        See _Seed Groups_ from last month's notes.
+        See _Seed Groups_ from last month's notes. Done 20190406
     -   Add __minParentAge__ to check box for _Use minimum parent age for age
-        of animals to be grouped with the mother_.
+        of animals to be grouped with the mother_. Done 20190406
 1.  To meet again on 20190325 if Mark makes sufficient progress otherwise we will
     meet on 20190408 at 4PM PAC.
     

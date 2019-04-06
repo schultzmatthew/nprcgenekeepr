@@ -40,14 +40,10 @@ fillGroupMembersWithSexRatio <-
     ratio <- calculateSexRatio(groupMembers[[i]], ped)
     if (ratio < sexRatio) { ## need female
       id <- sample(availableFemales[[i]], 1)
-      #if (length(availableFemales[[1]]) <= 1)
-      #  browser()
 
       availableFemales <-
         removeSelectedAnimalFromAvailableAnimals(availableFemales, id, numGp)
     } else {
-      #if (length(availableMales[[1]]) <= 1)
-      #  browser()
       id <- sample(availableMales[[i]], 1)
       availableMales <-
         removeSelectedAnimalFromAvailableAnimals(availableMales, id, numGp)

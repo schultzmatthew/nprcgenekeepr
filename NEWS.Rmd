@@ -1,13 +1,22 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "02/15/2019"
-output: github_document
+date: "04/06/2019"
+output:
+   github_document: default
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.05 (20190406)
+-   Fixed all but one bug associated with having multiple dynamically generated
+    seed animal groups.
+-   Added global definition of MAXGROUPS, which is current set as 10 and allows 
+    up to six seed animal groups.
+-   Corrected test_fillBins, which was erroneously using a current date instead 
+    of a fixed date for calculating age.
 # nprcmanager 0.5.04 (20190225)
 -   Adding ability to have up to six seed animal groups.
 -   Added conditional appearance of Make Groups action button that is 

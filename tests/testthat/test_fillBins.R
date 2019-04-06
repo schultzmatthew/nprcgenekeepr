@@ -13,7 +13,7 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                            sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                              2000)),
                   stringsAsFactors = FALSE, check.names = FALSE)
-pedOne$age <- (now() - as.POSIXct(pedOne$birth)) / dyears(1)
+pedOne$age <- (mdy("06/01/2018") - as.Date(pedOne$birth)) / dyears(1)
 test_that("fillBins adds correct number to each bin", {
   lower_ages <- seq(0, 20, by = 5)
   upper_ages <- NULL
