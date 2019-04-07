@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
 
     
     
-<p><a href="#summary-of-major-functions">Introduction</a><br><a href="#running-shiny-application">Installation</a><br><a href="#pedigree-browser">Input</a><br><a href="#summary-statistics">Genetic Value Analysis</a><br><a href="#orip-reporting">Breeding Group Formation</a><br><a href="#algorithm-genome-uniqueness">Algorithm: Breeding Group Formation</a></p>
+<p><a href="#introduction">Introduction</a><br><a href="#summary-of-major-functions">Summary of Major Functions</a><br><a href="#installation">Installation</a><br><a href="#running-shiny-application">Running Shiny Application</a><br><a href="#input">Input</a><br><a href="#pedigree-browser">Pedigree Browser</a><br><a href="#genetic-value-analysis">Genetic Value Analysis</a><br><a href="#summary-statistics">Summary Statistics</a><br><a href="#breeding-group-formation-1">Breeding Group Formation</a><br><a href="#orip-reporting">ORIP Reporting</a><br><a href="#algorithm-breeding-group-formation">Algorithm: Breeding Group Formation</a><br><a href="#algorithm-genome-uniqueness">Algorithm: Genome Uniqueness</a></p>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -144,16 +144,16 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install <strong>nprcmanager</strong> from github with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 </div>
 <div id="running-shiny-application" class="section level2">
 <h2 class="hasAnchor">
 <a href="#running-shiny-application" class="anchor"></a>Running Shiny Application</h2>
 <p>The toolset available within nprcmanager can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nprcmanager)
-<span class="kw"><a href="../reference/runManager.html">runManager</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nprcmanager)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/runManager.html">runManager</a></span>()</a></code></pre></div>
 </div>
 <div id="input" class="section level2">
 <h2 class="hasAnchor">
@@ -174,7 +174,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <div id="genetic-value-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#genetic-value-analysis" class="anchor"></a>Genetic Value Analysis</h2>
-<p>The Genetic Value Analysis tab provides all of the options needed for producing a genetic value analysis report. The specifics of generating the genetic value analysis report are described on the README tab.</p>
+<p>The Genetic Value Analysis tab provides all of the options needed for producing a genetic value analysis report. The specifics of generating the genetic value analysis report are described on the <strong><em>Genetic Value Analysis and Breeding Group Description</em></strong> tab.</p>
 <p>When the analysis is begun, it will generate a genetic value analysis for the currently-specified population in the pedigree. If no population has been specified, the entire pedigree will go into the analysis. This can be problematic, as the function for calculating the pairwise kinship matrix cannot handle large pedigrees. The kinship calculation is known to handle pedigree files containing up to 6000 individuals. It will not, however, handle the whole ONPRC rhesus studbook (~24,000 animals). The exact maximum pedigree size is not currently known and will need to be tested. Due to these problems, the input studbook will automatically be trimmed to the ancestors of the currently-specified population before the genetic value analysis is begun.</p>
 <p>The genome uniqueness threshold input box allows the user to specify what constitutes a ‘unique’ allele in the gene-drop simulation. The algorithm description later in this document provides a more in-depth explanation of how the genome uniqueness calculation uses this information. By default, the gene-drop simulation underlying the genome uniqueness calculation considers an individual as unique if no other members of the current population have inherited the same allele during an iteration of the gene-drop. This can be adjusted using the drop-down box to allow up to four other animals to have inherited the allele and still consider it unique.</p>
 <p>After the report has been generated, it can be subset to view a specific group of the animals using the text input box. Both the currently-viewed subset and the full report can be exported to a file from here.</p>
@@ -286,15 +286,15 @@ i. For our purposes, we calculate the average group size<br>
 <ol style="list-style-type: decimal">
 <li>Each founder is assigned two unique alleles<br>
 </li>
-<li>For each subsequent generation:<br>
-</li>
-</ol>
+<li>For each subsequent generation:
 <ol style="list-style-type: lower-alpha">
 <li>Assign genotypes to each member of the generation
 <ul>
 <li>For each animal, find the genotypes of the parents, and select<br>
 one allele from each parent randomly.</li>
 </ul>
+</li>
+</ol>
 </li>
 </ol>
 <p>Once every animal has been assigned a genotype by mendelian inheritance tally the number of unique alleles possessed by each member of the focal population. In the case of this algorithm, we do allow the ‘uniqueness’ threshold to be adjusted so that an allele can be considered unique if it is possessed by N or fewer other members of the focal population.</p>
