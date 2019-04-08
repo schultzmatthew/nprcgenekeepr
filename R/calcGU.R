@@ -1,5 +1,7 @@
 #' Calculates genome uniqueness for each ID that is part of the population.
 #'
+#' Part of Genetic Value Analysis
+#'
 #' The following functions calculate genome uniqueness according to the equation
 #' described in Ballou & Lacy.
 #'

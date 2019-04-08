@@ -119,7 +119,7 @@
 #'   \itemize{
 #'     \item set.seed(10)
 #'     \item data(baboonPed)
-#'     \item baboonGvReport <- reportGV(baboonPed, gu.iter = 10000)
+#'     \item baboonGvReport <- reportGV(baboonPed, guIter = 10000)
 #'     \item save(baboonGvReport, file = "data/baboonGvReport.RData")
 #'   }
 #'

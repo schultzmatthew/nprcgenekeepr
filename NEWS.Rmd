@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "04/06/2019"
+date: "04/07/2019"
 output:
    github_document: default
 
@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.06 (20190407)
+-   Changed spelling of gu.iter and gu.thresh to guIter and guThresh
+
 # nprcmanager 0.5.05 (20190406)
 -   Fixed all but one bug associated with having multiple dynamically generated
     seed animal groups.
@@ -17,6 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
     up to six seed animal groups.
 -   Corrected test_fillBins, which was erroneously using a current date instead 
     of a fixed date for calculating age.
+    
 # nprcmanager 0.5.04 (20190225)
 -   Adding ability to have up to six seed animal groups.
 -   Added conditional appearance of Make Groups action button that is 

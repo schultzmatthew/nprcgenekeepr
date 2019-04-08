@@ -390,8 +390,8 @@ shinyServer(function(input, output, session) {
       }
     }
     #
-    return(reportGV(ped, gu.iter = input$iterations,
-                    gu.thresh = as.integer(input$threshold),
+    return(reportGV(ped, guIter = input$iterations,
+                    guThresh = as.integer(input$threshold),
                     byID = TRUE,
                     updateProgress = updateProgress))
   })

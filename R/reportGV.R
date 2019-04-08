@@ -3,9 +3,9 @@
 #' This is the main function for the Genetic Value Analysis.
 #'
 #' @param ped the pedigree information in datatable format
-#' @param gu.iter integer indicating the number of iterations for the gene-drop
+#' @param guIter integer indicating the number of iterations for the gene-drop
 #'  analysis. Default is 5000 iterations
-#' @param gu.thresh integer indicating the threshold number of animals for
+#' @param guThresh integer indicating the threshold number of animals for
 #' defining a unique allele. Default considers an allele "unique"
 #' if it is found in only 1 animal.
 #' @param pop character vector with animal IDs to consider as the population of
@@ -23,7 +23,7 @@
 #' in order of descending value.
 #'
 #' @export
-reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
+reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
                      byID = TRUE, updateProgress = NULL) {
   # Generates a genetic value report for a provided pedigree
 
@@ -48,7 +48,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
 
   # Perform the gene drop simulation
   alleles <- geneDrop(ids = ped$id, sires = ped$sire, dams = ped$dam,
-                      gen = ped$gen, genotype = genotype, n = gu.iter,
+                      gen = ped$gen, genotype = genotype, n = guIter,
                       updateProgress = updateProgress)
 
   if (!is.null(updateProgress)) {
@@ -57,7 +57,7 @@ reportGV <- function(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
   }
 
   # Calculate genome uniqueness and order the rows of the returned data.frame
-  gu <- calcGU(alleles, threshold = gu.thresh, byID = byID, pop = probands)
+  gu <- calcGU(alleles, threshold = guThresh, byID = byID, pop = probands)
   gu <- gu[probands, , drop = FALSE]
 
   if (!is.null(updateProgress)) {

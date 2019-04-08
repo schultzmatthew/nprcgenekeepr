@@ -1,7 +1,11 @@
 NEWS
 ================
 R. Mark Sharp
-04/06/2019
+04/07/2019
+
+# nprcmanager 0.5.06 (20190407)
+
+  - Changed spelling of gu.iter and gu.thresh to guIter and guThresh
 
 # nprcmanager 0.5.05 (20190406)
 
@@ -10,8 +14,10 @@ R. Mark Sharp
   - Added global definition of MAXGROUPS, which is current set as 10 and
     allows up to six seed animal groups.
   - Corrected test\_fillBins, which was erroneously using a current date
-    instead of a fixed date for calculating age. \# nprcmanager 0.5.04
-    (20190225)
+    instead of a fixed date for calculating age.
+
+# nprcmanager 0.5.04 (20190225)
+
   - Adding ability to have up to six seed animal groups.
   - Added conditional appearance of Make Groups action button that is
     dependent on the user having select on of the optional group

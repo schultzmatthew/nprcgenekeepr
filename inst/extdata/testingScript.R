@@ -22,7 +22,7 @@
 # probands <- p$id[p$population]
 # p <- trimPedigree(probands, p, removeUninformative = FALSE,
 #                   addBackParents = FALSE)
-# test <- reportGV(p, gu.iter = 100)
+# test <- reportGV(p, guIter = 100)
 #library(RODBC)
 library(stringi)
 #conn <- odbcConnect("frogstar-vortex-animal-msharp")
@@ -75,7 +75,7 @@ genotype <- data.frame(id = p$id[50 + 1:20], first = 10000 + 1:20,
 genotype_empty <- NULL
 #alleles <- geneDrop(p$id, p$sire, p$dam, p$gen, genotype, n = 4)
 p_genotype <- addGenotype(p, genotype)
-report <- reportGV(p_genotype, gu.iter = 500, gu.thresh = 1, pop = NULL,
+report <- reportGV(p_genotype, guIter = 500, guThresh = 1, pop = NULL,
                    byID = TRUE, updateProgress = NULL)
 #data(baboonPed)
 #kmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen)

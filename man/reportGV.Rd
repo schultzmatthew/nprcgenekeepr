@@ -4,16 +4,16 @@
 \alias{reportGV}
 \title{Generates a genetic value report for a provided pedigree.}
 \usage{
-reportGV(ped, gu.iter = 5000, gu.thresh = 1, pop = NULL,
-  byID = TRUE, updateProgress = NULL)
+reportGV(ped, guIter = 5000, guThresh = 1, pop = NULL, byID = TRUE,
+  updateProgress = NULL)
 }
 \arguments{
 \item{ped}{the pedigree information in datatable format}
 
-\item{gu.iter}{integer indicating the number of iterations for the gene-drop
+\item{guIter}{integer indicating the number of iterations for the gene-drop
 analysis. Default is 5000 iterations}
 
-\item{gu.thresh}{integer indicating the threshold number of animals for
+\item{guThresh}{integer indicating the threshold number of animals for
 defining a unique allele. Default considers an allele "unique"
 if it is found in only 1 animal.}
 

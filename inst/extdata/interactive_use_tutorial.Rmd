@@ -56,8 +56,8 @@ ped <- resetPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                     addBackParents = FALSE)
-geneticValue <- reportGV(ped, gu.iter = 500,
-                         gu.thresh = 3,
+geneticValue <- reportGV(ped, guIter = 500,
+                         guThresh = 3,
                          byID = TRUE,
                          updateProgress = NULL)
 rpt <- geneticValue[["report"]]

@@ -1,7 +1,7 @@
 context("reportGV")
 library(testthat)
 data(baboonPed)
-gvReport <- reportGV(baboonPed, gu.iter = 100)
+gvReport <- reportGV(baboonPed, guIter = 100)
 test_that("reportGV forms correct genetic value report", {
   expect_equal(names(gvReport), c("report", "kinship", "gu", "fe", "fg",
                                   "maleFounders", "femaleFounders", "total"))
@@ -18,7 +18,7 @@ updateProgress <- function(n = 1, detail = NULL, value = 0, reset = FALSE) {
   "stub"
 }
 
-gvReport <- reportGV(baboonPed, gu.iter = 100, updateProgress = updateProgress)
+gvReport <- reportGV(baboonPed, guIter = 100, updateProgress = updateProgress)
 test_that("reportGV forms correct genetic value report with updateProgress defined", {
   expect_equal(names(gvReport), c("report", "kinship", "gu", "fe", "fg",
                                   "maleFounders", "femaleFounders", "total"))

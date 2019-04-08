@@ -13,8 +13,8 @@
 #' ASSUME: All IDs listed in the sire or dam columns must have a row entry in
 #'   the id column
 #'
-#' A Pedigree is a data.frame with the following columns:
-#' The possible columns are as follows:
+#' A Pedigree is a data frame within the \code{R} environment with the following
+#' possible columns:
 #' \itemize{
 #' \item{id} {-- character vector with unique identifier for an individual}
 #' \item{sire} {-- character vector with unique identifier for an
@@ -33,9 +33,8 @@
 #' \item{population} {-- logical (optional)
 #' Is the id part of the extant population?}
 #' \item{origin} {-- character vector or \code{NA} (optional) that indicates
-#' the name of the facility that the individual was imported from.
+#' the name of the facility that the individual was imported from if other than local.
 #' \code{NA} indicates the invidual was not imported.}
-#' \item{origin} {-- Facility an individual originated from, if other than local}}
 #'
 #' Genetic Value Analysis Functions
 #'

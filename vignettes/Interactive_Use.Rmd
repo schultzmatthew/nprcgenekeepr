@@ -1,0 +1,52 @@
+---
+author:
+  - name: R. Mark Sharp
+    affiliation: Deppe
+    address: >
+      7526 Meadow Green St
+      San Antonio, TX 78251
+    email: \email{rmsharp@me.com}
+    url: http://rmsharp.me.com
+  - name: Amanda Vinson
+    affiliation: >
+      Oregon Health and Science University 
+      ONPRC
+title:
+  formatted: "Genetic Colony Management with \\pkg{nprcmanager}"
+  # If you use tex in the formatted title, also supply version without
+  plain:     "Genetic Colony Management with nprcmanager"
+  # For running headers, if needed
+  short:     "\\pkg{nprcmanager}: Genetic Colony Management"
+abstract: >
+  The abstract of the article.
+keywords:
+  # at least one keyword must be supplied
+  formatted: [genetic, nonhuman, "\\proglang{Shiny}", "\\proglang{R}", management, 
+             captive, population, inbreeding, kinship, simulation]
+  plain:     [genetic, nonhuman, Shiny, R, management, 
+             captive, population, inbreeding, kinship, simulation]
+preamble: >
+  \usepackage{amsmath}
+output: rticles::jss_article
+---
+
+# Introduction
+
+This template demonstrates some of the basic latex you'll need to know to create a JSS article.
+
+## Code formatting
+
+Don't use markdown, instead use the more precise latex commands:
+
+* \proglang{Java}
+* \pkg{plyr}
+* \code{print("abc")}
+
+# R code
+
+Can be inserted in regular R markdown blocks.
+
+```{r}
+x <- 1:10
+x
+```

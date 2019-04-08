@@ -1,5 +1,7 @@
 #' Performs a gene drop simulation based on the provided pedigree information
 #'
+#' Part of Genetic Value Analysis
+#'
 #' @param ids character vector of IDs for a set of animals.
 #' @param sires character vector with IDS of the sires for the set of
 #'  animals. \code{NA} is used for missing sires.
