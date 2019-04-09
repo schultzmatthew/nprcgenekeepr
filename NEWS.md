@@ -3,6 +3,10 @@ NEWS
 R. Mark Sharp
 04/07/2019
 
+# nprcmanager 0.5.07 (20190408)
+
+  - Rearranged and reformatted breeding group formation tab
+
 # nprcmanager 0.5.06 (20190407)
 
   - Changed spelling of gu.iter and gu.thresh to guIter and guThresh

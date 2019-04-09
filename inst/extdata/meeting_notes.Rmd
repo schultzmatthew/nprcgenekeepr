@@ -2,7 +2,8 @@
 Provided in reverse chronological order
 
 ## 20190408
-
+1. Test for error when pedigree is not available when forming groups
+1. Make sure harems are formed correctly when males are in seed animals
 1. List of things found prior to the meetingto do before next meeting:
   -  Unit test for fillGroupMembersWithSexRatio()
   -  Go through all primary data structure names and definitions to update 

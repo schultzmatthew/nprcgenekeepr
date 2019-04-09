@@ -3,7 +3,7 @@ uitpBreedingGroupFormation <-
     "Breeding Group Formation",
     div(
       fluidRow(column(
-        5,
+        4,
         offset = 1,
         style = paste0(
           "border: 1px solid lightgray; background-color: #EDEDED; ",
@@ -29,13 +29,13 @@ uitpBreedingGroupFormation <-
         conditionalPanel(
           condition = paste0("input.group_formation_rb == 'candidates' "),
           div(
-            style = "display:inline-block;width:400px;padding:5px",
+            style = "display:inline-block;width:350px;padding:5px",
             helpText("Enter IDs of candidates to be added to new group(s):"),
-            tags$textarea(id = "grpIds", rows = 10, cols = 50, "")
+            tags$textarea(id = "grpIds", rows = 10, cols = 40, "")
           )
         )
-      ),
-      column(
+      )),
+      fluidRow(column(
         4,
         offset = 1,
         style = paste(
@@ -73,55 +73,22 @@ uitpBreedingGroupFormation <-
             )
           ))))),
       fluidRow(
-        column(10, offset = 1,
+        column(4, offset = 1,
+        style = paste0("padding-top:1px;display:inline-block;",
+                         "padding-bottom:1px"),
                checkboxInput("seedAnimals",
-                             label = "Optional: Seed Groups with Specific Animals",
-                             value = FALSE),
-               conditionalPanel(
-                 condition = "input.seedAnimals == true",
-#                 helpText("currentGroups is next"),
-                 div(
-                   uiOutput("currentGroups")
-                   )
-                 )
+                             label = paste0("Optional: Seed Groups with ",
+                                            "Specific Animals"),
+                             width = "150%",
+                             value = FALSE)
                )
         ),
-      fluidRow(column(
-        5,
-        offset = 1,
-        conditionalPanel(
-          condition = "input.group_formation_rb == 'high-value' |
-                       input.group_formation_rb == 'all' |
-                       input.group_formation_rb == 'candidates'",
-          div(
-            style = paste0("padding-top:5px;padding-bottom:5px;",
-                           "border: 1px solid #4BCEEF; background-color: #4BCEEF; ",
-                           "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
-            ),
-            actionButton("grpSim", label = "Make Groups", width = "100%",
-                         height = "120%",
-                         style = "color: #fff; background-color: #4BCEEF;
-                                 border-color: #4BCEEF;font-size:150%;
-                                 font:bold")
-          ),
-          div(style = "display:inline-block;width:250px;padding:5px",
-              numericInput(
-                "viewGrp",
-                label = "Enter the group to view:",
-                value = 1,
-                min = 1,
-                max = MAXGROUPS
-              ),
-              #            style = "display:inline-block;width:250px;padding:5px",
-              downloadButton("downloadGroup", "Export Current Group"),
-              downloadButton("downloadGroupKin",
-                             "Export Current Group Kinship Matrix")
-          )
-        )),
+      fluidRow(
         column(
           4,
           offset = 1,
-          style = "padding-top:5px",
+          style = paste0("padding-top:1px;display:inline-block;",
+                         "width:400px;padding-bottom:1px"),
           numericInput(
             "numGp",
             label = "Number of Groups Desired:",
@@ -129,11 +96,6 @@ uitpBreedingGroupFormation <-
             min = 1,
             max = MAXGROUPS
           ),
-#          div(
-#            checkboxInput("useMinParentAge",
-#                          label = "",
-#                          value = FALSE)
-#          ),
           uiOutput("minParentAge", inline = FALSE),
           conditionalPanel(
             condition = "!input.useMinParentAge",
@@ -184,8 +146,47 @@ uitpBreedingGroupFormation <-
               value = 10,
               min = 1,
               max = 1000000
-            ))
-        ))),
+            )),
+                    conditionalPanel(
+          condition = "input.group_formation_rb == 'high-value' |
+                       input.group_formation_rb == 'all' |
+                       input.group_formation_rb == 'candidates'",
+          div(
+            style = paste0("padding-top:5px;padding-bottom:5px;",
+                           "border:1px solid #4BCEEF;background-color:#4BCEEF;",
+                           "border-radius:1px; box-shadow: 0 0 5px 2px #888"),
+            actionButton("grpSim", label = "Make Groups", width = "100%",
+                         height = "120%",
+                         style = "color: #fff; background-color: #4BCEEF;
+                                 border-color: #4BCEEF;font-size:150%;
+                                 font:bold")
+          )),
+          div(style = "display:inline-block;width:250px;padding:5px",
+              numericInput(
+                "viewGrp",
+                label = "Enter the group to view:",
+                value = 1,
+                min = 1,
+                max = MAXGROUPS
+              ),
+              downloadButton("downloadGroup", "Export Current Group"),
+              downloadButton("downloadGroupKin",
+                             "Export Current Group Kinship Matrix")
+          )
+
+        ),
+        column(1),
+        column(
+          5,
+          offset = 0,
+          style = "padding-top:5px",        
+               conditionalPanel(
+                 condition = "input.seedAnimals == true",
+                 div(
+                   uiOutput("currentGroups")
+                   )
+                 )
+        )        )),
     fluidRow(
       column(
         width = 10,

@@ -710,9 +710,9 @@ shinyServer(function(input, output, session) {
         inputName <- paste0("curGrp", i)
       textInputRow <-function (inputId,value) {
         textAreaInput(inputId = inputName, paste0("Seed animals ", i),
-                      value = "", rows = 5, cols = 40, resize = "both")
+                      value = "", rows = 5, cols = 20, resize = "both")
       }
-      column(3, textInputRow(inputName, ""))
+      column(2, offset = 0, textInputRow(inputName, ""))
     })
     do.call(tagList, seedAnimalList)}, ignoreInit = FALSE)
 

@@ -41,6 +41,8 @@ Dataframe \code{rows: id, col: gu}
 {Genome Uniqueness Functions}{}
 }
 \details{
+Part of Genetic Value Analysis
+
 The following functions calculate genome uniqueness according to the equation
 described in Ballou & Lacy.
 

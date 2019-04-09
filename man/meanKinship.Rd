@@ -15,6 +15,9 @@ A named numeric vecter of average kinship coefficients for each
 animal ID. Elements are named with the IDs from the columns of kmat.
 }
 \description{
+Part of Genetic Value Analysis
+}
+\details{
 The mean kinship of animal \emph{i} is \deqn{MK_i = \Sigma f_ij / N},
 in which the summation is over all animals, \emph{j}, including the kinship
 of animal \emph{i} to itself.

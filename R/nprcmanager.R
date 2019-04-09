@@ -35,6 +35,7 @@
 #' \item{origin} {-- character vector or \code{NA} (optional) that indicates
 #' the name of the facility that the individual was imported from if other than local.
 #' \code{NA} indicates the invidual was not imported.}
+#'}
 #'
 #' Genetic Value Analysis Functions
 #'

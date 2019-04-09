@@ -51,5 +51,5 @@ whether the allele came from the sire or dam. These are followed by
 \code{n} columns indicating the allele for that iteration.
 }
 \description{
-Performs a gene drop simulation based on the provided pedigree information
+Part of Genetic Value Analysis
 }
