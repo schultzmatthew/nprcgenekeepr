@@ -28,6 +28,11 @@ keywords:
 preamble: >
   \usepackage{amsmath}
 output: rticles::jss_article
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Interactive Use}
+  %\usepackage[UTF-8]{inputenc}
+
 ---
 
 # Introduction
