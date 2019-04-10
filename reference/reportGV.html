@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.6</span>
       </span>
     </div>
 
@@ -87,6 +87,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
+    </li>
+    <li>
+      <a href="../articles/Interactive_Use.html">Genetic Colony Management with \pkg{nprcmanager}</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -128,8 +131,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>reportGV</span>(<span class='no'>ped</span>, <span class='kw'>gu.iter</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>gu.thresh</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>pop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>updateProgress</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>reportGV</span>(<span class='no'>ped</span>, <span class='kw'>guIter</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>guThresh</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>pop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>updateProgress</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,12 +142,12 @@
       <td><p>the pedigree information in datatable format</p></td>
     </tr>
     <tr>
-      <th>gu.iter</th>
+      <th>guIter</th>
       <td><p>integer indicating the number of iterations for the gene-drop
 analysis. Default is 5000 iterations</p></td>
     </tr>
     <tr>
-      <th>gu.thresh</th>
+      <th>guThresh</th>
       <td><p>integer indicating the threshold number of animals for
 defining a unique allele. Default considers an allele "unique"
 if it is found in only 1 animal.</p></td>
