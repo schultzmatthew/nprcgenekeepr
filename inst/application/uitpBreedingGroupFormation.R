@@ -129,12 +129,9 @@ uitpBreedingGroupFormation <-
           div(
             selectInput(
               "ffRel",
-              label = paste0("Ignore or do not ignore females at or above the ",
+              label = paste0("Ignore females at or above the ",
                              "minimum parent age:"),
-              choices = list(
-                "Yes" = TRUE,
-                "No" = FALSE
-              ),
+              choices = list("Yes" = TRUE, "No" = FALSE),
               selected = 0
             ),
             checkboxInput("withKin",
@@ -179,7 +176,7 @@ uitpBreedingGroupFormation <-
         column(
           5,
           offset = 0,
-          style = "padding-top:5px",        
+          style = "padding-top:5px",
                conditionalPanel(
                  condition = "input.seedAnimals == true",
                  div(

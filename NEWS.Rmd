@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "04/07/2019"
+date: "04/18/2019"
 output:
    github_document: default
 
@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.08 (20190418)
+-   Minor rewording of option label on breeding group formation tab
+
 # nprcmanager 0.5.07 (20190408)
 -   Rearranged and reformatted breeding group formation tab
 

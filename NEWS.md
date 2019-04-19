@@ -1,7 +1,11 @@
 NEWS
 ================
 R. Mark Sharp
-04/07/2019
+04/18/2019
+
+# nprcmanager 0.5.08 (20190418)
+
+  - Minor rewording of option label on breeding group formation tab
 
 # nprcmanager 0.5.07 (20190408)
 
