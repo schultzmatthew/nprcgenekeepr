@@ -153,6 +153,40 @@
 #' data("smallPedTree")
 #' }
 "smallPedTree"
+#' examplePedigree is a pedigree object created by \code{qcStudbook}
+#'
+#' Represents pedigree from \emph{ExamplePedigree.csv}.
+#' \describe{
+#' \item{id}{-- character column of animal IDs}
+#' \item{sire}{-- the male parent of the animal indicated by the \code{id} column.
+#' Unknown sires are indicated with \code{NA}}
+#' \item{dam}{-- the female parent of the animal indicated by the \code{id}
+#' column.Unknown dams are indicated with \code{NA}}
+#' \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an
+#' individual.}
+#' \item{gen}{-- generation number (integers beginning with 0 for the founder
+#' generation) of the animal indicated by the \code{id} column.}
+#' \item{birth}{-- Date vector of birth dates}
+#' \item{exit}{-- Date vector of exit dates}
+#' \item{age}{-- numerical vector of age in years}
+#' \item{ancestry}{-- character vector or NA with free-form text providing
+#' information about the geographic population of origin.}
+#' \item{origin}{-- character vector or \code{NA} (optional) that indicates
+#' the name of the facility that the individual was imported from if other than local.}
+#' \item{status}{-- character vector or NA. Flag indicating an individual's
+#' status as alive, dead, sold, etc. Transformed to
+#'  factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}. Vector of
+#' standardized status codes with the possible values
+#' ALIVE, DECEASED, SHIPPED, or UNKNOWN}
+#' \item{recordStats}{-- character vector with value of \code{"added"} or \code{"original"}.}
+#' }
+#' @examples
+#' \dontrun{
+#' data("examplePedigree")
+#' exampleTree <- createPedTree(examplePedigree)
+#' exampleLoops <- findLoops(exampleTree)
+#' }
+"examplePedigree"
 #' finalRpt is a list object created from the list object \emph{rpt} prepared
 #' by \code{reportGV}. It is created inside \code{orderReport}. This version
 #' is at the state just prior to calling \code{rankSubjects} inside

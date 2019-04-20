@@ -7,7 +7,8 @@
 convertSexCodes(sex, ignoreHerm = TRUE)
 }
 \arguments{
-\item{sex}{factor indicating sex of a set of individuals}
+\item{sex}{factor with levels: "M", "F", "U". Sex specifier for an
+individual.}
 
 \item{ignoreHerm}{logical flag indicating if hermaphrodites should be
 treated as unknown sex ("U"), default is \code{TRUE}.}
