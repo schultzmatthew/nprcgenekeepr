@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converts sex indicator for an individual to a standardized codes. — convertSexCodes • nprcmanager</title>
+<title>examplePedigree is a pedigree object created by <code>qcStudbook</code> — examplePedigree • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,32 @@
 
 
 
-<meta property="og:title" content="Converts sex indicator for an individual to a standardized codes. — convertSexCodes" />
+<meta property="og:title" content="examplePedigree is a pedigree object created by <code>qcStudbook</code> — examplePedigree" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="Represents pedigree from ExamplePedigree.csv.
+id-- character column of animal IDs
+sire-- the male parent of the animal indicated by the id column.
+Unknown sires are indicated with NA
+dam-- the female parent of the animal indicated by the id
+column.Unknown dams are indicated with NA
+sex-- factor with levels: &quot;M&quot;, &quot;F&quot;, &quot;U&quot;. Sex specifier for an
+individual.
+gen-- generation number (integers beginning with 0 for the founder
+generation) of the animal indicated by the id column.
+birth-- Date vector of birth dates
+exit-- Date vector of exit dates
+age-- numerical vector of age in years
+ancestry-- character vector or NA with free-form text providing
+information about the geographic population of origin.
+origin-- character vector or NA (optional) that indicates
+the name of the facility that the individual was imported from if other than local.
+status-- character vector or NA. Flag indicating an individual's
+status as alive, dead, sold, etc. Transformed to
+ factor levels: ALIVE, DECEASED, SHIPPED, UNKNOWN. Vector of
+standardized status codes with the possible values
+ALIVE, DECEASED, SHIPPED, or UNKNOWN
+recordStats-- character vector with value of &quot;added&quot; or &quot;original&quot;.
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,53 +140,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converts sex indicator for an individual to a standardized codes.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/convertSexCodes.R'><code>R/convertSexCodes.R</code></a></small>
-    <div class="hidden name"><code>convertSexCodes.Rd</code></div>
+    <h1>examplePedigree is a pedigree object created by <code>qcStudbook</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>examplePedigree.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p>Represents pedigree from <em>ExamplePedigree.csv</em>.</p><dl class='dl-horizontal'>
+<dt>id</dt><dd><p>-- character column of animal IDs</p></dd>
+<dt>sire</dt><dd><p>-- the male parent of the animal indicated by the <code>id</code> column.
+Unknown sires are indicated with <code>NA</code></p></dd>
+<dt>dam</dt><dd><p>-- the female parent of the animal indicated by the <code>id</code>
+column.Unknown dams are indicated with <code>NA</code></p></dd>
+<dt>sex</dt><dd><p>-- factor with levels: "M", "F", "U". Sex specifier for an
+individual.</p></dd>
+<dt>gen</dt><dd><p>-- generation number (integers beginning with 0 for the founder
+generation) of the animal indicated by the <code>id</code> column.</p></dd>
+<dt>birth</dt><dd><p>-- Date vector of birth dates</p></dd>
+<dt>exit</dt><dd><p>-- Date vector of exit dates</p></dd>
+<dt>age</dt><dd><p>-- numerical vector of age in years</p></dd>
+<dt>ancestry</dt><dd><p>-- character vector or NA with free-form text providing
+information about the geographic population of origin.</p></dd>
+<dt>origin</dt><dd><p>-- character vector or <code>NA</code> (optional) that indicates
+the name of the facility that the individual was imported from if other than local.</p></dd>
+<dt>status</dt><dd><p>-- character vector or NA. Flag indicating an individual's
+status as alive, dead, sold, etc. Transformed to
+ factor levels: ALIVE, DECEASED, SHIPPED, UNKNOWN. Vector of
+standardized status codes with the possible values
+ALIVE, DECEASED, SHIPPED, or UNKNOWN</p></dd>
+<dt>recordStats</dt><dd><p>-- character vector with value of <code>"added"</code> or <code>"original"</code>.</p></dd>
+</dl>
     
     </div>
 
-    <pre class="usage"><span class='fu'>convertSexCodes</span>(<span class='no'>sex</span>, <span class='kw'>ignoreHerm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>sex</th>
-      <td><p>factor with levels: "M", "F", "U". Sex specifier for an
-individual.</p></td>
-    </tr>
-    <tr>
-      <th>ignoreHerm</th>
-      <td><p>logical flag indicating if hermaphrodites should be
-treated as unknown sex ("U"), default is <code>TRUE</code>.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <pre class="usage"><span class='no'>examplePedigree</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Standard sex codes are</p><ul>
-<li><p>F -- replacing "FEMALE" or "2"</p></li>
-<li><p>M -- replacing "MALE" or "1"</p></li>
-<li><p>H -- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE</p></li>
-<li><p>U -- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE</p></li>
-<li><p>U -- replacing "UNKNOWN" or "3"</p></li>
-</ul>
+    <p>An object of class <code>data.frame</code> with 3694 rows and 12 columns.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"examplePedigree"</span>)
+<span class='no'>exampleTree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createPedTree.html'>createPedTree</a></span>(<span class='no'>examplePedigree</span>)
+<span class='no'>exampleLoops</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findLoops.html'>findLoops</a></span>(<span class='no'>exampleTree</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
-          </ul>
+      <li><a href="#format">Format</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
