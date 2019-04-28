@@ -1,5 +1,5 @@
-#' Trim pedigree to ancestors of provided group removing uninformative
-#' ancestors.
+#' Trim pedigree to ancestors of provided group by removing uninformative
+#' individuals
 #'
 #' Filters a pedigree down to only the ancestors of the provided group,
 #' removing unnecessary individuals from the studbook. This version builds

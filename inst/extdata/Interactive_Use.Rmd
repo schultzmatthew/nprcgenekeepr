@@ -1,43 +1,60 @@
 ---
-author:
-  - name: R. Mark Sharp
-    affiliation: Deppe
-    address: >
-      7526 Meadow Green St
-      San Antonio, TX 78251
-    email: \email{rmsharp@me.com}
-    url: http://rmsharp.me.com
-  - name: Amanda Vinson
-    affiliation: >
-      Oregon Health and Science University 
-      ONPRC
 title:
-  formatted: "Genetic Colony Management with \\pkg{nprcmanager}"
-  # If you use tex in the formatted title, also supply version without
-  plain:     "Genetic Colony Management with nprcmanager"
-  # For running headers, if needed
-  short:     "\\pkg{nprcmanager}: Genetic Colony Management"
-abstract: >
+  formatted: Genetic Colony Management with \pkg{nprcmanager}
+  plain: Genetic Colony Management with nprcmanager
+  short: '\pkg{nprcmanager}: Genetic Colony Management'
+author:
+- name: R. Mark Sharp
+  affiliation: Deppe
+  address: |
+    7526 Meadow Green St San Antonio, TX 78251
+  email: \email{rmsharp@me.com}
+  url: http://rmsharp.me.com
+- name: Amanda Vinson
+  affiliation: |
+    Oregon Health and Science University  ONPRC
+abstract: |
   The abstract of the article.
-keywords:
-  # at least one keyword must be supplied
-  formatted: [genetic, nonhuman, "\\proglang{Shiny}", "\\proglang{R}", management, 
-             captive, population, inbreeding, kinship, simulation]
-  plain:     [genetic, nonhuman, Shiny, R, management, 
-             captive, population, inbreeding, kinship, simulation]
-preamble: >
+output:
+  pdf_document: default
+  html_document: default
+preamble: |
   \usepackage{amsmath}
-output: rticles::jss_article
-vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Interactive Use}
-  %\usepackage[UTF-8]{inputenc}
-
+keywords:
+  formatted:
+  - genetic
+  - nonhuman
+  - \proglang{Shiny}
+  - \proglang{R}
+  - management
+  - captive
+  - population
+  - inbreeding
+  - kinship
+  - simulation
+  plain:
+  - genetic
+  - nonhuman
+  - Shiny
+  - R
+  - management
+  - captive
+  - population
+  - inbreeding
+  - kinship
+  - simulation
+vignette: |
+  %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{Interactive Use} %\usepackage[UTF-8]{inputenc}
 ---
+```{r setup}
+library(shiny)
+
+```
 
 # Introduction
 
-This template demonstrates some of the basic latex you'll need to know to create a JSS article.
+This tutorial provides examples of the functions provided within the \pkg{nprcmanager} package.
+
 
 ## Code formatting
 
@@ -55,3 +72,32 @@ Can be inserted in regular R markdown blocks.
 x <- 1:10
 x
 ```
+
+# Importing in the Pedigree Data
+
+## Pedigree File Structure
+
+
+It begins with importing a simple pedigree file, pedigree file with genotypes, pedigree file and
+and associated set of genotypes, and a initiating a database query that
+returns the full pedigree associated with a list of animals provided by the user.
+
+
+The recommended first step after creation of an input file is checking  the file for
+detectable errors.
+
+## Selecting the Minimam Parental Age
+
+## Pedigree File Only
+
+The field seperator used within a pedigree file must be the same throughout
+and must be indicated when reading in the file. 
+Fields can be separated by tabs, commas, or simicolons.
+
+
+## Pedigree and Genotypes in the Same File
+
+## Pedigree and Genotypes in Separate Files
+
+## Pedigree Provided by LabKey Query
+

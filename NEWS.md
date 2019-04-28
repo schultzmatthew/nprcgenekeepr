@@ -3,6 +3,13 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.09 (20190428)
+
+  - Corrected bug where parents with suspicious dates were not being
+    reported.
+  - Improved display of parents with suspicious dates by outputing HTML
+    table to the ErrorTab.
+
 # nprcmanager 0.5.08 (20190418)
 
   - Minor rewording of option label on breeding group formation tab

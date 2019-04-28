@@ -100,7 +100,7 @@ _Example_Pedigree.csv_.
 
 ```{r findLoops}
 ##pedigreeFile <- file.choose() ## use example file
-pedigreefile <- pedigreeFile <- "Example_Pedigree.csv"
+pedigreeFile <- "Example_Pedigree.csv"
 examplePedigree_raw <- read.table(pedigreeFile, sep = ",", header = TRUE, 
                                    stringsAsFactors = FALSE)
 errorLst <- qcStudbook(examplePedigree_raw, minParentAge = 0, reportErrors = TRUE)

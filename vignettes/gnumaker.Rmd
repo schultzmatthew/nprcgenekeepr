@@ -1,0 +1,32 @@
+---
+title: "R gnumaker: easy Makefile construction for enhancing reproducible research"
+author: "Baker Peter"
+date: "4/22/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+Is there a crisis in reproducible research? Some studies such as Ioannidis et. el (2009) have estimated that over fifty percent of published papers in some fields of research are not reproducible. In statistical and data analysis projects, this appears to be due to lack of training and poor tools rather than scientific fraud.
+
+In the R community, there is a move towards Don't Repeat Yourself (DRY) approaches to reproducible research and reporting. Employing computing tools like GNU Make to regenerate output when syntax or data files change, GNU git for version control, writing GNU R functions or packages for repetitive tasks and R Markdown for reporting can greatly improve reproducibility.
+
+The gnumaker package is ideal for statisticians and data analysts with little experience of Make. By specifying the relationships between syntax and data files gnumaker makes it easy to create and plot GNU Makefiles as DAGs. Gnumaker employs Make pattern rules for R, Sweave, R Markdown, Stata, SAS, etc outlined in P Baker (2019) Using GNU Make to Manage the Workflow of Data Analysis Projects, Journal of Statistical Software (Accepted). See https://github.com/petebaker
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

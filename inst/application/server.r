@@ -181,7 +181,7 @@ shinyServer(function(input, output, session) {
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
-        if (is.null(errorLst)) {
+        if (!checkErrorLst(errorLst)) {
           errorLst <- tryCatch(
             qcStudbook(breederPed, minParentAge, reportChanges = FALSE, reportErrors = TRUE),
             warning = function(cond) {return(NULL)},
@@ -189,6 +189,7 @@ shinyServer(function(input, output, session) {
         }
         removeTab(inputId = "tab_pages", target = "Changed Columns")
         removeTab(inputId = "tab_pages", target = "Error List")
+
         if (checkErrorLst(errorLst)) {
           insertTab(inputId = "tab_pages",
                     getErrorTab(errorLst, pedigreeFile$name), target = "Input",
