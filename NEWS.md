@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.10 (20190428)
+
+  - Corrected roxygen2 comment “@export” in getAnimalsWithHighKinship().
+  - Added unit test for fillGroupMembersWithSexRatio()
+
 # nprcmanager 0.5.09 (20190428)
 
   - Corrected bug where parents with suspicious dates were not being

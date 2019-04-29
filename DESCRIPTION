@@ -1,7 +1,7 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.09
+Version: 0.5.10
 Date: 2019-04-28
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),

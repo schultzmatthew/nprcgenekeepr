@@ -21,7 +21,7 @@
 #' formation. Pairwise kinships involving an animal of this age or younger will
 #'  be ignored. Default is 1 year.
 #'
-#'  @export
+#' @export
 getAnimalsWithHighKinship <- function(kmat, ped, threshold, currentGroups, ignore,
                                    minAge) {
   kin <- kinMatrix2LongForm(kmat)

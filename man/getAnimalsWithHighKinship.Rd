@@ -28,9 +28,7 @@ Default is to ignore all pairwise kinship between females.}
 
 \item{minAge}{integer value indicating the minimum age to consider in group
 formation. Pairwise kinships involving an animal of this age or younger will
- be ignored. Default is 1 year.
-
- @export}
+ be ignored. Default is 1 year.}
 }
 \value{
 a list of named character vectors where each name is an animal Id

@@ -1,23 +1,17 @@
 context("fillGroupMembersWithSexRatio")
-library(stringi)
 
 data("examplePedigree")
-data("pedWithGenotype")
-data("pedWithGenotypeReport")
-skip_if_not(exists("baboonBreeders"))
-skip_if_not(exists("pedWithGenotype"))
-skip_if_not(exists("pedWithGenotypeReport"))
 set.seed(10)
+ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
+                  reportErrors = FALSE)
+
+kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = FALSE)
 currentGroups <- list(1)
-currentGroups[[1]] <- examplePedigree[1:3]
-candidates <- examplePedigree
-currentGroups <- currentGroups
-kmat <- pedWithGenotypeReport$kinship
-ped <- pedWithGenotype
+currentGroups[[1]] <- examplePedigree$id[1:3]
+candidates <- examplePedigree$id[examplePedigree$status == "ALIVE"]
 threshold <- 0.015625
-kmat <- filterKinMatrix(union(candidates, unlist(currentGroups)), kmat)
-kin <- nprcmanager:::getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups, ignore,
-                                 minAge)
+kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
+                                 ignore = list(c("F", "F")), minAge = 1)
 # Filtering out candidates related to current group members
 conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
 candidates <- setdiff(candidates, conflicts)
@@ -31,13 +25,13 @@ numGp <- 1
 harem <- FALSE
 sexRatio <- 0
 withKin <- FALSE
-groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem = FALSE,
-                                 minAge = 1)
+groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem = harem,
+                                 minAge = minAge)
 groupMembersStart <- groupMembers
 grpNum <- nprcmanager:::makeGrpNum(numGp)
 
 test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio", {
-  expect_equal(groupMembers[[1]], c("16808", "32358", "32560"))
+  expect_equal(groupMembers[[1]], c("1", "10", "1008"))
   for (i in 1:20) {
     groupMembers <- fillGroupMembersWithSexRatio(
       candidates, groupMembers, grpNum, kin, ped, minAge, numGp, sexRatio = 1)
@@ -46,12 +40,18 @@ test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio"
                tolerance = .1, scale = 1)
   groupMembers <- groupMembersStart
 
-  for (i in 1:40) {
+  for (i in 1:20) {
     groupMembers <- fillGroupMembersWithSexRatio(
       candidates, groupMembers, grpNum, kin, ped, minAge, numGp, sexRatio = 0.5)
   }
-  expect_equal(calculateSexRatio(groupMembers[[1]], ped), 1.0,
+  expect_equal(calculateSexRatio(groupMembers[[1]], ped), 0.5,
                tolerance = .1, scale = 1)
-  groupMembersStart <- groupMembers
+  groupMembers <- groupMembersStart
+  for (i in 1:20) {
+    groupMembers <- fillGroupMembersWithSexRatio(
+      candidates, groupMembers, grpNum, kin, ped, minAge, numGp, sexRatio = 2.0)
+  }
+  expect_equal(calculateSexRatio(groupMembers[[1]], ped), 2.0,
+               tolerance = .1, scale = 1)
 
   })
