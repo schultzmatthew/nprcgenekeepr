@@ -30,7 +30,7 @@ groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
                                   ped = pedWithGenotype,
                                   ignore = NULL, minAge = 1, numGp = 2,
                                   harem = FALSE, sexRatio = 0, withKin = FALSE)
-test_that("groupAddAssign forms the correct groups", {
+test_that("groupAddAssign (numGp = 2) forms the correct groups", {
   expect_equal(length(groupAssignTest$group[[1]]), 9)
   expect_equal(length(groupAssignTest$group[[2]]), 10)
   expect_null(groupAssignTest$groupKin[[1]])
@@ -45,10 +45,9 @@ groupAddKTest <- groupAddAssign(candidates = baboonBreeders,
                                 ped = pedWithGenotype,
                                 ignore = NULL, minAge = 1, numGp = 1,
                                 harem = FALSE, sexRatio = 0, withKin = TRUE)
-test_that("groupAddAssign forms the correct groups with kinship matrices", {
+test_that("groupAddAssign (numGp = 1) forms the correct groups with kinship matrices", {
   #expect_equal(length(groupAddKTest$group[[1]]), 11)
   expect_equal(length(groupAddKTest$group[[2]]), 10)
-  #expect_equal(length(groupAddKTest$groupKin[[1]]), 121)
 }
 )
 set.seed(10)
@@ -78,7 +77,8 @@ test_that(paste0("groupAddAssign fails when no potential sires exist for ",
                               harem = TRUE, sexRatio = 0, withKin = TRUE))
 }
 )
-test_that(paste0("groupAddAssign when there are multiple potential sires in ",
+test_that(paste0("groupAddAssign add 1 sire at most when there are multiple ",
+                 "potential sires in ",
                  "the candidates during harem creation"), {
   group <- groupAddAssign(candidates = baboonBreeders, currentGroups = character(0),
                           kmat = pedWithGenotypeReport$kinship,
@@ -90,4 +90,19 @@ test_that(paste0("groupAddAssign when there are multiple potential sires in ",
   expect_equal(sum(seq_along(group[[1]][[3]])[group[[1]][[2]] %in% sires]), 1)
                  }
 )
-
+test_that(paste0("groupAddAssign fails when there are more groups with seed ",
+                 "animals that the number of groups to be formed"), {
+                   currentGroups <- list(3)
+                   currentGroups[[1]] <- baboonBreeders[1:3]
+                   currentGroups[[2]] <- baboonBreeders[4:6]
+                   currentGroups[[3]] <- baboonBreeders[7:9]
+                   expect_error(
+                     groupAddAssign(candidates = noSires,
+                                    currentGroups = currentGroups,
+                                    kmat = pedWithGenotypeReport$kinship,
+                                    ped = pedWithGenotype,
+                                    ignore = NULL, minAge = 1, numGp = 2,
+                                    harem = FALSE, sexRatio = 0,
+                                    withKin = TRUE))
+                 }
+)
