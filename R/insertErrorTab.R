@@ -27,7 +27,11 @@ insertErrorTab <- function(errorLst, pedigreeFileName) {
                       line, "</li>\n")
   }
   if (nrow(text$sp) > 0) {
-    newText <- stri_c(newText, htmlTable(text$sp))
+    newText <- stri_c(newText, "	<li style=\"padding-bottom: 15px\">\n",
+                      "One or both parents are below the ",
+                      "minimum parental age. Check both parent and offspring ",
+                      "birth dates.", "</li>\n")
+    newText <- stri_c(newText, htmlTable(text$sp, rnames = FALSE))
   }
   newText <- stri_c(newText, "</ul>\n</p>\n</pre>")
   newText

@@ -3,6 +3,12 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.11 (20190430)
+
+  - Changed wording and format above Suspicious Parent table in ErrorTab
+  - Removed row label from Suspicious Parent table
+  - Updated meeting notes
+
 # nprcmanager 0.5.10 (20190428)
 
   - Corrected roxygen2 comment “@export” in getAnimalsWithHighKinship().

@@ -1,28 +1,53 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190429
+1. Updated Amanda's R, R packages, and installed version 0.5.10 (20190428) of
+   nprcmanager.
+1. Demonstrated that new version of nprcmanager displayed suspicious parent
+   table in ErrorTab.
+1. Decided in new wording of "One or both parents are below the minimum 
+   parental age. Check both parent and offspring birth dates." to place
+   before the Suspicious Parents table.
+1. Removed row label column in Suspicious Parents table.
+1. Plan to add ability to read in pedigrees in Excel format to Input tab.
+1. Still need to complete items listed in 20190408 meeting notes. (See below.)
+1. Will provide a "Goldilocks" tutorial of Shiny application first.
+
 ## 20190408
 1. Test for error when pedigree is not available when forming groups
 1. Make sure harems are formed correctly when males are in seed animals
-1. List of things found prior to the meetingto do before next meeting:
-  -  Unit test for fillGroupMembersWithSexRatio()
-  -  Go through all primary data structure names and definitions to update 
-    and correct.
-  -  Edit all function descriptions to update and correct
-  -  Correct nprcmanager.R file. This includes the following and more.
-    Check, correct, and create where needed function lists including lists
-    of all functions, pedigree file testing functions, genetic value 
-    functions, plotting functions, breeding group formation functions,
-    and gene dropping functions (if possible).
-  -  Consider making a summary function for the gvReport structure.
-  -  Consider adding the ability to ignore founders if the user selects 
-    that option. 
+1. List of things found prior to the meeting to do before next meeting:
+   -  Unit test for fillGroupMembersWithSexRatio() Done 20190328
+   -  Go through all primary data structure names and definitions to update 
+      and correct.
+   -  Edit all function descriptions to update and correct
+   -  Correct nprcmanager.R file. This includes the following and more.
+      Check, correct, and create where needed function lists including lists
+      of all functions, pedigree file testing functions, genetic value 
+      functions, plotting functions, breeding group formation functions,
+      and gene dropping functions (if possible).
+   -  Consider making a summary function for the gvReport structure.
+   -  Consider adding the ability to ignore founders if the user selects 
+      that option. 
     
- Ballou & Lacy describe genome uniqueness as "the proportion of simulations  in which an individual receives the only copy of a founder allele." We have  interpretted this as meaning that genome uniqueness should only be calculated  for living, non-founder animals. Alleles possessed by living founders are  not considered when calculating genome uniqueness. 
+ Ballou & Lacy describe genome uniqueness as "the proportion of simulations 
+ in which an individual receives the only copy of a founder allele." 
+ We have interpretted this as meaning that genome uniqueness should only be 
+ calculated  for living, non-founder animals. 
+ Alleles possessed by living founders are not considered when calculating 
+ genome uniqueness. 
 
-  We have a differing view on this, since a living founder can still contribute  to the population.  The function below calculates genome uniqueness for all living animals  and considers all alleles. It does not ignore living founders and their  alleles. 
+We have a differing view on this, since a living founder can still contribute 
+to the population.  The function below calculates genome uniqueness for all 
+living animals  and considers all alleles. It does not ignore living founders 
+and their  alleles. 
 
-  Our results for genome uniqueness will, therefore differ slightly from those  returned by Pedscope. Pedscope calculates genome uniqueness only for  non-founders and ignores the contribution of any founders in the population.  This will cause Pedscope's genome uniqueness estimates to possibly be  slightly higher for non-founders than what this function will calculate. 
+Our results for genome uniqueness will, therefore differ slightly from those 
+returned by Pedscope. Pedscope calculates genome uniqueness only for
+non-founders and ignores the contribution of any founders in the population.
+This will cause Pedscope's genome uniqueness estimates to possibly be 
+slightly higher for non-founders than what this function will calculate. 
 
 
 
