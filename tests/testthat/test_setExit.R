@@ -1,7 +1,7 @@
 context("setExit")
 library(testthat)
 library(lubridate)
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 death <- mdy(paste0(sample(1:12, 10, replace = TRUE), "-",
                    sample(1:28, 10, replace = TRUE), "-",
                    sample(seq(0, 15, by = 3), 10, replace = TRUE) + 2000))

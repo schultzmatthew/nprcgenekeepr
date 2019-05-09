@@ -64,7 +64,7 @@ converting columns id, sire, and dam." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.12</span>
       </span>
     </div>
 
@@ -161,7 +161,7 @@ Shiny also displays all Numbers (including integers) with 2 decimal places
 Comment by R. Mark Sharp - this is just one way to modify the number of
 digits displayed.
 library(DT)</p>
-<p>set.seed(323)
+<p>suppressWarnings(set.seed(323, sample.kind = "Rounding"))
 data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) <!-- %&gt;% -->
   datatable() <!-- %&gt;% -->
   formatRound(columns=c('x', 'y'), digits=3)</p>

@@ -4,13 +4,17 @@
 \name{nprcmanager}
 \alias{nprcmanager}
 \alias{nprcmanager-package}
-\title{Genetic Value Analysis Functions}
+\title{Genetic Management Functions}
 \description{
 Primary Data Structure --- Pedigree
 
 Contains studbook information for a number of individuals.
 ASSUME: All IDs listed in the sire or dam columns must have a row entry in
   the id column
+}
+\seealso{
+\code{\link{getIncludeColumns}} to get set of columns that can
+be used in a pedigree file
 
 A Pedigree is a data frame within the \code{R} environment with the following
 possible columns:
@@ -36,8 +40,33 @@ the name of the facility that the individual was imported from if other than loc
 \code{NA} indicates the invidual was not imported.}
 }
 
+Pedigree File Testing Functions
+
+\itemize{
+\item{\link{qcStudbook}} {--- Main pedigree curation function that performs basic
+quality control on pedigree information}
+\item{\link{fixColumnNames}} {--- Changes original column names and into
+standardized names.}
+\item{\link{checkRequiredCols}} {--- Examines column names, cols, to see if
+all required column names are present.}
+\item{\link{correctParentSex}} {--- Sets sex for animals listed as either a
+sire or dam.}
+\item{\link{getDateErrorsAndConvertDatesInPed}} {--- Converts columns of
+dates in text form to \code{Date} object columns}
+\item{\link{checkParentAge}} {--- Check parent ages to be at least
+ \code{minParentAge}}
+\item{\link{removeDuplicates}} {--- Remove duplicate records from pedigree}
+}
+Gene Dropping Function
+
+\itemize{
+\item{\link{geneDrop}} {--- Performs a gene drop simulation based on the
+provided pedigree information}
+}
 Genetic Value Analysis Functions
 
+Contains functions to calculate the kinship coefficient and genome
+uniqueness for animals listed in a Pedigree table.
 \itemize{
 \item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
 kinship matrix}
@@ -60,13 +89,16 @@ listed in 'ids'}
 \item{\link{kinship}} {--- Generates a kinship matrix}
 \item{\link{reportGV}} {--- Generates a genetic value report for a provided pedigree.}
 }
+Plotting Functions
+
+\itemize{
+\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
+kinship matrix}
 }
-\seealso{
-\code{\link{getIncludeColumns}} to get set of columns that can
-be used in a pedigree file
+Breeding Group Formation Functions
 
-2015-03-04
-
-Contains functions to calculate the kinship coefficient and genome
-uniqueness for animals listed in a Pedigree table.
+\itemize{
+\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
+kinship matrix}
+}
 }

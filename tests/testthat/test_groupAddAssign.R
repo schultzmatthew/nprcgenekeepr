@@ -7,7 +7,7 @@ data("pedWithGenotypeReport")
 skip_if_not(exists("baboonBreeders"))
 skip_if_not(exists("pedWithGenotype"))
 skip_if_not(exists("pedWithGenotypeReport"))
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 currentGroups <- list(1)
 currentGroups[[1]] <- baboonBreeders[1:3]
 groupAddTest <- groupAddAssign(
@@ -23,7 +23,7 @@ test_that("groupAddAssign forms the correct groups", {
   expect_null(groupAddTest$groupKin[[1]])
 }
 )
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 groupAssignTest <- groupAddAssign(candidates = baboonBreeders,
                                   currentGroups = character(0),
                                   kmat = pedWithGenotypeReport$kinship,
@@ -36,7 +36,7 @@ test_that("groupAddAssign (numGp = 2) forms the correct groups", {
   expect_null(groupAssignTest$groupKin[[1]])
 }
 )
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 currentGroups <- list(1)
 currentGroups[[1]] <- baboonBreeders[1:3]
 groupAddKTest <- groupAddAssign(candidates = baboonBreeders,
@@ -50,7 +50,7 @@ test_that("groupAddAssign (numGp = 1) forms the correct groups with kinship matr
   expect_equal(length(groupAddKTest$group[[2]]), 10)
 }
 )
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 groupAssignKTest <- groupAddAssign(candidates = baboonBreeders,
                                    currentGroups = character(0),
                                    kmat = pedWithGenotypeReport$kinship,
@@ -63,7 +63,7 @@ test_that("groupAddAssign forms the correct groups with kinship matrices", {
   expect_equal(length(groupAssignKTest$groupKin[[1]]), 81)
 }
 )
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = "Rounding"))
 noSires <- removePotentialSires(baboonBreeders, minAge = 2,
                                             pedWithGenotype)
 sires <- getPotentialSires(baboonBreeders, minAge = 2, pedWithGenotype)

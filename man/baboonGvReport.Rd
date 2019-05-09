@@ -13,7 +13,7 @@ baboonGvReport is a genetic value report for illustrative purposes only.
 It is used in examples and unit tests with the nprcmanager package.
 It was created using the following commands.
   \itemize{
-    \item set.seed(10)
+    \item suppressWarnings(set.seed(10, sample.kind = "Rounding"))
     \item data(baboonPed)
     \item baboonGvReport <- reportGV(baboonPed, guIter = 10000)
     \item save(baboonGvReport, file = "data/baboonGvReport.RData")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDateErrorsAndConvertDatesInPed.R
 \name{getDateErrorsAndConvertDatesInPed}
 \alias{getDateErrorsAndConvertDatesInPed}
-\title{getDateErrors finds date errors in columns defined in \code{convertDate} as dates.}
+\title{Converts columns of dates in text form to \code{Date} object columns}
 \usage{
 getDateErrorsAndConvertDatesInPed(sb, errorLst)
 }
@@ -21,5 +21,6 @@ If there are no errors that prevent the calculation of exit dates, they are
 calculated and added to the pedigree otherwise the pedigree is not updated.
 }
 \description{
-getDateErrors finds date errors in columns defined in \code{convertDate} as dates.
+Finds date errors in columns defined in
+\code{convertDate} as dates and converts date strings to \code{Date} objects.
 }

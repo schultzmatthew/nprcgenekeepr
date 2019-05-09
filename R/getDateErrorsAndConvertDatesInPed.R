@@ -1,4 +1,7 @@
-#' getDateErrors finds date errors in columns defined in \code{convertDate} as dates.
+#' Converts columns of dates in text form to \code{Date} object columns
+#'
+#' Finds date errors in columns defined in
+#' \code{convertDate} as dates and converts date strings to \code{Date} objects.
 #'
 #' @return a list with the pedigree, \code{sb}, and the \code{errorLst} with
 #' invalid date rows (\code{errorLst$invalidDateRows})

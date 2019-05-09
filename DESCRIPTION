@@ -1,8 +1,8 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.11
-Date: 2019-04-30
+Version: 0.5.12
+Date: 2019-05-07
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
@@ -12,7 +12,7 @@ URL: https://rmsharp.github.io/nprcmanager/, https://github.com/rmsharp/nprcmana
 BugReports: https://github.com/rmsharp/nprcmanager/issues
 DisplayMode: Showcase
 Depends:
-    R (>= 3.2.1)
+    R (>= 3.4.1)
 Imports:
     anytime,
     futile.logger,

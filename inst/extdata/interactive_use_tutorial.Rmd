@@ -23,8 +23,9 @@ library(rmsutilityr)
 ```
 
 ## You can use a file browser
-```{r tutorial-0}
+```{r tutorial-0, eval = FALSE, echo = TRUE}
 badPedigreeFile <- file.choose()
+
 ```
 
 ## You can point to a pedigree file that you have
@@ -33,7 +34,7 @@ pedigreeFile <- "baboon_breeders_qc_ped.csv"
 
 sep <- ","
 minParentAge <- 0
-breederPedCsv <- read.table(file.choose(), sep = sep, header = TRUE, stringsAsFactors = FALSE)
+breederPedCsv <- read.table(pedigreeFile, sep = sep, header = TRUE, stringsAsFactors = FALSE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
 
 ```

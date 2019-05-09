@@ -1,4 +1,4 @@
-#' Check parent age
+#' Check parent ages to be at least \code{minParentAge}
 #'
 #' Ensure parents are sufficiently older than offspring
 #' @param sb A dataframe containing a table of pedigree and demographic

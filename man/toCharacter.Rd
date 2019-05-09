@@ -30,7 +30,7 @@ Comment by R. Mark Sharp - this is just one way to modify the number of
 digits displayed.
 library(DT)
 
-set.seed(323)
+suppressWarnings(set.seed(323, sample.kind = "Rounding"))
 data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) %>%
   datatable() %>%
   formatRound(columns=c('x', 'y'), digits=3)
