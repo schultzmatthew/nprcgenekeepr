@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Genetic Value Analysis Functions — nprcmanager • nprcmanager</title>
+<title>Genetic Management Functions — nprcmanager • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,58 +30,12 @@
 
 
 
-<meta property="og:title" content="Genetic Value Analysis Functions — nprcmanager" />
+<meta property="og:title" content="Genetic Management Functions — nprcmanager" />
 
 <meta property="og:description" content="Primary Data Structure --- Pedigree
 Contains studbook information for a number of individuals.
 ASSUME: All IDs listed in the sire or dam columns must have a row entry in
-  the id column
-A Pedigree is a data frame within the R environment with the following
-possible columns:
-id -- character vector with unique identifier for an individual
-sire -- character vector with unique identifier for an
-individual's father (NA if unknown).
-dam -- character vector with unique identifier for an
-individual's mother (NA if unknown).
-sex -- factor levels: &quot;M&quot;, &quot;F&quot;, &quot;U&quot; Sex specifier for an individual
-gen -- integer vector with the generation number of the individual
-birth -- Date or NA (optional) with the individual's birth date
-exit -- Date or NA (optional) with the individual's exit date (death,
- or departure if applicable)
-ancestry -- character vector or NA (optional) that indicates
-the geographic population to which the individual belongs.
-age -- numeric or NA (optional) indicating the individual's
-current age or age at exit.
-population -- logical (optional)
-Is the id part of the extant population?
-origin -- character vector or NA (optional) that indicates
-the name of the facility that the individual was imported from if other than local.
-NA indicates the invidual was not imported.
-" />
-
-<meta property="og:description" content="Genetic Value Analysis Functions
-
-meanKinship --- Calculates the mean kinship for each animal in a
-kinship matrix
-calcA --- Calculates a, the number of an individual's
-alleles that are rare in each simulation.
-alleleFreq --- Calculates the count of each allele in the provided vector.
-calcFE --- Calculates founder equivalents.
-calcFG --- Calculates founder genome equivalents.
-calcFEFG--- Returns founder equivalents FE and
-FG as elements in a list.
-calcGU --- Calculates genome uniqueness for each ID that is
-part of the population.
-geneDrop --- Performs a gene drop simulation based on the
-pedigree information.
-chooseAlleles --- Combines two vectors of alleles by randomly
-selecting one allele or the other at each position.
-calcRetention --- Calculates allelic retention.
-filterKinMatrix --- Filters a kinship matrix to include only the egos
-listed in 'ids'
-kinship --- Generates a kinship matrix
-reportGV --- Generates a genetic value report for a provided pedigree.
-" />
+  the id column" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,7 +66,7 @@ reportGV --- Generates a genetic value report for a provided pedigree.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.12</span>
       </span>
     </div>
 
@@ -166,7 +120,7 @@ reportGV --- Generates a genetic value report for a provided pedigree.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Genetic Value Analysis Functions</h1>
+    <h1>Genetic Management Functions</h1>
     <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/nprcmanager.R'><code>R/nprcmanager.R</code></a></small>
     <div class="hidden name"><code>nprcmanager.Rd</code></div>
     </div>
@@ -177,6 +131,14 @@ reportGV --- Generates a genetic value report for a provided pedigree.
 <p>Contains studbook information for a number of individuals.
 ASSUME: All IDs listed in the sire or dam columns must have a row entry in
   the id column</p>
+    
+    </div>
+
+        
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='getIncludeColumns.html'>getIncludeColumns</a></code> to get set of columns that can
+be used in a pedigree file</p>
 <p>A Pedigree is a data frame within the <code>R</code> environment with the following
 possible columns:</p><ul>
 <li><p>id -- character vector with unique identifier for an individual</p></li>
@@ -198,10 +160,29 @@ Is the id part of the extant population?</p></li>
 <li><p>origin -- character vector or <code>NA</code> (optional) that indicates
 the name of the facility that the individual was imported from if other than local.
 <code>NA</code> indicates the invidual was not imported.</p></li>
-</ul>
-
-    <p>Genetic Value Analysis Functions</p>
+</ul></div>
+    <div class='dont-index'><p>Pedigree File Testing Functions</p>
 <ul>
+<li><p><a href='qcStudbook.html'>qcStudbook</a> --- Main pedigree curation function that performs basic
+quality control on pedigree information</p></li>
+<li><p><a href='fixColumnNames.html'>fixColumnNames</a> --- Changes original column names and into
+standardized names.</p></li>
+<li><p><a href='checkRequiredCols.html'>checkRequiredCols</a> --- Examines column names, cols, to see if
+all required column names are present.</p></li>
+<li><p><a href='correctParentSex.html'>correctParentSex</a> --- Sets sex for animals listed as either a
+sire or dam.</p></li>
+<li><p><a href='getDateErrorsAndConvertDatesInPed.html'>getDateErrorsAndConvertDatesInPed</a> --- Converts columns of
+dates in text form to <code>Date</code> object columns</p></li>
+<li><p><a href='checkParentAge.html'>checkParentAge</a> --- Check parent ages to be at least
+ <code>minParentAge</code></p></li>
+<li><p><a href='removeDuplicates.html'>removeDuplicates</a> --- Remove duplicate records from pedigree</p></li>
+</ul><p>Gene Dropping Function</p>
+<ul>
+<li><p><a href='geneDrop.html'>geneDrop</a> --- Performs a gene drop simulation based on the
+provided pedigree information</p></li>
+</ul><p>Genetic Value Analysis Functions</p>
+<p>Contains functions to calculate the kinship coefficient and genome
+uniqueness for animals listed in a Pedigree table.</p><ul>
 <li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
 kinship matrix</p></li>
 <li><p><a href='calcA.html'>calcA</a> --- Calculates <code>a</code>, the number of an individual's
@@ -222,18 +203,15 @@ selecting one allele or the other at each position.</p></li>
 listed in 'ids'</p></li>
 <li><p><a href='kinship.html'>kinship</a> --- Generates a kinship matrix</p></li>
 <li><p><a href='reportGV.html'>reportGV</a> --- Generates a genetic value report for a provided pedigree.</p></li>
-</ul>
-    
-    </div>
-
-        
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='getIncludeColumns.html'>getIncludeColumns</a></code> to get set of columns that can
-be used in a pedigree file</p>
-<p>2015-03-04</p>
-<p>Contains functions to calculate the kinship coefficient and genome
-uniqueness for animals listed in a Pedigree table.</p></div>
+</ul><p>Plotting Functions</p>
+<ul>
+<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
+kinship matrix</p></li>
+</ul><p>Breeding Group Formation Functions</p>
+<ul>
+<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
+kinship matrix</p></li>
+</ul></div>
     
 
   </div>

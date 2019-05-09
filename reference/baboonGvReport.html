@@ -35,7 +35,7 @@
 <meta property="og:description" content="baboonGvReport is a genetic value report for illustrative purposes only.
 It is used in examples and unit tests with the nprcmanager package.
 It was created using the following commands.
-set.seed(10)
+suppressWarnings(set.seed(10, sample.kind = &quot;Rounding&quot;))
 data(baboonPed)
 baboonGvReport &amp;lt;- reportGV(baboonPed, guIter = 10000)
 save(baboonGvReport, file = &quot;data/baboonGvReport.RData&quot;)
@@ -70,7 +70,7 @@ save(baboonGvReport, file = &quot;data/baboonGvReport.RData&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.12</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@ save(baboonGvReport, file = &quot;data/baboonGvReport.RData&quot;)
     <p>baboonGvReport is a genetic value report for illustrative purposes only.
 It is used in examples and unit tests with the nprcmanager package.
 It was created using the following commands.</p><ul>
-<li><p>set.seed(10)</p></li>
+<li><p>suppressWarnings(set.seed(10, sample.kind = "Rounding"))</p></li>
 <li><p>data(baboonPed)</p></li>
 <li><p>baboonGvReport &lt;- reportGV(baboonPed, guIter = 10000)</p></li>
 <li><p>save(baboonGvReport, file = "data/baboonGvReport.RData")</p></li>
