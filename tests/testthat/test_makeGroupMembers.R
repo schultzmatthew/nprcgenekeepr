@@ -7,7 +7,7 @@ data("pedWithGenotypeReport")
 skip_if_not(exists("baboonBreeders"))
 skip_if_not(exists("pedWithGenotype"))
 skip_if_not(exists("pedWithGenotypeReport"))
-suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+set_seed(10)
 test_that(paste0("makeGroupMembers fails when more than one potential sire ",
                  "exists in currentGroup and harem == TRUE."), {
   currentGroups <- list(1)

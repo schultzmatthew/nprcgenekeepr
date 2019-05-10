@@ -117,7 +117,7 @@
 #' It is used in examples and unit tests with the nprcmanager package.
 #' It was created using the following commands.
 #'   \itemize{
-#'     \item suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+#'     \item set_seed(10)
 #'     \item data(baboonPed)
 #'     \item baboonGvReport <- reportGV(baboonPed, guIter = 10000)
 #'     \item save(baboonGvReport, file = "data/baboonGvReport.RData")

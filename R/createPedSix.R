@@ -5,7 +5,7 @@
 #' @importFrom lubridate mdy
 #' @export
 createPedSix <- function(savePed = TRUE) {
-  suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+  set_seed(10)
   someBirthDates <- ymd(paste0(sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000, "-",
                            sample(1:12, 8, replace = TRUE), "-",
                            sample(1:28, 8, replace = TRUE)))

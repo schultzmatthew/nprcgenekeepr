@@ -3,7 +3,7 @@ library(testthat)
 library(lubridate)
 library(stringi)
 
-suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+set_seed(10)
 data(pedSix)
 changedColsTab <- getChangedColsTab(qcStudbook(pedSix, reportChanges = TRUE, reportErrors = TRUE), "test")
 test_that("getChangedColsTab creates predictable output", {

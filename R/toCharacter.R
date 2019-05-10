@@ -11,7 +11,7 @@
 #' digits displayed.
 #' library(DT)
 #'
-#' suppressWarnings(set.seed(323, sample.kind = "Rounding"))
+#'   set_seed(10)
 #' data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) %>%
 #'   datatable() %>%
 #'   formatRound(columns=c('x', 'y'), digits=3)

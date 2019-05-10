@@ -2,7 +2,7 @@ context("geneDrop")
 library(testthat)
 data(lacy1989Ped)
 data(lacy1989PedAlleles)
-suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+set_seed(10)
 ## This test is entirely dependent on repeatable pseudorandom sequence
 ## generation. If this is disturbed, it will need to be rewritten.
 ped <- lacy1989Ped

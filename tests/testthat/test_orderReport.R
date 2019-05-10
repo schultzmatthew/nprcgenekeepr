@@ -9,7 +9,7 @@ test_that("orderReport correctly orders the report", {
   rpt1 <- orderReport(rpt, ped)
   expect_equal(nrow(rpt1), nrow(rpt))
   expect_true(all(rpt1$id %in% rpt1$id))
-  suppressWarnings(set.seed(100, sample.kind = "Rounding"))
+  set_seed(100)
   rpt$origin <- ifelse(sample(c(TRUE, FALSE), size = nrow(rpt), replace = TRUE,
                               prob = c(0.8, 0.2)), "TEXAS", NA)
   rpt$totalOffspring <- sample(0:3, size = nrow(rpt), replace = TRUE,
@@ -26,7 +26,7 @@ test_that("orderReport correctly orders the report without age column", {
   rpt1 <- orderReport(rpt, ped)
   expect_equal(nrow(rpt1), nrow(rpt))
   expect_true(all(rpt1$id %in% rpt1$id))
-  suppressWarnings(set.seed(100, sample.kind = "Rounding"))
+  set_seed(100)
   rpt$origin <- ifelse(sample(c(TRUE, FALSE), size = nrow(rpt), replace = TRUE,
                               prob = c(0.8, 0.2)), "TEXAS", NA)
   rpt$totalOffspring <- sample(0:3, size = nrow(rpt), replace = TRUE,

@@ -1,6 +1,6 @@
 context("meanKinship")
 library(testthat)
-suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+set_seed(10)
 samp <- c(0, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625)
 kmat <- sample(samp, 25, replace = TRUE)
 kmat <- matrix(kmat, nrow = 5)

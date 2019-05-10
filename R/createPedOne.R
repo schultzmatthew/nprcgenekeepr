@@ -5,7 +5,7 @@
 #' @importFrom lubridate mdy
 #' @export
 createPedOne <- function(savePed = TRUE) {
-  suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+  set_seed(10)
   pedOne <- data.frame(
     ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
     `si re` = c(NA, NA, NA, NA, "s1", "s1", "s2", "s2"),

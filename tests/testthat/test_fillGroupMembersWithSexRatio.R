@@ -1,7 +1,7 @@
 context("fillGroupMembersWithSexRatio")
 
 data("examplePedigree")
-suppressWarnings(set.seed(10, sample.kind = "Rounding"))
+set_seed(10)
 ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
                   reportErrors = FALSE)
 
