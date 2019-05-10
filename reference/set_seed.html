@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gets pedigree to ancestors of provided group leaving uninformative ancestors. — getProbandPedigree • nprcmanager</title>
+<title>Work around for unit tests using sample() — set_seed • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,13 +30,9 @@
 
 
 
-<meta property="og:title" content="Gets pedigree to ancestors of provided group leaving uninformative ancestors. — getProbandPedigree" />
+<meta property="og:title" content="Work around for unit tests using sample() — set_seed" />
 
-<meta property="og:description" content="Filters a pedigree down to only the ancestors of the provided group,
-removing unnecessary individuals from the studbook. This version builds
-the pedigree back in time starting from a group of probands. This will
-include all ancestors of the probands, even ones that might be
-uninformative." />
+<meta property="og:description" content="Work around for unit tests using sample()" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,41 +117,27 @@ uninformative." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gets pedigree to ancestors of provided group leaving uninformative ancestors.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getProbandPedigree.R'><code>R/getProbandPedigree.R</code></a></small>
-    <div class="hidden name"><code>getProbandPedigree.Rd</code></div>
+    <h1>Work around for unit tests using sample()</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/set_seed.R'><code>R/set_seed.R</code></a></small>
+    <div class="hidden name"><code>set_seed.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Filters a pedigree down to only the ancestors of the provided group,
-removing unnecessary individuals from the studbook. This version builds
-the pedigree back in time starting from a group of probands. This will
-include all ancestors of the probands, even ones that might be
-uninformative.</p>
+    <p>Work around for unit tests using sample()</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>getProbandPedigree</span>(<span class='no'>probands</span>, <span class='no'>ped</span>)</pre>
+    <pre class="usage"><span class='fu'>set_seed</span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>probands</th>
-      <td><p>a character vector with the list of animals whose ancestors
-should be included in the final pedigree.</p></td>
-    </tr>
-    <tr>
-      <th>ped</th>
-      <td><p>datatable that is the `Pedigree`. It contains pedigree
-information. The fields <code>sire</code> and <code>dam</code> are required.</p></td>
+      <th>seed</th>
+      <td><p>argument to <code>set.seed</code></p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A reduced pedigree.</p>
     
 
   </div>
@@ -163,9 +145,7 @@ information. The fields <code>sire</code> and <code>dam</code> are required.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
