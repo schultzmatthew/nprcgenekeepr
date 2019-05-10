@@ -6,6 +6,6 @@ set_seed <- function(seed = 1) {
   if (version >= 3.6) {
     suppressWarnings(set.seed(seed, sample.kind = "Rounding"))
   } else {
-    set.seed()
+    set.seed(seed)
   }
 }
