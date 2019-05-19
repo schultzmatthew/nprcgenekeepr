@@ -28,12 +28,12 @@ R. Mark Sharp
         useful for creating data structures for testing purposes and
         should not be used to set seeds for large simulations
 
-# nprcmanager 0.5.13 (20190430)
+# nprcmanager 0.5.13 (20190508)
 
   - Updated unit tests that were using set.seed to use a R version
     sensitive set.seed wrapper.
 
-# nprcmanager 0.5.12 (20190430)
+# nprcmanager 0.5.12 (20190507)
 
   - Updated nprcmanager.R to add **Pedigree Testing** and **Plotting**
     function lists.
