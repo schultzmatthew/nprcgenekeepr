@@ -8,6 +8,7 @@
 ^\.inst/extdata/rhesus_studbook_no_times_20180830\.txt
 ^\.inst/extdata/*\.docx$
 ^\.inst/extdata/interactive_use_tutorial\.html$
+^\.inst/extdata/*\.xlsx$
 ^\.inst/extdata/interactive_use_tutorial\.nb\.html$
 ^\.inst/extdata/meeting_notes\.html$
 ^\.inst/extdata/*\.png$

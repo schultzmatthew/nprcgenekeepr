@@ -5,11 +5,11 @@ Provided in reverse chronological order
 1. Updated Amanda's R, R packages, and installed version 0.5.10 (20190428) of
    nprcmanager.
 1. Demonstrated that new version of nprcmanager displayed suspicious parent
-   table in ErrorTab.
-1. Decided in new wording of "One or both parents are below the minimum 
+   table in ErrorTab. Done 20190428
+1. Decided on new wording of "One or both parents are below the minimum 
    parental age. Check both parent and offspring birth dates." to place
    before the Suspicious Parents table.
-1. Removed row label column in Suspicious Parents table.
+1. Removed row label column in Suspicious Parents table. Done 20190428
 1. Plan to add ability to read in pedigrees in Excel format to Input tab.
 1. Still need to complete items listed in 20190408 meeting notes. (See below.)
 1. Will provide a "Goldilocks" tutorial of Shiny application first.

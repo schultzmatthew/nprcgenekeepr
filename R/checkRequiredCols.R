@@ -13,12 +13,13 @@
 checkRequiredCols <- function(cols, reportErrors) {
   requiredCols <- getRequiredCols()
   # Checking for the required fields (id, sire, dam, sex)
-  if (!all(str_detect_fixed_all(cols, requiredCols))) {
+  if (!all(str_detect_fixed_all(cols, requiredCols)) |
+      length(cols) < length(requiredCols)) {
     if (reportErrors) {
       missingColumns <-
-        requiredCols[!str_detect_fixed_all(cols, requiredCols,
-                                           ignore_na = TRUE)]
-#      if (any(c("id", "sire", "dam") %in% missingColumns))
+        as.character(unlist(sapply(requiredCols, function(col) {
+          if (!any(col == cols)) col})))
+
       if (length(missingColumns) > 0)
         return(missingColumns)
     } else {

@@ -24,9 +24,9 @@
 #' "character" for display with xtables (in shiny)
 #' @export
 toCharacter <- function(df, headers = c("id", "sire", "dam")) {
-
-  for (i in seq_along(headers)) {
-    df[[i]] <- as.character(df[[i]])
+  headers <- intersect(names(df), headers)
+  for (col in headers) {
+    df[[col]] <- as.character(df[[col]])
   }
   return(df)
 }

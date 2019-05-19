@@ -5,19 +5,26 @@
 #' @param fileName character vector of temporary file path.
 #' @param sep column separator in CSV file
 #' @import futile.logger
+#' @importFrom readxl excel_format
+#' @importFrom utils read.table
 #' @export
 getBreederPed <- function(fileName, sep = ",") {
   flog.debug(paste0("in getBreederPed\n"),
              name = "nprcmanager")
-
-  breeders <- read.csv(fileName,
-                       header = TRUE,
-                       sep = sep,
-                       stringsAsFactors = FALSE,
-                       na.strings = c("", "NA"),
-                       check.names = FALSE)
-  flog.debug(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
-             nrow(breeders), "\n"), name = "nprcmanager")
+  if (excel_format(fileName) %in% c("xls", "xlsx")) {
+    breeders <- readExcelPOSIXToCharacter(fileName)
+    flog.debug(paste0("in getBreederPed after readxl, nrow(breeders) = ",
+                      nrow(breeders), "\n"), name = "nprcmanager")
+  } else {
+    breeders <- read.csv(fileName,
+                         header = TRUE,
+                         sep = sep,
+                         stringsAsFactors = FALSE,
+                         na.strings = c("", "NA"),
+                         check.names = FALSE)
+    flog.debug(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
+                      nrow(breeders), "\n"), name = "nprcmanager")
+  }
   breeders <- as.character(breeders[ , 1])
   ped <- getLkDirectRelatives(ids = breeders)
   if (is.null(ped)) {

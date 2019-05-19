@@ -19,27 +19,24 @@ shinyServer(function(input, output, session) {
       flog.threshold(INFO, name = "nprcmanager")
     }
     isolate({
-      flog.debug(paste0("1st. input$dataSource: ", input$dataSource,
-                        "; input$sepOne: ", input$sepOne,
-                        "; input$sepTwo: ", input$sepTwo,
-                        "; input$sepThree: ", input$sepThree),
+      flog.debug(paste0("1st. input$fileContent: ", input$fileContent,
+                        "; input$fileType: ", input$fileType,
+                        "; input$separator: ", input$separator),
                  name = "nprcmanager")
-      if (input$dataSource == "pedFile") {
-        sep <- input$sepOne
+      sep <- input$separator
+      if (input$fileContent == "pedFile") {
         pedigreeFile <- input$pedigreeFileOne
-        flog.debug(paste0("pedigreeFileOne - pedigreeFile$name: ",
+        flog.debug(paste0("pedigreeFile - pedigreeFile$name: ",
                           pedigreeFile$name,
                           "; pedigreeFile$datapath: ", pedigreeFile$datapath),
                    name = "nprcmanager")
-      } else if (input$dataSource == "commonPedGenoFile") {
-        sep <- input$sepTwo
+      } else if (input$fileContent == "commonPedGenoFile") {
         pedigreeFile <- input$pedigreeFileTwo
         flog.debug(paste0("pedigreeFileTwo - pedigreeFile$name: ",
                           pedigreeFile$name,
                           "; pedigreeFile$datapath: ", pedigreeFile$datapath),
                    name = "nprcmanager")
-      } else if (input$dataSource == "separatePedGenoFile") {
-        sep <- input$sepThree
+      } else if (input$fileContent == "separatePedGenoFile") {
         pedigreeFile <- input$pedigreeFileThree
         genotypeFile <- input$genotypeFile
         flog.debug(paste0("pedigreeFileThree - pedigreeFile$name: ",
@@ -48,8 +45,7 @@ shinyServer(function(input, output, session) {
                           "; genotypeFile$name: ", genotypeFile$name,
                           "; genotypeFile$datapath: ", genotypeFile$datapath),
                    name = "nprcmanager")
-      } else if (input$dataSource == "breeders") {
-        sep <- input$sepFour
+      } else if (input$fileContent == "breeders") {
         pedigreeFile <- input$breederFile
         flog.debug(paste0("breederFile - pedigreeFile$name: ",
                           pedigreeFile$name, "; ",
@@ -79,11 +75,11 @@ shinyServer(function(input, output, session) {
       if (is.null(pedigreeFile)) {
         return(NULL)
       }
-      flog.debug(paste0("before read.table input$dataSource: ",
-                        input$dataSource),
+      flog.debug(paste0("before Load pedigree table ",
+                        input$fileContent),
                  name = "nprcmanager")
       # Load pedigree table
-      if (input$dataSource == "breeders") {
+      if (input$fileContent == "breeders") {
         flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
                    name = "nprcmanager")
         breederPed <- getBreederPed(pedigreeFile$datapath, sep = sep)
@@ -103,13 +99,8 @@ shinyServer(function(input, output, session) {
                      name = "nprcmanager")
         }
       } else {
-        breederPed <- read.table(pedigreeFile$datapath,
-                      header = TRUE,
-                      sep = sep,
-                      stringsAsFactors = FALSE,
-                      na.strings = c("", "NA"),
-                      check.names = FALSE)
-        flog.debug(paste0("after read.table pedigreeFile$name: ",
+        breederPed <- getPedigree(pedigreeFile$datapath, sep = sep)
+        flog.debug(paste0("after getPedigree pedigreeFile$name: ",
                           pedigreeFile$name,
                           "; contents rows: ", nrow(breederPed),
                           ", columns: ", ncol(breederPed), "; col names: '",
@@ -118,23 +109,18 @@ shinyServer(function(input, output, session) {
                    name = "nprcmanager")
       }
 
-      if (is.null(input$dataSource)) {
-        stop("Did not expect input$dataSource to be NULL")
-      } else if (input$dataSource == "separatePedGenoFile") {
+      if (is.null(input$fileContent)) {
+        stop("Did not expect input$fileContent to be NULL")
+      } else if (input$fileContent == "separatePedGenoFile") {
         # Load pedigree table
-        flog.debug(paste0("before read.table genotypeFile$datapath: ",
+        flog.debug(paste0("before getGenotypes genotypeFile$datapath: ",
                           genotypeFile$datapath,
                           "; contents rows: ", nrow(breederPed),
                           ", columns: ", ncol(breederPed), "; col names: '",
                           paste(names(breederPed), collapse = "', '"), "'",
                           sep = ""),
                    name = "nprcmanager")
-        genotype <- read.table(genotypeFile$datapath,
-                             header = TRUE,
-                             sep = sep,
-                             stringsAsFactors = FALSE,
-                             na.strings = c("", "NA"),
-                             check.names = FALSE)
+        genotype <- getGenotypes(genotypeFile$datapath, sep = sep)
         flog.debug(paste0("genotype$name: ", genotype$name,
                           "; contents rows: ", nrow(genotype),
                           ", columns: ", ncol(genotype), "; col names: '",

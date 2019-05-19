@@ -32,13 +32,20 @@ uitpInput <-
           "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
         ),
         helpText(
-          "Select how you are submitting data.
-          See the Input File Handling information on the right for
-          file content and format specifications."
+          "Select how you are submitting data."
         ),
         radioButtons(
-          "dataSource",
-          label = "File Type(s)",
+          "fileType",
+          label = "File Type",
+          choices = list(
+            "Excel" = "fileTypeExcel",
+            "Text" = "fileTypeText"
+          ),
+          selected = NULL
+        ),
+        radioButtons(
+          "fileContent",
+          label = "File Content",
           choices = list(
             "Pedigree(s) file only; genotypes not provided" = "pedFile",
             "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
@@ -49,9 +56,9 @@ uitpInput <-
           selected = NULL
         ),
         conditionalPanel(
-          condition = "input.dataSource == 'pedFile'",
+          condition = "input.fileType == 'fileTypeText'",
           radioButtons(
-            "sepOne",
+            "separator",
             label = "Separator",
             choices = list(
               "Comma" = ",",
@@ -59,50 +66,22 @@ uitpInput <-
               "Tab" = "\t"
             ),
             selected = ","
-          ),
+          )),
+        conditionalPanel(
+          condition = "input.fileContent == 'pedFile'",
           fileInput("pedigreeFileOne", label = "Select Pedigree File")
         ),
         conditionalPanel(
-          condition = "input.dataSource == 'commonPedGenoFile'",
-          radioButtons(
-            "sepTwo",
-            label = "Separator",
-            choices = list(
-              "Comma" = ",",
-              "Semicolon" = ";",
-              "Tab" = "\t"
-            ),
-            selected = ","
-          ),
+          condition = "input.fileContent == 'commonPedGenoFile'",
           fileInput("pedigreeFileTwo", label = "Select Pedigree-Genotype File")
         ),
         conditionalPanel(
-          condition = "input.dataSource == 'separatePedGenoFile'",
-          radioButtons(
-            "sepThree",
-            label = "Separator",
-            choices = list(
-              "Comma" = ",",
-              "Semicolon" = ";",
-              "Tab" = "\t"
-            ),
-            selected = ","
-          ),
+          condition = "input.fileContent == 'separatePedGenoFile'",
           fileInput("pedigreeFileThree", label = "Select Pedigree File"),
           fileInput("genotypeFile", label = "Select Genotype File")
         ),
         conditionalPanel(
-          condition = "input.dataSource == 'breeders'",
-          radioButtons(
-            "sepFour",
-            label = "Separator",
-            choices = list(
-              "Comma" = ",",
-              "Semicolon" = ";",
-              "Tab" = "\t"
-            ),
-            selected = ","
-          ),
+          condition = "input.fileContent == 'breeders'",
           fileInput("breederFile", label = "Select Breeder File")
         ),
         popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
