@@ -3,6 +3,41 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.14 (20190518)
+
+  - Added ability to use Excel files as input
+      - Added getGenotypes, getPedigree, getBreederPed,
+        readExcelPOSIXToCharacter,
+      - Added selection of Excel or Text file to uitpInput.R and
+        modified other aspects to separate out the delimiter selection
+        logic.
+      - Default file type is Excel.
+      - If a user selects and Excel file and an Excel file is detected,
+        all file type and delimiter selections are ignored and the Excel
+        file is used and no error or warning is given.
+  - Improved checkRequiredCols, toCharacter and getDatedFileName
+    functions
+  - Exported set\_seed. This will be moved into rmsutilityr
+  - Removed erroneous toCharacter documentation
+  - Added set\_seed
+      - Tried unsuccessfuly to use the RNGkind function and the
+        sample.kind argument to set.seed, but found neither existed
+        prior to R 3.6.
+      - Created a R version sensitive version of set\_seed that
+        duplicates the pre-R version 3.6 set.seed function. This is only
+        useful for creating data structures for testing purposes and
+        should not be used to set seeds for large simulations
+
+# nprcmanager 0.5.13 (20190430)
+
+  - Updated unit tests that were using set.seed to use a R version
+    sensitive set.seed wrapper.
+
+# nprcmanager 0.5.12 (20190430)
+
+  - Updated nprcmanager.R to add **Pedigree Testing** and **Plotting**
+    function lists.
+
 # nprcmanager 0.5.11 (20190430)
 
   - Changed wording and format above Suspicious Parent table in ErrorTab

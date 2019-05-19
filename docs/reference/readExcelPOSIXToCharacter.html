@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sets sex for animals listed as either a sire or dam. — correctParentSex • nprcmanager</title>
+<title>Read in Excel file and convert POSIX dates to character — readExcelPOSIXToCharacter • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Sets sex for animals listed as either a sire or dam. — correctParentSex" />
+<meta property="og:title" content="Read in Excel file and convert POSIX dates to character — readExcelPOSIXToCharacter" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="Read in Excel file and convert POSIX dates to character" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,59 +117,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sets sex for animals listed as either a sire or dam.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/correctParentSex.R'><code>R/correctParentSex.R</code></a></small>
-    <div class="hidden name"><code>correctParentSex.Rd</code></div>
+    <h1>Read in Excel file and convert POSIX dates to character</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/readExcelPOSIXToCharacter.R'><code>R/readExcelPOSIXToCharacter.R</code></a></small>
+    <div class="hidden name"><code>readExcelPOSIXToCharacter.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p>Read in Excel file and convert POSIX dates to character</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>correctParentSex</span>(<span class='no'>id</span>, <span class='no'>sire</span>, <span class='no'>dam</span>, <span class='no'>sex</span>, <span class='no'>recordStatus</span>, <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>readExcelPOSIXToCharacter</span>(<span class='no'>fileName</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
-      <td><p>character vector with unique identifier for an individual</p></td>
-    </tr>
-    <tr>
-      <th>sire</th>
-      <td><p>character vector with unique identifier for an
-individual's father (<code>NA</code> if unknown).</p></td>
-    </tr>
-    <tr>
-      <th>dam</th>
-      <td><p>character vector with unique identifier for an
-individual's mother (<code>NA</code> if unknown).</p></td>
-    </tr>
-    <tr>
-      <th>sex</th>
-      <td><p>factor with levels: "M", "F", "U". Sex specifier for an
-individual.</p></td>
-    </tr>
-    <tr>
-      <th>recordStatus</th>
-      <td><p>character vector with value of <code>"added"</code> or
-<code>"original"</code>, which indicates whether an animal was added or an
-original animal.</p></td>
-    </tr>
-    <tr>
-      <th>reportErrors</th>
-      <td><p>logical value if TRUE will scan the entire file and
-make a list of all errors found. The errors will be returned in a
-list of list where each sublist is a type of error found.</p></td>
+      <th>fileName</th>
+      <td><p>character vector of temporary file path.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A factor with levels: "M", "F", "H", and "U"
-representing the sex codes for the ids provided</p>
+    <p>A pedigree file compatible with others in this package.</p>
     
 
   </div>

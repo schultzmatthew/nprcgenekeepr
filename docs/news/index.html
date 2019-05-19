@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.14</span>
       </span>
     </div>
 
@@ -118,6 +118,43 @@
       <small>Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="nprcmanager-0-5-14-20190518" class="section level1">
+<h1 class="page-header">
+<a href="#nprcmanager-0-5-14-20190518" class="anchor"></a>nprcmanager 0.5.14 (20190518)</h1>
+<ul>
+<li>Added ability to use Excel files as input
+<ul>
+<li>Added getGenotypes, getPedigree, getBreederPed, readExcelPOSIXToCharacter,</li>
+<li>Added selection of Excel or Text file to uitpInput.R and modified other aspects to separate out the delimiter selection logic.</li>
+<li>Default file type is Excel.</li>
+<li>If a user selects and Excel file and an Excel file is detected, all file type and delimiter selections are ignored and the Excel file is used and no error or warning is given.</li>
+</ul>
+</li>
+<li>Improved checkRequiredCols, toCharacter and getDatedFileName functions</li>
+<li>Exported set_seed. This will be moved into rmsutilityr</li>
+<li>Removed erroneous toCharacter documentation</li>
+<li>Added set_seed
+<ul>
+<li>Tried unsuccessfuly to use the RNGkind function and the sample.kind argument to set.seed, but found neither existed prior to R 3.6.</li>
+<li>Created a R version sensitive version of set_seed that duplicates the pre-R version 3.6 set.seed function. This is only useful for creating data structures for testing purposes and should not be used to set seeds for large simulations</li>
+</ul>
+</li>
+</ul>
+</div>
+    <div id="nprcmanager-0-5-13-20190430" class="section level1">
+<h1 class="page-header">
+<a href="#nprcmanager-0-5-13-20190430" class="anchor"></a>nprcmanager 0.5.13 (20190430)</h1>
+<ul>
+<li>Updated unit tests that were using set.seed to use a R version sensitive set.seed wrapper.</li>
+</ul>
+</div>
+    <div id="nprcmanager-0-5-12-20190430" class="section level1">
+<h1 class="page-header">
+<a href="#nprcmanager-0-5-12-20190430" class="anchor"></a>nprcmanager 0.5.12 (20190430)</h1>
+<ul>
+<li>Updated nprcmanager.R to add <strong>Pedigree Testing</strong> and <strong>Plotting</strong> function lists.</li>
+</ul>
+</div>
     <div id="nprcmanager-0-5-11-20190430" class="section level1">
 <h1 class="page-header">
 <a href="#nprcmanager-0-5-11-20190430" class="anchor"></a>nprcmanager 0.5.11 (20190430)</h1>
@@ -280,6 +317,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#nprcmanager-0-5-14-20190518">0.5.14</a></li>
+        <li><a href="#nprcmanager-0-5-13-20190430">0.5.13</a></li>
+        <li><a href="#nprcmanager-0-5-12-20190430">0.5.12</a></li>
         <li><a href="#nprcmanager-0-5-11-20190430">0.5.11</a></li>
         <li><a href="#nprcmanager-0-5-10-20190428">0.5.10</a></li>
         <li><a href="#nprcmanager-0-5-09-20190428">0.5.09</a></li>

@@ -64,7 +64,7 @@ converting columns id, sire, and dam." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.14</span>
       </span>
     </div>
 
@@ -152,20 +152,6 @@ character class. Defaults to <code><a href='https://www.rdocumentation.org/packa
     <p>A dataframe with the specified columns converted to class
 "character" for display with xtables (in shiny)</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>NOTE:
-Function was created to deal with a display bug in xtables (used by Shiny)
-The bug causes Date columns to be displayed improperly
-Shiny also displays all Numbers (including integers) with 2 decimal places
-Comment by R. Mark Sharp - this is just one way to modify the number of
-digits displayed.
-library(DT)</p>
-<p>set_seed(10)
-data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) <!-- %&gt;% -->
-  datatable() <!-- %&gt;% -->
-  formatRound(columns=c('x', 'y'), digits=3)</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -174,8 +160,6 @@ data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) <!-- %&gt;% -->
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

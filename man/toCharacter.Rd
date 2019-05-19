@@ -21,17 +21,3 @@ A dataframe with the specified columns converted to class
 Converts designated columns of a dataframe to character. Defaults to
 converting columns \code{id}, \code{sire}, and \code{dam}.
 }
-\details{
-NOTE:
-Function was created to deal with a display bug in xtables (used by Shiny)
-The bug causes Date columns to be displayed improperly
-Shiny also displays all Numbers (including integers) with 2 decimal places
-Comment by R. Mark Sharp - this is just one way to modify the number of
-digits displayed.
-library(DT)
-
-set_seed(10)
-data.frame(x=runif(10), y=rnorm(10), z=rpois(10, 1)) %>%
-  datatable() %>%
-  formatRound(columns=c('x', 'y'), digits=3)
-}
