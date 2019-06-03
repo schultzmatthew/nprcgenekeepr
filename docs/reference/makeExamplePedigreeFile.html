@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Choose date based on <code>earlier</code> flag. — chooseDate • nprcmanager</title>
+<title>Write copy of ExamplePedigree.csv file — makeExamplePedigreeFile • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Choose date based on <code>earlier</code> flag. — chooseDate" />
+<meta property="og:title" content="Write copy of ExamplePedigree.csv file — makeExamplePedigreeFile" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="Uses examplePedigree data structure to create an example data file" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,60 +117,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Choose date based on <code>earlier</code> flag.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/chooseDate.R'><code>R/chooseDate.R</code></a></small>
-    <div class="hidden name"><code>chooseDate.Rd</code></div>
+    <h1>Write copy of ExamplePedigree.csv file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeExamplePedigreeFile.R'><code>R/makeExamplePedigreeFile.R</code></a></small>
+    <div class="hidden name"><code>makeExamplePedigreeFile.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p>Uses <code>examplePedigree</code> data structure to create an example data file</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>chooseDate</span>(<span class='no'>d1</span>, <span class='no'>d2</span>, <span class='kw'>earlier</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>d1</th>
-      <td><p><code>Date</code> vector with the first of two dates to compare.</p></td>
-    </tr>
-    <tr>
-      <th>d2</th>
-      <td><p><code>Date</code> vector with the second of two dates to compare.</p></td>
-    </tr>
-    <tr>
-      <th>earlier</th>
-      <td><p>logical variable with <code>TRUE</code> if the earlier of the two
-dates is to be returned, otherwise the later is returned. Default is
-<code>TRUE</code>.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>Date</code> vector of chosen dates or <code>NA</code> where neither
-is provided</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Given two dates, one is selected to be returned based on whether
-it occurred earlier or later than the other. <code>NAs</code> are ignored if
-possible.</p>
-    
+    <pre class="usage"><span class='fu'>makeExamplePedigreeFile</span>()</pre>
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

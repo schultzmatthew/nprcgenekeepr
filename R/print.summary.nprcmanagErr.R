@@ -1,11 +1,11 @@
-#' print.summary.nprcmanagErr
+#' print.summary.nprcmanagErr print.summary.nprcmanagGV
 #'
 #' @return object to send to generic print function
 #'
 #' @rdname print
 #' @method print summary.nprcmanagErr
-#' @param x object of class summary.nprcmanagErr
-#' @param ... additional arguments for the \code{print.default} statement
+#' @param x object of class summary.nprcmanagErr and class list
+#' @param ... additional arguments for the \code{summary.default} statement
 #' @importFrom stringi stri_c
 #' @export
 print.summary.nprcmanagErr <- function(x, ...) {
@@ -24,4 +24,18 @@ print.summary.nprcmanagErr <- function(x, ...) {
   oldClass(txt) <- cl[cl != "nprcmanagErr"]
   #NextMethod("print")
   invisible(txt)
+}
+#' @rdname print
+#' @return object to send to generic print function
+#' @method print summary.nprcmanagGV
+#' @export
+print.summary.nprcmanagGV <- function(x, ...) {
+  cl <- oldClass(x)
+  #cat("This is a summary printout from nprcmanagGV\n\n")
+  for (line in x) {
+    cat(line, "\n")
+  }
+  oldClass(x) <- cl[cl != "nprcmanagGV"]
+  #NextMethod("print")
+  invisible(x)
 }

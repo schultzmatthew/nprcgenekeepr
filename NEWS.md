@@ -3,6 +3,13 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.15 (20190602)
+
+  - Added ability to create an example pedigree file using the
+    **examplePedigree** data structure.
+  - Added **summary.nprcmanagGV** and **print.summary.nprcmangGV**
+    functions
+
 # nprcmanager 0.5.14 (20190518)
 
   - Added ability to use Excel files as input

@@ -10,6 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.15 (20190602)
+-   Added ability to create an example pedigree file using the 
+    __examplePedigree__ data structure.
+-   Added __summary.nprcmanagGV__ and __print.summary.nprcmangGV__ functions
+
 # nprcmanager 0.5.14 (20190518)
 -   Added ability to use Excel files as input
     -    Added getGenotypes, getPedigree, getBreederPed, 

@@ -65,6 +65,9 @@ reference:
   - '`getRequiredCols`'
   - '`getSiteInfo`'
   - '`kinship`'
+  - '`makeExamplePedigreeFile`'
+  - '`print.summary.nprcmanagErr`'
+  - '`print.summary.nprcmanagGV`'
   - '`qcStudbook`'
   - '`rankSubjects`'
   - '`kinMatrix2LongForm`'
@@ -74,6 +77,7 @@ reference:
   - '`runManager`'
   - '`trimPedigree`'
   - '`summary.nprcmanagErr`'
+  - '`summary.nprcmanagGV`'
 - title: All exposed functions
   desc: ~
   contents:
@@ -183,6 +187,7 @@ reference:
   - '`kinship`'
   - '`makeAvailable`'
   - '`makeCEPH`'
+  - '`makeExamplePedigreeFile`'
   - '`makeGroupMembers`'
   - '`makeGrpNum`'
   - '`makeRelationClasseTable`'
@@ -192,6 +197,7 @@ reference:
   - '`offspringCounts`'
   - '`orderReport`'
   - '`print.summary.nprcmanagErr`'
+  - '`print.summary.nprcmanagGV`'
   - '`qcStudbook`'
   - '`rankSubjects`'
   - '`rbindFill`'
@@ -211,6 +217,7 @@ reference:
   - '`setExit`'
   - '`set_seed`'
   - '`summary.nprcmanagErr`'
+  - '`summary.nprcmanagGV`'
   - '`toCharacter`'
   - '`trimPedigree`'
   - '`unknown2NA`'
