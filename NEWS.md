@@ -3,12 +3,21 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.16 (20190615)
+
+  - Added functions used to obfuscate pedigrees. This changes the IDs,
+    all dates and age calculations while maintaining internal relational
+    consistency (parent IDs correspond) and date, though different are
+    similar.
+
 # nprcmanager 0.5.15 (20190602)
 
   - Added ability to create an example pedigree file using the
     **examplePedigree** data structure.
   - Added **summary.nprcmanagGV** and **print.summary.nprcmangGV**
     functions
+  - Added description of age-sex pyramid plot to the *summary of major
+    functions*.
 
 # nprcmanager 0.5.14 (20190518)
 

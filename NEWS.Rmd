@@ -10,10 +10,17 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.16 (20190615)
+-   Added functions used to obfuscate pedigrees. This changes the IDs, all 
+    dates and age calculations while maintaining internal relational 
+    consistency (parent IDs correspond) and date, though different are
+    similar.
+    
 # nprcmanager 0.5.15 (20190602)
 -   Added ability to create an example pedigree file using the 
     __examplePedigree__ data structure.
 -   Added __summary.nprcmanagGV__ and __print.summary.nprcmangGV__ functions
+-   Added description of age-sex pyramid plot to the _summary of major functions_.
 
 # nprcmanager 0.5.14 (20190518)
 -   Added ability to use Excel files as input

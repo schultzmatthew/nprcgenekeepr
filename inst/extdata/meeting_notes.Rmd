@@ -2,6 +2,20 @@
 Provided in reverse chronological order
 
 ## 20190603
+1. Joint Working Group Meeting week before Thanksgiving. We will meet with the Breeding Colony Managers Group. November 19-21, 2019.
+
+1. Work on loop code: have list of animals involved in loops with counts, number of loops, number of animals in loops.
+   Not high priority.
+1. DCM wants to report on problems in current breeding groups prior occurance.
+   -   Amanda has developed an initial set of questions.
+       -   Are all Indian origin?
+       -   Has alpha male been in group > 3 years.
+       -   Are kinship coefficients of >=0.0156 between male and females >= 2.5 years old
+           (settable) within a breeding group. 
+       -   Are kinship coefficients of >=0.0156 between males >= 2.5 years old
+           (settable) within a breeding group. 
+       -   Are offspring equally distributed among female breeders.
+       -   Are any members flagged to be genotyped. This likely does not reside in demographics.
 1. Does Amanda know what the _2014-10-16_ResPed_v1.1.txt_, 
    _BreedingGroups1_4MendozaTest.csv_, _Jmac_studbook_20180711.csv_,
    _Jmac_studbook_20180711.txt_, and

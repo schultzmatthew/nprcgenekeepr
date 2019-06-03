@@ -40,8 +40,8 @@
 #'
 #' @export
 getPossibleCols <- function() {
-  c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
-    "ancestry", "population", "origin", "status", "condition",
+  c("id", "sire", "dam", "sex", "gen", "birth", "exit", "death", "age",
+    "ancestry", "population", "origin", "status", "condition", "departure",
     "spf", "vasxOvx", "pedNum", "first", "second", "first_name",
     "second_name", "recordStatus")
 }

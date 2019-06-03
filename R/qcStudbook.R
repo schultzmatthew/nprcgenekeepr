@@ -219,7 +219,7 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
   }
   # setting age:
   # uses current date as the end point if no exit date is available
-  if (("birth" %in% cols) && !("age" %in% cols)) {
+  if (any(("birth" %in% cols)) && !any(("age" %in% cols))) {
     if (all(is.Date(sb$birth)))
       sb["age"] <- calcAge(sb$birth, sb$exit)
   }
