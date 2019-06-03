@@ -27,13 +27,11 @@ scripts.
 
 At present, the application supports 5 functions:
 
-``` 
-1. Quality control of uploaded studbooks  
-2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
-3. Generation of Genetic Value Analysis Reports  
-4. Creation of potential breeding groups  
-5. Display of an age by sex pyramid plot  
-```
+    1. Quality control of uploaded studbooks  
+    2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
+    3. Display of an age by sex pyramid plot  
+    4. Generation of Genetic Value Analysis Reports
+    5. Creation of potential breeding groups
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic
@@ -106,6 +104,33 @@ console.
 data("exampleNprcmanagerConfig")
 View(exampleNprcmanagerConfig)
 ```
+
+### Display of an age by sex pyramid plot
+
+Adapted from  on 20190603. Written by Matt Rosenberg. Updated May 07,
+2019
+
+The most important demographic characteristic of a population is its
+age-sex structure. Age-sex pyramids (also known as population pyramids)
+graphically display this information to improve understanding and make
+comparison easy. The population pyramid sometimes has a distinctive
+pyramid-like shape when displaying a growing population.
+
+#### How to Read the Age-Sex Graph
+
+An age-sex pyramid breaks down a population into male and female genders
+and age ranges. Usually, you’ll find the left side of the pyramid
+graphing the male population and the right side of the pyramid
+displaying the female population.
+
+Along the horizontal axis (x-axis) of a population pyramid, the graph
+displays the population either as a total population of that age or as a
+percentage of the population at that age. The center of the pyramid
+starts at zero population and extends out to the left for males and
+right for females in increasing size, or proportion of the population.
+
+Along the vertical axis (y-axis), age-sex pyramids display two-year age
+increments, from birth at the bottom to old age at the top.
 
 ### Genetic Value Analysis Reports
 
