@@ -98,5 +98,7 @@ reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
                     maleFounders = nrow(males),
                     femaleFounders = nrow(females),
                     total = (nrow(males) + nrow(females)))
+  class(finalData) <- append(class(finalData),"nprcmanagGV")
+
   return(finalData)
 }

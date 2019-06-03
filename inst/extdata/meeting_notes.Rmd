@@ -1,6 +1,30 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190603
+1. Does Amanda know what the _2014-10-16_ResPed_v1.1.txt_, 
+   _BreedingGroups1_4MendozaTest.csv_, _Jmac_studbook_20180711.csv_,
+   _Jmac_studbook_20180711.txt_, and
+   _MendozaC1C2newharemstest.csv_ files represent?
+   Can they be use for instruction? 
+   Are some to be used with the Example_Pedigree file?
+1. Decide which pedigree files to leave in package.
+1. Figure out how to best provide example pedigree files.
+1. Items brought forward from previous meetings to prevent forgetting them.
+   1. From 20190311
+      -  Amanda sent Mark the 2015-02-14_Genetic_metrics_white paper_Final.docx 
+         paper for him to review and collect ideas for a renewed ORIP Reporting
+         tab. Amanda suggested that we need to propose collection of these 
+         metrics from all primate centers. 
+         Genetic and Genomics Working Group website: 
+         https://nprcresearch.org/primate/genetics-genomics/genetics-genomics-working-group.php
+   1. From 20190408
+         -  Consider adding the ability to ignore founders if the user selects 
+            that option. 
+         -  Go through all primary data structure names and definitions to update 
+            and correct.
+         -  Edit all function descriptions to update and correct
+
 ## 20190429
 1. Updated Amanda's R, R packages, and installed version 0.5.10 (20190428) of
    nprcmanager.
@@ -8,9 +32,10 @@ Provided in reverse chronological order
    table in ErrorTab. Done 20190428
 1. Decided on new wording of "One or both parents are below the minimum 
    parental age. Check both parent and offspring birth dates." to place
-   before the Suspicious Parents table.
+   before the Suspicious Parents table. Done 20190428
 1. Removed row label column in Suspicious Parents table. Done 20190428
-1. Plan to add ability to read in pedigrees in Excel format to Input tab.
+1. Plan to add ability to read in pedigrees in Excel format to Input tab. 
+   Done 20190519
 1. Still need to complete items listed in 20190408 meeting notes. (See below.)
 1. Will provide a "Goldilocks" tutorial of Shiny application first.
 
@@ -26,8 +51,9 @@ Provided in reverse chronological order
       Check, correct, and create where needed function lists including lists
       of all functions, pedigree file testing functions, genetic value 
       functions, plotting functions, breeding group formation functions,
-      and gene dropping functions (if possible).
-   -  Consider making a summary function for the gvReport structure.
+      and gene dropping functions (if possible). Done 20190515
+   -  Consider making a summary function for the gvReport structure. 
+      Done 20190602
    -  Consider adding the ability to ignore founders if the user selects 
       that option. 
     
@@ -58,56 +84,56 @@ slightly higher for non-founders than what this function will calculate.
   Done 20190311.
 1. Invoice for Jan 12 - Mar 11, 2019 sent 20190311.
 1. Renamed (Pyramid Plot to Age Pyramid Plot) and moved to the right of Pedigree 
-  Browser. Done 20190311
+   Browser. Done 20190311
 1. Amanda sent Mark the 2015-02-14_Genetic_metrics_white paper_Final.docx paper for
-  him to review and collect ideas for a renewed ORIP Reporting tab.
-  Amanda suggested that we need to propose collection of these metrics from all
-  primate centers. Genetic and Genomics Working Group website: https://nprcresearch.org/primate/genetics-genomics/genetics-genomics-working-group.php
+   him to review and collect ideas for a renewed ORIP Reporting tab.
+   Amanda suggested that we need to propose collection of these metrics from all
+   primate centers. Genetic and Genomics Working Group website: https://nprcresearch.org/primate/genetics-genomics/genetics-genomics-working-group.php
 1. Still have two features to add and one graphic element to correct.
-  -  Allow user to enter the number of groups of seed animals to be entered.
-    See _Seed Groups_ from last month's notes. Done 20190406
-  -  Add __minParentAge__ to check box for _Use minimum parent age for age
+   -  Allow user to enter the number of groups of seed animals to be entered.
+      See _Seed Groups_ from last month's notes. Done 20190406
+   -  Add __minParentAge__ to check box for _Use minimum parent age for age
     of animals to be grouped with the mother_. Done 20190406
 1. To meet again on 20190325 if Mark makes sufficient progress otherwise we will
-  meet on 20190408 at 4PM PAC.
+   meet on 20190408 at 4PM PAC.
   
 ## 20190225
 1. Mark to add additional unit tests for new seed group formation code.
 1. Items to add to instructions:
-  a.  Discuss what to do about overlapping group formation. 
+   a.  Discuss what to do about overlapping group formation. 
      Instruct the user to run the Make Groups command again to get 
      a new set of groups. The new set will overlap with the prior results,
      but will be mutually exclussive within a run.
 1. Mark to send an invoice at end of February. Amanda will send the amount of
-  funding available. Done 20190311
+   funding available. Done 20190311
 1. Seed Groups
-  -  Have user enter number of seed groups to form and then present that number
-    of windows.
-  -  Change label to "Optional: Seed Groups with Specific Animals". Done 20190311
-  -  Have it in its own gray box
+   -  Have user enter number of seed groups to form and then present that number
+      of windows.
+   -  Change label to "Optional: Seed Groups with Specific Animals". Done 20190311
+   -  Have it in its own gray box
 
 1. Pull downs to right in one column: Done 20190309
-  a. Number of groups desired
-  b. Animals will be grouped with mother that are below age (years):
-    [] Use minimum parent age. <-- default -- Have not figured out how to have
-    __minParentAge__ from Input tab to show up in the BreedingGroupFormation tab.
-    Have dropdown disappear if checkbox above is selected.
-  c. Animals with kinship above ....
-  d. Dropdown with 
-    -  Ignore females at or above the minimum parent age
-    -  Do not ignore females at or above the minimum parent age
-  e. Modify kinship dropdown to add common relationship nomenclature in parentheses.
-  f. Number of simulations
+   a. Number of groups desired
+   b. Animals will be grouped with mother that are below age (years):
+      [] Use minimum parent age. <-- default -- Have not figured out how to have
+     __minParentAge__ from Input tab to show up in the BreedingGroupFormation tab.
+     Have dropdown disappear if checkbox above is selected.
+   c. Animals with kinship above ....
+   d. Dropdown with 
+      -  Ignore females at or above the minimum parent age
+      -  Do not ignore females at or above the minimum parent age
+   e. Modify kinship dropdown to add common relationship nomenclature in parentheses.
+   f. Number of simulations
 1. Left column input: Done 20190309
-  a.  Make Groups in color and larger
-  b.  Enter the group to view
-  c.  Export Current Group
-  d.  Export Current Group Kinship Matrix
+   a.  Make Groups in color and larger
+   b.  Enter the group to view
+   c.  Export Current Group
+   d.  Export Current Group Kinship Matrix
 1. Example emails
-  a.  Example: Whether or not one of 10 females would work with a
-     particular male.
-  a.  Amanda is to collect other similar emails to use as ideas for
-     development of vignettes.
+   a.  Example: Whether or not one of 10 females would work with a
+       particular male.
+   a.  Amanda is to collect other similar emails to use as ideas for
+       development of vignettes.
 1. Next meeting March 11, 2019, at 4PM PAC.
 
 ## 20190114

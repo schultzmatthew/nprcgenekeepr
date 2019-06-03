@@ -1,4 +1,4 @@
-context("summary.nprcmangErr")
+context("summary.nprcmanagErr")
 library(testthat)
 library(lubridate)
 library(stringi)
