@@ -106,9 +106,9 @@
 <p>At present, the application supports 5 functions:</p>
 <pre><code>1. Quality control of uploaded studbooks  
 2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
-3. Generation of Genetic Value Analysis Reports  
-4. Creation of potential breeding groups  
-5. Display of an age by sex pyramid plot  </code></pre>
+3. Display of an age by sex pyramid plot  
+4. Generation of Genetic Value Analysis Reports
+5. Creation of potential breeding groups</code></pre>
 <p><strong>For more information see:</strong><br>
 A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (<em>Macaca mulatto</em>) Vinson, A ; Raboin, Mj <em>Journal Of The American Association For Laboratory Animal Science</em>, 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]</p>
 </div>
@@ -127,6 +127,19 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
 <p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
 <p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
+</div>
+<div id="display-of-an-age-by-sex-pyramid-plot" class="section level3">
+<h3 class="hasAnchor">
+<a href="#display-of-an-age-by-sex-pyramid-plot" class="anchor"></a>Display of an age by sex pyramid plot</h3>
+<p>Adapted from  on 20190603. Written by Matt Rosenberg. Updated May 07, 2019</p>
+<p>The most important demographic characteristic of a population is its age-sex structure. Age-sex pyramids (also known as population pyramids) graphically display this information to improve understanding and make comparison easy. The population pyramid sometimes has a distinctive pyramid-like shape when displaying a growing population.</p>
+<div id="how-to-read-the-age-sex-graph" class="section level4">
+<h4 class="hasAnchor">
+<a href="#how-to-read-the-age-sex-graph" class="anchor"></a>How to Read the Age-Sex Graph</h4>
+<p>An age-sex pyramid breaks down a population into male and female genders and age ranges. Usually, you’ll find the left side of the pyramid graphing the male population and the right side of the pyramid displaying the female population.</p>
+<p>Along the horizontal axis (x-axis) of a population pyramid, the graph displays the population either as a total population of that age or as a percentage of the population at that age. The center of the pyramid starts at zero population and extends out to the left for males and right for females in increasing size, or proportion of the population.</p>
+<p>Along the vertical axis (y-axis), age-sex pyramids display two-year age increments, from birth at the bottom to old age at the top.</p>
+</div>
 </div>
 <div id="genetic-value-analysis-reports" class="section level3">
 <h3 class="hasAnchor">
