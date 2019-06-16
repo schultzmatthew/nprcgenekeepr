@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>. — makeRoundUp • nprcmanager</title>
+<title>obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount. — obfuscatePed • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,11 +31,12 @@
 
 
 
-<meta property="og:title" content="Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>. — makeRoundUp" />
+<meta property="og:title" content="obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount. — obfuscatePed" />
 
-<meta property="og:description" content="Round up the provided integer vector int according to the
-modulas." />
+<meta property="og:description" content="User provides a pedigree object (ped), the number of characters to be
+used for alias IDs (size), and the maximum number of days that the
+birthdate can be shifted (maxDelta)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,33 +121,48 @@ modulas." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeRoundUp.R'><code>R/makeRoundUp.R</code></a></small>
-    <div class="hidden name"><code>makeRoundUp.Rd</code></div>
+    <h1>obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/obfuscatePed.R'><code>R/obfuscatePed.R</code></a></small>
+    <div class="hidden name"><code>obfuscatePed.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>.</p>
+    <p>User provides a pedigree object (<code>ped</code>), the number of characters to be
+used for alias IDs (<code>size</code>), and the maximum number of days that the
+birthdate can be shifted (<code>maxDelta</code>).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeRoundUp</span>(<span class='no'>int</span>, <span class='no'>modulas</span>)</pre>
+    <pre class="usage"><span class='fu'>obfuscatePed</span>(<span class='no'>ped</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>maxDelta</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>existingIds</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>int</th>
-      <td><p>integer vector</p></td>
+      <th>ped</th>
+      <td><p>pedigree object</p></td>
     </tr>
     <tr>
-      <th>modulas</th>
-      <td><p>integer value to use as the divisor.</p></td>
+      <th>size</th>
+      <td><p>integer value indicating number of characters in alias IDs</p></td>
+    </tr>
+    <tr>
+      <th>maxDelta</th>
+      <td><p>integer value indicating maximum number of days that
+the birthdate can be shifted</p></td>
+    </tr>
+    <tr>
+      <th>existingIds</th>
+      <td><p>character vector of existing aliases to avoid duplication.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>obfuscated pedigree</p>
     
 
   </div>
@@ -154,7 +170,9 @@ modulas." />
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

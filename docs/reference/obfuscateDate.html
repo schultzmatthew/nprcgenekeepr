@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>. — makeRoundUp • nprcmanager</title>
+<title>obfucateDate adds a random number of days bounded by plus and minus max delta — obfuscateDate • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>. — makeRoundUp" />
+<meta property="og:title" content="obfucateDate adds a random number of days bounded by plus and minus max delta — obfuscateDate" />
 
-<meta property="og:description" content="Round up the provided integer vector int according to the
-modulas." />
+<meta property="og:description" content="Get the base_date add a random number of days taken from a uniform
+distribution bounded by -max_delta and max_delta.
+Insure the resulting date is as least as large as the min_date." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,31 +119,37 @@ modulas." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeRoundUp.R'><code>R/makeRoundUp.R</code></a></small>
-    <div class="hidden name"><code>makeRoundUp.Rd</code></div>
+    <h1>obfucateDate adds a random number of days bounded by plus and minus max delta</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/obfuscateDate.R'><code>R/obfuscateDate.R</code></a></small>
+    <div class="hidden name"><code>obfuscateDate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>.</p>
+    <p>Get the base_date add a random number of days taken from a uniform
+distribution bounded by -max_delta and max_delta.
+Insure the resulting date is as least as large as the min_date.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeRoundUp</span>(<span class='no'>int</span>, <span class='no'>modulas</span>)</pre>
+    <pre class="usage"><span class='fu'>obfuscateDate</span>(<span class='no'>baseDate</span>, <span class='kw'>maxDelta</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='no'>minDate</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>int</th>
-      <td><p>integer vector</p></td>
+      <th>baseDate</th>
+      <td><p>list of Date objects with dates to be obfuscated</p></td>
     </tr>
     <tr>
-      <th>modulas</th>
-      <td><p>integer value to use as the divisor.</p></td>
+      <th>maxDelta</th>
+      <td><p>integer vector that is used to create min and max arguments
+to <code>runif</code> (<code><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif(n, min = 0, max = 1)</a></code>)</p></td>
+    </tr>
+    <tr>
+      <th>minDate</th>
+      <td><p>list object of Date objects that has the lower bound of resulting
+obfuscated dates</p></td>
     </tr>
     </table>
     
