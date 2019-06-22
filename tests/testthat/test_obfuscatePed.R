@@ -1,4 +1,4 @@
-context("obfuscateId")
+context("obfuscatePed")
 library(testthat)
 
 test_that("obfuscatePed creates correctly obfuscated pedigree", {

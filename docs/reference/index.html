@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.18</span>
       </span>
     </div>
 
@@ -135,21 +135,267 @@
       <tr>
         
         <td>
-          <p><code><a href="baboonBreeders.html">baboonBreeders</a></code> </p>
+          <p><code><a href="addAnimalsWithNoRelative.html">addAnimalsWithNoRelative()</a></code> </p>
         </td>
-        <td><p>baboonBreeders is a list of 29 baboon IDs that are potential breeders</p></td>
+        <td><p>addAnimalsWithNoRelative adds an NA value for all animals without a relative</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="baboonGvReport.html">baboonGvReport</a></code> </p>
+          <p><code><a href="addBackSecondParents.html">addBackSecondParents()</a></code> </p>
         </td>
-        <td><p>baboonGvReport is a genetic value report</p></td>
+        <td><p>addBackSecondParents Add back single parents trimmed pedigree</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="baboonPed.html">baboonPed</a></code> </p>
+          <p><code><a href="addErrTxt.html">addErrTxt()</a></code> </p>
         </td>
-        <td><p>baboonPed is a dataframe with 277 rows and 6 columns</p></td>
+        <td><p>addErrTxt Concatenates any errors from nprcmanagErr into narrative form</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addGenotype.html">addGenotype()</a></code> </p>
+        </td>
+        <td><p>Add genotype data to pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addGroupOfUnusedAnimals.html">addGroupOfUnusedAnimals()</a></code> </p>
+        </td>
+        <td><p>addGroupOfUnusedAnimals adds a group to the saved groups if needed</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addIdRecords.html">addIdRecords()</a></code> </p>
+        </td>
+        <td><p>addIdRecords Adds Ego records added having NAs for parent IDs</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addParents.html">addParents()</a></code> </p>
+        </td>
+        <td><p>Add parents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addSexAndAgeToGroup.html">addSexAndAgeToGroup()</a></code> </p>
+        </td>
+        <td><p>Forms a dataframe with Id, Sex, and current Age given a list of Ids and a pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="addUIds.html">addUIds()</a></code> </p>
+        </td>
+        <td><p>Eliminates partial parentage situations by adding unique placeholder
+IDs for the unknown parent.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agePyramidPlot.html">agePyramidPlot()</a></code> </p>
+        </td>
+        <td><p>Form age pyramid plot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="allTrueNoNA.html">allTrueNoNA()</a></code> </p>
+        </td>
+        <td><p>Returns <code>TRUE</code> if every member of the vector is <code>TRUE</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="alleleFreq.html">alleleFreq()</a></code> </p>
+        </td>
+        <td><p>Calculates the count of each allele in the provided vector.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assignAlleles.html">assignAlleles()</a></code> </p>
+        </td>
+        <td><p>Assign parent alleles randomly</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcA.html">calcA()</a></code> </p>
+        </td>
+        <td><p>Calculates <code>a</code>, the number of an individual's alleles that are rare in
+each simulation.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcAge.html">calcAge()</a></code> </p>
+        </td>
+        <td><p>Calculate animal ages.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcFE.html">calcFE()</a></code> </p>
+        </td>
+        <td><p>Calculates founder Equivalents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcFEFG.html">calcFEFG()</a></code> </p>
+        </td>
+        <td><p>Calculates Founder Equivalents and Founder Genome Equivalents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcFG.html">calcFG()</a></code> </p>
+        </td>
+        <td><p>Calculates Founder Genome Equivalents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcGU.html">calcGU()</a></code> </p>
+        </td>
+        <td><p>Calculates genome uniqueness for each ID that is part of the population.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calcRetention.html">calcRetention()</a></code> </p>
+        </td>
+        <td><p>Calculates Allelic Retention</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculateSexRatio.html">calculateSexRatio()</a></code> </p>
+        </td>
+        <td><p>Calculates the sex ratio (number of non-males / number of males) given
+animal Ids and their pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkChangedColAndErrorLst.html">checkChangedColAndErrorLst()</a></code> </p>
+        </td>
+        <td><p>checkChangedColAndErrorLst examines errorLst for errors and
+errorLst$changeCols non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkChangedColsLst.html">checkChangedColsLst()</a></code> </p>
+        </td>
+        <td><p>checkChangedColsLst examines list for non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkErrorLst.html">checkErrorLst()</a></code> </p>
+        </td>
+        <td><p>checkErrorLst examines list for non-empty fields</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkGenotypeFile.html">checkGenotypeFile()</a></code> </p>
+        </td>
+        <td><p>Check genotype file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkParentAge.html">checkParentAge()</a></code> </p>
+        </td>
+        <td><p>Check parent ages to be at least <code>minParentAge</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="checkRequiredCols.html">checkRequiredCols()</a></code> </p>
+        </td>
+        <td><p>checkRequiredCols examines column names, <code>cols</code>, to see if all
+required column names are present.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="chooseAlleles.html">chooseAlleles()</a></code> </p>
+        </td>
+        <td><p>Combines two vectors of alleles by randomly selecting one allele
+or the other at each position.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="chooseAllelesChar.html">chooseAllelesChar()</a></code> </p>
+        </td>
+        <td><p>Combines two vectors of alleles when alleles are character vectors.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="chooseDate.html">chooseDate()</a></code> </p>
+        </td>
+        <td><p>Choose date based on <code>earlier</code> flag.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="colChange.html">colChange()</a></code> </p>
+        </td>
+        <td><p>colChange internal function to describe column names transformation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertAncestry.html">convertAncestry()</a></code> </p>
+        </td>
+        <td><p>Converts the ancestry information to a standardized code</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertDate.html">convertDate()</a></code> </p>
+        </td>
+        <td><p>Converts date columns formatted as characters to be of type datetime</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertRelationships.html">convertRelationships()</a></code> </p>
+        </td>
+        <td><p>Converts pairwise kinship values to a relationship category descriptor.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertSexCodes.html">convertSexCodes()</a></code> </p>
+        </td>
+        <td><p>Converts sex indicator for an individual to a standardized codes.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertStatusCodes.html">convertStatusCodes()</a></code> </p>
+        </td>
+        <td><p>Converts status indicators to a Standardized code</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="correctParentSex.html">correctParentSex()</a></code> </p>
+        </td>
+        <td><p>Sets sex for animals listed as either a sire or dam.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="countFirstOrder.html">countFirstOrder()</a></code> </p>
+        </td>
+        <td><p>Count first-order relatives.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="countLoops.html">countLoops()</a></code> </p>
+        </td>
+        <td><p>Count the number of loops in a pedigree tree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createPedOne.html">createPedOne()</a></code> </p>
+        </td>
+        <td><p>createPedOne makes the pedOne data object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createPedSix.html">createPedSix()</a></code> </p>
+        </td>
+        <td><p>createPedSix makes the pedSix data object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createPedTree.html">createPedTree()</a></code> </p>
+        </td>
+        <td><p>Create a pedigree tree (PedTree).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dataframe2string.html">dataframe2string()</a></code> </p>
+        </td>
+        <td><p>dataframe2string converts a data.frame object to a character vector</p></td>
       </tr><tr>
         
         <td>
@@ -166,12 +412,398 @@ configuration file <code>example_nprcmanager_config</code></p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="fillBins.html">fillBins()</a></code> </p>
+        </td>
+        <td><p>fillBins Fill bins represented by list of two lists <code>males</code> and <code>females</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fillGroupMembers.html">fillGroupMembers()</a></code> </p>
+        </td>
+        <td><p>Forms and fills list of animals groups based on provided constraints</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fillGroupMembersWithSexRatio.html">fillGroupMembersWithSexRatio()</a></code> </p>
+        </td>
+        <td><p>Forms breeding group(s) with an effort to match a specified sex ratio</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterAge.html">filterAge()</a></code> </p>
+        </td>
+        <td><p>Removes kinship values where an animal is less than the minAge</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterKinMatrix.html">filterKinMatrix()</a></code> </p>
+        </td>
+        <td><p>Filters a kinship matrix to include only the egos listed in 'ids'</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterPairs.html">filterPairs()</a></code> </p>
+        </td>
+        <td><p>Filters kinship values from a long-format kinship table based on the sexes
+ of the two animals involved.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterReport.html">filterReport()</a></code> </p>
+        </td>
+        <td><p>Filters a genetic value report down to only the specified animals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filterThreshold.html">filterThreshold()</a></code> </p>
+        </td>
+        <td><p>Filters kinship to remove rows with kinship values less than the specified
+threshold</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="finalRpt.html">finalRpt</a></code> </p>
         </td>
         <td><p>finalRpt is a list object created from the list object <em>rpt</em> prepared
 by <code>reportGV</code>. It is created inside <code>orderReport</code>. This version
 is at the state just prior to calling <code>rankSubjects</code> inside
 <code>orderReport</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="findGeneration.html">findGeneration()</a></code> </p>
+        </td>
+        <td><p>Determines the generation number for each id.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="findLoops.html">findLoops()</a></code> </p>
+        </td>
+        <td><p>Find loops in a pedigree tree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="findOffspring.html">findOffspring()</a></code> </p>
+        </td>
+        <td><p>Finds the number of total offspring for each animal in the provided pedigree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="findPedigreeNumber.html">findPedigreeNumber()</a></code> </p>
+        </td>
+        <td><p>Determines the generation number for each id.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fixColumnNames.html">fixColumnNames()</a></code> </p>
+        </td>
+        <td><p>fixColumnNames changes original column names and into standardized names.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fixGenotypeCols.html">fixGenotypeCols()</a></code> </p>
+        </td>
+        <td><p>Reformat names of observed genotype columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geneDrop.html">geneDrop()</a></code> </p>
+        </td>
+        <td><p>Performs a gene drop simulation based on the provided pedigree information</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getAncestors.html">getAncestors()</a></code> </p>
+        </td>
+        <td><p>Recursively create a character vector of ancestors for an individual ID.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getAnimalsWithHighKinship.html">getAnimalsWithHighKinship()</a></code> </p>
+        </td>
+        <td><p>Forms a list of animal Ids and animals related to them</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getBreederPed.html">getBreederPed()</a></code> </p>
+        </td>
+        <td><p>Get pedigree based on list of breeders</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getChangedColsTab.html">getChangedColsTab()</a></code> </p>
+        </td>
+        <td><p>getChangedColsTab skeleton of list of errors</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getConfigFileName.html">getConfigFileName()</a></code> </p>
+        </td>
+        <td><p>getConfigFileName returns the configuration file name appropriate for
+the system.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getCurrentAge.html">getCurrentAge()</a></code> </p>
+        </td>
+        <td><p>Returns age in years using the provided birthdate.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getDateErrorsAndConvertDatesInPed.html">getDateErrorsAndConvertDatesInPed()</a></code> </p>
+        </td>
+        <td><p>Converts columns of dates in text form to <code>Date</code> object columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getDatedFilename.html">getDatedFilename()</a></code> </p>
+        </td>
+        <td><p>Returns a character vector with an file name having the date prepended.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getDemographics.html">getDemographics()</a></code> </p>
+        </td>
+        <td><p>Get demographic data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getEmptyErrorLst.html">getEmptyErrorLst()</a></code> </p>
+        </td>
+        <td><p>getEmptyErrorLst</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getErrorTab.html">getErrorTab()</a></code> </p>
+        </td>
+        <td><p>getErrorTab skeleton of list of errors</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getGVGenotype.html">getGVGenotype()</a></code> </p>
+        </td>
+        <td><p>Get Genetic Valuie Genotype data structure for reportGV function.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getGVPopulation.html">getGVPopulation()</a></code> </p>
+        </td>
+        <td><p>Get the population of interest for the Genetic Value analysis.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getGenotypes.html">getGenotypes()</a></code> </p>
+        </td>
+        <td><p>Get genotypes from file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getIdsWithOneParent.html">getIdsWithOneParent()</a></code> </p>
+        </td>
+        <td><p>getIdsWithOneParent extracts IDs of animals pedigree without either a
+sire or a dam</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getIncludeColumns.html">getIncludeColumns()</a></code> </p>
+        </td>
+        <td><p>Get the superset of columns that can be in a pedigree file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getLkDirectAncestors.html">getLkDirectAncestors()</a></code> </p>
+        </td>
+        <td><p>Get the direct ancestors of selected animals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getLkDirectRelatives.html">getLkDirectRelatives()</a></code> </p>
+        </td>
+        <td><p>Get the direct ancestors of selected animals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getLogo.html">getLogo()</a></code> </p>
+        </td>
+        <td><p>Get Logo file name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getMaxAx.html">getMaxAx()</a></code> </p>
+        </td>
+        <td><p>Get the maximum of the absolute values of the negative (males) and positive
+(female) animal counts.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getMinParentAge.html">getMinParentAge()</a></code> </p>
+        </td>
+        <td><p>Get minimum parent age.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getOffspring.html">getOffspring()</a></code> </p>
+        </td>
+        <td><p>Get offspring to corresponding animal IDs provided</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getParamDef.html">getParamDef()</a></code> </p>
+        </td>
+        <td><p>Get parameter definitions from tokens found in configuration file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getParents.html">getParents()</a></code> </p>
+        </td>
+        <td><p>Get parents to corresponding animal IDs provided</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPedMaxAge.html">getPedMaxAge()</a></code> </p>
+        </td>
+        <td><p>Get the maximum age of live animals in the pedigree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPedigree.html">getPedigree()</a></code> </p>
+        </td>
+        <td><p>Get pedigree from file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPossibleCols.html">getPossibleCols()</a></code> </p>
+        </td>
+        <td><p>Get possible column names for a studbook.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPotentialSires.html">getPotentialSires()</a></code> </p>
+        </td>
+        <td><p>Provides list of potential sires</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getProbandPedigree.html">getProbandPedigree()</a></code> </p>
+        </td>
+        <td><p>Gets pedigree to ancestors of provided group leaving uninformative ancestors.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPyramidAgeDist.html">getPyramidAgeDist()</a></code> </p>
+        </td>
+        <td><p>Get the age distribution for the pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getPyramidPlot.html">getPyramidPlot()</a></code> </p>
+        </td>
+        <td><p>Creates a pyramid plot of the pedigree provided.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getRecordStatusIndex.html">getRecordStatusIndex()</a></code> </p>
+        </td>
+        <td><p>getRecordStatusIndex returns record numbers with selected <code>recordStatus</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getRequiredCols.html">getRequiredCols()</a></code> </p>
+        </td>
+        <td><p>Get required column names for a studbook.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getSiteInfo.html">getSiteInfo()</a></code> </p>
+        </td>
+        <td><p>Get site information</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getTokenList.html">getTokenList()</a></code> </p>
+        </td>
+        <td><p>Returns first right and left space trimmed token from first character vector
+element.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getVersion.html">getVersion()</a></code> </p>
+        </td>
+        <td><p>getVersion Get the version number of nprcmanager</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="groupAddAssign.html">groupAddAssign()</a></code> </p>
+        </td>
+        <td><p>Add animals to an existing breeding group or forms groups:</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="groupMembersReturn.html">groupMembersReturn()</a></code> </p>
+        </td>
+        <td><p>Forms return list of groupAddAssign function</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hasBothParents.html">hasBothParents()</a></code> </p>
+        </td>
+        <td><p>hasBothParents checks to see if both parents are identified.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hasGenotype.html">hasGenotype()</a></code> </p>
+        </td>
+        <td><p>Check for genotype data in dataframe</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="headerDisplayNames.html">headerDisplayNames()</a></code> </p>
+        </td>
+        <td><p>Convert internal column names to display or header names.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="initializeHaremGroups.html">initializeHaremGroups()</a></code> </p>
+        </td>
+        <td><p>Make the initial groupMembers animal list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="insertChangedColsTab.html">insertChangedColsTab()</a></code> </p>
+        </td>
+        <td><p>insertChangedColsTab insert a list of changed columns found by
+<code>qcStudbook</code> in the pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="insertErrorTab.html">insertErrorTab()</a></code> </p>
+        </td>
+        <td><p>insertErrorTab insert a list of errors found by <code>qcStudbook</code> in the pedigree file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="insertSeparators.html">insertSeparators()</a></code> </p>
+        </td>
+        <td><p>insertSeparators inserts the character "-" between year and month and
+between month and day portions of a date string in %Y%m%d format.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="isEmpty.html">isEmpty()</a></code> </p>
+        </td>
+        <td><p>Is vector empty or all NA values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="kinMatrix2LongForm.html">kinMatrix2LongForm()</a></code> </p>
+        </td>
+        <td><p>Reformats a kinship matrix into a long-format table.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="kinship.html">kinship()</a></code> </p>
+        </td>
+        <td><p>Generates a kinship matrix.</p></td>
       </tr><tr>
         
         <td>
@@ -185,6 +817,98 @@ is at the state just prior to calling <code>rankSubjects</code> inside
         </td>
         <td><p>lacy1989PedAlleles is a dataframe produced by <code>geneDrop</code> on
 <code>lacy1989Ped</code> with 5000 iterations.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeAvailable.html">makeAvailable()</a></code> </p>
+        </td>
+        <td><p>Convenience function to make the initial available animal list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeCEPH.html">makeCEPH()</a></code> </p>
+        </td>
+        <td><p>Make a CEPH-style pedigree for each id</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeExamplePedigreeFile.html">makeExamplePedigreeFile()</a></code> </p>
+        </td>
+        <td><p>Write copy of ExamplePedigree.csv file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGroupMembers.html">makeGroupMembers()</a></code> </p>
+        </td>
+        <td><p>Convenience function to make the initial groupMembers animal list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGrpNum.html">makeGrpNum()</a></code> </p>
+        </td>
+        <td><p>Convenience function to make the initial grpNum list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeRelationClasseTable.html">makeRelationClasseTable()</a></code> </p>
+        </td>
+        <td><p>Make relation classes table from <code>kin</code> dataframe.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeRoundUp.html">makeRoundUp()</a></code> </p>
+        </td>
+        <td><p>Round up the provided integer vector <code>int</code> according to the
+<code>modulas</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makesLoop.html">makesLoop()</a></code> </p>
+        </td>
+        <td><p><code>makesLoop</code> tests for a common ancestor.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="meanKinship.html">meanKinship()</a></code> </p>
+        </td>
+        <td><p>Calculates the mean kinship for each animal in a kinship matrix</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nprcmanager.html">nprcmanager</a></code> </p>
+        </td>
+        <td><p>Genetic Management Functions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateDate.html">obfuscateDate()</a></code> </p>
+        </td>
+        <td><p>obfucateDate adds a random number of days bounded by plus and minus max delta</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateId.html">obfuscateId()</a></code> </p>
+        </td>
+        <td><p>obfucateId creates a vector of ID aliases of specified length</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscatePed.html">obfuscatePed()</a></code> </p>
+        </td>
+        <td><p>obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="offspringCounts.html">offspringCounts()</a></code> </p>
+        </td>
+        <td><p>Finds the total number of offspring for each animal in the pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="orderReport.html">orderReport()</a></code> </p>
+        </td>
+        <td><p>Order the results of the genetic value analysis for use in a report.</p></td>
       </tr><tr>
         
         <td>
@@ -202,7 +926,7 @@ is at the state just prior to calling <code>rankSubjects</code> inside
         <td>
           <p><code><a href="pedWithGenotype.html">pedWithGenotype</a></code> </p>
         </td>
-        <td><p>pedWithGenotype is a dataframe produced from baboonPed by adding made up
+        <td><p>pedWithGenotype is a dataframe produced from qcPed by adding made up
 genotypes.</p></td>
       </tr><tr>
         
@@ -213,10 +937,137 @@ genotypes.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="print.html">print(<i>&lt;summary.nprcmanagErr&gt;</i>)</a></code> <code><a href="print.html">print(<i>&lt;summary.nprcmanagGV&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>print.summary.nprcmanagErr print.summary.nprcmanagGV</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="qcBreeders.html">qcBreeders</a></code> </p>
+        </td>
+        <td><p>qcBreeders is a list of 29 baboon IDs that are potential breeders</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="qcPed.html">qcPed</a></code> </p>
+        </td>
+        <td><p>qcPed is a dataframe with 277 rows and 6 columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="qcPedGvReport.html">qcPedGvReport</a></code> </p>
+        </td>
+        <td><p>qcPedGvReport is a genetic value report</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="qcStudbook.html">qcStudbook()</a></code> </p>
+        </td>
+        <td><p>Quality Control for the Studbook or pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rankSubjects.html">rankSubjects()</a></code> </p>
+        </td>
+        <td><p>Ranks animals based on genetic value.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rbindFill.html">rbindFill()</a></code> </p>
+        </td>
+        <td><p>Append the rows of one dataframe to another.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="readExcelPOSIXToCharacter.html">readExcelPOSIXToCharacter()</a></code> </p>
+        </td>
+        <td><p>Read in Excel file and convert POSIX dates to character</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeDuplicates.html">removeDuplicates()</a></code> </p>
+        </td>
+        <td><p>Remove duplicate records from pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeEarlyDates.html">removeEarlyDates()</a></code> </p>
+        </td>
+        <td><p>removeEarlyDates removes dates before a specified year</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeGroupIfNoAvailableAnimals.html">removeGroupIfNoAvailableAnimals()</a></code> </p>
+        </td>
+        <td><p>Helper function to remove group numbers when all available animals have been used</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removePotentialSires.html">removePotentialSires()</a></code> </p>
+        </td>
+        <td><p>Removes potential sires from list of Ids</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeSelectedAnimalFromAvailableAnimals.html">removeSelectedAnimalFromAvailableAnimals()</a></code> </p>
+        </td>
+        <td><p>Updates list of available animals by removing the selected animal</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeUninformativeFounders.html">removeUninformativeFounders()</a></code> </p>
+        </td>
+        <td><p>Remove uninformative founders.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeUnknownAnimals.html">removeUnknownAnimals()</a></code> </p>
+        </td>
+        <td><p>removeUnknownAnimals Removes unknown animals added to pedigree that serve as
+placeholders for unknown parents.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="reportGV.html">reportGV()</a></code> </p>
+        </td>
+        <td><p>Generates a genetic value report for a provided pedigree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="resetGroup.html">resetGroup()</a></code> </p>
+        </td>
+        <td><p>Update or add the "group" field of a Pedigree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="resetPopulation.html">resetPopulation()</a></code> </p>
+        </td>
+        <td><p>Population designation function</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="rpt.html">rpt</a></code> </p>
         </td>
         <td><p>rpt is a dataframe created from the genetic analysis routine
 <code>reportGV</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="runManager.html">runManager()</a></code> </p>
+        </td>
+        <td><p>Allows running <code>shiny</code> application with <code>nprcmanager::runManager()</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="setExit.html">setExit()</a></code> </p>
+        </td>
+        <td><p>Sets the exit date, if there is no exit column in the table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="set_seed.html">set_seed()</a></code> </p>
+        </td>
+        <td><p>Work around for unit tests using sample()</p></td>
       </tr><tr>
         
         <td>
@@ -229,6 +1080,31 @@ genotypes.</p></td>
           <p><code><a href="smallPedTree.html">smallPedTree</a></code> </p>
         </td>
         <td><p>smallPedTree is a pedigree tree made from <code>smallPed</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="summary.html">summary(<i>&lt;nprcmanagErr&gt;</i>)</a></code> <code><a href="summary.html">summary(<i>&lt;nprcmanagGV&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>summary.nprcmanagerErr Summary function for class nprcmanagErr</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="toCharacter.html">toCharacter()</a></code> </p>
+        </td>
+        <td><p>Force dataframe columns to character</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="trimPedigree.html">trimPedigree()</a></code> </p>
+        </td>
+        <td><p>Trim pedigree to ancestors of provided group by removing uninformative
+individuals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="unknown2NA.html">unknown2NA()</a></code> </p>
+        </td>
+        <td><p>Removing IDs having "UNKNOWN" regardless of case</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -508,6 +1384,25 @@ is at the state just prior to calling <code>rankSubjects</code> inside
           <p><code><a href="makeExamplePedigreeFile.html">makeExamplePedigreeFile()</a></code> </p>
         </td>
         <td><p>Write copy of ExamplePedigree.csv file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateDate.html">obfuscateDate()</a></code> </p>
+        </td>
+        <td><p>obfucateDate adds a random number of days bounded by plus and minus max delta</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateId.html">obfuscateId()</a></code> </p>
+        </td>
+        <td><p>obfucateId creates a vector of ID aliases of specified length</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscatePed.html">obfuscatePed()</a></code> </p>
+        </td>
+        <td><p>obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount.</p></td>
       </tr><tr>
         
         <td>
@@ -1277,6 +2172,25 @@ between month and day portions of a date string in %Y%m%d format.</p></td>
           <p><code><a href="offspringCounts.html">offspringCounts()</a></code> </p>
         </td>
         <td><p>Finds the total number of offspring for each animal in the pedigree</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateDate.html">obfuscateDate()</a></code> </p>
+        </td>
+        <td><p>obfucateDate adds a random number of days bounded by plus and minus max delta</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscateId.html">obfuscateId()</a></code> </p>
+        </td>
+        <td><p>obfucateId creates a vector of ID aliases of specified length</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="obfuscatePed.html">obfuscatePed()</a></code> </p>
+        </td>
+        <td><p>obfuscatePed takes a pedigree object and creates aliases for all IDs and
+adjusts all date within a specified amount.</p></td>
       </tr><tr>
         
         <td>

@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.18</span>
       </span>
     </div>
 
@@ -132,17 +132,26 @@
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>list</code> of length 8.</p>
+    <p>An object of class <code>list</code> (inherits from <code>GVnprcmanag</code>) of length 8.</p>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>pedWithGenotypeReport was made with pedWithGenotype as input into
-reportGV with 10,000 iterations.</p><dl class='dl-horizontal'>
-pedWithGenotypeReport is a simple example report for use in
+reportGV with 10,000 iterations.</p>
+<p>pedWithGenotypeReport is a simple example report for use in
 examples and unit tests.
-</dl>
+It was created using the following commands.</p><ul>
+<li><p>set_seed(10)</p></li>
+<li><p>pedWithGenotypeReport &lt;- reportGV(nprcmanager::pedWithGenotype, guIter = 10000)</p></li>
+<li><p>save(pedWithGenotypeReport, file = "data/pedWithGenotypeReport.RData")</p></li>
+</ul>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>nprcmanager</span>)
+<span class='no'>pedWithGenotypeReport</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcmanager</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/nprcmanager/topics/pedWithGenotypeReport'>pedWithGenotypeReport</a></span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -151,7 +160,9 @@ examples and unit tests.
       <li><a href="#format">Format</a></li>
 
       <li><a href="#source">Source</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

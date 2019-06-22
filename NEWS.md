@@ -3,6 +3,18 @@ NEWS
 R. Mark Sharp
 04/18/2019
 
+# nprcmanager 0.5.18 (20190622)
+
+  - replaced actual unpublished pedigree objects with obfuscated
+    pedigree objects so they can be shared
+  - updated unit tests that were dependent on replaced pedigree objects
+
+# nprcmanager 0.5.17 (20190619)
+
+  - removed old pedigree files in preparation for new custom built
+    demonstration pedigrees
+  - removed old, no longer used logos
+
 # nprcmanager 0.5.16 (20190615)
 
   - Added functions used to obfuscate pedigrees. This changes the IDs,

@@ -15,7 +15,7 @@
 #' @export
 getPyramidAgeDist <- function(ped = NULL) {
   if (is.null(ped)) {
-    ped <- nprcmanager::baboonPed
+    ped <- nprcmanager::qcPed
     ped$age <- NULL
     ped$gen <- NULL
   }

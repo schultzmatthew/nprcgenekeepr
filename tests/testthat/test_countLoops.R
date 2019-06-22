@@ -1,7 +1,6 @@
 context("countLoops")
 library(testthat)
-data("baboonPed")
-ped <- baboonPed
+ped <- nprcmanager::qcPed
 ped <- qcStudbook(ped, minParentAge = 0)
 pedTree <- createPedTree(ped)
 pedLoops <- findLoops(pedTree)

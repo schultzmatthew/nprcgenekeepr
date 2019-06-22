@@ -1,4 +1,4 @@
-context("obfuscatedate")
+context("obfuscateDate")
 library(testthat)
 
 test_that("obfuscateDate creates new date within accepted range", {

@@ -1,10 +1,12 @@
 context("orderReport")
 library(testthat)
 library(stringi)
-data("pedWithGenotypeReport")
-data("baboonPed")
-ped <- baboonPed
+pedWithGenotypeReport <- nprcmanager::pedWithGenotypeReport
+ped <- nprcmanager::qcPed
 rpt <- pedWithGenotypeReport$report
+countUnk <- function(ids) {
+  length(ids[grepl("^U",ids, ignore.case = TRUE)])
+}
 test_that("orderReport correctly orders the report", {
   rpt1 <- orderReport(rpt, ped)
   expect_equal(nrow(rpt1), nrow(rpt))
@@ -14,9 +16,6 @@ test_that("orderReport correctly orders the report", {
                               prob = c(0.8, 0.2)), "TEXAS", NA)
   rpt$totalOffspring <- sample(0:3, size = nrow(rpt), replace = TRUE,
                               prob = c(0.8, 0.05, 0.05, 0.1))
-  countUnk <- function(ids) {
-    length(ids[stri_detect_fixed(ids, "U")])
-  }
   rpt1 <- orderReport(rpt, ped)
   expect_equal(countUnk(rpt1$id[1:100]), 34)
   expect_equal(countUnk(rpt$id[1:50]), 21)
@@ -31,10 +30,8 @@ test_that("orderReport correctly orders the report without age column", {
                               prob = c(0.8, 0.2)), "TEXAS", NA)
   rpt$totalOffspring <- sample(0:3, size = nrow(rpt), replace = TRUE,
                                prob = c(0.8, 0.05, 0.05, 0.1))
-  countUnk <- function(ids) {
-    length(ids[stri_detect_fixed(ids, "U")])
-  }
   rpt1 <- orderReport(rpt, ped)
   expect_equal(countUnk(rpt1$id[1:100]), 34)
   expect_equal(countUnk(rpt$id[1:50]), 21)
 })
+

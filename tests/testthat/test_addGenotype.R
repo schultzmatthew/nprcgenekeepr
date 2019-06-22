@@ -1,9 +1,10 @@
 context("addGenotype")
 library(testthat)
 library(stringi)
-data("baboonPed")
-baboonPed <- baboonPed[order(baboonPed$id), ]
-ped <- baboonPed
+qcPed <- nprcmanager::qcPed
+
+qcPed <- qcPed[order(qcPed$id), ]
+ped <- qcPed
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first", 1:20),
                        second_name = stri_c("second", 1:20),

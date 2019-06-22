@@ -2,30 +2,30 @@ context("getPyramidAgeDist")
 library(testthat)
 library(lubridate)
 
-data("baboonPed")
-ped <- baboonPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
+qcPed <- nprcmanager::qcPed
+ped <- qcPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
 ped <- getPyramidAgeDist(ped)
 test_that("getPyramidAgeDist classifies and ages animals correctly", {
   expect_equal(as.numeric(table(ped$status)[[1]]), 46)
-  expect_true(ped$age[ped$id == "10173"] > 19.0 &
-                ped$age[ped$id == "10173"] < 20.0)
+  expect_true(ped$age[ped$id == "YIAD2N"] > 19.0 &
+                ped$age[ped$id == "YIAD2N"] < 20.0)
 })
 ped <- getPyramidAgeDist()
-test_that("getPyramidAgeDist gets baboonPed by default", {
+test_that("getPyramidAgeDist gets qcPed by default", {
   expect_equal(as.numeric(table(ped$status)[[1]]), 46)
-  expect_true(ped$age[ped$id == "10173"] > 19.0 &
-                ped$age[ped$id == "10173"] < 20.0)
+  expect_true(ped$age[ped$id == "YIAD2N"] > 19.0 &
+                ped$age[ped$id == "YIAD2N"] < 20.0)
 })
-ped <- baboonPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
+ped <- qcPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
 charDatePed <- ped
 charDatePed$birth <- format(charDatePed$birth, format = "%Y-%m-%d")
 ped <- getPyramidAgeDist(charDatePed)
 test_that("getPyramidAgeDist converts character based birth date", {
   expect_equal(as.numeric(table(ped$status)[[1]]), 46)
-  expect_true(ped$age[ped$id == "10173"] > 19.0 &
-                ped$age[ped$id == "10173"] < 20.0)
+  expect_true(ped$age[ped$id == "YIAD2N"] > 19.0 &
+                ped$age[ped$id == "YIAD2N"] < 20.0)
 })
-ped <- baboonPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
+ped <- qcPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
 charDatePed <- ped
 charDatePed$exit <- format(charDatePed$exit, format = "%Y-%m-%d")
 charDatePed$exit[176] <- "9999999999"
@@ -62,3 +62,4 @@ test_that("getPyramidAgeDist detect exit column of wrong type ", {
                stri_c("exit_date column must be of class 'Date', ",
                       "'POSIXct', or 'character'"))
 })
+

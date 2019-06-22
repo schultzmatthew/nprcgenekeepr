@@ -77,8 +77,7 @@ genotype_empty <- NULL
 p_genotype <- addGenotype(p, genotype)
 report <- reportGV(p_genotype, guIter = 500, guThresh = 1, pop = NULL,
                    byID = TRUE, updateProgress = NULL)
-#data(baboonPed)
-#kmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen)
+
 groupAssignTest <- groupAssign(candidates = probands, kmat = report$kinship,
                                ped = p_genotype,
                                ignore = NULL, minAge = 1, numGp = 2,

@@ -1,20 +1,21 @@
 context("filterAge")
 library(testthat)
-data("baboonPed")
-ped <- baboonPed
+
+ped <- nprcmanager::qcPed
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
                 sparse = FALSE)
 kin <- kinMatrix2LongForm(kmat)
 filteredKin1 <- filterAge(kin, ped, minAge = 1)
 filteredKin5 <- filterAge(kin, ped, minAge = 5)
-lessThan5 <- c("35315", "32732", "33873", "33895", "34163", "34183", "34984",
-               "32358", "32560", "32650", "32741", "32743", "32798", "33164",
-               "33607", "33866", "33893", "34155", "34162", "34210", "34832",
-               "34953", "36017", "32771", "33088", "35153")
+lessThan5 <- c("C1ICXL", "2KULR3", "RI0O7F", "7M51X5", "170ZTZ", "Y7PPEZ",
+               "CFPEEU", "ZC5SCR", "218FOV", "2IXJ2N", "CAST4W", "JGPN6K",
+               "HOYW0S", "DD1U77", "0DAV0I", "HLI95R", "TZ5NUB", "DR5GXB",
+               "EUG3WE", "FHV13N", "OUM6QF", "6Z7MD9", "309VM2", "8KM1MP",
+               "I9TQ0T", "INGWI7")
 test_that("filterAge removes the correct rows", {
-  expect_false(any("34183" %in% filteredKin1$id1))
-  expect_true(any("35315" %in% filteredKin1$id1))
-  expect_false(any("35315" %in% filteredKin5$id1))
+  expect_false(any("Y7PPEZ" %in% filteredKin1$id1))
+  expect_true(any("C1ICXL" %in% filteredKin1$id1))
+  expect_false(any("C1ICXL" %in% filteredKin5$id1))
 }
 )

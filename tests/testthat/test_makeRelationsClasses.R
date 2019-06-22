@@ -2,10 +2,10 @@ context("makeRelationsClasses")
 library(testthat)
 suppressMessages(library(dplyr))
 
-data("baboonPed")
-bkmat <- kinship(baboonPed$id, baboonPed$sire, baboonPed$dam, baboonPed$gen,
+qcPed <- nprcmanager::qcPed
+bkmat <- kinship(qcPed$id, qcPed$sire, qcPed$dam, qcPed$gen,
                  sparse = FALSE)
-kin <- convertRelationships(bkmat, baboonPed)
+kin <- convertRelationships(bkmat, qcPed)
 relClasses <- as.data.frame(makeRelationClasseTable(kin))
 relClasses$`Relationship Class` <- as.character(relClasses$`Relationship Class`)
 relClassTbl <- kin[!kin$relation == "Self", ] %>%

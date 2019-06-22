@@ -1,7 +1,6 @@
 context("obfuscateId")
 library(testthat)
 library(stringi)
-library(rmsutilityr)
 
 set_seed(10)
 test_that("obfuscateId creates new ID with expected size", {

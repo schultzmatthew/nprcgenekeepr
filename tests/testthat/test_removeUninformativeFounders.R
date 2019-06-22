@@ -6,11 +6,11 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                   sex = c("F", "M", "M", "F", "F", "F", "F", "M"),
                   stringsAsFactors = FALSE, check.names = FALSE)
 
-data("baboonPed")
+qcPed <- nprcmanager::qcPed
 
 test_that("removeUninformativeFounders removes correct records", {
   expect_error(removeUninformativeFounders(pedOne))
   names(pedOne) <- c("id", "sire", "dam")
   expect_silent(removeUninformativeFounders(pedOne))
-  expect_equal(nrow(removeUninformativeFounders(baboonPed)), 136)
+  expect_equal(nrow(removeUninformativeFounders(qcPed)), 136)
 })

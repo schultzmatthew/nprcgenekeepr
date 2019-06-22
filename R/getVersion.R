@@ -3,5 +3,5 @@
 #' @return Current Version
 #' @export
 getVersion <- function() {
-  "0.5.16 (20190615)"
+  "0.5.18 (20190622)"
 }

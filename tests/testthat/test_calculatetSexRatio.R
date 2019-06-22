@@ -1,19 +1,18 @@
 context("calculateSexRatio")
 library(testthat)
 library(nprcmanager)
-data("baboonBreeders")
+data("qcBreeders")
 data("pedWithGenotype")
-skip_if_not(exists("baboonBreeders"))
+skip_if_not(exists("qcBreeders"))
 skip_if_not(exists("pedWithGenotype"))
-available <- c("32743", "32771", "33088", "26450", "27647", "31937", "32732",
-  "32798", "34210", "34832", "34953", "34984", "33866", "33873", "33895",
-  "34155", "34163", "35315")
-nonMales <- c("32743", "32771", "33088", "26450", "31937", "32732", "32798",
-              "34210", "34832", "34953", "34984", "33866", "33873", "33895",
-              "34155", "34163", "35315")
-male <- "27647"
+available <- c("JGPN6K", "8KM1MP", "I9TQ0T", "Q0RGP7", "VFS0XB", "CQC133",
+               "2KULR3", "HOYW0S", "FHV13N", "OUM6QF", "6Z7MD9", "CFPEEU",
+               "HLI95R", "RI0O7F", "7M51X5", "DR5GXB", "170ZTZ", "C1ICXL")
+nonMales <- c("JGPN6K", "8KM1MP", "I9TQ0T", "Q0RGP7", "CQC133",
+              "2KULR3", "HOYW0S", "FHV13N", "OUM6QF", "6Z7MD9", "CFPEEU",
+              "HLI95R", "RI0O7F", "7M51X5", "DR5GXB", "170ZTZ", "C1ICXL")
+male <- "VFS0XB"
 expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype), 0)
 expect_equal(calculateSexRatio(ids = male, ped = pedWithGenotype), 0)
 expect_equal(calculateSexRatio(ids = nonMales, ped = pedWithGenotype), Inf)
-expect_equal(calculateSexRatio(ids = available, ped = pedWithGenotype),
-             17)
+expect_equal(calculateSexRatio(ids = available, ped = pedWithGenotype), 17)
