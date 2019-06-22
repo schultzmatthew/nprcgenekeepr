@@ -5,7 +5,6 @@ cache:
   - github_packages
 dist: trusty
 r:
-    - 3.4.1
     - oldrel
     - release
 r_packages:
