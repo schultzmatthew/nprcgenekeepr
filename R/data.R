@@ -207,13 +207,6 @@
 #' finalRpt <- rankSubjects(finalRpt)
 #' }
 "finalRpt"
-#' rpt is a dataframe created from the genetic analysis routine
-#' \code{reportGV}.
-#' @examples
-#' \dontrun{
-#' data("rpt")
-#' }
-"rpt"
 #' exampleNprcmanagerConfig is a loadable version of the example
 #' configuration file \code{example_nprcmanager_config}
 #'

@@ -12,8 +12,12 @@
 #' @param maxDelta integer value indicating maximum number of days that
 #' the birthdate can be shifted
 #' @param existingIds character vector of existing aliases to avoid duplication.
+#' @param map logical if \code{TRUE} a list object is returned with the new
+#' pedigree and a named character vector with the names being the original IDs
+#' and the values being the new alias values. Defaults to \code{FALSE}.
 #' @export
-obfuscatePed <- function(ped, size = 6, maxDelta = 30, existingIds = character(0)) {
+obfuscatePed <- function(ped, size = 6, maxDelta = 30,
+                         existingIds = character(0), map = FALSE ) {
   alias <- obfuscateId(ped$id, size = size, existingIds = existingIds)
   ped$sire <- alias[ped$sire]
   ped$dam <- alias[ped$dam]
@@ -27,5 +31,9 @@ obfuscatePed <- function(ped, size = 6, maxDelta = 30, existingIds = character(0
     if (all(is.Date(ped$birth)))
       ped["age"] <- calcAge(ped$birth, ped$exit)
   }
-  ped
+  if (map) {
+    list(ped = ped, map = alias)
+  } else {
+    ped
+  }
 }

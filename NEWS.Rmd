@@ -10,15 +10,20 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.19 (20190622)
+-   Replaced examplePedigree which I an failed to obfuscate with an obfuscated version
+-   Added the ability to retrieve the map of original IDs to the new aliases to 
+    obfuscatePed.
+
 # nprcmanager 0.5.18 (20190622)
--   replaced actual unpublished pedigree objects with obfuscated pedigree objects 
+-   Replaced actual unpublished pedigree objects with obfuscated pedigree objects 
     so they can be shared
--   updated unit tests that were dependent on replaced pedigree objects
+-   Updated unit tests that were dependent on replaced pedigree objects
 
 # nprcmanager 0.5.17 (20190619)
--   removed old pedigree files in preparation for new custom built 
+-   Removed old pedigree files in preparation for new custom built 
     demonstration pedigrees
--   removed old, no longer used logos
+-   Removed old, no longer used logos
 
 # nprcmanager 0.5.16 (20190615)
 -   Added functions used to obfuscate pedigrees. This changes the IDs, all 

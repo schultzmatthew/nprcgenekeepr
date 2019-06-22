@@ -1,6 +1,6 @@
 context("fillGroupMembersWithSexRatio")
 
-data("examplePedigree")
+examplePedigree <- nprcmanager::examplePedigree
 set_seed(10)
 ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
                   reportErrors = FALSE)
@@ -31,7 +31,7 @@ groupMembersStart <- groupMembers
 grpNum <- nprcmanager:::makeGrpNum(numGp)
 
 test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio", {
-  expect_equal(groupMembers[[1]], c("1", "10", "1008"))
+  expect_equal(groupMembers[[1]], c("N54ICI", "VJ08BW", "2ZMHG7"))
   for (i in 1:20) {
     groupMembers <- fillGroupMembersWithSexRatio(
       candidates, groupMembers, grpNum, kin, ped, minAge, numGp, sexRatio = 1)

@@ -2,9 +2,6 @@ reference:
 - title: "Data objects"
   desc: ~
   contents:
-  - '`baboonBreeders`'
-  - '`baboonGvReport`'
-  - '`baboonPed`'
   - '`exampleNprcmanagerConfig`'
   - '`examplePedigree`'
   - '`finalRpt`'
@@ -14,7 +11,9 @@ reference:
   - '`pedSix`'
   - '`pedWithGenotype`'
   - '`pedWithGenotypeReport`'
-  - '`rpt`'
+  - '`qcBreeders`'
+  - '`qcPed`'
+  - '`qcPedGvReport`'
   - '`smallPed`'
   - '`smallPedTree`'
 - title: "Codebook"
