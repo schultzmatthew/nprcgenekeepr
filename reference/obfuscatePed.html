@@ -136,7 +136,7 @@ birthdate can be shifted (<code>maxDelta</code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>obfuscatePed</span>(<span class='no'>ped</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>maxDelta</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>existingIds</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>))</pre>
+  <span class='kw'>existingIds</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>), <span class='kw'>map</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,6 +157,12 @@ the birthdate can be shifted</p></td>
     <tr>
       <th>existingIds</th>
       <td><p>character vector of existing aliases to avoid duplication.</p></td>
+    </tr>
+    <tr>
+      <th>map</th>
+      <td><p>logical if <code>TRUE</code> a list object is returned with the new
+pedigree and a named character vector with the names being the original IDs
+and the values being the new alias values. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     </table>
     
