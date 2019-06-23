@@ -221,9 +221,20 @@
 #' View(exampleNprcmanagerConfig)
 #' }
 "exampleNprcmanagerConfig"
-#' pedSix is a loadable version of the pedigree file fragment used for testing
+#' pedOne is a loadable version of a pedigree file fragment used for testing
+#' and demonstration
 #'
-#' This is used only for testing.
+#' This is used for testing and demonstration.
+#' @examples
+#' \dontrun{
+#' data("pedOne")
+#' View(pedOne)
+#' }
+"pedOne"
+#' pedSix is a loadable version of a pedigree file fragment used for testing
+#' and demonstration
+#'
+#' This is used for testing and demonstration.
 #' @examples
 #' \dontrun{
 #' data("pedSix")
