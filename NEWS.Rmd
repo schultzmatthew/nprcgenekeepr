@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.20 (20190622)
+-   Added unit test for getPedigree.
+
 # nprcmanager 0.5.19 (20190622)
 -   Replaced examplePedigree which I an failed to obfuscate with an obfuscated version
 -   Added the ability to retrieve the map of original IDs to the new aliases to 

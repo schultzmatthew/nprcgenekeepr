@@ -3,6 +3,10 @@ NEWS
 R. Mark Sharp
 06/22/2019
 
+# nprcmanager 0.5.20 (20190622)
+
+  - Added unit test for getPedigree.
+
 # nprcmanager 0.5.19 (20190622)
 
   - Replaced examplePedigree which I an failed to obfuscate with an
