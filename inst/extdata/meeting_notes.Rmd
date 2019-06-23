@@ -22,8 +22,17 @@ Provided in reverse chronological order
    _MendozaC1C2newharemstest.csv_ files represent?
    Can they be use for instruction? 
    Are some to be used with the Example_Pedigree file?
-1. Decide which pedigree files to leave in package.
-1. Figure out how to best provide example pedigree files.
+1. Decide which pedigree files to leave in package. Done 20190622
+   -   All pedigree files except an obfuscated baboon (qcPed) and an obfuscated
+       rhesus (examplePedigree) were moved out of the package.
+   -   The qcPed and examplePedigree are in the package as data, which can be
+       obtained by the user with 
+       -   __qcPed <- nprcmanager::qcPed__
+       -   __examplePedigree <- nprcmanager::examplePedigree__
+   -   Three versions of the qcPed pedigree were included as actual files for
+       the getPedigree() unit tests.
+1. Figure out how to best provide example pedigree files. 
+   See point immediately above. Done 20190622
 1. Items brought forward from previous meetings to prevent forgetting them.
    1. From 20190311
       -  Amanda sent Mark the 2015-02-14_Genetic_metrics_white paper_Final.docx 

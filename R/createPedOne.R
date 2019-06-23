@@ -16,7 +16,8 @@ createPedOne <- function(savePed = TRUE) {
                             sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                               2000)),
     stringsAsFactors = FALSE, check.names = FALSE)
-  save(pedOne, file = "data/pedOne.RData")
+  if (savePed)
+    save(pedOne, file = "data/pedOne.RData")
   pedOne
 }
 
