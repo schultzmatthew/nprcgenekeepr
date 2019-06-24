@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "06/22/2019"
+date: "06/24/2019"
 output:
    github_document: default
 
@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.21 (20190624)
+-   Added unit tests for print_summary_nprcmanagGV and summary.nprcmanagGV
+
 # nprcmanager 0.5.20 (20190622)
 -   Added unit test for getPedigree.
 

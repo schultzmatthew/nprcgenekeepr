@@ -1,7 +1,12 @@
 NEWS
 ================
 R. Mark Sharp
-06/22/2019
+06/24/2019
+
+# nprcmanager 0.5.21 (20190624)
+
+  - Added unit tests for print\_summary\_nprcmanagGV and
+    summary.nprcmanagGV
 
 # nprcmanager 0.5.20 (20190622)
 
