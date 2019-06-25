@@ -21,3 +21,9 @@ test_that("obfuscateId fails when duplicates cannot be avoided", { # this test i
   id <- stri_c(1:10000)
   expect_error(obfuscateId(id, size = 2))
 })
+test_that("obfuscateId replaces unknown ID with unknown IDs (start with 'U'", {
+  id <- c("U0001", "U123", "u001", "abc")
+  alias <- obfuscateId(id, size = 4)
+  expect_true(all(stri_detect_regex(alias[1:3], "^U")))
+  expect_false(stri_detect_regex(alias[4], "^U"))
+})

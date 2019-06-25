@@ -17,7 +17,7 @@ obfuscateDate <- function(baseDate, maxDelta = 30, minDate) {
     maxDelta <- rep(maxDelta, length(baseDate))
   }
   if (length(baseDate) != length(maxDelta))
-    stop("Length of minDate must 1 or the same as baseDate.")
+    stop("Length of minDate must be 1 or the same as baseDate.")
   if (missing(minDate)) {
     minDate <- baseDate
     for (i in seq_along(baseDate)) {
