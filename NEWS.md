@@ -3,6 +3,10 @@ NEWS
 R. Mark Sharp
 06/24/2019
 
+# nprcmanager 0.5.23 (20190624)
+
+  - Added weak unit test for getGenotypes function
+
 # nprcmanager 0.5.22 (20190624)
 
   - Corrected and augmented unit tests for print\_summary\_nprcmanagGV
