@@ -1,6 +1,13 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190701
+
+1.  To prepare for the meeting
+    1.   Work on tutorial to go through the Goldilocks path.
+    1.   Work on tutorial to look at all possible data input errors
+    
+
 ## 20190603
 1. Joint Working Group Meeting week before Thanksgiving. We will meet with the Breeding Colony Managers Group. November 19-21, 2019.
 

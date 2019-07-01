@@ -10,7 +10,7 @@
 #' updated by being set to \code{TRUE} for the animal IDs in \code{ped$id} and
 #' \code{FALSE} otherwise.
 #' @export
-resetPopulation <- function(ped, ids) {
+setPopulation <- function(ped, ids) {
   ped$population <- FALSE
 
   if (length(ids) == 0) {

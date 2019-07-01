@@ -231,24 +231,24 @@ shinyServer(function(input, output, session) {
     flog.debug(paste0("column names: '", paste(names(ped), collapse = "', '"),
                       "'"), name = "nprcmanager")
     flog.debug(" - after ped <- getSelectedBreeders() before tryCatch with ",
-               "resetPopulation.", name = "nprcmanager")
+               "setPopulation.", name = "nprcmanager")
     ped <- tryCatch({
         ped <- getSelectedBreeders()
         flog.debug(paste0("column names: '", paste(names(ped),
                                                    collapse = "', '"),
                           "'"), name = "nprcmanager")
-        flog.debug(" - in tryCatch before resetPopulation.",
+        flog.debug(" - in tryCatch before setPopulation.",
             name = "nprcmanager")
-        ## resetPopulation adds the population column if not already present
-        ## resetPopulation indicates all id to be in the population if
+        ## setPopulation adds the population column if not already present
+        ## setPopulation indicates all id to be in the population if
         ##  specifyFocalAnimals() is NULL
         ## otherwise ids returned by specifyFocalAnimals() are set to TRUE and
         ##  others become FALSE
-        ped <- resetPopulation(ped, specifyFocalAnimals())
+        ped <- setPopulation(ped, specifyFocalAnimals())
         flog.debug(paste0("column names: '", paste0(names(ped),
                                                     collapse = "', '"),
                           "'"), name = "nprcmanager")
-        flog.debug(paste0("resetPopulation() called\n"),
+        flog.debug(paste0("setPopulation() called\n"),
             name = "nprcmanager")
 
         if (input$trim) {

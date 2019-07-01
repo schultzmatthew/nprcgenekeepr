@@ -1,7 +1,12 @@
 NEWS
 ================
 R. Mark Sharp
-06/24/2019
+06/30/2019
+
+# nprcmanager 0.5.24 (20190630)
+
+  - Renamed resetPopulation to setPopulation
+  - Added sections to interactive\_use\_tutorial
 
 # nprcmanager 0.5.23 (20190624)
 
