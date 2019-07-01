@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convenience function to make the initial available animal list — makeAvailable • nprcmanager</title>
+<title>Population designation function — setPopulation • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Convenience function to make the initial available animal list — makeAvailable" />
+<meta property="og:title" content="Population designation function — setPopulation" />
 
-<meta property="og:description" content="Convenience function to make the initial available animal list" />
+<meta property="og:description" content="Part of the pedigree filtering toolset." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,37 +117,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convenience function to make the initial available animal list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeAvailable.R'><code>R/makeAvailable.R</code></a></small>
-    <div class="hidden name"><code>makeAvailable.Rd</code></div>
+    <h1>Population designation function</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/setPopulation.R'><code>R/setPopulation.R</code></a></small>
+    <div class="hidden name"><code>setPopulation.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Convenience function to make the initial available animal list</p>
+    <p>Part of the pedigree filtering toolset.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeAvailable</span>(<span class='no'>candidates</span>, <span class='no'>numGp</span>)</pre>
+    <pre class="usage"><span class='fu'>setPopulation</span>(<span class='no'>ped</span>, <span class='no'>ids</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>candidates</th>
-      <td><p>character vector of IDs of the animals available for
-use in the group.</p></td>
+      <th>ped</th>
+      <td><p>datatable that is the `Pedigree`. It contains pedigree
+information. The <code>id</code> column is required.</p></td>
     </tr>
     <tr>
-      <th>numGp</th>
-      <td><p>integer value indicating the number of groups that should be
-formed from the list of IDs. Default is 1.</p></td>
+      <th>ids</th>
+      <td><p>character vector of IDs to be flagged as part of the population
+under consideration.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>initial available animals list</p>
+    <p>An updated pedigree with the <code>population</code> column added or
+updated by being set to <code>TRUE</code> for the animal IDs in <code>ped$id</code> and
+<code>FALSE</code> otherwise.</p>
     
 
   </div>
