@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "06/30/2019"
+date: "07/01/2019"
 output:
    github_document: default
 
@@ -10,6 +10,12 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.25 (20190701)
+-   Removed animals with exit dates from pyramid plots
+-   Added ability to retain novel column names
+-   Increased the number of column names understood for display in pedigree
+    browser.
+
 # nprcmanager 0.5.24 (20190630)
 -   Renamed resetPopulation to setPopulation
 -   Added sections to interactive_use_tutorial

@@ -183,10 +183,10 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
     sb$sex <- correctParentSex(sb$id, sb$sire, sb$dam, sb$sex, sb$recordStatus)
   }
 
-  if ("status" %in% cols) {
+  if (any("status" %in% cols)) {
     sb$status <- convertStatusCodes(sb$status)
   }
-  if ("ancestry" %in% cols) {
+  if (any("ancestry" %in% cols)) {
     sb$ancestry <- convertAncestry(sb$ancestry)
   }
 
@@ -240,7 +240,8 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
 
   sb <- fixGenotypeCols(sb)
   cols <- intersect(getPossibleCols(), colnames(sb))
-  sb <- sb[, cols]
+  novelCols <- colnames(sb)[!colnames(sb) %in% cols]
+  sb <- sb[, c(cols, novelCols)]
   sb <- sb[with(sb, order(gen, id)), ]
   rownames(sb) <- seq(length.out = nrow(sb))
 

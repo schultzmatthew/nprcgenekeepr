@@ -7,9 +7,9 @@
 #' @param upperAges integer vector of upper age boundaries; must be the same
 #' length as \code{lowerAges}
 #' @export
-fillBins <- function(
-  ageDist, lowerAges,
-  upperAges = NULL) {
+fillBins <- function(ageDist, lowerAges, upperAges = NULL) {
+  if (any(names(ageDist) == "exit"))
+    ageDist <- ageDist[is.na(ageDist$exit), ]
   if (is.null(upperAges))
     upperAges <- c(lowerAges[-1], 100)
   maleBins <- c()

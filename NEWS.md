@@ -1,7 +1,14 @@
 NEWS
 ================
 R. Mark Sharp
-06/30/2019
+07/01/2019
+
+# nprcmanager 0.5.25 (20190701)
+
+  - Removed animals with exit dates from pyramid plots
+  - Added ability to retain novel column names
+  - Increased the number of column names understood for display in
+    pedigree browser.
 
 # nprcmanager 0.5.24 (20190630)
 
