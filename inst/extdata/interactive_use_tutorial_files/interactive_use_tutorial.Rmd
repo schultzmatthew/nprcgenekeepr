@@ -22,6 +22,8 @@ library(rmsutilityr)
 
 ```
 
+## Introduction
+
 ## Reading in Pedigrees
 
 Pedigrees can be imported using Excel worksheets, text files, and by using
