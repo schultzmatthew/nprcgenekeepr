@@ -582,7 +582,7 @@ shinyServer(function(input, output, session) {
       geom_histogram(color="darkblue", fill="lightblue", breaks = brx) +
       theme_classic() +
       xlab("Genome Uniqueness Score") + ylab("Frequency") +
-      ggtitle("Genome Uniqueness") +
+      ggtitle("Distribution of Genome Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
   })
