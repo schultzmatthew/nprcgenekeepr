@@ -4,7 +4,11 @@
 \alias{getSiteInfo}
 \title{Get site information}
 \usage{
-getSiteInfo()
+getSiteInfo(expectConfigFile = TRUE)
+}
+\arguments{
+\item{expectConfigFile}{logical parameter when set to \code{FALSE}, no
+configuration is looked for. Default value is \code{TRUE}.}
 }
 \value{
 {A list of site specific informatio used by the application.}
