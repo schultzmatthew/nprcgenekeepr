@@ -472,13 +472,16 @@ This is the pedigree.
 nprcmanager::pedOne
 ```
 
-It currently has no errors.
+If we examine this pedigree file, we are going to get an error message. 
+In additions since I do not have a valid database configuration file so
+we will get a warning about that. 
 ```{r summary-pedOne-no-errors, error = TRUE}
 pedOne <- nprcmanager::pedOne # put it in the local environment
 summary(qcStudbook(pedOne, minParentAge = 0))
-
+warnings()
 ```
 
+We can turn off this warning by telling __qcStudbook__ not to expect a file
 ## Genetic Loops
 
 To use the __findLoops__ function run the following code and select a pedigree 

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.24</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.26</span>
       </span>
     </div>
 
@@ -54,6 +54,12 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
+    </li>
+    <li>
+      <a href="../articles/interactive_use_tutorial_files/Interactive_Use_with_style_sheet.html">Genetic Colony Management with \pkg{nprcmanager}</a>
+    </li>
+    <li>
+      <a href="../articles/interactive_use_tutorial_files/interactive_use_tutorial.html">Interactive Use of nprcmanager</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -195,8 +201,7 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="summary-statistics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary-statistics" class="anchor"></a>Summary Statistics</h2>
-<p>The Summary Statistics tab may, at some point, be merged with the ORIP reporting tab. Currently this tab provides some descriptions of the population being examined. This tab may be expanded on in the future to contain additional information relevant for management.</p>
-<p>After the genetic value analysis has been run, this tab will be populated with a number of statistics, tables and histograms. The tab will report the number of known founders, the estimate of founder equivalents, and the estimate of founder genome equivalents. The tab will generate a table providing the mean and quartiles for the individual mean kinship and genome uniqueness values. Lastly, the tab will also display histograms of the individual mean kinship values, and their corresponding z-scores.</p>
+<p>This tab provides some descriptions of the population being examined after the genetic value analysis has been run. The tab reports the number of known founders, female founders, male founders, founder equivalents, and founder genome equivalents with the first table, which has a single row. The second table has a row for Mean Kinship and a row for Genome Uniqueness. Each row has the Tukey five number summary, which is the minimum, 1<sup>st</sup> quartile, mean, median, 3<sup>rd</sup> quartile, and maximum. Lastly, the tab displays histograms and box plots of the distribution of mean kinship coefficients, the distribution of mean kinship coefficient Z-scores, Distribution of genome uniqueness values.</p>
 </div>
 <div id="breeding-group-formation-1" class="section level2">
 <h2 class="hasAnchor">
@@ -355,12 +360,12 @@ paternal allele vectors are added together.<br>
 <div id="debug-logging" class="section level3">
 <h3 class="hasAnchor">
 <a href="#debug-logging" class="anchor"></a>Debug Logging</h3>
-<p>There is logging system integrated into the package using the package futile.logger. Note the checkbox at the bottom of the side panel on the <em>Input</em> tab. When the Debug on checkbox is checked (it is not checked by default), the application writes to a file in the users home directory named nprcmanager.log. Currently, events occurring the the server.R file are logged as this where most errors are exposed.</p>
+<p>There is a logging system integrated into the package using the package <strong>futile.logger</strong>. Note the checkbox at the bottom of the side panel on the <em>Input</em> tab. When the <em>Debug on</em> checkbox is checked (it is not checked by default), the application writes to a file named <em>nprcmanager.log</em> in the users home directory. Currently, events occurring the the <em>server.R</em> file are logged as that is where most errors are exposed.</p>
 </div>
 <div id="code-coverage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#code-coverage" class="anchor"></a>Code Coverage</h3>
-<p>Code coverage reports are part of the automated build system running on Travis-CI.org. We are using the <strong>testthat</strong> package for unit tests. Currently all code returning values that do not access a database or the file system have coverage with unit tests. Almost all of these have 100 percent of the lines covered. However, the unit tests are not exhaustive. The practice is to add further tests as errors are detected or when working on the code and a new unit test possibility is discovered.– Have 86.32% as of 20180429</p>
+<p>Code coverage reports are part of the automated build system running on Travis-CI.org. We are using the <strong>testthat</strong> package for unit tests. Currently all code returning values that do not access a database or the file system have coverage with unit tests. Many of these have 100 percent of the lines covered. However, the unit tests are not exhaustive. The practice is to add further tests as errors are detected or when working on the code and a new unit test possibility is discovered. As of 20190701 94.31 pecent of the lines are covered.</p>
 </div>
 </div>
   </div>

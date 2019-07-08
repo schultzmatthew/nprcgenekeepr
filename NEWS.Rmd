@@ -10,6 +10,14 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.26 (20190707)
+-   Updated and corrected _\_software_development.Rmd_
+-   Corrected summary statistics descriptions
+-   Added expectConfigFile argument to __getSiteInfo()__ and associated unit 
+    test to allow user to avoid a warning when configuration file is not 
+    expected to be present.
+  
+
 # nprcmanager 0.5.25 (20190701)
 -   Removed animals with exit dates from pyramid plots
 -   Added ability to retain novel column names

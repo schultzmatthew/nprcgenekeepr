@@ -3,6 +3,14 @@ NEWS
 R. Mark Sharp
 07/01/2019
 
+# nprcmanager 0.5.26 (20190707)
+
+  - Updated and corrected *\_software\_development.Rmd*
+  - Corrected summary statistics descriptions
+  - Added expectConfigFile argument to **getSiteInfo()** and associated
+    unit test to allow user to avoid a warning when configuration file
+    is not expected to be present.
+
 # nprcmanager 0.5.25 (20190701)
 
   - Removed animals with exit dates from pyramid plots
