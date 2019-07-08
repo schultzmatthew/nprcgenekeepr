@@ -27,8 +27,9 @@ Provided in reverse chronological order
    _BreedingGroups1_4MendozaTest.csv_, _Jmac_studbook_20180711.csv_,
    _Jmac_studbook_20180711.txt_, and
    _MendozaC1C2newharemstest.csv_ files represent?
-   Can they be use for instruction? 
-   Are some to be used with the Example_Pedigree file?
+   Can they be use for instruction? We are not going to use them. Done 20190622
+   Are some to be used with the Example_Pedigree file? We are not going to use 
+   them. Done 20190622
 1. Decide which pedigree files to leave in package. Done 20190622
    -   All pedigree files except an obfuscated baboon (qcPed) and an obfuscated
        rhesus (examplePedigree) were moved out of the package.
