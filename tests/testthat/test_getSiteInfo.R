@@ -18,4 +18,8 @@ test_that("getSiteInfo handled Windows and non-windows opperating systems", {
     expect_equal(siteInfo$configFile, "~/.nprcmanager_config")
   }
 })
-
+test_that("getSiteInfo handle expectConfigFile parameter", {
+  expect_warning(test <- getSiteInfo())
+  expect_warning(test <- getSiteInfo(expectConfigFile = TRUE))
+  expect_silent(test <- getSiteInfo(expectConfigFile = FALSE))
+})
