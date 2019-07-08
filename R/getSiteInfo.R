@@ -15,9 +15,11 @@
 #'   If \code{center} is "ONPRC", folderPath is "/ONPRC"}
 #'   \item{queryName}{is "demographics"}
 #'}
+#' @param expectConfigFile logical parameter when set to \code{FALSE}, no
+#' configuration is looked for. Default value is \code{TRUE}.
 #' @import stringi
 #' @export
-getSiteInfo <- function() {
+getSiteInfo <- function(expectConfigFile = TRUE) {
   sysInfo <- Sys.info()
   config <- getConfigFileName(sysInfo)
 
@@ -43,9 +45,12 @@ getSiteInfo <- function() {
       homeDir = config[["homeDir"]],
       configFile = config[["configFile"]])
   } else {
-    warning(paste0("The nprcmananger configuration file is missing.\n",
-                   "The file should be named: ",
-                   config[["configFile"]], ".\n"))
+    if (expectConfigFile) {
+      warning(paste0("The nprcmananger configuration file is missing.\n",
+                     "It is required when the LabKey API is to be used.\n",
+                     "The file should be named: ",
+                     config[["configFile"]], ".\n"))
+    }
     list(center = "ONPRC",
       baseUrl = "https://boomer.txbiomed.local:8080/labkey",
       schemaName = "study",

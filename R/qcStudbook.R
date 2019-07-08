@@ -41,6 +41,8 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
+#' @param expectConfigFile logical parameter when set to \code{FALSE}, no
+#' configuration is looked for. Default value is \code{TRUE}.
 #' @param reportChanges logical value that if \code{TRUE}
 #' @param reportErrors logical value if \code{TRUE} will scan the entire file and
 #' report back changes made to input and errors in a
@@ -146,8 +148,8 @@
 #' @importFrom utils write.csv
 #' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
-qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
-                       reportErrors = FALSE) {
+qcStudbook <- function(sb, minParentAge = 2, expectConfigFile = TRUE,
+                       reportChanges = FALSE, reportErrors = FALSE) {
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
   cols <- newColumns$newColNames
   errorLst <- newColumns$errorLst
@@ -209,7 +211,8 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
     }
   } else {
     if (nrow(suspiciousParents) > 0) {
-        fileName <- paste0(getSiteInfo()$homeDir, "lowParentAge.csv")
+        fileName <- paste0(getSiteInfo(expectConfigFile = FALSE)$homeDir,
+                           "lowParentAge.csv")
         write.csv(suspiciousParents,
                   file = fileName, row.names = FALSE)
 
