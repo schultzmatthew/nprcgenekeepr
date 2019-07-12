@@ -473,15 +473,30 @@ nprcmanager::pedOne
 ```
 
 If we examine this pedigree file, we are going to get an error message. 
-In additions since I do not have a valid database configuration file so
-we will get a warning about that. 
+
 ```{r summary-pedOne-no-errors, error = TRUE}
 pedOne <- nprcmanager::pedOne # put it in the local environment
-summary(qcStudbook(pedOne, minParentAge = 0))
-warnings()
+qcStudbook(pedOne, minParentAge = 0)[pedOne$ego_id %in% c("s2", "d2", "o3",
+                                                          "o4"), ]
+
 ```
 
-We can turn off this warning by telling __qcStudbook__ not to expect a file
+We can remove the error by correcting the birthdate of _o4_ from 2006-04-13
+to 2015-09-16 and of _d2_ from 2015-09-16 to 2006-04-13. 
+
+Note that we can display some of the rows by selecting the _ego_id_'s to
+include.
+
+
+
+```{r correct-birthdate, error = TRUE}
+pedOne$birth_date[pedOne$ego_id == "o4"] <- as.Date("2015-09-16")
+pedOne$birth_date[pedOne$ego_id == "d2"] <- as.Date("2006-04-13")
+qcStudbook(pedOne, minParentAge = 0)[pedOne$ego_id %in% c("s2", "d2", "o3",
+                                                          "o4"), ]
+
+```
+
 ## Genetic Loops
 
 To use the __findLoops__ function run the following code and select a pedigree 
