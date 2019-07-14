@@ -808,9 +808,9 @@ shinyServer(function(input, output, session) {
                          minAge = minAge,
                          iter = iter,
                          numGp = numGp,
-                         updateProgress = updateProgress,
                          harem = harem, sexRatio,
-                         withKin = withKin)
+                         withKin = withKin,
+                         updateProgress = updateProgress)
 
     return(grp)
   })

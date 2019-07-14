@@ -50,9 +50,6 @@
 #' group formation process. Default value is 1000 iterations.
 #' @param numGp Integer value indicating the number of groups that should be
 #' formed from the list of IDs. Default is 1.
-#' @param updateProgress Function or NULL. If this function is defined, it
-#' will be called during each iteration to update a
-#' \code{shiny::Progress} object.
 #' @param harem Logical variable when set to \code{TRUE}, the formed groups
 #' have a single male at least \code{minAge} old.
 #' @param sexRatio Numeric value indicating the ratio of females to males x
@@ -61,13 +58,16 @@
 #' matrix for the group is returned along with the group and score.
 #' Defaults to not return the kinship matrix. This maintains compatability with
 #' earlier versions.
+#' @param updateProgress Function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
 #'
 #' @export
 groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat, ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
-                            numGp = 1, updateProgress = NULL, harem = FALSE,
-                            sexRatio = 0, withKin = FALSE) {
+                            numGp = 1, harem = FALSE,
+                            sexRatio = 0, withKin = FALSE, updateProgress = NULL) {
   if (length(currentGroups) > numGp)
     stop(paste0("Cannot have more groups with seed animals than number of ",
                 "groups to be formed."))

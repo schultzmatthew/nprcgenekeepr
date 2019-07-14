@@ -10,6 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.27 (20190713)
+-   Added to interactive tutorial
+-   Minor corrections of function documentation
+-   
+  
 # nprcmanager 0.5.26 (20190707)
 -   Updated and corrected _\_software_development.Rmd_
 -   Corrected summary statistics descriptions

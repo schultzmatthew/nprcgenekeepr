@@ -3,6 +3,13 @@ NEWS
 R. Mark Sharp
 07/01/2019
 
+# nprcmanager 0.5.27 (20190713)
+
+  - Added to interactive tutorial
+
+  - Minor corrections of function documentation
+
+  - 
 # nprcmanager 0.5.26 (20190707)
 
   - Updated and corrected *\_software\_development.Rmd*
