@@ -30,8 +30,7 @@ independently.
 
 ## Installation and Help
 
-
-You can install **nprcmanager** from github with:
+You can install **nprcmanager** from GitHub with the following code.
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
 install.packages("devtools")
@@ -326,10 +325,30 @@ ped <- setPopulation(breederPed, NULL)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                     addBackParents = FALSE)
+```
+The arguments to __reportGV__ are all optional except for _ped_, but
+you may often want to non-default values.
 
-## Need a brief discussion of iterations (guIter), threshold (guThresh),
-## and byID.
+- __ped__ Pedigree information in data.frame format
 
+- __guIter__  Integer indicating the number of iterations for the gene-drop 
+analysis. Default is 5000 iterations
+
+- __guThresh__ Integer indicating the threshold number of animals for 
+defining a unique allele. Default considers an allele "unique" if it is found
+in only 1 animal.
+
+- __pop__ Character vector with animal IDs to consider as the population of 
+interest. The default is NULL.
+
+- __byID__ Logical varioable of length 1 that is passed through to eventually 
+be used by alleleFreq(), which calculates the count of each allele in the 
+provided vector. If byID is TRUE and ids are provided, the function will 
+only count the unique alleles for an individual (homozygous alleles will 
+be counted as 1).
+
+
+```{r full-geneticValue}
 geneticValue <- reportGV(ped, guIter = 500,
                          guThresh = 3,
                          byID = TRUE,
@@ -427,6 +446,121 @@ as an exercise.
 
 ## Breeding Group Formation
 
+The primary purpose of __nprcmanager__ is to form breeding groups 
+according to our best information regarding maintaining the genetic
+characteristics we desire and the realities associated with other animal
+husbandry needs.
+
+There are several options you must consider when forming groups using
+__nprcmanager__, which we will examine using code below.
+
+-   Animals used to form groups
+    -   _high-value_: Randomly select from only high-value animals in genetic value analysis
+    -   _all_: Randomly select from all animals in genetic value analysis
+    -   _candidates_: Use candidate animals entered below to form groups
+-   Sex ratio
+    -   Randomly assign animals without regard to sex
+    -   Use a harem structure with one breeding male per group
+    -   Specify the sex ratio between 0.5 and 10 (F/M)
+-   Whether or not to prepopulate (seed) groups with animals of your choice
+-   Number of groups to be formed
+-   Whether or not to ignore females at or above the minimum parent age
+-   Number of simulations used to search for the optimal group makeup
+-   Whether or not kinship coefficents are to be included in results
+
+You decisions regarding each of the above options are expressed 
+in a call to the function __groupAddAssign__. 
+A complete description of the function and its arguments is available
+using the code shown below.
+```{r groupAddAssign-help-request, eval = FALSE}
+?groupAddAssign
+```
+
+- __candidates__ Character vector of IDs of the animals available for use in 
+forming the groups. The animals that may be present in currentGroups are not 
+included within candidates.
+
+- __currentGroups__ List of character vectors of IDs of animals currently 
+assigned to groups. Defaults to a list with character(0) in each sublist 
+element (one for each group being formed) assuming no groups are 
+prepopulated.
+
+- __kmat__ Numeric matrix of pairwise kinship values. Rows and columns are 
+named with animal IDs.
+
+- __ped__ Dataframe that is the 'Pedigree'. It contains pedigree information 
+including the IDs listed in candidates.
+
+- __threshold__ Numeric value indicating the minimum kinship level to be 
+considered in group formation. Pairwise kinship below this level will be 
+ignored.
+
+- __ignore__ List of character vectors representing the sex combinations to be
+ignored. If provided, the vectors in the list specify if pairwise kinship 
+should be ignored between certain sexes. Default is to ignore all pairwise 
+kinship between females.
+
+- __minAge__ Integer value indicating the minimum age to consider in group 
+formation. Pairwise kinships involving an animal of this age or younger will
+be ignored. Default is 1 year.
+
+- __iter__ Integer indicating the number of times to perform the random group 
+formation process. Default value is 1000 iterations.
+
+- __numGp__ Integer value indicating the number of groups that should be formed
+from the list of IDs. Default is 1.
+
+- __updateProgress__ Function or NULL. If this function is defined, it will be
+called during each iteration to update a shiny::Progress object.
+
+- __harem__ Logical variable when set to TRUE, the formed groups have a single
+male at least minAge old.
+
+- __sexRatio__ Numeric value indicating the ratio of females to males x from 
+0.5 to 10 by increments of 0.5.
+
+- __withKin__ Logical variable when set to TRUE, the kinship matrix for the 
+group is returned along with the group and score. Defaults to not return the
+kinship matrix. This maintains compatability with earlier versions.
+
+
+We will use the _trimmedPed_ pedigree in our code.
+
+For illustration purposes we are going to keep the numbers of candidates, 
+groups, and iterations fairly small.
+
+We will get first some animal IDs to use for our candidates by selecting animals
+at least 2 years old at the time this pedigree was sampled (01-01-2015).
+```{r get-candidates}
+candidates <- read.table(file = system.file("testdata", 
+                                            "trim_Example_Pedigree_IDs.txt",
+                                            package = "nprcmanager"))
+candidates <- trimmedPed$id[
+  trimmedPed$birth < as.Date("2013-01-01") & !is.na(trimmedPed$birth) &
+    is.na(trimmedPed$exit)]
+table(trimmedPed$sex[trimmedPed$id %in% candidates])
+
+```
+Our candidates are made up of `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]`
+females and `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[2]]` males.
+
+
+```{r identify-candidate-animals, eval = FALSE}
+    grp <- groupAddAssign(candidates = candidates,
+                         currentGroups = currentGroups,
+                         kmat = kmat(),
+                         ped = ped,
+                         threshold = threshold,
+                         ignore = ignore,
+                         minAge = minAge,
+                         iter = iter,
+                         numGp = numGp,
+                         updateProgress = updateProgress,
+                         harem = harem, sexRatio,
+                         withKin = withKin)
+
+```
+
 ## Pedigree Errors
 
 As stated earlier you can see which types of errors are detected by 
@@ -460,42 +594,93 @@ knitr::kable(errorTbl)
 
 ```
 
-### Introducing Errors Into A Pedigree
+We are going to 
+use the small imaginary pedigree listed below that has multiple errors
+to discuss pedigree error detection and reporting. 
+First note the birthdates of ego_id _o4_ 
+(2006-04-13) and the purported sire _s2_ (2006-06-19). Note also the proported 
+birthdate of the _d2_ and the birthdates of her offspring.
+Obviously dates or IDs may be incorrect.
 
-In order to discuss pedigree error detection, we are going to use a very small
-imaginary pedigree listed below. Note the birth dates of ego_id _o4_ 
-(2006-04-13) and the purported sire (2006-06-19). 
-Obviously either a date or an ID is incorrect.
-
-This is the pedigree.
+This is the pedigree. _(We will discuss the column names shortly.)_
 ```{r list-pedOne}
-nprcmanager::pedOne
+knitr::kable(nprcmanager::pedOne)
 ```
 
-If we examine this pedigree file, we are going to get an error message. 
+If we try to convert this pedigree file into the standardized studbook format, 
+we are going to get an error message and the 
+creation of a file in the user's home directory that lists the records that 
+have generated the errors. 
 
 ```{r summary-pedOne-no-errors, error = TRUE}
 pedOne <- nprcmanager::pedOne # put it in the local environment
-qcStudbook(pedOne, minParentAge = 0)[pedOne$ego_id %in% c("s2", "d2", "o3",
-                                                          "o4"), ]
+ped <- qcStudbook(pedOne, minParentAge = 0)
 
 ```
 
-We can remove the error by correcting the birthdate of _o4_ from 2006-04-13
+The contents of _lowParentAge.csv_ is shown below.
+```{r read-lowParentAge.csv, echo = FALSE, include = FALSE}
+lowParentAge <- read.csv("~/lowParentAge.csv")
+```
+```{r print-lowParentAge.csv, echo = FALSE}
+knitr::kable(lowParentAge)
+```
+
+Examination of the ages of the parents reveals the issues being reported.
+
+We can remove the errors by changing the birthdates of _o4_ from 2006-04-13
 to 2015-09-16 and of _d2_ from 2015-09-16 to 2006-04-13. 
-
-Note that we can display some of the rows by selecting the _ego_id_'s to
-include.
-
-
 
 ```{r correct-birthdate, error = TRUE}
 pedOne$birth_date[pedOne$ego_id == "o4"] <- as.Date("2015-09-16")
 pedOne$birth_date[pedOne$ego_id == "d2"] <- as.Date("2006-04-13")
-qcStudbook(pedOne, minParentAge = 0)[pedOne$ego_id %in% c("s2", "d2", "o3",
-                                                          "o4"), ]
+```
+
+Note the changes made to the column names between the original __pedOne__ 
+pedigree and the pedigree (__ped__) we get from __qcStudbook__. 
+We have chosen to limit the displayed pedigree by selecting the _ego_id_'s and 
+_id_'s in __pedOne__ and __ped__ respectively.
+```{r display-corrected-birth-records}
+ped <- qcStudbook(pedOne, minParentAge = 0)
+ped[ped$id %in% c("s2", "d2", "o3", "o4"), ]
 
 ```
+
+However, the preferred method of creating the standardized studbook format
+with __qcStudbook__ is to examine all errors found and correcting them 
+before proceeding.
+This is done by explicitely requesting that all aspects inconsistent with the 
+studbook format be identified by setting _reportChanges_ and _reportErrors_ to
+\code{TRUE}.
+
+```{r look-for-errors}
+errorList <- qcStudbook(pedOne, minParentAge = 0, reportChanges = TRUE, 
+                        reportErrors = TRUE)
+summary(errorList)
+```
+
+We will discuss each of these newly identified errors in a moment, however,
+let's look at shortening this report, because often you will not be 
+interested in the more trivial changes to the column names
+made by __qcStudbook__ and in those cases you simply choose not to report 
+changes to the column names as is shown here by setting _reportChanges_ to 
+\code{FALSE}. 
+For this illustration, we are going to bring back the original copy of 
+__pedOne__ to see how the suspicious parents are reported by the 
+__summmary__ function.
+
+```{r look-for-errors-only}
+pedOne <- nprcmanager::pedOne
+errorList <- qcStudbook(pedOne, minParentAge = 0, reportChanges = FALSE, 
+                        reportErrors = TRUE)
+options(width = 90)
+summary(errorList)
+```
+
+The first two errors mentioned are of particular interest.
+Currently __qcStudbook__ automatically changes the sex of dams to 
+_F_ (female) and sires to _M_ (male) when __reportErrors__ is set
+to \code{FALSE}.
 
 ## Genetic Loops
 

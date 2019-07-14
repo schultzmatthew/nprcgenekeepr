@@ -48,7 +48,9 @@ or shipped from the colony}
 an animal to have an offspring. Defaults to 2 years. The check is not
 performed for animals with missing birth dates.}
 
-\item{reportChanges}{logical value that if \code{TRUE}}
+\item{reportChanges}{logical value that if \code{TRUE}, the \code{errorLst}
+contains the list of changes made to the column names. Default is
+\code{FALSE}.}
 
 \item{reportErrors}{logical value if \code{TRUE} will scan the entire file and
 report back changes made to input and errors in a

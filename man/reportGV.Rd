@@ -8,25 +8,25 @@ reportGV(ped, guIter = 5000, guThresh = 1, pop = NULL, byID = TRUE,
   updateProgress = NULL)
 }
 \arguments{
-\item{ped}{the pedigree information in datatable format}
+\item{ped}{The pedigree information in data.frame format}
 
-\item{guIter}{integer indicating the number of iterations for the gene-drop
+\item{guIter}{Integer indicating the number of iterations for the gene-drop
 analysis. Default is 5000 iterations}
 
-\item{guThresh}{integer indicating the threshold number of animals for
+\item{guThresh}{Integer indicating the threshold number of animals for
 defining a unique allele. Default considers an allele "unique"
 if it is found in only 1 animal.}
 
-\item{pop}{character vector with animal IDs to consider as the population of
+\item{pop}{Character vector with animal IDs to consider as the population of
 interest. The default is NULL.}
 
-\item{byID}{logical varioable of length 1 that is passed through to
+\item{byID}{Logical varioable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
   (homozygous alleles will be counted as 1).}
 
-\item{updateProgress}{function or NULL. If this function is defined, it
+\item{updateProgress}{Function or NULL. If this function is defined, it
 will be called during each iteration to update a
 \code{shiny::Progress} object.}
 }

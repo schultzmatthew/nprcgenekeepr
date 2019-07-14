@@ -2,20 +2,20 @@
 #'
 #' This is the main function for the Genetic Value Analysis.
 #'
-#' @param ped the pedigree information in datatable format
-#' @param guIter integer indicating the number of iterations for the gene-drop
+#' @param ped The pedigree information in data.frame format
+#' @param guIter Integer indicating the number of iterations for the gene-drop
 #'  analysis. Default is 5000 iterations
-#' @param guThresh integer indicating the threshold number of animals for
+#' @param guThresh Integer indicating the threshold number of animals for
 #' defining a unique allele. Default considers an allele "unique"
 #' if it is found in only 1 animal.
-#' @param pop character vector with animal IDs to consider as the population of
+#' @param pop Character vector with animal IDs to consider as the population of
 #' interest. The default is NULL.
-#' @param byID logical varioable of length 1 that is passed through to
+#' @param byID Logical varioable of length 1 that is passed through to
 #' eventually be used by \code{alleleFreq()}, which calculates the count of each
 #'  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 #'  the function will only count the unique alleles for an individual
 #'   (homozygous alleles will be counted as 1).
-#' @param updateProgress function or NULL. If this function is defined, it
+#' @param updateProgress Function or NULL. If this function is defined, it
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #'

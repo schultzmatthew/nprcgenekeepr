@@ -302,9 +302,7 @@ shinyServer(function(input, output, session) {
     names(ped) <- headerDisplayNames(names(ped))
 
     ped
-  }#, options = list(
-   #    initComplete = I("function(settings, json) {$('th:eq(1)').each( function(){this.setAttribute( 'title', 'TEST' );});$('th').tooltip();}")
-  #)
+  }
   )
   )
 
@@ -730,8 +728,6 @@ shinyServer(function(input, output, session) {
     if (is.null(rpt())) {
       return(NULL)
     }
-    #browser()
-    #currentGroups <- getCurrentGroups()
     currentGroups <- getCurrentGroups()
     currentGroupIds <- unlist(currentGroups)
 

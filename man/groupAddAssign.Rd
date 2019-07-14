@@ -10,50 +10,51 @@ groupAddAssign(candidates, currentGroups = list(character(0)), kmat, ped,
   sexRatio = 0, withKin = FALSE)
 }
 \arguments{
-\item{candidates}{character vector of IDs of the animals available for
-use in the group.}
+\item{candidates}{Character vector of IDs of the animals available for
+use in forming the groups. The animals that may be present in
+\code{currentGroups} are not included within \code{candidates}.}
 
-\item{currentGroups}{list of character vectors of IDs of animals currently
+\item{currentGroups}{List of character vectors of IDs of animals currently
 assigned to groups.
 Defaults to a list with character(0) in each sublist element (one for each
-group being formed) assuming no groups are prepopulated}
+group being formed) assuming no groups are prepopulated.}
 
-\item{kmat}{numeric matrix of pairwise kinship values. Rows and columns
+\item{kmat}{Numeric matrix of pairwise kinship values. Rows and columns
 are named with animal IDs.}
 
-\item{ped}{dataframe that is the `Pedigree`. It contains pedigree
+\item{ped}{Dataframe that is the `Pedigree`. It contains pedigree
 information including the IDs listed in \code{candidates}.}
 
-\item{threshold}{numeric value indicating the minimum kinship level to be
+\item{threshold}{Numeric value indicating the minimum kinship level to be
 considered in group formation. Pairwise kinship below this level will be
 ignored.}
 
-\item{ignore}{list of character vectors representing the sex combinations
+\item{ignore}{List of character vectors representing the sex combinations
 to be ignored. If provided, the vectors in the list specify if pairwise
 kinship should be ignored between certain sexes.
 Default is to ignore all pairwise kinship between females.}
 
-\item{minAge}{integer value indicating the minimum age to consider in group
+\item{minAge}{Integer value indicating the minimum age to consider in group
 formation. Pairwise kinships involving an animal of this age or younger will
  be ignored. Default is 1 year.}
 
-\item{iter}{integer indicating the number of times to perform the random
+\item{iter}{Integer indicating the number of times to perform the random
 group formation process. Default value is 1000 iterations.}
 
-\item{numGp}{integer value indicating the number of groups that should be
+\item{numGp}{Integer value indicating the number of groups that should be
 formed from the list of IDs. Default is 1.}
 
-\item{updateProgress}{function or NULL. If this function is defined, it
+\item{updateProgress}{Function or NULL. If this function is defined, it
 will be called during each iteration to update a
 \code{shiny::Progress} object.}
 
-\item{harem}{logical variable when set to \code{TRUE}, the formed groups
+\item{harem}{Logical variable when set to \code{TRUE}, the formed groups
 have a single male at least \code{minAge} old.}
 
-\item{sexRatio}{numeric value indicating the ratio of females to males x
+\item{sexRatio}{Numeric value indicating the ratio of females to males x
 from 0.5 to 10 by increments of 0.5.}
 
-\item{withKin}{logical variable when set to \code{TRUE}, the kinship
+\item{withKin}{Logical variable when set to \code{TRUE}, the kinship
 matrix for the group is returned along with the group and score.
 Defaults to not return the kinship matrix. This maintains compatability with
 earlier versions.}

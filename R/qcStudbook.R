@@ -41,7 +41,9 @@
 #' @param minParentAge numeric values to set the minimum age in years for
 #' an animal to have an offspring. Defaults to 2 years. The check is not
 #' performed for animals with missing birth dates.
-#' @param reportChanges logical value that if \code{TRUE}
+#' @param reportChanges logical value that if \code{TRUE}, the \code{errorLst}
+#' contains the list of changes made to the column names. Default is
+#' \code{FALSE}.
 #' @param reportErrors logical value if \code{TRUE} will scan the entire file and
 #' report back changes made to input and errors in a
 #' list of list where each sublist is a type of change or error found.
