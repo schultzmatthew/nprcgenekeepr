@@ -5,13 +5,21 @@
 \title{Calculates the sex ratio (number of non-males / number of males) given
 animal Ids and their pedigree}
 \usage{
-calculateSexRatio(ids, ped)
+calculateSexRatio(ids, ped, additionalMales = 0, additionalFemales = 0)
 }
 \arguments{
 \item{ids}{character vector of animal Ids}
 
 \item{ped}{datatable that is the `Pedigree`. It contains pedigree
 information including the IDs listed in \code{candidates}.}
+
+\item{additionalMales}{Integer value of males to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.}
+
+\item{additionalFemales}{Integer value of females to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.}
 }
 \value{
 Numeric value of sex ratio of the animals provided.

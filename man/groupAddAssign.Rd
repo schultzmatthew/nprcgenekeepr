@@ -6,8 +6,8 @@
 \usage{
 groupAddAssign(candidates, currentGroups = list(character(0)), kmat, ped,
   threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
-  iter = 1000, numGp = 1, updateProgress = NULL, harem = FALSE,
-  sexRatio = 0, withKin = FALSE)
+  iter = 1000, numGp = 1, harem = FALSE, sexRatio = 0,
+  withKin = FALSE, updateProgress = NULL)
 }
 \arguments{
 \item{candidates}{Character vector of IDs of the animals available for
@@ -27,7 +27,7 @@ information including the IDs listed in \code{candidates}.}
 
 \item{threshold}{Numeric value indicating the minimum kinship level to be
 considered in group formation. Pairwise kinship below this level will be
-ignored.}
+ignored. The default value is 0.015625.}
 
 \item{ignore}{List of character vectors representing the sex combinations
 to be ignored. If provided, the vectors in the list specify if pairwise
@@ -44,20 +44,20 @@ group formation process. Default value is 1000 iterations.}
 \item{numGp}{Integer value indicating the number of groups that should be
 formed from the list of IDs. Default is 1.}
 
-\item{updateProgress}{Function or NULL. If this function is defined, it
-will be called during each iteration to update a
-\code{shiny::Progress} object.}
-
 \item{harem}{Logical variable when set to \code{TRUE}, the formed groups
 have a single male at least \code{minAge} old.}
 
 \item{sexRatio}{Numeric value indicating the ratio of females to males x
-from 0.5 to 10 by increments of 0.5.}
+from 0.5 to 20 by increments of 0.5.}
 
 \item{withKin}{Logical variable when set to \code{TRUE}, the kinship
 matrix for the group is returned along with the group and score.
 Defaults to not return the kinship matrix. This maintains compatability with
 earlier versions.}
+
+\item{updateProgress}{Function or NULL. If this function is defined, it
+will be called during each iteration to update a
+\code{shiny::Progress} object.}
 }
 \value{
 A list with list items \code{group}, \code{score} and optionally

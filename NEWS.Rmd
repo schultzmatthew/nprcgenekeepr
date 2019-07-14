@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "07/01/2019"
+date: "07/13/2019"
 output:
    github_document: default
 
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # nprcmanager 0.5.27 (20190713)
 -   Added to interactive tutorial
 -   Minor corrections of function documentation
--   
+-   Moved _updateProgress_ parameter to end of list for __groupAddAssign()__.
   
 # nprcmanager 0.5.26 (20190707)
 -   Updated and corrected _\_software_development.Rmd_

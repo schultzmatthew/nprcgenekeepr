@@ -6,10 +6,10 @@ R. Mark Sharp
 # nprcmanager 0.5.27 (20190713)
 
   - Added to interactive tutorial
-
   - Minor corrections of function documentation
+  - Moved *updateProgress* parameter to end of list for
+    **groupAddAssign()**.
 
-  - 
 # nprcmanager 0.5.26 (20190707)
 
   - Updated and corrected *\_software\_development.Rmd*

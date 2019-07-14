@@ -18,7 +18,7 @@
 #' @param numGp integer value indicating the number of groups that should be
 #' formed from the list of IDs. Default is 1.
 #' @param sexRatio numeric value indicating the ratio of females to males x
-#' from 0.5 to 10 by increments of 0.5.
+#' from 0.5 to 20 by increments of 0.5.
 #'
 #' @export
 fillGroupMembersWithSexRatio <-
@@ -40,13 +40,21 @@ fillGroupMembersWithSexRatio <-
     ratio <- calculateSexRatio(groupMembers[[i]], ped)
     if (ratio < sexRatio) { ## need female
       id <- sample(availableFemales[[i]], 1)
-
       availableFemales <-
         removeSelectedAnimalFromAvailableAnimals(availableFemales, id, numGp)
-    } else {
-      id <- sample(availableMales[[i]], 1)
-      availableMales <-
-        removeSelectedAnimalFromAvailableAnimals(availableMales, id, numGp)
+    } else { # may need male
+      if (abs(sexRatio - calculateSexRatio(groupMembers[[i]], ped,
+                                           additionalMales = 1)) <
+          abs(sexRatio - calculateSexRatio(groupMembers[[i]], ped,
+                                           additionalFemales = 1))) {
+        id <- sample(availableMales[[i]], 1)
+        availableMales <-
+          removeSelectedAnimalFromAvailableAnimals(availableMales, id, numGp)
+      } else {
+        id <- sample(availableFemales[[i]], 1)
+        availableFemales <-
+          removeSelectedAnimalFromAvailableAnimals(availableFemales, id, numGp)
+      }
     }
     groupMembers[[i]] <- c(groupMembers[[i]], id)
     # Remove all relatives from consideration for the group it was added to

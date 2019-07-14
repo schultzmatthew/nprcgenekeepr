@@ -476,6 +476,9 @@ using the code shown below.
 ?groupAddAssign
 ```
 
+Below is the descriptions of the function parameters extracted from the 
+documentation at the time this tutorial was prepared.
+
 - __candidates__ Character vector of IDs of the animals available for use in 
 forming the groups. The animals that may be present in currentGroups are not 
 included within candidates.
@@ -493,7 +496,7 @@ including the IDs listed in candidates.
 
 - __threshold__ Numeric value indicating the minimum kinship level to be 
 considered in group formation. Pairwise kinship below this level will be 
-ignored.
+ignored. The default values is 0.015625.
 
 - __ignore__ List of character vectors representing the sex combinations to be
 ignored. If provided, the vectors in the list specify if pairwise kinship 
@@ -517,7 +520,7 @@ called during each iteration to update a shiny::Progress object.
 male at least minAge old.
 
 - __sexRatio__ Numeric value indicating the ratio of females to males x from 
-0.5 to 10 by increments of 0.5.
+0.5 to 20 by increments of 0.5.
 
 - __withKin__ Logical variable when set to TRUE, the kinship matrix for the 
 group is returned along with the group and score. Defaults to not return the
@@ -532,9 +535,6 @@ groups, and iterations fairly small.
 We will get first some animal IDs to use for our candidates by selecting animals
 at least 2 years old at the time this pedigree was sampled (01-01-2015).
 ```{r get-candidates}
-candidates <- read.table(file = system.file("testdata", 
-                                            "trim_Example_Pedigree_IDs.txt",
-                                            package = "nprcmanager"))
 candidates <- trimmedPed$id[
   trimmedPed$birth < as.Date("2013-01-01") & !is.na(trimmedPed$birth) &
     is.na(trimmedPed$exit)]
@@ -543,23 +543,89 @@ table(trimmedPed$sex[trimmedPed$id %in% candidates])
 ```
 Our candidates are made up of `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]`
 females and `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[2]]` males.
+The parameters __currentGroups__, __threshold__, __ignore__, __minAge__, 
+__sexRatio__, __withKin__, 
+and __updateProgress__ are allowed to take their default values.
+The setting of the __sexRatio__ parameter to 0 is ignored in the following 
+call of the __groupAddAssign__ function.
+This is consistent 
+with the a value of 0 making little since in a breeding colony.
 
+The empty seventh group at the bottom is evidence that all of the canditate
+animals could be placed in a group without exceeding the default value of
+0.015625.
 
-```{r identify-candidate-animals, eval = FALSE}
-    grp <- groupAddAssign(candidates = candidates,
-                         currentGroups = currentGroups,
-                         kmat = kmat(),
-                         ped = ped,
-                         threshold = threshold,
-                         ignore = ignore,
-                         minAge = minAge,
-                         iter = iter,
-                         numGp = numGp,
-                         updateProgress = updateProgress,
-                         harem = harem, sexRatio,
-                         withKin = withKin)
+### Harems
+
+The following group assignments will be forming harem groups.
+This is done by setting __harem__ to \code{TRUE}
+```{r create-harem-groups}
+haremGrp <- groupAddAssign(candidates = candidates,
+                     kmat = trimmedGeneticValue[["kinship"]],
+                     ped = trimmedPed,
+                     iter = 100,
+                     numGp = 6,
+                     harem = TRUE)
+haremGrp$group
 
 ```
+
+We can identify and list the males in each group with the following code.
+```{r list-males-in-harem-groups}
+sapply(haremGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+
+```
+It is easy to notice that the male is listed first within each breeding group.
+
+We can also see the number of animals and the sex ratios created in each group.
+Since these are harem groups the sex ratios are determined by the number of 
+animals in the individual groups.
+```{r harem-count-and-sexratios}
+lines <- sapply(haremGrp$group, function(ids) {
+  paste0("Count: ", length(ids), " Sex Ratio: ", 
+         round(calculateSexRatio(ids, trimmedPed), 2))})
+for (line in lines) print(line)
+```
+
+Examination of this table shows that of the 
+`r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]` females 
+`r (sum(sapply(haremGrp$group[-1], function(ids) length(ids))) - length(haremGrp$group[-1]))`
+are included.
+
+### Controlling Sex Ratios
+
+The following group assignments will be forming harem groups.
+This is done by setting __harem__ to \code{TRUE}
+```{r create-sexratio-groups}
+sexRatioGrp <- groupAddAssign(candidates = candidates,
+                     kmat = trimmedGeneticValue[["kinship"]],
+                     ped = trimmedPed,
+                     iter = 1000,
+                     numGp = 6,
+                     sexRatio = 9)
+sexRatioGrp$group
+
+```
+
+
+Again we can identify and list the males in each group with the following code.
+```{r list-males-in-sexratio-groups}
+sapply(sexRatioGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+
+```
+
+We can also see the number of animals and the sex ratios created in each group.
+```{r list-count-and-sexratios}
+lines <- sapply(sexRatioGrp$group, function(ids) {
+  paste0("Count: ", length(ids), " Sex Ratio: ", 
+         round(calculateSexRatio(ids, trimmedPed), 2))})
+for (line in lines) print(line)
+```
+
+Examination of this table shows that of the 
+`r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]` females 
+`r (sum(sapply(sexRatioGrp$group[-1], function(ids) length(ids))) - length(sexRatioGrp$group[-1]))`
+are included.
 
 ## Pedigree Errors
 

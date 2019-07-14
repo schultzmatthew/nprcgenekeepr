@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.27</span>
       </span>
     </div>
 
@@ -142,27 +142,27 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>ped</th>
-      <td><p>the pedigree information in datatable format</p></td>
+      <td><p>The pedigree information in data.frame format</p></td>
     </tr>
     <tr>
       <th>guIter</th>
-      <td><p>integer indicating the number of iterations for the gene-drop
+      <td><p>Integer indicating the number of iterations for the gene-drop
 analysis. Default is 5000 iterations</p></td>
     </tr>
     <tr>
       <th>guThresh</th>
-      <td><p>integer indicating the threshold number of animals for
+      <td><p>Integer indicating the threshold number of animals for
 defining a unique allele. Default considers an allele "unique"
 if it is found in only 1 animal.</p></td>
     </tr>
     <tr>
       <th>pop</th>
-      <td><p>character vector with animal IDs to consider as the population of
+      <td><p>Character vector with animal IDs to consider as the population of
 interest. The default is NULL.</p></td>
     </tr>
     <tr>
       <th>byID</th>
-      <td><p>logical varioable of length 1 that is passed through to
+      <td><p>Logical varioable of length 1 that is passed through to
 eventually be used by <code><a href='alleleFreq.html'>alleleFreq()</a></code>, which calculates the count of each
  allele in the provided vector. If <code>byID</code> is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
@@ -170,7 +170,7 @@ eventually be used by <code><a href='alleleFreq.html'>alleleFreq()</a></code>, w
     </tr>
     <tr>
       <th>updateProgress</th>
-      <td><p>function or NULL. If this function is defined, it
+      <td><p>Function or NULL. If this function is defined, it
 will be called during each iteration to update a
 <code><a href='https://www.rdocumentation.org/packages/shiny/topics/Progress'>shiny::Progress</a></code> object.</p></td>
     </tr>
