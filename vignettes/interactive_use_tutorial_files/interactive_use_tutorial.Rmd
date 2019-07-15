@@ -28,6 +28,13 @@ within the Shiny application provided by the __nprcmanager__ package and
 provides sufficient insight into those functions that they may be used
 independently.
 
+This tutorial is primarily directed toward someone with experience using
+R who wants to better understand how the Shiny application works or 
+to perform some actions not directly supported by the Shiny application.
+
+Please provide any comments, questions, or bug reports through the GitHub
+issue tracker at \url{https://github.com/rmsharp/nprcmanager/issues}.
+
 ## Installation and Help
 
 You can install **nprcmanager** from GitHub with the following code.
@@ -46,12 +53,12 @@ You can get help from the __R__ console with
 ?nprcmanager
 
 ```
-The help provided by this (_nprcmanager.R_) needs to be more complete 
-and include links to the tutorials.
+__The help provided by this (_nprcmanager.R_) needs to be more complete 
+and include links to the tutorials.__
 
-## Reading in Pedigrees
+## Reading in a Pedigree
 
-Pedigrees can be imported using either Excel worksheets or text files  that 
+A pedigrees can be imported using either Excel worksheets or text files that 
 contain all of the pedigree information or using either Excel worksheets or 
 text files that contain a list of focal animals with the remainder of the 
 pedigree information is pulled in through the LabKey API.
@@ -72,7 +79,6 @@ system.
 
 ```{r get-file-name, eval = TRUE, echo = FALSE, include = FALSE}
 pedigreeFile <- "/Users/msharp/Desktop/ExamplePedigree.csv"
-
 
 ```
 
@@ -98,18 +104,14 @@ empty error list with __getEmptyErrorLst()__.
 We are not showing the output of the function call now 
 because later in this tutorial we will explore errors in more depth.
 
-__qcStudbook__ can take four arguments _sb_, _minParentAge_ (in years), _reportChanges_,
+__qcStudbook__ can take four arguments _sb_, _minParentAge_ (in years), 
+_reportChanges_,
 and _reportErrors_. However, all but _sb_ have default values and only the
 _sb_ argument is required.
 
 It is prudent to ensure that parents are at least of breeding age, which
 is species specific.
 I have used a _minParentAge_ of 2 years.[^1]
-
-Running the line of code below will create a warning if you do not have
-the __nprcmanager__ configuration file in place. 
-This file is only needed when the LabKey API is to be used.
-It is not required for this tutorial.
 
 [^1]: Setting the _minParentAge_ to 3.5 and above will cause an error along
 with the creation of a file _~/lowParentAge.csv_ that will list the parents
@@ -136,9 +138,11 @@ For example, to select living animals at the facility with at least one parent,
 the following can be used.
 
 ```{r select-focal-animals-from-pedigree, results='asis'}
-focalAnimals <- breederPed$id[!(is.na(breederPed$sire) & is.na(breederPed$dam)) &
+focalAnimals <- breederPed$id[!(is.na(breederPed$sire) & 
+                                  is.na(breederPed$dam)) &
                                 is.na(breederPed$exit)]
-print(stri_c("There are ", length(focalAnimals), " animals in the vector _focalAnimals_."))
+print(stri_c("There are ", length(focalAnimals), 
+             " animals in the vector _focalAnimals_."))
 
 ```
 
@@ -146,7 +150,8 @@ As can be seen, these animals have at least one parent and have not left the
 facility.
 
 ```{r short-pedigree-list-of-focal-animals}
-breederPed[breederPed$id %in% focalAnimals, c("id", "sire", "dam", "exit")][1:10, ]
+breederPed[breederPed$id %in% 
+             focalAnimals, c("id", "sire", "dam", "exit")][1:10, ]
 
 ```
 
@@ -170,8 +175,6 @@ nrow(breederPed[breederPed$population, ])
 The IDs used to populate the _population_ flag can be used to trim the pedigree 
 so that it contains only those 
 individuals who are in the ID list or are ancestors of those individuals.
-
-
 
 ```{r trim-pedigree}
 trimmedPed <- trimPedigree(focalAnimals, breederPed)
@@ -477,7 +480,7 @@ using the code shown below.
 ```
 
 Below is the descriptions of the function parameters extracted from the 
-documentation at the time this tutorial was prepared.
+documentation near the time this tutorial was prepared.
 
 - __candidates__ Character vector of IDs of the animals available for use in 
 forming the groups. The animals that may be present in currentGroups are not 

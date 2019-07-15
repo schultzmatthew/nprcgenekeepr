@@ -145,7 +145,7 @@ females.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>calculateSexRatio</span>(<span class='no'>ids</span>, <span class='no'>ped</span>)</pre>
+    <pre class="usage"><span class='fu'>calculateSexRatio</span>(<span class='no'>ids</span>, <span class='no'>ped</span>, <span class='kw'>additionalMales</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>additionalFemales</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,6 +158,18 @@ females.</p>
       <th>ped</th>
       <td><p>datatable that is the `Pedigree`. It contains pedigree
 information including the IDs listed in <code>candidates</code>.</p></td>
+    </tr>
+    <tr>
+      <th>additionalMales</th>
+      <td><p>Integer value of males to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.</p></td>
+    </tr>
+    <tr>
+      <th>additionalFemales</th>
+      <td><p>Integer value of females to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.</p></td>
     </tr>
     </table>
     
