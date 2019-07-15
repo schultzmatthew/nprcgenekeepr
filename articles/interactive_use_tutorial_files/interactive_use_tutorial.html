@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.27</span>
       </span>
     </div>
 
@@ -103,22 +103,24 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>This tutorial demonstrates the major functions used within the Shiny application provided by the <strong>nprcmanager</strong> package and provides sufficient insight into those functions that they may be used independently.</p>
+<p>This tutorial is primarily directed toward someone with experience using R who wants to better understand how the Shiny application works or to perform some actions not directly supported by the Shiny application.</p>
+<p>Please provide any comments, questions, or bug reports through the GitHub issue tracker at .</p>
 </div>
 <div id="installation-and-help" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation-and-help" class="anchor"></a>Installation and Help</h2>
-<p>You can install <strong>nprcmanager</strong> from github with:</p>
+<p>You can install <strong>nprcmanager</strong> from GitHub with the following code.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 <p>You can get help from the <strong>R</strong> console with</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">?nprcmanager</a></code></pre></div>
-<p>The help provided by this (<em>nprcmanager.R</em>) needs to be more complete and include links to the tutorials.</p>
+<p><strong>The help provided by this (<em>nprcmanager.R</em>) needs to be more complete and include links to the tutorials.</strong></p>
 </div>
-<div id="reading-in-pedigrees" class="section level2">
+<div id="reading-in-a-pedigree" class="section level2">
 <h2 class="hasAnchor">
-<a href="#reading-in-pedigrees" class="anchor"></a>Reading in Pedigrees</h2>
-<p>Pedigrees can be imported using either Excel worksheets or text files that contain all of the pedigree information or using either Excel worksheets or text files that contain a list of focal animals with the remainder of the pedigree information is pulled in through the LabKey API.</p>
+<a href="#reading-in-a-pedigree" class="anchor"></a>Reading in a Pedigree</h2>
+<p>A pedigrees can be imported using either Excel worksheets or text files that contain all of the pedigree information or using either Excel worksheets or text files that contain a list of focal animals with the remainder of the pedigree information is pulled in through the LabKey API.</p>
 <p>This tutorial will use a pedigree file that can be created using the <strong>makeExamplePedigreeFile</strong> function as shown below. The function <strong>makeExamplePedigreeFile</strong> both saves a file and returns the full path name to the saved file, which we are saving into the variable <em>pedigreeFile</em>. Note: the user will select where to store the file.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nprcmanager)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">pedigreeFile &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/makeExamplePedigreeFile.html">makeExamplePedigreeFile</a></span>()</a></code></pre></div>
@@ -133,7 +135,6 @@
 <p>You can see the errors that can be detected by <strong>qcStudbook</strong> by returning the empty error list with <strong>getEmptyErrorLst()</strong>. We are not showing the output of the function call now because later in this tutorial we will explore errors in more depth.</p>
 <p><strong>qcStudbook</strong> can take four arguments <em>sb</em>, <em>minParentAge</em> (in years), <em>reportChanges</em>, and <em>reportErrors</em>. However, all but <em>sb</em> have default values and only the <em>sb</em> argument is required.</p>
 <p>It is prudent to ensure that parents are at least of breeding age, which is species specific. I have used a <em>minParentAge</em> of 2 years.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>Running the line of code below will create a warning if you do not have the <strong>nprcmanager</strong> configuration file in place. This file is only needed when the LabKey API is to be used. It is not required for this tutorial.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">breederPed &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(breederPedCsv, <span class="dt">minParentAge =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p>If <strong>qcStudbook</strong> reports an error, change the call by adding the <strong>reportErrors</strong> argument set to <strong>TRUE</strong> and examine the returned object. More on this is presented in the <strong>Pedigree Errors</strong> section.</p>
 </div>
@@ -142,12 +143,15 @@
 <a href="#identifying-focal-animals" class="anchor"></a>Identifying Focal Animals</h2>
 <p>You may want to focus your work on a <em>focal</em> group of animals. This can be done by reading in a list of animal IDs that make up the <em>focal</em> group and use that list to update the pedigree. Alternatively you can created a list of animal IDs based on criteria you have selected.</p>
 <p>For example, to select living animals at the facility with at least one parent, the following can be used.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">focalAnimals &lt;-<span class="st"> </span>breederPed<span class="op">$</span>id[<span class="op">!</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>sire) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>dam)) <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">                                </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>exit)]</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw">stri_c</span>(<span class="st">"There are "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(focalAnimals), <span class="st">" animals in the vector _focalAnimals_."</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">focalAnimals &lt;-<span class="st"> </span>breederPed<span class="op">$</span>id[<span class="op">!</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>sire) <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">                                  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>dam)) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">                                </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(breederPed<span class="op">$</span>exit)]</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw">stri_c</span>(<span class="st">"There are "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(focalAnimals), </a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">             <span class="st">" animals in the vector _focalAnimals_."</span>))</a></code></pre></div>
 <p>[1] “There are 327 animals in the vector <em>focalAnimals</em>.”</p>
 <p>As can be seen, these animals have at least one parent and have not left the facility.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">breederPed[breederPed<span class="op">$</span>id <span class="op">%in%</span><span class="st"> </span>focalAnimals, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"sire"</span>, <span class="st">"dam"</span>, <span class="st">"exit"</span>)][<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">breederPed[breederPed<span class="op">$</span>id <span class="op">%in%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">             </span>focalAnimals, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"sire"</span>, <span class="st">"dam"</span>, <span class="st">"exit"</span>)][<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</a></code></pre></div>
 <pre><code>##          id   sire    dam exit
 ## 1669 01QRQ4 VDBGDP TH7HTY &lt;NA&gt;
 ## 1743 CLSVU6 ULV9M7 SUFWJI &lt;NA&gt;
@@ -215,67 +219,71 @@
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">ped &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/setPopulation.html">setPopulation</a></span>(breederPed, <span class="ot">NULL</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">probands &lt;-<span class="st"> </span>ped<span class="op">$</span>id[ped<span class="op">$</span>population]</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2">ped &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/trimPedigree.html">trimPedigree</a></span>(probands, ped, <span class="dt">removeUninformative =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">                    <span class="dt">addBackParents =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">## Need a brief discussion of iterations (guIter), threshold (guThresh),</span></a>
-<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">## and byID.</span></a>
-<a class="sourceLine" id="cb27-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8">geneticValue &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/reportGV.html">reportGV</a></span>(ped, <span class="dt">guIter =</span> <span class="dv">500</span>,</a>
-<a class="sourceLine" id="cb27-9" data-line-number="9">                         <span class="dt">guThresh =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb27-10" data-line-number="10">                         <span class="dt">byID =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb27-11" data-line-number="11">                         <span class="dt">updateProgress =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb27-12" data-line-number="12"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(geneticValue)</a></code></pre></div>
+<a class="sourceLine" id="cb27-3" data-line-number="3">                    <span class="dt">addBackParents =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>The arguments to <strong>reportGV</strong> are all optional except for <em>ped</em>, but you may often want to non-default values.</p>
+<ul>
+<li><p><strong>ped</strong> Pedigree information in data.frame format</p></li>
+<li><p><strong>guIter</strong> Integer indicating the number of iterations for the gene-drop analysis. Default is 5000 iterations</p></li>
+<li><p><strong>guThresh</strong> Integer indicating the threshold number of animals for defining a unique allele. Default considers an allele “unique” if it is found in only 1 animal.</p></li>
+<li><p><strong>pop</strong> Character vector with animal IDs to consider as the population of interest. The default is NULL.</p></li>
+<li><p><strong>byID</strong> Logical varioable of length 1 that is passed through to eventually be used by alleleFreq(), which calculates the count of each allele in the provided vector. If byID is TRUE and ids are provided, the function will only count the unique alleles for an individual (homozygous alleles will be counted as 1).</p></li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">geneticValue &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/reportGV.html">reportGV</a></span>(ped, <span class="dt">guIter =</span> <span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">                         <span class="dt">guThresh =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">                         <span class="dt">byID =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">                         <span class="dt">updateProgress =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(geneticValue)</a></code></pre></div>
 <pre><code>## The genetic value report 
 ## Individuals in Pedigree: 3694 
 ## Male Founders: 141
 ## Female Founders: 122
 ## Total Founders: 263 
 ## Founder Equivalents: 241.84 
-## Founder Genome Equivalents: 163.8 
+## Founder Genome Equivalents: 163.83 
 ## Live Offspring: 4052 
-## High Value Individuals: 2961 
-## Low Value Individuals: 733</code></pre>
+## High Value Individuals: 2959 
+## Low Value Individuals: 735</code></pre>
 <p>What happens if we limit our analysis to the trimmed pedigree? Remember that the trimmed pedigree still contains all of the genetic information that the full pedigree has for the focal animals.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">trimmedGeneticValue &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/reportGV.html">reportGV</a></span>(trimmedPed, <span class="dt">guIter =</span> <span class="dv">500</span>,</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">                         <span class="dt">guThresh =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">                         <span class="dt">byID =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">                         <span class="dt">updateProgress =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(trimmedGeneticValue)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">trimmedGeneticValue &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/reportGV.html">reportGV</a></span>(trimmedPed, <span class="dt">guIter =</span> <span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">                         <span class="dt">guThresh =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">                         <span class="dt">byID =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">                         <span class="dt">updateProgress =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(trimmedGeneticValue)</a></code></pre></div>
 <pre><code>## The genetic value report 
 ## Individuals in Pedigree: 327 
 ## Male Founders: 3
 ## Female Founders: 17
 ## Total Founders: 20 
 ## Founder Equivalents: 109.67 
-## Founder Genome Equivalents: 47.86 
+## Founder Genome Equivalents: 47.96 
 ## Live Offspring: 321 
-## High Value Individuals: 233 
-## Low Value Individuals: 94</code></pre>
+## High Value Individuals: 228 
+## Low Value Individuals: 99</code></pre>
 <p>It is clear that limiting your analysis to the animals of interest reduces the effort required to examine the animals of interest.</p>
 <div id="detailed-look-at-the-genetic-value-report-object" class="section level3">
 <h3 class="hasAnchor">
 <a href="#detailed-look-at-the-genetic-value-report-object" class="anchor"></a>Detailed look at the Genetic Value Report object</h3>
 <p>The names of the object within the genetic value report object (<em>trimmedGeneticValue</em>) can be listed as shown in the next line of code.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(trimmedGeneticValue)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(trimmedGeneticValue)</a></code></pre></div>
 <pre><code>## [1] "report"         "kinship"        "gu"             "fe"            
 ## [5] "fg"             "maleFounders"   "femaleFounders" "total"</code></pre>
 <p>The <em>report</em> object (an R dataframe) can in-turn be examined.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## column names</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## column names</span></a></code></pre></div>
 <pre><code>##  [1] "id"              "sex"             "age"            
 ##  [4] "birth"           "exit"            "population"     
 ##  [7] "origin"          "indivMeanKin"    "zScores"        
 ## [10] "gu"              "totalOffspring"  "livingOffspring"
 ## [13] "value"           "rank"</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## Number of rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## Number of rows</span></a></code></pre></div>
 <pre><code>## [1] 327</code></pre>
 <p>The report is more conveniently used as a separate object. The next section of code rounds some of the numerica values and converts all columns to characters for display as a table where only the first 10 lines are included.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">rpt &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"report"</span>]]</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">rpt<span class="op">$</span>indivMeanKin &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>indivMeanKin, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">rpt<span class="op">$</span>zScores &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>zScores, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">rpt<span class="op">$</span>gu &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>gu, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">rpt &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/toCharacter.html">toCharacter</a></span>(rpt)</a>
-<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(rpt) &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/headerDisplayNames.html">headerDisplayNames</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(rpt))</a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(rpt[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]) <span class="co"># needs more work for display purposes.</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">rpt &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"report"</span>]]</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">rpt<span class="op">$</span>indivMeanKin &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>indivMeanKin, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">rpt<span class="op">$</span>zScores &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>zScores, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">rpt<span class="op">$</span>gu &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(rpt<span class="op">$</span>gu, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">rpt &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/toCharacter.html">toCharacter</a></span>(rpt)</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(rpt) &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/headerDisplayNames.html">headerDisplayNames</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(rpt))</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(rpt[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]) <span class="co"># needs more work for display purposes.</span></a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Ego ID</th>
@@ -304,7 +312,7 @@
 <td align="left"></td>
 <td align="right">0.00287</td>
 <td align="right">-1.97</td>
-<td align="right">88.6</td>
+<td align="right">88.3</td>
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="left">High Value</td>
@@ -320,7 +328,7 @@
 <td align="left"></td>
 <td align="right">0.00329</td>
 <td align="right">-1.90</td>
-<td align="right">86.2</td>
+<td align="right">88.0</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
@@ -336,13 +344,29 @@
 <td align="left"></td>
 <td align="right">0.00373</td>
 <td align="right">-1.83</td>
-<td align="right">79.2</td>
+<td align="right">78.2</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
 <td align="right">3</td>
 </tr>
 <tr class="even">
+<td align="left">3MMZD4</td>
+<td align="left">M</td>
+<td align="right">12.2</td>
+<td align="left">2007-03-24</td>
+<td align="left">NA</td>
+<td align="left">TRUE</td>
+<td align="left"></td>
+<td align="right">0.00536</td>
+<td align="right">-1.57</td>
+<td align="right">77.1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">High Value</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
 <td align="left">WK89I9</td>
 <td align="left">F</td>
 <td align="right">21.1</td>
@@ -352,13 +376,13 @@
 <td align="left"></td>
 <td align="right">0.00582</td>
 <td align="right">-1.49</td>
-<td align="right">76.2</td>
+<td align="right">73.9</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
-<td align="right">4</td>
+<td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">01QRQ4</td>
 <td align="left">F</td>
 <td align="right">18.2</td>
@@ -368,23 +392,7 @@
 <td align="left"></td>
 <td align="right">0.00373</td>
 <td align="right">-1.83</td>
-<td align="right">75.1</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">High Value</td>
-<td align="right">5</td>
-</tr>
-<tr class="even">
-<td align="left">8YP6PA</td>
-<td align="left">M</td>
-<td align="right">5.0</td>
-<td align="left">2014-07-04</td>
-<td align="left">NA</td>
-<td align="left">TRUE</td>
-<td align="left"></td>
-<td align="right">0.00485</td>
-<td align="right">-1.65</td>
-<td align="right">74.2</td>
+<td align="right">72.9</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
@@ -400,55 +408,55 @@
 <td align="left"></td>
 <td align="right">0.00480</td>
 <td align="right">-1.66</td>
-<td align="right">73.2</td>
+<td align="right">72.8</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
 <td align="right">7</td>
 </tr>
 <tr class="even">
-<td align="left">3MMZD4</td>
+<td align="left">8YP6PA</td>
 <td align="left">M</td>
-<td align="right">12.2</td>
-<td align="left">2007-03-24</td>
+<td align="right">5.0</td>
+<td align="left">2014-07-04</td>
 <td align="left">NA</td>
 <td align="left">TRUE</td>
 <td align="left"></td>
-<td align="right">0.00536</td>
-<td align="right">-1.57</td>
-<td align="right">72.4</td>
+<td align="right">0.00485</td>
+<td align="right">-1.65</td>
+<td align="right">70.6</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
 <td align="right">8</td>
 </tr>
 <tr class="odd">
-<td align="left">CHK1ZX</td>
-<td align="left">F</td>
-<td align="right">7.8</td>
-<td align="left">2011-09-06</td>
+<td align="left">A6A1M1</td>
+<td align="left">M</td>
+<td align="right">20.0</td>
+<td align="left">1999-06-08</td>
 <td align="left">NA</td>
 <td align="left">TRUE</td>
 <td align="left"></td>
-<td align="right">0.00481</td>
-<td align="right">-1.66</td>
-<td align="right">69.6</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.00577</td>
+<td align="right">-1.50</td>
+<td align="right">68.5</td>
+<td align="right">2</td>
+<td align="right">1</td>
 <td align="left">High Value</td>
 <td align="right">9</td>
 </tr>
 <tr class="even">
-<td align="left">50D77I</td>
-<td align="left">F</td>
-<td align="right">20.1</td>
-<td align="left">1999-05-08</td>
+<td align="left">A98D7P</td>
+<td align="left">M</td>
+<td align="right">7.9</td>
+<td align="left">2011-07-30</td>
 <td align="left">NA</td>
 <td align="left">TRUE</td>
 <td align="left"></td>
-<td align="right">0.00451</td>
-<td align="right">-1.71</td>
-<td align="right">68.2</td>
+<td align="right">0.00716</td>
+<td align="right">-1.27</td>
+<td align="right">68.6</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">High Value</td>
@@ -457,43 +465,304 @@
 </tbody>
 </table>
 <p>We start the next lines of code by getting a fresh copy of the genetic value report since we changed all of the numeric values to characters in the last section to print the table. These lines demonstrate one way of extracting the component objects from the <em>genetic value</em> object.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">rpt &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"report"</span>]]</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2">kmat &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"kinship"</span>]]</a>
-<a class="sourceLine" id="cb38-3" data-line-number="3">f &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"total"</span>]]</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">mf &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"maleFounders"</span>]]</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">ff &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"femaleFounders"</span>]]</a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">fe &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"fe"</span>]]</a>
-<a class="sourceLine" id="cb38-7" data-line-number="7">fg &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"fg"</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">rpt &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"report"</span>]]</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">kmat &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"kinship"</span>]]</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">f &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"total"</span>]]</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">mf &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"maleFounders"</span>]]</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">ff &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"femaleFounders"</span>]]</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">fe &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"fe"</span>]]</a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">fg &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"fg"</span>]]</a></code></pre></div>
 <p>It is informative to examine the distribution of <em>genetic uniqueness</em>, <em>mean kinship</em>, and <em>z-scores</em> (normalized <em>mean kinship</em> values).</p>
 <p>Creation of the boxplot for the <em>genetic uniqueness</em> values is shown below.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">gu &lt;-<span class="st"> </span>rpt[, <span class="st">"gu"</span>]</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">guBox &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">gu =</span> gu), <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> gu)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_boxplot</span>(</a>
-<a class="sourceLine" id="cb39-4" data-line-number="4">    <span class="dt">color =</span> <span class="st">"darkblue"</span>,</a>
-<a class="sourceLine" id="cb39-5" data-line-number="5">    <span class="dt">fill =</span> <span class="st">"lightblue"</span>,</a>
-<a class="sourceLine" id="cb39-6" data-line-number="6">    <span class="dt">notch =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb39-7" data-line-number="7">    <span class="dt">outlier.color =</span> <span class="st">"red"</span>,</a>
-<a class="sourceLine" id="cb39-8" data-line-number="8">    <span class="dt">outlier.shape =</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb39-9" data-line-number="9">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-10" data-line-number="10"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-11" data-line-number="11"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Score"</span>)  <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">"Genetic Uniqueness"</span>)</a>
-<a class="sourceLine" id="cb39-12" data-line-number="12"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(guBox)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">gu &lt;-<span class="st"> </span>rpt[, <span class="st">"gu"</span>]</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">guBox &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">gu =</span> gu), <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">""</span>, <span class="dt">y =</span> gu)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_boxplot</span>(</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">    <span class="dt">color =</span> <span class="st">"darkblue"</span>,</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">    <span class="dt">fill =</span> <span class="st">"lightblue"</span>,</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">    <span class="dt">notch =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">    <span class="dt">outlier.color =</span> <span class="st">"red"</span>,</a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">    <span class="dt">outlier.shape =</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-10" data-line-number="10"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-11" data-line-number="11"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Score"</span>)  <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">"Genetic Uniqueness"</span>)</a>
+<a class="sourceLine" id="cb40-12" data-line-number="12"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(guBox)</a></code></pre></div>
 <p><img src="interactive_use_tutorial_files/figure-html/genetic-uniqueness-boxplot-1.png" width="700"></p>
 <p>Extraction of the individual <em>mean kinship</em> values and their corresponding z-scores is shown in the next code chunk.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">mk &lt;-<span class="st"> </span>rpt[, <span class="st">"indivMeanKin"</span>]</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">zs &lt;-<span class="st"> </span>rpt[, <span class="st">"zScores"</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">mk &lt;-<span class="st"> </span>rpt[, <span class="st">"indivMeanKin"</span>]</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">zs &lt;-<span class="st"> </span>rpt[, <span class="st">"zScores"</span>]</a></code></pre></div>
 <p>Creation of boxplots for the <em>mean kinship</em> and <em>z-scores</em> is left as an exercise.</p>
 </div>
 </div>
 <div id="breeding-group-formation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#breeding-group-formation" class="anchor"></a>Breeding Group Formation</h2>
+<p>The primary purpose of <strong>nprcmanager</strong> is to form breeding groups according to our best information regarding maintaining the genetic characteristics we desire and the realities associated with other animal husbandry needs.</p>
+<p>There are several options you must consider when forming groups using <strong>nprcmanager</strong>, which we will examine using code below.</p>
+<ul>
+<li>Animals used to form groups
+<ul>
+<li>
+<em>high-value</em>: Randomly select from only high-value animals in genetic value analysis</li>
+<li>
+<em>all</em>: Randomly select from all animals in genetic value analysis</li>
+<li>
+<em>candidates</em>: Use candidate animals entered below to form groups</li>
+</ul>
+</li>
+<li>Sex ratio
+<ul>
+<li>Randomly assign animals without regard to sex</li>
+<li>Use a harem structure with one breeding male per group</li>
+<li>Specify the sex ratio between 0.5 and 10 (F/M)</li>
+</ul>
+</li>
+<li>Whether or not to prepopulate (seed) groups with animals of your choice</li>
+<li>Number of groups to be formed</li>
+<li>Whether or not to ignore females at or above the minimum parent age</li>
+<li>Number of simulations used to search for the optimal group makeup</li>
+<li>Whether or not kinship coefficents are to be included in results</li>
+</ul>
+<p>You decisions regarding each of the above options are expressed in a call to the function <strong>groupAddAssign</strong>. A complete description of the function and its arguments is available using the code shown below.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">?groupAddAssign</a></code></pre></div>
+<p>Below is the descriptions of the function parameters extracted from the documentation near the time this tutorial was prepared.</p>
+<ul>
+<li><p><strong>candidates</strong> Character vector of IDs of the animals available for use in forming the groups. The animals that may be present in currentGroups are not included within candidates.</p></li>
+<li><p><strong>currentGroups</strong> List of character vectors of IDs of animals currently assigned to groups. Defaults to a list with character(0) in each sublist element (one for each group being formed) assuming no groups are prepopulated.</p></li>
+<li><p><strong>kmat</strong> Numeric matrix of pairwise kinship values. Rows and columns are named with animal IDs.</p></li>
+<li><p><strong>ped</strong> Dataframe that is the ‘Pedigree’. It contains pedigree information including the IDs listed in candidates.</p></li>
+<li><p><strong>threshold</strong> Numeric value indicating the minimum kinship level to be considered in group formation. Pairwise kinship below this level will be ignored. The default values is 0.015625.</p></li>
+<li><p><strong>ignore</strong> List of character vectors representing the sex combinations to be ignored. If provided, the vectors in the list specify if pairwise kinship should be ignored between certain sexes. Default is to ignore all pairwise kinship between females.</p></li>
+<li><p><strong>minAge</strong> Integer value indicating the minimum age to consider in group formation. Pairwise kinships involving an animal of this age or younger will be ignored. Default is 1 year.</p></li>
+<li><p><strong>iter</strong> Integer indicating the number of times to perform the random group formation process. Default value is 1000 iterations.</p></li>
+<li><p><strong>numGp</strong> Integer value indicating the number of groups that should be formed from the list of IDs. Default is 1.</p></li>
+<li><p><strong>updateProgress</strong> Function or NULL. If this function is defined, it will be called during each iteration to update a shiny::Progress object.</p></li>
+<li><p><strong>harem</strong> Logical variable when set to TRUE, the formed groups have a single male at least minAge old.</p></li>
+<li><p><strong>sexRatio</strong> Numeric value indicating the ratio of females to males x from 0.5 to 20 by increments of 0.5.</p></li>
+<li><p><strong>withKin</strong> Logical variable when set to TRUE, the kinship matrix for the group is returned along with the group and score. Defaults to not return the kinship matrix. This maintains compatability with earlier versions.</p></li>
+</ul>
+<p>We will use the <em>trimmedPed</em> pedigree in our code.</p>
+<p>For illustration purposes we are going to keep the numbers of candidates, groups, and iterations fairly small.</p>
+<p>We will get first some animal IDs to use for our candidates by selecting animals at least 2 years old at the time this pedigree was sampled (01-01-2015).</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">candidates &lt;-<span class="st"> </span>trimmedPed<span class="op">$</span>id[</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">  trimmedPed<span class="op">$</span>birth <span class="op">&lt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2013-01-01"</span>) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(trimmedPed<span class="op">$</span>birth) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(trimmedPed<span class="op">$</span>exit)]</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/table">table</a></span>(trimmedPed<span class="op">$</span>sex[trimmedPed<span class="op">$</span>id <span class="op">%in%</span><span class="st"> </span>candidates])</a></code></pre></div>
+<pre><code>## 
+##   F   M   H   U 
+## 184  96   0   0</code></pre>
+<p>Our candidates are made up of 184 females and 96 males. The parameters <strong>currentGroups</strong>, <strong>threshold</strong>, <strong>ignore</strong>, <strong>minAge</strong>, <strong>sexRatio</strong>, <strong>withKin</strong>, and <strong>updateProgress</strong> are allowed to take their default values. The setting of the <strong>sexRatio</strong> parameter to 0 is ignored in the following call of the <strong>groupAddAssign</strong> function. This is consistent with the a value of 0 making little since in a breeding colony.</p>
+<p>The empty seventh group at the bottom is evidence that all of the canditate animals could be placed in a group without exceeding the default value of 0.015625.</p>
+<div id="harems" class="section level3">
+<h3 class="hasAnchor">
+<a href="#harems" class="anchor"></a>Harems</h3>
+<p>The following group assignments will be forming harem groups. This is done by setting <strong>harem</strong> to </p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">haremGrp &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/groupAddAssign.html">groupAddAssign</a></span>(<span class="dt">candidates =</span> candidates,</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">                     <span class="dt">kmat =</span> trimmedGeneticValue[[<span class="st">"kinship"</span>]],</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">                     <span class="dt">ped =</span> trimmedPed,</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">                     <span class="dt">iter =</span> <span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">                     <span class="dt">numGp =</span> <span class="dv">6</span>,</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">                     <span class="dt">harem =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">haremGrp<span class="op">$</span>group</a></code></pre></div>
+<pre><code>## [[1]]
+##  [1] "76DIT4" "7ZNY75" "WLMGS1" "PVY432" "9P0DES" "QRZK48" "AW400C"
+##  [8] "1FAZ0K" "WJXIH9" "GAS52W" "ZATMEE" "87AQLF" "MFKT9C" "Q7U139"
+## [15] "QCA36T" "WKY2SZ" "1CZM30" "TQEMY6" "1QVS67" "TXZUKC" "TEACA3"
+## [22] "ZQXZYB" "5ERY5Z" "G8MCV7" "MH88T6" "5BPBUI" "BS3RLE" "RVHVTZ"
+## [29] "414N7M" "AFZKBS"
+## 
+## [[2]]
+##  [1] "ER464J" "QW2Z3R" "AZ3L0D" "MTCAIG" "83HQBN" "F45799" "46ZHKN"
+##  [8] "DI4AHD" "Q17CG3" "NK802Y" "Z904TJ" "72LYDE" "SHG3RB" "N79QXB"
+## [15] "LVYYNY" "I5CI33" "7B9CA6" "6X6BG9" "IH1KPA" "CS23RV" "0HYZ23"
+## [22] "W0GUKI" "G25E3F" "MB6NYQ" "1SSCJC" "38K2SR" "0X4W26" "H2J6UA"
+## [29] "XFWVVX" "DHNQ1W" "VWC5ZH"
+## 
+## [[3]]
+##  [1] "CHJ9D2" "6KWVRI" "92UG4N" "MYUMMX" "DKIM6U" "GIIEUD" "FG0SFA"
+##  [8] "5W621W" "6F9FB8" "3SKITJ" "PJ72W1" "QQMBT1" "CMMUKU" "E5Q33K"
+## [15] "QCENKM" "967Y3D" "DRXMW4" "PI4VHT" "AIHJ8Z" "1CIRC9" "J3F6PD"
+## [22] "5EDLL7" "EMV4P6" "321LLB" "TYEWF1" "KEA4QG" "S7IWWA" "XYRDKV"
+## [29] "I8ABC7" "WK89I9" "SH3FB7"
+## 
+## [[4]]
+##  [1] "FG6L7S" "NN3GDQ" "0SGJ12" "RJ4JPC" "JLFKV8" "R5AYJK" "S222R3"
+##  [8] "D33J06" "WNEAS6" "CHK1ZX" "GTLA8R" "D4B0RM" "SCFSBF" "99BMJW"
+## [15] "5KWNMZ" "W6MDVK" "MKY9TK" "T3QPW5" "AR17R5" "Q8U9LB" "B134XZ"
+## [22] "5EDIEE" "2Z4YLY" "PU7RSG" "1GF3GM" "465ERA" "HE0SCR" "BCJJKN"
+## [29] "DPXEQE" "WI38KZ"
+## 
+## [[5]]
+##  [1] "XC304E" "FB5L3N" "ILVQVB" "Y6DB6L" "1KJ2MG" "0IIAEN" "K3TNHP"
+##  [8] "30J3CQ" "QWKFBH" "ZPS15A" "KX0RJ3" "D9P18Y" "S5H1GC" "9MG040"
+## [15] "7NE2UT" "N5QBWD" "AR5U44" "5IAFMK" "1SPLS8" "YFCIHJ" "MPIQ4N"
+## [22] "AP1YLW" "B228Q6" "LYSLPP" "EZ2F8A" "1VP3UC" "XEC0M5" "B1WVCN"
+## [29] "Y0TCYX" "S3EBGZ" "W5WIRP" "BKWE4D"
+## 
+## [[6]]
+##  [1] "YDRD81" "X694YR" "13B1QL" "50D77I" "8JUUJ9" "WTE53B" "G58RGY"
+##  [8] "GCBYDW" "7RA57Q" "FJS7RQ" "M9PVG5" "MX4J7G" "CLSVU6" "ESUIAF"
+## [15] "0XTZQ1" "PYPM1W" "KZY6PD" "CRPXY7" "F7I2ED" "FL170P" "LS184H"
+## [22] "N4NV8B" "3YJIMV" "DH9WJQ" "YLRNIK" "3GECJJ" "ZH3YG1" "S056D5"
+## [29] "2F6J3U" "DCJJYS" "C18V6I" "PBAFJF" "01QRQ4" "EX5K0S" "YTJ2UL"
+## [36] "3DTD2N"
+## 
+## [[7]]
+## [1] NA</code></pre>
+<p>We can identify and list the males in each group with the following code.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(haremGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {ids[ids <span class="op">%in%</span><span class="st"> </span>trimmedPed<span class="op">$</span>id[trimmedPed<span class="op">$</span>sex <span class="op">==</span><span class="st"> "M"</span>]]})</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] "76DIT4"
+## 
+## [[2]]
+## [1] "ER464J"
+## 
+## [[3]]
+## [1] "CHJ9D2"
+## 
+## [[4]]
+## [1] "FG6L7S"
+## 
+## [[5]]
+## [1] "XC304E"
+## 
+## [[6]]
+## [1] "YDRD81"
+## 
+## [[7]]
+## logical(0)</code></pre>
+<p>It is easy to notice that the male is listed first within each breeding group.</p>
+<p>We can also see the number of animals and the sex ratios created in each group. Since these are harem groups the sex ratios are determined by the number of animals in the individual groups.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">lines &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(haremGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"Count: "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(ids), <span class="st">" Sex Ratio: "</span>, </a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">         <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="../../reference/calculateSexRatio.html">calculateSexRatio</a></span>(ids, trimmedPed), <span class="dv">2</span>))})</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="cf">for</span> (line <span class="cf">in</span> lines) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(line)</a></code></pre></div>
+<pre><code>## [1] "Count: 30 Sex Ratio: 29"
+## [1] "Count: 31 Sex Ratio: 30"
+## [1] "Count: 31 Sex Ratio: 30"
+## [1] "Count: 30 Sex Ratio: 29"
+## [1] "Count: 32 Sex Ratio: 31"
+## [1] "Count: 36 Sex Ratio: 35"
+## [1] "Count: 1 Sex Ratio: 0"</code></pre>
+<p>Examination of this table shows that of the 184 females 155 are included.</p>
+</div>
+<div id="controlling-sex-ratios" class="section level3">
+<h3 class="hasAnchor">
+<a href="#controlling-sex-ratios" class="anchor"></a>Controlling Sex Ratios</h3>
+<p>The following group assignments will be forming harem groups. This is done by setting <strong>harem</strong> to </p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">sexRatioGrp &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/groupAddAssign.html">groupAddAssign</a></span>(<span class="dt">candidates =</span> candidates,</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">                     <span class="dt">kmat =</span> trimmedGeneticValue[[<span class="st">"kinship"</span>]],</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">                     <span class="dt">ped =</span> trimmedPed,</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">                     <span class="dt">iter =</span> <span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb51-5" data-line-number="5">                     <span class="dt">numGp =</span> <span class="dv">6</span>,</a>
+<a class="sourceLine" id="cb51-6" data-line-number="6">                     <span class="dt">sexRatio =</span> <span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb51-7" data-line-number="7">sexRatioGrp<span class="op">$</span>group</a></code></pre></div>
+<pre><code>## [[1]]
+##  [1] "PYPM1W" "XL658N" "MX4J7G" "9P0DES" "W6MDVK" "5ERY5Z" "TEACA3"
+##  [8] "ZQXZYB" "BCJJKN" "321LLB" "6KWVRI" "5IAFMK" "Y0TCYX" "5XVTVH"
+## [15] "92UG4N" "5BPBUI" "X694YR" "7B9CA6" "7ZNY75" "FG0SFA" "ZPS15A"
+## [22] "WJXIH9" "0X4W26" "XEC0M5" "9FRCIE" "G25E3F" "PI4VHT" "3YJIMV"
+## [29] "W5WIRP" "B1WVCN" "TXZUKC" "KX0RJ3"
+## 
+## [[2]]
+##  [1] "N4NV8B" "WHQLH5" "AFZKBS" "3SKITJ" "LYSLPP" "GAS52W" "KEA4QG"
+##  [8] "DRXMW4" "XYRDKV" "YFCIHJ" "1KJ2MG" "I5CI33" "Q17CG3" "ZW2X4N"
+## [15] "MKY9TK" "8JUUJ9" "30J3CQ" "CS23RV" "ESUIAF" "0SGJ12" "Z904TJ"
+## [22] "WKY2SZ" "S7IWWA" "H2J6UA" "5PW7WT" "SHG3RB" "EX5K0S" "YLRNIK"
+## [29] "1CZM30" "JLFKV8" "38K2SR" "S222R3" "GIIEUD" "AIHJ8Z" "WQUN84"
+## 
+## [[3]]
+##  [1] "DKIM6U" "G2GYST" "QW2Z3R" "1FAZ0K" "0IIAEN" "GTLA8R" "5EDLL7"
+##  [8] "3DTD2N" "PVY432" "DH9WJQ" "ZH3YG1" "465ERA" "Q8U9LB" "LMJWTN"
+## [15] "414N7M" "YTJ2UL" "Y6DB6L" "G8MCV7" "RVHVTZ" "AR5U44" "E5Q33K"
+## [22] "MPIQ4N" "Q7U139" "QWKFBH" "A6A1M1" "QQMBT1" "WLMGS1" "1SSCJC"
+## [29] "D33J06" "6F9FB8" "5W621W" "AR17R5" "NN3GDQ" "C18V6I" "KZM9RB"
+## 
+## [[4]]
+##  [1] "WK89I9" "ER464J" "WTE53B" "7RA57Q" "SH3FB7" "AW400C" "DI4AHD"
+##  [8] "83HQBN" "EMV4P6" "PJ72W1" "5EDIEE" "KZY6PD" "B228Q6" "MQT080"
+## [15] "M9PVG5" "D9P18Y" "R5AYJK" "GCBYDW" "K3TNHP" "TYEWF1" "F45799"
+## [22] "S056D5" "FJS7RQ" "TQEMY6" "KXHGRH" "50D77I" "PU7RSG" "1SPLS8"
+## [29] "1VP3UC" "VWC5ZH" "XFWVVX" "WNEAS6"
+## 
+## [[5]]
+##  [1] "3GECJJ" "J1R2EW" "CMMUKU" "S5H1GC" "BS3RLE" "HE0SCR" "B134XZ"
+##  [8] "MYUMMX" "01QRQ4" "S3EBGZ" "AP1YLW" "46ZHKN" "CLSVU6" "5KFB90"
+## [15] "BKWE4D" "DCJJYS" "1QVS67" "2Z4YLY" "ZATMEE" "DPXEQE" "FB5L3N"
+## [22] "RJ4JPC" "QCA36T" "CHK1ZX" "Z7NBA2" "PBAFJF" "WI38KZ" "CRPXY7"
+## [29] "2F6J3U" "13B1QL" "MB6NYQ" "N5QBWD" "DHNQ1W" "9MG040"
+## 
+## [[6]]
+##  [1] "5KWNMZ" "K7900I" "IH1KPA" "6X6BG9" "LVYYNY" "1CIRC9" "MTCAIG"
+##  [8] "N79QXB" "SCFSBF" "87AQLF" "1GF3GM" "FL170P" "967Y3D" "59NYZE"
+## [15] "D4B0RM" "MH88T6" "I8ABC7" "MFKT9C" "7NE2UT" "0XTZQ1" "F7I2ED"
+## [22] "T3QPW5" "72LYDE" "QCENKM" "LN1DLY" "AZ3L0D" "J3F6PD" "EZ2F8A"
+## [29] "NK802Y" "LS184H" "0HYZ23" "QRZK48" "G58RGY" "99BMJW"
+## 
+## [[7]]
+##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "JSAP3H" "TR5L57" "XC304E" "1E8KD1"
+##  [8] "AEP5EG" "BW10CL" "CFD12A" "CHJ9D2" "FTVE03" "IRFJ09" "Q9LWGX"
+## [15] "R6HV9A" "RNQU14" "09LFE4" "3MMZD4" "3QHAFI" "55BPSE" "8IG767"
+## [22] "FFGPS4" "FG6L7S" "ILVQVB" "NHWTJ9" "P7RBPI" "TBCE78" "YI16QD"
+## [29] "2F1IV1" "4LHK19" "5IYDXN" "6KLWVC" "80F2MI" "8TV4MT" "A98D7P"
+## [36] "AZ4D19" "BTTHAJ" "CHSCFG" "EEGLWY" "FX9E4X" "G91ZM6" "LDND6J"
+## [43] "NSIC4I" "PHB6TE" "QRWYQZ" "RY1AZM" "XX0GYV" "YHHVC7" "YP910X"
+## [50] "0V4SAC" "0X1RZ9" "3YHBC1" "55VDSQ" "653J82" "6MEP2C" "76DIT4"
+## [57] "80KACX" "B2YJJP" "E3JP0C" "FLIZQI" "GM371F" "IZDV8K" "MEUZ85"
+## [64] "PA9F3J" "SXSVEH" "T38W6H" "TJN1AD" "W0GUKI" "WNKKW3" "XY2CK7"
+## [71] "XZH41H" "YDRD81" "Z25D52" "ZDRSG0" "3P9BX6" "7D09WH" "DGZLV3"
+## [78] "S63QDN"</code></pre>
+<p>Again we can identify and list the males in each group with the following code.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(sexRatioGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {ids[ids <span class="op">%in%</span><span class="st"> </span>trimmedPed<span class="op">$</span>id[trimmedPed<span class="op">$</span>sex <span class="op">==</span><span class="st"> "M"</span>]]})</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] "XL658N" "5XVTVH" "9FRCIE"
+## 
+## [[2]]
+## [1] "WHQLH5" "ZW2X4N" "5PW7WT" "WQUN84"
+## 
+## [[3]]
+## [1] "G2GYST" "LMJWTN" "A6A1M1" "KZM9RB"
+## 
+## [[4]]
+## [1] "ER464J" "MQT080" "KXHGRH"
+## 
+## [[5]]
+## [1] "J1R2EW" "5KFB90" "Z7NBA2"
+## 
+## [[6]]
+## [1] "K7900I" "59NYZE" "LN1DLY"
+## 
+## [[7]]
+##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "JSAP3H" "TR5L57" "XC304E" "1E8KD1"
+##  [8] "AEP5EG" "BW10CL" "CFD12A" "CHJ9D2" "FTVE03" "IRFJ09" "Q9LWGX"
+## [15] "R6HV9A" "RNQU14" "09LFE4" "3MMZD4" "3QHAFI" "55BPSE" "8IG767"
+## [22] "FFGPS4" "FG6L7S" "NHWTJ9" "P7RBPI" "TBCE78" "YI16QD" "2F1IV1"
+## [29] "4LHK19" "5IYDXN" "6KLWVC" "80F2MI" "8TV4MT" "A98D7P" "AZ4D19"
+## [36] "BTTHAJ" "CHSCFG" "EEGLWY" "FX9E4X" "G91ZM6" "LDND6J" "NSIC4I"
+## [43] "PHB6TE" "QRWYQZ" "RY1AZM" "XX0GYV" "YHHVC7" "YP910X" "0V4SAC"
+## [50] "0X1RZ9" "3YHBC1" "55VDSQ" "653J82" "6MEP2C" "76DIT4" "80KACX"
+## [57] "B2YJJP" "E3JP0C" "FLIZQI" "GM371F" "IZDV8K" "MEUZ85" "PA9F3J"
+## [64] "SXSVEH" "T38W6H" "TJN1AD" "WNKKW3" "XY2CK7" "XZH41H" "YDRD81"
+## [71] "Z25D52" "ZDRSG0" "3P9BX6" "7D09WH" "DGZLV3" "S63QDN"</code></pre>
+<p>We can also see the number of animals and the sex ratios created in each group.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">lines &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(sexRatioGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"Count: "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(ids), <span class="st">" Sex Ratio: "</span>, </a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">         <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="../../reference/calculateSexRatio.html">calculateSexRatio</a></span>(ids, trimmedPed), <span class="dv">2</span>))})</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="cf">for</span> (line <span class="cf">in</span> lines) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(line)</a></code></pre></div>
+<pre><code>## [1] "Count: 32 Sex Ratio: 9.67"
+## [1] "Count: 35 Sex Ratio: 7.75"
+## [1] "Count: 35 Sex Ratio: 7.75"
+## [1] "Count: 32 Sex Ratio: 9.67"
+## [1] "Count: 34 Sex Ratio: 10.33"
+## [1] "Count: 34 Sex Ratio: 10.33"
+## [1] "Count: 78 Sex Ratio: 0.03"</code></pre>
+<p>Examination of this table shows that of the 184 females 242 are included.</p>
+</div>
 </div>
 <div id="pedigree-errors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pedigree-errors" class="anchor"></a>Pedigree Errors</h2>
 <p>As stated earlier you can see which types of errors are detected by <em>qcStudbook</em> by looking at names returned by <em>getEmptyErrorLst()</em> as shown below.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(<span class="kw"><a href="../../reference/getEmptyErrorLst.html">getEmptyErrorLst</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(<span class="kw"><a href="../../reference/getEmptyErrorLst.html">getEmptyErrorLst</a></span>())</a></code></pre></div>
 <pre><code>## [1] "failedDatabaseConnection" "missingColumns"          
 ## [3] "invalidDateRows"          "suspiciousParents"       
 ## [5] "femaleSires"              "maleDams"                
@@ -544,38 +813,196 @@
 </tr>
 </tbody>
 </table>
-<div id="introducing-errors-into-a-pedigree" class="section level3">
-<h3 class="hasAnchor">
-<a href="#introducing-errors-into-a-pedigree" class="anchor"></a>Introducing Errors Into A Pedigree</h3>
-<p>In order to discuss pedigree error detection, we are going to use a very small imaginary pedigree listed below. Note the birth dates of ego_id <em>o4</em> (2006-04-13) and the purported sire (2006-06-19). Obviously either a date or an ID is incorrect.</p>
-<p>This is the pedigree.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">nprcmanager<span class="op">::</span>pedOne</a></code></pre></div>
-<pre><code>##   ego_id si re dam_id sex birth_date
-## 1     s1  &lt;NA&gt;   &lt;NA&gt;   F 2000-07-18
-## 2     d1  &lt;NA&gt;   &lt;NA&gt;   M 2003-04-13
-## 3     s2  &lt;NA&gt;   &lt;NA&gt;   M 2006-06-19
-## 4     d2  &lt;NA&gt;   &lt;NA&gt;   F 2015-09-16
-## 5     o1    s1     d1   F 2015-02-04
-## 6     o2    s1     d2   F 2009-03-17
-## 7     o3    s2     d2   F 2012-04-11
-## 8     o4    s2     d2   M 2006-04-13</code></pre>
-<p>If we examine this pedigree file, we are going to get an error message. In additions since I do not have a valid database configuration file so we will get a warning about that.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">pedOne &lt;-<span class="st"> </span>nprcmanager<span class="op">::</span>pedOne <span class="co"># put it in the local environment</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(<span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>))</a></code></pre></div>
+<p>We are going to use the small imaginary pedigree listed below that has multiple errors to discuss pedigree error detection and reporting. First note the birthdates of ego_id <em>o4</em> (2006-04-13) and the purported sire <em>s2</em> (2006-06-19). Note also the proported birthdate of the <em>d2</em> and the birthdates of her offspring. Obviously dates or IDs may be incorrect.</p>
+<p>This is the pedigree. <em>(We will discuss the column names shortly.)</em></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(nprcmanager<span class="op">::</span>pedOne)</a></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">ego_id</th>
+<th align="left">si re</th>
+<th align="left">dam_id</th>
+<th align="left">sex</th>
+<th align="left">birth_date</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">s1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">F</td>
+<td align="left">2000-07-18</td>
+</tr>
+<tr class="even">
+<td align="left">d1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">M</td>
+<td align="left">2003-04-13</td>
+</tr>
+<tr class="odd">
+<td align="left">s2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">M</td>
+<td align="left">2006-06-19</td>
+</tr>
+<tr class="even">
+<td align="left">d2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">F</td>
+<td align="left">2015-09-16</td>
+</tr>
+<tr class="odd">
+<td align="left">o1</td>
+<td align="left">s1</td>
+<td align="left">d1</td>
+<td align="left">F</td>
+<td align="left">2015-02-04</td>
+</tr>
+<tr class="even">
+<td align="left">o2</td>
+<td align="left">s1</td>
+<td align="left">d2</td>
+<td align="left">F</td>
+<td align="left">2009-03-17</td>
+</tr>
+<tr class="odd">
+<td align="left">o3</td>
+<td align="left">s2</td>
+<td align="left">d2</td>
+<td align="left">F</td>
+<td align="left">2012-04-11</td>
+</tr>
+<tr class="even">
+<td align="left">o4</td>
+<td align="left">s2</td>
+<td align="left">d2</td>
+<td align="left">M</td>
+<td align="left">2006-04-13</td>
+</tr>
+</tbody>
+</table>
+<p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the user’s home directory that lists the records that have generated the errors.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">pedOne &lt;-<span class="st"> </span>nprcmanager<span class="op">::</span>pedOne <span class="co"># put it in the local environment</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">ped &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>)</a></code></pre></div>
 <pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in ~/lowParentAge.csv.</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/warnings">warnings</a></span>()</a></code></pre></div>
-<p>We can turn off this warning by telling <strong>qcStudbook</strong> not to expect a file ## Genetic Loops</p>
+<p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">dam</th>
+<th align="left">sire</th>
+<th align="left">id</th>
+<th align="left">sex</th>
+<th align="left">birth</th>
+<th align="left">recordStatus</th>
+<th align="left">exit</th>
+<th align="left">sireBirth</th>
+<th align="left">damBirth</th>
+<th align="right">sireAge</th>
+<th align="right">damAge</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">d2</td>
+<td align="left">s1</td>
+<td align="left">o2</td>
+<td align="left">F</td>
+<td align="left">2009-03-17</td>
+<td align="left">original</td>
+<td align="left">NA</td>
+<td align="left">2000-07-18</td>
+<td align="left">2015-09-16</td>
+<td align="right">8.67</td>
+<td align="right">-6.50</td>
+</tr>
+<tr class="even">
+<td align="left">d2</td>
+<td align="left">s2</td>
+<td align="left">o3</td>
+<td align="left">F</td>
+<td align="left">2012-04-11</td>
+<td align="left">original</td>
+<td align="left">NA</td>
+<td align="left">2006-06-19</td>
+<td align="left">2015-09-16</td>
+<td align="right">5.82</td>
+<td align="right">-3.43</td>
+</tr>
+<tr class="odd">
+<td align="left">d2</td>
+<td align="left">s2</td>
+<td align="left">o4</td>
+<td align="left">M</td>
+<td align="left">2006-04-13</td>
+<td align="left">original</td>
+<td align="left">NA</td>
+<td align="left">2006-06-19</td>
+<td align="left">2015-09-16</td>
+<td align="right">-0.18</td>
+<td align="right">-9.43</td>
+</tr>
+</tbody>
+</table>
+<p>Examination of the ages of the parents reveals the issues being reported.</p>
+<p>We can remove the errors by changing the birthdates of <em>o4</em> from 2006-04-13 to 2015-09-16 and of <em>d2</em> from 2015-09-16 to 2006-04-13.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">pedOne<span class="op">$</span>birth_date[pedOne<span class="op">$</span>ego_id <span class="op">==</span><span class="st"> "o4"</span>] &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2015-09-16"</span>)</a>
+<a class="sourceLine" id="cb62-2" data-line-number="2">pedOne<span class="op">$</span>birth_date[pedOne<span class="op">$</span>ego_id <span class="op">==</span><span class="st"> "d2"</span>] &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2006-04-13"</span>)</a></code></pre></div>
+<p>Note the changes made to the column names between the original <strong>pedOne</strong> pedigree and the pedigree (<strong>ped</strong>) we get from <strong>qcStudbook</strong>. We have chosen to limit the displayed pedigree by selecting the <em>ego_id</em>’s and <em>id</em>’s in <strong>pedOne</strong> and <strong>ped</strong> respectively.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">ped &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">ped[ped<span class="op">$</span>id <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"s2"</span>, <span class="st">"d2"</span>, <span class="st">"o3"</span>, <span class="st">"o4"</span>), ]</a></code></pre></div>
+<pre><code>##   id sire  dam sex gen      birth exit  age recordStatus
+## 2 d2 &lt;NA&gt; &lt;NA&gt;   F   0 2006-04-13 &lt;NA&gt; 13.3     original
+## 4 s2 &lt;NA&gt; &lt;NA&gt;   M   0 2006-06-19 &lt;NA&gt; 13.1     original
+## 7 o3   s2   d2   F   1 2012-04-11 &lt;NA&gt;  7.3     original
+## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  3.8     original</code></pre>
+<p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitely requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(errorList)</a></code></pre></div>
+<pre><code>## Error: The animal listed as a sire and also listed as a female is: s1.
+## Error: The animal listed as a dam and also listed as a male is: d1.
+## Change: The column where space was removed is: si re to sire.
+## Change: The columns where underscore was removed are: ego_id, dam_id, and birth_date to egoid, damid, and birthdate.
+## Change: The column changed from: egoid to id.
+## Change: The column changed from: damid to dam.
+## Change: The column changed from: birthdate to birth.
+## 
+## Please check and correct the pedigree file.
+## </code></pre>
+<p>We will discuss each of these newly identified errors in a moment, however, let’s look at shortening this report, because often you will not be interested in the more trivial changes to the column names made by <strong>qcStudbook</strong> and in those cases you simply choose not to report changes to the column names as is shown here by setting <em>reportChanges</em> to . For this illustration, we are going to bring back the original copy of <strong>pedOne</strong> to see how the suspicious parents are reported by the <strong>summmary</strong> function.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">pedOne &lt;-<span class="st"> </span>nprcmanager<span class="op">::</span>pedOne</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/options">options</a></span>(<span class="dt">width =</span> <span class="dv">90</span>)</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(errorList)</a></code></pre></div>
+<pre><code>## Error: The animal listed as a sire and also listed as a female is: s1.
+## Error: The animal listed as a dam and also listed as a male is: d1.
+## 
+## Please check and correct the pedigree file.
+##  
+## Animal records where parent records are suspicous because of dates.
+## One or more parents appear too young at time of birth.
+##   dam sire id sex      birth recordStatus exit  sireBirth   damBirth sireAge damAge
+## 2  d2   s1 o2   F 2009-03-17     original &lt;NA&gt; 2000-07-18 2015-09-16    8.67   -6.5
+## 3  d2   s2 o3   F 2012-04-11     original &lt;NA&gt; 2006-06-19 2015-09-16    5.82   -3.4
+## 4  d2   s2 o4   M 2006-04-13     original &lt;NA&gt; 2006-06-19 2015-09-16   -0.18   -9.4</code></pre>
+<p>The first two errors mentioned are of particular interest. Currently <strong>qcStudbook</strong> automatically changes the sex of dams to <em>F</em> (female) and sires to <em>M</em> (male) when <strong>reportErrors</strong> is set to .</p>
+</div>
+<div id="genetic-loops" class="section level2">
+<h2 class="hasAnchor">
+<a href="#genetic-loops" class="anchor"></a>Genetic Loops</h2>
 <p>To use the <strong>findLoops</strong> function run the following code and select a pedigree as your input file that has a loop in it. We are continuing to use the example pedigree that comes with the software <em>Example_Pedigree.csv</em>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">exampleTree &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/createPedTree.html">createPedTree</a></span>(breederPed)</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">exampleLoops &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/findLoops.html">findLoops</a></span>(exampleTree)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">exampleTree &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/createPedTree.html">createPedTree</a></span>(breederPed)</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">exampleLoops &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/findLoops.html">findLoops</a></span>(exampleTree)</a></code></pre></div>
 <p>You can count how many loops you have with the following code.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(exampleLoops[exampleLoops <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(exampleLoops[exampleLoops <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>])</a></code></pre></div>
 <pre><code>## [1] 145</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">nLoops &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/countLoops.html">countLoops</a></span>(exampleLoops, exampleTree)</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlist">unlist</a></span>(nLoops[nLoops <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]))</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">nLoops &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/countLoops.html">countLoops</a></span>(exampleLoops, exampleTree)</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlist">unlist</a></span>(nLoops[nLoops <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]))</a></code></pre></div>
 <pre><code>## [1] 258</code></pre>
 <p>You can list the first 10 sets of ids, sires and dams in loops with the following line of code:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">examplePedigree[exampleLoops <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"sire"</span>, <span class="st">"dam"</span>)][<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">examplePedigree[exampleLoops <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"id"</span>, <span class="st">"sire"</span>, <span class="st">"dam"</span>)][<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</a></code></pre></div>
 <pre><code>##          id   sire    dam
 ## 2519 V49H3Y UFI88T 9T7Y2Z
 ## 2572 61FUGE UDQ5WC GL88CF
@@ -587,7 +1014,6 @@
 ## 2922 531HAC UMV4BE 5DIPZN
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
-</div>
 </div>
 <div class="footnotes">
 <hr>
@@ -606,12 +1032,13 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
       <li><a href="#installation-and-help">Installation and Help</a></li>
-      <li><a href="#reading-in-pedigrees">Reading in Pedigrees</a></li>
+      <li><a href="#reading-in-a-pedigree">Reading in a Pedigree</a></li>
       <li><a href="#identifying-focal-animals">Identifying Focal Animals</a></li>
       <li><a href="#age-sex-pyramid-plot">Age Sex Pyramid Plot</a></li>
       <li><a href="#genetic-value-analysis">Genetic Value Analysis</a></li>
       <li><a href="#breeding-group-formation">Breeding Group Formation</a></li>
       <li><a href="#pedigree-errors">Pedigree Errors</a></li>
+      <li><a href="#genetic-loops">Genetic Loops</a></li>
       </ul>
 </div>
       </div>
