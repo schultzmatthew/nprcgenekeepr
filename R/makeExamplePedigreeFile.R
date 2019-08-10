@@ -6,7 +6,7 @@
 #' \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.
 #'
 #' @importFrom utils write.table
-## ## import rmsutilityr
+#' @importFrom rmsutilityr create_wkbk
 #' @export
 makeExamplePedigreeFile <- function(fileType = "csv") {
   filename <- file.choose(new = TRUE)
@@ -17,12 +17,12 @@ makeExamplePedigreeFile <- function(fileType = "csv") {
   } else if (fileType == "excel") {
     status <-
       create_wkbk(file = filename,
-                               df_list = list(nprcmanager::examplePedigree),
-                               sheetnames = "Example_Pedigree", create = TRUE)
+                  df_list = list(nprcmanager::examplePedigree),
+                  sheetnames = "Example_Pedigree", create = TRUE)
     if (!status)
       stop(paste0("Failed to write example data out to ", filename, "."))
   } else {
-    utils::write.tqble(nprcmanager::examplePedigree,
+    write.tqble(nprcmanager::examplePedigree,
               file = filename, row.names = FALSE, sep = "\t")
   }
   filename
