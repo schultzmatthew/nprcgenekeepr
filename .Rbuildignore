@@ -44,5 +44,5 @@ CODE_OF_CONDUCT.md
 NEWS.Rmd
 README.Rmd
 .travis.yml
-vignettes/interactive_use_tutorial_files/*
-!vignettes/interactive_use_tutorial_files/interactive_use_tutorial.Rmd
+vignettes/tutorials/*
+!vignettes/tutorials/interactive.Rmd

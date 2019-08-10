@@ -22,11 +22,11 @@ Imports:
     plotrix,
     readxl,
     Rlabkey,
+    rmsutilityr,
     shiny,
     shinyBS,
     stringi,
-    utils,
-    WriteXLS
+    utils
 Suggests:
     covr,
     dplyr,
@@ -34,7 +34,7 @@ Suggests:
     pkgdown,
     roxygen2 (>= 6.0.0),
     testthat
-#Remotes: github::rmsharp/rmsutilityr
+Remotes: github::rmsharp/rmsutilityr
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 6.1.1

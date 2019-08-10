@@ -146,7 +146,7 @@
 #' character.
 #'
 #' @importFrom utils write.csv
-## ##  rmsutilityr str_detect_fixed_all
+#' @importFrom  rmsutilityr str_detect_fixed_all
 #' @export
 qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
                        reportErrors = FALSE) {

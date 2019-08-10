@@ -8,7 +8,7 @@
 #' the \code{errorLst} object is updated with the names of the missing
 #' columns and returned and when \code{FALSE} and missing columns are found
 #' the program is stopped.
-## ## rmsutilityr str_detect_fixed_all
+#' @importFrom rmsutilityr str_detect_fixed_all
 #' @export
 checkRequiredCols <- function(cols, reportErrors) {
   requiredCols <- getRequiredCols()
