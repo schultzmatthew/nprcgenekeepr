@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns a one element character string with correct punctuation for
-a list made up of the elements of the character vector argument. — get_and_or_list • nprcmanager</title>
+<title>baboonBreeders is a list of 29 baboon IDs that are potential breeders — baboonBreeders • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,11 +30,9 @@ a list made up of the elements of the character vector argument. — get_and_or_
 
 
 
-<meta property="og:title" content="Returns a one element character string with correct punctuation for
-a list made up of the elements of the character vector argument. — get_and_or_list" />
+<meta property="og:title" content="baboonBreeders is a list of 29 baboon IDs that are potential breeders — baboonBreeders" />
 
-<meta property="og:description" content="Returns a one element character string with correct punctuation for
-a list made up of the elements of the character vector argument." />
+<meta property="og:description" content="baboonBreeders is a list of 29 baboon IDs that are potential breeders" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +63,7 @@ a list made up of the elements of the character vector argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.29</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.17</span>
       </span>
     </div>
 
@@ -120,48 +117,42 @@ a list made up of the elements of the character vector argument." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns a one element character string with correct punctuation for
-a list made up of the elements of the character vector argument.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/get_and_or_list.R'><code>R/get_and_or_list.R</code></a></small>
-    <div class="hidden name"><code>get_and_or_list.Rd</code></div>
+    <h1>baboonBreeders is a list of 29 baboon IDs that are potential breeders</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>baboonBreeders.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Returns a one element character string with correct punctuation for
-a list made up of the elements of the character vector argument.</p>
+    <p>baboonBreeders is a list of 29 baboon IDs that are potential breeders</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_and_or_list</span>(<span class='no'>c_vector</span>, <span class='kw'>conjunction</span> <span class='kw'>=</span> <span class='st'>"and"</span>)</pre>
+    <pre class="usage"><span class='no'>baboonBreeders</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>character</code> of length 29.</p>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>c_vector</th>
-      <td><p>Character vector containing the list of words
-to be put in a list.</p></td>
-    </tr>
-    <tr>
-      <th>conjunction</th>
-      <td><p>The conjunction to be used as the connector.
-This is usually `and' or `or' with `and' being the default.</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>baboonBreeders is a list of 3 male and 26 female baboons from
+the <code>baboonPed</code> data set.</p>
+<dl class='dl-horizontal'>
+These 29 animal IDs are used for examples and unit tests.
+They were initially selected for having low kinship coefficients.
+</dl>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_and_or_list</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Bob"</span>, <span class='st'>"John"</span>)) <span class='co'># "Bob and John"</span></div><div class='output co'>#&gt; [1] "Bob and John"</div><div class='input'><span class='fu'>get_and_or_list</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Bob"</span>, <span class='st'>"John"</span>), <span class='st'>"or"</span>) <span class='co'># "Bob or John"</span></div><div class='output co'>#&gt; [1] "Bob or John"</div><div class='input'><span class='fu'>get_and_or_list</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Bob"</span>, <span class='st'>"John"</span>, <span class='st'>"Sam"</span>, <span class='st'>"Bill"</span>), <span class='st'>"or"</span>)</div><div class='output co'>#&gt; [1] "Bob, John, Sam, or Bill"</div><div class='input'># "Bob, John, Sam, or Bill"
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

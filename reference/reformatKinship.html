@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns a logical vector with results of stri_detect() for each pattern in
-second parameters character vector. — str_detect_fixed_all • nprcmanager</title>
+<title>Reformats a kinship matrix into a long-format table. — reformatKinship • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,11 +30,9 @@ second parameters character vector. — str_detect_fixed_all • nprcmanager</ti
 
 
 
-<meta property="og:title" content="Returns a logical vector with results of stri_detect() for each pattern in
-second parameters character vector. — str_detect_fixed_all" />
+<meta property="og:title" content="Reformats a kinship matrix into a long-format table. — reformatKinship" />
 
-<meta property="og:description" content="Returns a logical vector with results of stri_detect() for each pattern in
-second parameters character vector." />
+<meta property="og:description" content="Part of Group Formation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +63,7 @@ second parameters character vector." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.29</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.20</span>
       </span>
     </div>
 
@@ -120,46 +117,39 @@ second parameters character vector." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns a logical vector with results of stri_detect() for each pattern in
-second parameters character vector.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/str_detect_fixed_all.R'><code>R/str_detect_fixed_all.R</code></a></small>
-    <div class="hidden name"><code>str_detect_fixed_all.Rd</code></div>
+    <h1>Reformats a kinship matrix into a long-format table.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/reformatKinship.R'><code>R/reformatKinship.R</code></a></small>
+    <div class="hidden name"><code>reformatKinship.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Returns a logical vector with results of stri_detect() for each pattern in
-second parameters character vector.</p>
+    <p>Part of Group Formation</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>str_detect_fixed_all</span>(<span class='no'>strings</span>, <span class='no'>patterns</span>, <span class='no'>ignore_na</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>reformatKinship</span>(<span class='no'>kinMatrix</span>, <span class='kw'>rm.dups</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>strings</th>
-      <td><p>input vector. This must be an atomic vector and will be
-coerced to a character vector.</p></td>
+      <th>kinMatrix</th>
+      <td><p>numerical matrix of pairwise kinship values. The row and
+column names correspond to animal IDs.</p></td>
     </tr>
     <tr>
-      <th>patterns</th>
-      <td><p>patterns to look for, as defined by a POSIX regular
-expression. See fixed, ignore.case and perl sections
-for details. See  <em>Extended Regular Expressions</em> for how to use regular
-expressions for matching.</p></td>
-    </tr>
-    <tr>
-      <th>ignore_na</th>
-      <td><p>if TRUE NA values are trimmed out of <code>strings</code> and 
-<code>patterns</code> before comparison</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>further arguments for stri_detect_fixed</p></td>
+      <th>rm.dups</th>
+      <td><p>locigal value indication whether or not reverse-order ID
+pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
+be collapsed into a single entry if rm.dups = TRUE)</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>dataframe with columns <code>id1</code>, <code>id2</code>, and <code>kinship</code>.
+This is the kinship data reformatted from a matrix, to a long-format table.</p>
     
 
   </div>
@@ -167,7 +157,9 @@ expressions for matching.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
