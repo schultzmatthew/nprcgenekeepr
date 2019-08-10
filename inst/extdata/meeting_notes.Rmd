@@ -1,11 +1,24 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
-## 20190701
+## 20190715
 
 1.  To prepare for the meeting
     1.   Work on tutorial to go through the Goldilocks path.
     1.   Work on tutorial to look at all possible data input errors
+    1.   Submit new version to GitHub and Travis-ci
+2.  We discussed heat map type issues with regard to realtime examination of kinship
+    relationships within breedeing groups
+    1.   Amanda is to send Mark a pedigree with breeding group information and 
+         an updated version of the questions in an Excel workbook
+    1.   Mark is to use those data and the questions to develop some 
+         visualizations for Amanda's review.
+3.  The interactive tutorial was discussed a bit. 
+    1.   Priscilla Williams, a current graduate student, who Mark has worked 
+         with for several years is working through the tutorial.
+    1.   This discussion brought up the topic of making use of the Shiny
+         application as simple as possible.
+4.  Mark is going to put together the Shiny application tutorial next
     
 
 ## 20190603

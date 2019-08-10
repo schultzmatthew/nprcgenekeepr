@@ -4,7 +4,7 @@
 #'
 #' @param orgCols character vector with column names to be transformed if needed.
 #' @param cols character vector with transformed column names
-#' @importFrom rmsutilityr get_and_or_list
+## ##  get_and_or_list
 #' @importFrom stringi stri_c
 colChange <- function(orgCols, cols) {
   desc <- stri_c(

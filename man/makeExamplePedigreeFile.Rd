@@ -2,9 +2,13 @@
 % Please edit documentation in R/makeExamplePedigreeFile.R
 \name{makeExamplePedigreeFile}
 \alias{makeExamplePedigreeFile}
-\title{Write copy of ExamplePedigree.csv file}
+\title{Write copy of nprcmanager::examplePedigree into a file}
 \usage{
-makeExamplePedigreeFile()
+makeExamplePedigreeFile(fileType = "csv")
+}
+\arguments{
+\item{fileType}{character vector of length one with possible values of
+\code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.}
 }
 \value{
 full path name of file saved.

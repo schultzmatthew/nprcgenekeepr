@@ -48,7 +48,7 @@ uitpBreedingGroupFormation <-
           choiceNames = list(
             "Ignore sex when forming groups ",
             "Form harems (one male)",
-            "User specified sex ratio"
+            "User specified sex ratio of breeders"
           ),
           choiceValues = list("ignore-sex", "harems", "sex-ratio"),
           width = "350px",
