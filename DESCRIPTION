@@ -1,8 +1,8 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.28
-Date: 2019-07-14
+Version: 0.5.29
+Date: 2019-08-10
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
@@ -22,11 +22,10 @@ Imports:
     plotrix,
     readxl,
     Rlabkey,
-    rmsutilityr,
     shiny,
     shinyBS,
     stringi,
-    utils
+    WriteXLS
 Suggests:
     covr,
     dplyr,

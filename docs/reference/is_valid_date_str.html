@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Takes list of currentGroups and removes all empty vectors — compactCurrentGroups • nprcmanager</title>
+<title>Returns TRUE if the string is a valid date. — is_valid_date_str • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Takes list of currentGroups and removes all empty vectors — compactCurrentGroups" />
+<meta property="og:title" content="Returns TRUE if the string is a valid date. — is_valid_date_str" />
 
-<meta property="og:description" content="compactCurrentGroup takes the list currentGroups and removes
-all empty character vectors. This allows the user to place seed animals
-in current groups without regard to order." />
+<meta property="og:description" content="Returns TRUE if the string is a valid date." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +63,7 @@ in current groups without regard to order." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.29</span>
       </span>
     </div>
 
@@ -119,52 +117,52 @@ in current groups without regard to order." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Takes list of currentGroups and removes all empty vectors</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/compactCurrentGroups.R'><code>R/compactCurrentGroups.R</code></a></small>
-    <div class="hidden name"><code>compactCurrentGroups.Rd</code></div>
+    <h1>Returns TRUE if the string is a valid date.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/is_valid_date_str.R'><code>R/is_valid_date_str.R</code></a></small>
+    <div class="hidden name"><code>is_valid_date_str.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>compactCurrentGroup</code> takes the list <code>currentGroups</code> and removes
-all empty character vectors. This allows the user to place seed animals
-in current groups without regard to order.</p>
+    <p>Returns TRUE if the string is a valid date.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>compactCurrentGroups</span>(<span class='kw'>currentGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0</span>))</pre>
+    <pre class="usage"><span class='fu'>is_valid_date_str</span>(<span class='no'>date_str</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%d-%m-%Y %H:%M:%S"</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>currentGroups</th>
-      <td><p>list of character vectors of IDs of animals currently assigned
-to the group. Defaults to character(0) assuming no groups are existant.</p></td>
+      <th>date_str</th>
+      <td><p>character vector with 0 or more dates</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>character vector of lenght one having the date format</p></td>
+    </tr>
+    <tr>
+      <th>optional</th>
+      <td><p>parameter to <code>as.Date</code>. Logical value indicating 
+to return NA (instead of signaling an error) if the format guessing does not succeed.
+descriptor. Defaults to FALSE.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A version of <code>currentGroups</code> with empty character vectors
-removed. If no character vectors remain <code>currentGroups</code> gets defined
-as <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(0)</a></code>.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Part of Group Formation</p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>is_valid_date_str</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"13-21-1995"</span>, <span class='st'>"20-13-98"</span>, <span class='st'>"5-28-1014"</span>,
+  <span class='st'>"1-21-15"</span>, <span class='st'>"2-13-2098"</span>, <span class='st'>"25-28-2014"</span>), <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%m-%d-%y"</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

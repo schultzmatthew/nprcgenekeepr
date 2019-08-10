@@ -12,8 +12,8 @@
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type. Values that do not
 #' conform to the format %Y%m%d are set to NA. NA values are left as NA.
-#' @importFrom  rmsutilityr get_and_or_list
-#' @importFrom  rmsutilityr is_valid_date_str
+## ##  rmsutilityr get_and_or_list
+## ##  rmsutilityr is_valid_date_str
 #' @importFrom stringi stri_trim_both
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors = FALSE) {

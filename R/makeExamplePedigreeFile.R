@@ -5,8 +5,8 @@
 #' @param fileType character vector of length one with possible values of
 #' \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.
 #'
-#' @importFrom utils write.table
-#' @importFrom rmsutilityr create_wkbk
+## ## importFrom utils write.table
+## ## rmsutilityr create_wkbk
 #' @export
 makeExamplePedigreeFile <- function(fileType = "csv") {
   filename <- file.choose(new = TRUE)
@@ -22,7 +22,7 @@ makeExamplePedigreeFile <- function(fileType = "csv") {
     if (!status)
       stop(paste0("Failed to write example data out to ", filename, "."))
   } else {
-    write.tqble(nprcmanager::examplePedigree,
+    utils::write.tqble(nprcmanager::examplePedigree,
               file = filename, row.names = FALSE, sep = "\t")
   }
   filename

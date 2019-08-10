@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "07/14/2019"
+date: "08/10/2019"
 output:
    github_document: default
 
@@ -10,6 +10,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.29 (20190810)
+-   Copied rmsutilityr functions into nprcmanager to make Publication on the
+    RStudio Shiny application hosting site possible
+
 # nprcmanager 0.5.28 (20190714)
 -   Added to interactive tutorial
 -   Enhance algorithm for creating the desired sex ratio in groups.

@@ -7,7 +7,7 @@
 #' @param object object of class nprcmanagErr and class list
 #' @param ... additional arguments for the \code{summary.default} statement
 #' @importFrom stringi stri_c
-#' @importFrom  rmsutilityr get_and_or_list
+## ##  rmsutilityr get_and_or_list
 #' @export
 summary.nprcmanagErr <- function(object, ...) {
   errorLst <- object
