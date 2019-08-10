@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Conveniece function to update the groupMembers list — updateSavedGroupMembers • nprcmanager</title>
+<title>Creates an Excel workbook with worksheets. — create_wkbk • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Conveniece function to update the groupMembers list — updateSavedGroupMembers" />
+<meta property="og:title" content="Creates an Excel workbook with worksheets. — create_wkbk" />
 
-<meta property="og:description" content="Conveniece function to update the groupMembers list" />
+<meta property="og:description" content="Creates an Excel workbook with worksheets." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.29</span>
       </span>
     </div>
 
@@ -117,41 +117,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Conveniece function to update the groupMembers list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/updateSavedGroupMembers_deprecated.R'><code>R/updateSavedGroupMembers_deprecated.R</code></a></small>
-    <div class="hidden name"><code>updateSavedGroupMembers.Rd</code></div>
+    <h1>Creates an Excel workbook with worksheets.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/create_wkbk.R'><code>R/create_wkbk.R</code></a></small>
+    <div class="hidden name"><code>create_wkbk.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Conveniece function to update the groupMembers list</p>
+    <p>Creates an Excel workbook with worksheets.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>updateSavedGroupMembers</span>(<span class='no'>savedGroupMembers</span>, <span class='no'>currentGroups</span>, <span class='no'>groupMembers</span>)</pre>
+    <pre class="usage"><span class='fu'>create_wkbk</span>(<span class='no'>file</span>, <span class='no'>df_list</span>, <span class='no'>sheetnames</span>, <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>savedGroupMembers</th>
-      <td><p>list of animals in best group thus far. Initialized
-with <code><a href='https://www.rdocumentation.org/packages/base/topics/list'>list()</a></code>.</p></td>
+      <th>file</th>
+      <td><p>filename of workbook to be created</p></td>
     </tr>
     <tr>
-      <th>currentGroups</th>
-      <td><p>list of character vectors of IDs of animals currently assigned
-to the group. Defaults to character(0) assuming no groups are existant.</p></td>
+      <th>df_list</th>
+      <td><p>list of data frames to be added as worksheets to workbook</p></td>
     </tr>
     <tr>
-      <th>groupMembers</th>
-      <td><p>list of animals in the group at the current iteration</p></td>
+      <th>sheetnames</th>
+      <td><p>character vector of worksheet names</p></td>
+    </tr>
+    <tr>
+      <th>create</th>
+      <td><p>Specifies if the file should be created if it does not
+already exist (default is FALSE). Note that create = TRUE has
+no effect if the specified file exists, i.e. an existing file is
+loaded and not being recreated if create = TRUE.</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Updated savedGroupMembers list</p>
     
 
   </div>
@@ -159,9 +160,7 @@ to the group. Defaults to character(0) assuming no groups are existant.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

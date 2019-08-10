@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>baboonPed is a dataframe with 277 rows and 6 columns — baboonPed • nprcmanager</title>
+<title>getSexRatioWithAdditions returns the sex ratio of a group. — sexRatioWithAdditions • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,23 +30,11 @@
 
 
 
-<meta property="og:title" content="baboonPed is a dataframe with 277 rows and 6 columns — baboonPed" />
+<meta property="og:title" content="getSexRatioWithAdditions returns the sex ratio of a group. — sexRatioWithAdditions" />
 
-<meta property="og:description" content="
-idcharacter column of animal IDs
-sirethe male parent of the animal indicated by the id column.
-damthe female parent of the animal indicated by the id
-column.
-sexsex of the animal indicated by the id column.
-gengeneration number (integers beginning with 0 for the founder
-generation) of the animal indicated by the id column.
-birthbirth date in Date format of the animal indicated by the
- id column.
-exitexit date in Date format of the animal indicated by the
- id column.
-ageage in year (numeric) of the animal indicated by the id
-column.
-" />
+<meta property="og:description" content="Adding males and females to the ratio calculation is possible, but the
+default behavior is to simply return the sex ratio of the group.
+This is a helper routine for the main one calculateSexRatio." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,7 +65,7 @@ column.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.29</span>
       </span>
     </div>
 
@@ -131,45 +119,54 @@ column.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>baboonPed is a dataframe with 277 rows and 6 columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>baboonPed.Rd</code></div>
+    <h1>getSexRatioWithAdditions returns the sex ratio of a group.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/sexRatioWithAdditions.R'><code>R/sexRatioWithAdditions.R</code></a></small>
+    <div class="hidden name"><code>sexRatioWithAdditions.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <dl class='dl-horizontal'>
-<dt>id</dt><dd><p>character column of animal IDs</p></dd>
-<dt>sire</dt><dd><p>the male parent of the animal indicated by the <code>id</code> column.</p></dd>
-<dt>dam</dt><dd><p>the female parent of the animal indicated by the <code>id</code>
-column.</p></dd>
-<dt>sex</dt><dd><p>sex of the animal indicated by the <code>id</code> column.</p></dd>
-<dt>gen</dt><dd><p>generation number (integers beginning with 0 for the founder
-generation) of the animal indicated by the <code>id</code> column.</p></dd>
-<dt>birth</dt><dd><p>birth date in <code>Date</code> format of the animal indicated by the
- <code>id</code> column.</p></dd>
-<dt>exit</dt><dd><p>exit date in <code>Date</code> format of the animal indicated by the
- <code>id</code> column.</p></dd>
-<dt>age</dt><dd><p>age in year (numeric) of the animal indicated by the <code>id</code>
-column.</p></dd>
-</dl>
+    <p>Adding males and females to the ratio calculation is possible, but the
+default behavior is to simply return the sex ratio of the group.
+This is a helper routine for the main one <code>calculateSexRatio</code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>baboonPed</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>data.frame</code> with 280 rows and 8 columns.</p>
+    <pre class="usage"><span class='fu'>sexRatioWithAdditions</span>(<span class='no'>ids</span>, <span class='no'>ped</span>, <span class='no'>additionalMales</span>, <span class='no'>additionalFemales</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ids</th>
+      <td><p>character vector of animal Ids</p></td>
+    </tr>
+    <tr>
+      <th>ped</th>
+      <td><p>datatable that is the `Pedigree`. It contains pedigree
+information including the IDs listed in <code>candidates</code>.</p></td>
+    </tr>
+    <tr>
+      <th>additionalMales</th>
+      <td><p>Integer value of males to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.</p></td>
+    </tr>
+    <tr>
+      <th>additionalFemales</th>
+      <td><p>Integer value of females to add to those within the
+group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+Default is 0.</p></td>
+    </tr>
+    </table>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
-      <li><a href="#format">Format</a></li>
-          </ul>
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
 
   </div>
 </div>
