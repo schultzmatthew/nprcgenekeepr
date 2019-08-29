@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converts date columns formatted as characters to be of type datetime — convertDate • nprcmanager</title>
+<title>Make genetic diversity heatmap — makeGeneticDiversityDashboard • nprcmanager</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Converts date columns formatted as characters to be of type datetime — convertDate" />
+<meta property="og:title" content="Make genetic diversity heatmap — makeGeneticDiversityDashboard" />
 
-<meta property="og:description" content="Part of Pedigree Curation" />
+<meta property="og:description" content="Make genetic diversity heatmap" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,46 +117,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converts date columns formatted as characters to be of type datetime</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/convertDate.R'><code>R/convertDate.R</code></a></small>
-    <div class="hidden name"><code>convertDate.Rd</code></div>
+    <h1>Make genetic diversity heatmap</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeGeneticDiversityDashboard.R'><code>R/makeGeneticDiversityDashboard.R</code></a></small>
+    <div class="hidden name"><code>makeGeneticDiversityDashboard.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Part of Pedigree Curation</p>
+    <p>Make genetic diversity heatmap</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>convertDate</span>(<span class='no'>ped</span>, <span class='kw'>time.origin</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1970-01-01"</span>),
-  <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>makeGeneticDiversityDashboard</span>(<span class='no'>geneticDiversityStats</span>,
+  <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"images/geneticDiversity.png"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ped</th>
-      <td><p>a dataframe of pedigree information that may contain birth,
-death, departure, or exit dates. The fields are optional, but will be used
-if present.(optional fields: birth, death, departure, and exit).</p></td>
+      <th>geneticDiversityStats</th>
+      <td><p>named vector of genetic diversity statistics</p></td>
     </tr>
     <tr>
-      <th>time.origin</th>
-      <td><p>date object used by <code>as.Date</code> to set <code>origin</code>.</p></td>
-    </tr>
-    <tr>
-      <th>reportErrors</th>
-      <td><p>logical value if TRUE will scan the entire file and
-make a list of all errors found. The errors will be returned in a
-list of list where each sublist is a type of error found.</p></td>
+      <th>file</th>
+      <td><p>filename to store image in. Defaults to
+<em>images/geneticDiversity.png</em></p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dataframe with an updated table with date columns converted from
-<code>character</code> data type to <code>Date</code> data type. Values that do not
-conform to the format <!-- %Y%m%d are set to NA. NA values are left as NA. --></p>
     
 
   </div>
@@ -164,9 +151,7 @@ conform to the format <!-- %Y%m%d are set to NA. NA values are left as NA. --></
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
