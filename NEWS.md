@@ -1,7 +1,26 @@
 NEWS
 ================
 R. Mark Sharp
-07/13/2019
+08/10/2019
+
+# nprcmanager 0.5.30 (20190829)
+
+  - Began adding code for the genetic diversity dashboard. This includes
+    the functions **getIndianOriginStatus** and **getProportionLow**,
+    and a rudimentary **makeGeneticDiversityDashboard** function.
+  - Added another obfuscation function **mapIdsToObfuscated** to further
+    facilitate creation of obfuscated data. This was specifically used
+    to obfuscate haplotype data Ids.
+
+# nprcmanager 0.5.29 (20190810)
+
+  - Copied rmsutilityr functions into nprcmanager to make Publication on
+    the RStudio Shiny application hosting site possible
+
+# nprcmanager 0.5.28 (20190714)
+
+  - Added to interactive tutorial
+  - Enhance algorithm for creating the desired sex ratio in groups.
 
 # nprcmanager 0.5.27 (20190713)
 

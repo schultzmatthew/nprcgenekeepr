@@ -19,3 +19,5 @@ inst/extdata/notes.*
 !inst/extdata/notes.Rmd
 vignettes/interactive_use_tutorial_files/*
 !vignettes/interactive_use_tutorial_files/interactive_use_tutorial.Rmd
+images/*
+images

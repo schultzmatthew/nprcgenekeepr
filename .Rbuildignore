@@ -48,4 +48,6 @@ vignettes/tutorials/*
 !vignettes/tutorials/interactive.Rmd
 rsconnect*
 rsconnect/*
+images
+images/*
 

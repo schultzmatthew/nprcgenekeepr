@@ -10,6 +10,15 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.30 (20190829)
+-   Began adding code for the genetic diversity dashboard. This includes the 
+    functions 
+    __getIndianOriginStatus__ and __getProportionLow__, and a rudimentary
+    __makeGeneticDiversityDashboard__ function.
+-   Added another obfuscation function __mapIdsToObfuscated__ to further 
+    facilitate creation of obfuscated data. This was specifically used to 
+    obfuscate haplotype data Ids.
+    
 # nprcmanager 0.5.29 (20190810)
 -   Copied rmsutilityr functions into nprcmanager to make Publication on the
     RStudio Shiny application hosting site possible

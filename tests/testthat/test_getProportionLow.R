@@ -1,0 +1,14 @@
+set_seed(1)
+vec <- abs(rnorm(10))
+
+test_that("getProportionLow returns the correct values", {
+  lowVec <- ifelse(vec > 0.3, "High", "Low")
+  expect_equal(getProportionLow(lowVec),
+               list(proportion = 0.1, color = "green"))
+  lowVec <- ifelse(vec > 0.4, "High", "Low")
+  expect_equal(getProportionLow(lowVec),
+               list(proportion = 0.3, color = "yellow"))
+  lowVec <- ifelse(vec > 0.7, "High", "Low")
+  expect_equal(getProportionLow(lowVec),
+               list(proportion = 0.6, color = "red"))
+})

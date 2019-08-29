@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -342,18 +343,6 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -381,16 +370,93 @@ $(document).ready(function () {
 <h1>Meeting Notes and Things To Do</h1>
 <p>Provided in reverse chronological order</p>
 <div id="section" class="section level2">
-<h2>20190701</h2>
+<h2>20190810</h2>
+<p>This was an <em>ad hoc</em> meeting to get clarification on heat map development for genetic diversity reporting. This meeting was a response to questions in a July 18, 2019, email from Mark in response to an email from Amanda with the subject of “genetic diversity reporting questions”.</p>
+<p>As a result of this meeting, the following columns are defined as follows</p>
+<ol style="list-style-type: decimal">
+<li>GENETIC DIVERSITY REPORTING
+<ol style="list-style-type: decimal">
+<li>What are the proportions of high and low genetic value breeding-age adults in the group?
+<ol style="list-style-type: decimal">
+<li>RED &gt; 0.5 LOW VALUE</li>
+<li>0.5 &gt;= YELLOW &gt;= 0.30 LOW VALUE</li>
+<li>GREEN =&lt; 0.3 LOW VALUE</li>
+</ol></li>
+<li>Are all members of the breeding group Indian-origin rhesus macaques?
+<ol style="list-style-type: decimal">
+<li>RED – &gt;= 1 HYBRID OR CHINESE ANIMALS</li>
+<li>YELLOW – &gt;= 1 BORDERLINE HYBRID ANCESTRY &amp; 0 HYBRID OR CHINESE ANIMALS</li>
+<li>GREEN – 0 HYBRID OR CHINESE ANIMALS &amp; 0 BORDERLINE HYBRID ANCESTRY</li>
+</ol>
+<blockquote>
+<p>= 10% &lt;= 15% chinese: Proportion of chinese ancestry is borderline Yellow; Red &gt; 15%; This information is found under animal history under genetics main tab – genetic ancestry.</p>
+</blockquote></li>
+<li>Among all females in group age &gt;= 3 years what is percentage with a kinship coefficient &lt;= 0.0156 with at least 1 male &gt;= 5 years old in the group.
+<ol style="list-style-type: decimal">
+<li>Denomonator = count of females &gt;= 3 years of age</li>
+<li>Numerator = count of females with kinship coefficient &lt;= 0.0156 with at least 1 male &gt;= 5 years old in the group.</li>
+<li>Thresholds
+<ol style="list-style-type: decimal">
+<li>Red – &lt; 0.6</li>
+<li>Yellow – &gt;= 0.6 &amp; &lt;= 0.9</li>
+<li>Green – &gt; 0.9</li>
+</ol></li>
+</ol></li>
+<li>Fecundity
+<ol style="list-style-type: decimal">
+<li>Denominator = count of females &gt;= 3 years of age</li>
+<li>Numerator = count of births that live &gt; 30 days</li>
+<li>Thresholds
+<ol style="list-style-type: decimal">
+<li>Shelter and pens
+<ol style="list-style-type: decimal">
+<li>Red – &lt; 0.6</li>
+<li>Yellow – &gt;= 0.6 &amp; &lt;= 0.63</li>
+<li>Green – &gt; 0.63</li>
+</ol></li>
+<li>Corrals
+<ol style="list-style-type: decimal">
+<li>Red – &lt; 0.5</li>
+<li>Yellow – &gt;= 0.5 &amp; &lt;= 0.53</li>
+<li>Green – &gt; 0.53</li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li>Flagged for genotype of phenotype
+<ol style="list-style-type: decimal">
+<li>Thresholds
+<ol style="list-style-type: decimal">
+<li>Red – &gt;= 3 group members flagged</li>
+<li>Yellow – &lt; 3 and &gt;= 1 group members flagged</li>
+<li>Green – 0 group members flagged</li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+</div>
+<div id="section-1" class="section level2">
+<h2>20190715</h2>
 <ol style="list-style-type: decimal">
 <li>To prepare for the meeting
 <ol style="list-style-type: decimal">
 <li>Work on tutorial to go through the Goldilocks path.</li>
 <li>Work on tutorial to look at all possible data input errors</li>
+<li>Submit new version to GitHub and Travis-ci</li>
 </ol></li>
+<li>We discussed heat map type issues with regard to realtime examination of kinship relationships within breedeing groups
+<ol style="list-style-type: decimal">
+<li>Amanda is to send Mark a pedigree with breeding group information and an updated version of the questions in an Excel workbook</li>
+<li>Mark is to use those data and the questions to develop some visualizations for Amanda’s review.</li>
+</ol></li>
+<li>The interactive tutorial was discussed a bit.
+<ol style="list-style-type: decimal">
+<li>Priscilla Williams, a current graduate student, who Mark has worked with for several years is working through the tutorial.</li>
+<li>This discussion brought up the topic of making use of the Shiny application as simple as possible.</li>
+</ol></li>
+<li>Mark is going to put together the Shiny application tutorial next</li>
 </ol>
 </div>
-<div id="section-1" class="section level2">
+<div id="section-2" class="section level2">
 <h2>20190603</h2>
 <ol style="list-style-type: decimal">
 <li><p>Joint Working Group Meeting week before Thanksgiving. We will meet with the Breeding Colony Managers Group. November 19-21, 2019.</p></li>
@@ -407,7 +473,7 @@ $(document).ready(function () {
 <li>Are any members flagged to be genotyped. This likely does not reside in demographics.</li>
 </ul></li>
 </ul></li>
-<li>Does Amanda know what the <em>2014-10-16_ResPed_v1.1.txt</em>, <em>BreedingGroups1_4MendozaTest.csv</em>, <em>Jmac_studbook_20180711.csv</em>, <em>Jmac_studbook_20180711.txt</em>, and <em>MendozaC1C2newharemstest.csv</em> files represent? Can they be use for instruction? Are some to be used with the Example_Pedigree file?</li>
+<li>Does Amanda know what the <em>2014-10-16_ResPed_v1.1.txt</em>, <em>BreedingGroups1_4MendozaTest.csv</em>, <em>Jmac_studbook_20180711.csv</em>, <em>Jmac_studbook_20180711.txt</em>, and <em>MendozaC1C2newharemstest.csv</em> files represent? Can they be use for instruction? We are not going to use them. Done 20190622 Are some to be used with the Example_Pedigree file? We are not going to use them. Done 20190622</li>
 <li>Decide which pedigree files to leave in package. Done 20190622
 <ul>
 <li>All pedigree files except an obfuscated baboon (qcPed) and an obfuscated rhesus (examplePedigree) were moved out of the package.</li>
@@ -434,7 +500,7 @@ $(document).ready(function () {
 </ol></li>
 </ol>
 </div>
-<div id="section-2" class="section level2">
+<div id="section-3" class="section level2">
 <h2>20190429</h2>
 <ol style="list-style-type: decimal">
 <li>Updated Amanda’s R, R packages, and installed version 0.5.10 (20190428) of nprcmanager.</li>
@@ -446,7 +512,7 @@ $(document).ready(function () {
 <li>Will provide a “Goldilocks” tutorial of Shiny application first.</li>
 </ol>
 </div>
-<div id="section-3" class="section level2">
+<div id="section-4" class="section level2">
 <h2>20190408</h2>
 <ol style="list-style-type: decimal">
 <li>Test for error when pedigree is not available when forming groups</li>
@@ -465,7 +531,7 @@ $(document).ready(function () {
 <p>We have a differing view on this, since a living founder can still contribute to the population. The function below calculates genome uniqueness for all living animals and considers all alleles. It does not ignore living founders and their alleles.</p>
 <p>Our results for genome uniqueness will, therefore differ slightly from those returned by Pedscope. Pedscope calculates genome uniqueness only for non-founders and ignores the contribution of any founders in the population. This will cause Pedscope’s genome uniqueness estimates to possibly be slightly higher for non-founders than what this function will calculate.</p>
 </div>
-<div id="section-4" class="section level2">
+<div id="section-5" class="section level2">
 <h2>20190311</h2>
 <ol style="list-style-type: decimal">
 <li>Remove explanatory text above sex ratio radio buttons. Done 20190311</li>
@@ -481,7 +547,7 @@ $(document).ready(function () {
 <li>To meet again on 20190325 if Mark makes sufficient progress otherwise we will meet on 20190408 at 4PM PAC.</li>
 </ol>
 </div>
-<div id="section-5" class="section level2">
+<div id="section-6" class="section level2">
 <h2>20190225</h2>
 <ol style="list-style-type: decimal">
 <li>Mark to add additional unit tests for new seed group formation code.</li>
@@ -524,7 +590,7 @@ $(document).ready(function () {
 <li>Next meeting March 11, 2019, at 4PM PAC.</li>
 </ol>
 </div>
-<div id="section-6" class="section level2">
+<div id="section-7" class="section level2">
 <h2>20190114</h2>
 <ol style="list-style-type: decimal">
 <li><p>Amanda provided a new logo to use, which represents all of the National Primate Research Centers. This is necessary because the ONPRC parent organization does not allow them to have a logo. Mark will incorporate that logo into the application and add some comments regarding development supported by ONPRC and SNPRC. Added 20190119.</p></li>
@@ -542,7 +608,7 @@ $(document).ready(function () {
 <li><p>The next meeting will be 20190211 at 4 PM Pacific time.</p></li>
 </ol>
 </div>
-<div id="section-7" class="section level2">
+<div id="section-8" class="section level2">
 <h2>20181210</h2>
 <ol style="list-style-type: decimal">
 <li>Mark reported that he was having trouble implementing the user interface elements needed for items 4 and 5 of the 20181105 meeting notes. Specifically the need to have dynamically generated text input boxes for the number of groups to be formed is the issue. He has not figured out either the desired interface behavior or the technical methods needed for this feature. This is going to delay getting the tutorials written, which he had hoped to complete in first draft form during December.</li>
@@ -568,7 +634,7 @@ $(document).ready(function () {
 <li>The next meeting will be 20190114 at 4 PM Pacific time.</li>
 </ol>
 </div>
-<div id="section-8" class="section level2">
+<div id="section-9" class="section level2">
 <h2>20181105</h2>
 <ol style="list-style-type: decimal">
 <li>Do not report as an error the wrong sex for animals added into the pedigree and appear as both a sire and dam without an ego record. These need to be reported as an error because they are both a sire and a dam. Done 20181208</li>
@@ -614,7 +680,7 @@ $(document).ready(function () {
 <li>The next meeting is scheduled for 20181126. Due to conflicts in Mark’s schedule, we rescheduled for 20181210.</li>
 </ol>
 </div>
-<div id="section-9" class="section level2">
+<div id="section-10" class="section level2">
 <h2>20181022</h2>
 <ol style="list-style-type: decimal">
 <li>Allow the use of Ego for ID. Done 20181022</li>
@@ -630,7 +696,7 @@ $(document).ready(function () {
 </ol>
 <p>Below are some relevant articles found from a simple web search with the Google search engine using the search elements: “genetic association studies in pedigrees” * <a href="https://www.stats.ox.ac.uk/~mcvean/gwa4.pdf" class="uri">https://www.stats.ox.ac.uk/~mcvean/gwa4.pdf</a> * <a href="https://dx.doi.org/10.1186%2F1753-6561-8-S1-S26" class="uri">https://dx.doi.org/10.1186%2F1753-6561-8-S1-S26</a> * <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1459209/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1459209/</a> * <a href="https://www.ncbi.nlm.nih.gov/pubmed/12687644" class="uri">https://www.ncbi.nlm.nih.gov/pubmed/12687644</a> 11. Not mentioned during the meeting but taken from other correspondence. Mark will Contact Daniel Nicolalde (<a href="mailto:fdnicolalde@primate.wisc.edu" class="email">fdnicolalde@primate.wisc.edu</a>; (608) 890-4592; INFORMATICS AND DATA SERVICES) to see if he will assist in getting the LabKey interface working with the Wisconsin National Primate Research Center system. 12. The next meeting is scheduled for November 5, 2018 at 4 PM Pacific Time.</p>
 </div>
-<div id="section-10" class="section level2">
+<div id="section-11" class="section level2">
 <h2>20180917</h2>
 <ol style="list-style-type: decimal">
 <li>Change Pedigree browser button label to say “Trim pedigree based on focal animals”. Done 20180917</li>
@@ -649,7 +715,7 @@ $(document).ready(function () {
 <li>Mark will change the code to better handle the issues observed, update the package, and have Beth test again. All code changes made for all known file errors completed 20181020.</li>
 </ol>
 </div>
-<div id="section-11" class="section level2">
+<div id="section-12" class="section level2">
 <h2>20180820</h2>
 <p>Meeting was canceled.</p>
 <p>Topics I wanted to bring up.</p>
@@ -811,37 +877,37 @@ $(document).ready(function () {
 <div id="miscellaneous-accomplishments" class="section level2">
 <h2>Miscellaneous Accomplishments</h2>
 <p>These should be stored elsewhere</p>
-<div id="section-12" class="section level4">
+<div id="section-13" class="section level4">
 <h4>20180429</h4>
 <p>Test coverage is 86.32%.</p>
 </div>
-<div id="section-13" class="section level4">
+<div id="section-14" class="section level4">
 <h4>20171004</h4>
 <p>Unit test coverage is 84.79%.</p>
 </div>
-<div id="section-14" class="section level4">
+<div id="section-15" class="section level4">
 <h4>20170921</h4>
 <p>Unit test coverage is about 15%.</p>
 </div>
-<div id="section-15" class="section level4">
+<div id="section-16" class="section level4">
 <h4>20170919</h4>
 <p>We have successfully installed and used <em>nprcmanager</em> on Microsoft (MS) Windows 7, MS Windows 10, and MacOS 10.12.6 running R 3.4.1.</p>
 </div>
-<div id="section-16" class="section level4">
+<div id="section-17" class="section level4">
 <h4>20170917</h4>
 <p>I discovered why the plot of genetic uniqueness scores was not as expected. It was from an analysis where 0 was the threshold setting, which I think we should consider removing as an option. I have set the default to 3, which is what Amanda Vinson’s paper indicated that ONPRC typically used.</p>
 <p>I got the logging system integrated into the package. I am using the package futile.logger (funny name). Note the check box at the bottom of the side panel on the two attached images. When the Debug on check box is checked (it is not checked by default), the application writes to a file in the users home directory named <em>nprcmanager.log</em>. Currently I am only logging events occurring the the <em>server.R</em> file, because that is where I tend to have most of my problems show up. I have attached an example file in which turned on logging at the debug level and then read in a couple of pedigree files.</p>
 <p>I added code coverage reports to the automated build system running on Travis-CI.org. Currently we only have 5.68% of the code being tested with the unit tests I created thus far. I do not know the code well enough to know what percentage we will have when I feel comfortable, but I know most of the functions have no tests at all.</p>
 </div>
-<div id="section-17" class="section level4">
+<div id="section-18" class="section level4">
 <h4>20170916</h4>
 <p>Can now assign known genotypes to individuals and to incorporate that information into the gene dropping routine. This has been done at the function level in the <em>geneDrop</em> function. The pedigree submitted via the UI can optionally contain genetic information.</p>
 </div>
-<div id="section-18" class="section level4">
+<div id="section-19" class="section level4">
 <h4>20170915</h4>
 <p>Added a genetic uniqueness plot to the Summary Statistics tab.</p>
 </div>
-<div id="section-19" class="section level4">
+<div id="section-20" class="section level4">
 <h4>20170911</h4>
 <p>I have connected the Travis CI (continuous integration) tool to my github.com/rmsharp/nprcmanager so that when I check in code it automatically tries to build it from scratch using packages from CRAN. Travis CI is now automatically building nprcmanager without errors or warnings. This puts us considerably closer to being able to offer the package via CRAN if we want.</p>
 </div>
@@ -887,6 +953,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
