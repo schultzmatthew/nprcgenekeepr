@@ -1,4 +1,4 @@
-#' Make genetic diversity heatmap
+#' Make genetic diversity dashboard
 #'
 #' @param geneticDiversityStats named vector of genetic diversity statistics
 #' @param file filename to store image in. Defaults to
@@ -11,8 +11,8 @@ makeGeneticDiversityDashboard <- function(geneticDiversityStats,
                                         file = "images/geneticDiversity.png") {
   my_palette <- colorRampPalette(c("red", "yellow", "green"))(n = 3)
   rnames <- geneticDiversityStats[,1]  # assign labels in column 1 to "rnames"
-  headings <- c("Breeding Group", "High-Low", "Indian Origin", "Fecundity",
-                "Kinship With Male", "Genotype Phenotype")
+  headings <- c("Breeding Group", "Value", "Origin", "Production",
+                "Inbreeding", "Flags")
 
   # (optional) defines the color breaks manually for a "skewed" color transition
   col_breaks = c(0,1,  # for red
@@ -30,7 +30,7 @@ makeGeneticDiversityDashboard <- function(geneticDiversityStats,
       pointsize = 8)        # smaller font size
   heatmap.2(mat_data,
             #cellnote = mat_data,  # same data set for cell labels
-            main = "Genetic Diversity", # heat map title
+            main = "Genetic Diversity", # dashboard title
             notecol="black",      # change font color of cell labels to black
             density.info="none",  # turns off density plot inside color legend
             trace="none",         # turns off trace lines inside the heat map

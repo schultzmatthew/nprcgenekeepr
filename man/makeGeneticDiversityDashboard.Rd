@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeGeneticDiversityDashboard.R
 \name{makeGeneticDiversityDashboard}
 \alias{makeGeneticDiversityDashboard}
-\title{Make genetic diversity heatmap}
+\title{Make genetic diversity dashboard}
 \usage{
 makeGeneticDiversityDashboard(geneticDiversityStats,
   file = "images/geneticDiversity.png")
@@ -14,5 +14,5 @@ makeGeneticDiversityDashboard(geneticDiversityStats,
 \emph{images/geneticDiversity.png}}
 }
 \description{
-Make genetic diversity heatmap
+Make genetic diversity dashboard
 }

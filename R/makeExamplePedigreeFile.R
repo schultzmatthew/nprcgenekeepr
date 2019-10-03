@@ -22,7 +22,7 @@ makeExamplePedigreeFile <- function(fileType = "csv") {
     if (!status)
       stop(paste0("Failed to write example data out to ", filename, "."))
   } else {
-    write.tqble(nprcmanager::examplePedigree,
+    write.table(nprcmanager::examplePedigree,
               file = filename, row.names = FALSE, sep = "\t")
   }
   filename

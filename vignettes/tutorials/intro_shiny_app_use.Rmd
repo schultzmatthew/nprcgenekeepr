@@ -1,0 +1,237 @@
+---
+title: "Shiny Application for Genetic Management of Colonies"
+author: "R. Mark Sharp"
+output:
+  html_document:
+    df_print: paged
+vignette: |
+  %\VignetteEngine{knitr::knitr} 
+  %\VignetteIndexEntry{Genetic Management Tools -- Shiny App} 
+  %\usepackage[UTF-8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+library(stringi)
+library(nprcmanager)
+knitr::opts_chunk$set(eval = FALSE, echo=TRUE, eval = FALSE, results = "markup", cache = TRUE)
+start_time <- proc.time()
+```
+
+
+## Introduction
+This tutorial demonstrates the major functions used 
+within the Shiny application provided by the __nprcmanager__ package.
+This is a brief tutorial that illustrates a typical workflow and does
+not explore all possible workflows.
+
+Please provide any comments, questions, or bug reports through the GitHub
+issue tracker at \url{https://github.com/rmsharp/nprcmanager/issues}.
+
+## Installation and Help
+
+You can install **nprcmanager** from GitHub with the following code.
+
+```{r gh-installation}
+install.packages("devtools")
+devtools::install_github("rmsharp/nprcmanager")
+
+```
+
+All missing dependencies should be automatically installed.
+
+You can start the Shiny application from the __R__ console with 
+
+```{r start, echo = TRUE, include=TRUE}
+library(nprcmanager)
+#runManager()
+getwd()
+```
+
+This will result in the following screen.
+
+![](../../inst/extdata/shiny_app_tutorial/images/opening_screen_top.png)
+
+The opening screen is where you tell the application how to find 
+the pedigree you will be using.
+
+Most of the screen is filled with information about formatting the pedigree 
+file.
+
+Note the rest of the screen:
+
+![](../../inst/extdata/shiny_app_tutorial/images/opening_screen_middle.png)
+
+
+Scrolling down to the middle of the opening screen exposes a table that 
+describes a pedigree file and further instructions.
+
+![](../../inst/extdata/shiny_app_tutorial/images/opening_screen_bottom.png)
+
+Scrolling down to the bottom of the opening screen exposes more pedigree file 
+instructions, a table that describes a genotype file and instructions regarding
+use of a genotype file. This tutorial will not include instructions on using a 
+genotype file.
+
+In this introductory tutorial, we will use a simple Excel file containing 
+a hypothetical pedigree of macques.
+To do that we will work with is the gray box on the left at the top of the
+screen.
+
+![](../../inst/extdata/shiny_app_tutorial/images/opening_screen_top_red_oval.png)
+
+
+A Microsoft Excel workbook with a single worksheet is the default file 
+type; though comma (.csv), semi-colon (.txt), and tab (.txt) separated value 
+files are all acceptable formats.
+
+The _Example_Pedigree.xlsx_ file we are using is the CSV file created as 
+shown below and then saved in an Excel format.
+```{r make-example-file}
+makeExamplePedigreeFile()
+```
+
+Select the __Browse__ button and select the pedigree file from your file system.
+
+![](../../inst/extdata/shiny_app_tutorial/images/input_example_pedigree.xlsx.png)
+
+It is important to make sure the minimum parent age is low enough for the 
+animals in your pedigree. For our example pedigree, we are changing it from
+4 years to 2 years of age. 
+These macques may reproduce as early as two years of age.
+
+![](../../inst/extdata/shiny_app_tutorial/images/input_example_pedigree_min_parent_age.png)
+
+The hovertext provides an explaination of how this value is used.
+
+![](../../inst/extdata/shiny_app_tutorial/images/input_minParentAge_4.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/input_minParentAge_2.png)
+
+
+## Reading in a Pedigree and Testing for Errors
+
+Selected __Read and Check Pedigree__ will read in the file and test to see
+if the pedigree file has all of the columns needed and the pedigree is 
+internally consistent.
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/read_and_check_pedigree.png)
+
+Several error types, shown below, are detected the application.
+
+```{r make-errorList-definition-tbl, echo = FALSE, eval=TRUE}
+errorTypes <- names(getEmptyErrorLst())
+errorDescriptions <- c(
+  "Database connection failed: configuration or permissions are invalid",
+  "Columns that must be within the pedigree file are missing.",
+  "Values, which are supposed to be dates, cannot be interpreted as a date.",
+  "Parents were too young on the date of birth of to have been the parent.",
+  "Individuals listed as female or hemaphroditic and as a sire.",
+  "Individuals are listed as male and as a dam.", 
+  "Individuals who are listed as both a sire and a dam.",
+  "IDs listed more than once.",
+  stri_c("Columns that have been changed to conform to internal naming ",
+  "conventions and what they were changed to.")
+)
+errorTbl <- data.frame(`Error` = errorTypes, Definition = errorDescriptions, 
+                       stringsAsFactors = FALSE)
+
+```
+```{r print-error-definition-tbl, eval = TRUE, echo=FALSE, include = TRUE, results='markup'}
+knitr::kable(errorTbl) 
+
+```
+
+The __Pedigree Browser__ tab defaults to displaying 10 rows of the pedigree
+at a time, but you can choose to display 10, 25, 50, or 100 rows.
+
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_100_rows.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_unknown_displayed.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_no_unknown_displayed.png)
+The __Pedigree Browser__ tab displays the full pedigree by default but allows
+the user to select a subset of the pedigree by entering a list of 
+animals of interest (_focal animals_).
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_1.png)
+
+You can enter in the animal IDs by typing them into the text box directly as
+shown below.
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_5_focal_animals.png)
+
+After entering your list of focal animals, you can select to trim the 
+pedigree so that it will only include relative of the focal animals you have 
+selected.
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_select_trim_for_focal_animals.png)
+
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_selection_large_focal_group.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_trimmed_for_focal_animals.png)
+
+The __Pedigree Age Plot__ tab displage a standard pyramid plot for the pedigree
+as selected in the __Pedigree Browser__ tab.
+![](../../inst/extdata/shiny_app_tutorial/images/age_plot.png)
+
+Selecting the __Genetic Value Analysis__ tab and the __Begin Analysis__ button will
+begin the gene dropping process, which you can monitor with the progress meter
+in the lower right corner of the display. 
+
+We are not aware of a systematic study of pedigree structure with this 
+algorithm.
+We have not performed extensive studies with pedigrees of various structures, 
+but 1000 iterations has seemed to provide reproducible results. 
+ 
+
+![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_calculating.png)
+
+As soon as the calculations are completed, a table showing
+the results of the analysis is displayed. 
+You can select how many rows to display at once from
+![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_first_high_value.png)
+Searching down the table of results in the __Value Designation__ column you can 
+see starting at row 2777 the values change from _High Value_ to _Low Value_.
+
+![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_high_and_low_value.png)
+
+![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_undetermined_value.png)
+
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_6_seed_groups.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_6_seed_grps_grp_6_kinship.png)
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+

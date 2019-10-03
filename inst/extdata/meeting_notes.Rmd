@@ -1,10 +1,70 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
+## 20190916
+
+
+1.  __Production Calculation__
+
+    Amanda corrected and clarified how to calculate _Production_ using the 
+  
+    a.  The Production Status is calculated on September 09, 2019.
+    b.  Births = count of all animals in group born since January 1, 2017 
+        through December 31, 2018, that lived at least 30 days.
+        Animals born after December 31, 2018, are not counted.
+    c.  Dams = count of all females in group that have a birth date on or prior to September 09, 2016.
+    d.  Production = Births / Dams
+    e.  Production Status (color)
+        1.   Shelter and pens
+             1.   Red -- < 0.51
+             1.   Yellow -- >= 0.51 & < 0.54
+             1.   Green -- >= 0.54
+        1.  Corrals
+            1.   Red -- < 0.61
+            1.   Yellow -- >= 0.61 & < 0.65
+            1.   Green -- >= 0.65
+2.   __Genetic Production__
+
+     Percent of females >= 3.5 at the start of the 2 calendar year period that
+     have not produced offspring in the past 2 calendar years. Filter out 
+     animals over ?? (start with 18) years old.
+
+3.   __Genetic Value Analysis__
+     Have Mark look at algorithm and develop simple options for handling 
+     progeny that are missing parental information.
+     
+     One option is to not calculate genetic value of animals < minParentAge.
+     
+4.   __Founders__
+     We need to get a better understanding of the issues surrounding the 
+     identification of founders and how founders affect the genetic value
+     analysis. 
+     As a first step Mark will develop code to list the founders and the count
+     of male and female founders. 
+     See how they affect the genetic value analysis.
+     
+     In the very short table below __x123__ has a founder as a dam while
+     __x122__ does not have a founder for a sire because of the respective
+     values of _dam_from_center_ and _sire_from_center_.
+
+| id  | sire | sire_from_center | dam  |  dam_from_center | birth      |
+|-----|------|------------------|------|------------------|------------|
+|x123 | s123 | Y                |      |   N              | 1988/04/21 |
+|x122 |      | Y                | d123 |   Y              | 1989/08/18 |
+
+5.  __Matt Schultz and R Setup for nprcmanager__
+
+    Mark is to contact Matt to arrange a time to work with him to make sure he
+    get nprcmanger set up as a repository on his computer.
+    
+    Mark will also send the interactive tutorial to him and Amanda.
+    Done 20190916.
+
+
 ## 20190826
 
 1.  Genetic Diversity Graphic
-    a.   Labels
+    a.   Labels Done 20190908
          -    Breeding Group 
          -    High-Low - Value
          -    Indian Origin - Origin
@@ -14,8 +74,8 @@ Provided in reverse chronological order
     b.   Labels of groups on left
     c.   Labels of genetic diversity labels top and 45 degree angle
     d.   Genetic Diversity - Genetic Diversity Report
-2.  Send list of errors that can be detected.
-3.  Send rhesus MHC data pedigrees
+2.  Send list of errors that can be detected. Done 20190826
+3.  Send rhesus MHC data pedigrees Done 20190826
 4.  
     
 

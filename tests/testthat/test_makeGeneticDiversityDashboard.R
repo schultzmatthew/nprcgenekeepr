@@ -8,7 +8,7 @@ geneticDiversityStats <- data.frame(
   genotypePhenotype = sample(1:3, 8, replace = TRUE))
 
 # test_that("makeGeneticDiversityDashboard creates image file", {
-#   fn <- "images/heatmaps_in_r.png"
+#   fn <- "images/dashboard_in_r.png"
 #   if (file.exists(fn))
 #     file.remove(fn)
 #   expect_false(file.exists(fn))
