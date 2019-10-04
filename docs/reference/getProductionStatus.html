@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>getEmptyErrorLst — getEmptyErrorLst • nprcmanager</title>
+<title>Get production status of group — getProductionStatus • nprcmanager</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="getEmptyErrorLst — getEmptyErrorLst" />
-<meta property="og:description" content="getEmptyErrorLst" />
+<meta property="og:title" content="Get production status of group — getProductionStatus" />
+<meta property="og:description" content="Get production status of group" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,28 +123,89 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>getEmptyErrorLst</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getEmptyErrorLst.R'><code>R/getEmptyErrorLst.R</code></a></small>
-    <div class="hidden name"><code>getEmptyErrorLst.Rd</code></div>
+    <h1>Get production status of group</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getProductionStatus.R'><code>R/getProductionStatus.R</code></a></small>
+    <div class="hidden name"><code>getProductionStatus.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>getEmptyErrorLst</p>
+    <p>Get production status of group</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getEmptyErrorLst</span>()</pre>
+    <pre class="usage"><span class='fu'>getProductionStatus</span>(<span class='no'>ped</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>maxOffspringAge</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>housing</span> <span class='kw'>=</span> <span class='st'>"shelter_pens"</span>, <span class='kw'>currentDate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ped</th>
+      <td><p>Dataframe that is the `Pedigree`. It contains pedigree
+information. The <code>id</code>, <code>dam</code>, <code>sex</code> and <code>age</code>
+(in years) columns are required.</p></td>
+    </tr>
+    <tr>
+      <th>minParentAge</th>
+      <td><p>Numeric values to set the minimum age in years for
+an animal to have an offspring. Defaults to 2 years. The check is not
+performed for animals with missing birth dates.</p></td>
+    </tr>
+    <tr>
+      <th>maxOffspringAge</th>
+      <td><p>Numeric values to set the maximum age in years for
+an animal to be counted as birth in calculation of production status
+ratio.</p></td>
+    </tr>
+    <tr>
+      <th>housing</th>
+      <td><p>character vector of length 1 having the housing type, which
+is either <em>"shelter_pens"</em> or <em>"corral"</em>.</p></td>
+    </tr>
+    <tr>
+      <th>currentDate</th>
+      <td><p>Date to be used for calculating age. Defaults to
+<code><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date()</a></code>.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>errorLst object with placeholders for error types found in a pedigree
-file by <code>qcStudbook</code>.</p>
+    <p><code>production</code> -- Ratio of the number of births that live &gt;30 days to
+the number of females &gt;= 3 years of age.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Description of how Production and Production Status (color) is
+calculated.</p><ol>
+<li><p>The Production Status is calculated on September 09, 2019.</p></li>
+<li><p>Births = count of all animals in group born since January 1,
+    2017 through August 10, 2019, that lived at least 30 days.
+    Animals born after August 10, 2019, are not counted since they have not
+    lived 30 days.</p></li>
+<li><p>Dams = count of all females in group that have a birth date on or
+       prior to September 09, 2016.</p></li>
+<li><p>Production = Births / Dams</p></li>
+<li><p>Production Status (color)</p><ol>
+<li><p>Shelter and pens</p><ol>
+<li><p>Production &lt; 0.6; Red</p></li>
+<li><p>Production &gt;= 0.6 and Production &lt;= 0.63; Yellow</p></li>
+<li><p>Production &gt; 0.63; Green</p></li>
+</ol></li>
+<li><p>Corrals</p><ol>
+<li><p>Production &lt; 0.5; Red</p></li>
+<li><p>Production &gt;= 0.5 and Production &lt;= 0.53; Yellow</p></li>
+<li><p>Production &gt; 0.53; Green</p></li>
+</ol></li>
+</ol></li>
+</ol>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

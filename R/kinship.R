@@ -34,9 +34,9 @@
 #'
 #'
 #' @references {S-Plus/R Function Page}
-#' \url{http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/}
-#'
+#' \emph{http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/}
 #'  @description {s-plus-r-functions} {Downloaded 2014-08-26}
+#'  This page address is now (2019-10-03) stale.
 #'
 #' All of the code on the S-Plus page was stated to be released under the
 #' GNU General Public License (version 2 or later).

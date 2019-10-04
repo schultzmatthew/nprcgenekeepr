@@ -3,6 +3,14 @@ NEWS
 R. Mark Sharp
 08/10/2019
 
+# nprcmanager 0.5.31 (20191003)
+
+  - Added more tutorial notes
+  - Removed undefined elements in DESCRIPTION file including
+    Displaymode: Showcase, which is recommended in a Shiny example by
+    RStudio. This was removed based on RHUB feedback.
+  - Added more code for genetic diversity dashboard.
+
 # nprcmanager 0.5.30 (20190829)
 
   - Began adding code for the genetic diversity dashboard. This includes

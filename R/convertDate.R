@@ -16,7 +16,8 @@
 ## ##  rmsutilityr is_valid_date_str
 #' @importFrom stringi stri_trim_both
 #' @export
-convertDate <- function(ped, time.origin = as.Date("1970-01-01"), reportErrors = FALSE) {
+convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
+                        reportErrors = FALSE) {
   ## Ignore records added because of unknown parents
   if (any("recordStatus" %in% names(ped))) {
     addedPed <- ped[ped$recordStatus == "added", ]
