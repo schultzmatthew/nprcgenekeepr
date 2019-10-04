@@ -3,6 +3,10 @@ NEWS
 R. Mark Sharp
 08/10/2019
 
+# nprcmanager 0.5.32 (20191004)
+
+  - Corrected ancestry to sexCodes in test\_convertSexCodes()
+
 # nprcmanager 0.5.31 (20191003)
 
   - Added more tutorial notes

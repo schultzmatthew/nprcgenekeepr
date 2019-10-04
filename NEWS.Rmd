@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.32 (20191004)
+-   Corrected ancestry to sexCodes in test_convertSexCodes()
+
 # nprcmanager 0.5.31 (20191003)
 -   Added more tutorial notes
 -   Removed undefined elements in DESCRIPTION file including 
