@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 08/10/2019
 
+# nprcmanager 0.5.33 (20191006)
+
+  - Broke up LICENSE contents into LICENSE and LICENSE.md for CRAN
+    compliance
+
 # nprcmanager 0.5.32 (20191004)
 
   - Corrected ancestry to sexCodes in test\_convertSexCodes()

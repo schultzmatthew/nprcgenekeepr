@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.33 (20191006)
+-   Broke up LICENSE contents into LICENSE and LICENSE.md for CRAN compliance
+
 # nprcmanager 0.5.32 (20191004)
 -   Corrected ancestry to sexCodes in test_convertSexCodes()
 
