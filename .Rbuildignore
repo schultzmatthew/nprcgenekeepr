@@ -51,3 +51,4 @@ rsconnect/*
 images
 images/*
 
+^cran-comments\.md$

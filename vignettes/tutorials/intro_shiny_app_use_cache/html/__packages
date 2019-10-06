@@ -1,3 +1,10 @@
 base
 nprcmanager
 stringi
+shiny
+shinyBS
+DT
+futile.logger
+ggplot2
+testthat
+png

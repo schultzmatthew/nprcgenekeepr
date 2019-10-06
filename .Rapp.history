@@ -1,229 +1,3 @@
-1127/1560
-fx <- inline::cxxfunction( signature(x = "integer", y = "numeric" ) , '#
-	return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;#
-' )#
-fx( 2L, 5 ) # should be 10
-inline::cxxfunction( signature(x = "integer", y = "numeric" ) , "return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;")
-fx <- inline::cxxfunction( signature(x = "integer", y = "numeric" ) , '#
-	return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;#
-' )
-fx <- inline::cxxfunction( signature(x = "integer", y = "numeric" ) , '\n#
-	return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;\n#
-' )
-library(rstan)
-fx <- inline::cxxfunction( signature(x = "integer", y = "numeric" ) , '\n#
-	return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;\n#
-' )
-?fx
-fx
-library(inline)
-fx <- inline::cxxfunction( signature(x = "integer", y = "numeric" ) , '\n#
-	return ScalarReal( INTEGER(x)[0] * REAL(y)[0] ) ;\n#
-' )
-fx <- inline::cxxfunction(signature(x ="integer", y = "numeric"), "return ScalarReal(INTEGER(x)[0] * REAL(y)[0]);")
-install.packages("reticulate")
-166/124
-library(repurrrsive)
-length(sw_people)
-sw_people[1]
-sw_people[1, ]
-sw_people[1, "name"]
-str(sw_people)
-str(sw_people[[1]])
-str(sw_people[1])
-map(sw_people, length(starships))
-library(purr)
-library(purrr)
-map(sw_people, length(starships))
-map(sw_people, length(.x$starships))
-map(.x = sw_people, length(.x$starships))
-?map
-map(.x = sw_people, length(.$starships))
-luke <- sw_people[[1]]
-length(luke$starships)
-map(.x = sw_people, ~ length(.x$starships))
-sum(map(.x = sw_people, ~ length(.x$starships)))
-sum(unlist(map(.x = sw_people, ~ length(.x$starships))))
-planet_lookup <- map_chr(sw_planet, "name") %>% set_names(map_chr(sw_planets, "url"))
-planet_lookup <- map_chr(sw_planets, "name") %>% set_names(map_chr(sw_planets, "url"))
-planet_lookup
-luke
-planet_lookup[names(planet_lookup) == luke$homeworld]
-sw_people <- sw_people %>% set_names(map_chr(sw_people, "name"))
-str(sw_people[[1]])
-install.packages("devtools")#
-devtools::install_github("AndreaCirilloAC/updateR")#
-updateR(admin_password = "PASSWORD")
-library(updateR)
-updateR(admin_password = "mag44num")
-remove.packages(rJava) #
-install.packages(rJava)
-library(WriteXLS)
-testPerl()
-if (interactive()) {#
-#
-ui <- fluidPage(#
-  fluidRow(#
-    column(4,#
-      sliderInput("obs", "Number of observations:",#
-                  min = 1, max = 1000, value = 500)#
-    ),#
-    column(8,#
-      plotOutput("distPlot")#
-    )#
-  )#
-)#
-#
-server <- function(input, output) {#
-  output$distPlot <- renderPlot({#
-    hist(rnorm(input$obs))#
-  })#
-}#
-#
-shinyApp(ui, server)
-ui <- fluidPage(#
-  fluidRow(#
-    column(width = 4,#
-      "4"#
-    ),#
-    column(width = 3, offset = 2,#
-      "3 offset 2"#
-    )#
-  )#
-)#
-shinyApp(ui, server = function(input, output) { })#
-}
-library(shiny)
-if (interactive()) {#
-#
-ui <- fluidPage(#
-  fluidRow(#
-    column(4,#
-      sliderInput("obs", "Number of observations:",#
-                  min = 1, max = 1000, value = 500)#
-    ),#
-    column(8,#
-      plotOutput("distPlot")#
-    )#
-  )#
-)#
-#
-server <- function(input, output) {#
-  output$distPlot <- renderPlot({#
-    hist(rnorm(input$obs))#
-  })#
-}#
-#
-shinyApp(ui, server)
-ui <- fluidPage(#
-  fluidRow(#
-    column(width = 4,#
-      "4"#
-    ),#
-    column(width = 3, offset = 2,#
-      "3 offset 2"#
-    )#
-  )#
-)#
-shinyApp(ui, server = function(input, output) { })#
-}
-library(stringi)
-?stri_trim_both
-?library
-library(designGLMM, TRUE)
-?vignettes
-vignette(, package = "rms")
-library(rms)
-vignette(, package = "rms")
-115*.16/12
-7000*12
-library(glm)
-?glm
-debuging <- c(11)
-graphics <- c(18.48)
-meeting <- 144
-graphics <- c(18.48, 100)
-meeting <- c(144, 90)
-debuging <- c(11,22,231)
-graphics <- c(18.48, 100)
-formatting <- 81
-formatting <- c(81,19)
-total <- c(debuging, graphics, meeting, formatting)
-total
-sum(total)
-sum(total)/60
-12 * 67
-5200/8
-481.85*12
-ln(.5)
-log(0.5)
-library(devtools)
-install_github(rmsharp/nprcmanager)
-install_github("rmsharp/nprcmanager")
-?install_github
-install_github("devtools")
-debug('install_github')
-install_github("rmsharp/nprcmanager")
-remotes
-repo
-github_remote
-github_pat
-test <- github_pat
-test
-test <- github_pat()
-test
-env()
-install_github("rmsharp/nprcmanager")
-library(ggplot2)
-?boxplot.stats()
-total <- c(333, 30, 178, 36, 50, 32, 20)
-sum(total)
-total <- c(total, -43, 12,15, 22, 20)
-sum(total)
-?glm
-a <- repeat(0:9, 10)
-?repeat
-?rep
-a <- rep(0:9, 10)
-a
-b <- runif(100)
-b
-plot(a,b)
-ifelse(a > 4, a * exp(b), a - b)
-y <- ifelse(a > 4, a * exp(b), a - b)
-plot(a, b); plot(a, y); plot(b, y)
-target <- a
-target
-?jitter
-jitter(target, 0.2)
-plot(jitter(target, 0.2), b)
-plot(jitter(target, 0.3), b)
-plot(jitter(target, 0.4), b)
-target <- jitter(rep(1:10, 10), 0.4)
-pred_1 <- runif(100)
-pred_2 <- ifelse(target > 4, target * exp(pred_1), target - pred_1)
-plot(target, pred_1)
-my_df <- data.frame(target = target, pred_1 = pred_1, pred_2 = pred_2)
-model_1 <- glm(target ~ pred_1, my_df)
-?glm
-model_1 <- glm(target ~ pred_1, "gaussian", data = my_df)
-model_2 <- glm(target ~ pred_2, "gaussian", data = my_df)
-model_3 <- glm(target ~ pred_1 + pred_2, data = my_df)
-model_4 <- glm(target ~ pred_1 * pred_2, data = my_df)
-summary(model_1); summary(model_2); summary(model_3); summary(model_4)
-history()
-?history
-model_1 <- glm(target ~ pred_1, my_df)
-library(nprcmanager)#
-## You can use a file browser#
-pedigreeFile <- file.choose()#
-## or you will have to change this to point to a pedigree file that you have#
-#pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"#
-breederPedCsv <- read.table(pedigreeFile, sep = “,", header = TRUE)#
-breederPed <- qcStudbook(breederPedCsv, minParentAge = 0)
-pedigreeFile <- file.choose()
-pedigreeFile
-breederPedCsv <- read.table(pedigreeFile, sep = “,", header = TRUE)
 breederPedCsv <- read.table(pedigreeFile, sep = ",", header = TRUE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
 library(nprcmanager)
@@ -319,14 +93,213 @@ y <- "x"
 d[[x]]
 d1[[x]]
 d1[["x"]]
+library(nprcmanager)
+?getLogo
+getLog
+getLogo()
+?duplicated
+library(nprcmanager)
+version("nprcmanager")
+devtools::install_github(nprcmanager)
+devtools::install_github("nprcmanager")
+devtools::install_github("rmsharp/nprcmanager")
+sessionInfo()
+32/28
+32/60
+quine.hi <- aov(log(Days + 2.5) ~ .^4, quine)#
+quine.nxt <- update(quine.hi, . ~ . - Eth:Sex:Age:Lrn)#
+quine.stp <- stepAIC(quine.nxt,#
+    scope = list(upper = ~Eth*Sex*Age*Lrn, lower = ~1),#
+    trace = FALSE)#
+quine.stp$anova#
+#
+cpus1 <- cpus#
+attach(cpus)#
+for(v in names(cpus)[2:7])#
+  cpus1[[v]] <- cut(cpus[[v]], unique(quantile(cpus[[v]])),#
+                    include.lowest = TRUE)#
+detach()#
+cpus0 <- cpus1[, 2:8]  # excludes names, authors' predictions#
+cpus.samp <- sample(1:209, 100)#
+cpus.lm <- lm(log10(perf) ~ ., data = cpus1[cpus.samp,2:8])#
+cpus.lm2 <- stepAIC(cpus.lm, trace = FALSE)#
+cpus.lm2$anova
+library(MASS)
+quine.hi <- aov(log(Days + 2.5) ~ .^4, quine)#
+quine.nxt <- update(quine.hi, . ~ . - Eth:Sex:Age:Lrn)#
+quine.stp <- stepAIC(quine.nxt,#
+    scope = list(upper = ~Eth*Sex*Age*Lrn, lower = ~1),#
+    trace = FALSE)#
+quine.stp$anova#
+#
+cpus1 <- cpus#
+attach(cpus)#
+for(v in names(cpus)[2:7])#
+  cpus1[[v]] <- cut(cpus[[v]], unique(quantile(cpus[[v]])),#
+                    include.lowest = TRUE)#
+detach()#
+cpus0 <- cpus1[, 2:8]  # excludes names, authors' predictions#
+cpus.samp <- sample(1:209, 100)#
+cpus.lm <- lm(log10(perf) ~ ., data = cpus1[cpus.samp,2:8])#
+cpus.lm2 <- stepAIC(cpus.lm, trace = FALSE)#
+cpus.lm2$anova
+summary(cpus.lm2)
+coef(cpus.lm2)
+str(cpus.lm2)
+example(birthwt)#
+birthwt.glm <- glm(low ~ ., family = binomial, data = bwt)#
+birthwt.step <- stepAIC(birthwt.glm, trace = FALSE)#
+birthwt.step$anova#
+birthwt.step2 <- stepAIC(birthwt.glm, ~ .^2 + I(scale(age)^2)#
+    + I(scale(lwt)^2), trace = FALSE)#
+birthwt.step2$anova#
+#
+quine.nb <- glm.nb(Days ~ .^4, data = quine)#
+quine.nb2 <- stepAIC(quine.nb)#
+quine.nb2$anova
+install.packages("devtools")#
+devtools::install_github("rmsharp/stepwiser")
+library(rmsutilityr)
+get_pkg_list()
+1627/1756
+1652/1756
+payments <- c(3200)
+balance <- 8806
+balance = payments
+balance <- 8806
+balance - payments
+payments <- c(3200, 1900)
+balance - sum(payments)
+total <- 3720
+invoices <- c(812, 1015, 1015)
+total - sum(invoices)
+1600 + 878
+total <- 2554
+rate <- 67.67
+total/rate
+37.75 * rate
+3300*0.021
+citation("fortunes")
+fortune(author = "Brian")
+library(fortunes)
+fortune(author = "Brian")
+fortune(which = "SAS", author = "Brian")
+fortune(which = "SAS", author = "Harrell")
+library(rmsutilityr)
+rmsutilityr::get_pkg_descriptions("leaflet")
+rmsutilityr::get_pkg_descriptions("leaflet")$License
+lib.loc
+lib.loc <- "/Library/Frameworks/R.framework/Versions/3.5/Resources/library"
+to_install <- unname(installed.packages(lib.loc = lib_loc)[, "Package"])
+lib_loc <- "/Library/Frameworks/R.framework/Versions/3.5/Resources/library"
+to_install <- unname(installed.packages(lib.loc = lib_loc)[, "Package"])
+to_install
+install.packages(pkgs = to_install)
+bill <- c(146.29, 163, 84.89, 69.75)
+sum(bill)
+devtools::install_github("rmsharp/snprcspf")
+library(rstuidoapi)
+library(rstudioapi)
+askForPassword("Enter")
+.rs.api.askForPassword()
+library(scidb)
+lscidbconnect(..., password = readline())
+scidbconnect(..., password = readline())
+library(scidb)
+scidbconnect(..., password = readline())
+?scidbconnect
+scidbconnect(password = readline())
+?scidbconnect
+test <- scidbconnect(username = "plu7553", password=readline(prompt ="password:"), port = 8083)
+get_password <- function() {#
+cat("Password: ")#
+system("stty -echo")#
+a <- readline()#
+system("stty echo")#
+cat("\n")#
+return(a)#
+}
+test <- get_password()
+test
+options(echo = FALSE)
+this is it
+get_password()
+options(echo = TRUE)
+load("/Users/msharp/Downloads/packages.rds")
+dir.choose()
+?file.choose
+install.packages('rsconnect')
+rsconnect::setAccountInfo(name='rmsharp',#
+			  token='21E645EB902782EE92D38460CF40411A',#
+			  secret='XviFVJkAbaT9LayjCm89Aq6JVXYDGL0Qme7Ldnn4')
+library(rsconnect)#
+rsconnect::deployApp("https://github.com/rmsharp/nprcmanager")
+library(nprcmanager)
+?nprcmanager
+library(shiny)
+library(bookdown)
+library(pkgdown)
+81.79/10700.45
+(12 * 81.79)/10700.45
+library(nprcmanager)
+makeExamplePedigreeFile(fileType = "txt")
 library(devtools)
-usethis::create_package()
-usethis::create_package("/Users/msharp/Documents/Projects/Active_Projects/Training/2018")
-usethis::create_package("/Users/msharp/Documents/Projects/Active_Projects/Training/2018/pkgdowntest")
-build_site()
-pkgdown::build_site()
-cd ../
-pkgdown::build_site()
-getwd()
-pkgdown::build_site()
-pkgdown::build_site()
+install.packages("CASdatasets", repos = "http://cas.uqam.ca/pub/R/")
+rhub::check(platform= "debian-gcc-devel")
+rhub::check(platform= "debian-gcc-devel")
+cran_prep <- check_for_cran()
+library(rhub)
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+cran_prep$cran_summary()
+debug(cran_prep$cran_summary)
+cran_prep$cran_summary()
+debug(check_cran_summary)
+debug(cran_prep$check_cran_summary)
+cran_prep$cran_summary()
+debug(check_cran_summary)
+debug(check_cran_summary)
+debug(cran_prep$check_cran_summary)
+debug(check_cran_summary)
+debug(cran_prep$cran_summary)
+cran_prep$cran_summary()
+debug(check_cran_summary)
+str(lapply(x, rectangle_status))
+Q
+undebug(cran_prep$cran_summary)
+cran_prep$cran_summary()
+undebug(check_cran_summary)
+Q
+undebug(check_cran_summary)
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+cran_prep$cran_summary()
+cran_prep$cran_summary()
+debug(cran_prep$cran_summary)
+debug(cran_prep$cran_summary)
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+debug(cran_prep$cran_summary)
+cran_prep$cran_summary()
+debug(check_cran_summary)
+cran_prep$cran_summary()
+str(lapply(x, rectangle_status))
+Q
+?setNames
+remotes::install_github("r-hub/rhub")
+cran_prep <- check_for_cran()
+cran_prep <- check_for_cran()
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+Q
+undebug(check_cran_summary)
+undebug(rhub::check_cran_summary)
+undebug(rhub:::check_cran_summary)
+cran_prep$cran_summary()
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+cran_prep$cran_summary()
+cran_prep <- check_for_cran()
+cran_prep$cran_summary()
+cran_prep$cran_summary()
+cran_prep <- check_for_cran()

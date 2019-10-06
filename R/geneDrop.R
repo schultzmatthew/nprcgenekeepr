@@ -1,14 +1,14 @@
-#' Performs a gene drop simulation based on the provided pedigree information
+#' Gene drop simulation based on the provided pedigree information
 #'
 #' Part of Genetic Value Analysis
 #'
-#' @param ids character vector of IDs for a set of animals.
-#' @param sires character vector with IDS of the sires for the set of
+#' @param ids A character vector of IDs for a set of animals.
+#' @param sires A character vector with IDS of the sires for the set of
 #'  animals. \code{NA} is used for missing sires.
-#' @param dams character vector with IDS of the dams for the set of
+#' @param dams A character vector with IDS of the dams for the set of
 #'  animals. \code{NA} is used for missing dams.
-#' @param gen integer vector indicating the generation number for each animal.
-#' @param genotype is a dataframe containing known genotypes. It has three
+#' @param gen An integer vector indicating the generation number for each animal.
+#' @param genotype A dataframe containing known genotypes. It has three
 #' columns:  \code{id}, \code{first}, and \code{second}. The second and third
 #' columns contain the integers indicating the observed genotypes.
 #'

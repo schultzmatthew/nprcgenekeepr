@@ -593,7 +593,9 @@ shinyServer(function(input, output, session) {
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
-      ylab("Kinship")  + ggtitle("Distribution of Individual Mean Kinship Coefficients")
+      ylab("Kinship")  +
+      ggtitle("Boxplot of Individual Mean Kinship Coefficients") +
+      xlab("")
   })
   output$zscoreBox <- renderPlot({
     if (is.null(rpt())) {
@@ -604,7 +606,9 @@ shinyServer(function(input, output, session) {
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
-      ylab("Z-Score")  + ggtitle("Z-Score")
+      ylab("Z-Score") +
+      ggtitle("Boxplot of Mean Kinship Coefficients Z-scores") +
+      xlab("")
   })
   output$guBox <- renderPlot({
     if (is.null(rpt())) {
@@ -615,7 +619,8 @@ shinyServer(function(input, output, session) {
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
-      ylab("Score")  + ggtitle("Genetic Uniqueness")
+      ylab("Genome Uniquness")  + ggtitle("Boxplot of Genome Uniqueness") +
+      xlab("")
   })
   box_and_whisker_desc <- paste0("The upper whisker extends from the hinge to
                               the largest value no further than 1.5 * IQR

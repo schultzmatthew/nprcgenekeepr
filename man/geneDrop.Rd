@@ -2,23 +2,23 @@
 % Please edit documentation in R/geneDrop.R
 \name{geneDrop}
 \alias{geneDrop}
-\title{Performs a gene drop simulation based on the provided pedigree information}
+\title{Gene drop simulation based on the provided pedigree information}
 \usage{
 geneDrop(ids, sires, dams, gen, genotype = NULL, n = 5000,
   updateProgress = NULL)
 }
 \arguments{
-\item{ids}{character vector of IDs for a set of animals.}
+\item{ids}{A character vector of IDs for a set of animals.}
 
-\item{sires}{character vector with IDS of the sires for the set of
+\item{sires}{A character vector with IDS of the sires for the set of
 animals. \code{NA} is used for missing sires.}
 
-\item{dams}{character vector with IDS of the dams for the set of
+\item{dams}{A character vector with IDS of the dams for the set of
 animals. \code{NA} is used for missing dams.}
 
-\item{gen}{integer vector indicating the generation number for each animal.}
+\item{gen}{An integer vector indicating the generation number for each animal.}
 
-\item{genotype}{is a dataframe containing known genotypes. It has three
+\item{genotype}{A dataframe containing known genotypes. It has three
 columns:  \code{id}, \code{first}, and \code{second}. The second and third
 columns contain the integers indicating the observed genotypes.
 
