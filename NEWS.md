@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 08/10/2019
 
+# nprcmanager 0.5.34 (20191006)
+
+  - Added code to filter out animals no longer at institution and
+    without birth date.
+
 # nprcmanager 0.5.33 (20191006)
 
   - Broke up LICENSE contents into LICENSE and LICENSE.md for CRAN

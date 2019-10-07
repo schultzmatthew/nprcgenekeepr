@@ -822,6 +822,7 @@ shinyServer(function(input, output, session) {
 
   getGrpIds <- reactive({
     ped <- getPed()
+    ped <- ped[is.na(ped$exit) & !is.na(ped$birth), ]
     if ("group" %in% colnames(ped)) {
       return(ped$id[ped$group])
     } else{

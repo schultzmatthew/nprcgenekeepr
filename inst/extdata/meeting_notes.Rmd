@@ -1,8 +1,27 @@
 # Meeting Notes and Things To Do
 Provided in reverse chronological order
 
-## 20190916
+## 20191014
 
+1.  __Progress Since Last Meeting__
+
+    a.  Code changes
+        -   Added filter to pedigree IDs available for breeding group formation
+            so that only animals at the institution (exit == NA) and animals
+            with recorded birth dates (birth != NA) are potential breeding
+            group members.
+    b.  Documentation Updates
+        -   Shiny application tutorial first draft is nearly complete.
+            Breeding group formation remains.
+    c.  CRAN submission preparation
+        -   Have begun using RHUB tools to prepare for the CRAN submission.
+            -   library(rhub)
+            -   library(usethis)
+            -   cran_prep <- check_for_cran()
+            -   cran_prep$cran_summary()
+            -   usethis::use_cran_comments()
+            
+## 20190916
 
 1.  __Production Calculation__
 

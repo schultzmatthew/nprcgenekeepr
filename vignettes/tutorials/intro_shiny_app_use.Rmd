@@ -127,38 +127,20 @@ It is important to make sure the minimum parent age is low enough for the
 animals in your pedigree. For our example pedigree, we are changing it from
 4 years to 2 years of age since these macques may reproduce as early as two 
 years of age.
+This is shown below in three progressive images with the center image 
+demonstrating how the hovertext provides an explaination of how this value is 
+used.
+
 
 *********
 
-```{r example-pedigree-min-parent-age, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
-img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/input_example_pedigree_min_parent_age.png")
-grid.raster(img)
-```
-
-*********
-
-
-The hovertext provides an explaination of how this value is used.
-
-*********
-
-```{r example-pedigree-min-parent-age-4, eval = TRUE, fig.width = 2.5, echo = FALSE}
-img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/input_minParentAge_4.png")
+```{r example-pedigree-minParentAgeSequence, eval = TRUE, fig.width = 10, fig.height = 5, echo = FALSE}
+img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/input_minParentAgeSequence.png")
 grid.raster(img)
 ```
 
 
 *********
-
-```{r example-pedigree-min-parent-age-2, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
-img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/input_minParentAge_2.png")
-grid.raster(img)
-```
-
-
-*********
-
-
 
 
 
@@ -210,7 +192,7 @@ knitr::kable(errorTbl)
 
 The __Pedigree Browser__ tab defaults to displaying 10 rows of the pedigree
 at a time, but you can choose to display 10, 25, 50, or 100 rows.
-You can choose to display UNKNOWN IDs in the rows diplayed.
+You can choose to display UNKNOWN IDs in the rows displayed.
 
 
 
@@ -282,10 +264,10 @@ selected.
 *********
 
 
-You can also import a list of focal animals by selecting the __Browse__ button
+Also, you can import a list of focal animals by selecting the __Browse__ button
 under __Choose CSV file with focal animals__. 
 This file can be constructed by creating a simple text file with commas between
-animal IDs or animal IDs on separate lines.
+animal IDs or by placing individual animal IDs on separate lines.
 
 
 *********
@@ -308,8 +290,7 @@ In this instance there are only a total of 85 focal animals and their relatives.
 
 The __Pedigree Age Plot__ tab displays a standard pyramid plot for the pedigree
 as selected in the __Pedigree Browser__ tab.
-This is showing living animals from a larger pedigree than the one listed 
-immediately above.
+This is showing 332 living animals from the entire example pedigree.
 ![](../../inst/extdata/shiny_app_tutorial/images/age_plot.png)
 
 *********
@@ -320,9 +301,8 @@ begin the gene dropping process, which you can monitor with the progress meter
 in the lower right corner of the display. 
 
 We are not aware of a systematic study of pedigree structure with this 
-algorithm.
-We have not performed extensive studies with pedigrees of various structures, 
-but 1000 iterations has seemed to provide reproducible results. 
+algorithm and have not performed extensive studies with pedigrees of various 
+structures, but 1000 iterations has seemed to provide reproducible results. 
  
 
 *********
@@ -340,7 +320,7 @@ minute 38 seconds with the example pedigree of 3,691
 animals using a MacBook Pro (Mid 2014), 2.8 GHz Intel Core i7 with 16 GB of
 1600 MHz DDR3 memory.
 
-You can select how many rows to display at once by changing the values in the 
+Again you can select how many rows to display at once by changing the values in the 
 __Show entries__ selection tool.
 
 *********
@@ -388,12 +368,19 @@ the Z-scores of the kinship coefficients, and the genome uniqueness scores.
 Selecting the __Breeding Group Formation__ tab brings forward the screen shown
 below. 
 In this screen you can form breeding groups using one of three ways based on
-your source of animals selected under __Choose one group formation workflow:__
+your source of animals selected under __Choose one group formation workflow:__.
+
+Further you must specify how you want to construct the breeding groups with 
+regard to the groups' sex ratios. 
+The third of the three options (_User specified sex ratio of breeders_) causes
+the appearance of the field where you can fill in the sex ratio (F/M) that 
+you want to have in the formed breeding groups.
+The sex ratio algorithm will form a group as nearly to the selected ratio as 
+possible given the size of the group. 
+Limits in the availability of either sex will restrict the size of the groups 
+formed.
 
 *********
-
-
-
 
 ![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
 
