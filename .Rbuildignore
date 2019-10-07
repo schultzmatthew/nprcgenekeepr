@@ -50,5 +50,5 @@ rsconnect*
 rsconnect/*
 images
 images/*
-
+^LICENSE\.md$
 ^cran-comments\.md$
