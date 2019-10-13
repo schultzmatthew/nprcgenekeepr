@@ -6,11 +6,9 @@
 #' @details Description of how Production and Production Status (color) is
 #' calculated.
 #' \enumerate{
-#' \item  The Production Status is calculated on September 09, 2019.
-#' \item  Births = count of all animals in group born since January 1,
-#'     2017 through August 10, 2019, that lived at least 30 days.
-#'     Animals born after August 10, 2019, are not counted since they have not
-#'     lived 30 days.
+#' \item  The Production Status is calculated on September 09, 2019,
+#'        Births = count of all animals in group born since January 1,
+#'        2017 through December 31, 2018, that lived at least 30 days.
 #' \item  Dams = count of all females in group that have a birth date on or
 #'        prior to September 09, 2016.
 #' \item  Production = Births / Dams
@@ -42,6 +40,11 @@
 #' ratio.
 #' @param housing character vector of length 1 having the housing type, which
 #' is either \emph{"shelter_pens"} or \emph{"corral"}.
+#' @param twoCalendarYears logical if \code{TRUE} births are counted for
+#' two full calendar years January 1, (current_year -2) through December 31,
+#' (current_year - 1) and if \code{FALSE} births are counted for
+#' two full calendar years January 1, (current_year -2) through December 31,
+#' (current_year - 1
 #' @param currentDate Date to be used for calculating age. Defaults to
 #'        \code{Sys.Date()}.
 #' @export
@@ -57,12 +60,15 @@ getProductionStatus <- function(ped, minParentAge = 3, maxOffspringAge = NULL,
   nDam <- nrow(ped[ped$sex == "F" & ped$age >= minParentAge, ])
   if (is.null(maxOffspringAge)) {
     maxOffspringAge <- mdy(paste0("1/1/", year(currentDate) - 2))
-    startDate <- mdy(paste0("1/1/", year(Sys.Date()) - 2))
-    dur <- as.duration(interval(startDate, currentDate))
-    maxOffspringAge <- as.numeric(dur, "years")
+    startDate <- mdy(paste0("1/1/", year(currentDate) - 2))
+    endDate <- mdy(paste0("12/31/", year(currentDate) - 1))
   }
-  nOffspring <- nrow(ped[ped$age <= maxOffspringAge, ])
-
+  ped <- ped[!(is.na(ped$birth) | is.na(ped$exit)), ]
+  nOffspring <-
+    nrow(ped[ped$birth >= startDate &
+               ped$birth <= endDate &
+                  as.numeric(as.duration(
+                    interval(ped$birth, ped$exit)) / ddays(1)) >= 30, ])
   if (nDam > 0) {
     production <- nOffspring / nDam
   } else {
@@ -70,7 +76,9 @@ getProductionStatus <- function(ped, minParentAge = 3, maxOffspringAge = NULL,
   }
 
   if (housing == "shelter_pens") {
-    if (production < 0.6) {
+    if (is.na(production)) {
+      color <- "green"
+    } else if (production < 0.6) {
       color <- "red"
     } else if (production >= 0.6 & production <= 0.63) {
       color <- "yellow"
@@ -78,7 +86,9 @@ getProductionStatus <- function(ped, minParentAge = 3, maxOffspringAge = NULL,
       color <- "green"
     }
   } else if (housing == "corral") {
-    if (production < 0.5) {
+    if (is.na(production)) {
+      color <- "green"
+    } else if (production < 0.5) {
       color <- "red"
     } else if (production >= 0.5 & production <= 0.53) {
       color <- "yellow"
@@ -91,3 +101,4 @@ getProductionStatus <- function(ped, minParentAge = 3, maxOffspringAge = NULL,
   }
   list(production = production, color = color)
 }
+

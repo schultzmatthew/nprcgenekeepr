@@ -25,6 +25,12 @@ is either \emph{"shelter_pens"} or \emph{"corral"}.}
 
 \item{currentDate}{Date to be used for calculating age. Defaults to
 \code{Sys.Date()}.}
+
+\item{twoCalendarYears}{logical if \code{TRUE} births are counted for
+two full calendar years January 1, (current_year -2) through December 31,
+(current_year - 1) and if \code{FALSE} births are counted for
+two full calendar years January 1, (current_year -2) through December 31,
+(current_year - 1}
 }
 \value{
 \code{production} -- Ratio of the number of births that live >30 days to
@@ -37,11 +43,9 @@ Get production status of group
 Description of how Production and Production Status (color) is
 calculated.
 \enumerate{
-\item  The Production Status is calculated on September 09, 2019.
-\item  Births = count of all animals in group born since January 1,
-    2017 through August 10, 2019, that lived at least 30 days.
-    Animals born after August 10, 2019, are not counted since they have not
-    lived 30 days.
+\item  The Production Status is calculated on September 09, 2019,
+       Births = count of all animals in group born since January 1,
+       2017 through December 31, 2018, that lived at least 30 days.
 \item  Dams = count of all females in group that have a birth date on or
        prior to September 09, 2016.
 \item  Production = Births / Dams
