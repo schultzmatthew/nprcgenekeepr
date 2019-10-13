@@ -13,7 +13,6 @@ nonMales <- c("JGPN6K", "8KM1MP", "I9TQ0T", "Q0RGP7", "CQC133",
               "HLI95R", "RI0O7F", "7M51X5", "DR5GXB", "170ZTZ", "C1ICXL")
 male <- "VFS0XB"
 test_that("calculateSexRatio calculates correctly", {
-  expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype), 0)
   expect_equal(calculateSexRatio(ids = male, ped = pedWithGenotype), 0)
   expect_equal(calculateSexRatio(ids = nonMales, ped = pedWithGenotype), Inf)
   expect_equal(calculateSexRatio(ids = available, ped = pedWithGenotype), 17)
@@ -23,4 +22,19 @@ test_that("calculateSexRatio calculates correctly", {
                                  additionalFemales = 1), 18)
   expect_equal(calculateSexRatio(ids = available, ped = pedWithGenotype,
                                  additionalMales = 1, additionalFemales = 1), 9)
+  expect_equal(calculateSexRatio(ids = nonMales, ped = pedWithGenotype,
+                                 additionalMales = 1, additionalFemales = 0),
+               17)
+  expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype,
+                                 additionalMales = 1, additionalFemales = 0),
+               0)
+  expect_true(is.na(calculateSexRatio(ids = character(0), ped = pedWithGenotype,
+                                      additionalMales = 0,
+                                      additionalFemales = 0)))
+  expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype,
+                                      additionalMales = 0,
+                                      additionalFemales = 1), Inf)
+  expect_equal(calculateSexRatio(ids = character(0), ped = pedWithGenotype,
+                                 additionalMales = 2,
+                                 additionalFemales = 1), 0.5)
 })
