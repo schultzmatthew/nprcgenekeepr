@@ -25,12 +25,6 @@ is either \emph{"shelter_pens"} or \emph{"corral"}.}
 
 \item{currentDate}{Date to be used for calculating age. Defaults to
 \code{Sys.Date()}.}
-
-\item{twoCalendarYears}{logical if \code{TRUE} births are counted for
-two full calendar years January 1, (current_year -2) through December 31,
-(current_year - 1) and if \code{FALSE} births are counted for
-two full calendar years January 1, (current_year -2) through December 31,
-(current_year - 1}
 }
 \value{
 \code{production} -- Ratio of the number of births that live >30 days to

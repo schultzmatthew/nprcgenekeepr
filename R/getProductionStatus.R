@@ -40,11 +40,6 @@
 #' ratio.
 #' @param housing character vector of length 1 having the housing type, which
 #' is either \emph{"shelter_pens"} or \emph{"corral"}.
-#' @param twoCalendarYears logical if \code{TRUE} births are counted for
-#' two full calendar years January 1, (current_year -2) through December 31,
-#' (current_year - 1) and if \code{FALSE} births are counted for
-#' two full calendar years January 1, (current_year -2) through December 31,
-#' (current_year - 1
 #' @param currentDate Date to be used for calculating age. Defaults to
 #'        \code{Sys.Date()}.
 #' @export
