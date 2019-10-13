@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "08/10/2019"
+date: "10/13/2019"
 output:
    github_document: default
 
@@ -10,6 +10,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.35 (20191013)
+-   Corrected calculateSexRatio and updated unit test
+-   Modified getProductionStatus to match new definition and added unit tests
+
 # nprcmanager 0.5.34 (20191006)
 -   Added code to filter out animals no longer at institution and without birth date.
 

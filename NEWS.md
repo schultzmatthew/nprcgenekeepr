@@ -1,7 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-08/10/2019
+10/13/2019
+
+# nprcmanager 0.5.35 (20191013)
+
+  - Corrected calculateSexRatio and updated unit test
+  - Modified getProductionStatus to match new definition and added unit
+    tests
 
 # nprcmanager 0.5.34 (20191006)
 
