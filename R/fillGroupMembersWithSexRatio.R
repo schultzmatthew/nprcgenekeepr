@@ -40,6 +40,9 @@ fillGroupMembersWithSexRatio <-
 
     # Select an animal that can be added to this group and add it
     ratio <- calculateSexRatio(groupMembers[[i]], ped)
+    if (is.na(ratio))
+      ratio <- 0 ## no seed animals
+
     if (ratio < sexRatio) { ## need female
       id <- sample(availableFemales[[i]], 1)
       availableFemales <-
