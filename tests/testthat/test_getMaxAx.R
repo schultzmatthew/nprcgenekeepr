@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+#' This file is part of nprcmanager
 context("getMaxAx")
 library(testthat)
 test_that("getMaxAx correctly rounded values based on integer and modulas", {

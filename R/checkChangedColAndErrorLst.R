@@ -1,5 +1,7 @@
 #' checkChangedColAndErrorLst examines errorLst for errors and
 #' errorLst$changeCols non-empty fields
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #'
 #' @return Returns \code{NULL} is all fields are empty
 #' else the entire list is returned.

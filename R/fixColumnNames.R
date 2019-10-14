@@ -1,5 +1,7 @@
 #' fixColumnNames changes original column names and into standardized names.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return list object with \code{newColNames} and \code{errorLst} with
 #' a record of all changes made.
 #' @param orgCols character vector with ordered list of column names

@@ -1,5 +1,7 @@
 #' Returns \code{TRUE} if every member of the vector is \code{TRUE}.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Relations
 #'
 #' Considers NA values the same as false

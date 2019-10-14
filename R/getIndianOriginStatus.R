@@ -1,5 +1,7 @@
 #' Get Indian-origin status of group
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return \code{ancestry} list of number of Chinese animals (\code{chinese}),
 #' number of hybrid (\code{hybrid}),
 #' number of borderline hybrid animals (\code{borderline}),

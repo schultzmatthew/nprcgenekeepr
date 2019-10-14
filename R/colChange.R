@@ -1,5 +1,7 @@
 #' colChange internal function to describe column names transformation
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return Description of column name changes
 #'
 #' @param orgCols character vector with column names to be transformed if needed.

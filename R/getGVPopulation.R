@@ -1,5 +1,7 @@
 #' Get the population of interest for the Genetic Value analysis.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' If user has limited the population of iterest by defining \code{pop},
 #' that information is incorporated via the \code{ped$population} column.
 #'

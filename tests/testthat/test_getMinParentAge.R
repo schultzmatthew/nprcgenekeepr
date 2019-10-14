@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+#' This file is part of nprcmanager
 context("getMinParentAge")
 
 test_that("getMinParentAge throws an error with no input defined", {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/removeGroupIfNoAvailableAnimals.R
 \name{removeGroupIfNoAvailableAnimals}
 \alias{removeGroupIfNoAvailableAnimals}
-\title{Helper function to remove group numbers when all available animals have been used}
+\title{Remove group numbers when all available animals have been used}
 \usage{
 removeGroupIfNoAvailableAnimals(grpNum, available)
 }
@@ -19,5 +19,5 @@ the grpNum list after removing any list element corresponding to a group
 with no availabel animals left using in filling a group.
 }
 \description{
-Helper function to remove group numbers when all available animals have been used
+Remove group numbers when all available animals have been used
 }

@@ -1,4 +1,6 @@
 #' Forms a dataframe with Id, Sex, and current Age given a list of Ids and a pedigree
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #'
 #' @return Dataframe with Id, Sex, and Current Age
 #'

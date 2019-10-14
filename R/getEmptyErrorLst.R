@@ -1,5 +1,7 @@
-#' getEmptyErrorLst
+#' Creates a empt errorLst object
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return errorLst object with placeholders for error types found in a pedigree
 #' file by \code{qcStudbook}.
 #' @export

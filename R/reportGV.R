@@ -1,5 +1,7 @@
 #' Generates a genetic value report for a provided pedigree.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' This is the main function for the Genetic Value Analysis.
 #'
 #' @param ped The pedigree information in data.frame format

@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+# This file is part of nprcmanager
 context("removeUninformativeFounders")
 library(testthat)
 pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),

@@ -1,5 +1,7 @@
 #' Make a CEPH-style pedigree for each id
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Relations
 #'
 #' Creates a CEPH-style pedigree for each id, consisting of three generations:

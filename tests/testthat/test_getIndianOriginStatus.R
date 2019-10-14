@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+#' This file is part of nprcmanager
 
 test_that("getIndianOriginStatus returns the correct values", {
   origin <- c("INDIAN", "INDIAN", "INDIAN", "INDIAN", "INDIAN")

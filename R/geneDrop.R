@@ -37,6 +37,8 @@
 #' whether the allele came from the sire or dam. These are followed by
 #' \code{n} columns indicating the allele for that iteration.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @export
 geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {

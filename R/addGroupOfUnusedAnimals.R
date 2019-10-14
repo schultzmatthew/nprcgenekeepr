@@ -1,5 +1,7 @@
 #' addGroupOfUnusedAnimals adds a group to the saved groups if needed
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return list of groups, which are each lists of animal Ids.
 #'   unused animals at the end of the iteration.
 #'

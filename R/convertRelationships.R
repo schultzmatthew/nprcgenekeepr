@@ -1,5 +1,7 @@
 #' Converts pairwise kinship values to a relationship category descriptor.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Relations
 #'
 #' @param kmat a numeric matrix of pairwise kinship coefficients.

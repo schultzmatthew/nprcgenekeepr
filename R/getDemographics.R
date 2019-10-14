@@ -1,5 +1,7 @@
 #' Get demographic data
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' This is a thin wrapper around \code{labkey.selectRows()}.
 #'
 #' @param colSelect (optional) a vector of comma separated strings specifying

@@ -1,5 +1,7 @@
-#' getRecordStatusIndex returns record numbers with selected \code{recordStatus}.
+#' Returns record numbers with selected \code{recordStatus}.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return integer vector of records with \code{recordStatus} == \code{status}.
 #'
 #' @param ped pedigree dataframe

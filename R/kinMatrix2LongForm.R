@@ -1,5 +1,7 @@
 #' Reformats a kinship matrix into a long-format table.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Group Formation
 #'
 #' @param kinMatrix numerical matrix of pairwise kinship values. The row and

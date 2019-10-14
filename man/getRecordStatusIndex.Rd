@@ -2,7 +2,7 @@
 % Please edit documentation in R/getRecordStatusIndex.R
 \name{getRecordStatusIndex}
 \alias{getRecordStatusIndex}
-\title{getRecordStatusIndex returns record numbers with selected \code{recordStatus}.}
+\title{Returns record numbers with selected \code{recordStatus}.}
 \usage{
 getRecordStatusIndex(ped, status = "added")
 }
@@ -15,5 +15,5 @@ getRecordStatusIndex(ped, status = "added")
 integer vector of records with \code{recordStatus} == \code{status}.
 }
 \description{
-getRecordStatusIndex returns record numbers with selected \code{recordStatus}.
+Returns record numbers with selected \code{recordStatus}.
 }

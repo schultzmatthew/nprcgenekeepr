@@ -1,5 +1,7 @@
 #' checkChangedColsLst examines list for non-empty fields
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return Returns \code{NULL} if all fields are empty
 #' else the entire list is returned.
 #' @param changedCols list with fields for each type of column change

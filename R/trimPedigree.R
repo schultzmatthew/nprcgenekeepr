@@ -1,6 +1,8 @@
 #' Trim pedigree to ancestors of provided group by removing uninformative
 #' individuals
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Filters a pedigree down to only the ancestors of the provided group,
 #' removing unnecessary individuals from the studbook. This version builds
 #' the pedigree back in time starting from a group of probands, then moves

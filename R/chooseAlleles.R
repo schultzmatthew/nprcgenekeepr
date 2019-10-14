@@ -1,5 +1,7 @@
 #' Combines two vectors of alleles by randomly selecting one allele
 #' or the other at each position.
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #'
 #' @param a1 integer vector with first allele for each individual
 #' @param a2 integer vector with second allele for each individual

@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+# This file is part of nprcmanager
 test_that("mapIdsToObfuscated maps IDS as expected", {
   set_seed(1)
   ped <- qcStudbook(nprcmanager::pedSix)

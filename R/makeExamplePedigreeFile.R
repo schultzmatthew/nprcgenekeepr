@@ -1,5 +1,7 @@
 #' Write copy of nprcmanager::examplePedigree into a file
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.
 #' @param fileType character vector of length one with possible values of

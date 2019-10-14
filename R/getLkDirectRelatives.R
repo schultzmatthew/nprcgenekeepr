@@ -1,5 +1,7 @@
 #' Get the direct ancestors of selected animals
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Gets direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
 #'

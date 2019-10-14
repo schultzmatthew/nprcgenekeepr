@@ -1,5 +1,7 @@
 #' Add animals to an existing breeding group or forms groups:
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Group Formation
 #'
 #' @description{

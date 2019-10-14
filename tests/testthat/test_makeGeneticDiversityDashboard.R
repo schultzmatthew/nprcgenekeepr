@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+# This file is part of nprcmanager
 
 geneticDiversityStats <- data.frame(
   group = c(paste0("Group_", 1:5), paste0("Corral_", 1:3)),

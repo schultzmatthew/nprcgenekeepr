@@ -1,5 +1,7 @@
 #' Population designation function
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of the pedigree filtering toolset.
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information. The \code{id} column is required.

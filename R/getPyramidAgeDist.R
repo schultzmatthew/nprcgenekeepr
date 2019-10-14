@@ -1,5 +1,7 @@
 #' Get the age distribution for the pedigree
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Forms a dataframe with columns \code{id}, \code{birth}, \code{sex},
 #' and {age} for those animals with a status of \code{Alive} in the pedigree.
 #'

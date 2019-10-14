@@ -2,7 +2,7 @@
 % Please edit documentation in R/addAnimalsWithNoRelative.R
 \name{addAnimalsWithNoRelative}
 \alias{addAnimalsWithNoRelative}
-\title{addAnimalsWithNoRelative adds an NA value for all animals without a relative}
+\title{Adds an NA value for all animals without a relative}
 \usage{
 addAnimalsWithNoRelative(kin, candidates)
 }

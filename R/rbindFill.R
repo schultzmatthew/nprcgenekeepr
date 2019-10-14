@@ -1,5 +1,7 @@
 #' Append the rows of one dataframe to another.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Pedigree Curation
 #'
 #' Appends the rows of df2 to df1, can handle cases where df2

@@ -1,5 +1,7 @@
 #' Calculates the sex ratio (number of non-males / number of males) given
 #' animal Ids and their pedigree
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #'
 #' @return Numeric value of sex ratio of the animals provided.
 #'

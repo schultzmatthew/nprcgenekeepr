@@ -1,5 +1,7 @@
 #' Check parent ages to be at least \code{minParentAge}
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Ensure parents are sufficiently older than offspring
 #' @param sb A dataframe containing a table of pedigree and demographic
 #' information.

@@ -1,4 +1,7 @@
-#' addAnimalsWithNoRelative adds an NA value for all animals without a relative
+#' Adds an NA value for all animals without a relative
+#'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #'
 #' This allows \code{kin} to be used with \code{setdiff} when there are no
 #' relatives otherwise an error would occur because

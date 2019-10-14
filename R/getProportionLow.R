@@ -1,5 +1,7 @@
 #' Get proportion of Low genetic value animals
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return List of the proportion of Low genetic value animals and the
 #' dashboard color to be assigned base on that proportion.
 #' @param geneticValues character vector of the genetic values. This vector

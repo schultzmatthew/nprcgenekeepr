@@ -1,5 +1,7 @@
 #' Count the number of loops in a pedigree tree.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' Part of Pedigree Sampling
 #' From PedigreeSampling.R
 #' 2016-01-28

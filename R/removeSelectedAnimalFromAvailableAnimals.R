@@ -1,6 +1,7 @@
-
 #' Updates list of available animals by removing the selected animal
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return list of available animals
 #'
 #' @param available list of available animals for each group

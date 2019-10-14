@@ -1,3 +1,5 @@
+#' Copyright(c) 2017-2019 R. Mark Sharp
+#' This file is part of nprcmanager
 context("createPedSix")
 library(testthat)
 pedSix <- createPedSix(savePed = FALSE)

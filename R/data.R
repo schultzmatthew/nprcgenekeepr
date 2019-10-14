@@ -1,5 +1,7 @@
 #' ped1Alleles is a dataframe created by the geneDrop function
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @format A dataframe with 554 rows and 6 varialbes
 #' \describe{
 #' \item{V1}{alleles assigned to the parents of the animals identified in

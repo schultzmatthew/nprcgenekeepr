@@ -1,5 +1,7 @@
 #' Get production status of group
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcmanager
 #' @return \code{production} -- Ratio of the number of births that live >30 days to
 #' the number of females >= 3 years of age.
 #'
