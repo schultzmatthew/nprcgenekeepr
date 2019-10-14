@@ -4,3 +4,8 @@ rmsutilityr
 nprcmanager
 ggplot2
 knitr
+png
+shiny
+shinyBS
+DT
+futile.logger
