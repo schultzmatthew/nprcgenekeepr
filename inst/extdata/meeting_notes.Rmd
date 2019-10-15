@@ -21,6 +21,12 @@ Provided in reverse chronological order
             -   cran_prep$cran_summary()
             -   usethis::use_cran_comments()
             
+2.  __Meeting Notes__
+    a.  Fly up on 19th leave 21st
+    b.  Need to ensure access to WiFi and video.
+    c.  Finish Shiny tutorial
+    d.  Recheck all files for 
+            
 ## 20190916
 
 1.  __Production Calculation__
