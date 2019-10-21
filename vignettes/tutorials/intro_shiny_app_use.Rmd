@@ -203,7 +203,8 @@ You can choose to display UNKNOWN IDs in the rows displayed.
 
 I have place red lines under the UNKNOWN IDs in the partial pedigree list below
 for clarity. These IDs have no meaning other than they all begin with the letter
-_U_ and are following with a left zero-filled integer of four places.
+_U_ and are following with a left alphnumeric string of five places. 
+The form of this ID is set by the _obfuscateId_ function.
 
 
 *********
@@ -251,17 +252,6 @@ grid.raster(img)
 
 *********
 
-After entering your list of focal animals, you can select to trim the 
-pedigree so that it will only include relatives of the focal animals you have 
-selected.
-
-
-*********
-
-
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_select_trim_for_focal_animals.png)
-
-*********
 
 
 Also, you can import a list of focal animals by selecting the __Browse__ button
@@ -276,9 +266,22 @@ animal IDs or by placing individual animal IDs on separate lines.
 
 *********
 
+After entering your list of focal animals, you can select to trim the 
+pedigree so that it will only include relatives of the focal animals you have 
+selected.
+
+
+*********
+
+
+![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_select_trim_for_focal_animals.png)
+
+*********
+
 A pedigree trimmed based on focal animals will have only the relatives of those
 animals remaining.
 In this instance there are only a total of 85 focal animals and their relatives.
+
 *********
 
 
@@ -330,7 +333,9 @@ __Show entries__ selection tool.
 *********
 
 Searching down the table of results in the __Value Designation__ column you can 
-see starting at row 2777 the values change from _High Value_ to _Low Value_.
+see starting at row 268 the values change from _High Value_ to _Low Value_.
+Though not shown here, the value of _Undetermined_ in the __Value Designation__ 
+column means the animal did not have parentage information.
 
 
 *********
@@ -338,13 +343,6 @@ see starting at row 2777 the values change from _High Value_ to _Low Value_.
 ![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_high_and_low_value.png)
 
 
-*********
-The value of _Undetermined_ in the __Value Designation__ column means the 
-animal did not have parentage information.
-
-*********
-
-![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_undetermined_value.png)
 
 *********
 The __Summary Statisitics and Plots__ tab used results from the 
@@ -353,6 +351,15 @@ __Genetic Value Analysis__ tab.
 *********
 
 ![](../../inst/extdata/shiny_app_tutorial/images/summary_statistics_first_view.png)
+*********
+
+The __First-Order Relationships__ button creates a CSV file that has the 
+following columns defined: an unnamed column for row number, _id_, _parents_,
+_offspring_, _siblings_, and _total_. 
+The first few rows of such a file is shown below.
+
+*********
+![](../../inst/extdata/shiny_app_tutorial/images/summary_statistics_first_order_relationships.png)
 *********
 
 The six plots provide histograms and boxplots for the kinship coefficients,

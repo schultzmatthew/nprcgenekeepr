@@ -22,10 +22,20 @@ Provided in reverse chronological order
             -   usethis::use_cran_comments()
             
 2.  __Meeting Notes__
-    a.  Fly up on 19th leave 21st
+
+    a.  Mark will fly up on 19th leave 21st
     b.  Need to ensure access to WiFi and video.
     c.  Finish Shiny tutorial
-    d.  Recheck all files for 
+    d.  Recheck all files to ensure animals are deidentified via obfuscations of
+        IDs, birth dates, and exit dates.
+    e.  Plan to have a CRAN submission prior to November 20, 2019, meeting.
+    f.  Want to develop a better name. This should be done prior to CRAN
+        submission.
+    g.  Matt is to test LabKey connection.
+    h.  Amanda and Mark will see if Wayne can move forward on Mark's access
+        to PRIMe
+    i.  Mark will work on __Genetic Production__, __Genetic Value Analysis__,
+        and __Founders__ as described in the meeting notes for 20190916.
             
 ## 20190916
 
@@ -37,7 +47,8 @@ Provided in reverse chronological order
     b.  Births = count of all animals in group born since January 1, 2017 
         through December 31, 2018, that lived at least 30 days.
         Animals born after December 31, 2018, are not counted.
-    c.  Dams = count of all females in group that have a birth date on or prior to September 09, 2016.
+    c.  Dams = count of all females in group that have a birth date on or prior 
+        to September 09, 2016.
     d.  Production = Births / Dams
     e.  Production Status (color)
         1.   Shelter and pens
