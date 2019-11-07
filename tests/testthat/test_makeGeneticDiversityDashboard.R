@@ -3,8 +3,12 @@
 
 geneticDiversityStats <- data.frame(
   group = c(paste0("Group_", 1:5), paste0("Corral_", 1:3)),
+  ## highLow = getProportionLow(geneticValues),
   highLow = sample(1:3, 8, replace = TRUE),
+  ## indianOriginStatus = getIndianOriginStatus(origin)$colorIndex
   indianOriginStatus = sample(1:3, 8, replace = TRUE),
+  ## fecundity = getProductionStatus(ped, minParentAge, maxOffspringAge,
+  ##                                 housing, currentDate)$colorIndex
   fecundity = sample(1:3, 8, replace = TRUE),
   kinshipWithMale = sample(1:3, 8, replace = TRUE),
   genotypePhenotype = sample(1:3, 8, replace = TRUE))

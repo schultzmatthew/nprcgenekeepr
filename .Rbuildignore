@@ -1,54 +1,42 @@
-^_pkgdown\.yml$
+^inst/_pkgdown\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.inst/extdata/Notes\.txt
-^\.inst/extdata/Example_Pedigree\.txt
-^\.inst/extdata/RhesusMasterForMetrics\.txt
-^\.inst/extdata/rhesus_studbook_20180830\.txt
-^\.inst/extdata/rhesus_studbook_no_times_20180830\.txt
-^\.inst/extdata/*\.docx$
-^\.inst/extdata/interactive_use_tutorial\.html$
-^\.inst/extdata/*\.xlsx$
-^\.inst/extdata/interactive_use_tutorial\.nb\.html$
-^\.inst/extdata/meeting_notes\.html$
-^\.inst/extdata/*\.png$
-^\.codecov\.yml$
+inst/extdata/meeting_notes\.html$
 ^\.gitignore$
 ^docs$
-tests/testthat/test_basic\.R$
-R/testingScript\.R$
-R/tmp_groupAddAssign\.R$
-R/groupAddition\.R$
-R/depricated_groupAddition\.R$
-R/depricated_gene\.drop\.R$
-R/depricated_groupAssign\.R$
-R/groupAssign\.R$
-R/scratch\.R$
-vignettes/*\.log$
-vignettes/*\.aux$
-vignettes/*\.out$
+^tests/testthat/test_basic\.R$
+^R/testingScript\.R$
+^R/tmp_groupAddAssign\.R$
+^R/groupAddition\.R$
+^R/depricated_groupAddition\.R$
+^R/depricated_gene\.drop\.R$
+^R/depricated_groupAssign\.R$
+^R/groupAssign\.R$
+^R/scratch\.R$
+^vignettes/*\.log$
+^vignettes/*\.aux$
+^vignettes/*\.out$
 ^README\.*\.png$
-^README\.Rmd$       # An Rmarkdown file used to generate README.md
-^cran-comments\.md$ # Comments for CRAN submission
-^NEWS\.md$          # A news file written in Markdown
-^NEWS\.Rmd$          # A news file written in RMarkdown
-^\.travis\.yml$     # Used for continuous integration testing with travis
-vignettes/interactive_use*$
-inst/extdata/*\.docx$
-inst/extdata/rhesus_studbook*$
-inst/extdata/*\.idraw$
-inst/extdata/onprc_rms\.pdf$
-inst/extdata/interactive*$
-inst/extdata/*\.png$
-CODE_OF_CONDUCT.md
-NEWS.Rmd
-README.Rmd
-.travis.yml
-vignettes/tutorials/*
-!vignettes/tutorials/interactive.Rmd
-rsconnect*
-rsconnect/*
-images
-images/*
-^LICENSE\.md$
+# An Rmarkdown file used to generate README.md
+^README\.Rmd$
+# Comments for CRAN submission
 ^cran-comments\.md$
+# A news file written in Markdown
+^NEWS\.md$
+# A news file written in RMarkdown
+^NEWS\.Rmd$
+# Used for continuous integration testing with travis
+^\.travis\.yml$
+^vignettes/interactive_use*$
+^inst/extdata/.*\.docx$
+^inst/extdata/rhesus_studbook*$
+^inst/extdata/.*\.png$
+^CODE_OF_CONDUCT\.md$
+^\.codecov\.yml$
+^vignettes/tutorials/*$
+!vignettes/tutorials/interactive.Rmd$
+^rsconnect*$
+^rsconnect/*$
+^images$
+^images/*$
+^LICENSE\.md$

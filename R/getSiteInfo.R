@@ -54,12 +54,12 @@ getSiteInfo <- function(expectConfigFile = TRUE) {
                      config[["configFile"]], ".\n"))
     }
     list(center = "ONPRC",
-      baseUrl = "https://boomer.txbiomed.local:8080/labkey",
+      baseUrl = "https://primeuat.ohsu.edu",
       schemaName = "study",
-      folderPath = "/SNPRC",
+      folderPath = "/ONPRC/EHR",
       queryName = "demographics",
       lkPedColumns = c("Id", "gender", "birth", "death", "lastDayAtCenter",
-                       "dam", "sire"),
+                       "Id/parents/dam", "Id/parents/sire"),
       mapPedColumns = c("id", "sex", "birth", "death", "exit", "dam", "sire"),
       sysname  = sysInfo[["sysname"]],
       release = sysInfo[["release"]],

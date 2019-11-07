@@ -1,7 +1,16 @@
 NEWS
 ================
 R. Mark Sharp
-10/13/2019
+11/06/2019
+
+# nprcmanager 0.5.36 (20191106)
+
+  - Added colorIndex to list returned by getIndianOriginStatus(),
+    getProductionStatus(), and getProportionLow(). Updated related unit
+    tests
+  - Changed getSiteInfo() to reflect ONPRCs query structure
+  - Changed .Rbuildignore to leave out .png image files needed for Shiny
+    tutorial.
 
 # nprcmanager 0.5.35 (20191013)
 

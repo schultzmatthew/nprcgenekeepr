@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "10/13/2019"
+date: "11/06/2019"
 output:
    github_document: default
 
@@ -10,6 +10,13 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.36 (20191106)
+-   Added colorIndex to list returned by getIndianOriginStatus(),
+    getProductionStatus(), and getProportionLow(). Updated related unit tests
+-   Changed getSiteInfo() to reflect ONPRCs query structure
+-   Changed .Rbuildignore to leave out .png image files needed for Shiny 
+    tutorial.
+    
 # nprcmanager 0.5.35 (20191013)
 -   Corrected calculateSexRatio and updated unit test
 -   Modified getProductionStatus to match new definition and added unit tests

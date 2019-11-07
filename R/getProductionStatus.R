@@ -31,6 +31,10 @@
 #'     }
 #'  }
 #'
+#' This code may need to be modified to allow the user to supply a list
+#' of IDs to include as group members. Currently each animal in the
+#' provided pedigree (\code{ped}) is considered to be a member of the
+#' group.
 #' @param ped Dataframe that is the `Pedigree`. It contains pedigree
 #' information. The \code{id}, \code{dam}, \code{sex} and \code{age}
 #' (in years) columns are required.
@@ -73,29 +77,31 @@ getProductionStatus <- function(ped, minParentAge = 3, maxOffspringAge = NULL,
   }
 
   if (housing == "shelter_pens") {
-    if (is.na(production)) {
+    if (is.na(production) | production > 0.63) {
       color <- "green"
+      colorIndex <- 3
     } else if (production < 0.6) {
       color <- "red"
+      colorIndex <- 1
     } else if (production >= 0.6 & production <= 0.63) {
       color <- "yellow"
-    } else if (production > 0.63) {
-      color <- "green"
+      colorIndex <- 2
     }
   } else if (housing == "corral") {
-    if (is.na(production)) {
+    if (is.na(production) | production > 0.53) {
       color <- "green"
+      colorIndex <- 3
     } else if (production < 0.5) {
       color <- "red"
+      colorIndex <- 1
     } else if (production >= 0.5 & production <= 0.53) {
       color <- "yellow"
-    } else if (production > 0.53) {
-      color <- "green"
+      colorIndex <- 2
     }
   } else {
     stop(paste0("Undefined housing type in getProduction status is: ",
                 housing))
   }
-  list(production = production, color = color)
+  list(production = production, color = color, colorIndex = colorIndex)
 }
 

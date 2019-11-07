@@ -59,4 +59,9 @@ calculated.
         }
     }
  }
+
+This code may need to be modified to allow the user to supply a list
+of IDs to include as group members. Currently each animal in the
+provided pedigree (\code{ped}) is considered to be a member of the
+group.
 }

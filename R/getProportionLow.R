@@ -11,20 +11,15 @@ getProportionLow <- function(geneticValues) {
   proportion <-
     length(geneticValues[stri_detect_fixed(geneticValues, "Low")]) /
     length(geneticValues)
-  if (proportion > 0.5)
+  if (proportion > 0.5) {
     color <- "red"
-  else if (proportion <= 0.5 & proportion >= 0.3)
+    colorIndex <- 1
+  } else if (proportion <= 0.5 & proportion >= 0.3) {
     color <- "yellow"
-  else if (proportion < 0.3)
+    colorIndex <- 2
+  }else if (proportion < 0.3) {
     color <- "green"
-  list(proportion = proportion, color = color)
+    colorIndex <- 3
+  }
+  list(proportion = proportion, color = color, colorIndex = colorIndex)
 }
-#' #' Genetic Diversity \code{red()}
-#' #'
-#' #' @return \code{TRUE} if \code{value} tests as \code{TRUE} otherwise
-#' #' \code{FALSE}.
-#' #' @param func function to test value
-#' diversityRed <- function(func) {
-#'   function(value) func(value)
-#' }
-#' dRed <- diversityRed(function(value) {value > 0.5})

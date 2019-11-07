@@ -32,10 +32,13 @@ getIndianOriginStatus <- function(origin) {
   )
   if ((chinese + hybrid) >= 1) {
     color <- "red"
+    colorIndex <- 1
   } else if (borderline >= 1) {
     color <- "yellow"
-  } else {
+    colorIndex <- 2
+  }else {
     color <- "green"
+    colorIndex <- 3
   }
-  list(ancestry = ancestry, color = color)
+  list(ancestry = ancestry, color = color, colorIndex = colorIndex)
 }

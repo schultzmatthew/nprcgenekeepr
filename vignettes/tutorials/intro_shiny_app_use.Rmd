@@ -196,7 +196,7 @@ You can choose to display UNKNOWN IDs in the rows displayed.
 
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_100_rows_display_unknown_ids.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_100_rows_display_unknown_ids.png)
 
 
 *********
@@ -209,7 +209,7 @@ The form of this ID is set by the _obfuscateId_ function.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_unknown_displayed.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_unknown_displayed.png)
 
 
 *********
@@ -223,7 +223,7 @@ and dam placeholders for all animals.
 *********
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_no_unknown_displayed.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_no_unknown_displayed.png)
 
 *********
 
@@ -235,7 +235,7 @@ animals of interest (_focal animals_).
 *********
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_focal_animal_text_box.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_focal_animal_text_box.png)
 
 *********
 
@@ -245,7 +245,7 @@ shown below.
 
 *********
 ```{r pedigree-browser-5-focal-animals-small, eval = TRUE, fig.width = 3, fig.height = 1, echo = FALSE}
-img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_5_focal_animals_small.png")
+img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/pb_5_focal_animals_small.png")
 grid.raster(img)
 ```
 
@@ -262,7 +262,7 @@ animal IDs or by placing individual animal IDs on separate lines.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_selection_large_focal_group.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_selection_large_focal_group.png)
 
 *********
 
@@ -274,7 +274,7 @@ selected.
 *********
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_select_trim_for_focal_animals.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_select_trim_for_focal_animals.png)
 
 *********
 
@@ -286,7 +286,7 @@ In this instance there are only a total of 85 focal animals and their relatives.
 
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/pedigree_browser_trimmed_for_focal_animals.png)
+![](../../inst/extdata/shiny_app_tutorial/images/pb_trimmed_for_focal_animals.png)
 
 *********
 
@@ -311,7 +311,7 @@ structures, but 1000 iterations has seemed to provide reproducible results.
 *********
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_calculating.png)
+![](../../inst/extdata/shiny_app_tutorial/images/gva_calculating.png)
 
 *********
 
@@ -328,7 +328,7 @@ __Show entries__ selection tool.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_first_high_value.png)
+![](../../inst/extdata/shiny_app_tutorial/images/gva_first_high_value.png)
 
 *********
 
@@ -340,7 +340,7 @@ column means the animal did not have parentage information.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/genetic_value_analysis_high_and_low_value.png)
+![](../../inst/extdata/shiny_app_tutorial/images/gva_high_and_low_value.png)
 
 
 
@@ -350,16 +350,27 @@ __Genetic Value Analysis__ tab.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/summary_statistics_first_view.png)
+![](../../inst/extdata/shiny_app_tutorial/images/ss_first_view.png)
+*********
+
+The __Export Kinship Matix__ button creates a CSV file that has a row and
+column for each individual in the genetic analyis plus a first row 
+and first column each containing the IDs.
+
+The first few rows of such a file are shown below.
+
+*********
+![](../../inst/extdata/shiny_app_tutorial/images/ss_first_order_relationships.png)
+
 *********
 
 The __First-Order Relationships__ button creates a CSV file that has the 
 following columns defined: an unnamed column for row number, _id_, _parents_,
 _offspring_, _siblings_, and _total_. 
-The first few rows of such a file is shown below.
+The first few rows of such a file are shown below.
 
 *********
-![](../../inst/extdata/shiny_app_tutorial/images/summary_statistics_first_order_relationships.png)
+![](../../inst/extdata/shiny_app_tutorial/images/ss_kinship_matrix.png)
 *********
 
 The six plots provide histograms and boxplots for the kinship coefficients,
@@ -368,7 +379,7 @@ the Z-scores of the kinship coefficients, and the genome uniqueness scores.
 
 *********
 
-![](../../inst/extdata/shiny_app_tutorial/images/summary_statistics_all_plots.png)
+![](../../inst/extdata/shiny_app_tutorial/images/ss_trimmed_all_plots.png)
 
 *********
 
@@ -389,7 +400,21 @@ formed.
 
 *********
 
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_first_view.png)
+
+*********
+
+The __Make Groups__ button appears once you select the source of animals you are going to use.
+However, you probably will be making additional selections using other controls
+on the screen.
+
+
+*********
+
 ![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
+*********
+
+
 
 
 *********
