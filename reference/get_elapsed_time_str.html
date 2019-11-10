@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convenience function to make the initial groupMembers animal list — makeGroupMembers • nprcmanager</title>
+<title>Returns the elapsed time since start_time. — get_elapsed_time_str • nprcmanager</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Convenience function to make the initial groupMembers animal list — makeGroupMembers" />
-<meta property="og:description" content="Convenience function to make the initial groupMembers animal list" />
+<meta property="og:title" content="Returns the elapsed time since start_time. — get_elapsed_time_str" />
+<meta property="og:description" content="Taken from github.com/rmsharp/rmsutilityr" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,64 +123,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convenience function to make the initial groupMembers animal list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/makeGroupMembers.R'><code>R/makeGroupMembers.R</code></a></small>
-    <div class="hidden name"><code>makeGroupMembers.Rd</code></div>
+    <h1>Returns the elapsed time since start_time.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/get_elapsed_time_str.R'><code>R/get_elapsed_time_str.R</code></a></small>
+    <div class="hidden name"><code>get_elapsed_time_str.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convenience function to make the initial groupMembers animal list</p>
+    <p>Taken from github.com/rmsharp/rmsutilityr</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeGroupMembers</span>(<span class='no'>numGp</span>, <span class='no'>currentGroups</span>, <span class='no'>candidates</span>, <span class='no'>ped</span>, <span class='no'>harem</span>, <span class='no'>minAge</span>)</pre>
+    <pre class="usage"><span class='fu'>get_elapsed_time_str</span>(<span class='no'>start_time</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>numGp</th>
-      <td><p>integer value indicating the number of groups that should be
-formed from the list of IDs. Default is 1.</p></td>
-    </tr>
-    <tr>
-      <th>currentGroups</th>
-      <td><p>list of character vectors of IDs of animals currently
-assigned to the group. Defaults to character(0) assuming no groups are
-existant.</p></td>
-    </tr>
-    <tr>
-      <th>candidates</th>
-      <td><p>character vector of IDs of the animals available for
-use in the group.</p></td>
-    </tr>
-    <tr>
-      <th>ped</th>
-      <td><p>dataframe that is the `Pedigree`. It contains pedigree
-information including the IDs listed in <code>candidates</code>.</p></td>
-    </tr>
-    <tr>
-      <th>harem</th>
-      <td><p>logical variable when set to <code>TRUE</code>, the formed groups
-have a single male at least <code>minAge</code> old.</p></td>
-    </tr>
-    <tr>
-      <th>minAge</th>
-      <td><p>integer value indicating the minimum age to consider in group
-formation. Pairwise kinships involving an animal of this age or younger will
- be ignored. Default is 1 year.</p></td>
+      <th>start_time</th>
+      <td><p>a POSIXct time object</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>initial groupMembers list</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>start_time</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/proc.time.html'>proc.time</a></span>()
+<span class='co'>## do something</span>
+<span class='no'>elapsed_time</span> <span class='kw'>&lt;-</span> <span class='fu'>get_elapsed_time_str</span>(<span class='no'>start_time</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
