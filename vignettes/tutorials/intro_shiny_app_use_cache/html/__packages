@@ -8,3 +8,4 @@ futile.logger
 ggplot2
 testthat
 png
+knitr
