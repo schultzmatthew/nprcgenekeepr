@@ -3,6 +3,10 @@ NEWS
 R. Mark Sharp
 11/06/2019
 
+# nprcmanager 0.5.37 (20191108)
+
+  - Working on updating documentation
+
 # nprcmanager 0.5.36 (20191106)
 
   - Added colorIndex to list returned by getIndianOriginStatus(),

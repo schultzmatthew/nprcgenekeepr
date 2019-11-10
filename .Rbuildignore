@@ -34,7 +34,9 @@ inst/extdata/meeting_notes\.html$
 ^CODE_OF_CONDUCT\.md$
 ^\.codecov\.yml$
 ^vignettes/tutorials/*$
+^vignettes/interactive_use_learnr_tutorial/*$
 !vignettes/tutorials/interactive.Rmd$
+!vignettes/tutorials/intro_shiny_app_use.Rmd$
 ^rsconnect*$
 ^rsconnect/*$
 ^images$

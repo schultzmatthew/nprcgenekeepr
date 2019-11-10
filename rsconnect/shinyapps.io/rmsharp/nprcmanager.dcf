@@ -1,0 +1,12 @@
+name: nprcmanager
+title: nprcmanager
+username:
+account: rmsharp
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1448781
+bundleId: 2577033
+url: https://rmsharp.shinyapps.io/nprcmanager/
+when: 1573352714.15566
+asMultiple: FALSE
+asStatic: FALSE

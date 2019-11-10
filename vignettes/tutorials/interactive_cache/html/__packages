@@ -1,6 +1,5 @@
 base
 stringi
-rmsutilityr
 nprcmanager
 ggplot2
 knitr
@@ -9,3 +8,4 @@ shiny
 shinyBS
 DT
 futile.logger
+testthat

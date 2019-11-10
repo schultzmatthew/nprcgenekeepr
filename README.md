@@ -1,26 +1,32 @@
 
-[![Rdoc](http://www.rdocumentation.org/badges/version/roxygen2)](http://www.rdocumentation.org/packages/roxygen2)
+[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/nprcmanager)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build
 Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager)
 [![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
+[![](https://www.r-pkg.org/badges/version/nprcmanager)](https://cran.r-project.org/package=nprcmanager)
+
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager – Version 0.5.36 (20191106)
+# nprcmanager – Version 0.5.37 (20191108)
 
 ## Introduction
 
 The goal of **nprcmanager** is to implement Genetic Tools for Colony
 Management. It was initially conceived and developed as a Shiny web
 application at the Oregon National Primate Research Center (ONPRC) to
-facilitate some of the analyses they perform regularly. It is currently
-being enhanced to have more capability as a Shiny application and to
-expose the functions so they can be used either interactively or in R
-scripts.
+facilitate some of the analyses they perform regularly. It has been
+enhanced to have more capability as a Shiny application and to expose
+the functions so they can be used either interactively or in R scripts.
+
+This work has been supported in part by NIH grants P51 RR13986 to the
+Southwest National Primate Research Center and P51 OD011092 to the
+Oregon National Primate Research Center.
 
 <!--It is now managed and maintained as a joint effort between ONPRC-->
 
@@ -30,11 +36,16 @@ scripts.
 
 At present, the application supports 5 functions:
 
-    1. Quality control of uploaded studbooks  
-    2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
-    3. Display of an age by sex pyramid plot  
-    4. Generation of Genetic Value Analysis Reports
-    5. Creation of potential breeding groups
+1.  Quality control of studbooks contained in text files or Excel
+    workbooks and of pedigrees within LabKey Electronic Health Records
+    (EHR)
+2.  Creation of pedigrees from a lists of animals using the LabKey EHR
+    integration
+3.  Creation and display of an age by sex pyramid plot of the living
+    animals within the designated pedigree
+4.  Generation of Genetic Value Analysis Reports
+5.  Creation of potential breeding groups with and without proscribed
+    sex ratios and defined maximum kinships.
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic

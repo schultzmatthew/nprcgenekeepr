@@ -20,7 +20,7 @@ uitpOripReporting <-
     div(
       style = "margin-left:425px;padding:10px;",
       img(
-        src = "../extdata/www/under_construction.jpg",
+        src = "extdata/www/under_construction.jpg",
         height = 300,
         width = 600
       )

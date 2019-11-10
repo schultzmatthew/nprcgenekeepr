@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 author: "R. Mark Sharp"
-date: "10/03/2017"
+date: "11/08/2019"
 output: 
    - rmarkdown::pdf_document
    - rmarkdown::latex_document
@@ -17,9 +17,13 @@ The goal of __nprcmanager__ is to implement Genetic Tools for Colony Management.
 It was initially conceived and developed as a Shiny web application at
 the Oregon National Primate Research Center (ONPRC) to facilitate some of
 the analyses they perform regularly.
-It is currently being enhanced to have more capability as a Shiny application 
+It has been enhanced to have more capability as a Shiny application 
 and to expose the functions so they can be used either interactively or in R 
 scripts.
+
+This work has been supported in part by NIH grants P51 RR13986 to the Southwest
+National Primate Research Center and P51 OD011092 to the Oregon National 
+Primate Research Center.
 
 <!--It is now managed and maintained as a joint effort between ONPRC-->
 <!--and Southwest National Primate Research Center (SNPRC) with the -->
@@ -27,11 +31,15 @@ scripts.
 
 At present, the application supports 5 functions:
 
-    1. Quality control of uploaded studbooks  
-    2. Creation of pedigrees from a list of potential breeders and LabKey EHR integration  
-    3. Display of an age by sex pyramid plot  
-    4. Generation of Genetic Value Analysis Reports
-    5. Creation of potential breeding groups
+1.  Quality control of studbooks contained in text files or Excel workbooks and 
+    of pedigrees within LabKey Electronic Health Records (EHR)
+1.  Creation of pedigrees from a lists of animals using the LabKey EHR 
+    integration
+1.  Creation and display of an age by sex pyramid plot of the living animals
+    within the designated pedigree
+1.  Generation of Genetic Value Analysis Reports
+1.  Creation of potential breeding groups with and without proscribed sex
+    ratios and defined maximum kinships.
 
 
 

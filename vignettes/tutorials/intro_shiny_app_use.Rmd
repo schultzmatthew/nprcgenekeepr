@@ -360,7 +360,11 @@ and first column each containing the IDs.
 The first few rows of such a file are shown below.
 
 *********
-![](../../inst/extdata/shiny_app_tutorial/images/ss_first_order_relationships.png)
+
+```{r first-order-relationships, eval = TRUE, fig.width = 5, fig.height = 5, echo = FALSE}
+img <- readPNG("../../inst/extdata/shiny_app_tutorial/images/ss_first_order_relationships.png")
+grid.raster(img)
+```
 
 *********
 

@@ -13,6 +13,7 @@ sysInfoWindows <-
     nodename = "prefect.local", machine = "x86_64", login = "msharp",
     user = "msharp", effective_user = "msharp")
 test_that("getConfigFile got correct file name", {
+  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   expect_equal(getConfigFileName(sysInfoWindows)[["configFile"]],
                "/Users/msharp/_nprcmanager_config")
   expect_equal(getConfigFileName(sysInfoUnix)[["configFile"]],

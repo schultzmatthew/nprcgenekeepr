@@ -17,8 +17,8 @@ reference:
   - '`qcPedGvReport`'
   - '`smallPed`'
   - '`smallPedTree`'
-- title: "Codebook"
-  desc: "Brief codebook"
+- title: "Major Features and Functions"
+  desc: "Brief codebook and Major Functions"
   contents:
     - '`nprcmanager`'
 - title: "Primary interactive functions"
@@ -142,6 +142,8 @@ reference:
   - '`fixColumnNames`'
   - '`fixGenotypeCols`'
   - '`geneDrop`'
+  - '`get_and_or_list`'
+  - '`get_elapsed_time_str`'
   - '`getAncestors`'
   - '`getAnimalsWithHighKinship`'
   - '`getBreederPed`'
