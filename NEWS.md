@@ -3,6 +3,12 @@ NEWS
 R. Mark Sharp
 11/06/2019
 
+# nprcmanager 0.5.38 (20191113)
+
+  - Changed **getBreederPed** function to **getFocalAnimalPed** and
+    animals read in by that function from **breeders** to
+    **focalAnimals**
+
 # nprcmanager 0.5.37 (20191108)
 
   - Working on updating documentation

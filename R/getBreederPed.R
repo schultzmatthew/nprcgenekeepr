@@ -1,4 +1,4 @@
-#' Get pedigree based on list of breeders
+#' Get pedigree based on list of focal animals
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcmanager
@@ -10,34 +10,34 @@
 #' @importFrom readxl excel_format
 #' @importFrom utils read.table
 #' @export
-getBreederPed <- function(fileName, sep = ",") {
-  flog.debug(paste0("in getBreederPed\n"),
+getFocalAnimalPed <- function(fileName, sep = ",") {
+  flog.debug(paste0("in getFocalAnimalPed\n"),
              name = "nprcmanager")
   if (excel_format(fileName) %in% c("xls", "xlsx")) {
-    breeders <- readExcelPOSIXToCharacter(fileName)
-    flog.debug(paste0("in getBreederPed after readxl, nrow(breeders) = ",
-                      nrow(breeders), "\n"), name = "nprcmanager")
+    focalAnimals <- readExcelPOSIXToCharacter(fileName)
+    flog.debug(paste0("in getFocalAnimalPed after readxl, nrow(focalAnimals) = ",
+                      nrow(focalAnimals), "\n"), name = "nprcmanager")
   } else {
-    breeders <- read.csv(fileName,
+    focalAnimals <- read.csv(fileName,
                          header = TRUE,
                          sep = sep,
                          stringsAsFactors = FALSE,
                          na.strings = c("", "NA"),
                          check.names = FALSE)
-    flog.debug(paste0("in getBreederPed after read.csv, nrow(breeders) = ",
-                      nrow(breeders), "\n"), name = "nprcmanager")
+    flog.debug(paste0("in getFocalAnimalPed after read.csv, nrow(focalAnimals) = ",
+                      nrow(focalAnimals), "\n"), name = "nprcmanager")
   }
-  breeders <- as.character(breeders[ , 1])
-  ped <- getLkDirectRelatives(ids = breeders)
+  focalAnimals <- as.character(focalAnimals[ , 1])
+  ped <- getLkDirectRelatives(ids = focalAnimals)
   if (is.null(ped)) {
-    flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
+    flog.debug(paste0("in getFocalAnimalPed after getLkDirectRelatives, which ",
                       "returned NULL.\n"), name = "nprcmanager")
     errorLst <- getEmptyErrorLst()
     errorLst$failedDatabaseConnection <-
       "Database connection failed: configuration or permissions are invalid."
     return(errorLst)
   }
-  flog.debug(paste0("in getBreederPed after getLkDirectRelatives, which ",
+  flog.debug(paste0("in getFocalAnimalPed after getLkDirectRelatives, which ",
                     "returned ped with ", nrow(ped), "rows.\n"),
              name = "nprcmanager")
   names(ped) <- c("id", "sex", "birth", "death", "departure", "dam", "sire")

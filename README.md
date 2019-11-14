@@ -13,7 +13,7 @@ Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://tr
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager – Version 0.5.37 (20191108)
+# nprcmanager – Version 0.5.38 (20191113)
 
 ## Introduction
 
@@ -56,7 +56,8 @@ Reviewed Journal\]
 
 ## Installation
 
-You can install **nprcmanager** from github with:
+You can install the development version of **nprcmanager** from github
+with:
 
 ``` r
 install.packages("devtools")
@@ -91,8 +92,8 @@ dates.
 
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
-The user can enter a list of breeders in a CSV file that will be used to
-create a pedigree containing all direct relative (ancestors and
+The user can enter a list of focal animals in a CSV file that will be
+used to create a pedigree containing all direct relative (ancestors and
 descendants) via the **labkey.selectRows** function within the
 **Rlabkey** package if a database connection is provided via a
 configuration file and the user has read permission on a LabKey server

@@ -45,7 +45,7 @@ shinyServer(function(input, output, session) {
                           "; genotypeFile$name: ", genotypeFile$name,
                           "; genotypeFile$datapath: ", genotypeFile$datapath),
                    name = "nprcmanager")
-      } else if (input$fileContent == "breeders") {
+      } else if (input$fileContent == "focalAnimals") {
         pedigreeFile <- input$breederFile
         flog.debug(paste0("breederFile - pedigreeFile$name: ",
                           pedigreeFile$name, "; ",
@@ -79,19 +79,19 @@ shinyServer(function(input, output, session) {
                         input$fileContent),
                  name = "nprcmanager")
       # Load pedigree table
-      if (input$fileContent == "breeders") {
-        flog.debug(paste0("before getBreederPed: ", pedigreeFile$name),
+      if (input$fileContent == "focalAnimals") {
+        flog.debug(paste0("before getFocalAnimalPed: ", pedigreeFile$name),
                    name = "nprcmanager")
-        breederPed <- getBreederPed(pedigreeFile$datapath, sep = sep)
+        breederPed <- getFocalAnimalPed(pedigreeFile$datapath, sep = sep)
         if (any("nprcmanagErr" %in% class(breederPed))) {
             errorLst <- breederPed
             breederPed <- NULL
         } else if (is.null(breederPed)) {
-          flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
-                            "; NULL was returned by getBreederPed function"),
+          flog.debug(paste0("after getFocalAnimalPed: ", pedigreeFile$name,
+                            "; NULL was returned by getFocalAnimalPed function"),
                      name = "nprcmanager")
         } else {
-          flog.debug(paste0("after getBreederPed: ", pedigreeFile$name,
+          flog.debug(paste0("after getFocalAnimalPed: ", pedigreeFile$name,
                             "; contents rows: ", nrow(breederPed),
                             ", columns: ", ncol(breederPed), "; col names: '",
                             paste(names(breederPed), collapse = "', '"), "'",

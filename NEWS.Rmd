@@ -10,6 +10,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.38 (20191113)
+-   Changed __getBreederPed__ function to __getFocalAnimalPed__ and animals
+    read in by that function from __breeders__ to __focalAnimals__
+
 # nprcmanager 0.5.37 (20191108)
 -   Working on updating documentation
 

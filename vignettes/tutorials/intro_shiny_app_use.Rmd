@@ -426,32 +426,54 @@ formed.
 
 *********
 
-The __Make Groups__ button appears once you select the source of animals you are going to use.
+The __Make Groups__ button appears once you select the source of animals you 
+are going to use.
 However, you probably will be making additional selections using other controls
 on the screen.
 
+The most common source of animals will be the high-value animals found by the 
+genetic analysis.
 
+You can either type in the number of groups that you want to form or select the
+number of groups using the arrows on the right edge of the 
+__Number of Groups Desired__ field, which is outlined in blue in the image 
+below.
 
 
 ![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
 *********
 
+You may select the __Optional: Seed Groups with Specific Animals__ field if
+you decide to place some animals together within the groups because you know
+them to be compatible with each other.
 
-
-
-*********
-
-
-*********
-
-
-![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_6_seed_groups.png)
-
-*********
+This has been done in the example below using six groups with differing numbers
+of seed animals. Note the selection of having animals below the minimum parent 
+age of two being grouped with their mother.
 
 
 *********
 
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_6_infants_with_dam.png)
+
+*********
+
+Each group has all of the seed animals that were assigned to it plus additional
+animals that could be added while satisfying the requirements imposed by the 
+selected settings.
+
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_first_group_no_kinship.png)
+
+
+*********
+
+Display of kinship values requires that the
+__Include kinship in display of groups__ checkbox be selected prior to group
+formation.
+
+A group of ten animals was formed in the next run after choosing to include 
+kinship and selecting the __Make Groups__ button.
 
 
 ![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_6_seed_grps_grp_6_kinship.png)
@@ -463,7 +485,6 @@ on the screen.
 *********
 
 
-![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_1.png)
 
 *********
 

@@ -6,7 +6,7 @@ context("getGenotypes")
 
 test_that("getGenotypes recognizes no file and wrong file arguments", {
   expect_error(getGenotypes(), "\"fileName\" is missing, with no default")
-  expect_error(suppressWarnings(getBreederPed(fileName = "breeding file.csv")),
+  expect_error(suppressWarnings(getFocalAnimalPed(fileName = "breeding file.csv")),
                "cannot open the connection")
 })
 test_that("getGenotypes recognizes and opens Excel files.", {

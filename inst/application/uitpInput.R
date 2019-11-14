@@ -51,7 +51,7 @@ uitpInput <-
             "Pedigree(s) and genotypes in one file" = "commonPedGenoFile",
             "Pedigree(s) and genotypes in separate files" =
               "separatePedGenoFile",
-            "Breeders only; pedigree obtained from database" = "breeders"
+            "Focal animals only; pedigree built from database" = "focalAnimals"
           ),
           selected = NULL
         ),
@@ -81,8 +81,8 @@ uitpInput <-
           fileInput("genotypeFile", label = "Select Genotype File")
         ),
         conditionalPanel(
-          condition = "input.fileContent == 'breeders'",
-          fileInput("breederFile", label = "Select Breeder File")
+          condition = "input.fileContent == 'focalAnimals'",
+          fileInput("breederFile", label = "Select Focal Animals File")
         ),
         popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
                   value = "4.0"), NULL,

@@ -1,6 +1,86 @@
-# Meeting Notes and Things To Do
+---
+title: "Meeting Notes and Things To Do"
+author: "R. Mark Sharp"
+date: "11/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+library(stringi)
+library(rmsutilityr)
+library(nprcmanager)
+```
 Provided in reverse chronological order
 
+
+## 20191111
+
+1.  Send example pedigrees with errors to Amanda.
+1.  To meet Friday at 4 PM Pacific to go through entire presentation.
+1.  Code changes since August 16, 2016. 
+    -   Initial package construction was in March of 2017.
+    -   Start of code additions in August 2017.
+    -   There are now 736 unit tests covering over 92\% of the code.
+    -   Two tutorials have been developed. One to guide R users in the 
+        interactive use of the package functions (public API) and one to guide
+        users of the Shiny application.
+    -   Available via GitHub with MIT license.
+
+    
+```{r code-changes, include=FALSE}
+originalPath <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
+                       "nprcmanager_project/20160816_GeneticManagementTools")
+functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
+                    "library/nprcmanager/R")
+tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
+                "nprcmanager/tests/testthat")
+ui <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
+             "nprcmanager/inst/application")
+
+paths <- c(originalPath, functions, ui, tests)
+codeCounts <- data.frame()
+for (path in paths) {
+  counts <- classify_code_lines(files = ".", path = path)
+  codeCounts <- rbind(codeCounts,
+                      data.frame(
+                          files = counts["files"],
+                          lines = counts["lines"],
+                          code = counts["code"],
+                          blank_lines = counts["blank_lines"],
+                          roxygen_doc_lines = counts["roxygen_doc_lines"],
+                          comments = counts["comments"],
+                          check.names = FALSE,
+                          stringsAsFactors = FALSE))
+}
+codeChanges <- data.frame(Source = c("Original", "nprcmanager 0.37"),
+                          Files = c(codeCounts$files[1],
+                                    sum(codeCounts$files[2:4])),
+                          Lines = c(codeCounts$lines[1],
+                                    sum(codeCounts$lines[2:4])),
+                          Code = c(codeCounts$code[1],
+                                    sum(codeCounts$code[2:4])),
+                          `Blank Lines` = c(codeCounts$blank_lines[1],
+                                    sum(codeCounts$blank_lines[2:4])),
+                          `Document Lines` = c(codeCounts$roxygen_doc_lines[1],
+                                    sum(codeCounts$roxygen_doc_lines[2:4])),
+                          `Comment Lines` = c(codeCounts$comments[1],
+                                    sum(codeCounts$comments[2:4])),
+                          check.names = FALSE,
+                          stringsAsFactors = FALSE)
+
+```
+```{r code-change-table, echo = FALSE}
+kable(codeChanges, caption = stri_c("Simple metrics for the Original Version (",
+                                    "20160816) and Version ", getVersion(),
+                                    "."))
+## version was 0.5.37 (20191108) at the time of writing.
+
+
+```
+
+       
 ## 20191014
 
 1.  __Progress Since Last Meeting__

@@ -14,7 +14,7 @@ vignette: >
 ---
 ## Installation
 
-You can install **nprcmanager** from github with:
+You can install the development version of **nprcmanager** from github with:
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
 install.packages("devtools")

@@ -40,7 +40,7 @@ This check is not performed for animals with missing birth dates.
 
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
-The user can enter a list of breeders in a CSV file that will be used to 
+The user can enter a list of focal animals in a CSV file that will be used to 
 create a pedigree containing all direct relative (ancestors and descendants)
 via the **labkey.selectRows** function within the **Rlabkey** package
 if a database connection

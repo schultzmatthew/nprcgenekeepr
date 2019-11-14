@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.36</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.38</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="anchor"></a>Creation of Pedigree From a List of Potential Breeders and LabKey Integration</h3>
-<p>The user can enter a list of breeders in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
+<p>The user can enter a list of focal animals in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
 <p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
 <p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
 </div>
@@ -161,7 +161,7 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install <strong>nprcmanager</strong> from github with:</p>
+<p>You can install the development version of <strong>nprcmanager</strong> from github with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
