@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns TRUE if the string is a valid date. — is_valid_date_str • nprcmanager</title>
+<title>Get pedigree based on list of focal animals — getFocalAnimalPed • nprcmanager</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Returns TRUE if the string is a valid date. — is_valid_date_str" />
-<meta property="og:description" content="Taken from github.com/rmsharp/rmsutilityr" />
+<meta property="og:title" content="Get pedigree based on list of focal animals — getFocalAnimalPed" />
+<meta property="og:description" content="Get pedigree based on list of focal animals" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,48 +123,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns TRUE if the string is a valid date.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/is_valid_date_str.R'><code>R/is_valid_date_str.R</code></a></small>
-    <div class="hidden name"><code>is_valid_date_str.Rd</code></div>
+    <h1>Get pedigree based on list of focal animals</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/getBreederPed.R'><code>R/getBreederPed.R</code></a></small>
+    <div class="hidden name"><code>getFocalAnimalPed.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Taken from github.com/rmsharp/rmsutilityr</p>
+    <p>Get pedigree based on list of focal animals</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_valid_date_str</span>(<span class='no'>date_str</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%d-%m-%Y %H:%M:%S"</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>getFocalAnimalPed</span>(<span class='no'>fileName</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>","</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>date_str</th>
-      <td><p>character vector with 0 or more dates</p></td>
+      <th>fileName</th>
+      <td><p>character vector of temporary file path.</p></td>
     </tr>
     <tr>
-      <th>format</th>
-      <td><p>character vector of lenght one having the date format</p></td>
-    </tr>
-    <tr>
-      <th>optional</th>
-      <td><p>parameter to <code>as.Date</code>. Logical value indicating
-to return NA (instead of signaling an error) if the format guessing does not succeed.
-descriptor. Defaults to FALSE.</p></td>
+      <th>sep</th>
+      <td><p>column separator in CSV file</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>is_valid_date_str</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"13-21-1995"</span>, <span class='st'>"20-13-98"</span>, <span class='st'>"5-28-1014"</span>,
-  <span class='st'>"1-21-15"</span>, <span class='st'>"2-13-2098"</span>, <span class='st'>"25-28-2014"</span>), <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%m-%d-%y"</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE</div><div class='input'>
-</div></pre>
+    <p>A pedigree file compatible with others in this package.</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
