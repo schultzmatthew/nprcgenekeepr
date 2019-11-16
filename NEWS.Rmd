@@ -10,6 +10,13 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# nprcmanager 0.5.40.9001 (20191115)
+-   Added unit test for __create_wkbk__ from github.com/rmsharp/rmsutilityr
+-   Fixed bug in Genetic Value Analysis tab were failure to remove all white
+    space in Filter View Id window did not clear filter.
+-   Changed minimum parent age default from 4 to 2 years.
+
 # nprcmanager 0.5.40.9000 (20191115) 
 -   Corrected bug in __addIdRecords__ to handle _NA_ characters; amended its
     unit tests to check for correct behavior

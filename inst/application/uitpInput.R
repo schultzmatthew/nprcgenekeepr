@@ -85,7 +85,7 @@ uitpInput <-
           fileInput("breederFile", label = "Select Focal Animals File")
         ),
         popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
-                  value = "4.0"), NULL,
+                  value = "2.0"), NULL,
                paste("Parents must be at least as old as the minimum parent",
                      "age at the birthdate of an offspring. If not, the",
                      "file will not be accepted and a file named",
