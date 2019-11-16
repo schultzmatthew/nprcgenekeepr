@@ -3,6 +3,16 @@ NEWS
 R. Mark Sharp
 11/15/2019
 
+# nprcmanager 0.5.40.9001 (20191115)
+
+  - Added unit test for **create\_wkbk** from
+    github.com/rmsharp/rmsutilityr
+  - Fixed bug in Genetic Value Analysis tab were failure to remove all
+    white space in Filter View Id window did not clear filter.
+  - Changed minimum parent age default from 4 to 2 years.
+  - Added ability to download founders in a *maleFounders.csv* file and
+    a *femaleFounders.csv* file.
+
 # nprcmanager 0.5.40.9000 (20191115)
 
   - Corrected bug in **addIdRecords** to handle *NA* characters; amended

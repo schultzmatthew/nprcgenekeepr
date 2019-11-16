@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 -   Fixed bug in Genetic Value Analysis tab were failure to remove all white
     space in Filter View Id window did not clear filter.
 -   Changed minimum parent age default from 4 to 2 years.
+-   Added ability to download founders in a _maleFounders.csv_ file and a 
+    _femaleFounders.csv_ file.
 
 # nprcmanager 0.5.40.9000 (20191115) 
 -   Corrected bug in __addIdRecords__ to handle _NA_ characters; amended its
