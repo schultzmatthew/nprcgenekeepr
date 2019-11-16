@@ -230,7 +230,7 @@ reference:
   - '`resetGroup`'
   - '`runManager`'
   - '`setPopulation`'
-  - '`sexRatioWithAdditions`'
+  - '`getSexRatioWithAdditions`'
   - '`setExit`'
   - '`set_seed`'
   - '`str_detect_fixed_all`'

@@ -15,8 +15,13 @@ pedOne <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
 uPedOne <- uPedOne[!is.na(uPedOne$id), ]
 test_that("addIdRecords adds parents correctly", {
   newPed <- addIdRecords(ids = "s1", pedOne, uPedOne)
-  expect_equal(nrow(uPedOne) + 1, nrow(newPed)) # no change
-  expect_true(is.na(newPed$sire[newPed$id == "s1"]))
-  expect_true(is.na(newPed$dam[newPed$id == "s1"]))
-
+  expect_equal(nrow(uPedOne) + 1, nrow(newPed)) # one added
+  expect_true(is.na(newPed$sire[newPed$id == "s1"])) # did not add bad data
+  expect_true(is.na(newPed$dam[newPed$id == "s1"])) # did not add bad data
+})
+test_that("addIdRecords handles ids == NA correctly", {
+  newPed <- addIdRecords(ids = NA, pedOne, uPedOne)
+  expect_equal(nrow(uPedOne), nrow(newPed)) # no change
+  newPed <- addIdRecords(ids = c(NA, "s1"), pedOne, uPedOne)
+  expect_equal(nrow(uPedOne) + 1, nrow(newPed)) # one added
 })

@@ -1,7 +1,14 @@
 NEWS
 ================
 R. Mark Sharp
-11/06/2019
+11/15/2019
+
+# nprcmanager 0.5.40.9000 (20191115)
+
+  - Corrected bug in **addIdRecords** to handle *NA* characters; amended
+    its unit tests to check for correct behavior
+  - Changed name of **sexRatioWithAddions** to
+    **getSexRatioWithAdditions**
 
 # nprcmanager 0.5.39 (20191115)
 

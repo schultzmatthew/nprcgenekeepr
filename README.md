@@ -13,7 +13,7 @@ Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://tr
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager – Version 0.5.39 (20191115)
+# nprcmanager – Version 0.5.40.9000 (20191115)
 
 ## Introduction
 
@@ -65,6 +65,17 @@ devtools::install_github("rmsharp/nprcmanager")
 ```
 
 All missing dependencies should be automatically installed.
+
+## Running Shiny Application
+
+The toolset available within nprcmanager can be used inside standard R
+scripts. However, it was orginally designed to be used within a Shiny
+application that can be started with:
+
+``` r
+library(nprcmanager)
+runManager()
+```
 
 ## Summary of Major Functions
 
@@ -174,17 +185,6 @@ the groups, though this has likely been a consideration by the user in
 selecting the candidate group members. Optionally the user may select to
 form harem groups, which considers the sex of individuals when forming
 groups and restricts the number of males to one per group.
-
-## Running Shiny Application
-
-The toolset available within nprcmanager can be used inside standard R
-scripts. However, it was orginally designed to be used within a Shiny
-application that can be started with:
-
-``` r
-library(nprcmanager)
-runManager()
-```
 
 Find online documentation at <https://rmsharp.github.io/nprcmanager/>.
 
