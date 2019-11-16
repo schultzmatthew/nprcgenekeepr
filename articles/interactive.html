@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.36</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.38</span>
       </span>
     </div>
 
@@ -765,11 +765,11 @@
 <a href="#pedigree-errors" class="anchor"></a>Pedigree Errors</h2>
 <p>As stated earlier you can see which types of errors are detected by <em>qcStudbook</em> by looking at names returned by <em>getEmptyErrorLst()</em> as shown below.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw"><a href="../reference/getEmptyErrorLst.html">getEmptyErrorLst</a></span>())</a></code></pre></div>
-<pre><code>## [1] "failedDatabaseConnection" "missingColumns"          
-## [3] "invalidDateRows"          "suspiciousParents"       
-## [5] "femaleSires"              "maleDams"                
-## [7] "sireAndDam"               "duplicateIds"            
-## [9] "changedCols"</code></pre>
+<pre><code>##  [1] "failedDatabaseConnection" "missingColumns"          
+##  [3] "invalidDateRows"          "suspiciousParents"       
+##  [5] "femaleSires"              "maleDams"                
+##  [7] "sireAndDam"               "duplicateIds"            
+##  [9] "fatalError"               "changedCols"</code></pre>
 <p>Each is defined below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -810,6 +810,10 @@
 <td align="left">IDs listed more than once.</td>
 </tr>
 <tr class="odd">
+<td align="left">fatalError</td>
+<td align="left">Fatal Errors.</td>
+</tr>
+<tr class="even">
 <td align="left">changedCols</td>
 <td align="left">Columns that have been changed to conform to internal naming conventions and what they were changed to.</td>
 </tr>
@@ -957,7 +961,7 @@
 ## 2 d2 &lt;NA&gt; &lt;NA&gt;   F   0 2006-04-13 &lt;NA&gt; 13.6     original
 ## 4 s2 &lt;NA&gt; &lt;NA&gt;   M   0 2006-06-19 &lt;NA&gt; 13.4     original
 ## 7 o3   s2   d2   F   1 2012-04-11 &lt;NA&gt;  7.6     original
-## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.1     original</code></pre>
+## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.2     original</code></pre>
 <p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitely requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb65-2" data-line-number="2">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
@@ -1018,7 +1022,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">elapsed_time &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(start_time)</a></code></pre></div>
-<p>The current date and time is 2019-11-09 02:05:15. The processing time for this document was 2 minutes and 9 seconds..</p>
+<p>The current date and time is 2019-11-14 21:56:53. The processing time for this document was 2 minutes and 37 seconds..</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
 <pre><code>## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
@@ -1035,7 +1039,7 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.25         ggplot2_3.2.1      nprcmanager_0.5.36 stringi_1.4.3     
+## [1] knitr_1.25         ggplot2_3.2.1      nprcmanager_0.5.38 stringi_1.4.3     
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.2           lubridate_1.7.4      lattice_0.20-38      gtools_3.8.1        
