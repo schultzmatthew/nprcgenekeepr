@@ -1,9 +1,14 @@
-^inst/_pkgdown\.yml$
+^CRAN-RELEASE$
+^_pkgdown\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
+^\.httr-oauth$
+^\.Rprofile$
+^cran-comments\.md$
+^docs$
 inst/extdata/meeting_notes\.html$
 ^\.gitignore$
-^docs$
 ^tests/testthat/test_basic\.R$
 ^R/testingScript\.R$
 ^R/tmp_groupAddAssign\.R$
@@ -13,10 +18,10 @@ inst/extdata/meeting_notes\.html$
 ^R/depricated_groupAssign\.R$
 ^R/groupAssign\.R$
 ^R/scratch\.R$
-^vignettes/*\.log$
-^vignettes/*\.aux$
-^vignettes/*\.out$
-^README\.*\.png$
+^vignettes/.*\.log$
+^vignettes/.*\.aux$
+^vignettes/.*\.out$
+README\.*\.png$
 # An Rmarkdown file used to generate README.md
 ^README\.Rmd$
 # Comments for CRAN submission
@@ -27,16 +32,12 @@ inst/extdata/meeting_notes\.html$
 ^NEWS\.Rmd$
 # Used for continuous integration testing with travis
 ^\.travis\.yml$
-^vignettes/interactive_use*$
 ^inst/extdata/.*\.docx$
+^inst/extdata/meeting_notes\.
 ^inst/extdata/rhesus_studbook*$
 ^inst/extdata/.*\.png$
 ^CODE_OF_CONDUCT\.md$
 ^\.codecov\.yml$
-^vignettes/tutorials/*$
-^vignettes/interactive_use_learnr_tutorial/*$
-!vignettes/tutorials/interactive.Rmd$
-!vignettes/tutorials/intro_shiny_app_use.Rmd$
 ^rsconnect*$
 ^rsconnect/*$
 ^images$

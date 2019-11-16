@@ -9,7 +9,7 @@
 #' @param partialPed a trimmed pedigree dataframe with uninformative founders removed.
 #' @export
 addIdRecords <- function(ids, fullPed, partialPed) {
-  if (length(ids) > 0) {
+  if (length(ids[!all(is.na(ids))]) > 0) {
     addToPed <- fullPed[fullPed$id %in% ids, ]
     addToPed$sire <- NA
     addToPed$dam <- NA

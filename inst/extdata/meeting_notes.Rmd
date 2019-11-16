@@ -14,6 +14,10 @@ library(nprcmanager)
 ```
 Provided in reverse chronological order
 
+## 20191115
+
+1.  Provide a way to clear focal animals to get entire pedigree back
+2.  Clear out empty 
 
 ## 20191111
 

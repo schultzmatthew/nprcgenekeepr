@@ -24,3 +24,5 @@ images/*
 images
 ^cran-comments\.md$
 vignettes/tutorials/*
+^vignettes/interactive_cache$
+^vignettes/intro_shiny_app_use_cache$

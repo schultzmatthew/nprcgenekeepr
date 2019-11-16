@@ -173,6 +173,7 @@ errorDescriptions <- c(
   "Individuals are listed as male and as a dam.", 
   "Individuals who are listed as both a sire and a dam.",
   "IDs listed more than once.",
+  "Fatal Errors.",
   stri_c("Columns that have been changed to conform to internal naming ",
   "conventions and what they were changed to.")
 )
@@ -461,9 +462,10 @@ age of two being grouped with their mother.
 
 Each group has all of the seed animals that were assigned to it plus additional
 animals that could be added while satisfying the requirements imposed by the 
-selected settings.
+selected settings. I have indicated the seed animals for the first group with
+red rectangles.
 
-![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_first_group_no_kinship.png)
+![](../../inst/extdata/shiny_app_tutorial/images/breeding_group_first_group_no_kinship_seeds_indicated.png)
 
 
 *********
@@ -481,30 +483,7 @@ kinship and selecting the __Make Groups__ button.
 
 *********
 
-
-*********
-
-
-
-*********
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
+The option to select a desired sex ratio allows you to select any ratio
+desired.
+However, the ratio obtained is limited by the availability of animals that
+meet all critera you have set.

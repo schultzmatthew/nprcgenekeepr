@@ -10,6 +10,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.39 (20191115)
+-   Moved vignettes to expose them in GitHub Pages.
+-   Removed more unneeded files from package.
+
 # nprcmanager 0.5.38 (20191113)
 -   Changed __getBreederPed__ function to __getFocalAnimalPed__ and animals
     read in by that function from __breeders__ to __focalAnimals__

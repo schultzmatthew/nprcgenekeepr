@@ -29,7 +29,7 @@ calculateSexRatio <- function(ids, ped, additionalMales = 0,
       if (additionalMales == 0) {
         ratio <- Inf
       } else if (additionalMales > 0) {
-        ratio <- sexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
+        ratio <- getSexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
       }
     } else if (additionalFemales == 0) {
       if (additionalMales == 0) {
@@ -40,13 +40,13 @@ calculateSexRatio <- function(ids, ped, additionalMales = 0,
     }
   } else if (length(ped$sex[ped$id %in% ids & ped$sex == "M"]) == 0) { #no males
     if (additionalMales > 0) {
-      ratio <- sexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
+      ratio <- getSexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
     } else {
       ratio <- Inf
     }
   } else {
-    ratio <- sexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
+    ratio <- getSexRatioWithAdditions(ids, ped, additionalMales, additionalFemales)
   }
- 
+
   ratio
 }

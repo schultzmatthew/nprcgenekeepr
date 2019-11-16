@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 11/06/2019
 
+# nprcmanager 0.5.39 (20191115)
+
+  - Moved vignettes to expose them in GitHub Pages.
+  - Removed more unneeded files from package.
+
 # nprcmanager 0.5.38 (20191113)
 
   - Changed **getBreederPed** function to **getFocalAnimalPed** and

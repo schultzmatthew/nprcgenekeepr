@@ -14,6 +14,7 @@ getEmptyErrorLst <- function() {
                         maleDams = character(0),
                         sireAndDam = character(0),
                         duplicateIds = character(0),
+                        fatalError = character(0),
                         changedCols = list(caseChange = character(0),
                                            spaceRemoved = character(0),
                                            periodRemoved = character(0),

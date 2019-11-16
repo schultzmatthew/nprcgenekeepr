@@ -14,6 +14,12 @@
 summary.nprcmanagErr <- function(object, ...) {
   errorLst <- object
   stopifnot(inherits(errorLst, "nprcmanagErr"))
+  if (length(errorLst$fatalError) > 0) {
+    txt <- errorLst$fatalError
+    txt <- list(txt = txt, sp = errorLst$suspiciousParents)
+    class(txt) <- "summary.nprcmanagErr"
+    return(txt)
+  }
   txt <- ""
   txt <- addErrTxt(txt, errorLst$missingColumns,
                    "Error: The missing column is",
