@@ -643,31 +643,33 @@ shinyServer(function(input, output, session) {
              content = box_and_whisker_desc,
              placement = "bottom", trigger = "hover", options = NULL)
 
-  output$relations <- eventReactive(input$relations, {
-    renderTable({
-      if (is.null(kmat())) {
-        return(NULL)
-      }
-      j <- nrow(kmat()) * ncol(kmat())
-      # Setting up the progress bar
-      progress <- shiny::Progress$new()
-      on.exit(progress$close())
-      progress$set(message = "Finding Relationship Designations", value = 0)
-      updateProgress <- function() {
-        progress$inc(amount = 1 / j)
-      }
 
-      kin <- convertRelationships(kmat(), getPed(),
-                                  updateProgress = updateProgress)
 
-      progress$set(message = "Preparing Table", value = 1)
-      r <- makeRelationClasseTable(kin)
+  # ##
+  # output$relations <- eventReactive(input$displayRelations, {
+  #   DT::renderDataTable(DT::datatable({
+  #     if (is.null(kmat())) {
+  #       return(NULL)
+  #     }
+  #     j <- nrow(kmat()) * ncol(kmat())
+  #     # Setting up the progress bar
+  #     progress <- shiny::Progress$new()
+  #     on.exit(progress$close())
+  #     progress$set(message = "Finding Relationship Designations", value = 0)
+  #     updateProgress <- function() {
+  #       progress$inc(amount = 1 / j)
+  #     }
+  #
+  #     kin <- convertRelationships(kmat(), getPed(),
+  #                                 updateProgress = updateProgress)
+  #
+  #     progress$set(message = "Preparing Table", value = 1)
+  #     r <- makeRelationClasseTable(kin)
+  #
+  #     toCharacter(r)
+  #   })
+  # )})
 
-      toCharacter(r)
-    },
-    rownames = FALSE
-    )
-  })
   # Download handler for the male founders
   output$downloadMaleFounders <- downloadHandler(
     filename = function() {
@@ -714,6 +716,29 @@ shinyServer(function(input, output, session) {
     }
   )
 
+  # ### Display Founders
+  # # Creating the male founder table for display on the Summary Statistics tab
+  # output$maleFounders <- DT::renderDataTable(DT::datatable({
+  #   if (is.null(geneticValue()[["maleFounders"]])) {
+  #     return(NULL)
+  #   }
+  #   # convert columns to "character" so xtables displays them properly
+  #   ped <- toCharacter(geneticValue()[["maleFounders"]])
+  #   names(ped) <- headerDisplayNames(names(ped))
+  #   ped
+  # }))
+  # # Creating the male founder table for display on the Summary Statistics tab
+  # output$femaleFounders <- DT::renderDataTable(DT::datatable({
+  #   if (is.null(geneticValue()[["femaleFounders"]])) {
+  #     return(NULL)
+  #   }
+  #   # convert columns to "character" so xtables displays them properly
+  #   ped <- toCharacter(geneticValue()[["femaleFounders"]])
+  #   names(ped) <- headerDisplayNames(names(ped))
+  #   ped
+  # }))
+  #
+  #
   #############################################################################
   # Functions for handling the breeding group formation process
   textAreaWidget <- eventReactive(input$seedAnimals,{
@@ -743,8 +768,9 @@ shinyServer(function(input, output, session) {
   textMinParentAge <- eventReactive(input$group_formation_rb,{
     minParentAgeLine <-
       checkboxInput("useMinParentAge",
-                    label = paste0("Animals will be grouped with the mother below the minimum ",
-                                   "parent age of ", globalMinParentAge, "."),
+                    label = paste0("Animals will be grouped with the mother ",
+                                   "below the minimum parent age of ",
+                                   globalMinParentAge, "."),
                     value = FALSE)
     do.call(tagList, list(minParentAgeLine))}, ignoreInit = FALSE)
 

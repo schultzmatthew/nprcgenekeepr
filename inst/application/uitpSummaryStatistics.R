@@ -20,38 +20,54 @@ uitpSummaryStatistics <-
      )),
    br(),
    fluidRow(
-     column(3, offset = 1,
+     column(2, offset = 1,
             popify(downloadButton("downloadMaleFounders",
                                   "Export Male Founders"),
                    NULL, #"Exports Male Founder records as CSV",
                    paste0("This exports the male founder pedigree records to ",
                           "a CSV file in the users home directory"))),
-     column(3, offset = 1,
+     column(2, offset = 1,
             popify(downloadButton("downloadFemaleFounders",
                                   "Export Female Founders"),
                    NULL, #"Exports Female Founder records as CSV",
                    paste0("This exports the female founder pedigree records ",
                           "to a CSV file in the users home directory"))),
-     column(3,
+     column(2,
             offset = 1,
             popify(downloadButton("downloadFirstOrder",
                                   "Export First-Order Relationships"),
              NULL, #"Exports All First-Order Relationships as CSV",
              paste0("This exports all first-order relations to a CSV file ",
-                    "in the users home directory"))
-    )), br(),
+                    "in the users home directory")))
+    ), br(),
+   # fluidRow(
+   #   column(2, offset = 1,
+   #        style = paste0("padding-top:1px;display:inline-block;",
+   #                       "padding-bottom:1px"),
+   #        checkboxInput("displayRelations",
+   #                      label = paste0("Optional: Display ",
+   #                                     "Relations Table"),
+   #                      width = "150%",
+   #                      value = FALSE)
+   # )),
    fluidRow(
      column(10, offset = 1,
             htmlOutput("summaryStats")
-     )),br(),br(),
+     ),
+   #   column(10, offset = 1,
+   #          DT::dataTableOutput("relations")
+   #          # DT::dataTableOutput("relations"),
+   #          # DT::dataTableOutput("maleFounders"),
+   #          # DT::dataTableOutput("femaleFounders")
+   #   ),
+   ),br(),br(),
    fluidRow(
     # Main Panel
     column(5, offset = 1,
       # style = "margin-left:425px;padding:10px;",
       plotOutput("mkPlot", width = "400px", height = "400px"),
       plotOutput("zscorePlot", width = "400px", height = "400px"),
-      plotOutput("guPlot", width = "400px", height = "400px"),
-      DT::dataTableOutput("relations")
+      plotOutput("guPlot", width = "400px", height = "400px")
     ),
     column(5,
            plotOutput("mkBox", width = "400px", height = "400px"),
