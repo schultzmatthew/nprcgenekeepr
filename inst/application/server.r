@@ -467,8 +467,8 @@ shinyServer(function(input, output, session) {
     }
 
     f <- geneticValue()[["total"]]
-    mf <- geneticValue()[["maleFounders"]]
-    ff <- geneticValue()[["femaleFounders"]]
+    nmf <- geneticValue()[["nMaleFounders"]]
+    nff <- geneticValue()[["nFemaleFounders"]]
     fe <- geneticValue()[["fe"]]
     fg <- geneticValue()[["fg"]]
 
@@ -489,7 +489,7 @@ shinyServer(function(input, output, session) {
           th("Known Male Founders"),
           th(JS("Founder Equivalents")),
           th("Founder Genome Equivalents"))),
-      tbody(td(as.character(f)), td(as.character(ff)), td(as.character(mf)),
+      tbody(td(as.character(f)), td(as.character(nff)), td(as.character(nmf)),
             td(as.character(round(fe, digits = 2))),
             td(as.character(round(fg, digits = 2))))))
 
@@ -668,6 +668,26 @@ shinyServer(function(input, output, session) {
     rownames = FALSE
     )
   })
+  # Download handler for the male founders
+  output$downloadMaleFounders <- downloadHandler(
+    filename = function() {
+      paste("maleFounders", ".csv", sep = "")
+    },
+    content = function(file) {
+      mf <- geneticValue()[["maleFounders"]]
+      write.csv(mf, file, na = "")
+    }
+  )
+  # Download handler for the male founders
+  output$downloadFemaleFounders <- downloadHandler(
+    filename = function() {
+      paste("femaleFounders", ".csv", sep = "")
+    },
+    content = function(file) {
+      ff <- geneticValue()[["femaleFounders"]]
+      write.csv(ff, file, na = "")
+    }
+  )
 
   # Download handler for the first-order relationships
   output$downloadFirstOrder <- downloadHandler(

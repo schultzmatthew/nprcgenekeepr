@@ -21,14 +21,24 @@ uitpSummaryStatistics <-
    br(),
    fluidRow(
      column(3, offset = 1,
-            popify(downloadButton("downloadKinship", "Export Kinship Matrix"),
-                   NULL, #"Exports Kinship Matrix as CSV",
-                   "This exports the kinship matrix to a CSV file in the users home directory")),
+            popify(downloadButton("downloadMaleFounders",
+                                  "Export Male Founders"),
+                   NULL, #"Exports Male Founder records as CSV",
+                   paste0("This exports the male founder pedigree records to ",
+                          "a CSV file in the users home directory"))),
+     column(3, offset = 1,
+            popify(downloadButton("downloadFemaleFounders",
+                                  "Export Female Founders"),
+                   NULL, #"Exports Female Founder records as CSV",
+                   paste0("This exports the female founder pedigree records ",
+                          "to a CSV file in the users home directory"))),
      column(3,
             offset = 1,
-            popify(downloadButton("downloadFirstOrder", "Export First-Order Relationships"),
+            popify(downloadButton("downloadFirstOrder",
+                                  "Export First-Order Relationships"),
              NULL, #"Exports All First-Order Relationships as CSV",
-             "This exports all first-order relations to a CSV file in the users home directory")
+             paste0("This exports all first-order relations to a CSV file ",
+                    "in the users home directory"))
     )), br(),
    fluidRow(
      column(10, offset = 1,
@@ -55,7 +65,8 @@ uitpSummaryStatistics <-
               "border: 1px solid lightgray; background-color: #EDEDED;",
               "border-radius: 25px; box-shadow: 0 0 5px 2px #888"
             ),
-            withMathJax(includeHTML("../extdata/population_genetics_terms.html"))
+            withMathJax(
+              includeHTML("../extdata/population_genetics_terms.html"))
      ))
 
 )

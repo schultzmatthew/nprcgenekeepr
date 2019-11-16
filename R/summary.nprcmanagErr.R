@@ -102,8 +102,8 @@ summary.nprcmanagGV <- function(object, ...) {
   rpt <- gvReport[["report"]]
   kmat <- gvReport[["kinship"]]
   f <- gvReport[["total"]]
-  mf <- gvReport[["maleFounders"]]
-  ff <- gvReport[["femaleFounders"]]
+  mf <- gvReport[["nMaleFounders"]]
+  ff <- gvReport[["nFemaleFounders"]]
   fe <- gvReport[["fe"]]
   fg <- gvReport[["fg"]]
   txt <- "The genetic value report"

@@ -416,6 +416,8 @@ kmat <- trimmedGeneticValue[["kinship"]]
 f <- trimmedGeneticValue[["total"]]
 mf <- trimmedGeneticValue[["maleFounders"]]
 ff <- trimmedGeneticValue[["femaleFounders"]]
+nmf <- trimmedGeneticValue[["nMaleFounders"]]
+nff <- trimmedGeneticValue[["nFemaleFounders"]]
 fe <- trimmedGeneticValue[["fe"]]
 fg <- trimmedGeneticValue[["fg"]]
 
