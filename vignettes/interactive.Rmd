@@ -4,7 +4,7 @@ output:
   html_document:
     df_print: paged
 vignette: |
-  %\VignetteEngine{knitr::knitr} 
+  %\VignetteEngine{knitr::rmarkdown_notangle} 
   %\VignetteIndexEntry{Genetic Management Tools} 
   %\usepackage[UTF-8]{inputenc}
 ---
