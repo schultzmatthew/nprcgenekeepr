@@ -11,16 +11,11 @@ inst/extdata/meeting_notes\.html$
 ^\.gitignore$
 ^tests/testthat/test_basic\.R$
 ^R/testingScript\.R$
-^R/tmp_groupAddAssign\.R$
-^R/groupAddition\.R$
-^R/depricated_groupAddition\.R$
 ^R/depricated_gene\.drop\.R$
-^R/depricated_groupAssign\.R$
-^R/groupAssign\.R$
-^R/scratch\.R$
 ^vignettes/.*\.log$
 ^vignettes/.*\.aux$
 ^vignettes/.*\.out$
+^vignettes/Development_Plans.Rmd$
 README\.*\.png$
 # An Rmarkdown file used to generate README.md
 ^README\.Rmd$
@@ -35,7 +30,6 @@ README\.*\.png$
 ^inst/extdata/.*\.docx$
 ^inst/extdata/meeting_notes\.
 ^inst/extdata/rhesus_studbook*$
-^inst/extdata/.*\.png$
 ^CODE_OF_CONDUCT\.md$
 ^\.codecov\.yml$
 ^rsconnect*$

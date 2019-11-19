@@ -10,7 +10,7 @@ vignette: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,include = TRUE, results = "markup", cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE,include = TRUE, results = "markup", cache = FALSE)
 start_time <- proc.time()
 ```
 
@@ -79,7 +79,7 @@ This writes _ExamplePedigree.csv_ to a place you select within your file
 system.
 
 ```{r get-file-name, eval = TRUE, echo = FALSE, include = FALSE}
-pedigreeFile <- "../../inst/extdata/ExamplePedigree.csv"
+pedigreeFile <- "../inst/extdata/ExamplePedigree.csv"
 
 ```
 

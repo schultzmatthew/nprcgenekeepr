@@ -14,15 +14,11 @@ inst/extdata/PSCPO*.*
 docs/*.svg
 docs/*.yml
 docc/*.js
-inst/extdata/interactive_use_tutorial_files/Interactive_Use_with_style_sheet.log
 inst/extdata/notes.*
 !inst/extdata/notes.Rmd
 vignettes/tutorials/*
-!vignettes/tutorials/interactive_use_tutorial.Rmd
-!vignettes/tutorials/intro_shiny_app_use.Rmd
 images/*
 images
 ^cran-comments\.md$
-vignettes/tutorials/*
 ^vignettes/interactive_cache$
-^vignettes/intro_shiny_app_use_cache$
+^vignettes/shiny_app_use_cache$

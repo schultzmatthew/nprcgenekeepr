@@ -18,6 +18,13 @@ knitr::opts_chunk$set(echo = TRUE)
 -   Changed minimum parent age default from 4 to 2 years.
 -   Added ability to download founders in a _maleFounders.csv_ file and a 
     _femaleFounders.csv_ file.
+-   Added __createExampleFiles__ and __saveDataframesAsFiles__ to allow
+    the user to generate all of the example pedigrees and other files used in 
+    testing and in tutorials.
+-   Removed __Development_Plans.Rmd__ from build because it has be replaced
+    by adding issues on our issue tracker at 
+    [github.com/rmsharp/nprcmanager/issues](
+    https://github.com/rmsharp/nprcmanager/issues).
 
 # nprcmanager 0.5.40.9000 (20191115) 
 -   Corrected bug in __addIdRecords__ to handle _NA_ characters; amended its

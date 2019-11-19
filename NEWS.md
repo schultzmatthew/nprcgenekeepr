@@ -12,6 +12,12 @@ R. Mark Sharp
   - Changed minimum parent age default from 4 to 2 years.
   - Added ability to download founders in a *maleFounders.csv* file and
     a *femaleFounders.csv* file.
+  - Added **createExampleFiles** and **saveDataframesAsFiles** to allow
+    the user to generate all of the example pedigrees and other files
+    used in testing and in tutorials.
+  - Removed **Development\_Plans.Rmd** from build because it has be
+    replaced by adding issues on our issue tracker at
+    [github.com/rmsharp/nprcmanager/issues](https://github.com/rmsharp/nprcmanager/issues).
 
 # nprcmanager 0.5.40.9000 (20191115)
 

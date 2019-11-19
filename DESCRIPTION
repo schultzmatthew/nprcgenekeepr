@@ -1,7 +1,7 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.40.9000
+Version: 0.5.40.9001
 Date: 2019-11-15
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
@@ -31,6 +31,7 @@ Imports:
 Suggests:
     covr,
     dplyr,
+    ggplot2,
     grid,
     knitr,
     pkgdown,
