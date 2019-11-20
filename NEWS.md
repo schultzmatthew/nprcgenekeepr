@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 11/15/2019
 
+# nprcmanager 0.5.40.9002 (20191119)
+
+  - Tried to get vignette for shiny application to find images on all
+    building platforms by adding “./” to relative path.
+
 # nprcmanager 0.5.40.9001 (20191115)
 
   - Added unit test for **create\_wkbk** from
