@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/nprcmanager)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Build Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager)
+[![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
+[![](https://www.r-pkg.org/badges/version/nprcmanager)](https://cran.r-project.org/package=nprcmanager)
+
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# nprcmanager -- Version `r nprcmanager::getVersion()`
+```{r child = "vignettes/manual_components/_introduction.Rmd", ref = "introduction"}
+```
+```{r child = "vignettes/manual_components/_installation.Rmd", ref = "installation"}
+```
+```{r child = "vignettes/manual_components/_running_shiny_application.Rmd", ref = "running_shiny_application"}
+```
+```{r child = "vignettes/manual_components/_summary_of_major_functions.Rmd", ref = "summary_of_functions"}
+```
+
+Find online documentation at [https://rmsharp.github.io/nprcmanager/](https://rmsharp.github.io/nprcmanager/).
+
+
+**For more information see:**  
+A Practical Approach for Designing Breeding Groups to Maximize Genetic 
+Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*)
+Vinson, A ; Raboin, MJ
+*Journal Of The American Association For Laboratory Animal Science*, 
+2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]
+

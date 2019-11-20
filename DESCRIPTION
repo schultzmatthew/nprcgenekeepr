@@ -1,0 +1,45 @@
+Package: nprcmanager
+Type: Package
+Title: Implements Genetic Tools for Colony Management
+Version: 0.5.40.9002
+Date: 2019-11-19
+Authors@R: c(
+    person("Michael", "Raboin", role = c("aut")),
+    person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
+    role = c("aut", "ctb", "cre", "cph")))
+Description: Implements Genetic Tools for Colony Management.
+URL: https://rmsharp.github.io/nprcmanager/, https://github.com/rmsharp/nprcmanager
+BugReports: https://github.com/rmsharp/nprcmanager/issues
+Depends:
+    R (>= 3.5.0)
+Imports:
+    anytime,
+    futile.logger,
+    gplots,
+    htmlTable,
+    lubridate,
+    Matrix,
+    plotrix,
+    RColorBrewer,
+    readxl,
+    Rlabkey,
+    shiny,
+    shinyBS,
+    stringi,
+    utils,
+    WriteXLS
+Suggests:
+    covr,
+    dplyr,
+    ggplot2,
+    grid,
+    knitr,
+    pkgdown,
+    png,
+    roxygen2 (>= 6.0.0),
+    testthat
+Encoding: UTF-8
+License: MIT + file LICENSE
+RoxygenNote: 6.1.1
+LazyData: TRUE
+VignetteBuilder: knitr
