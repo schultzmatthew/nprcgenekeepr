@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9002</span>
       </span>
     </div>
 
@@ -93,7 +93,13 @@
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
+      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+    </li>
+    <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
+    </li>
+    <li>
+      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -125,6 +131,13 @@
       <small>Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="nprcmanager-0-5-40-9002-20191119" class="section level1">
+<h1 class="page-header">
+<a href="#nprcmanager-0-5-40-9002-20191119" class="anchor"></a>nprcmanager 0.5.40.9002 (20191119)</h1>
+<ul>
+<li>Tried to get vignette for shiny application to find images on all building platforms by adding “./” to relative path.</li>
+</ul>
+</div>
     <div id="nprcmanager-0-5-40-9001-20191115" class="section level1">
 <h1 class="page-header">
 <a href="#nprcmanager-0-5-40-9001-20191115" class="anchor"></a>nprcmanager 0.5.40.9001 (20191115)</h1>
@@ -133,6 +146,8 @@
 <li>Fixed bug in Genetic Value Analysis tab were failure to remove all white space in Filter View Id window did not clear filter.</li>
 <li>Changed minimum parent age default from 4 to 2 years.</li>
 <li>Added ability to download founders in a <em>maleFounders.csv</em> file and a <em>femaleFounders.csv</em> file.</li>
+<li>Added <strong>createExampleFiles</strong> and <strong>saveDataframesAsFiles</strong> to allow the user to generate all of the example pedigrees and other files used in testing and in tutorials.</li>
+<li>Removed <strong>Development_Plans.Rmd</strong> from build because it has be replaced by adding issues on our issue tracker at <a href="https://github.com/rmsharp/nprcmanager/issues">github.com/rmsharp/nprcmanager/issues</a>.</li>
 </ul>
 </div>
     <div id="nprcmanager-0-5-40-9000-20191115" class="section level1">
@@ -540,6 +555,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#nprcmanager-0-5-40-9002-20191119">0.5.40.9002</a></li>
         <li><a href="#nprcmanager-0-5-40-9001-20191115">0.5.40.9001</a></li>
         <li><a href="#nprcmanager-0-5-40-9000-20191115">0.5.40.9000</a></li>
         <li><a href="#nprcmanager-0-5-39-20191115">0.5.39</a></li>

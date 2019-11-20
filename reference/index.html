@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9002</span>
       </span>
     </div>
 
@@ -93,7 +93,13 @@
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
+      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+    </li>
+    <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
+    </li>
+    <li>
+      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -183,10 +189,55 @@ is at the state just prior to calling <code>rankSubjects</code> inside
       </tr><tr>
         
         <td>
+          <p><code><a href="pedDuplicateIds.html">pedDuplicateIds</a></code> </p>
+        </td>
+        <td><p>pedDuplicateIds is a dataframe with 9 rows and 5 columns (ego_id, sire,
+dam_id, sex, birth_date) representing a full pedigree with a duplicated
+record.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pedFemaleSireMaleDam.html">pedFemaleSireMaleDam</a></code> </p>
+        </td>
+        <td><p>pedFemaleSireMaleDam is a dataframe with 8 rows and 5 columns (ego_id, sire,
+dam_id, sex, birth_date) representing a full pedigree with the errors of
+having a sire labeled as female and a dam labeled as male.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pedGood.html">pedGood</a></code> </p>
+        </td>
+        <td><p>pedGood is a dataframe with 8 rows and 5 columns (ego_id, sire, dam_id,
+sex, birth_date) representing a full pedigree with no errors.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pedInvalidDates.html">pedInvalidDates</a></code> </p>
+        </td>
+        <td><p>pedInvalidDates is a dataframe with 8 rows and 5 columns (ego_id, sire,
+dam_id, sex, birth_date) representing a full pedigree with values in the
+<code>birth_date</code> column that are not valid dates.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pedMissingBirth.html">pedMissingBirth</a></code> </p>
+        </td>
+        <td><p>pedMissingBirth is a dataframe with 8 rows and 5 columns (ego_id, sire,
+dam_id, sex, birth_date) representing a full pedigree with no errors.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="pedOne.html">pedOne</a></code> </p>
         </td>
         <td><p>pedOne is a loadable version of a pedigree file fragment used for testing
 and demonstration</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pedSameMaleIsSireAndDam.html">pedSameMaleIsSireAndDam</a></code> </p>
+        </td>
+        <td><p>pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5 columns (ego_id, sire,
+dam_id, sex, birth_date) representing a full pedigree with no errors.</p></td>
       </tr><tr>
         
         <td>
@@ -369,6 +420,13 @@ each simulation.</p></td>
           <p><code><a href="countLoops.html">countLoops()</a></code> </p>
         </td>
         <td><p>Count the number of loops in a pedigree tree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createExampleFiles.html">createExampleFiles()</a></code> </p>
+        </td>
+        <td><p>Creates a folder with CSV files containing example pedigrees and ID lists
+used to demonstrate the package.</p></td>
       </tr><tr>
         
         <td>
@@ -838,6 +896,13 @@ or the other at each position.</p></td>
           <p><code><a href="countLoops.html">countLoops()</a></code> </p>
         </td>
         <td><p>Count the number of loops in a pedigree tree.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createExampleFiles.html">createExampleFiles()</a></code> </p>
+        </td>
+        <td><p>Creates a folder with CSV files containing example pedigrees and ID lists
+used to demonstrate the package.</p></td>
       </tr><tr>
         
         <td>
@@ -1480,6 +1545,12 @@ placeholders for unknown parents.</p></td>
           <p><code><a href="runManager.html">runManager()</a></code> </p>
         </td>
         <td><p>Allows running <code>shiny</code> application with <code>nprcmanager::runManager()</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveDataframesAsFiles.html">saveDataframesAsFiles()</a></code> </p>
+        </td>
+        <td><p>Write copy of dataframes to either CSV or Excel file.</p></td>
       </tr><tr>
         
         <td>
