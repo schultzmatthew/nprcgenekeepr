@@ -3,9 +3,9 @@ title: "Interactive Use of nprcmanager"
 output:
   html_document:
     df_print: paged
-vignette: |
+vignette: >
   %\VignetteEngine{knitr::rmarkdown_notangle} 
-  %\VignetteIndexEntry{Genetic Management Tools} 
+  %\VignetteIndexEntry{Interactive Use of nprcmanager} 
   %\usepackage[UTF-8]{inputenc}
 ---
 

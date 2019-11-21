@@ -5,8 +5,10 @@ output:
   pdf_document: default
   html_document:
     df_print: paged
-vignette: "%\\VignetteEngine{knitr::rmarkdown_notangle}\n%\\VignetteIndexEntry{Genetic
-  Management Tools -- Shiny App} \n%\\usepackage[UTF-8]{inputenc}\n"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown_notangle} 
+  %\VignetteIndexEntry{Shiny Application for Genetic Management} 
+  %\usepackage[UTF-8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
