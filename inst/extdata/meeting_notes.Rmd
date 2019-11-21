@@ -14,14 +14,25 @@ library(nprcmanager)
 ```
 Provided in reverse chronological order
 
+## 20191120
+
+1.  Export all graphics
+1.  Create, error check and export dawn of time pedigree
+1.  Add heuristic to removed recent progeny as founders.
+    a.  Add a column - something like "from center" so that "born at site" can 
+        be ascertained.
+1.  Provide a way to clear focal animals added in __Pedigree Browser__ tab
+    so that full pedigree is again availabe. This will also allow a new 
+    pedigree to be added via the __Input__ tab.
+
 ## 20191115
 
-1.  Provide a way to clear focal animals to get entire pedigree back
-2.  Clear out empty 
+1.  Clear out empty text field (_Filter View_) on _Genetic Value Analysis__
+    tab. Done 20191115
 
 ## 20191111
 
-1.  Send example pedigrees with errors to Amanda.
+1.  Send example pedigrees with errors to Amanda.Done 20191111
 1.  To meet Friday at 4 PM Pacific to go through entire presentation.
 1.  Code changes since August 16, 2016. 
     -   Initial package construction was in March of 2017.
