@@ -4,10 +4,21 @@
 \alias{groupAddAssign}
 \title{Add animals to an existing breeding group or forms groups:}
 \usage{
-groupAddAssign(candidates, currentGroups = list(character(0)), kmat, ped,
-  threshold = 0.015625, ignore = list(c("F", "F")), minAge = 1,
-  iter = 1000, numGp = 1, harem = FALSE, sexRatio = 0,
-  withKin = FALSE, updateProgress = NULL)
+groupAddAssign(
+  candidates,
+  currentGroups = list(character(0)),
+  kmat,
+  ped,
+  threshold = 0.015625,
+  ignore = list(c("F", "F")),
+  minAge = 1,
+  iter = 1000,
+  numGp = 1,
+  harem = FALSE,
+  sexRatio = 0,
+  withKin = FALSE,
+  updateProgress = NULL
+)
 }
 \arguments{
 \item{candidates}{Character vector of IDs of the animals available for

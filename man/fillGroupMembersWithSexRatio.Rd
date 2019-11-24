@@ -4,8 +4,16 @@
 \alias{fillGroupMembersWithSexRatio}
 \title{Forms breeding group(s) with an effort to match a specified sex ratio}
 \usage{
-fillGroupMembersWithSexRatio(candidates, groupMembers, grpNum, kin, ped,
-  minAge, numGp, sexRatio)
+fillGroupMembersWithSexRatio(
+  candidates,
+  groupMembers,
+  grpNum,
+  kin,
+  ped,
+  minAge,
+  numGp,
+  sexRatio
+)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for

@@ -4,8 +4,13 @@
 \alias{getProductionStatus}
 \title{Get production status of group}
 \usage{
-getProductionStatus(ped, minParentAge = 3, maxOffspringAge = NULL,
-  housing = "shelter_pens", currentDate = Sys.Date())
+getProductionStatus(
+  ped,
+  minParentAge = 3,
+  maxOffspringAge = NULL,
+  housing = "shelter_pens",
+  currentDate = Sys.Date()
+)
 }
 \arguments{
 \item{ped}{Dataframe that is the `Pedigree`. It contains pedigree

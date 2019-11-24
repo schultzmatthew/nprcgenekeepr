@@ -5,8 +5,12 @@
 \title{Trim pedigree to ancestors of provided group by removing uninformative
 individuals}
 \usage{
-trimPedigree(probands, ped, removeUninformative = FALSE,
-  addBackParents = FALSE)
+trimPedigree(
+  probands,
+  ped,
+  removeUninformative = FALSE,
+  addBackParents = FALSE
+)
 }
 \arguments{
 \item{probands}{a character vector with the list of animals whose ancestors

@@ -5,8 +5,13 @@
 \title{obfuscatePed takes a pedigree object and creates aliases for all IDs and
 adjusts all date within a specified amount.}
 \usage{
-obfuscatePed(ped, size = 6, maxDelta = 30,
-  existingIds = character(0), map = FALSE)
+obfuscatePed(
+  ped,
+  size = 6,
+  maxDelta = 30,
+  existingIds = character(0),
+  map = FALSE
+)
 }
 \arguments{
 \item{ped}{pedigree object}

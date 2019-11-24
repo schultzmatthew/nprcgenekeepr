@@ -4,8 +4,15 @@
 \alias{geneDrop}
 \title{Gene drop simulation based on the provided pedigree information}
 \usage{
-geneDrop(ids, sires, dams, gen, genotype = NULL, n = 5000,
-  updateProgress = NULL)
+geneDrop(
+  ids,
+  sires,
+  dams,
+  gen,
+  genotype = NULL,
+  n = 5000,
+  updateProgress = NULL
+)
 }
 \arguments{
 \item{ids}{A character vector of IDs for a set of animals.}

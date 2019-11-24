@@ -3,7 +3,6 @@
 \docType{package}
 \name{nprcmanager}
 \alias{nprcmanager}
-\alias{nprcmanager-package}
 \title{Genetic Management Functions}
 \description{
 Primary Data Structure --- Pedigree

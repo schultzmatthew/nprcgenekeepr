@@ -4,8 +4,11 @@
 \alias{is_valid_date_str}
 \title{Returns TRUE if the string is a valid date.}
 \usage{
-is_valid_date_str(date_str, format = "\%d-\%m-\%Y \%H:\%M:\%S",
-  optional = FALSE)
+is_valid_date_str(
+  date_str,
+  format = "\%d-\%m-\%Y \%H:\%M:\%S",
+  optional = FALSE
+)
 }
 \arguments{
 \item{date_str}{character vector with 0 or more dates}

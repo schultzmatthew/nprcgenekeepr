@@ -11,6 +11,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,include = TRUE, results = "markup", cache = FALSE)
+pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
 ```
 
@@ -298,7 +299,7 @@ You can examine the population structure using an age-sex pyramid plot with a
 single function. 
 We will limit our view to just the focal animals and their living relatives.
 This is appropriate for colony management because in addition to the genetic
-diversity we seek, we have to remain cognacent of the age and sex distributions
+diversity we seek, we have to remain cognizant of the age and sex distributions
 within the colonies we manage.
 
 ```{r plot-focal-age-sex-pyramid, include = TRUE}
@@ -390,7 +391,7 @@ nrow(trimmedGeneticValue$report) ## Number of rows
 ```
 
 The report is more conveniently used as a separate object.
-The next section of code rounds some of the numerica values and converts all
+The next section of code rounds some of the numerical values and converts all
 columns to characters for display as a table where only the first 10 lines
 are included.
 
@@ -473,11 +474,11 @@ __nprcmanager__, which we will examine using code below.
     -   Randomly assign animals without regard to sex
     -   Use a harem structure with one breeding male per group
     -   Specify the sex ratio between 0.5 and 10 (F/M)
--   Whether or not to prepopulate (seed) groups with animals of your choice
+-   Whether or not to pre-populate (seed) groups with animals of your choice
 -   Number of groups to be formed
 -   Whether or not to ignore females at or above the minimum parent age
 -   Number of simulations used to search for the optimal group makeup
--   Whether or not kinship coefficents are to be included in results
+-   Whether or not kinship coefficients are to be included in results
 
 You decisions regarding each of the above options are expressed 
 in a call to the function __groupAddAssign__. 
@@ -496,9 +497,9 @@ forming the groups. The animals that may be present in currentGroups are not
 included within candidates.
 
 - __currentGroups__ List of character vectors of IDs of animals currently 
-assigned to groups. Defaults to a list with character(0) in each sublist 
+assigned to groups. Defaults to a list with character(0) in each sub-list 
 element (one for each group being formed) assuming no groups are 
-prepopulated.
+pre-populated.
 
 - __kmat__ Numeric matrix of pairwise kinship values. Rows and columns are 
 named with animal IDs.
@@ -536,7 +537,7 @@ male at least minAge old.
 
 - __withKin__ Logical variable when set to TRUE, the kinship matrix for the 
 group is returned along with the group and score. Defaults to not return the
-kinship matrix. This maintains compatability with earlier versions.
+kinship matrix. This maintains compatibility with earlier versions.
 
 
 We will use the _trimmedPed_ pedigree in our code.
@@ -565,7 +566,7 @@ call of the __groupAddAssign__ function.
 This is consistent 
 with the a value of 0 making little since in a breeding colony.
 
-The empty seventh group at the bottom is evidence that all of the canditate
+The empty seventh group at the bottom is evidence that all of the candidate
 animals could be placed in a group without exceeding the default value of
 0.015625.
 
@@ -665,7 +666,7 @@ errorDescriptions <- c(
   "Columns that must be within the pedigree file are missing.",
   "Values, which are supposed to be dates, cannot be interpreted as a date.",
   "Parents were too young on the date of birth of to have been the parent.",
-  "Individuals listed as female or hemaphroditic and as a sire.",
+  "Individuals listed as female or hermaphroditic and as a sire.",
   "Individuals are listed as male and as a dam.", 
   "Individuals who are listed as both a sire and a dam.",
   "IDs listed more than once.",
@@ -685,9 +686,9 @@ knitr::kable(errorTbl)
 We are going to 
 use the small imaginary pedigree listed below that has multiple errors
 to discuss pedigree error detection and reporting. 
-First note the birthdates of ego_id _o4_ 
-(2006-04-13) and the purported sire _s2_ (2006-06-19). Note also the proported 
-birthdate of the _d2_ and the birthdates of her offspring.
+First note the birth dates of ego_id _o4_ 
+(2006-04-13) and the purported sire _s2_ (2006-06-19). Note also the purported 
+birth date of the _d2_ and the birth dates of her offspring.
 Obviously dates or IDs may be incorrect.
 
 This is the pedigree. _(We will discuss the column names shortly.)_
@@ -718,7 +719,7 @@ knitr::kable(lowParentAge)
 
 Examination of the ages of the parents reveals the issues being reported.
 
-We can remove the errors by changing the birthdates of _o4_ from 2006-04-13
+We can remove the errors by changing the birth dates of _o4_ from 2006-04-13
 to 2015-09-16 and of _d2_ from 2015-09-16 to 2006-04-13. 
 
 ```{r correct-birthdate, error = TRUE}
@@ -740,7 +741,7 @@ ped[ped$id %in% c("s2", "d2", "o3", "o4"), ]
 However, the preferred method of creating the standardized studbook format
 with __qcStudbook__ is to examine all errors found and correcting them 
 before proceeding.
-This is done by explicitely requesting that all aspects inconsistent with the 
+This is done by explicitly requesting that all aspects inconsistent with the 
 studbook format be identified by setting _reportChanges_ and _reportErrors_ to
 \code{TRUE}.
 
@@ -758,7 +759,7 @@ changes to the column names as is shown here by setting _reportChanges_ to
 \code{FALSE}. 
 For this illustration, we are going to bring back the original copy of 
 __pedOne__ to see how the suspicious parents are reported by the 
-__summmary__ function.
+__summary__ function.
 
 ```{r look-for-errors-only}
 pedOne <- nprcmanager::pedOne

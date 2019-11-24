@@ -4,8 +4,7 @@
 \alias{convertDate}
 \title{Converts date columns formatted as characters to be of type datetime}
 \usage{
-convertDate(ped, time.origin = as.Date("1970-01-01"),
-  reportErrors = FALSE)
+convertDate(ped, time.origin = as.Date("1970-01-01"), reportErrors = FALSE)
 }
 \arguments{
 \item{ped}{a dataframe of pedigree information that may contain birth,

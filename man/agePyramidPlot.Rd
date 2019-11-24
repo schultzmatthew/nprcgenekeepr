@@ -4,8 +4,17 @@
 \alias{agePyramidPlot}
 \title{Form age pyramid plot}
 \usage{
-agePyramidPlot(males, females, ageLabels, mcol, fcol, laxlab, raxlab, gap,
-  currentDate)
+agePyramidPlot(
+  males,
+  females,
+  ageLabels,
+  mcol,
+  fcol,
+  laxlab,
+  raxlab,
+  gap,
+  currentDate
+)
 }
 \arguments{
 \item{males}{integer vector with the number of males in age groups

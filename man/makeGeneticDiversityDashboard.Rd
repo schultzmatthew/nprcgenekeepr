@@ -4,8 +4,10 @@
 \alias{makeGeneticDiversityDashboard}
 \title{Make genetic diversity dashboard}
 \usage{
-makeGeneticDiversityDashboard(geneticDiversityStats,
-  file = "images/geneticDiversity.png")
+makeGeneticDiversityDashboard(
+  geneticDiversityStats,
+  file = "images/geneticDiversity.png"
+)
 }
 \arguments{
 \item{geneticDiversityStats}{named vector of genetic diversity statistics}

@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.40.9003</span>
       </span>
     </div>
 
@@ -210,7 +210,7 @@
 <div id="age-sex-pyramid-plot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#age-sex-pyramid-plot" class="anchor"></a>Age Sex Pyramid Plot</h2>
-<p>You can examine the population structure using an age-sex pyramid plot with a single function. We will limit our view to just the focal animals and their living relatives. This is appropriate for colony management because in addition to the genetic diversity we seek, we have to remain cognacent of the age and sex distributions within the colonies we manage.</p>
+<p>You can examine the population structure using an age-sex pyramid plot with a single function. We will limit our view to just the focal animals and their living relatives. This is appropriate for colony management because in addition to the genetic diversity we seek, we have to remain cognizant of the age and sex distributions within the colonies we manage.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="../reference/getPyramidPlot.html">getPyramidPlot</a></span>(<span class="dt">ped =</span> trimmedPed[<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(trimmedPed<span class="op">$</span>exit), ])</a></code></pre></div>
 <p><img src="interactive_files/figure-html/plot-focal-age-sex-pyramid-1.png" width="700"></p>
 </div>
@@ -268,20 +268,18 @@
 <a href="#detailed-look-at-the-genetic-value-report-object" class="anchor"></a>Detailed look at the Genetic Value Report object</h3>
 <p>The names of the object within the genetic value report object (<em>trimmedGeneticValue</em>) can be listed as shown in the next line of code.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(trimmedGeneticValue)</a></code></pre></div>
-<pre><code>##  [1] "report"          "kinship"         "gu"             
-##  [4] "fe"              "fg"              "maleFounders"   
-##  [7] "femaleFounders"  "nMaleFounders"   "nFemaleFounders"
-## [10] "total"</code></pre>
+<pre><code>##  [1] "report"          "kinship"         "gu"              "fe"             
+##  [5] "fg"              "maleFounders"    "femaleFounders"  "nMaleFounders"  
+##  [9] "nFemaleFounders" "total"</code></pre>
 <p>The <em>report</em> object (an R dataframe) can in-turn be examined.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## column names</span></a></code></pre></div>
-<pre><code>##  [1] "id"              "sex"             "age"            
-##  [4] "birth"           "exit"            "population"     
-##  [7] "origin"          "indivMeanKin"    "zScores"        
-## [10] "gu"              "totalOffspring"  "livingOffspring"
+<pre><code>##  [1] "id"              "sex"             "age"             "birth"          
+##  [5] "exit"            "population"      "origin"          "indivMeanKin"   
+##  [9] "zScores"         "gu"              "totalOffspring"  "livingOffspring"
 ## [13] "value"           "rank"</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(trimmedGeneticValue<span class="op">$</span>report) <span class="co">## Number of rows</span></a></code></pre></div>
 <pre><code>## [1] 327</code></pre>
-<p>The report is more conveniently used as a separate object. The next section of code rounds some of the numerica values and converts all columns to characters for display as a table where only the first 10 lines are included.</p>
+<p>The report is more conveniently used as a separate object. The next section of code rounds some of the numerical values and converts all columns to characters for display as a table where only the first 10 lines are included.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">rpt &lt;-<span class="st"> </span>trimmedGeneticValue[[<span class="st">"report"</span>]]</a>
 <a class="sourceLine" id="cb38-2" data-line-number="2">rpt<span class="op">$</span>indivMeanKin &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(rpt<span class="op">$</span>indivMeanKin, <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb38-3" data-line-number="3">rpt<span class="op">$</span>zScores &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(rpt<span class="op">$</span>zScores, <span class="dv">2</span>)</a>
@@ -523,18 +521,18 @@
 <li>Specify the sex ratio between 0.5 and 10 (F/M)</li>
 </ul>
 </li>
-<li>Whether or not to prepopulate (seed) groups with animals of your choice</li>
+<li>Whether or not to pre-populate (seed) groups with animals of your choice</li>
 <li>Number of groups to be formed</li>
 <li>Whether or not to ignore females at or above the minimum parent age</li>
 <li>Number of simulations used to search for the optimal group makeup</li>
-<li>Whether or not kinship coefficents are to be included in results</li>
+<li>Whether or not kinship coefficients are to be included in results</li>
 </ul>
 <p>You decisions regarding each of the above options are expressed in a call to the function <strong>groupAddAssign</strong>. A complete description of the function and its arguments is available using the code shown below.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">?groupAddAssign</a></code></pre></div>
 <p>Below is the descriptions of the function parameters extracted from the documentation near the time this tutorial was prepared.</p>
 <ul>
 <li><p><strong>candidates</strong> Character vector of IDs of the animals available for use in forming the groups. The animals that may be present in currentGroups are not included within candidates.</p></li>
-<li><p><strong>currentGroups</strong> List of character vectors of IDs of animals currently assigned to groups. Defaults to a list with character(0) in each sublist element (one for each group being formed) assuming no groups are prepopulated.</p></li>
+<li><p><strong>currentGroups</strong> List of character vectors of IDs of animals currently assigned to groups. Defaults to a list with character(0) in each sub-list element (one for each group being formed) assuming no groups are pre-populated.</p></li>
 <li><p><strong>kmat</strong> Numeric matrix of pairwise kinship values. Rows and columns are named with animal IDs.</p></li>
 <li><p><strong>ped</strong> Dataframe that is the ‘Pedigree’. It contains pedigree information including the IDs listed in candidates.</p></li>
 <li><p><strong>threshold</strong> Numeric value indicating the minimum kinship level to be considered in group formation. Pairwise kinship below this level will be ignored. The default values is 0.015625.</p></li>
@@ -545,7 +543,7 @@
 <li><p><strong>updateProgress</strong> Function or NULL. If this function is defined, it will be called during each iteration to update a shiny::Progress object.</p></li>
 <li><p><strong>harem</strong> Logical variable when set to TRUE, the formed groups have a single male at least minAge old.</p></li>
 <li><p><strong>sexRatio</strong> Numeric value indicating the ratio of females to males x from 0.5 to 20 by increments of 0.5.</p></li>
-<li><p><strong>withKin</strong> Logical variable when set to TRUE, the kinship matrix for the group is returned along with the group and score. Defaults to not return the kinship matrix. This maintains compatability with earlier versions.</p></li>
+<li><p><strong>withKin</strong> Logical variable when set to TRUE, the kinship matrix for the group is returned along with the group and score. Defaults to not return the kinship matrix. This maintains compatibility with earlier versions.</p></li>
 </ul>
 <p>We will use the <em>trimmedPed</em> pedigree in our code.</p>
 <p>For illustration purposes we are going to keep the numbers of candidates, groups, and iterations fairly small.</p>
@@ -558,7 +556,7 @@
 ##   F   M   H   U 
 ## 184  96   0   0</code></pre>
 <p>Our candidates are made up of 184 females and 96 males. The parameters <strong>currentGroups</strong>, <strong>threshold</strong>, <strong>ignore</strong>, <strong>minAge</strong>, <strong>sexRatio</strong>, <strong>withKin</strong>, and <strong>updateProgress</strong> are allowed to take their default values. The setting of the <strong>sexRatio</strong> parameter to 0 is ignored in the following call of the <strong>groupAddAssign</strong> function. This is consistent with the a value of 0 making little since in a breeding colony.</p>
-<p>The empty seventh group at the bottom is evidence that all of the canditate animals could be placed in a group without exceeding the default value of 0.015625.</p>
+<p>The empty seventh group at the bottom is evidence that all of the candidate animals could be placed in a group without exceeding the default value of 0.015625.</p>
 <div id="harems" class="section level3">
 <h3 class="hasAnchor">
 <a href="#harems" class="anchor"></a>Harems</h3>
@@ -571,46 +569,43 @@
 <a class="sourceLine" id="cb45-6" data-line-number="6">                     <span class="dt">harem =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb45-7" data-line-number="7">haremGrp<span class="op">$</span>group</a></code></pre></div>
 <pre><code>## [[1]]
-##  [1] "CHSCFG" "B1WVCN" "72LYDE" "13B1QL" "WI38KZ" "AIHJ8Z" "EMV4P6"
-##  [8] "I5CI33" "FB5L3N" "30J3CQ" "TEACA3" "7B9CA6" "0IIAEN" "BCJJKN"
-## [15] "0X4W26" "JLFKV8" "DKIM6U" "GTLA8R" "SH3FB7" "1CZM30" "Q7U139"
-## [22] "DCJJYS" "0SGJ12" "G25E3F" "QW2Z3R" "SHG3RB" "3SKITJ" "W0GUKI"
-## [29] "T3QPW5" "6F9FB8"
+##  [1] "CHSCFG" "B1WVCN" "72LYDE" "13B1QL" "WI38KZ" "AIHJ8Z" "EMV4P6" "I5CI33"
+##  [9] "FB5L3N" "30J3CQ" "TEACA3" "7B9CA6" "0IIAEN" "BCJJKN" "0X4W26" "JLFKV8"
+## [17] "DKIM6U" "GTLA8R" "SH3FB7" "1CZM30" "Q7U139" "DCJJYS" "0SGJ12" "G25E3F"
+## [25] "QW2Z3R" "SHG3RB" "3SKITJ" "W0GUKI" "T3QPW5" "6F9FB8"
 ## 
 ## [[2]]
-##  [1] "3QHAFI" "1GF3GM" "87AQLF" "N5QBWD" "9P0DES" "3YJIMV" "WJXIH9"
-##  [8] "W6MDVK" "83HQBN" "S7IWWA" "S222R3" "Q17CG3" "RJ4JPC" "HE0SCR"
-## [15] "W5WIRP" "5EDLL7" "QQMBT1" "1SPLS8" "E5Q33K" "QRZK48" "PU7RSG"
-## [22] "GIIEUD" "LVYYNY" "38K2SR" "MX4J7G" "6KWVRI" "WKY2SZ" "K3TNHP"
-## [29] "ZPS15A"
+##  [1] "3QHAFI" "1GF3GM" "87AQLF" "N5QBWD" "9P0DES" "3YJIMV" "WJXIH9" "W6MDVK"
+##  [9] "83HQBN" "S7IWWA" "S222R3" "Q17CG3" "RJ4JPC" "HE0SCR" "W5WIRP" "5EDLL7"
+## [17] "QQMBT1" "1SPLS8" "E5Q33K" "QRZK48" "PU7RSG" "GIIEUD" "LVYYNY" "38K2SR"
+## [25] "MX4J7G" "6KWVRI" "WKY2SZ" "K3TNHP" "ZPS15A"
 ## 
 ## [[3]]
-##  [1] "8TV4MT" "CHK1ZX" "N79QXB" "0XTZQ1" "50D77I" "5W621W" "YLRNIK"
-##  [8] "1SSCJC" "5BPBUI" "MYUMMX" "KX0RJ3" "7ZNY75" "S056D5" "D9P18Y"
-## [15] "NK802Y" "AW400C" "XEC0M5" "TXZUKC" "N4NV8B" "C18V6I" "R5AYJK"
-## [22] "M9PVG5" "AR5U44" "WTE53B" "B134XZ" "CLSVU6" "AP1YLW" "ZH3YG1"
-## [29] "X694YR" "VWC5ZH" "F7I2ED" "3GECJJ" "B228Q6"
+##  [1] "8TV4MT" "CHK1ZX" "N79QXB" "0XTZQ1" "50D77I" "5W621W" "YLRNIK" "1SSCJC"
+##  [9] "5BPBUI" "MYUMMX" "KX0RJ3" "7ZNY75" "S056D5" "D9P18Y" "NK802Y" "AW400C"
+## [17] "XEC0M5" "TXZUKC" "N4NV8B" "C18V6I" "R5AYJK" "M9PVG5" "AR5U44" "WTE53B"
+## [25] "B134XZ" "CLSVU6" "AP1YLW" "ZH3YG1" "X694YR" "VWC5ZH" "F7I2ED" "3GECJJ"
+## [33] "B228Q6"
 ## 
 ## [[4]]
-##  [1] "YDRD81" "MKY9TK" "01QRQ4" "LYSLPP" "QWKFBH" "Y6DB6L" "G58RGY"
-##  [8] "7NE2UT" "CRPXY7" "DRXMW4" "MTCAIG" "Z904TJ" "5IAFMK" "DPXEQE"
-## [15] "MH88T6" "EZ2F8A" "967Y3D" "AR17R5" "DH9WJQ" "BS3RLE" "99BMJW"
-## [22] "CMMUKU" "D4B0RM" "DHNQ1W" "XFWVVX" "YTJ2UL" "321LLB" "PYPM1W"
-## [29] "2F6J3U" "Y0TCYX" "ILVQVB" "MB6NYQ" "FL170P" "FG0SFA" "KZY6PD"
+##  [1] "YDRD81" "MKY9TK" "01QRQ4" "LYSLPP" "QWKFBH" "Y6DB6L" "G58RGY" "7NE2UT"
+##  [9] "CRPXY7" "DRXMW4" "MTCAIG" "Z904TJ" "5IAFMK" "DPXEQE" "MH88T6" "EZ2F8A"
+## [17] "967Y3D" "AR17R5" "DH9WJQ" "BS3RLE" "99BMJW" "CMMUKU" "D4B0RM" "DHNQ1W"
+## [25] "XFWVVX" "YTJ2UL" "321LLB" "PYPM1W" "2F6J3U" "Y0TCYX" "ILVQVB" "MB6NYQ"
+## [33] "FL170P" "FG0SFA" "KZY6PD"
 ## 
 ## [[5]]
-##  [1] "IZDV8K" "1VP3UC" "6X6BG9" "D33J06" "IH1KPA" "WK89I9" "PBAFJF"
-##  [8] "PI4VHT" "QCENKM" "TQEMY6" "1FAZ0K" "J3F6PD" "1QVS67" "NN3GDQ"
-## [15] "1KJ2MG" "8JUUJ9" "DI4AHD" "KEA4QG" "1CIRC9" "MFKT9C" "AZ3L0D"
-## [22] "LS184H" "PJ72W1" "92UG4N" "SCFSBF" "I8ABC7" "GCBYDW" "Q8U9LB"
-## [29] "XYRDKV"
+##  [1] "IZDV8K" "1VP3UC" "6X6BG9" "D33J06" "IH1KPA" "WK89I9" "PBAFJF" "PI4VHT"
+##  [9] "QCENKM" "TQEMY6" "1FAZ0K" "J3F6PD" "1QVS67" "NN3GDQ" "1KJ2MG" "8JUUJ9"
+## [17] "DI4AHD" "KEA4QG" "1CIRC9" "MFKT9C" "AZ3L0D" "LS184H" "PJ72W1" "92UG4N"
+## [25] "SCFSBF" "I8ABC7" "GCBYDW" "Q8U9LB" "XYRDKV"
 ## 
 ## [[6]]
-##  [1] "A98D7P" "7RA57Q" "EX5K0S" "YFCIHJ" "WLMGS1" "2Z4YLY" "465ERA"
-##  [8] "5KWNMZ" "H2J6UA" "S5H1GC" "F45799" "0HYZ23" "AFZKBS" "S3EBGZ"
-## [15] "5ERY5Z" "MPIQ4N" "GAS52W" "QCA36T" "9MG040" "ZQXZYB" "WNEAS6"
-## [22] "ZATMEE" "TYEWF1" "46ZHKN" "BKWE4D" "FJS7RQ" "ESUIAF" "CS23RV"
-## [29] "5EDIEE" "3DTD2N" "RVHVTZ" "414N7M" "PVY432" "G8MCV7"
+##  [1] "A98D7P" "7RA57Q" "EX5K0S" "YFCIHJ" "WLMGS1" "2Z4YLY" "465ERA" "5KWNMZ"
+##  [9] "H2J6UA" "S5H1GC" "F45799" "0HYZ23" "AFZKBS" "S3EBGZ" "5ERY5Z" "MPIQ4N"
+## [17] "GAS52W" "QCA36T" "9MG040" "ZQXZYB" "WNEAS6" "ZATMEE" "TYEWF1" "46ZHKN"
+## [25] "BKWE4D" "FJS7RQ" "ESUIAF" "CS23RV" "5EDIEE" "3DTD2N" "RVHVTZ" "414N7M"
+## [33] "PVY432" "G8MCV7"
 ## 
 ## [[7]]
 ## [1] NA</code></pre>
@@ -663,60 +658,57 @@
 <a class="sourceLine" id="cb51-6" data-line-number="6">                     <span class="dt">sexRatio =</span> <span class="dv">9</span>)</a>
 <a class="sourceLine" id="cb51-7" data-line-number="7">sexRatioGrp<span class="op">$</span>group</a></code></pre></div>
 <pre><code>## [[1]]
-##  [1] "1CIRC9" "ZDRSG0" "5EDLL7" "MYUMMX" "WKY2SZ" "AP1YLW" "CLSVU6"
-##  [8] "MH88T6" "R5AYJK" "3SKITJ" "9P0DES" "AR5U44" "1KJ2MG" "0V4SAC"
-## [15] "1SSCJC" "PJ72W1" "B134XZ" "D33J06" "Q17CG3" "DI4AHD" "S056D5"
-## [22] "LS184H" "99BMJW" "LVYYNY" "GM371F" "K3TNHP" "WJXIH9" "S5H1GC"
-## [29] "N79QXB" "1QVS67" "1VP3UC" "5KWNMZ" "38K2SR" "83HQBN" "IZDV8K"
+##  [1] "1CIRC9" "ZDRSG0" "5EDLL7" "MYUMMX" "WKY2SZ" "AP1YLW" "CLSVU6" "MH88T6"
+##  [9] "R5AYJK" "3SKITJ" "9P0DES" "AR5U44" "1KJ2MG" "0V4SAC" "1SSCJC" "PJ72W1"
+## [17] "B134XZ" "D33J06" "Q17CG3" "DI4AHD" "S056D5" "LS184H" "99BMJW" "LVYYNY"
+## [25] "GM371F" "K3TNHP" "WJXIH9" "S5H1GC" "N79QXB" "1QVS67" "1VP3UC" "5KWNMZ"
+## [33] "38K2SR" "83HQBN" "IZDV8K"
 ## 
 ## [[2]]
-##  [1] "WLMGS1" "DGZLV3" "F45799" "AFZKBS" "PI4VHT" "Y0TCYX" "WNEAS6"
-##  [8] "GIIEUD" "FL170P" "5BPBUI" "CMMUKU" "92UG4N" "TQEMY6" "G2GYST"
-## [15] "0XTZQ1" "GTLA8R" "XFWVVX" "N5QBWD" "TEACA3" "G8MCV7" "B228Q6"
-## [22] "ZPS15A" "G25E3F" "PVY432" "KZM9RB" "I5CI33" "DKIM6U" "T3QPW5"
-## [29] "1CZM30" "30J3CQ" "MKY9TK" "1FAZ0K" "MTCAIG"
+##  [1] "WLMGS1" "DGZLV3" "F45799" "AFZKBS" "PI4VHT" "Y0TCYX" "WNEAS6" "GIIEUD"
+##  [9] "FL170P" "5BPBUI" "CMMUKU" "92UG4N" "TQEMY6" "G2GYST" "0XTZQ1" "GTLA8R"
+## [17] "XFWVVX" "N5QBWD" "TEACA3" "G8MCV7" "B228Q6" "ZPS15A" "G25E3F" "PVY432"
+## [25] "KZM9RB" "I5CI33" "DKIM6U" "T3QPW5" "1CZM30" "30J3CQ" "MKY9TK" "1FAZ0K"
+## [33] "MTCAIG"
 ## 
 ## [[3]]
-##  [1] "B1WVCN" "XY2CK7" "BKWE4D" "KX0RJ3" "DHNQ1W" "01QRQ4" "QWKFBH"
-##  [8] "2F6J3U" "46ZHKN" "5IAFMK" "BCJJKN" "ESUIAF" "CS23RV" "S63QDN"
-## [15] "FG0SFA" "WTE53B" "AW400C" "IH1KPA" "0SGJ12" "C18V6I" "DH9WJQ"
-## [22] "XYRDKV" "EZ2F8A" "WK89I9" "5KFB90" "G58RGY" "YFCIHJ" "YTJ2UL"
-## [29] "465ERA" "DPXEQE" "MFKT9C" "PU7RSG" "KZY6PD" "GCBYDW" "Z25D52"
+##  [1] "B1WVCN" "XY2CK7" "BKWE4D" "KX0RJ3" "DHNQ1W" "01QRQ4" "QWKFBH" "2F6J3U"
+##  [9] "46ZHKN" "5IAFMK" "BCJJKN" "ESUIAF" "CS23RV" "S63QDN" "FG0SFA" "WTE53B"
+## [17] "AW400C" "IH1KPA" "0SGJ12" "C18V6I" "DH9WJQ" "XYRDKV" "EZ2F8A" "WK89I9"
+## [25] "5KFB90" "G58RGY" "YFCIHJ" "YTJ2UL" "465ERA" "DPXEQE" "MFKT9C" "PU7RSG"
+## [33] "KZY6PD" "GCBYDW" "Z25D52"
 ## 
 ## [[4]]
-##  [1] "QRZK48" "SXSVEH" "FB5L3N" "9MG040" "NK802Y" "3YJIMV" "W5WIRP"
-##  [8] "1SPLS8" "7B9CA6" "0HYZ23" "50D77I" "MB6NYQ" "ZQXZYB" "FFGPS4"
-## [15] "13B1QL" "414N7M" "N4NV8B" "EX5K0S" "ILVQVB" "8JUUJ9" "TXZUKC"
-## [22] "M9PVG5" "2Z4YLY" "6X6BG9" "3MMZD4" "W6MDVK" "Y6DB6L" "MPIQ4N"
-## [29] "HE0SCR"
+##  [1] "QRZK48" "SXSVEH" "FB5L3N" "9MG040" "NK802Y" "3YJIMV" "W5WIRP" "1SPLS8"
+##  [9] "7B9CA6" "0HYZ23" "50D77I" "MB6NYQ" "ZQXZYB" "FFGPS4" "13B1QL" "414N7M"
+## [17] "N4NV8B" "EX5K0S" "ILVQVB" "8JUUJ9" "TXZUKC" "M9PVG5" "2Z4YLY" "6X6BG9"
+## [25] "3MMZD4" "W6MDVK" "Y6DB6L" "MPIQ4N" "HE0SCR"
 ## 
 ## [[5]]
-##  [1] "ZATMEE" "CHJ9D2" "87AQLF" "6F9FB8" "7RA57Q" "7NE2UT" "0IIAEN"
-##  [8] "5ERY5Z" "NN3GDQ" "DCJJYS" "SHG3RB" "0X4W26" "967Y3D" "CFD12A"
-## [15] "ZH3YG1" "F7I2ED" "RVHVTZ" "GAS52W" "SH3FB7" "CRPXY7" "AIHJ8Z"
-## [22] "6KWVRI" "I8ABC7" "TYEWF1" "K7900I" "1GF3GM" "AR17R5" "EMV4P6"
-## [29] "SCFSBF" "J3F6PD" "RJ4JPC" "S222R3"
+##  [1] "ZATMEE" "CHJ9D2" "87AQLF" "6F9FB8" "7RA57Q" "7NE2UT" "0IIAEN" "5ERY5Z"
+##  [9] "NN3GDQ" "DCJJYS" "SHG3RB" "0X4W26" "967Y3D" "CFD12A" "ZH3YG1" "F7I2ED"
+## [17] "RVHVTZ" "GAS52W" "SH3FB7" "CRPXY7" "AIHJ8Z" "6KWVRI" "I8ABC7" "TYEWF1"
+## [25] "K7900I" "1GF3GM" "AR17R5" "EMV4P6" "SCFSBF" "J3F6PD" "RJ4JPC" "S222R3"
 ## 
 ## [[6]]
-##  [1] "Z904TJ" "YDRD81" "D9P18Y" "MX4J7G" "3GECJJ" "QCENKM" "AZ3L0D"
-##  [8] "D4B0RM" "5W621W" "YLRNIK" "X694YR" "Q7U139" "KEA4QG" "AEP5EG"
-## [15] "JLFKV8" "W0GUKI" "5EDIEE" "CHK1ZX" "Q8U9LB" "PBAFJF" "QQMBT1"
-## [22] "321LLB" "WI38KZ" "VWC5ZH" "JSAP3H" "DRXMW4" "H2J6UA" "FJS7RQ"
-## [29] "LYSLPP" "XEC0M5" "S3EBGZ" "S7IWWA" "E5Q33K" "BS3RLE"
+##  [1] "Z904TJ" "YDRD81" "D9P18Y" "MX4J7G" "3GECJJ" "QCENKM" "AZ3L0D" "D4B0RM"
+##  [9] "5W621W" "YLRNIK" "X694YR" "Q7U139" "KEA4QG" "AEP5EG" "JLFKV8" "W0GUKI"
+## [17] "5EDIEE" "CHK1ZX" "Q8U9LB" "PBAFJF" "QQMBT1" "321LLB" "WI38KZ" "VWC5ZH"
+## [25] "JSAP3H" "DRXMW4" "H2J6UA" "FJS7RQ" "LYSLPP" "XEC0M5" "S3EBGZ" "S7IWWA"
+## [33] "E5Q33K" "BS3RLE"
 ## 
 ## [[7]]
-##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "TR5L57" "XC304E" "Z7NBA2" "1E8KD1"
-##  [8] "5PW7WT" "A6A1M1" "BW10CL" "FTVE03" "IRFJ09" "KXHGRH" "LMJWTN"
-## [15] "Q9LWGX" "R6HV9A" "RNQU14" "09LFE4" "3DTD2N" "3QHAFI" "55BPSE"
-## [22] "5XVTVH" "72LYDE" "8IG767" "9FRCIE" "ER464J" "FG6L7S" "NHWTJ9"
-## [29] "P7RBPI" "TBCE78" "YI16QD" "2F1IV1" "4LHK19" "59NYZE" "5IYDXN"
-## [36] "6KLWVC" "80F2MI" "8TV4MT" "A98D7P" "AZ4D19" "BTTHAJ" "CHSCFG"
-## [43] "EEGLWY" "FX9E4X" "G91ZM6" "J1R2EW" "LDND6J" "LN1DLY" "MQT080"
-## [50] "NSIC4I" "PHB6TE" "PYPM1W" "QRWYQZ" "QW2Z3R" "RY1AZM" "WHQLH5"
-## [57] "WQUN84" "XL658N" "XX0GYV" "YHHVC7" "YP910X" "0X1RZ9" "3YHBC1"
-## [64] "55VDSQ" "653J82" "6MEP2C" "76DIT4" "7ZNY75" "80KACX" "B2YJJP"
-## [71] "E3JP0C" "FLIZQI" "MEUZ85" "PA9F3J" "QCA36T" "T38W6H" "TJN1AD"
-## [78] "WNKKW3" "XZH41H" "3P9BX6" "7D09WH" "ZW2X4N"</code></pre>
+##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "TR5L57" "XC304E" "Z7NBA2" "1E8KD1" "5PW7WT"
+##  [9] "A6A1M1" "BW10CL" "FTVE03" "IRFJ09" "KXHGRH" "LMJWTN" "Q9LWGX" "R6HV9A"
+## [17] "RNQU14" "09LFE4" "3DTD2N" "3QHAFI" "55BPSE" "5XVTVH" "72LYDE" "8IG767"
+## [25] "9FRCIE" "ER464J" "FG6L7S" "NHWTJ9" "P7RBPI" "TBCE78" "YI16QD" "2F1IV1"
+## [33] "4LHK19" "59NYZE" "5IYDXN" "6KLWVC" "80F2MI" "8TV4MT" "A98D7P" "AZ4D19"
+## [41] "BTTHAJ" "CHSCFG" "EEGLWY" "FX9E4X" "G91ZM6" "J1R2EW" "LDND6J" "LN1DLY"
+## [49] "MQT080" "NSIC4I" "PHB6TE" "PYPM1W" "QRWYQZ" "QW2Z3R" "RY1AZM" "WHQLH5"
+## [57] "WQUN84" "XL658N" "XX0GYV" "YHHVC7" "YP910X" "0X1RZ9" "3YHBC1" "55VDSQ"
+## [65] "653J82" "6MEP2C" "76DIT4" "7ZNY75" "80KACX" "B2YJJP" "E3JP0C" "FLIZQI"
+## [73] "MEUZ85" "PA9F3J" "QCA36T" "T38W6H" "TJN1AD" "WNKKW3" "XZH41H" "3P9BX6"
+## [81] "7D09WH" "ZW2X4N"</code></pre>
 <p>Again we can identify and list the males in each group with the following code.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(sexRatioGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {ids[ids <span class="op">%in%</span><span class="st"> </span>trimmedPed<span class="op">$</span>id[trimmedPed<span class="op">$</span>sex <span class="op">==</span><span class="st"> "M"</span>]]})</a></code></pre></div>
 <pre><code>## [[1]]
@@ -738,17 +730,16 @@
 ## [1] "YDRD81" "AEP5EG" "JSAP3H"
 ## 
 ## [[7]]
-##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "TR5L57" "XC304E" "Z7NBA2" "1E8KD1"
-##  [8] "5PW7WT" "A6A1M1" "BW10CL" "FTVE03" "IRFJ09" "KXHGRH" "LMJWTN"
-## [15] "Q9LWGX" "R6HV9A" "RNQU14" "09LFE4" "3QHAFI" "55BPSE" "5XVTVH"
-## [22] "8IG767" "9FRCIE" "ER464J" "FG6L7S" "NHWTJ9" "P7RBPI" "TBCE78"
-## [29] "YI16QD" "2F1IV1" "4LHK19" "59NYZE" "5IYDXN" "6KLWVC" "80F2MI"
-## [36] "8TV4MT" "A98D7P" "AZ4D19" "BTTHAJ" "CHSCFG" "EEGLWY" "FX9E4X"
-## [43] "G91ZM6" "J1R2EW" "LDND6J" "LN1DLY" "MQT080" "NSIC4I" "PHB6TE"
-## [50] "QRWYQZ" "RY1AZM" "WHQLH5" "WQUN84" "XL658N" "XX0GYV" "YHHVC7"
-## [57] "YP910X" "0X1RZ9" "3YHBC1" "55VDSQ" "653J82" "6MEP2C" "76DIT4"
-## [64] "80KACX" "B2YJJP" "E3JP0C" "FLIZQI" "MEUZ85" "PA9F3J" "T38W6H"
-## [71] "TJN1AD" "WNKKW3" "XZH41H" "3P9BX6" "7D09WH" "ZW2X4N"</code></pre>
+##  [1] "HLQ9SY" "B2CKHA" "GDXWJ1" "TR5L57" "XC304E" "Z7NBA2" "1E8KD1" "5PW7WT"
+##  [9] "A6A1M1" "BW10CL" "FTVE03" "IRFJ09" "KXHGRH" "LMJWTN" "Q9LWGX" "R6HV9A"
+## [17] "RNQU14" "09LFE4" "3QHAFI" "55BPSE" "5XVTVH" "8IG767" "9FRCIE" "ER464J"
+## [25] "FG6L7S" "NHWTJ9" "P7RBPI" "TBCE78" "YI16QD" "2F1IV1" "4LHK19" "59NYZE"
+## [33] "5IYDXN" "6KLWVC" "80F2MI" "8TV4MT" "A98D7P" "AZ4D19" "BTTHAJ" "CHSCFG"
+## [41] "EEGLWY" "FX9E4X" "G91ZM6" "J1R2EW" "LDND6J" "LN1DLY" "MQT080" "NSIC4I"
+## [49] "PHB6TE" "QRWYQZ" "RY1AZM" "WHQLH5" "WQUN84" "XL658N" "XX0GYV" "YHHVC7"
+## [57] "YP910X" "0X1RZ9" "3YHBC1" "55VDSQ" "653J82" "6MEP2C" "76DIT4" "80KACX"
+## [65] "B2YJJP" "E3JP0C" "FLIZQI" "MEUZ85" "PA9F3J" "T38W6H" "TJN1AD" "WNKKW3"
+## [73] "XZH41H" "3P9BX6" "7D09WH" "ZW2X4N"</code></pre>
 <p>We can also see the number of animals and the sex ratios created in each group.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">lines &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(sexRatioGrp<span class="op">$</span>group, <span class="cf">function</span>(ids) {</a>
 <a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"Count: "</span>, <span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(ids), <span class="st">" Sex Ratio: "</span>, </a>
@@ -799,7 +790,7 @@
 </tr>
 <tr class="odd">
 <td align="left">femaleSires</td>
-<td align="left">Individuals listed as female or hemaphroditic and as a sire.</td>
+<td align="left">Individuals listed as female or hermaphroditic and as a sire.</td>
 </tr>
 <tr class="even">
 <td align="left">maleDams</td>
@@ -823,7 +814,7 @@
 </tr>
 </tbody>
 </table>
-<p>We are going to use the small imaginary pedigree listed below that has multiple errors to discuss pedigree error detection and reporting. First note the birthdates of ego_id <em>o4</em> (2006-04-13) and the purported sire <em>s2</em> (2006-06-19). Note also the proported birthdate of the <em>d2</em> and the birthdates of her offspring. Obviously dates or IDs may be incorrect.</p>
+<p>We are going to use the small imaginary pedigree listed below that has multiple errors to discuss pedigree error detection and reporting. First note the birth dates of ego_id <em>o4</em> (2006-04-13) and the purported sire <em>s2</em> (2006-06-19). Note also the purported birth date of the <em>d2</em> and the birth dates of her offspring. Obviously dates or IDs may be incorrect.</p>
 <p>This is the pedigree. <em>(We will discuss the column names shortly.)</em></p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(nprcmanager<span class="op">::</span>pedOne)</a></code></pre></div>
 <table class="table">
@@ -955,7 +946,7 @@
 </tbody>
 </table>
 <p>Examination of the ages of the parents reveals the issues being reported.</p>
-<p>We can remove the errors by changing the birthdates of <em>o4</em> from 2006-04-13 to 2015-09-16 and of <em>d2</em> from 2015-09-16 to 2006-04-13.</p>
+<p>We can remove the errors by changing the birth dates of <em>o4</em> from 2006-04-13 to 2015-09-16 and of <em>d2</em> from 2015-09-16 to 2006-04-13.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">pedOne<span class="op">$</span>birth_date[pedOne<span class="op">$</span>ego_id <span class="op">==</span><span class="st"> "o4"</span>] &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2015-09-16"</span>)</a>
 <a class="sourceLine" id="cb62-2" data-line-number="2">pedOne<span class="op">$</span>birth_date[pedOne<span class="op">$</span>ego_id <span class="op">==</span><span class="st"> "d2"</span>] &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2006-04-13"</span>)</a></code></pre></div>
 <p>Note the changes made to the column names between the original <strong>pedOne</strong> pedigree and the pedigree (<strong>ped</strong>) we get from <strong>qcStudbook</strong>. We have chosen to limit the displayed pedigree by selecting the <em>ego_id</em>’s and <em>id</em>’s in <strong>pedOne</strong> and <strong>ped</strong> respectively.</p>
@@ -966,7 +957,7 @@
 ## 4 s2 &lt;NA&gt; &lt;NA&gt;   M   0 2006-06-19 &lt;NA&gt; 13.4     original
 ## 7 o3   s2   d2   F   1 2012-04-11 &lt;NA&gt;  7.6     original
 ## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.2     original</code></pre>
-<p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitely requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
+<p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitly requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb65-2" data-line-number="2">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb65-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(errorList)</a></code></pre></div>
@@ -980,7 +971,7 @@
 ## 
 ## Please check and correct the pedigree file.
 ## </code></pre>
-<p>We will discuss each of these newly identified errors in a moment, however, let’s look at shortening this report, because often you will not be interested in the more trivial changes to the column names made by <strong>qcStudbook</strong> and in those cases you simply choose not to report changes to the column names as is shown here by setting <em>reportChanges</em> to . For this illustration, we are going to bring back the original copy of <strong>pedOne</strong> to see how the suspicious parents are reported by the <strong>summmary</strong> function.</p>
+<p>We will discuss each of these newly identified errors in a moment, however, let’s look at shortening this report, because often you will not be interested in the more trivial changes to the column names made by <strong>qcStudbook</strong> and in those cases you simply choose not to report changes to the column names as is shown here by setting <em>reportChanges</em> to . For this illustration, we are going to bring back the original copy of <strong>pedOne</strong> to see how the suspicious parents are reported by the <strong>summary</strong> function.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">pedOne &lt;-<span class="st"> </span>nprcmanager<span class="op">::</span>pedOne</a>
 <a class="sourceLine" id="cb67-2" data-line-number="2">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">FALSE</span>, </a>
 <a class="sourceLine" id="cb67-3" data-line-number="3">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
@@ -1026,7 +1017,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">elapsed_time &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(start_time)</a></code></pre></div>
-<p>The current date and time is 2019-11-20 00:27:19. The processing time for this document was 2 minutes and 21 seconds..</p>
+<p>The current date and time is 2019-11-24 00:21:01. The processing time for this document was 2 minutes and 17 seconds..</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
 <pre><code>## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
@@ -1043,28 +1034,29 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.25              ggplot2_3.2.1           nprcmanager_0.5.40.9002
+## [1] knitr_1.26              ggplot2_3.2.1           nprcmanager_0.5.40.9003
 ## [4] stringi_1.4.3          
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.2           lubridate_1.7.4      lattice_0.20-38      gtools_3.8.1        
-##  [5] assertthat_0.2.1     rprojroot_1.3-2      digest_0.6.21        mime_0.7            
-##  [9] R6_2.4.0             cellranger_1.1.0     futile.options_1.0.1 backports_1.1.5     
+##  [1] Rcpp_1.0.3           lubridate_1.7.4      lattice_0.20-38      gtools_3.8.1        
+##  [5] assertthat_0.2.1     rprojroot_1.3-2      digest_0.6.22        mime_0.7            
+##  [9] R6_2.4.1             cellranger_1.1.0     futile.options_1.0.1 backports_1.1.5     
 ## [13] WriteXLS_5.0.0       evaluate_0.14        highr_0.8            httr_1.4.1          
-## [17] pillar_1.4.2         gplots_3.0.1.1       rlang_0.4.0          lazyeval_0.2.2      
+## [17] pillar_1.4.2         gplots_3.0.1.1       rlang_0.4.1          lazyeval_0.2.2      
 ## [21] readxl_1.3.1         rstudioapi_0.10      gdata_2.18.0         Matrix_1.2-17       
-## [25] checkmate_1.9.4      rmarkdown_1.16       pkgdown_1.4.1        labeling_0.3        
+## [25] checkmate_1.9.4      rmarkdown_1.17       pkgdown_1.4.1        labeling_0.3        
 ## [29] desc_1.2.0           stringr_1.4.0        htmlwidgets_1.5.1    munsell_0.5.0       
 ## [33] shiny_1.4.0          anytime_0.3.6        compiler_3.6.1       httpuv_1.5.2        
-## [37] xfun_0.10            pkgconfig_2.0.3      htmltools_0.4.0      tidyselect_0.2.5    
+## [37] xfun_0.11            pkgconfig_2.0.3      htmltools_0.4.0      tidyselect_0.2.5    
 ## [41] tibble_2.1.3         htmlTable_1.13.2     withr_2.1.2          dplyr_0.8.3         
 ## [45] crayon_1.3.4         later_1.0.0          MASS_7.3-51.4        bitops_1.0-6        
 ## [49] grid_3.6.1           jsonlite_1.6         xtable_1.8-4         gtable_0.3.0        
-## [53] magrittr_1.5         formatR_1.7          scales_1.0.0         KernSmooth_2.23-16  
-## [57] fs_1.3.1             promises_1.1.0       futile.logger_1.4.3  lambda.r_1.2.4      
-## [61] RColorBrewer_1.1-2   tools_3.6.1          glue_1.3.1           Rlabkey_2.3.2       
-## [65] purrr_0.3.3          plotrix_3.7-6        fastmap_1.0.1        yaml_2.2.0          
-## [69] colorspace_1.4-1     caTools_1.17.1.2     memoise_1.1.0</code></pre>
+## [53] lifecycle_0.1.0      magrittr_1.5         formatR_1.7          scales_1.1.0        
+## [57] KernSmooth_2.23-16   farver_2.0.1         fs_1.3.1             promises_1.1.0      
+## [61] futile.logger_1.4.3  lambda.r_1.2.4       RColorBrewer_1.1-2   tools_3.6.1         
+## [65] glue_1.3.1           Rlabkey_2.3.3        purrr_0.3.3          plotrix_3.7-6       
+## [69] fastmap_1.0.1        yaml_2.2.0           colorspace_1.4-1     caTools_1.17.1.2    
+## [73] memoise_1.1.0</code></pre>
 </div>
 <div class="footnotes">
 <hr>

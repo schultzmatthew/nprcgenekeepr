@@ -16,10 +16,9 @@ AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
 
 BuildType: Package
-PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
-PackageBuildArgs: --md5  --compact-vignettes
-PackageBuildBinaryArgs: --md5  --compact-vignettes
+PackageBuildArgs: --md5  --compact-vignettes="both"
+PackageBuildBinaryArgs: --md5  --compact-vignettes="both"
 PackageCheckArgs: --as-cran
 PackageRoxygenize: rd,collate,namespace
 

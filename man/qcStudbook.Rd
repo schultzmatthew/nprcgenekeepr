@@ -4,8 +4,7 @@
 \alias{qcStudbook}
 \title{Quality Control for the Studbook or pedigree}
 \usage{
-qcStudbook(sb, minParentAge = 2, reportChanges = FALSE,
-  reportErrors = FALSE)
+qcStudbook(sb, minParentAge = 2, reportChanges = FALSE, reportErrors = FALSE)
 }
 \arguments{
 \item{sb}{A dataframe containing a table of pedigree and demographic

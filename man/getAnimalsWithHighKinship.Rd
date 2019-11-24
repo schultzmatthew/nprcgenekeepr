@@ -4,8 +4,7 @@
 \alias{getAnimalsWithHighKinship}
 \title{Forms a list of animal Ids and animals related to them}
 \usage{
-getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups, ignore,
-  minAge)
+getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups, ignore, minAge)
 }
 \arguments{
 \item{kmat}{numeric matrix of pairwise kinship values. Rows and columns

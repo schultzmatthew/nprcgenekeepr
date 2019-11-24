@@ -4,8 +4,16 @@
 \alias{fillGroupMembers}
 \title{Forms and fills list of animals groups based on provided constraints}
 \usage{
-fillGroupMembers(candidates, currentGroups, kin, ped, harem, minAge, numGp,
-  sexRatio)
+fillGroupMembers(
+  candidates,
+  currentGroups,
+  kin,
+  ped,
+  harem,
+  minAge,
+  numGp,
+  sexRatio
+)
 }
 \arguments{
 \item{candidates}{character vector of IDs of the animals available for

@@ -17,6 +17,7 @@ library(grid)
 library(stringi)
 library(nprcmanager)
 knitr::opts_chunk$set(eval = FALSE, echo=TRUE, results = "markup", cache = FALSE)
+pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
 ```
 
@@ -63,9 +64,12 @@ find the pedigree you will be using.
 Most of the screen is filled with information about formatting a text or
 Excel worksheet pedigree file.
 
+```{r eopening-screen-top, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/opening_screen_top.png")
+grid.raster(img)
+```
 
 
-![](./shiny_app_use/opening_screen_top.png)
 
 *********
 
@@ -73,9 +77,12 @@ Excel worksheet pedigree file.
 Scrolling down to the middle of the opening screen exposes a table that 
 describes a pedigree file and further instructions.
 
+```{r eopening-screen-middle, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/opening_screen_middle.png")
+grid.raster(img)
+```
 
 
-![](./shiny_app_use/opening_screen_middle.png)
 
 *********
 
@@ -86,7 +93,11 @@ use of a genotype file. This tutorial will not include instructions on using a
 genotype file.
 
 
-![](./shiny_app_use/opening_screen_bottom.png)
+```{r eopening-screen-bottom, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/opening_screen_bottom.png")
+grid.raster(img)
+```
+
 
 
 *********
@@ -94,11 +105,15 @@ genotype file.
 ### Reading in the Pedigree
 
 In this introductory tutorial, we will use an Excel file containing 
-a hypothetical pedigree of macques.
+a hypothetical pedigree of macaques.
 We will work with the gray box on the left at the top of the screen.
 
+```{r eopening-screen-top-red-oval, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/opening_screen_top_red_oval.png")
+grid.raster(img)
+```
 
-![](./shiny_app_use/opening_screen_top_red_oval.png)
+
 
 *********
 
@@ -127,10 +142,10 @@ grid.raster(img)
 
 It is important to make sure the minimum parent age is low enough for the 
 animals in your pedigree. For our example pedigree, we are changing it from
-4 years to 2 years of age since these macques may reproduce as early as two 
+4 years to 2 years of age since these macaques may reproduce as early as two 
 years of age.
 This is shown below in three progressive images with the center image 
-demonstrating how the hovertext provides an explaination of how this value is 
+demonstrating how the hovertext provides an explanation of how this value is 
 used.
 
 
@@ -170,7 +185,7 @@ errorDescriptions <- c(
   "Columns that must be within the pedigree file are missing.",
   "Values, which are supposed to be dates, cannot be interpreted as a date.",
   "Parents were too young on the date of birth of to have been the parent.",
-  "Individuals listed as female or hemaphroditic and as a sire.",
+  "Individuals listed as female or hermaphroditic and as a sire.",
   "Individuals are listed as male and as a dam.", 
   "Individuals who are listed as both a sire and a dam.",
   "IDs listed more than once.",
@@ -196,8 +211,12 @@ at a time, but you can choose to display 10, 25, 50, or 100 rows.
 You can choose to display UNKNOWN IDs in the rows displayed.
 
 
+```{r pb-100-rows-display-unknown-ids, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/pb_100_rows_display_unknown_ids.png")
+grid.raster(img)
+```
 
-![](./shiny_app_use/pb_100_rows_display_unknown_ids.png)
+
 
 
 *********
@@ -206,7 +225,7 @@ You can choose to display UNKNOWN IDs in the rows displayed.
 
 I have place red lines under the UNKNOWN IDs in the partial pedigree list below
 for clarity. These IDs have no meaning other than they all begin with the letter
-_U_ and are following with a left alphnumeric string of five places. 
+_U_ and are following with a left alphanumeric string of five places. 
 The form of this ID is set by the _obfuscateId_ function.
 
 
@@ -311,7 +330,14 @@ grid.raster(img)
 The __Pedigree Age Plot__ tab displays a standard pyramid plot for the pedigree
 as selected in the __Pedigree Browser__ tab.
 This is showing 332 living animals from the entire example pedigree.
-![](./shiny_app_use/age_plot.png)
+
+
+```{r age-plot, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/age_plot.png")
+grid.raster(img)
+```
+
+
 
 *********
 
@@ -327,8 +353,11 @@ structures, but 1000 iterations has seemed to provide reproducible results.
  
 
 
+```{r gva-calculating, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/gva_calculating.png")
+grid.raster(img)
+```
 
-![](./shiny_app_use/gva_calculating.png)
 
 *********
 
@@ -345,7 +374,11 @@ __Show entries__ selection tool.
 
 
 
-![](./shiny_app_use/gva_first_high_value.png)
+```{r gva-first-high-value, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/gva_first_high_value.png")
+grid.raster(img)
+```
+
 
 *********
 
@@ -355,25 +388,27 @@ Though not shown here, the value of _Undetermined_ in the __Value Designation__
 column means the animal did not have parentage information.
 
 
-
-
-![](./shiny_app_use/gva_high_and_low_value.png)
-
+```{r gva-high-and-low-value, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/gva_high_and_low_value.png")
+grid.raster(img)
+```
 
 
 *********
 ## Summary Statistics
 
-The __Summary Statisitics and Plots__ tab used results from the 
+The __Summary Statistics and Plots__ tab used results from the 
 __Genetic Value Analysis__ tab.
 
+```{r ss-first-view, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/ss_first_view.png")
+grid.raster(img)
+```
 
-
-![](./shiny_app_use/ss_first_view.png)
 *********
 
-The __Export Kinship Matix__ button creates a CSV file that has a row and
-column for each individual in the genetic analyis plus a first row 
+The __Export Kinship Matrix__ button creates a CSV file that has a row and
+column for each individual in the genetic analysis plus a first row 
 and first column each containing the IDs.
 
 The first few rows of such a file are shown below.
@@ -393,15 +428,22 @@ _offspring_, _siblings_, and _total_.
 The first few rows of such a file are shown below.
 
 
-![](./shiny_app_use/ss_kinship_matrix.png)
+```{r ss-kinship-matrix, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/ss_kinship_matrix.png")
+grid.raster(img)
+```
+
+
 *********
 
 The six plots provide histograms and boxplots for the kinship coefficients,
 the Z-scores of the kinship coefficients, and the genome uniqueness scores.
 
+```{r ss-trimmed-all-plots, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/ss_trimmed_all_plots.png")
+grid.raster(img)
+```
 
-
-![](./shiny_app_use/ss_trimmed_all_plots.png)
 
 *********
 
@@ -424,7 +466,11 @@ formed.
 
 
 
-![](./shiny_app_use/breeding_group_first_view.png)
+```{r breeding-group-first-view, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/breeding_group_first_view.png")
+grid.raster(img)
+```
+
 
 *********
 
@@ -442,9 +488,18 @@ __Number of Groups Desired__ field, which is outlined in blue in the image
 below.
 
 
-![](./shiny_app_use/breeding_group_1.png)
+```{r breeding-group-1, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/breeding_group_1.png")
+grid.raster(img)
+```
+
+
 *********
 
+There are often behavioral constraints, such as preexisting social groups, 
+that dictate the need to have some animals maintained together. 
+This need is readily accommodated by pre-seeding groups with those social 
+groups.
 You may select the __Optional: Seed Groups with Specific Animals__ field if
 you decide to place some animals together within the groups because you know
 them to be compatible with each other.
@@ -457,7 +512,11 @@ age of two being grouped with their mother.
 *********
 
 
-![](./shiny_app_use/breeding_group_6_infants_with_dam.png)
+```{r breeding-group-6-infants-with-dam, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/breeding_group_6_infants_with_dam.png")
+grid.raster(img)
+```
+
 
 *********
 
@@ -466,8 +525,11 @@ animals that could be added while satisfying the requirements imposed by the
 selected settings. I have indicated the seed animals for the first group with
 red rectangles.
 
-![](./shiny_app_use/breeding_group_first_group_no_kinship_seeds_indicated.png)
 
+```{r breeding-group-first-group-no-kinship-seeds-indicated, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/breeding_group_first_group_no_kinship_seeds_indicated.png")
+grid.raster(img)
+```
 
 *********
 
@@ -479,7 +541,10 @@ A group of ten animals was formed in the next run after choosing to include
 kinship and selecting the __Make Groups__ button.
 
 
-![](./shiny_app_use/breeding_group_6_seed_grps_grp_6_kinship.png)
+```{r breeding-group-6-seed-grps-grp-6-kinship, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/breeding_group_6_seed_grps_grp_6_kinship.png")
+grid.raster(img)
+```
 
 
 *********
@@ -487,4 +552,4 @@ kinship and selecting the __Make Groups__ button.
 The option to select a desired sex ratio allows you to select any ratio
 desired.
 However, the ratio obtained is limited by the availability of animals that
-meet all critera you have set.
+meet all criteria you have set.
