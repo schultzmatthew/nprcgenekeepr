@@ -13,7 +13,10 @@ library(rmsutilityr)
 library(nprcmanager)
 ```
 Provided in reverse chronological order
-
+## 20191130
+1.  See if https://www.semanticscholar.org/paper/Management-of-genetic-diversity-using-gene-dropping-Khaldari-Javaremi/43dd1975193830b9243c8eef672db134e42e871d/figure/3 
+    is figure that would be beneficial.
+    
 ## 20191120
 
 1.  Export all graphics

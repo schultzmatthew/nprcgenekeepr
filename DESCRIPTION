@@ -1,13 +1,32 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.40.9003
-Date: 2019-11-20
+Version: 0.5.40.9004
+Date: 2019-11-30
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
-    person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
+    person("Terry", "Therneau", role = c("aut")),
+    person("R. Mark", "Sharp", email = "rmsharp@me.com", 
+    comment = c(ORCID = "0000-0002-6170-6942"), 
     role = c("aut", "ctb", "cre", "cph")))
-Description: Implements Genetic Tools for Colony Management.
+Description: The goal of nprcmanager is to implement Genetic Tools for Colony 
+    Management. It provides a Shiny application with exposed functions.
+    At present, the application supports 5 functions: (1) Quality control of 
+    studbooks contained in text files or Excel workbooks and of pedigrees within
+    LabKey Electronic Health Records (EHR); (2) Creation of pedigrees from a 
+    lists of animals using the LabKey EHR integration; (3) Creation and display 
+    of an age by sex pyramid plot of the living animals within the designated 
+    pedigree; (4) Generation of Genetic Value Analysis Reports; and (5) Creation
+    of potential breeding groups with and without proscribed sex ratios and 
+    defined maximum kinships. The gene dropping method from "Pedigree analysis 
+    by computer simulation" by Jean W Maccluer, John L Vandeberg, and Oliver A 
+    Ryder (1986) <doi:10.1002/zoo.1430050209> is used in the genetic value 
+    calculations and the kinship coefficients are calculated by the method 
+    found in the book "Mathematical and Statistical Methods for Genetic 
+    Analysis" by Kenneth Lange (2002) <doi:10.1007/978-0-387-21750-5>.
+)
+
+A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (Macaca mulatto) Vinson, A ; Raboin, Mj Journal Of The American Association For Laboratory Animal Science, 2015 Nov, Vol.54(6), pp.700-707 
 URL: https://rmsharp.github.io/nprcmanager/, https://github.com/rmsharp/nprcmanager
 BugReports: https://github.com/rmsharp/nprcmanager/issues
 Depends:
