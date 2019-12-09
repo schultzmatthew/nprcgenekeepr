@@ -169,7 +169,8 @@ shinyServer(function(input, output, session) {
                    name = "nprcmanager")
         if (!checkErrorLst(errorLst)) {
           errorLst <- tryCatch(
-            qcStudbook(breederPed, minParentAge, reportChanges = FALSE, reportErrors = TRUE),
+            qcStudbook(breederPed, minParentAge, reportChanges = FALSE,
+                       reportErrors = TRUE),
             warning = function(cond) {return(NULL)},
             error = function(cond) {return(NULL)})
         }

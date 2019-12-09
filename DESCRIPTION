@@ -1,7 +1,7 @@
 Package: nprcmanager
 Type: Package
 Title: Implements Genetic Tools for Colony Management
-Version: 0.5.40.9004
+Version: 0.5.41
 Date: 2019-11-30
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
@@ -12,9 +12,9 @@ Authors@R: c(
     role = c("aut", "ctb", "cre", "cph")))
 Description: The goal of nprcmanager is to implement Genetic Tools for Colony 
     Management and is a derivation of the work in Amanda Vinson and Michael J 
-    Raboin (2015) "A Practical Approach for Designing Breeding Groups to
-    Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques
-    (Macaca mulatto)" <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4671785/>
+    Raboin (2015) <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4671785/>
+    "A Practical Approach for Designing Breeding Groups to Maximize Genetic 
+    Diversity in a Large Colony of Captive Rhesus Macaques (Macaca mulatto)".
     It provides a Shiny application with an exposed API. 
     The application supports five groups of functions: (1) Quality control of 
     studbooks contained in text files or Excel workbooks and of pedigrees within

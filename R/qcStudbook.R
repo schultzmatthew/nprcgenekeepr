@@ -213,13 +213,12 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
     }
   } else {
     if (nrow(suspiciousParents) > 0) {
-        fileName <- paste0(getSiteInfo(expectConfigFile = FALSE)$homeDir,
-                           "lowParentAge.csv")
-        write.csv(suspiciousParents,
-                  file = fileName, row.names = FALSE)
+      fileName <- paste0(tempdir(), "/lowParentAge.csv")
+      write.csv(suspiciousParents,
+                file = fileName, row.names = FALSE)
 
-        stop(paste0("Parents with low age at birth of offspring are listed in ",
-                    fileName, ".\n"))
+      stop(paste0("Parents with low age at birth of offspring are listed in ",
+                  fileName, ".\n"))
     }
   }
   # setting age:

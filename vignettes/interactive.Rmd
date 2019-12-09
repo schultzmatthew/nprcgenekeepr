@@ -699,8 +699,8 @@ knitr::kable(nprcmanager::pedOne)
 
 If we try to convert this pedigree file into the standardized studbook format, 
 we are going to get an error message and the 
-creation of a file in the user's home directory that lists the records that 
-have generated the errors. 
+creation of a file in the R sessions temporary directory that lists the records 
+that have generated the errors. 
 
 ```{r summary-pedOne-no-errors, error = TRUE}
 pedOne <- nprcmanager::pedOne # put it in the local environment
@@ -711,7 +711,7 @@ ped <- qcStudbook(pedOne, minParentAge = 0)
 The contents of _lowParentAge.csv_ is shown below.
 
 ```{r read-lowParentAge.csv, echo = FALSE, include = FALSE}
-lowParentAge <- read.csv("~/lowParentAge.csv")
+lowParentAge <- read.csv(paste0(tempdir(),"/lowParentAge.csv"))
 ```
 ```{r print-lowParentAge.csv, echo = FALSE}
 knitr::kable(lowParentAge)

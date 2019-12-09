@@ -1,7 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-11/15/2019
+11/30/2019
+
+# nprcmanager 0.5.41 (20191130)
+
+  - CRAN submission.
+  - Move output of suspicious parent list from the user’s home directory
+    to the result of `tempdir()`.
 
 # nprcmanager 0.5.40.9002 (20191119)
 
