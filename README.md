@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-11/24/2019
+12/16/2019
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/nprcmanager)
 [![Project Status: Active – The project has reached a stable, usable

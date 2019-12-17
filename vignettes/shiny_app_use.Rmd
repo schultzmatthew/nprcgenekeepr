@@ -64,7 +64,7 @@ find the pedigree you will be using.
 Most of the screen is filled with information about formatting a text or
 Excel worksheet pedigree file.
 
-```{r eopening-screen-top, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r eopening-screen-top, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/opening_screen_top.png")
 grid.raster(img)
 ```
@@ -77,7 +77,7 @@ grid.raster(img)
 Scrolling down to the middle of the opening screen exposes a table that 
 describes a pedigree file and further instructions.
 
-```{r eopening-screen-middle, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r eopening-screen-middle, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/opening_screen_middle.png")
 grid.raster(img)
 ```
@@ -93,7 +93,7 @@ use of a genotype file. This tutorial will not include instructions on using a
 genotype file.
 
 
-```{r eopening-screen-bottom, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r eopening-screen-bottom, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/opening_screen_bottom.png")
 grid.raster(img)
 ```
@@ -108,7 +108,7 @@ In this introductory tutorial, we will use an Excel file containing
 a hypothetical pedigree of macaques.
 We will work with the gray box on the left at the top of the screen.
 
-```{r eopening-screen-top-red-oval, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r eopening-screen-top-red-oval, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/opening_screen_top_red_oval.png")
 grid.raster(img)
 ```
@@ -150,7 +150,7 @@ used.
 
 
 
-```{r example-pedigree-minParentAgeSequence, eval = TRUE, fig.width = 10, fig.height = 5, echo = FALSE}
+```{r example-pedigree-minParentAgeSequence, eval = TRUE, fig.width = 11, fig.height = 6, echo = FALSE}
 img <- readPNG("./shiny_app_use/input_minParentAgeSequence.png")
 grid.raster(img)
 ```
@@ -211,7 +211,7 @@ at a time, but you can choose to display 10, 25, 50, or 100 rows.
 You can choose to display UNKNOWN IDs in the rows displayed.
 
 
-```{r pb-100-rows-display-unknown-ids, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r pb-100-rows-display-unknown-ids, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/pb_100_rows_display_unknown_ids.png")
 grid.raster(img)
 ```
@@ -332,7 +332,7 @@ as selected in the __Pedigree Browser__ tab.
 This is showing 332 living animals from the entire example pedigree.
 
 
-```{r age-plot, eval = TRUE, fig.width = 2.5, fig.height = 3.5, echo = FALSE}
+```{r age-plot, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
 img <- readPNG("./shiny_app_use/age_plot.png")
 grid.raster(img)
 ```
@@ -353,7 +353,7 @@ structures, but 1000 iterations has seemed to provide reproducible results.
  
 
 
-```{r gva-calculating, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r gva-calculating, eval = TRUE, fig.width = 7, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/gva_calculating.png")
 grid.raster(img)
 ```
@@ -374,7 +374,7 @@ __Show entries__ selection tool.
 
 
 
-```{r gva-first-high-value, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r gva-first-high-value, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/gva_first_high_value.png")
 grid.raster(img)
 ```
@@ -388,7 +388,7 @@ Though not shown here, the value of _Undetermined_ in the __Value Designation__
 column means the animal did not have parentage information.
 
 
-```{r gva-high-and-low-value, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r gva-high-and-low-value, eval = TRUE, fig.width = 5.5, fig.height = 4, echo = FALSE}
 img <- readPNG("./shiny_app_use/gva_high_and_low_value.png")
 grid.raster(img)
 ```
@@ -400,7 +400,7 @@ grid.raster(img)
 The __Summary Statistics and Plots__ tab used results from the 
 __Genetic Value Analysis__ tab.
 
-```{r ss-first-view, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r ss-first-view, eval = TRUE, fig.width = 5.5, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/ss_first_view.png")
 grid.raster(img)
 ```
@@ -428,7 +428,7 @@ _offspring_, _siblings_, and _total_.
 The first few rows of such a file are shown below.
 
 
-```{r ss-kinship-matrix, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r ss-kinship-matrix, eval = TRUE, fig.width = 6, fig.height = 4.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/ss_kinship_matrix.png")
 grid.raster(img)
 ```
@@ -439,7 +439,7 @@ grid.raster(img)
 The six plots provide histograms and boxplots for the kinship coefficients,
 the Z-scores of the kinship coefficients, and the genome uniqueness scores.
 
-```{r ss-trimmed-all-plots, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r ss-trimmed-all-plots, eval = TRUE, fig.width = 5, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/ss_trimmed_all_plots.png")
 grid.raster(img)
 ```
@@ -466,7 +466,7 @@ formed.
 
 
 
-```{r breeding-group-first-view, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r breeding-group-first-view, eval = TRUE, fig.width = 7, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/breeding_group_first_view.png")
 grid.raster(img)
 ```
@@ -488,7 +488,7 @@ __Number of Groups Desired__ field, which is outlined in blue in the image
 below.
 
 
-```{r breeding-group-1, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r breeding-group-1, eval = TRUE, fig.width = 8, fig.height = 7.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/breeding_group_1.png")
 grid.raster(img)
 ```
@@ -512,7 +512,7 @@ age of two being grouped with their mother.
 *********
 
 
-```{r breeding-group-6-infants-with-dam, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r breeding-group-6-infants-with-dam, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/breeding_group_6_infants_with_dam.png")
 grid.raster(img)
 ```
@@ -526,7 +526,7 @@ selected settings. I have indicated the seed animals for the first group with
 red rectangles.
 
 
-```{r breeding-group-first-group-no-kinship-seeds-indicated, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r breeding-group-first-group-no-kinship-seeds-indicated, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/breeding_group_first_group_no_kinship_seeds_indicated.png")
 grid.raster(img)
 ```
@@ -541,7 +541,7 @@ A group of ten animals was formed in the next run after choosing to include
 kinship and selecting the __Make Groups__ button.
 
 
-```{r breeding-group-6-seed-grps-grp-6-kinship, eval = TRUE, fig.width = 4, fig.height = 2.5, echo = FALSE}
+```{r breeding-group-6-seed-grps-grp-6-kinship, eval = TRUE, fig.width = 5.5, fig.height = 5.5, echo = FALSE}
 img <- readPNG("./shiny_app_use/breeding_group_6_seed_grps_grp_6_kinship.png")
 grid.raster(img)
 ```
