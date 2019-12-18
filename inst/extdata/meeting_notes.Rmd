@@ -13,6 +13,13 @@ library(rmsutilityr)
 library(nprcmanager)
 ```
 Provided in reverse chronological order
+
+## 20191218
+1.  Added ability to export each of the six figures on the 
+    __Summary Statistics__ page.
+1.  Need to update shiny application tutorial to reflect the ability to export 
+    each of the six figures on the __Summary Statistics__ page.
+    
 ## 20191130
 1.  See if https://www.semanticscholar.org/paper/Management-of-genetic-diversity-using-gene-dropping-Khaldari-Javaremi/43dd1975193830b9243c8eef672db134e42e871d/figure/3 
     is figure that would be beneficial.

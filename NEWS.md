@@ -3,8 +3,13 @@ NEWS
 R. Mark Sharp
 12/16/2019
 
+# nprcmanager 0.5.42.9000
+
+  - Added ability to export genetic summary statistic plots
+
 # nprcmanager 0.5.42 (20191208)
 
+  - CRAN submission
   - Move output of suspicious parent list from the user’s home directory
     to the result of `tempdir()`.
 

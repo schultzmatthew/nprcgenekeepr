@@ -8,8 +8,8 @@ shinyServer(function(input, output, session) {
   flog.logger("nprcmanager", INFO,
               appender = appender.file(nprcmanagerLog))
 
-  #############################################################################
-  # Functions for handling initial pedigree upload and QC
+#############################################################################
+# Functions for handling initial pedigree upload and QC
 #  source("../application/sreactiveGetSelectedBreeders.R")
   getSelectedBreeders <- reactive({
     input$getData # This button starts it all
@@ -526,11 +526,7 @@ shinyServer(function(input, output, session) {
 
     return(paste(founder, "<br>", "<br>", "<table>", header, k, g, "</table>"))
   })
-
-  output$mkPlot <- renderPlot({
-    if (is.null(rpt())) {
-      return(NULL)
-    }
+  mkHistogram <- function() {
     mk <- rpt()[, "indivMeanKin"]
     avg <- mean(mk, na.rm = TRUE)
     # std.dev <- sd(mk, na.rm = TRUE)
@@ -546,12 +542,14 @@ shinyServer(function(input, output, session) {
       ggtitle("Distribution of Individual Mean Kinship Coefficients") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
-  })
-
-  output$zscorePlot <- renderPlot({
+  }
+  output$mkHist <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
+    mkHistogram()
+  })
+  zscoreHistogram <- function() {
     z <- rpt()[, "zScores"]
     avg <- mean(z, na.rm = TRUE)
     # std.dev <- sd(z, na.rm = TRUE)
@@ -566,11 +564,15 @@ shinyServer(function(input, output, session) {
       ggtitle("Distribution of Mean Kinship Coefficients Z-scores") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
                  show.legend = FALSE)# +
-  })
-  output$guPlot <- renderPlot({
+  }
+  output$zscoreHist <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
+    zscoreHistogram()
+  })
+
+  guHistogram <- function() {
     gu <- rpt()[, "gu"]
     avg <- mean(gu, na.rm = TRUE)
     # std.dev <- sd(gu, na.rm = TRUE)
@@ -584,12 +586,16 @@ shinyServer(function(input, output, session) {
       xlab("Genome Uniqueness Score") + ylab("Frequency") +
       ggtitle("Distribution of Genome Uniqueness") +
       geom_vline(aes(xintercept = avg, color = "red"), linetype = "dashed",
-                 show.legend = FALSE)# +
-  })
-  output$mkBox <- renderPlot({
+                 show.legend = FALSE)
+  }
+  output$guHist <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
+    guHistogram()
+  })
+
+  meanKinshipBoxPlot <- function() {
     gu <- rpt()[, "indivMeanKin"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
@@ -598,11 +604,15 @@ shinyServer(function(input, output, session) {
       ylab("Kinship")  +
       ggtitle("Boxplot of Individual Mean Kinship Coefficients") +
       xlab("")
-  })
-  output$zscoreBox <- renderPlot({
+  }
+
+  output$mkBox <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
+    meanKinshipBoxPlot()
+  })
+  zscoreBoxPlot <- function() {
     gu <- rpt()[, "zScores"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
@@ -611,11 +621,14 @@ shinyServer(function(input, output, session) {
       ylab("Z-Score") +
       ggtitle("Boxplot of Mean Kinship Coefficients Z-scores") +
       xlab("")
-  })
-  output$guBox <- renderPlot({
+  }
+  output$zscoreBox <- renderPlot({
     if (is.null(rpt())) {
       return(NULL)
     }
+    zscoreBoxPlot()
+  })
+  guBoxPlot <- function() {
     gu <- rpt()[, "gu"]
     ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
@@ -623,6 +636,13 @@ shinyServer(function(input, output, session) {
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
       ylab("Genome Uniquness")  + ggtitle("Boxplot of Genome Uniqueness") +
       xlab("")
+  }
+
+  output$guBox <- renderPlot({
+    if (is.null(rpt())) {
+      return(NULL)
+    }
+    guBoxPlot()
   })
   box_and_whisker_desc <- paste0("The upper whisker extends from the hinge to
                               the largest value no further than 1.5 * IQR
@@ -711,11 +731,73 @@ shinyServer(function(input, output, session) {
     content = function(file) {
       ped <- getPed()
       probands <- ped$id[ped$population]
-
       r <- convertRelationships(kmat(), getPed(), ids = probands)
       write.csv()
     }
   )
+  ## Save plots
+  output$downloadMeanKinshipCoefficientHistogram <- downloadHandler(
+    filename = "meanKinshipCoefficientHistogram.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = mkHistogram(), device = "png")
+    }
+  )
+  output$downloadZScoreHistogram <- downloadHandler(
+    filename = "meanKinshipCoefficientsZscoreHistogram.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = zscoreHistogram(), device = "png")
+    }
+  )
+  output$downloadGenomeUniquenessHistogram <- downloadHandler(
+    filename = "geneticUniquenessHistogram.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = guHistogram(), device = "png")
+    }
+  )
+  output$downloadMeanKinshipCoefficientBoxPlot <- downloadHandler(
+    filename = "meanKinshipCoefficientsBox.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = meanKinshipBoxPlot(), device = "png")
+    }
+  )
+  output$downloadZScoreBoxPlot <- downloadHandler(
+    filename = "meanKinshipCoefficientsZscoresBox.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = zscoreBoxPlot(), device = "png")
+    }
+  )
+  output$downloadGenomeUniquenessBoxPlot <- downloadHandler(
+    filename = "geneticUniquenessBox.png",
+    content = function(file) {
+      device <- function(..., width, height) {
+        grDevices::png(..., width = width, height = height,
+                       res = 300, units = "in")
+      }
+      ggsave(file, plot = guBoxPlot(), device = "png")
+    }
+  )
+
+
 
   # ### Display Founders
   # # Creating the male founder table for display on the Summary Statistics tab

@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9000</span>
       </span>
     </div>
 
@@ -887,7 +887,7 @@
 <p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the R sessions temporary directory that lists the records that have generated the errors.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">pedOne &lt;-<span class="st"> </span>nprcmanager<span class="op">::</span>pedOne <span class="co"># put it in the local environment</span></a>
 <a class="sourceLine" id="cb60-2" data-line-number="2">ped &lt;-<span class="st"> </span><span class="kw"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>)</a></code></pre></div>
-<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpwhJK4M/lowParentAge.csv.</code></pre>
+<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpSGAtUO/lowParentAge.csv.</code></pre>
 <p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -956,7 +956,7 @@
 ## 2 d2 &lt;NA&gt; &lt;NA&gt;   F   0 2006-04-13 &lt;NA&gt; 13.7     original
 ## 4 s2 &lt;NA&gt; &lt;NA&gt;   M   0 2006-06-19 &lt;NA&gt; 13.5     original
 ## 7 o3   s2   d2   F   1 2012-04-11 &lt;NA&gt;  7.7     original
-## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.2     original</code></pre>
+## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.3     original</code></pre>
 <p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitly requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">errorList &lt;-<span class="st"> </span><span class="kw"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(pedOne, <span class="dt">minParentAge =</span> <span class="dv">0</span>, <span class="dt">reportChanges =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb65-2" data-line-number="2">                        <span class="dt">reportErrors =</span> <span class="ot">TRUE</span>)</a>
@@ -1017,7 +1017,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">elapsed_time &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(start_time)</a></code></pre></div>
-<p>The current date and time is 2019-12-16 21:10:12. The processing time for this document was 2 minutes and 1 seconds..</p>
+<p>The current date and time is 2019-12-18 02:10:30. The processing time for this document was 1 minutes and 59 seconds..</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
 <pre><code>## R version 3.6.2 (2019-12-12)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
@@ -1034,7 +1034,8 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.26         ggplot2_3.2.1      nprcmanager_0.5.42 stringi_1.4.3     
+## [1] knitr_1.26              ggplot2_3.2.1           nprcmanager_0.5.42.9000
+## [4] stringi_1.4.3          
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.3           lubridate_1.7.4      lattice_0.20-38      gtools_3.8.1        

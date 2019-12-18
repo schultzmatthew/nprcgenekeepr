@@ -10,8 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcmanager 0.5.42.9000
+-   Added ability to export genetic summary statistic plots
 
 # nprcmanager 0.5.42 (20191208)
+-   CRAN submission
 -   Move output of suspicious parent list from the user's home directory to
     the result of `tempdir()`.
 
