@@ -3,6 +3,11 @@ NEWS
 R. Mark Sharp
 01/07/2020
 
+# nprcgenekeepr 0.5.42.9003
+
+  - Renamed local and remote repositories from nprcmanager to
+    nprcgenekeepr.
+
 # nprcgenekeepr 0.5.42.9002
 
   - Changed name of package to nprcgenekeepr. This required changing of
