@@ -1,10 +1,10 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 context("orderReport")
 library(testthat)
 library(stringi)
-pedWithGenotypeReport <- nprcmanager::pedWithGenotypeReport
-ped <- nprcmanager::qcPed
+pedWithGenotypeReport <- nprcgenekeepr::pedWithGenotypeReport
+ped <- nprcgenekeepr::qcPed
 rpt <- pedWithGenotypeReport$report
 countUnk <- function(ids) {
   length(ids[grepl("^U",ids, ignore.case = TRUE)])

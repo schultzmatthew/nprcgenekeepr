@@ -13,7 +13,7 @@ Access it using the following commands.
 }
 \examples{
 \dontrun{
-library(nprcmanager)
+library(nprcgenekeepr)
 data("smallPedTree")
 }
 }

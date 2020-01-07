@@ -2,7 +2,7 @@
 % Please edit documentation in R/getVersion.R
 \name{getVersion}
 \alias{getVersion}
-\title{getVersion Get the version number of nprcmanager}
+\title{getVersion Get the version number of nprcgenekeepr}
 \usage{
 getVersion()
 }
@@ -10,5 +10,5 @@ getVersion()
 Current Version
 }
 \description{
-getVersion Get the version number of nprcmanager
+getVersion Get the version number of nprcgenekeepr
 }

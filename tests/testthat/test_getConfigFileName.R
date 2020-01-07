@@ -1,5 +1,5 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("getConfigFileName")
 library(testthat)
 
@@ -24,9 +24,9 @@ sysInfoWindows <-
 test_that("getConfigFile got correct file name", {
   skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   expect_equal(getConfigFileName(sysInfoWindows)[["configFile"]],
-               "/Users/msharp/_nprcmanager_config")
+               "/Users/msharp/_nprcgenekeepr_config")
   expect_equal(getConfigFileName(sysInfoUnix)[["configFile"]],
-               "~/.nprcmanager_config")
+               "~/.nprcgenekeepr_config")
   expect_equal(getConfigFileName(sysInfoWindows)[["homeDir"]],
                "/Users/msharp/")
   expect_equal(getConfigFileName(sysInfoUnix)[["homeDir"]],

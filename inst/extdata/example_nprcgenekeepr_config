@@ -21,10 +21,10 @@
 # lkPedColumns are the names of the columns used by the LabKey instance
 # being queried.
 # mapPedColumns are a one to one mapping of the lkPedColumns to the column
-# names used by the nprcmanager package.
+# names used by the nprcgenekeepr package.
 
-# To use this file or one similar, it must be renamed to "_nprcmanager_config"
-# for users of Microsoft Windows operating systems and ".nprcmanager_config"
+# To use this file or one similar, it must be renamed to "_nprcgenekeepr_config"
+# for users of Microsoft Windows operating systems and ".nprcgenekeepr_config"
 # for other operating systems.
 # It must be edited so that the various terms are appropriately defined.
 # The file is to be place in the user's home directory.

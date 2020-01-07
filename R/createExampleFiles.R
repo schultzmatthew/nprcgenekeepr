@@ -7,21 +7,21 @@
 #' @export
 createExampleFiles <- function() {
   examplePedigrees <-
-    list(examplePedigree = nprcmanager::examplePedigree,
-         focalAnimals = nprcmanager::focalAnimals,
-         lacy1989Ped = nprcmanager::lacy1989Ped,
-         pedDuplicateIds = nprcmanager::pedDuplicateIds,
-         pedFemaleSireMaleDam = nprcmanager::pedFemaleSireMaleDam,
-         pedGood = nprcmanager::pedGood,
-         pedInvalidDates = nprcmanager::pedInvalidDates,
-         pedMissingBirth = nprcmanager::pedMissingBirth,
-         pedOne = nprcmanager::pedOne,
-         pedSameMaleIsSireAndDam = nprcmanager::pedSameMaleIsSireAndDam,
-         pedSix = nprcmanager::pedSix,
-         pedWithGenotype = nprcmanager::pedWithGenotype,
-         qcBreeders = as.data.frame(nprcmanager::qcBreeders, drop = FALSE),
-         qcPed = nprcmanager::qcPed,
-         smallPed = nprcmanager::smallPed)
+    list(examplePedigree = nprcgenekeepr::examplePedigree,
+         focalAnimals = nprcgenekeepr::focalAnimals,
+         lacy1989Ped = nprcgenekeepr::lacy1989Ped,
+         pedDuplicateIds = nprcgenekeepr::pedDuplicateIds,
+         pedFemaleSireMaleDam = nprcgenekeepr::pedFemaleSireMaleDam,
+         pedGood = nprcgenekeepr::pedGood,
+         pedInvalidDates = nprcgenekeepr::pedInvalidDates,
+         pedMissingBirth = nprcgenekeepr::pedMissingBirth,
+         pedOne = nprcgenekeepr::pedOne,
+         pedSameMaleIsSireAndDam = nprcgenekeepr::pedSameMaleIsSireAndDam,
+         pedSix = nprcgenekeepr::pedSix,
+         pedWithGenotype = nprcgenekeepr::pedWithGenotype,
+         qcBreeders = as.data.frame(nprcgenekeepr::qcBreeders, drop = FALSE),
+         qcPed = nprcgenekeepr::qcPed,
+         smallPed = nprcgenekeepr::smallPed)
   pedigree_dir <- "~/tmp"
   suppressWarnings(dir.create(pedigree_dir))
   pedigree_dir <- paste0(pedigree_dir, "/ExamplePedigrees")

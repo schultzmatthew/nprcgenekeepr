@@ -1,23 +1,23 @@
-#' summary.nprcmanagerErr Summary function for class nprcmanagErr
+#' summary.nprcgenekeeprErr Summary function for class nprcgenekeeprErr
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
-#' @return object of class summary.nprcmanagErr
+## This file is part of nprcgenekeepr
+#' @return object of class summary.nprcgenekeeprErr
 #'
 #' @rdname summary
-#' @method summary nprcmanagErr
-#' @param object object of class nprcmanagErr and class list
+#' @method summary nprcgenekeeprErr
+#' @param object object of class nprcgenekeeprErr and class list
 #' @param ... additional arguments for the \code{summary.default} statement
 #' @importFrom stringi stri_c
 ## ##  rmsutilityr get_and_or_list
 #' @export
-summary.nprcmanagErr <- function(object, ...) {
+summary.nprcgenekeeprErr <- function(object, ...) {
   errorLst <- object
-  stopifnot(inherits(errorLst, "nprcmanagErr"))
+  stopifnot(inherits(errorLst, "nprcgenekeeprErr"))
   if (length(errorLst$fatalError) > 0) {
     txt <- errorLst$fatalError
     txt <- list(txt = txt, sp = errorLst$suspiciousParents)
-    class(txt) <- "summary.nprcmanagErr"
+    class(txt) <- "summary.nprcgenekeeprErr"
     return(txt)
   }
   txt <- ""
@@ -88,17 +88,17 @@ summary.nprcmanagErr <- function(object, ...) {
     txt <- stri_c(txt, "\n", errorLst$failedDatabaseConnection, "\n")
   txt <- list(txt = txt, sp = errorLst$suspiciousParents)
 
-  class(txt) <- "summary.nprcmanagErr"
+  class(txt) <- "summary.nprcgenekeeprErr"
   txt
 }
 #' @rdname summary
-#' @return object of class summary.nprcmanagGV
-#' @method summary nprcmanagGV
+#' @return object of class summary.nprcgenekeeprGV
+#' @method summary nprcgenekeeprGV
 #' @importFrom stringi stri_c
 #' @export
-summary.nprcmanagGV <- function(object, ...) {
+summary.nprcgenekeeprGV <- function(object, ...) {
   gvReport <- object
-  stopifnot(inherits(gvReport, "nprcmanagGV"))
+  stopifnot(inherits(gvReport, "nprcgenekeeprGV"))
   rpt <- gvReport[["report"]]
   kmat <- gvReport[["kinship"]]
   f <- gvReport[["total"]]
@@ -114,6 +114,6 @@ summary.nprcmanagGV <- function(object, ...) {
   txt <- c(txt, stri_c("Live Offspring: ", sum(rpt$livingOffspring)))
   txt <- c(txt, stri_c("High Value Individuals: ", nrow(rpt[rpt$value == "High Value", ])))
   txt <- c(txt, stri_c("Low Value Individuals: ", nrow(rpt[rpt$value == "Low Value", ])))
-  class(txt) <- "summary.nprcmanagGV"
+  class(txt) <- "summary.nprcgenekeeprGV"
   txt
 }

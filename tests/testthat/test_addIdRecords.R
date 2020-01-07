@@ -1,5 +1,5 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("addIdRecords")
 library(testthat)
 uPedOne <- data.frame(id = c(NA, "d1", "s2", "d2", "o1", "o2", "o3", "o4"),

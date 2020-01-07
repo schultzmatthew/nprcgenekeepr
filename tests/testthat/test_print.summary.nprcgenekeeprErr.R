@@ -1,6 +1,6 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
-context("print.summary.nprcmanagErr")
+# This file is part of nprcgenekeepr
+context("print.summary.nprcgenekeeprErr")
 library(testthat)
 library(lubridate)
 library(stringi)
@@ -16,7 +16,7 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                               sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                                 2000)),
                      stringsAsFactors = FALSE, check.names = FALSE)
-test_that("print.summary.nprcmanagErr prints expected output", {
+test_that("print.summary.nprcgenekeeprErr prints expected output", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
   expect_success(expect_output(summary(qcStudbook(
     pedClean, minParentAge = NULL, reportErrors = TRUE)), NA))

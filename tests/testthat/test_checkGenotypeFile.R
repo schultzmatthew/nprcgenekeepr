@@ -1,10 +1,10 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("checkGenotypeFile")
 library(testthat)
 library(stringi)
 
-ped <- nprcmanager::qcPed
+ped <- nprcgenekeepr::qcPed
 ped <- ped[order(ped$id), ]
 genotype <- data.frame(id = ped$id[50 + 1:20],
                        first_name = stri_c("first_name", 1:20),

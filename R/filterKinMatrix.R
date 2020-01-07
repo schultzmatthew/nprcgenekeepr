@@ -1,7 +1,7 @@
 #' Filters a kinship matrix to include only the egos listed in 'ids'
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param ids character vector containing the IDs of interest.
 #' The kinship matrix should be reduced to only include these rows and columns.
 #' @param kmat a numeric matrix of pairwise kinship coefficients.

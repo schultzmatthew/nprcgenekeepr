@@ -1,7 +1,7 @@
 #' Get the direct ancestors of selected animals
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Gets direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
 #'
@@ -23,11 +23,11 @@ getLkDirectRelatives <- function(ids, unrelatedParents = FALSE) {
   pedSourceDf <- tryCatch(getDemographics(colSelect = colSet),
                           warning = function(cond) {
                             flog.debug(stri_c("Warning", source, cond),
-                                       name = "nprcmanager")
+                                       name = "nprcgenekeepr")
                             return(NULL)},
                           error = function(cond) {
                             flog.debug(stri_c("Error", source, cond),
-                                       name = "nprcmanager")
+                                       name = "nprcgenekeepr")
                             return(NULL)}
   )
   if (is.null(pedSourceDf))

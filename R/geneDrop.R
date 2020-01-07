@@ -42,7 +42,7 @@
 #' \code{n} columns indicating the allele for that iteration.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @export
 geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {

@@ -12,5 +12,5 @@ getPyramidPlot(ped = NULL)
 \description{
 The pedigree provided must have the following columns: \code{sex} and
 \code{age}. This needs to be augmented to allow pedigrees structures that
-are provided by the nprcmanager package.
+are provided by the nprcgenekeepr package.
 }

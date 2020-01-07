@@ -1,7 +1,7 @@
 #' fixColumnNames changes original column names and into standardized names.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return list object with \code{newColNames} and \code{errorLst} with
 #' a record of all changes made.
 #' @param orgCols character vector with ordered list of column names
@@ -38,5 +38,6 @@ fixColumnNames <- function(orgCols, errorLst) {
   cols <- newCols
   newCols <- gsub("deathdate", "death", cols)
   errorLst$changedCols$deathdateToDeath <- colChange(cols, newCols)
+  newCols <- gsub("recordstatus", "recordStatus", newCols)
   list(newColNames = newCols, errorLst = errorLst)
 }

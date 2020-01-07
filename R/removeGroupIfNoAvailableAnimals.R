@@ -1,7 +1,7 @@
 #' Remove group numbers when all available animals have been used
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return the grpNum list after removing any list element corresponding to a group
 #' with no availabel animals left using in filling a group.
 #'

@@ -1,11 +1,11 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 context("makeGroupMembers")
 library(testthat)
-library(nprcmanager)
-qcBreeders <- nprcmanager::qcBreeders
-pedWithGenotype <- nprcmanager::pedWithGenotype
-pedWithGenotypeReport <- nprcmanager::pedWithGenotypeReport
+library(nprcgenekeepr)
+qcBreeders <- nprcgenekeepr::qcBreeders
+pedWithGenotype <- nprcgenekeepr::pedWithGenotype
+pedWithGenotypeReport <- nprcgenekeepr::pedWithGenotypeReport
 skip_if_not(exists("qcBreeders"))
 skip_if_not(exists("pedWithGenotype"))
 skip_if_not(exists("pedWithGenotypeReport"))

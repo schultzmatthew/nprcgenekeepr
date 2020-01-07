@@ -1,5 +1,5 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 context("removeUninformativeFounders")
 library(testthat)
 pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
@@ -8,7 +8,7 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                   sex = c("F", "M", "M", "F", "F", "F", "F", "M"),
                   stringsAsFactors = FALSE, check.names = FALSE)
 
-qcPed <- nprcmanager::qcPed
+qcPed <- nprcgenekeepr::qcPed
 
 test_that("removeUninformativeFounders removes correct records", {
   expect_error(removeUninformativeFounders(pedOne))

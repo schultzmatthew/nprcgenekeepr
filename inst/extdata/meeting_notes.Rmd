@@ -1,7 +1,7 @@
 ---
 title: "Meeting Notes and Things To Do"
 author: "R. Mark Sharp"
-date: "11/11/2019"
+date: "01/06/2020"
 output: html_document
 ---
 
@@ -10,10 +10,31 @@ library(knitr)
 knitr::opts_chunk$set(echo = TRUE)
 library(stringi)
 library(rmsutilityr)
-library(nprcmanager)
+library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
 
+## 20200106 
+1.  Mark will convert nprcmanager to nprcgenekeepr before any other changes.
+1.  Amanda will provide notes for the Shiny application tutorial with the 
+    following goals.
+    a.  Address the specific needs of consortium members.
+    a.  Reduce the complexity of the presentation where possible.
+    a.  Ensure there are no major components left out.
+1.  Amanda will talk to Dave Lawrence about using his code to guide R 
+    development of the _Diversity Report_.
+1.  Mark will complete submission to CRAN for publication to the consortium.
+    a.  Mark expects that the package will be accepted on CRAN once examples 
+        have been provided for all exported functions. 
+        This is not a trivial matter as there are currently 142 exported 
+        functions. 
+    a.  Mark will remove exporting of functions that do not need
+        to be exported.
+    a.  Mark will use code from the unit tests for many of the examples.
+1.  Mark has completed only the first of the four items from the 20191120 
+    meeting. These will be addressed after the submission to CRAN is successful.
+
+    
 ## 20191218
 1.  Added ability to export each of the six figures on the 
     __Summary Statistics__ page.
@@ -21,7 +42,8 @@ Provided in reverse chronological order
     each of the six figures on the __Summary Statistics__ page.
     
 ## 20191130
-1.  See if https://www.semanticscholar.org/paper/Management-of-genetic-diversity-using-gene-dropping-Khaldari-Javaremi/43dd1975193830b9243c8eef672db134e42e871d/figure/3 
+1.  See if 
+    https://www.semanticscholar.org/paper/Management-of-genetic-diversity-using-gene-dropping-Khaldari-Javaremi/43dd1975193830b9243c8eef672db134e42e871d/figure/3 
     is figure that would be beneficial.
     
 ## 20191120

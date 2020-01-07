@@ -1,7 +1,7 @@
 #' dataframe2string converts a data.frame object to a character vector
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Adapted from print.data.frame
 #' @param object dataframe
 #' @param ... optional arguments to print or plot methods.

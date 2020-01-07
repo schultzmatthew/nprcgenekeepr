@@ -1,13 +1,13 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("convertRelationships")
 library(testthat)
-ped <- nprcmanager::smallPed
+ped <- nprcgenekeepr::smallPed
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = FALSE)
 ids <- c("A", "B", "D", "E", "F", "G", "I", "J", "L", "M", "O", "P")
 relIds <- convertRelationships(kmat, ped, ids)
 rel <- convertRelationships(kmat, ped, updateProgress = function() {})
-ped <- nprcmanager::qcPed
+ped <- nprcgenekeepr::qcPed
 bkmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
                  sparse = FALSE)
 relBIds <- convertRelationships(bkmat, ped, c("4LFS70", "DD1U77"))

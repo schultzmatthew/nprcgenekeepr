@@ -1,17 +1,17 @@
 ---
 title: "README"
 author: "R. Mark Sharp"
-date: "12/16/2019"
+date: "01/07/2020"
 output: github_document
 ---
-[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/nprcmanager)
+[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Build Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager)
-[![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
-[![](https://www.r-pkg.org/badges/version/nprcmanager)](https://cran.r-project.org/package=nprcmanager)
+[![Build Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://travis-ci.org/rmsharp/nprcgenekeepr)
+[![codecov](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcgenekeepr)
+[![](https://www.r-pkg.org/badges/version/nprcgenekeepr)](https://cran.r-project.org/package=nprcgenekeepr)
 
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
-<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcgenekeepr)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# nprcmanager -- Version `r nprcmanager::getVersion()`
+# nprcgenekeepr -- Version `r nprcgenekeepr::getVersion()`
 ```{r child = "vignettes/manual_components/_introduction.Rmd", ref = "introduction"}
 ```
 ```{r child = "vignettes/manual_components/_installation.Rmd", ref = "installation"}
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(
 ```{r child = "vignettes/manual_components/_summary_of_major_functions.Rmd", ref = "summary_of_functions"}
 ```
 
-Find online documentation at [https://rmsharp.github.io/nprcmanager/](https://rmsharp.github.io/nprcmanager/).
+Find online documentation at [https://rmsharp.github.io/nprcgenekeepr/](https://rmsharp.github.io/nprcgenekeepr/).
 
 
 **For more information see:**  

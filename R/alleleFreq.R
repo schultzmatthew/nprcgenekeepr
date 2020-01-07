@@ -1,7 +1,7 @@
 #' Calculates the count of each allele in the provided vector.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Part of Genetic Value Analysis
 #'
 #'  If ids are provided, the function will only count the unique alleles

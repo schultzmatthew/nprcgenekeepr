@@ -1,7 +1,7 @@
 #' Examines column names, \code{cols} for required column names
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return NULL is returned if all required columns are present. See description
 #' of \code{reportErrors} for return values when required columns are missing.
 #' @param cols character vector of column names

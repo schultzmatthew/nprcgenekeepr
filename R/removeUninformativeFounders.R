@@ -1,7 +1,7 @@
 #' Remove uninformative founders.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Founders (having unknown sire and dam) that appear only one time in a
 #' pedigree are uninformative and can be removed from a pedigree without loss
 #' of information.

@@ -116,8 +116,8 @@ in orderReport.R
 
 1. It would be better to catalogue and report the changes made by qcStudbook()
    so that the user knows how the provided pedigree was changed. Completed by
-   developing the functions __summary.nprcmangErr__ and
-   __print.summary.nprcmanagErr__, which when combind with using 
+   developing the functions __summary.nprcgenekeeprErr__ and
+   __print.summary.nprcgenekeeprErr__, which when combind with using 
    __qcStudbook__ with the _error_ argument set to __TRUE__. 20180915
    
    An __Error List__ tab is now being generated and opened when pedigree errors 

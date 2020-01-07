@@ -1,10 +1,10 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 context("makeRelationsClasses")
 library(testthat)
 suppressMessages(library(dplyr))
 
-qcPed <- nprcmanager::qcPed
+qcPed <- nprcgenekeepr::qcPed
 bkmat <- kinship(qcPed$id, qcPed$sire, qcPed$dam, qcPed$gen,
                  sparse = FALSE)
 kin <- convertRelationships(bkmat, qcPed)

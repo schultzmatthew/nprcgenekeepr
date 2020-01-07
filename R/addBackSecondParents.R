@@ -1,12 +1,13 @@
 #' Add back single parents trimmed pedigree
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Uses the \code{ped} dataframe, which has full complement of parents and the
 #' \code{uPed} dataframe, which has all uninformative parents removed to
 #' add back single parents to the \code{uPed} dataframe where one parent is
 #' known. The parents are added back to the pedigree as an ID record with
 #' NA for both sire and dam of the added back ID.
+#' @return dataframe with pedigree with single parents added.
 #' @param uPed a trimmed pedigree dataframe with uninformative founders removed.
 #' @param ped a trimmed pedigree
 #' @export

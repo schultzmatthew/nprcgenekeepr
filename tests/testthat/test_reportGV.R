@@ -1,8 +1,8 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 context("reportGV")
 library(testthat)
-qcPed <- nprcmanager::qcPed
+qcPed <- nprcgenekeepr::qcPed
 gvReport <- reportGV(qcPed, guIter = 100)
 test_that("reportGV forms correct genetic value report", {
   expect_equal(names(gvReport), c("report", "kinship", "gu", "fe", "fg",

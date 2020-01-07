@@ -2,7 +2,7 @@
 #' a list made up of the elements of the character vector argument.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #'
 #' @param c_vector Character vector containing the list of words
 #' to be put in a list.

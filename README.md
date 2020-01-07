@@ -1,27 +1,27 @@
 README
 ================
 R. Mark Sharp
-12/16/2019
+01/07/2020
 
-[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/nprcmanager)
+[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build
-Status](https://travis-ci.org/rmsharp/nprcmanager.svg?branch=master)](https://travis-ci.org/rmsharp/nprcmanager)
-[![codecov](https://codecov.io/gh/rmsharp/nprcmanager/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcmanager)
-[![](https://www.r-pkg.org/badges/version/nprcmanager)](https://cran.r-project.org/package=nprcmanager)
+Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://travis-ci.org/rmsharp/nprcgenekeepr)
+[![codecov](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcgenekeepr)
+[![](https://www.r-pkg.org/badges/version/nprcgenekeepr)](https://cran.r-project.org/package=nprcgenekeepr)
 
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
-<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcmanager)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcmanager)
+<!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcgenekeepr)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcmanager – Version 0.5.42.9000 (20191217)
+# nprcgenekeepr – Version 0.5.42.9002 (20200107)
 
 ## Introduction
 
-The goal of **nprcmanager** is to implement Genetic Tools for Colony
+The goal of **nprcgenekeepr** is to implement Genetic Tools for Colony
 Management. It was initially conceived and developed as a Shiny web
 application at the Oregon National Primate Research Center (ONPRC) to
 facilitate some of the analyses they perform regularly. It has been
@@ -60,25 +60,25 @@ Reviewed Journal\]
 
 ## Installation
 
-You can install the development version of **nprcmanager** from github
+You can install the development version of **nprcgenekeepr** from github
 with:
 
 ``` r
 install.packages("devtools")
-devtools::install_github("rmsharp/nprcmanager")
+devtools::install_github("rmsharp/nprcgenekeepr")
 ```
 
 All missing dependencies should be automatically installed.
 
 ## Running Shiny Application
 
-The toolset available within nprcmanager can be used inside standard R
+The toolset available within nprcgenekeepr can be used inside standard R
 scripts. However, it was orginally designed to be used within a Shiny
 application that can be started with:
 
 ``` r
-library(nprcmanager)
-runManager()
+library(nprcgenekeepr)
+runGenekeepr()
 ```
 
 ## Summary of Major Functions
@@ -102,8 +102,7 @@ Parents with ages below a user selected threshold are identified. A
 minimum parent age in years is set by the user and is used to ensure
 each parent is at least that age on the birth date of an offspring. The
 minimum parent age defaults to 2 years. This check is not performed for
-animals with missing birth
-dates.
+animals with missing birth dates.
 
 ### Creation of Pedigree From a List of Potential Breeders and LabKey Integration
 
@@ -116,23 +115,23 @@ with the demographic data in an **EHR** (Electronic Health Record)
 module.
 
 Two configuration files are needed to use the database features of
-nprcmanager with LabKey. The first file is named **\_netrc** on
+nprcgenekeepr with LabKey. The first file is named **\_netrc** on
 Microsoft Windows operating systems and **.netrc** otherwise, allows the
 user to authenticate with LabKey through the LabKey API and is fully
 described by [LabKey
 documentation](https://www.labkey.org/Documentation/wiki-page.view?name=netrc)
 
-The second file is named **\_nprcmanager\_config** on Microsoft Windows
-operating systems and **.nprcmanager\_config** otherwise and is the
-nprcmanager [configuration
-file](https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config)
+The second file is named **\_nprcgenekeepr\_config** on Microsoft
+Windows operating systems and **.nprcgenekeepr\_config** otherwise and
+is the `nprcgenekeepr` [configuration
+file](https://github.com/rmsharp/nprcgenekeepr/blob/master/inst/extdata/example_nprcgenekeepr_config)
 An image of this example configuration file is included as a data object
 and can be loaded and viewed with the following lines of R code in the R
 console.
 
 ``` r
-data("exampleNprcmanagerConfig")
-View(exampleNprcmanagerConfig)
+data("exampleNprcgenekeeprConfig")
+View(exampleNprcgenekeeprConfig)
 ```
 
 ### Display of an age by sex pyramid plot
@@ -190,7 +189,7 @@ selecting the candidate group members. Optionally the user may select to
 form harem groups, which considers the sex of individuals when forming
 groups and restricts the number of males to one per group.
 
-Find online documentation at <https://rmsharp.github.io/nprcmanager/>.
+Find online documentation at <https://rmsharp.github.io/nprcgenekeepr/>.
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic

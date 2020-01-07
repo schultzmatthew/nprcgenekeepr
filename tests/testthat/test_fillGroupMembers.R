@@ -1,8 +1,8 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("fillGroupMembers")
 
-examplePedigree <- nprcmanager::examplePedigree
+examplePedigree <- nprcgenekeepr::examplePedigree
 set_seed(10)
 ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
                   reportErrors = FALSE)
@@ -19,7 +19,7 @@ conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups))
 candidates <- setdiff(candidates, conflicts)
 
 
-kin <- nprcmanager:::addAnimalsWithNoRelative(kin, candidates)
+kin <- nprcgenekeepr:::addAnimalsWithNoRelative(kin, candidates)
 
 ignore <- NULL
 minAge <- 1

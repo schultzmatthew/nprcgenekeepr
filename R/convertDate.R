@@ -1,7 +1,7 @@
 #' Converts date columns formatted as characters to be of type datetime
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Part of Pedigree Curation
 #'
 #' @param ped a dataframe of pedigree information that may contain birth,

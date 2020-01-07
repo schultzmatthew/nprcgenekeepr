@@ -1,7 +1,7 @@
 #' Get the direct ancestors of selected animals
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Gets direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
 #' @return dataframe with pedigree structure having all of the direct ancestors
@@ -16,11 +16,11 @@ getLkDirectAncestors <- function(ids) {
   pedSourceDf <- tryCatch(getDemographics(colSelect = colSet),
                           warning = function(cond) {
                             flog.debug(stri_c("Warning", source, cond),
-                                       name = "nprcmanager")
+                                       name = "nprcgenekeepr")
                             return(NULL)},
                           error = function(cond) {
                             flog.debug(stri_c("Error", source, cond),
-                                       name = "nprcmanager")
+                                       name = "nprcgenekeepr")
                             return(NULL)}
   )
   names(pedSourceDf) <- siteInfo$mapPedColumns

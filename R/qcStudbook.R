@@ -1,7 +1,7 @@
 #' Quality Control for the Studbook or pedigree
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Main pedigree curation function that performs basic quality control on
 #' pedigree information
 #'
@@ -150,6 +150,13 @@
 #' @importFrom utils write.csv
 ## ##  rmsutilityr str_detect_fixed_all
 #' @export
+#' @examples
+#' \donttest{
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
+#'                   reportErrors = FALSE)
+#' names(ped)
+#' }
 qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
                        reportErrors = FALSE) {
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())

@@ -1,7 +1,7 @@
 #' Convenience function to make the initial groupMembers animal list
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return initial groupMembers list
 #'
 #' @param numGp integer value indicating the number of groups that should be

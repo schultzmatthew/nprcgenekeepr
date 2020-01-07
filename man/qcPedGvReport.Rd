@@ -10,18 +10,18 @@ qcPedGvReport
 }
 \description{
 qcPedGvReport is a genetic value report for illustrative purposes only.
-It is used in examples and unit tests with the nprcmanager package.
+It is used in examples and unit tests with the nprcgenekeepr package.
 It was created using the following commands.
   \itemize{
     \item set_seed(10)
-    \item qcPedGvReport <- reportGV(nprcmanager::qcPed, guIter = 10000)
+    \item qcPedGvReport <- reportGV(nprcgenekeepr::qcPed, guIter = 10000)
     \item save(qcPedGvReport, file = "data/qcPedGvReport.RData")
   }
 }
 \examples{
 \dontrun{
-library(nprcmanager)
-qcPedGvReport <- nprcmanager::qcPedGvReport
+library(nprcgenekeepr)
+qcPedGvReport <- nprcgenekeepr::qcPedGvReport
 }
 }
 \keyword{datasets}

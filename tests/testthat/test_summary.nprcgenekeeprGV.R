@@ -1,12 +1,12 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
-context("summary.nprcmanagGV")
+# This file is part of nprcgenekeepr
+context("summary.nprcgenekeeprGV")
 library(testthat)
 
-test_that("summary.nprcmanagGV provides expected output", {
+test_that("summary.nprcgenekeeprGV provides expected output", {
   skip_on_cran()
   set_seed(10)
-  ped <- nprcmanager::pedOne
+  ped <- nprcgenekeepr::pedOne
   ped$birth_date[ped$ego_id == "d2"] <- "2000-04-13"
   ped$birth_date[ped$ego_id == "o4"] <- "2016-04-13"
   ped <- suppressWarnings(qcStudbook(ped, reportErrors = FALSE))

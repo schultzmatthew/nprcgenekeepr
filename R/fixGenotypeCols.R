@@ -1,7 +1,7 @@
 #' Reformat names of observed genotype columns
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' This is not a good fix. A better solution is to avoid the problem.
 #' Currently qcStudbook() blindly changes all of the column names by removing
 #' the underscores.

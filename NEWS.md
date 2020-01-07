@@ -1,7 +1,32 @@
 NEWS
 ================
 R. Mark Sharp
-12/16/2019
+01/07/2020
+
+# nprcgenekeepr 0.5.42.9002
+
+  - Changed name of package to nprcgenekeepr. This required changing of
+    many of the supporting files and functions. Having good unit test
+    coverage of the functions (739 test with \> 90 percent coverage)
+    made this possible.
+  - This is the last version under the nprcmanager repository name.
+  - Running the build check had OK: 739; Failed: 0; Warnings: 0;
+    Skipped: 0
+
+# nprcmanager 0.5.42.9001
+
+  - Adding small executable examples in `roxygen2` comments that will go
+    into the Rd-files. Since I have tests, I am wrapping the examples in
+    .
+  - Added code prior to changing `par()` in *getPyramidPlot.R* to reset
+    `par()` with  
+    `opar <- par(no.readonly =TRUE)`  
+    `on.exit(par(opar))`  
+  - Removed the word “Implements” from the title.
+  - Reworded the first sentence of the Description element and therein
+    removing “implements” and “nprcmanager” as unnecessary words.
+  - Added single quotes around all package, software, and API names
+    within the Description element of the DESCRIPTION file.
 
 # nprcmanager 0.5.42.9000
 

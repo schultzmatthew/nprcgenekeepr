@@ -1,19 +1,19 @@
-#' print.summary.nprcmanagErr print.summary.nprcmanagGV
+#' print.summary.nprcgenekeepr print.summary.nprcgenekeeprGV
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return object to send to generic print function
 #'
 #' @rdname print
-#' @method print summary.nprcmanagErr
-#' @param x object of class summary.nprcmanagErr and class list
+#' @method print summary.nprcgenekeeprErr
+#' @param x object of class summary.nprcgenekeeprErr and class list
 #' @param ... additional arguments for the \code{summary.default} statement
 #' @importFrom stringi stri_c
 #' @export
-print.summary.nprcmanagErr <- function(x, ...) {
+print.summary.nprcgenekeeprErr <- function(x, ...) {
   cl <- oldClass(x)
   txt <- x
-  #cat("This is a summary printout from nprcmanager\n\n")
+  #cat("This is a summary printout from nprcgenekeepr\n\n")
   for (x in txt$txt) {
     cat(x, "\n")
   }
@@ -23,21 +23,21 @@ print.summary.nprcmanagErr <- function(x, ...) {
                "One or more parents appear too young at time of birth.\n"))
     print(txt$sp, digits = 2, row.names = TRUE, ...)
   }
-  oldClass(txt) <- cl[cl != "nprcmanagErr"]
+  oldClass(txt) <- cl[cl != "nprcgenekeeprErr"]
   #NextMethod("print")
   invisible(txt)
 }
 #' @rdname print
 #' @return object to send to generic print function
-#' @method print summary.nprcmanagGV
+#' @method print summary.nprcgenekeeprGV
 #' @export
-print.summary.nprcmanagGV <- function(x, ...) {
+print.summary.nprcgenekeeprGV <- function(x, ...) {
   cl <- oldClass(x)
-  #cat("This is a summary printout from nprcmanagGV\n\n")
+  #cat("This is a summary printout from nprcgenekeeprGV\n\n")
   for (line in x) {
     cat(line, "\n")
   }
-  oldClass(x) <- cl[cl != "nprcmanagGV"]
+  oldClass(x) <- cl[cl != "nprcgenekeeprGV"]
   #NextMethod("print")
   invisible(x)
 }

@@ -1,7 +1,7 @@
 #' Generates a kinship matrix.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' The function previously had an internal call to the kindepth function in
 #' order to provide the parameter pdepth (the generation number). This version
 #' requires the generation number to be calculated elsewhere and passed into

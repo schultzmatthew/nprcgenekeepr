@@ -1,7 +1,7 @@
 #' Returns a character vector with an file name having the date prepended.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param filename character vector with name to use in file name
 #' @import lubridate
 #' @export

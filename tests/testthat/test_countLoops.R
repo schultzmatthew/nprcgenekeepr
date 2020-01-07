@@ -1,8 +1,8 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("countLoops")
 library(testthat)
-ped <- nprcmanager::qcPed
+ped <- nprcgenekeepr::qcPed
 ped <- qcStudbook(ped, minParentAge = 0)
 pedTree <- createPedTree(ped)
 pedLoops <- findLoops(pedTree)

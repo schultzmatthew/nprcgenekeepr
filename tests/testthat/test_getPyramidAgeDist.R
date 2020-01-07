@@ -1,10 +1,10 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("getPyramidAgeDist")
 library(testthat)
 library(lubridate)
 
-qcPed <- nprcmanager::qcPed
+qcPed <- nprcgenekeepr::qcPed
 ped <- qcPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]
 ped <- getPyramidAgeDist(ped)
 test_that("getPyramidAgeDist classifies and ages animals correctly", {

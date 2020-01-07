@@ -11,6 +11,9 @@ addBackSecondParents(uPed, ped)
 
 \item{ped}{a trimmed pedigree}
 }
+\value{
+dataframe with pedigree with single parents added.
+}
 \description{
 Uses the \code{ped} dataframe, which has full complement of parents and the
 \code{uPed} dataframe, which has all uninformative parents removed to

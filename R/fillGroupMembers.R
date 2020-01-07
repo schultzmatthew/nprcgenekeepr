@@ -1,7 +1,7 @@
 #' Forms and fills list of animals groups based on provided constraints
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return list of animal groups and their member animals
 #'
 #' @param candidates character vector of IDs of the animals available for

@@ -1,8 +1,8 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("fillGroupMembersWithSexRatio")
 
-examplePedigree <- nprcmanager::examplePedigree
+examplePedigree <- nprcgenekeepr::examplePedigree
 set_seed(10)
 ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
                   reportErrors = FALSE)
@@ -18,8 +18,7 @@ kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
 conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
 candidates <- setdiff(candidates, conflicts)
 
-
-kin <- nprcmanager:::addAnimalsWithNoRelative(kin, candidates)
+kin <- nprcgenekeepr:::addAnimalsWithNoRelative(kin, candidates)
 
 ignore <- NULL
 minAge <- 1
@@ -30,7 +29,7 @@ withKin <- FALSE
 groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem = harem,
                                  minAge = minAge)
 groupMembersStart <- groupMembers
-grpNum <- nprcmanager:::makeGrpNum(numGp)
+grpNum <- nprcgenekeepr:::makeGrpNum(numGp)
 
 test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio", {
   expect_equal(groupMembers[[1]], c("N54ICI", "VJ08BW", "2ZMHG7"))

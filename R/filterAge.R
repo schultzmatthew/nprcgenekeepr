@@ -1,7 +1,7 @@
 #' Removes kinship values where an animal is less than the minAge
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Part of Group Formation
 #'
 #' @param kin a dataframe with columns \code{id1}, \code{id2}, and

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getEmptyErrorLst.R
 \name{getEmptyErrorLst}
 \alias{getEmptyErrorLst}
-\title{Creates a empt errorLst object}
+\title{Creates a empty errorLst object}
 \usage{
 getEmptyErrorLst()
 }
@@ -11,5 +11,5 @@ errorLst object with placeholders for error types found in a pedigree
 file by \code{qcStudbook}.
 }
 \description{
-Creates a empt errorLst object
+Creates a empty errorLst object
 }

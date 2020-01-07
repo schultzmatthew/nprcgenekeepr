@@ -1,5 +1,5 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 library(testthat)
-library(nprcmanager)
-test_check("nprcmanager")
+library(nprcgenekeepr)
+test_check("nprcgenekeepr")

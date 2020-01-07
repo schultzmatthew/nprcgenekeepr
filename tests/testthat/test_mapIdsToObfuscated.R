@@ -1,8 +1,8 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-# This file is part of nprcmanager
+# This file is part of nprcgenekeepr
 test_that("mapIdsToObfuscated maps IDS as expected", {
   set_seed(1)
-  ped <- qcStudbook(nprcmanager::pedSix)
+  ped <- qcStudbook(nprcgenekeepr::pedSix)
   obfuscated <- obfuscatePed(ped, map = TRUE)
   someIds <- c("s1", "s2", "d1", "d1")
   someUndefinedIds <- c("nope", "s1", "still_nope", "d1")

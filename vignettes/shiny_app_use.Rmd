@@ -15,7 +15,7 @@ vignette: >
 library(png)
 library(grid)
 library(stringi)
-library(nprcmanager)
+library(nprcgenekeepr)
 knitr::opts_chunk$set(eval = FALSE, echo=TRUE, results = "markup", cache = FALSE)
 pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
@@ -24,23 +24,23 @@ start_time <- proc.time()
 
 ## Introduction
 This tutorial demonstrates the major functions used 
-within the Shiny application provided by the __nprcmanager__ package.
+within the Shiny application provided by the __nprcgenekeepr__ package.
 This is a brief tutorial that illustrates a typical workflow and does
 not explore all possible workflows.
 
 Please provide any comments, questions, or bug reports through the GitHub
 issue tracker at 
-[https://github.com/rmsharp/nprcmanager/issues](
-https://github.com/rmsharp/nprcmanager/issues).
+[https://github.com/rmsharp/nprcgenekeepr/issues](
+https://github.com/rmsharp/nprcgenekeepr/issues).
 
 ## Installation and Help
 
-To get the most recent version you can install **nprcmanager** from
+To get the most recent version you can install **nprcgenekeepr** from
 GitHub with the following code.
 
 ```{r gh-installation}
 install.packages("devtools")
-devtools::install_github("rmsharp/nprcmanager")
+devtools::install_github("rmsharp/nprcgenekeepr")
 
 ```
 
@@ -49,7 +49,7 @@ All missing dependencies should be automatically installed.
 You can start the Shiny application from the __R__ console with 
 
 ```{r start, echo = TRUE, include=TRUE}
-library(nprcmanager)
+library(nprcgenekeepr)
 #runManager()
 getwd()
 ```

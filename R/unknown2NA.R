@@ -1,7 +1,7 @@
 #' Removing IDs having "UNKNOWN" regardless of case
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Someone started entering "unknown" for unknown parents instead of leaving
 #' the field blank in PRIMe.
 #' @param ped  A dataframe containing at least and "id" field

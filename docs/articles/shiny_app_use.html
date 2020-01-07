@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shiny Application for Genetic Management of Colonies • nprcmanager</title>
+<title>Shiny Application for Genetic Management of Colonies • nprcgenekeepr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9000</span>
+        <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9002</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+      <a href="../articles/interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -73,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rmsharp/nprcmanager">
+  <a href="https://github.com/rmsharp/nprcgenekeepr">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -95,7 +95,7 @@
                         <h4 class="author">R. Mark Sharp</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcmanager/blob/master/vignettes/shiny_app_use.Rmd"><code>vignettes/shiny_app_use.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/vignettes/shiny_app_use.Rmd"><code>vignettes/shiny_app_use.Rmd</code></a></small>
       <div class="hidden name"><code>shiny_app_use.Rmd</code></div>
 
     </div>
@@ -105,20 +105,20 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>This tutorial demonstrates the major functions used within the Shiny application provided by the <strong>nprcmanager</strong> package. This is a brief tutorial that illustrates a typical workflow and does not explore all possible workflows.</p>
-<p>Please provide any comments, questions, or bug reports through the GitHub issue tracker at <a href="https://github.com/rmsharp/nprcmanager/issues">https://github.com/rmsharp/nprcmanager/issues</a>.</p>
+<p>This tutorial demonstrates the major functions used within the Shiny application provided by the <strong>nprcgenekeepr</strong> package. This is a brief tutorial that illustrates a typical workflow and does not explore all possible workflows.</p>
+<p>Please provide any comments, questions, or bug reports through the GitHub issue tracker at <a href="https://github.com/rmsharp/nprcgenekeepr/issues">https://github.com/rmsharp/nprcgenekeepr/issues</a>.</p>
 </div>
 <div id="installation-and-help" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation-and-help" class="anchor"></a>Installation and Help</h2>
-<p>To get the most recent version you can install <strong>nprcmanager</strong> from GitHub with the following code.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
+<p>To get the most recent version you can install <strong>nprcgenekeepr</strong> from GitHub with the following code.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcgenekeepr"</span>)</span></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 <p>You can start the Shiny application from the <strong>R</strong> console with</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcmanager)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#runManager()</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcgenekeepr)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#runManager()</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>()</span></code></pre></div>
 <p>This will result in the opening screen where you tell the application how to find the pedigree you will be using.</p>
 </div>
 <div id="input" class="section level2">
@@ -145,7 +145,7 @@
 <hr>
 <p>A Microsoft Excel workbook with a single worksheet is the default file type; though comma (.csv), semi-colon (.txt), and tab (.txt) separated value files are all acceptable formats.</p>
 <p>The <em>Example_Pedigree.xlsx</em> file we are using is from a CSV file created as shown below and then saved in an Excel format.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/makeExamplePedigreeFile.html">makeExamplePedigreeFile</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="../reference/makeExamplePedigreeFile.html">makeExamplePedigreeFile</a></span>()</span></code></pre></div>
 <p>Select the <strong>Browse</strong> button and select the pedigree file from your file system.</p>
 <p><img src="shiny_app_use_files/figure-html/example-pedigree-1.png" width="240"></p>
 <hr>

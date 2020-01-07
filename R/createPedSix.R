@@ -1,7 +1,7 @@
 #' createPedSix makes the pedSix data object
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param savePed logical value if TRUE the pedigree is saved into the
 #' packages \code{data} directory
 #' @importFrom lubridate mdy

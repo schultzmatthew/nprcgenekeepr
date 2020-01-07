@@ -1,7 +1,7 @@
-#' Creates a empt errorLst object
+#' Creates a empty errorLst object
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return errorLst object with placeholders for error types found in a pedigree
 #' file by \code{qcStudbook}.
 #' @export
@@ -26,6 +26,6 @@ getEmptyErrorLst <- function() {
                                            birthdateToBirth = character(0),
                                            deathdateToDeath = character(0))
   )
-  class(emptyErrorLst) <- append(class(emptyErrorLst),"nprcmanagErr")
+  class(emptyErrorLst) <- append(class(emptyErrorLst),"nprcgenekeeprErr")
   emptyErrorLst
 }

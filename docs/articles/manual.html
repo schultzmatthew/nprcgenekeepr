@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genetic Management Tools Manual • nprcmanager</title>
+<title>Genetic Management Tools Manual • nprcgenekeepr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9000</span>
+        <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9002</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+      <a href="../articles/interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -73,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rmsharp/nprcmanager">
+  <a href="https://github.com/rmsharp/nprcgenekeepr">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -96,7 +96,7 @@
             
             <h4 class="date">October 03, 2017</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcmanager/blob/master/vignettes/manual.Rmd"><code>vignettes/manual.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/vignettes/manual.Rmd"><code>vignettes/manual.Rmd</code></a></small>
       <div class="hidden name"><code>manual.Rmd</code></div>
 
     </div>
@@ -107,7 +107,7 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>The goal of <strong>nprcmanager</strong> is to implement Genetic Tools for Colony Management. It was initially conceived and developed as a Shiny web application at the Oregon National Primate Research Center (ONPRC) to facilitate some of the analyses they perform regularly. It has been enhanced to have more capability as a Shiny application and to expose the functions so they can be used either interactively or in R scripts.</p>
+<p>The goal of <strong>nprcgenekeepr</strong> is to implement Genetic Tools for Colony Management. It was initially conceived and developed as a Shiny web application at the Oregon National Primate Research Center (ONPRC) to facilitate some of the analyses they perform regularly. It has been enhanced to have more capability as a Shiny application and to expose the functions so they can be used either interactively or in R scripts.</p>
 <p>This work has been supported in part by NIH grants P51 RR13986 to the Southwest National Primate Research Center and P51 OD011092 to the Oregon National Primate Research Center.</p>
 <!--It is now managed and maintained as a joint effort between ONPRC-->
 <!--and Southwest National Primate Research Center (SNPRC) with the -->
@@ -136,8 +136,8 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <h3 class="hasAnchor">
 <a href="#creation-of-pedigree-from-a-list-of-potential-breeders-and-labkey-integration" class="anchor"></a>Creation of Pedigree From a List of Potential Breeders and LabKey Integration</h3>
 <p>The user can enter a list of focal animals in a CSV file that will be used to create a pedigree containing all direct relative (ancestors and descendants) via the <strong>labkey.selectRows</strong> function within the <strong>Rlabkey</strong> package if a database connection is provided via a configuration file and the user has read permission on a LabKey server with the demographic data in an <strong>EHR</strong> (Electronic Health Record) module.</p>
-<p>Two configuration files are needed to use the database features of nprcmanager with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
-<p>The second file is named <strong>_nprcmanager_config</strong> on Microsoft Windows operating systems and <strong>.nprcmanager_config</strong> otherwise and is the nprcmanager <a href="https://github.com/rmsharp/nprcmanager/blob/master/inst/extdata/example_nprcmanager_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
+<p>Two configuration files are needed to use the database features of nprcgenekeepr with LabKey. The first file is named <strong>_netrc</strong> on Microsoft Windows operating systems and <strong>.netrc</strong> otherwise, allows the user to authenticate with LabKey through the LabKey API and is fully described by <a href="https://www.labkey.org/Documentation/wiki-page.view?name=netrc">LabKey documentation</a></p>
+<p>The second file is named <strong>_nprcgenekeepr_config</strong> on Microsoft Windows operating systems and <strong>.nprcgenekeepr_config</strong> otherwise and is the <code>nprcgenekeepr</code> <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/inst/extdata/example_nprcgenekeepr_config">configuration file</a> An image of this example configuration file is included as a data object and can be loaded and viewed with the following lines of R code in the R console.</p>
 </div>
 <div id="display-of-an-age-by-sex-pyramid-plot" class="section level3">
 <h3 class="hasAnchor">
@@ -167,17 +167,17 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version of <strong>nprcmanager</strong> from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcmanager"</span>)</a></code></pre></div>
+<p>You can install the development version of <strong>nprcgenekeepr</strong> from github with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcgenekeepr"</span>)</span></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 </div>
 <div id="running-shiny-application" class="section level2">
 <h2 class="hasAnchor">
 <a href="#running-shiny-application" class="anchor"></a>Running Shiny Application</h2>
-<p>The toolset available within nprcmanager can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcmanager)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/runManager.html">runManager</a></span>()</a></code></pre></div>
+<p>The toolset available within nprcgenekeepr can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcgenekeepr)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="../reference/runGenekeepr.html">runGenekeepr</a></span>()</span></code></pre></div>
 </div>
 <div id="input" class="section level2">
 <h2 class="hasAnchor">
@@ -349,23 +349,23 @@ paternal allele vectors are added together.<br>
 <p>For each position on the allele vectors (1:N) - Gather each animal’s two alleles - If the number of other animals possessing that allele is equal to, or below the threshold, score the allele as unique (1) - Otherwise, score the allele as non-unique (0)</p>
 <p>Once every position on each animal’s two allele vector’s has been scored, sum all of the scores for an animal and divide by the total number of alleles being considered (2 * number of simulations).</p>
 <div class="figure">
-<img src="../inst/application/www/GeneDrop.png" alt="Generation of a vector of five gametes from one parent. Showing how the transmission vectors (row 2) determine which alleles are passed from the parental alleles or haplotypes (row 1) to form complementary vectors (row 3) that are combined by adding corresponding elements to form the final vector of transmitted alleles (row 4)."><p class="caption">Generation of a vector of five gametes from one parent. Showing how the transmission vectors (row 2) determine which alleles are passed from the parental alleles or haplotypes (row 1) to form complementary vectors (row 3) that are combined by adding corresponding elements to form the final vector of transmitted alleles (row 4).</p>
+<img src="../inst/application/www/GeneDrop.png" alt=""><p class="caption">Generation of a vector of five gametes from one parent. Showing how the transmission vectors (row 2) determine which alleles are passed from the parental alleles or haplotypes (row 1) to form complementary vectors (row 3) that are combined by adding corresponding elements to form the final vector of transmitted alleles (row 4).</p>
 </div>
 </div>
 </div>
 <div id="software-issues" class="section level2">
 <h2 class="hasAnchor">
 <a href="#software-issues" class="anchor"></a>Software Issues</h2>
-<p>Our goal is to use current R software development practices in an open software environment. Users can see all of the code at <a href="https://github.com/rmsharp/nprcmanager">github.com/rmsharp/nprcmanager</a> and can submit suggestions and bug reports on our issue tracker at <a href="https://github.com/rmsharp/nprcmanager/issues">github.com/rmsharp/nprcmanager/issues</a>.</p>
+<p>Our goal is to use current R software development practices in an open software environment. Users can see all of the code at <a href="https://github.com/rmsharp/nprcgenekeepr">github.com/rmsharp/nprcgenekeepr</a> and can submit suggestions and bug reports on our issue tracker at <a href="https://github.com/rmsharp/nprcgenekeepr/issues">github.com/rmsharp/nprcgenekeepr/issues</a>.</p>
 <div id="travi-ci-use" class="section level3">
 <h3 class="hasAnchor">
 <a href="#travi-ci-use" class="anchor"></a>Travi-ci Use</h3>
-<p>The application and associated website is being continuously integrated at each push to the online repository. While often new features being added are not stable or complete, it is uncommon for the application not to run and perform functions that were working before. However, make sure the build was passing by looking for a green <em>Build Passing</em> badge at the top of the README file at <a href="https://travis-ci.org/rmsharp/nprcmanager">travis-ci.org/rmsharp/nprcmanager</a>.</p>
+<p>The application and associated website is being continuously integrated at each push to the online repository. While often new features being added are not stable or complete, it is uncommon for the application not to run and perform functions that were working before. However, make sure the build was passing by looking for a green <em>Build Passing</em> badge at the top of the README file at <a href="https://travis-ci.org/rmsharp/nprcgenekeepr">travis-ci.org/rmsharp/nprcgenekeepr</a>.</p>
 </div>
 <div id="debug-logging" class="section level3">
 <h3 class="hasAnchor">
 <a href="#debug-logging" class="anchor"></a>Debug Logging</h3>
-<p>There is a logging system integrated into the package using the package <strong>futile.logger</strong>. Note the checkbox at the bottom of the side panel on the <em>Input</em> tab. When the <em>Debug on</em> checkbox is checked (it is not checked by default), the application writes to a file named <em>nprcmanager.log</em> in the users home directory. Currently, events occurring the the <em>server.R</em> file are logged as that is where most errors are exposed.</p>
+<p>There is a logging system integrated into the package using the package <strong>futile.logger</strong>. Note the checkbox at the bottom of the side panel on the <em>Input</em> tab. When the <em>Debug on</em> checkbox is checked (it is not checked by default), the application writes to a file named <em>nprcgenekeepr.log</em> in the users home directory. Currently, events occurring the the <em>server.R</em> file are logged as that is where most errors are exposed.</p>
 </div>
 <div id="code-coverage" class="section level3">
 <h3 class="hasAnchor">

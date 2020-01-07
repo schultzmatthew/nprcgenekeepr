@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Development Plans • nprcmanager</title>
+<title>Development Plans • nprcgenekeepr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9000</span>
+        <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9002</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+      <a href="../articles/interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -73,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rmsharp/nprcmanager">
+  <a href="https://github.com/rmsharp/nprcgenekeepr">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -96,7 +96,7 @@
             
             <h4 class="date">October 14, 2018</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcmanager/blob/master/vignettes/Development_Plans.Rmd"><code>vignettes/Development_Plans.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/vignettes/Development_Plans.Rmd"><code>vignettes/Development_Plans.Rmd</code></a></small>
       <div class="hidden name"><code>Development_Plans.Rmd</code></div>
 
     </div>
@@ -138,7 +138,8 @@ i &lt;- (is.na(rpt$origin) &amp; (rpt$totalOffspring == 0) &amp; (rpt$id %in% fo
 noParentage &lt;- rpt[i, ]</p>
 </blockquote>
 </li>
-<li>There are some functions that are defined and not used. They may be needed later.
+<li>
+<p>There are some functions that are defined and not used. They may be needed later.</p>
 <ol style="list-style-type: decimal">
 <li>findLoops</li>
 <li>makeLoop</li>
@@ -149,7 +150,8 @@ noParentage &lt;- rpt[i, ]</p>
 </li>
 <li><p>Find some ways to use genetic marker data in the evaluation of genetic value. This needs to be discussed.</p></li>
 <li><p>Add breeding productivity measure calculations. For example, (a) number of offspring per year of exposure to male or female. (b) Number of months since last birth. (c) Number of months between births with range and standard deviation.</p></li>
-<li>Consider developing a simulation module to allow uses to simulate breeding decisions.
+<li>
+<p>Consider developing a simulation module to allow uses to simulate breeding decisions.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Need to be able to set the following values.
 <ol style="list-style-type: lower-alpha">
@@ -184,7 +186,7 @@ noParentage &lt;- rpt[i, ]</p>
 <a href="#done" class="anchor"></a>Done</h2>
 <ol style="list-style-type: decimal">
 <li>
-<p>It would be better to catalogue and report the changes made by qcStudbook() so that the user knows how the provided pedigree was changed. Completed by developing the functions <strong>summary.nprcmangErr</strong> and <strong>print.summary.nprcmanagErr</strong>, which when combind with using <strong>qcStudbook</strong> with the <em>error</em> argument set to <strong>TRUE</strong>. 20180915</p>
+<p>It would be better to catalogue and report the changes made by qcStudbook() so that the user knows how the provided pedigree was changed. Completed by developing the functions <strong>summary.nprcgenekeeprErr</strong> and <strong>print.summary.nprcgenekeeprErr</strong>, which when combind with using <strong>qcStudbook</strong> with the <em>error</em> argument set to <strong>TRUE</strong>. 20180915</p>
 <p>An <strong>Error List</strong> tab is now being generated and opened when pedigree errors are detected. 20181014</p>
 <p>An <strong>Changed Columns</strong> is now being generated and made when a pedigree has no errors, but the column names are being changed during processing. 20181020</p>
 </li>

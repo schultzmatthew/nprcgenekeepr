@@ -14,11 +14,11 @@ vignette: >
 ---
 ## Installation
 
-You can install the development version of **nprcmanager** from github with:
+You can install the development version of **nprcgenekeepr** from github with:
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
 install.packages("devtools")
-devtools::install_github("rmsharp/nprcmanager")
+devtools::install_github("rmsharp/nprcgenekeepr")
 
 ```
 

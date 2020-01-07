@@ -1,9 +1,9 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("filterReport")
 library(testthat)
 
-rpt <- nprcmanager::pedWithGenotypeReport$report
+rpt <- nprcgenekeepr::pedWithGenotypeReport$report
 test_that("filterReport correctly subsets reports based on provide IDs", {
   rpt1 <- filterReport(c("GHH9LB", "BD41WW"), rpt)
   expect_equal(nrow(rpt1), 2)

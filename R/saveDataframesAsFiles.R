@@ -1,7 +1,7 @@
 #' Write copy of dataframes to either CSV or Excel file.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.
 #' @param df_list list of dataframes to be stored as files.

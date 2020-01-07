@@ -2,7 +2,7 @@
 % Please edit documentation in R/addErrTxt.R
 \name{addErrTxt}
 \alias{addErrTxt}
-\title{Concatenates any errors from nprcmanagErr into narrative form}
+\title{Concatenates any errors from nprcgenekeeprErr into narrative form}
 \usage{
 addErrTxt(txt, err, singularTxt, pluralTxt)
 }
@@ -18,8 +18,8 @@ length of err is 1}
 length of err is greater than 1.}
 }
 \value{
-Error from nprcmaager
+Error from nprcgenekeepr
 }
 \description{
-Concatenates any errors from nprcmanagErr into narrative form
+Concatenates any errors from nprcgenekeeprErr into narrative form
 }

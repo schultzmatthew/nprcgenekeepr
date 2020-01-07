@@ -1,9 +1,9 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("addGenotype")
 library(testthat)
 library(stringi)
-qcPed <- nprcmanager::qcPed
+qcPed <- nprcgenekeepr::qcPed
 
 qcPed <- qcPed[order(qcPed$id), ]
 ped <- qcPed

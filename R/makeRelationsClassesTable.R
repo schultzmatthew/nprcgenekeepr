@@ -1,7 +1,7 @@
 #' Make relation classes table from \code{kin} dataframe.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' From Relations
 #'
 #' kin : data.frame {fields: id1, id2, kinship, relation}

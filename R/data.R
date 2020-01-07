@@ -1,17 +1,17 @@
-#' exampleNprcmanagerConfig is a loadable version of the example
-#' configuration file \code{example_nprcmanager_config}
+#' exampleNprcgenekeeprConfig is a loadable version of the example
+#' configuration file \code{example_nprcgenekeepr_config}
 #'
-#' It contains a working version of a \strong{nprcmanager} configuration
+#' It contains a working version of a \strong{nprcgenekeepr} configuration
 #' file created the SNPRC.
 #' Users of LabKey's EHR can adapt it to their systems and put it
 #' in their home directory. Instructions are embedded as comments
 #' within the file.
 #' @examples
 #' \dontrun{
-#' data("exampleNprcmanagerConfig")
-#' View(exampleNprcmanagerConfig)
+#' data("exampleNprcgenekeeprConfig")
+#' View(exampleNprcgenekeeprConfig)
 #' }
-"exampleNprcmanagerConfig"
+"exampleNprcgenekeeprConfig"
 #' examplePedigree is a pedigree object created by \code{qcStudbook}
 #'
 #' Represents pedigree from \emph{ExamplePedigree.csv}.
@@ -118,7 +118,7 @@
 #' ped1Alleles is a dataframe created by the geneDrop function
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @format A dataframe with 554 rows and 6 varialbes
 #' \describe{
 #' \item{V1}{alleles assigned to the parents of the animals identified in
@@ -238,14 +238,14 @@
 #' It was created using the following commands.
 #'   \itemize{
 #'     \item set_seed(10)
-#'     \item pedWithGenotypeReport <- reportGV(nprcmanager::pedWithGenotype, guIter = 10000)
+#'     \item pedWithGenotypeReport <- reportGV(nprcgenekeepr::pedWithGenotype, guIter = 10000)
 #'     \item save(pedWithGenotypeReport, file = "data/pedWithGenotypeReport.RData")
 #'   }
 #'
 #' @examples
 #' \dontrun{
-#' library(nprcmanager)
-#' pedWithGenotypeReport <- nprcmanager::pedWithGenotypeReport
+#' library(nprcgenekeepr)
+#' pedWithGenotypeReport <- nprcgenekeepr::pedWithGenotypeReport
 #' }
 "pedWithGenotypeReport"
 #' qcBreeders is a list of 29 baboon IDs that are potential breeders
@@ -280,18 +280,18 @@
 #'
 #'
 #' qcPedGvReport is a genetic value report for illustrative purposes only.
-#' It is used in examples and unit tests with the nprcmanager package.
+#' It is used in examples and unit tests with the nprcgenekeepr package.
 #' It was created using the following commands.
 #'   \itemize{
 #'     \item set_seed(10)
-#'     \item qcPedGvReport <- reportGV(nprcmanager::qcPed, guIter = 10000)
+#'     \item qcPedGvReport <- reportGV(nprcgenekeepr::qcPed, guIter = 10000)
 #'     \item save(qcPedGvReport, file = "data/qcPedGvReport.RData")
 #'   }
 #'
 #' @examples
 #' \dontrun{
-#' library(nprcmanager)
-#' qcPedGvReport <- nprcmanager::qcPedGvReport
+#' library(nprcgenekeepr)
+#' qcPedGvReport <- nprcgenekeepr::qcPedGvReport
 #' }
 "qcPedGvReport"
 #' smallPed is a hypothetical pedigree
@@ -314,7 +314,7 @@
 #' Access it using the following commands.
 #' @examples
 #' \dontrun{
-#' library(nprcmanager)
+#' library(nprcgenekeepr)
 #' data("smallPedTree")
 #' }
 "smallPedTree"

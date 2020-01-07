@@ -1,7 +1,7 @@
 #' removeEarlyDates removes dates before a specified year
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Dates before a specified year are set to NA. This is often used for dates
 #' formed from malformed character representations such as a date in
 #' %m-%d-%Y format being read by %Y-%m-%d format

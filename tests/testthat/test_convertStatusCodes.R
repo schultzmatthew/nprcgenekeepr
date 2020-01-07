@@ -1,5 +1,5 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("convertStatusCodes")
 library(testthat)
 original <- c("A", "alive", "Alive", "1", "S", "Sale", "sold", "shipped",

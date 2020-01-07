@@ -1,7 +1,7 @@
 #' Forms return list of groupAddAssign function
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return list with members \code{savedGroupMembers},
 #' \code{savedScore}, and if \code{withKin == TRUE} \code{groupKin} as well.
 #'

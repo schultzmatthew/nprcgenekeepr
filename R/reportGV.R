@@ -1,7 +1,7 @@
 #' Generates a genetic value report for a provided pedigree.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' This is the main function for the Genetic Value Analysis.
 #'
 #' @param ped The pedigree information in data.frame format
@@ -102,7 +102,7 @@ reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
                     nMaleFounders = nrow(males),
                     nFemaleFounders = nrow(females),
                     total = (nrow(males) + nrow(females)))
-  class(finalData) <- append(class(finalData),"nprcmanagGV")
+  class(finalData) <- append(class(finalData),"nprcgenekeeprGV")
 
   return(finalData)
 }

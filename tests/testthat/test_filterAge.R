@@ -1,9 +1,9 @@
 #' Copyright(c) 2017-2019 R. Mark Sharp
-#' This file is part of nprcmanager
+#' This file is part of nprcgenekeepr
 context("filterAge")
 library(testthat)
 
-ped <- nprcmanager::qcPed
+ped <- nprcgenekeepr::qcPed
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
                 sparse = FALSE)

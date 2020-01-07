@@ -2,7 +2,7 @@ reference:
 - title: "Data objects"
   desc: ~
   contents:
-  - '`exampleNprcmanagerConfig`'
+  - '`exampleNprcgenekeeprConfig`'
   - '`examplePedigree`'
   - '`finalRpt`'
   - '`focalAnimals`'
@@ -27,7 +27,7 @@ reference:
 - title: "Major Features and Functions"
   desc: "Brief codebook and Major Functions"
   contents:
-    - '`nprcmanager`'
+    - '`nprcgenekeepr`'
 - title: "Primary interactive functions"
   desc: "Funtions designed for interactive use"
   contents:
@@ -77,18 +77,18 @@ reference:
   - '`obfuscateDate`'
   - '`obfuscateId`'
   - '`obfuscatePed`'
-  - '`print.summary.nprcmanagErr`'
-  - '`print.summary.nprcmanagGV`'
+  - '`print.summary.nprcgenekeeprErr`'
+  - '`print.summary.nprcgenekeeprGV`'
   - '`qcStudbook`'
   - '`rankSubjects`'
   - '`kinMatrix2LongForm`'
   - '`removeDuplicates`'
   - '`removeUninformativeFounders`'
   - '`removeUnknownAnimals`'
-  - '`runManager`'
+  - '`runGenekeepr`'
   - '`trimPedigree`'
-  - '`summary.nprcmanagErr`'
-  - '`summary.nprcmanagGV`'
+  - '`summary.nprcgenekeeprErr`'
+  - '`summary.nprcgenekeeprGV`'
 - title: All exposed functions
   desc: ~
   contents:
@@ -221,8 +221,8 @@ reference:
   - '`obfuscateId`'
   - '`obfuscatePed`'
   - '`orderReport`'
-  - '`print.summary.nprcmanagErr`'
-  - '`print.summary.nprcmanagGV`'
+  - '`print.summary.nprcgenekeeprErr`'
+  - '`print.summary.nprcgenekeeprGV`'
   - '`qcStudbook`'
   - '`rankSubjects`'
   - '`rbindFill`'
@@ -237,15 +237,15 @@ reference:
   - '`removeUnknownAnimals`'
   - '`reportGV`'
   - '`resetGroup`'
-  - '`runManager`'
+  - '`runGenekeepr`'
   - '`saveDataframesAsFiles`'
   - '`setPopulation`'
   - '`getSexRatioWithAdditions`'
   - '`setExit`'
   - '`set_seed`'
   - '`str_detect_fixed_all`'
-  - '`summary.nprcmanagErr`'
-  - '`summary.nprcmanagGV`'
+  - '`summary.nprcgenekeeprErr`'
+  - '`summary.nprcgenekeeprGV`'
   - '`toCharacter`'
   - '`trimPedigree`'
   - '`unknown2NA`'

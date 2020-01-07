@@ -1,7 +1,7 @@
 #' Add parents
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Pedigree curation function
 #' Given a pedigree, find any IDs listed in the "sire" or "dam" columns
 #' that lack their own line entry and generate one.
@@ -36,6 +36,7 @@ addParents <- function(ped) {
   #                ped[ , names(ped)[5:length(ped)], drop = FALSE],
   #                stringsAsFactors = FALSE)
   # } else {
+    ped <- ped[ , !names(ped) %in% "recordStatus"]
     ped <- cbind(ped, recordStatus = "original", stringsAsFactors = FALSE)
   #}
   # Adding line entries for these parents

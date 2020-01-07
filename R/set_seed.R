@@ -1,7 +1,7 @@
 #' Work around for unit tests using sample()
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param seed argument to \code{set.seed}
 #' @export
 set_seed <- function(seed = 1) {

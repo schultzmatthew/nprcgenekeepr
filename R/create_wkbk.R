@@ -1,7 +1,7 @@
 #' Creates an Excel workbook with worksheets.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param file filename of workbook to be created
 #' @param df_list list of data frames to be added as worksheets to workbook
 #' @param sheetnames character vector of worksheet names

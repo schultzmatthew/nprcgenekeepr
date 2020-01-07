@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeExamplePedigreeFile.R
 \name{makeExamplePedigreeFile}
 \alias{makeExamplePedigreeFile}
-\title{Write copy of nprcmanager::examplePedigree into a file}
+\title{Write copy of nprcgenekeepr::examplePedigree into a file}
 \usage{
 makeExamplePedigreeFile(fileType = "csv")
 }

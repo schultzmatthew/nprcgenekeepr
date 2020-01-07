@@ -35,6 +35,14 @@ uitpPedigreeBrowser <-
     #   )
     )
     ),
+    # div(
+    # conditionalPanel(
+    #   condition = "input$focalAnimalUpdate",
+    #   div(popify(checkboxInput("clearFocalAnimals",
+    #                            label = paste0("Clear focal Animals"),
+    #                            width = "150%",
+    #                            value = FALSE)
+    #   )))),
     div(
     # Right Side Panel
          style = paste("margin-left: 550px;",

@@ -1,7 +1,7 @@
 #' Check for genotype data in dataframe
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Checks to ensure the content and structure are appropriate for genotype
 #' data are in the dataframe and ready for the \code{geneDrop} function by
 #' already being mapped to integers and placed in columns named \code{first}

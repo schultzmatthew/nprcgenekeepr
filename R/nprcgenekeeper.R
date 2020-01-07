@@ -1,7 +1,7 @@
 #' Genetic Management Functions
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #'
 ###############################################################################
 #' @description Primary Data Structure --- Pedigree
@@ -98,5 +98,5 @@
 #' kinship matrix}
 #' }
 #' @docType package
-#' @name nprcmanager
+#' @name nprcgenekeepr
 NULL

@@ -1,7 +1,7 @@
 #' Provides list of potential sires
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return character vector of potential sire Ids
 #'
 #' @param ids character vector of IDs of the animals

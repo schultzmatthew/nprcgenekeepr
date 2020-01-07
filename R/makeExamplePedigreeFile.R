@@ -1,7 +1,7 @@
-#' Write copy of nprcmanager::examplePedigree into a file
+#' Write copy of nprcgenekeepr::examplePedigree into a file
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.
 #' @param fileType character vector of length one with possible values of
@@ -14,17 +14,17 @@ makeExamplePedigreeFile <- function(fileType = "csv") {
   filename <- file.choose(new = TRUE)
   stopifnot(any(fileType %in% c("txt", "csv", "excel")))
   if (fileType == "csv") {
-    write.csv(nprcmanager::examplePedigree,
+    write.csv(nprcgenekeepr::examplePedigree,
               file = filename, row.names = FALSE)
   } else if (fileType == "excel") {
     status <-
       create_wkbk(file = filename,
-                  df_list = list(nprcmanager::examplePedigree),
+                  df_list = list(nprcgenekeepr::examplePedigree),
                   sheetnames = "Example_Pedigree", create = TRUE)
     if (!status)
       stop(paste0("Failed to write example data out to ", filename, "."))
   } else {
-    write.table(nprcmanager::examplePedigree,
+    write.table(nprcgenekeepr::examplePedigree,
               file = filename, row.names = FALSE, sep = "\t")
   }
   filename

@@ -1,7 +1,7 @@
 #' hasBothParents checks to see if both parents are identified.
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @return TRUE if ID has both sire and dam identified in \code{ped}.
 #'
 #' @param id character vector of IDs to examine for parents

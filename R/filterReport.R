@@ -1,7 +1,7 @@
 #' Filters a genetic value report down to only the specified animals
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcmanager
+## This file is part of nprcgenekeepr
 #' @param ids character vector of animal IDs
 #' @param rpt a dataframe with required colnames \code{id}, \code{gu},
 #' \code{zScores}, \code{import}, \code{totalOffspring}, which is
