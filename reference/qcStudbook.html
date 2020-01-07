@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quality Control for the Studbook or pedigree — qcStudbook • nprcmanager</title>
+<title>Quality Control for the Studbook or pedigree — qcStudbook • nprcgenekeepr</title>
 
 
 <!-- jquery -->
@@ -69,8 +69,8 @@ pedigree information" />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">nprcmanager</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9000</span>
+        <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9002</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@ pedigree information" />
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="../articles/interactive.html">Interactive Use of nprcmanager</a>
+      <a href="../articles/interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
@@ -112,7 +112,7 @@ pedigree information" />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/rmsharp/nprcmanager">
+  <a href="https://github.com/rmsharp/nprcgenekeepr">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -131,7 +131,7 @@ pedigree information" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Quality Control for the Studbook or pedigree</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcmanager/blob/master/R/qcStudbook.R'><code>R/qcStudbook.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/R/qcStudbook.R'><code>R/qcStudbook.R</code></a></small>
     <div class="hidden name"><code>qcStudbook.Rd</code></div>
     </div>
 
@@ -290,12 +290,22 @@ ordered by generation number and then ID.</p>
 <p>Finally the columns <code>id</code> <code>sire</code>, and <code>dam</code> are coerce to
 character.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>examplePedigree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/examplePedigree.html'>examplePedigree</a></span>
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'>qcStudbook</span>(<span class='no'>examplePedigree</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>reportChanges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+                  <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>ped</span>)</div><div class='output co'>#&gt;  [1] "id"           "sire"         "dam"          "sex"          "gen"         
+#&gt;  [6] "birth"        "exit"         "age"          "ancestry"     "origin"      
+#&gt; [11] "status"       "recordStatus"</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

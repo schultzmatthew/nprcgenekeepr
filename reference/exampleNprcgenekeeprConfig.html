@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates a folder with CSV files containing example pedigrees and ID lists
-used to demonstrate the package. — createExampleFiles • nprcgenekeepr</title>
+<title>exampleNprcgenekeeprConfig is a loadable version of the example
+configuration file <code>example_nprcgenekeepr_config</code> — exampleNprcgenekeeprConfig • nprcgenekeepr</title>
 
 
 <!-- jquery -->
@@ -36,11 +36,13 @@ used to demonstrate the package. — createExampleFiles • nprcgenekeepr</title
 
 
 
-<meta property="og:title" content="Creates a folder with CSV files containing example pedigrees and ID lists
-used to demonstrate the package. — createExampleFiles" />
-<meta property="og:description" content="Creates a folder named ~/tmp/ExamplePedigrees if it does not already
-exist. It then proceeds to write each example pedigree into a CSV file named
-based on the name of the example pedigree." />
+<meta property="og:title" content="exampleNprcgenekeeprConfig is a loadable version of the example
+configuration file <code>example_nprcgenekeepr_config</code> — exampleNprcgenekeeprConfig" />
+<meta property="og:description" content="It contains a working version of a nprcgenekeepr configuration
+file created the SNPRC.
+Users of LabKey's EHR can adapt it to their systems and put it
+in their home directory. Instructions are embedded as comments
+within the file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -133,26 +135,38 @@ based on the name of the example pedigree." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates a folder with CSV files containing example pedigrees and ID lists
-used to demonstrate the package.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/R/createExampleFiles.R'><code>R/createExampleFiles.R</code></a></small>
-    <div class="hidden name"><code>createExampleFiles.Rd</code></div>
+    <h1>exampleNprcgenekeeprConfig is a loadable version of the example
+configuration file <code>example_nprcgenekeepr_config</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>exampleNprcgenekeeprConfig.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates a folder named <code>~/tmp/ExamplePedigrees</code> if it does not already
-exist. It then proceeds to write each example pedigree into a CSV file named
-based on the name of the example pedigree.</p>
+    <p>It contains a working version of a <strong>nprcgenekeepr</strong> configuration
+file created the SNPRC.
+Users of LabKey's EHR can adapt it to their systems and put it
+in their home directory. Instructions are embedded as comments
+within the file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createExampleFiles</span>()</pre>
+    <pre class="usage"><span class='no'>exampleNprcgenekeeprConfig</span></pre>
 
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
+    <p>An object of class <code>character</code> of length 34.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"exampleNprcgenekeeprConfig"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span>(<span class='no'>exampleNprcgenekeeprConfig</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#format">Format</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
