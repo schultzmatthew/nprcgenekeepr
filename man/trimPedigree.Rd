@@ -37,6 +37,22 @@ back single parents to the \code{p} dataframe.}
 \value{
 A pedigree that has been trimmed, had uninformative founders
 removed and single parents added back.
+\donttest{
+examplePedigree <- nprcgenekeepr::examplePedigree
+breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+                         reportChanges = FALSE,
+                         reportErrors = FALSE)
+focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
+                                  is.na(breederPed$dam)) &
+                                is.na(breederPed$exit)]
+breederPed <- setPopulation(ped = breederPed, ids = focalAnimals)
+trimmedPed <- trimPedigree(focalAnimals, breederPed)
+trimmedPedInformative <- trimPedigree(focalAnimals, breederPed,
+                                      removeUninformative = TRUE)
+nrow(breederPed)
+nrow(trimmedPed)
+nrow(trimmedPedInformative)
+}
 }
 \description{
 Filters a pedigree down to only the ancestors of the provided group,

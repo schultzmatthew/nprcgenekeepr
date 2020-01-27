@@ -12,6 +12,10 @@ makeExamplePedigreeFile(fileType = "csv")
 }
 \value{
 full path name of file saved.
+\donttest{
+library(nprcgenekeepr)
+pedigreeFile <- makeExamplePedigreeFile()
+}
 }
 \description{
 Uses \code{examplePedigree} data structure to create an example data file

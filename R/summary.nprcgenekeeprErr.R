@@ -93,6 +93,30 @@ summary.nprcgenekeeprErr <- function(object, ...) {
 }
 #' @rdname summary
 #' @return object of class summary.nprcgenekeeprGV
+#'
+#' \donttest{
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+#'                          reportChanges = FALSE,
+#'                          reportErrors = FALSE)
+#' focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
+#'                                   is.na(breederPed$dam)) &
+#'                                 is.na(breederPed$exit)]
+#' ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+#' probands <- ped$id[ped$population]
+#' ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
+#'                     addBackParents = FALSE)
+#' geneticValue <- reportGV(ped, guIter = 500,
+#'                          guThresh = 3,
+#'                          byID = TRUE,
+#'                          updateProgress = NULL)
+#' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+#'                                 guThresh = 3,
+#'                                 byID = TRUE,
+#'                                 updateProgress = NULL)
+#' summary(geneticValue)
+#' summary(trimmedGeneticValue)
+#' }
 #' @method summary nprcgenekeeprGV
 #' @importFrom stringi stri_c
 #' @export

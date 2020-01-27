@@ -4,6 +4,10 @@
 ## This file is part of nprcgenekeepr
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.
+#' \donttest{
+#' library(nprcgenekeepr)
+#' pedigreeFile <- makeExamplePedigreeFile()
+#' }
 #' @param fileType character vector of length one with possible values of
 #' \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.
 #'
