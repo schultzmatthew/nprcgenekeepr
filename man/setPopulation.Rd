@@ -17,6 +17,11 @@ under consideration.}
 An updated pedigree with the \code{population} column added or
 updated by being set to \code{TRUE} for the animal IDs in \code{ped$id} and
 \code{FALSE} otherwise.
+}
+\description{
+Part of the pedigree filtering toolset.
+}
+\examples{
 \donttest{
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -28,7 +33,4 @@ focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
 breederPed <- setPopulation(ped = breederPed, ids = focalAnimals)
 nrow(breederPed[breederPed$population, ])
 }
-}
-\description{
-Part of the pedigree filtering toolset.
 }

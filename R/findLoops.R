@@ -22,6 +22,13 @@
 #'
 #' @param ptree a list of lists forming a pedigree tree as constructed by
 #' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
+#'
+#' @examples
+#' \dontrun{
+#' data("examplePedigree")
+#' exampleTree <- createPedTree(examplePedigree)
+#' exampleLoops <- findLoops(exampleTree)
+#' }
 #' @export
 findLoops <- function(ptree) {
 

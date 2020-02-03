@@ -20,3 +20,9 @@ that produces a person’s age, stated according to common usage — common
 usage meaning that a person’s age should always be an integer that
 increases exactly on a birthday.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- getPyramidAgeDist()
+}
+}

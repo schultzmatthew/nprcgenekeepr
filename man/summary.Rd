@@ -18,7 +18,16 @@
 object of class summary.nprcgenekeeprErr
 
 object of class summary.nprcgenekeeprGV
-
+}
+\description{
+summary.nprcgenekeeprErr Summary function for class nprcgenekeeprErr
+}
+\examples{
+\donttest{
+errorList <- qcStudbook(nprcgenekeepr::pedOne, minParentAge = 0, reportChanges = TRUE,
+reportErrors = TRUE)
+summary(errorList)
+}
 \donttest{
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -28,21 +37,19 @@ focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
                                   is.na(breederPed$dam)) &
                                 is.na(breederPed$exit)]
 ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+trimmedPed <- trimPedigree(focalAnimals, breederPed)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                     addBackParents = FALSE)
-geneticValue <- reportGV(ped, guIter = 500,
+geneticValue <- reportGV(ped, guIter = 50, # should be >= 1000
                          guThresh = 3,
                          byID = TRUE,
                          updateProgress = NULL)
-trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50, # should be >= 1000
                                 guThresh = 3,
                                 byID = TRUE,
                                 updateProgress = NULL)
 summary(geneticValue)
 summary(trimmedGeneticValue)
 }
-}
-\description{
-summary.nprcgenekeeprErr Summary function for class nprcgenekeeprErr
 }

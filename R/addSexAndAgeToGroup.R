@@ -7,6 +7,15 @@
 #' @param ids character vector of animal Ids
 #' @param ped datatable that is the `Pedigree`. It contains pedigree
 #' information including the IDs listed in \code{candidates}.
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' data("qcBreeders")
+#' data("qcPed")
+#' df <- addSexAndAgeToGroup(ids = qcBreeders, ped = qcPed)
+#' head(df)
+#' }
 #' @export
 addSexAndAgeToGroup <- function(ids, ped) {
   group <- data.frame(ids,

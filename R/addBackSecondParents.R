@@ -10,6 +10,23 @@
 #' @return dataframe with pedigree with single parents added.
 #' @param uPed a trimmed pedigree dataframe with uninformative founders removed.
 #' @param ped a trimmed pedigree
+#'
+#' @examples
+#' \donttest{
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+#'                          reportChanges = FALSE,
+#'                          reportErrors = FALSE)
+#' probands <- breederPed$id[!(is.na(breederPed$sire) &
+#'                                is.na(breederPed$dam)) &
+#'                                is.na(breederPed$exit)]
+#' ped <- getProbandPedigree(probands, breederPed)
+#' nrow(ped)
+#' p <- removeUninformativeFounders(ped)
+#' nrow(p)
+#' p <- addBackSecondParents(p, ped)
+#' nrow(p)
+#' }
 #' @export
 addBackSecondParents <- function(uPed, ped) {
 

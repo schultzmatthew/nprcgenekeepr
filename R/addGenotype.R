@@ -8,6 +8,14 @@
 #' \code{qcStudbook} so it is not checked.
 #' @param genotype genotype dataframe. \code{genotype} is to be provided by
 #' \code{checkGenotypeFile} so it is not checked.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' data(rhesusPedigree)
+#' data(rheusGenotypes)
+#' pedWithGenotypes <- addGenotype(ped = rhesusPedigree,
+#'                                 genotype = rhesusGenotypes)
+#' }
 #' @export
 addGenotype <- function(ped, genotype) {
   genotypeNames <- names(genotype)[2:3]

@@ -39,7 +39,11 @@ will be called during each iteration to update a
 \value{
 A dataframe with the genetic value report. Animals are ranked
 in order of descending value.
-
+}
+\description{
+This is the main function for the Genetic Value Analysis.
+}
+\examples{
 \donttest{
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -49,14 +53,15 @@ focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
                                   is.na(breederPed$dam)) &
                                 is.na(breederPed$exit)]
 ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+trimmedPed <- trimPedigree(focalAnimals, breederPed)
 probands <- ped$id[ped$population]
 ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                     addBackParents = FALSE)
-geneticValue <- reportGV(ped, guIter = 500,
+geneticValue <- reportGV(ped, guIter = 50, # should be >= 1000
                          guThresh = 3,
                          byID = TRUE,
                          updateProgress = NULL)
-trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50, # should be >= 1000
                                 guThresh = 3,
                                 byID = TRUE,
                                 updateProgress = NULL)
@@ -70,7 +75,4 @@ nff <- trimmedGeneticValue[["nFemaleFounders"]]
 fe <- trimmedGeneticValue[["fe"]]
 fg <- trimmedGeneticValue[["fg"]]
 }
-}
-\description{
-This is the main function for the Genetic Value Analysis.
 }

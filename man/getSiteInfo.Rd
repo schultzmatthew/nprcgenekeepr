@@ -30,3 +30,9 @@ Currently this returns the following character strings in a named list.
 \description{
 Get site information
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+getSiteInfo()
+}
+}

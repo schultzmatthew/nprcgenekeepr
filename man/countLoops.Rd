@@ -37,3 +37,18 @@ SIMWALK2 or similar programs.
 Uses the \code{loops} data structure and the list of all ancestors for
 each individual to calculate the number of loops for each individual.
 }
+\examples{
+\dontrun{
+data("examplePedigree")
+exampleTree <- createPedTree(examplePedigree)
+exampleLoops <- findLoops(exampleTree)
+## You can count how many animals are in loops with the following code.
+length(exampleLoops[exampleLoops == TRUE])
+## You can count how many loops you have with the following code.
+nLoops <- countLoops(exampleLoops, exampleTree)
+sum(unlist(nLoops[nLoops > 0]))
+## You can list the first 10 sets of ids, sires and dams in loops with
+## the following line of code:
+examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
+}
+}

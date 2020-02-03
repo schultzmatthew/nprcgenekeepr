@@ -12,6 +12,15 @@
 #' @param id character vector of length one containing the animal ID
 #' @param n integer indicating the number of iterations to simulate.
 #' Default is 5000.
+#'
+#' @examples
+#' alleles <- list(alleles = list(), counter = 1)
+#' alleles <- assignAlleles(alleles, parentType = "sire", parent = NA,
+#'                          id = "o1", n = 4)
+#' alleles
+#' alleles <- assignAlleles(alleles, parentType = "dam", parent = NA,
+#'                          id = "o1", n = 4)
+#' alleles
 #' @export
 assignAlleles <- function(alleles, parentType, parent, id, n) {
   if (is.na(parent)) {

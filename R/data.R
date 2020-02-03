@@ -318,4 +318,45 @@
 #' data("smallPedTree")
 #' }
 "smallPedTree"
+#' rhesusGenotypes is a dataframe with two haplotypes per animal
+#'
+#' There are  object.
+#'
+#' Represents 31 animals that are also in the obfuscated \code{rhesusPedigree}
+#' pedigree from \emph{rhesusGenotypes.csv}.
+#' \describe{
+#' \item{id}{-- character column of animal IDs}
+#' \item{first_name}{-- a generic name for the first haplotype}
+#' \item{second_name}{-- a generic name for the second haplotype}
+#' }
+#' @examples
+#' \dontrun{
+#' library(nprcgenekeepr)
+#' data("rhesusGenotypes")
+#' }
+"rhesusGenotypes"
+#' rhesusPedigree is a pedigree object
+#'
+#' Represents an obfuscated pedigree from \emph{rhesusPedigree.csv} where the
+#' IDs and dates have been modified to de-identify the data.
+#' \describe{
+#' \item{id}{-- character column of animal IDs}
+#' \item{sire}{-- the male parent of the animal indicated by the \code{id} column.
+#' Unknown sires are indicated with \code{NA}}
+#' \item{dam}{-- the female parent of the animal indicated by the \code{id}
+#' column.Unknown dams are indicated with \code{NA}}
+#' \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an
+#' individual.}
+#' \item{gen}{-- generation number (integers beginning with 0 for the founder
+#' generation) of the animal indicated by the \code{id} column.}
+#' \item{birth}{-- Date vector of birth dates}
+#' \item{exit}{-- Date vector of exit dates}
+#' \item{age}{-- numerical vector of age in years}
+#' }
+#' @examples
+#' \dontrun{
+#' library(nprcgenekeepr)
+#' data("rhesusPedigree")
+#' }
+"rhesusPedigree"
 

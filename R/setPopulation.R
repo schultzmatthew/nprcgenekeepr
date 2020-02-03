@@ -11,6 +11,7 @@
 #' @return An updated pedigree with the \code{population} column added or
 #' updated by being set to \code{TRUE} for the animal IDs in \code{ped$id} and
 #' \code{FALSE} otherwise.
+#' @examples
 #' \donttest{
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,

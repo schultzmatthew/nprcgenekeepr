@@ -17,7 +17,6 @@
 #' @param harem logical variable when set to \code{TRUE}, the formed groups
 #' have a single male at least \code{minAge} old.
 #'
-#' @export
 addGroupOfUnusedAnimals <- function(savedGroupMembers, candidates, ped,
                                     minAge, harem) {
   if (harem) { # Sires were added to groupMembers

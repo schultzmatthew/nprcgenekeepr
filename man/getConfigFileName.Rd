@@ -17,3 +17,10 @@ character vector with expected configuration file
 getConfigFileName returns the configuration file name appropriate for
 the system.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+sysInfo <- Sys.info()
+config <- getConfigFileName(sysInfo)
+}
+}

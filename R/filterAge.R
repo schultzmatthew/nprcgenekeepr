@@ -11,7 +11,6 @@
 #' in "candidates".
 #' @param minAge numeric value representing minimum years of age of
 #' animals to retain.
-#' @export
 filterAge <- function(kin, ped, minAge = 1) {
   kin$sort.col <- 1:nrow(kin)
 

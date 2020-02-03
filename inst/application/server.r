@@ -1034,8 +1034,7 @@ shinyServer(function(input, output, session) {
 
   # Download handler for the current group
   output$downloadGroup <- downloadHandler(
-    filename = getDatedFilename(paste0("Group-", input$viewGrp,
-                                      ".csv", sep = "")),
+    filename = getDatedFilename(paste0("Group-", input$viewGrp, ".csv")),
     content = function(file) {
       write.csv(bgGroupView(), file, na = "", row.names = FALSE)
     },
@@ -1043,8 +1042,7 @@ shinyServer(function(input, output, session) {
   )
 
   output$downloadGroupKin <- downloadHandler(
-    filename = getDatedFilename(paste0("GroupKin-", input$viewGrp,
-                                         ".csv", sep = "")),
+    filename = getDatedFilename(paste0("GroupKin-", input$viewGrp, ".csv")),
     content = function(file) {
       write.csv(bgGroupKinView(), file, na = "", row.names = TRUE)
     },

@@ -37,6 +37,14 @@ back single parents to the \code{p} dataframe.}
 \value{
 A pedigree that has been trimmed, had uninformative founders
 removed and single parents added back.
+}
+\description{
+Filters a pedigree down to only the ancestors of the provided group,
+removing unnecessary individuals from the studbook. This version builds
+the pedigree back in time starting from a group of probands, then moves
+back down the tree trimming off uninformative ancestors.
+}
+\examples{
 \donttest{
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -53,10 +61,4 @@ nrow(breederPed)
 nrow(trimmedPed)
 nrow(trimmedPedInformative)
 }
-}
-\description{
-Filters a pedigree down to only the ancestors of the provided group,
-removing unnecessary individuals from the studbook. This version builds
-the pedigree back in time starting from a group of probands, then moves
-back down the tree trimming off uninformative ancestors.
 }

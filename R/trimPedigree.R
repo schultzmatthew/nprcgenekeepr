@@ -28,6 +28,7 @@
 #'
 #' @return A pedigree that has been trimmed, had uninformative founders
 #' removed and single parents added back.
+#' @examples
 #' \donttest{
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,

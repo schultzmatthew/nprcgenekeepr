@@ -21,3 +21,20 @@ add back single parents to the \code{uPed} dataframe where one parent is
 known. The parents are added back to the pedigree as an ID record with
 NA for both sire and dam of the added back ID.
 }
+\examples{
+\donttest{
+examplePedigree <- nprcgenekeepr::examplePedigree
+breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+                         reportChanges = FALSE,
+                         reportErrors = FALSE)
+probands <- breederPed$id[!(is.na(breederPed$sire) &
+                               is.na(breederPed$dam)) &
+                               is.na(breederPed$exit)]
+ped <- getProbandPedigree(probands, breederPed)
+nrow(ped)
+p <- removeUninformativeFounders(ped)
+nrow(p)
+p <- addBackSecondParents(p, ped)
+nrow(p)
+}
+}

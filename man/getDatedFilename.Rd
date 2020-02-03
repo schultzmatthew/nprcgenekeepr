@@ -12,3 +12,9 @@ getDatedFilename(filename)
 \description{
 Returns a character vector with an file name having the date prepended.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+getDatedFilename("testName")
+}
+}

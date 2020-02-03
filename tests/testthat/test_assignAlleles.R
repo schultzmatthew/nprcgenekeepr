@@ -29,5 +29,4 @@ test_that("assignAlleles assigns alleles correctly", {
   alleles_7 <- assignAlleles(alleles, parentType = "dam", parent = "o2",
                              id = "o3", n = 4)
   expect_true(all(alleles_6$alleles$o3$sire %in% c(3, 4)))
-
 })

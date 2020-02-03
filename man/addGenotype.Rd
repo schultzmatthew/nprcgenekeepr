@@ -16,3 +16,12 @@ addGenotype(ped, genotype)
 \description{
 Assumes genotype has been opened by \code{checkGenotypeFile}
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+data(rhesusPedigree)
+data(rheusGenotypes)
+pedWithGenotypes <- addGenotype(ped = rhesusPedigree,
+                                genotype = rhesusGenotypes)
+}
+}

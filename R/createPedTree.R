@@ -27,6 +27,13 @@
 #' @return A list of named lists forming a pedigree tree (PedTree or ptree).
 #' Each sublist represents an ID in the pedigree and contains the sire ID and
 #' the dam ID as named elements.
+#'
+#' @examples
+#' \dontrun{
+#' data("examplePedigree")
+#' exampleTree <- createPedTree(examplePedigree)
+#' exampleLoops <- findLoops(exampleTree)
+#' }
 #' @export
 createPedTree <- function(ped) {
 

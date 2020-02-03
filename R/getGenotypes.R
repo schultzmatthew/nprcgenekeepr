@@ -6,6 +6,12 @@
 #'
 #' @param fileName character vector of temporary file path.
 #' @param sep column separator in CSV file
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' pedCsv <- getGenotypes(fileName = system.file("testdata", "qcPed.csv",
+#'                        package="nprcgenekeepr"))
+#' }
 #' @import futile.logger
 #' @importFrom readxl excel_format
 #' @importFrom utils read.table

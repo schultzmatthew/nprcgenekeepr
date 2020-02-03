@@ -6,6 +6,12 @@
 #' \code{age}. This needs to be augmented to allow pedigrees structures that
 #' are provided by the nprcgenekeepr package.
 #' @param ped dataframe with pedigree data.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' data(qcPed)
+#' getPyramidPlot(qcPed)
+#' }
 #' @import lubridate
 #' @import plotrix
 #' @import stringi

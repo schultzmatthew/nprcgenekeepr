@@ -25,3 +25,12 @@ Default is 5000.}
 \description{
 Assign parent alleles randomly
 }
+\examples{
+alleles <- list(alleles = list(), counter = 1)
+alleles <- assignAlleles(alleles, parentType = "sire", parent = NA,
+                         id = "o1", n = 4)
+alleles
+alleles <- assignAlleles(alleles, parentType = "dam", parent = NA,
+                         id = "o1", n = 4)
+alleles
+}

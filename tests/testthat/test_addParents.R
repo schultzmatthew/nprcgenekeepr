@@ -38,16 +38,16 @@ test_that("addParents adds parents correctly", {
   newPed <- addParents(pedFive)
   expect_equal(nrow(pedFive) + 2, nrow(newPed)) # 1 sire and 1 dam added
 })
-test_that("addParents adds parents correctly with numeric columns", {
-  newPed <- addParents(pedOne)
-  expect_equal(nrow(pedOne), nrow(newPed)) # no change
-  newPed <- addParents(pedTwo)
-  expect_equal(nrow(pedTwo) + 1, nrow(newPed)) # 1 sire added
-  newPed <- addParents(pedThree)
-  expect_equal(nrow(pedThree) + 1, nrow(newPed)) # 1 dam added
-  newPed <- addParents(pedFive)
-  expect_equal(nrow(pedFive) + 2, nrow(newPed)) # 1 sire and 1 dam added
-})
+# test_that("addParents adds parents correctly with numeric columns", {
+#   newPed <- addParents(pedOne)
+#   expect_equal(nrow(pedOne), nrow(newPed)) # no change
+#   newPed <- addParents(pedTwo)
+#   expect_equal(nrow(pedTwo) + 1, nrow(newPed)) # 1 sire added
+#   newPed <- addParents(pedThree)
+#   expect_equal(nrow(pedThree) + 1, nrow(newPed)) # 1 dam added
+#   newPed <- addParents(pedFive)
+#   expect_equal(nrow(pedFive) + 2, nrow(newPed)) # 1 sire and 1 dam added
+# })
 test_that("addParents fails if a unknow column type is in the pedigree", {
   expect_error(addParents(cbind(pedTwo, complx = runif(nrow(pedTwo)) * 1+4i)))
 })

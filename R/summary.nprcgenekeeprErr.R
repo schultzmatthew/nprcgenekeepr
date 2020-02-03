@@ -3,7 +3,12 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return object of class summary.nprcgenekeeprErr
-#'
+#' @examples
+#' \donttest{
+#' errorList <- qcStudbook(nprcgenekeepr::pedOne, minParentAge = 0, reportChanges = TRUE,
+#' reportErrors = TRUE)
+#' summary(errorList)
+#' }
 #' @rdname summary
 #' @method summary nprcgenekeeprErr
 #' @param object object of class nprcgenekeeprErr and class list
@@ -93,7 +98,7 @@ summary.nprcgenekeeprErr <- function(object, ...) {
 }
 #' @rdname summary
 #' @return object of class summary.nprcgenekeeprGV
-#'
+#' @examples
 #' \donttest{
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -103,14 +108,15 @@ summary.nprcgenekeeprErr <- function(object, ...) {
 #'                                   is.na(breederPed$dam)) &
 #'                                 is.na(breederPed$exit)]
 #' ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+#' trimmedPed <- trimPedigree(focalAnimals, breederPed)
 #' probands <- ped$id[ped$population]
 #' ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
 #'                     addBackParents = FALSE)
-#' geneticValue <- reportGV(ped, guIter = 500,
+#' geneticValue <- reportGV(ped, guIter = 50, # should be >= 1000
 #'                          guThresh = 3,
 #'                          byID = TRUE,
 #'                          updateProgress = NULL)
-#' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+#' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50, # should be >= 1000
 #'                                 guThresh = 3,
 #'                                 byID = TRUE,
 #'                                 updateProgress = NULL)

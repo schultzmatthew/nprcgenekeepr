@@ -2,8 +2,7 @@
 % Please edit documentation in R/getTokenList.R
 \name{getTokenList}
 \alias{getTokenList}
-\title{Returns first right and left space trimmed token from first character vector
-element.}
+\title{Gets tokens from character vector of lines}
 \usage{
 getTokenList(lines)
 }
@@ -11,6 +10,27 @@ getTokenList(lines)
 \item{lines}{character vector with text from configuration file}
 }
 \description{
+## Copyright(c) 2017-2019 R. Mark Sharp
+}
+\details{
 Returns first right and left space trimmed token from first character vector
 element.
+}
+\examples{
+\donttest{
+lines <- c("center = \"SNPRC\"",
+           " baseUrl = \"https://boomer.txbiomed.local:8080/labkey\"",
+           " schemaName = \"study\"", " folderPath = \"/SNPRC\"",
+           " queryName = \"demographics\"",
+           "lkPedColumns = (\"Id\", \"gender\", \"birth\", \"death\",",
+           "              \"lastDayAtCenter\", \"dam\", \"sire\")",
+           "mapPedColumns = (\"id\", \"sex\", \"birth\", \"death\", ",
+           "  \"exit\", \"dam\", \"sire\")")
+lkVec <- c("Id", "gender", "birth", "death",
+           "lastDayAtCenter", "dam", "sire")
+mapVec <- c("id", "sex", "birth", "death", "exit", "dam", "sire")
+tokenList <- getTokenList(lines)
+params <- tokenList$param
+tokenVectors <- tokenList$tokenVec
+}
 }

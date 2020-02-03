@@ -27,6 +27,21 @@
 #' Loops occur when an animal's sire and dam have a common ancestor.
 #' @param ptree a list of lists forming a pedigree tree as constructed by
 #' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
+#'
+#' @examples
+#' \dontrun{
+#' data("examplePedigree")
+#' exampleTree <- createPedTree(examplePedigree)
+#' exampleLoops <- findLoops(exampleTree)
+#' ## You can count how many animals are in loops with the following code.
+#' length(exampleLoops[exampleLoops == TRUE])
+#' ## You can count how many loops you have with the following code.
+#' nLoops <- countLoops(exampleLoops, exampleTree)
+#' sum(unlist(nLoops[nLoops > 0]))
+#' ## You can list the first 10 sets of ids, sires and dams in loops with
+#' ## the following line of code:
+#' examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
+#' }
 #' @export
 countLoops <- function(loops, ptree) {
 

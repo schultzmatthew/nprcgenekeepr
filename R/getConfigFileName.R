@@ -6,6 +6,12 @@
 #' @return character vector with expected configuration file
 #'
 #' @param sysInfo object returned by Sys.info()
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' sysInfo <- Sys.info()
+#' config <- getConfigFileName(sysInfo)
+#' }
 #' @export
 getConfigFileName <- function(sysInfo) {
   if (stri_detect_fixed(toupper(sysInfo[["sysname"]]), "WIND")) {

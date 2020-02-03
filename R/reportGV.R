@@ -23,7 +23,7 @@
 #'
 #' @return A dataframe with the genetic value report. Animals are ranked
 #' in order of descending value.
-#'
+#' @examples
 #' \donttest{
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
@@ -33,14 +33,15 @@
 #'                                   is.na(breederPed$dam)) &
 #'                                 is.na(breederPed$exit)]
 #' ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+#' trimmedPed <- trimPedigree(focalAnimals, breederPed)
 #' probands <- ped$id[ped$population]
 #' ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
 #'                     addBackParents = FALSE)
-#' geneticValue <- reportGV(ped, guIter = 500,
+#' geneticValue <- reportGV(ped, guIter = 50, # should be >= 1000
 #'                          guThresh = 3,
 #'                          byID = TRUE,
 #'                          updateProgress = NULL)
-#' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+#' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50, # should be >= 1000
 #'                                 guThresh = 3,
 #'                                 byID = TRUE,
 #'                                 updateProgress = NULL)

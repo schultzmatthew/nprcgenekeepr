@@ -11,6 +11,11 @@
 #' usage meaning that a person’s age should always be an integer that
 #' increases exactly on a birthday.
 #' @param ped dataframe with pedigree
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- getPyramidAgeDist()
+#' }
 #' @importFrom anytime anytime
 #' @import lubridate
 #' @importFrom utils read.csv
@@ -21,9 +26,6 @@ getPyramidAgeDist <- function(ped = NULL) {
     ped$age <- NULL
     ped$gen <- NULL
   }
-  # ped <- ped[tolower(ped$EXIT) == "", c("EGO.ID", "SIRE.SIRE.ID",
-  #                                              "DAM.ID", "SEX", "BIRTH",
-  #                                              "EXIT")]
   colNames <- c("id", "sire", "dam", "sex", "birth", "exit_date")
   names(ped) <- colNames
   ped <- ped[ , colNames]

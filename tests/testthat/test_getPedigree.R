@@ -4,8 +4,6 @@ context("getPedigree")
 
 test_that("getPedigree recognizes no file and wrong file arguments", {
   expect_error(getPedigree(), "\"fileName\" is missing, with no default")
-  expect_error(suppressWarnings(getFocalAnimalPed(fileName = "breeding file.csv")),
-               "cannot open the connection")
 })
 test_that("getPedigree recognizes and opens Excel files.", {
   pedExcel <- suppressWarnings(getPedigree(fileName = system.file("testdata", "qcPed.xlsx",

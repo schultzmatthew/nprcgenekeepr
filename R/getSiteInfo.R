@@ -19,6 +19,12 @@
 #'}
 #' @param expectConfigFile logical parameter when set to \code{FALSE}, no
 #' configuration is looked for. Default value is \code{TRUE}.
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' getSiteInfo()
+#' }
 #' @import stringi
 #' @export
 getSiteInfo <- function(expectConfigFile = TRUE) {

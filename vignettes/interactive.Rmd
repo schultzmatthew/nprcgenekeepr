@@ -549,9 +549,9 @@ We will get first some animal IDs to use for our candidates by selecting animals
 at least 2 years old at the time this pedigree was sampled (01-01-2015).
 
 ```{r get-candidates}
-candidates <- trimmedPed$id[
-  trimmedPed$birth < as.Date("2013-01-01") & !is.na(trimmedPed$birth) &
-    is.na(trimmedPed$exit)]
+candidates <- trimmedPed$id[trimmedPed$birth < as.Date("2013-01-01") &
+                              !is.na(trimmedPed$birth) &
+                              is.na(trimmedPed$exit)]
 table(trimmedPed$sex[trimmedPed$id %in% candidates])
 
 ```

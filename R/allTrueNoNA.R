@@ -6,7 +6,6 @@
 #'
 #' Considers NA values the same as false
 #' @param v logical vector
-#' @export
 allTrueNoNA <- function(v) {
   # v <- all(v)
   # v <- if (is.na(v)) FALSE else v
