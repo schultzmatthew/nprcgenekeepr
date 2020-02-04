@@ -22,6 +22,8 @@ reference:
   - '`qcBreeders`'
   - '`qcPed`'
   - '`qcPedGvReport`'
+  - '`rhesusGenotypes`'
+  - '`rhesusPedigree`'
   - '`smallPed`'
   - '`smallPedTree`'
 - title: "Major Features and Functions"

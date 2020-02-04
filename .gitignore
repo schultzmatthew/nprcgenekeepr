@@ -22,3 +22,5 @@ images
 ^cran-comments\.md$
 ^vignettes/interactive_cache$
 ^vignettes/shiny_app_use_cache$
+vignettes/*.tex$
+vignettes/*.pdf$

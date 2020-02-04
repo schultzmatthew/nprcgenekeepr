@@ -1,18 +1,19 @@
 ---
-title: "Shiny Application for Genetic Management of Colonies"
+title: "Application for Genetic Management of Colonies"
 author: "R. Mark Sharp"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 vignette: >
-  %\VignetteEngine{knitr::rmarkdown_notangle} 
-  %\VignetteIndexEntry{Shiny Application for Genetic Management} 
+  %\VignetteIndexEntry{Application for Genetic Management} 
   %\usepackage[UTF-8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown_notangle} 
 ---
 
 ```{r setup, include=FALSE}
 library(png)
+library(kableExtra)
 library(grid)
 library(stringi)
 library(nprcgenekeepr)
@@ -20,7 +21,6 @@ knitr::opts_chunk$set(eval = FALSE, echo=TRUE, results = "markup", cache = FALSE
 pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
 ```
-
 
 ## Introduction
 This tutorial demonstrates the major functions used 
@@ -48,10 +48,10 @@ All missing dependencies should be automatically installed.
 
 You can start the Shiny application from the __R__ console with 
 
-```{r start, echo = TRUE, include=TRUE}
+```{r start, echo = TRUE, include=TRUE, eval = FALSE}
 library(nprcgenekeepr)
-#runManager()
-getwd()
+runManager()
+
 ```
 
 This will result in the opening screen where you tell the application how to 
@@ -189,16 +189,19 @@ errorDescriptions <- c(
   "Individuals are listed as male and as a dam.", 
   "Individuals who are listed as both a sire and a dam.",
   "IDs listed more than once.",
-  "Fatal Errors.",
+  stri_c("Fatal Errors. These are unanticipated errors that should be ", 
+         "reported to the package maintainer"),
   stri_c("Columns that have been changed to conform to internal naming ",
   "conventions and what they were changed to.")
 )
 errorTbl <- data.frame(`Error` = errorTypes, Definition = errorDescriptions, 
-                       stringsAsFactors = FALSE)
-
+                       stringsAsFactors = FALSE) 
 ```
 ```{r print-error-definition-tbl, eval = TRUE, echo=FALSE, include = TRUE, results='markup'}
-knitr::kable(errorTbl) 
+knitr::kable(errorTbl)  %>%
+  kable_styling(full_width = F) %>%
+  column_spec(1, bold = T, color = "blue") %>%
+  column_spec(2, width = "30em")
 
 ```
 
@@ -223,6 +226,8 @@ grid.raster(img)
 
 ### A Note About Obfuscated Data
 
+### Unknown IDs
+
 I have place red lines under the UNKNOWN IDs in the partial pedigree list below
 for clarity. These IDs have no meaning other than they all begin with the letter
 _U_ and are following with a left alphanumeric string of five places. 
@@ -238,8 +243,6 @@ grid.raster(img)
 
 
 *********
-
-### Unknown IDs
 
 In this example pedigree, when you deselect the __Display Unknown IDs__
 checkbox.

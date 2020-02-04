@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
+      <a href="../articles/shiny_app_use.html">Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -162,12 +162,78 @@
     <p>object of class summary.nprcgenekeeprErr</p>
 <p>object of class summary.nprcgenekeeprGV</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>errorList</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='qcStudbook.html'>qcStudbook</a></span>(<span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/pedOne.html'>pedOne</a></span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>reportChanges</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>errorList</span>)</div><div class='output co'>#&gt; Error: The animal listed as a sire and also listed as a female is: s1.
+#&gt; Error: The animal listed as a dam and also listed as a male is: d1.
+#&gt; Change: The column where space was removed is: si re to sire.
+#&gt; Change: The columns where underscore was removed are: ego_id, dam_id, and birth_date to egoid, damid, and birthdate.
+#&gt; Change: The column changed from: egoid to id.
+#&gt; Change: The column changed from: damid to dam.
+#&gt; Change: The column changed from: birthdate to birth.
+#&gt; 
+#&gt; Please check and correct the pedigree file.
+#&gt;  
+#&gt; Animal records where parent records are suspicous because of dates.
+#&gt; One or more parents appear too young at time of birth.
+#&gt;   dam sire id sex      birth recordStatus exit  sireBirth   damBirth sireAge
+#&gt; 2  d2   s1 o2   F 2009-03-17     original &lt;NA&gt; 2000-07-18 2015-09-16    8.67
+#&gt; 3  d2   s2 o3   F 2012-04-11     original &lt;NA&gt; 2006-06-19 2015-09-16    5.82
+#&gt; 4  d2   s2 o4   M 2006-04-13     original &lt;NA&gt; 2006-06-19 2015-09-16   -0.18
+#&gt;   damAge
+#&gt; 2   -6.5
+#&gt; 3   -3.4
+#&gt; 4   -9.4</div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+<span class='no'>examplePedigree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/examplePedigree.html'>examplePedigree</a></span>
+<span class='no'>breederPed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='qcStudbook.html'>qcStudbook</a></span>(<span class='no'>examplePedigree</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+                         <span class='kw'>reportChanges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+                         <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>focalAnimals</span> <span class='kw'>&lt;-</span> <span class='no'>breederPed</span>$<span class='no'>id</span>[!(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>breederPed</span>$<span class='no'>sire</span>) <span class='kw'>&amp;</span>
+                                  <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>breederPed</span>$<span class='no'>dam</span>)) <span class='kw'>&amp;</span>
+                                <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>breederPed</span>$<span class='no'>exit</span>)]
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setPopulation.html'>setPopulation</a></span>(<span class='kw'>ped</span> <span class='kw'>=</span> <span class='no'>breederPed</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='no'>focalAnimals</span>)
+<span class='no'>trimmedPed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='trimPedigree.html'>trimPedigree</a></span>(<span class='no'>focalAnimals</span>, <span class='no'>breederPed</span>)
+<span class='no'>probands</span> <span class='kw'>&lt;-</span> <span class='no'>ped</span>$<span class='no'>id</span>[<span class='no'>ped</span>$<span class='no'>population</span>]
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='trimPedigree.html'>trimPedigree</a></span>(<span class='no'>probands</span>, <span class='no'>ped</span>, <span class='kw'>removeUninformative</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+                    <span class='kw'>addBackParents</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>geneticValue</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='reportGV.html'>reportGV</a></span>(<span class='no'>ped</span>, <span class='kw'>guIter</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='co'># should be &gt;= 1000</span>
+                         <span class='kw'>guThresh</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+                         <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                         <span class='kw'>updateProgress</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='no'>trimmedGeneticValue</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='reportGV.html'>reportGV</a></span>(<span class='no'>trimmedPed</span>, <span class='kw'>guIter</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='co'># should be &gt;= 1000</span>
+                                <span class='kw'>guThresh</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+                                <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                <span class='kw'>updateProgress</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>geneticValue</span>)</div><div class='output co'>#&gt; The genetic value report 
+#&gt; Individuals in Pedigree: 327 
+#&gt; Male Founders: 3
+#&gt; Female Founders: 17
+#&gt; Total Founders: 20 
+#&gt; Founder Equivalents: 109.67 
+#&gt; Founder Genome Equivalents: 0 
+#&gt; Live Offspring: 321 
+#&gt; High Value Individuals: 227 
+#&gt; Low Value Individuals: 100 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>trimmedGeneticValue</span>)</div><div class='output co'>#&gt; The genetic value report 
+#&gt; Individuals in Pedigree: 704 
+#&gt; Male Founders: 3
+#&gt; Female Founders: 17
+#&gt; Total Founders: 20 
+#&gt; Founder Equivalents: 116.8 
+#&gt; Founder Genome Equivalents: 65.63 
+#&gt; Live Offspring: 1004 
+#&gt; High Value Individuals: 454 
+#&gt; Low Value Individuals: 250 </div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

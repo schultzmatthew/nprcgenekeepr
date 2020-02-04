@@ -13,6 +13,9 @@ library(rmsutilityr)
 library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
+## 20200203
+1.  Is the tutorial for CRAN or the Consoritum users.
+need overview of tab structure and order (left to right).
 
 ## 20200106 
 1.  Mark will convert nprcmanager to nprcgenekeepr before any other changes.

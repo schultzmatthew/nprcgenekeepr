@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
+      <a href="../articles/shiny_app_use.html">Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -163,6 +163,17 @@ in <code>alleles</code> belongs.</p></td>
     <p>If ids are provided, the function will only count the unique alleles
 for an individual (homozygous alleles will be counted as 1).</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"ped1Alleles"</span>)
+<span class='no'>ids</span> <span class='kw'>&lt;-</span> <span class='no'>ped1Alleles</span>$<span class='no'>id</span>
+<span class='no'>alleles</span> <span class='kw'>&lt;-</span> <span class='no'>ped1Alleles</span>[, !(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>ped1Alleles</span>) <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"parent"</span>))]
+<span class='no'>aF</span> <span class='kw'>&lt;-</span> <span class='fu'>alleleFreq</span>(<span class='no'>alleles</span><span class='kw'>[[</span><span class='fl'>1</span>]], <span class='kw'>ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='no'>aF</span>[<span class='no'>aF</span>$<span class='no'>freq</span> <span class='kw'>&gt;=</span> <span class='fl'>10</span>, ]</div><div class='output co'>#&gt;     allele freq
+#&gt; 230  20004   10
+#&gt; 238  20012   11</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -170,6 +181,7 @@ for an individual (homozygous alleles will be counted as 1).</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

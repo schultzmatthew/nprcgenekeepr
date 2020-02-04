@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shiny Application for Genetic Management of Colonies • nprcgenekeepr</title>
+<title>Application for Genetic Management of Colonies • nprcgenekeepr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Shiny Application for Genetic Management of Colonies">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Application for Genetic Management of Colonies">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
+      <a href="../articles/shiny_app_use.html">Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -88,10 +88,10 @@
 
       
 
-      </header><div class="row">
+      </header><script src="shiny_app_use_files/kePrint-0.0.1/kePrint.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Shiny Application for Genetic Management of Colonies</h1>
+      <h1>Application for Genetic Management of Colonies</h1>
                         <h4 class="author">R. Mark Sharp</h4>
             
       
@@ -117,8 +117,7 @@
 <p>All missing dependencies should be automatically installed.</p>
 <p>You can start the Shiny application from the <strong>R</strong> console with</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcgenekeepr)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#runManager()</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>()</span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">runManager</span>()</span></code></pre></div>
 <p>This will result in the opening screen where you tell the application how to find the pedigree you will be using.</p>
 </div>
 <div id="input" class="section level2">
@@ -160,51 +159,95 @@
 <p><img src="shiny_app_use_files/figure-html/read-and-check-pedigree-1.png" width="240"></p>
 <hr>
 <p>Several error types, shown below, are detected the application.</p>
-<table class="table">
-<thead><tr class="header">
-<th align="left">Error</th>
-<th align="left">Definition</th>
+<table class="table table">
+<thead><tr>
+<th style="text-align:left;">
+Error
+</th>
+<th style="text-align:left;">
+Definition
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">failedDatabaseConnection</td>
-<td align="left">Database connection failed: configuration or permissions are invalid</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+failedDatabaseConnection
+</td>
+<td style="text-align:left;width: 30em; ">
+Database connection failed: configuration or permissions are invalid
+</td>
 </tr>
-<tr class="even">
-<td align="left">missingColumns</td>
-<td align="left">Columns that must be within the pedigree file are missing.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+missingColumns
+</td>
+<td style="text-align:left;width: 30em; ">
+Columns that must be within the pedigree file are missing.
+</td>
 </tr>
-<tr class="odd">
-<td align="left">invalidDateRows</td>
-<td align="left">Values, which are supposed to be dates, cannot be interpreted as a date.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+invalidDateRows
+</td>
+<td style="text-align:left;width: 30em; ">
+Values, which are supposed to be dates, cannot be interpreted as a date.
+</td>
 </tr>
-<tr class="even">
-<td align="left">suspiciousParents</td>
-<td align="left">Parents were too young on the date of birth of to have been the parent.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+suspiciousParents
+</td>
+<td style="text-align:left;width: 30em; ">
+Parents were too young on the date of birth of to have been the parent.
+</td>
 </tr>
-<tr class="odd">
-<td align="left">femaleSires</td>
-<td align="left">Individuals listed as female or hermaphroditic and as a sire.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+femaleSires
+</td>
+<td style="text-align:left;width: 30em; ">
+Individuals listed as female or hermaphroditic and as a sire.
+</td>
 </tr>
-<tr class="even">
-<td align="left">maleDams</td>
-<td align="left">Individuals are listed as male and as a dam.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+maleDams
+</td>
+<td style="text-align:left;width: 30em; ">
+Individuals are listed as male and as a dam.
+</td>
 </tr>
-<tr class="odd">
-<td align="left">sireAndDam</td>
-<td align="left">Individuals who are listed as both a sire and a dam.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+sireAndDam
+</td>
+<td style="text-align:left;width: 30em; ">
+Individuals who are listed as both a sire and a dam.
+</td>
 </tr>
-<tr class="even">
-<td align="left">duplicateIds</td>
-<td align="left">IDs listed more than once.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+duplicateIds
+</td>
+<td style="text-align:left;width: 30em; ">
+IDs listed more than once.
+</td>
 </tr>
-<tr class="odd">
-<td align="left">fatalError</td>
-<td align="left">Fatal Errors.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+fatalError
+</td>
+<td style="text-align:left;width: 30em; ">
+Fatal Errors. These are unanticipated errors that should be reported to the package maintainer
+</td>
 </tr>
-<tr class="even">
-<td align="left">changedCols</td>
-<td align="left">Columns that have been changed to conform to internal naming conventions and what they were changed to.</td>
+<tr>
+<td style="text-align:left;font-weight: bold;color: blue !important;">
+changedCols
+</td>
+<td style="text-align:left;width: 30em; ">
+Columns that have been changed to conform to internal naming conventions and what they were changed to.
+</td>
 </tr>
 </tbody>
 </table>
@@ -220,13 +263,13 @@
 <div id="a-note-about-obfuscated-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-note-about-obfuscated-data" class="anchor"></a>A Note About Obfuscated Data</h3>
-<p>I have place red lines under the UNKNOWN IDs in the partial pedigree list below for clarity. These IDs have no meaning other than they all begin with the letter <em>U</em> and are following with a left alphanumeric string of five places. The form of this ID is set by the <em>obfuscateId</em> function.</p>
-<p><img src="shiny_app_use_files/figure-html/unknown-displayed-1.png" width="480"></p>
-<hr>
 </div>
 <div id="unknown-ids" class="section level3">
 <h3 class="hasAnchor">
 <a href="#unknown-ids" class="anchor"></a>Unknown IDs</h3>
+<p>I have place red lines under the UNKNOWN IDs in the partial pedigree list below for clarity. These IDs have no meaning other than they all begin with the letter <em>U</em> and are following with a left alphanumeric string of five places. The form of this ID is set by the <em>obfuscateId</em> function.</p>
+<p><img src="shiny_app_use_files/figure-html/unknown-displayed-1.png" width="480"></p>
+<hr>
 <p>In this example pedigree, when you deselect the <strong>Display Unknown IDs</strong> checkbox. The number of rows reduces from 3,694 to 2,322, because there were 1,372 UNKNOWN animals generated when constructing the pedigree to provide sire and dam placeholders for all animals.</p>
 <p><img src="shiny_app_use_files/figure-html/no-unknown-displayed-1.png" width="480"></p>
 <hr>

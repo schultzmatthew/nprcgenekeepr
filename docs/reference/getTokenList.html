@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Returns first right and left space trimmed token from first character vector
-element. — getTokenList • nprcgenekeepr</title>
+<title>Gets tokens from character vector of lines — getTokenList • nprcgenekeepr</title>
 
 
 <!-- jquery -->
@@ -36,10 +35,8 @@ element. — getTokenList • nprcgenekeepr</title>
 
 
 
-<meta property="og:title" content="Returns first right and left space trimmed token from first character vector
-element. — getTokenList" />
-<meta property="og:description" content="Returns first right and left space trimmed token from first character vector
-element." />
+<meta property="og:title" content="Gets tokens from character vector of lines — getTokenList" />
+<meta property="og:description" content="## Copyright(c) 2017-2019 R. Mark Sharp" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,7 +69,7 @@ element." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
       </span>
     </div>
 
@@ -104,7 +101,7 @@ element." />
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
+      <a href="../articles/shiny_app_use.html">Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -132,15 +129,13 @@ element." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Returns first right and left space trimmed token from first character vector
-element.</h1>
+    <h1>Gets tokens from character vector of lines</h1>
     <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/R/getTokenList.R'><code>R/getTokenList.R</code></a></small>
     <div class="hidden name"><code>getTokenList.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns first right and left space trimmed token from first character vector
-element.</p>
+    <p>## Copyright(c) 2017-2019 R. Mark Sharp</p>
     </div>
 
     <pre class="usage"><span class='fu'>getTokenList</span>(<span class='no'>lines</span>)</pre>
@@ -154,12 +149,35 @@ element.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>Returns first right and left space trimmed token from first character vector
+element.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>lines</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"center = \"SNPRC\""</span>,
+           <span class='st'>" baseUrl = \"https://boomer.txbiomed.local:8080/labkey\""</span>,
+           <span class='st'>" schemaName = \"study\""</span>, <span class='st'>" folderPath = \"/SNPRC\""</span>,
+           <span class='st'>" queryName = \"demographics\""</span>,
+           <span class='st'>"lkPedColumns = (\"Id\", \"gender\", \"birth\", \"death\","</span>,
+           <span class='st'>"              \"lastDayAtCenter\", \"dam\", \"sire\")"</span>,
+           <span class='st'>"mapPedColumns = (\"id\", \"sex\", \"birth\", \"death\", "</span>,
+           <span class='st'>"  \"exit\", \"dam\", \"sire\")"</span>)
+<span class='no'>lkVec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Id"</span>, <span class='st'>"gender"</span>, <span class='st'>"birth"</span>, <span class='st'>"death"</span>,
+           <span class='st'>"lastDayAtCenter"</span>, <span class='st'>"dam"</span>, <span class='st'>"sire"</span>)
+<span class='no'>mapVec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"sex"</span>, <span class='st'>"birth"</span>, <span class='st'>"death"</span>, <span class='st'>"exit"</span>, <span class='st'>"dam"</span>, <span class='st'>"sire"</span>)
+<span class='no'>tokenList</span> <span class='kw'>&lt;-</span> <span class='fu'>getTokenList</span>(<span class='no'>lines</span>)
+<span class='no'>params</span> <span class='kw'>&lt;-</span> <span class='no'>tokenList</span>$<span class='no'>param</span>
+<span class='no'>tokenVectors</span> <span class='kw'>&lt;-</span> <span class='no'>tokenList</span>$<span class='no'>tokenVec</span>
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
