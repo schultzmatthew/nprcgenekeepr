@@ -70,7 +70,7 @@ and age for those animals with a status of Alive in the pedigree." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@ and age for those animals with a status of Alive in the pedigree." />
       <a href="../articles/manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">Shiny Application for Genetic Management of Colonies</a>
+      <a href="../articles/shiny_app_use.html">Application for Genetic Management of Colonies</a>
     </li>
   </ul>
 </li>
@@ -159,12 +159,18 @@ that produces a person’s age, stated according to common usage — common
 usage meaning that a person’s age should always be an integer that
 increases exactly on a birthday.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'>getPyramidAgeDist</span>()
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
