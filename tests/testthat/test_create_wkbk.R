@@ -16,7 +16,8 @@ test_that("create_wkbk recognizes wrong number of dataframes", {
   file <- "filename"
   sheetnames <- names(df_list)[1:2]
   expect_error(create_wkbk(file = file, df_list = df_list,
-                           sheetnames = sheetnames, create = TRUE), 
-               "Number of dataframes does not match number of worksheet")
+                           sheetnames = sheetnames, replace = TRUE),
+               stri_c("Number of 'sheetnames' specified does not ",
+                      "equal the number of data frames in 'df_list'."))
 })
 ## cannot test creation of file.

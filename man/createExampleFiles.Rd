@@ -12,3 +12,9 @@ Creates a folder named \code{~/tmp/ExamplePedigrees} if it does not already
 exist. It then proceeds to write each example pedigree into a CSV file named
 based on the name of the example pedigree.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+createExampleFiles()
+}
+}

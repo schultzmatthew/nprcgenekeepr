@@ -31,3 +31,30 @@ When females are counted when the \code{ped$sex} value is not
 \code{"M"}. This means animals with ambiguous sex are counted with the
 females.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+data("qcBreeders")
+data("pedWithGenotype")
+available <- c("JGPN6K", "8KM1MP", "I9TQ0T", "Q0RGP7", "VFS0XB", "CQC133",
+               "2KULR3", "HOYW0S", "FHV13N", "OUM6QF", "6Z7MD9", "CFPEEU",
+               "HLI95R", "RI0O7F", "7M51X5", "DR5GXB", "170ZTZ", "C1ICXL")
+nonMales <- c("JGPN6K", "8KM1MP", "I9TQ0T", "Q0RGP7", "CQC133",
+              "2KULR3", "HOYW0S", "FHV13N", "OUM6QF", "6Z7MD9", "CFPEEU",
+              "HLI95R", "RI0O7F", "7M51X5", "DR5GXB", "170ZTZ", "C1ICXL")
+male <- "VFS0XB"
+calculateSexRatio(ids = male, ped = pedWithGenotype)
+calculateSexRatio(ids = nonMales, ped = pedWithGenotype)
+calculateSexRatio(ids = available, ped = pedWithGenotype)
+calculateSexRatio(ids = available, ped = pedWithGenotype,
+                        additionalMales = 1)
+calculateSexRatio(ids = available, ped = pedWithGenotype,
+                  additionalFemales = 1)
+calculateSexRatio(ids = available, ped = pedWithGenotype,
+                  additionalMales = 1, additionalFemales = 1)
+calculateSexRatio(ids = nonMales, ped = pedWithGenotype,
+                  additionalMales = 1, additionalFemales = 0)
+calculateSexRatio(ids = character(0), ped = pedWithGenotype,
+                additionalMales = 1, additionalFemales = 0)
+}
+}

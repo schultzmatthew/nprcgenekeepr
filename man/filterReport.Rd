@@ -19,3 +19,10 @@ A copy of report specific to the specified animals
 \description{
 Filters a genetic value report down to only the specified animals
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+rpt <- nprcgenekeepr::pedWithGenotypeReport$report
+rpt1 <- filterReport(c("GHH9LB", "BD41WW"), rpt)
+}
+}

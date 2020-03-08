@@ -26,6 +26,7 @@ Default is 5000.}
 Assign parent alleles randomly
 }
 \examples{
+\donttest{
 alleles <- list(alleles = list(), counter = 1)
 alleles <- assignAlleles(alleles, parentType = "sire", parent = NA,
                          id = "o1", n = 4)
@@ -33,4 +34,5 @@ alleles
 alleles <- assignAlleles(alleles, parentType = "dam", parent = NA,
                          id = "o1", n = 4)
 alleles
+}
 }

@@ -12,6 +12,22 @@
 #'
 #' @return a named vector containing the offpsring counts for each animal in
 #' \code{probands}. Rownames are set to the IDs from \code{probands}.
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+#'                          reportChanges = FALSE,
+#'                          reportErrors = FALSE)
+#' focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
+#'                                   is.na(breederPed$dam)) &
+#'                                 is.na(breederPed$exit)]
+#' ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+#' trimmedPed <- trimPedigree(focalAnimals, breederPed)
+#' probands <- ped$id[ped$population]
+#' totalOffspring <- findOffspring(probands, ped)
+#' }
 #' @export
 findOffspring <- function(probands, ped) {
   sires <- tapply(ped$id, as.factor(ped$sire), length)

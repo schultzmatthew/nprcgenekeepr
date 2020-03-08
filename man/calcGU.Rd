@@ -72,6 +72,16 @@ The estimates of genome uniqueness for founders within the population
 calculated by this function should match the "founder genome uniqueness"
 measure calculated by Pedscope.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped1Alleles <- nprcgenekeepr::ped1Alleles
+gu_1 <- calcGU(ped1Alleles, threshold = 1, byID = FALSE, pop = NULL)
+gu_2 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE, pop = NULL)
+gu_3 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE,
+               pop = ped1Alleles$id[20:60])
+}
+}
 \references{
 Ballou JD, Lacy RC.  1995. Identifying genetically important
 individuals for management of genetic variation in pedigreed populations,

@@ -21,8 +21,6 @@
 #' formed from the list of IDs. Default is 1.
 #' @param sexRatio numeric value indicating the ratio of females to males x
 #' from 0.5 to 20 by increments of 0.5.
-#'
-#' @export
 fillGroupMembersWithSexRatio <-
   function(candidates, groupMembers, grpNum, kin, ped, minAge, numGp,
            sexRatio) {

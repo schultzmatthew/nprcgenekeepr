@@ -10,6 +10,30 @@
 #' It is assumed that the pedigree has no partial parentage
 #' @param alleles dataframe contains an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{geneDrop()}.
+#' @examples
+#' \donttest{
+#' data(lacy1989Ped)
+#' ## Example from Analysis of Founder Representation in Pedigrees: Founder
+#' ## Equivalents and Founder Genome Equivalents.
+#' ## Zoo Biology 8:111-123, (1989) by Robert C. Lacy
+#'
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' alleles <- lacy1989PedAlleles
+#' pedFactors <- data.frame(
+#'   id = as.factor(ped$id),
+#'   sire = as.factor(ped$sire),
+#'   dam = as.factor(ped$dam),
+#'   gen = ped$gen,
+#'   population = ped$population,
+#'   stringsAsFactors = TRUE
+#' )
+#' allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
+#'                            pedFactors$gen, genotype = NULL, n = 5000,
+#'                            updateProgress = NULL)
+#' feFg <- calcFEFG(ped, alleles)
+#' feFgFactors <- calcFEFG(pedFactors, allelesFactors)
+#' }
 #' @export
 calcFEFG <- function(ped, alleles) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))

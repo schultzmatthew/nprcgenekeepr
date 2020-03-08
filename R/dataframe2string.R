@@ -9,6 +9,11 @@
 #' see print.default.
 #' @param row.names	logical (or character vector), indicating whether (or what)
 #'  row names should be printed.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' dataframe2string(nprcgenekeepr::pedOne)
+#' }
 #' @importFrom stringi stri_length
 #' @importFrom stringi stri_pad_both
 #' @export

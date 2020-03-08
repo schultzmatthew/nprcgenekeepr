@@ -5,19 +5,45 @@
 #' @param file filename of workbook to be created
 #' @param df_list list of data frames to be added as worksheets to workbook
 #' @param sheetnames character vector of worksheet names
-#' @param create Specifies if the file should be created if it does not
-#' already exist (default is FALSE). Note that create = TRUE has
-#' no effect if the specified file exists, i.e. an existing file is
-#' loaded and not being recreated if create = TRUE.
+#' @param replace Specifies if the file should be replaced if it
+#' already exist (default is FALSE).
+#' @examples
+#' \dontrun{
+#' library(nprcgenekeepr)
+#'
+#' make_df_list <- function(size) {
+#'   df_list <- list(size)
+#'   if (size <= 0)
+#'     return(df_list)
+#'   for (i in 1:size) {
+#'     n <- sample(2:10, 2, replace = TRUE)
+#'     df <- data.frame(matrix(data = rnorm(n[1] * n[2]), ncol = n[1]))
+#'     df_list[[i]] <- df
+#'   }
+#'   names(df_list) <- paste0("A", 1:size)
+#'   df_list
+#' }
+#' df_list <- make_df_list(3)
+#' sheetnames <- names(df_list)
+#' create_wkbk(file = file.choose(), df_list = df_list,
+#'             sheetnames = sheetnames, replace = FALSE)
+#' }
+#'
 #' @import WriteXLS
 #' @export
-create_wkbk <- function(file, df_list, sheetnames, create = TRUE) {
+create_wkbk <- function(file, df_list, sheetnames, replace = FALSE) {
   if (length(df_list) != length(sheetnames))
-    stop("Number of dataframes does not match number of worksheet names")
+    stop(stri_c("Number of 'sheetnames' specified does not equal the number ",
+                "of data frames in 'df_list'."))
 
-  if (file.exists(file) & create)
-    file.remove(file)
-
+  if (file.exists(file)) {
+    if (replace) {
+      file.remove(file)
+    } else {
+      warning(stri_c("File, ", file, " exists and was not overwritten."))
+      return(FALSE)
+    }
+  }
   WriteXLS(x = df_list, ExcelFileName = file, SheetNames = sheetnames,
            Encoding = "UTF-8", col.names = TRUE, AdjWidth = TRUE)
 }

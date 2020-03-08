@@ -64,3 +64,23 @@ whether the allele came from the sire or dam. These are followed by
 \description{
 Part of Genetic Value Analysis
 }
+\examples{
+\donttest{
+## We usually defined `n` to be >= 5000
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::lacy1989Ped
+allelesNew <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+                      genotype = NULL, n = 50, updateProgress = NULL)
+genotype <- data.frame(id = ped$id,
+                       first_allele = c(NA, NA, "A001_B001", "A001_B002",
+                                        NA, "A001_B002", "A001_B001"),
+                       second_allele = c(NA, NA, "A010_B001", "A001_B001",
+                                         NA, NA, NA),
+                       stringsAsFactors = FALSE)
+pedWithGenotype <- addGenotype(ped, genotype)
+pedGenotype <- getGVGenotype(pedWithGenotype)
+allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+                         genotype = pedGenotype,
+                         n = 5, updateProgress = NULL)
+}
+}

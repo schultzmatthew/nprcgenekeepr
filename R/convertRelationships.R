@@ -18,6 +18,21 @@
 #' @return A dataframe with columns \code{id1}, \code{id2}, \code{kinship},
 #' \code{relation}. It is a long-form table of pairwise kinships, with
 #'  relationship categories included for each pair.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::smallPed
+#' kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = FALSE)
+#' ids <- c("A", "B", "D", "E", "F", "G", "I", "J", "L", "M", "O", "P")
+#' relIds <- convertRelationships(kmat, ped, ids)
+#' rel <- convertRelationships(kmat, ped, updateProgress = function() {})
+#' head(rel)
+#' ped <- nprcgenekeepr::qcPed
+#' bkmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
+#'                  sparse = FALSE)
+#' relBIds <- convertRelationships(bkmat, ped, c("4LFS70", "DD1U77"))
+#' relBIds
+#' }
 #' @export
 convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
   if (!is.null(ids)) {

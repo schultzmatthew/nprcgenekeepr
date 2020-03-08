@@ -13,3 +13,9 @@ packages \code{data} directory}
 \description{
 createPedSix makes the pedSix data object
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+nprcgenekeepr:::createPedSix()
+}
+}

@@ -20,6 +20,16 @@
 #' \item{damBirth} {dam's birth date}
 #' \code{damAge} {age of dam in years on the date indicated by \code{birth}.}
 #' }
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' qcPed <- nprcgenekeepr::qcPed
+#' checkParentAge(qcPed, minParentAge = 2)
+#' checkParentAge(qcPed, minParentAge = 3)
+#' checkParentAge(qcPed, minParentAge = 5)
+#' checkParentAge(qcPed, minParentAge = 6)
+#' checkParentAge(qcPed, minParentAge = 10)
+#' }
 #' @import lubridate
 #' @export
 checkParentAge <- function(sb, minParentAge = 2, reportErrors = FALSE) {

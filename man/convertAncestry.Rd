@@ -18,3 +18,9 @@ Japanese macaque. Levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN.
 \description{
 Part of Pedigree Curation
 }
+\examples{
+\donttest{
+original <- c("china", "india", "hybridized", NA, "human", "gorilla")
+convertAncestry(original)
+}
+}

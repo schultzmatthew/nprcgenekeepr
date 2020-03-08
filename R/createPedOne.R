@@ -4,8 +4,12 @@
 ## This file is part of nprcgenekeepr
 #' @param savePed logical value if TRUE the pedigree is saved into the
 #' packages \code{data} directory
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' nprcgenekeepr:::createPedOne()
+#' }
 #' @importFrom lubridate mdy
-#' @export
 createPedOne <- function(savePed = TRUE) {
   set_seed(10)
   pedOne <- data.frame(
@@ -18,8 +22,13 @@ createPedOne <- function(savePed = TRUE) {
                             sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                               2000)),
     stringsAsFactors = FALSE, check.names = FALSE)
-  if (savePed)
-    save(pedOne, file = "data/pedOne.RData")
+  if (savePed) {
+    pedigree_dir <- "~/tmp"
+    suppressWarnings(dir.create(pedigree_dir))
+    pedigree_dir <- paste0(pedigree_dir, "/data")
+    suppressWarnings(dir.create(pedigree_dir))
+    save(pedOne,file = stri_c(pedigree_dir, "/pedOne.RData"))
+  }
   pedOne
 }
 

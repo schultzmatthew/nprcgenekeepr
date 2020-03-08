@@ -4,7 +4,7 @@
 \alias{create_wkbk}
 \title{Creates an Excel workbook with worksheets.}
 \usage{
-create_wkbk(file, df_list, sheetnames, create = TRUE)
+create_wkbk(file, df_list, sheetnames, replace = FALSE)
 }
 \arguments{
 \item{file}{filename of workbook to be created}
@@ -13,11 +13,32 @@ create_wkbk(file, df_list, sheetnames, create = TRUE)
 
 \item{sheetnames}{character vector of worksheet names}
 
-\item{create}{Specifies if the file should be created if it does not
-already exist (default is FALSE). Note that create = TRUE has
-no effect if the specified file exists, i.e. an existing file is
-loaded and not being recreated if create = TRUE.}
+\item{replace}{Specifies if the file should be replaced if it
+already exist (default is FALSE).}
 }
 \description{
 Creates an Excel workbook with worksheets.
+}
+\examples{
+\dontrun{
+library(nprcgenekeepr)
+
+make_df_list <- function(size) {
+  df_list <- list(size)
+  if (size <= 0)
+    return(df_list)
+  for (i in 1:size) {
+    n <- sample(2:10, 2, replace = TRUE)
+    df <- data.frame(matrix(data = rnorm(n[1] * n[2]), ncol = n[1]))
+    df_list[[i]] <- df
+  }
+  names(df_list) <- paste0("A", 1:size)
+  df_list
+}
+df_list <- make_df_list(3)
+sheetnames <- names(df_list)
+create_wkbk(file = file.choose(), df_list = df_list,
+            sheetnames = sheetnames, replace = FALSE)
+}
+
 }

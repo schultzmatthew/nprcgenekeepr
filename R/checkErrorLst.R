@@ -6,7 +6,6 @@
 #' else the entire list is returned.
 #' @param errorLst list with fields for each type of error detectable by
 #' \code{qcStudbook}.
-#' @export
 checkErrorLst <- function(errorLst) {
   if (is.null(errorLst))
     return(FALSE)

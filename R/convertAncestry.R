@@ -11,6 +11,11 @@
 #' @return factor vector of standardized designators specifying if an animal is
 #' a Chinese rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or
 #' Japanese macaque. Levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN.
+#' @examples
+#' \donttest{
+#' original <- c("china", "india", "hybridized", NA, "human", "gorilla")
+#' convertAncestry(original)
+#' }
 #' @export
 convertAncestry <- function(ancestry) {
   ancestry <- tolower(ancestry)
@@ -32,7 +37,7 @@ convertAncestry <- function(ancestry) {
   ancestry[unknown] <- "UNKNOWN"
   ancestry[other] <- "OTHER"
 
-  ancestry <- factor(ancestry, levels = c("INDIAN", "CHINESE", "HYBRID",
+  ancestry <- factor(ancestry, levels = c("CHINESE", "INDIAN", "HYBRID",
                                           "JAPANESE", "OTHER", "UNKNOWN"))
   return(ancestry)
 }

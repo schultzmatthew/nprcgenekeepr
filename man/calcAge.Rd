@@ -22,3 +22,12 @@ Part of Pedigree Curation
 Given vectors of birth and exit dates, calculate an individuals age. If no
 exit date is provided, the calculation is based on the current date.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+qcPed <- nprcgenekeepr::qcPed
+originalAge <- qcPed$age ## ages calculated at time of data collection
+currentAge <- calcAge(qcPed$birth, qcPed$exit) ## assumes no changes in
+                                               ## colony
+}
+}

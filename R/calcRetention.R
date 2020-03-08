@@ -10,6 +10,15 @@
 #' It is assumed that the pedigree has no partial parentage
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{geneDrop()}.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' data("lacy1989Ped")
+#' data("lacy1989PedAlleles")
+#' ped <- lacy1989Ped
+#' alleles <- lacy1989PedAlleles
+#' retention <- calcRetention(ped, alleles)
+#' }
 #' @export
 calcRetention <- function(ped, alleles) {
   # ASSUME: Pedigree has no partial parentage

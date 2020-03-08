@@ -6,7 +6,6 @@
 #' Currently qcStudbook() blindly changes all of the column names by removing
 #' the underscores.
 #' @param ped the pedigree information in datatable format
-#' @export
 fixGenotypeCols <- function(ped) {
   if (any(tolower(names(ped)) %in% "firstname")) {
     names(ped)[names(ped) == "firstname"] <- "first_name"

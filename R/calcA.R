@@ -19,6 +19,11 @@
 #'   (homozygous alleles will be counted as 1).
 #' @return A matrix with named rows indicating the number of unique alleles
 #'   an animal had during each round of simulation (indicated in columns).
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' rare <- calcA(nprcgenekeepr::ped1Alleles, threshold = 3, byID = FALSE)
+#' }
 #' @export
 calcA <- function(alleles, threshold = 1, byID = FALSE) {
   ids <- alleles$id

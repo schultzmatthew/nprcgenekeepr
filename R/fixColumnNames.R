@@ -2,12 +2,18 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @return list object with \code{newColNames} and \code{errorLst} with
-#' a record of all changes made.
 #' @param orgCols character vector with ordered list of column names
 #' found in a pedigree file.
 #' @param errorLst list object with places to store the various column
 #' name changes.
+#' @return list object with \code{newColNames} and \code{errorLst} with
+#' a record of all changes made.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' fixColumnNames(c("Sire_ID", "EGO", "DAM", "Id", "birth_date"),
+#'                errorLst = getEmptyErrorLst())
+#' }
 #' @export
 fixColumnNames <- function(orgCols, errorLst) {
   cols <- tolower(orgCols)

@@ -13,3 +13,9 @@ packages \code{data} directory}
 \description{
 createPedOne makes the pedOne data object
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+nprcgenekeepr:::createPedOne()
+}
+}

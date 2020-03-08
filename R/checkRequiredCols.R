@@ -10,6 +10,16 @@
 #' columns and returned and when \code{FALSE} and missing columns are found
 #' the program is stopped.
 ## ## rmsutilityr str_detect_fixed_all
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' requiredCols <- getRequiredCols()
+#' cols <-
+#'   paste0("id,sire,siretype,dam,damtype,sex,numberofparentsknown,birth,",
+#'          "arrivalatcenter,death,departure,status,ancestry,fromcenter?,",
+#'          "origin")
+#' all(requiredCols %in% checkRequiredCols(cols, reportErrors = TRUE))
+#' }
 #' @export
 checkRequiredCols <- function(cols, reportErrors) {
   requiredCols <- getRequiredCols()

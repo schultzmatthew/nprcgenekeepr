@@ -6,7 +6,6 @@
 #' else the entire list is returned.
 #' @param changedCols list with fields for each type of column change
 #' \code{qcStudbook}.
-#' @export
 checkChangedColsLst <- function(changedCols) {
   if (length(changedCols$caseChange) > 0 |
       length(changedCols$spaceRemoved) > 0 |

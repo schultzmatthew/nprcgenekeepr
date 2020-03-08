@@ -30,3 +30,14 @@ Tallies the number of first-order relatives for each member of the provided
 pedigree. If 'ids' is provided, the analysis is restricted to only the
 specified subset.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::lacy1989Ped
+ids <- c("B", "D", "E", "F", "G")
+countIds <- countFirstOrder(ped, ids)
+countIds
+count <- countFirstOrder(ped, NULL)
+count
+}
+}

@@ -45,6 +45,7 @@ This is the main function for the Genetic Value Analysis.
 }
 \examples{
 \donttest{
+library(nprcgenekeepr)
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
                          reportChanges = FALSE,

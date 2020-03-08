@@ -30,8 +30,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' data("examplePedigree")
-#' exampleTree <- createPedTree(examplePedigree)
+#' library(nprcgenekeepr)
+#' exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
 #' ## You can count how many animals are in loops with the following code.
 #' length(exampleLoops[exampleLoops == TRUE])

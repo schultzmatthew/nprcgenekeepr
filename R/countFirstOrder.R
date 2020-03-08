@@ -20,6 +20,16 @@
 #' \code{siblings}, and \code{total}. A table of first-order relationship
 #' counts, broken down to indicate the number of parents, offspring, and
 #' siblings that are part of the subset under consideration.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' ids <- c("B", "D", "E", "F", "G")
+#' countIds <- countFirstOrder(ped, ids)
+#' countIds
+#' count <- countFirstOrder(ped, NULL)
+#' count
+#' }
 #' @export
 countFirstOrder <- function(ped, ids = NULL) {
   if (!is.null(ids)) {

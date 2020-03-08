@@ -14,6 +14,7 @@
 #' Default is 5000.
 #'
 #' @examples
+#' \donttest{
 #' alleles <- list(alleles = list(), counter = 1)
 #' alleles <- assignAlleles(alleles, parentType = "sire", parent = NA,
 #'                          id = "o1", n = 4)
@@ -21,6 +22,7 @@
 #' alleles <- assignAlleles(alleles, parentType = "dam", parent = NA,
 #'                          id = "o1", n = 4)
 #' alleles
+#' }
 #' @export
 assignAlleles <- function(alleles, parentType, parent, id, n) {
   if (is.na(parent)) {

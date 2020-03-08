@@ -10,6 +10,10 @@
 #'
 #' @return An integer vector with the result of sampling from \code{a1}
 #' and \code{a2} according to Mendelian inheritance.
+#' @examples
+#' \donttest{
+#' chooseAllelesChar(LETTERS, letters)
+#' }
 #' @export
 chooseAlleles <- function(a1, a2) {
   s1 <- sample(c(0, 1), length(a1), replace = TRUE)

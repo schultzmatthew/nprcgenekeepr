@@ -7,6 +7,12 @@
 #' \code{zScores}, \code{import}, \code{totalOffspring}, which is
 #' a data.frame of results from a genetic value analysis.
 #' @return A copy of report specific to the specified animals
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' rpt <- nprcgenekeepr::pedWithGenotypeReport$report
+#' rpt1 <- filterReport(c("GHH9LB", "BD41WW"), rpt)
+#' }
 #' @export
 filterReport <- function(ids, rpt) {
   return(rpt[rpt$id %in% ids, ])

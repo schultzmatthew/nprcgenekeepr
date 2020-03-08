@@ -7,7 +7,6 @@
 #' else the entire list is returned.
 #' @param errorLst list with fields for each type of changed column and
 #' error detectable by \code{qcStudbook}.
-#' @export
 checkChangedColAndErrorLst <- function(errorLst) {
   if (checkErrorLst(errorLst) |
       checkChangedColsLst(errorLst$changedCols))

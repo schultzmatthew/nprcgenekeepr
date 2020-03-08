@@ -18,3 +18,36 @@ table of allele information produced by \code{geneDrop()}.}
 \description{
 Part of the Genetic Value Analysis
 }
+\examples{
+\donttest{
+## Example from Analysis of Founder Representation in Pedigrees: Founder
+## Equivalents and Founder Genome Equivalents.
+## Zoo Biology 8:111-123, (1989) by Robert C. Lacy
+
+library(nprcgenekeepr)
+ped <- data.frame(
+id = c("A", "B", "C", "D", "E", "F", "G"),
+sire = c(NA, NA, "A", "A", NA, "D", "D"),
+dam = c(NA, NA, "B", "B", NA, "E", "E"),
+stringsAsFactors = FALSE
+)
+ped["gen"] <- findGeneration(ped$id, ped$sire, ped$dam)
+ped$population <- getGVPopulation(ped, NULL)
+pedFactors <- data.frame(
+  id = c("A", "B", "C", "D", "E", "F", "G"),
+  sire = c(NA, NA, "A", "A", NA, "D", "D"),
+  dam = c(NA, NA, "B", "B", NA, "E", "E"),
+  stringsAsFactors = TRUE
+)
+pedFactors["gen"] <- findGeneration(pedFactors$id, pedFactors$sire,
+                                    pedFactors$dam)
+pedFactors$population <- getGVPopulation(pedFactors, NULL)
+alleles <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen, genotype = NULL,
+                    n = 5000, updateProgress = NULL)
+allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
+                           pedFactors$gen, genotype = NULL, n = 5000,
+                           updateProgress = NULL)
+fg <- calcFG(ped, alleles)
+fgFactors <- calcFG(pedFactors, allelesFactors)
+}
+}

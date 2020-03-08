@@ -15,6 +15,22 @@
 #' Defaults to \code{list(c("F", "F"))}.
 #'
 #' @return a dataframe representing a filtered long-format kinship table.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
+#' kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
+#' kin <- kinMatrix2LongForm(kmat, rm.dups = FALSE)
+#' threshold <- 0.1
+#' kin <- filterThreshold(kin, threshold = threshold)
+#' ped$sex <- c("M", "F", "M", "M", "F", "F", "M")
+#' kinNull <- filterPairs(kin, ped, ignore = NULL)
+#' kinMM <- filterPairs(kin, ped, ignore = list(c("M", "M")))
+#' ped
+#' kin[kin$id1 == "C", ]
+#' kinMM[kinMM$id1 == "C", ]
+#' }
 #' @export
 filterPairs <- function(kin, ped, ignore = list(c("F", "F"))) {
 

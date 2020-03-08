@@ -43,6 +43,26 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
+#'
+#' @examples
+#' \donttest{
+#' ## We usually defined `n` to be >= 5000
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' allelesNew <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+#'                       genotype = NULL, n = 50, updateProgress = NULL)
+#' genotype <- data.frame(id = ped$id,
+#'                        first_allele = c(NA, NA, "A001_B001", "A001_B002",
+#'                                         NA, "A001_B002", "A001_B001"),
+#'                        second_allele = c(NA, NA, "A010_B001", "A001_B001",
+#'                                          NA, NA, NA),
+#'                        stringsAsFactors = FALSE)
+#' pedWithGenotype <- addGenotype(ped, genotype)
+#' pedGenotype <- getGVGenotype(pedWithGenotype)
+#' allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+#'                          genotype = pedGenotype,
+#'                          n = 5, updateProgress = NULL)
+#' }
 #' @export
 geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {
@@ -53,7 +73,7 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
   rownames(ped) <- ids
   ped <- ped[order(gen), ]
   if (!is.null(genotype)) {
-    genotype <- genotype[!is.na(genotype$first), ]
+    genotype <- genotype[!(is.na(genotype$first) & is.na(genotype$second)), ]
     genoDefined <- TRUE
   } else {
     genoDefined <- FALSE
@@ -74,10 +94,8 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
     assigned <- FALSE
     if (genoDefined) {
       if (any(genotype$id == id)) {
-        alleles$alleles[[id]][["sire"]] <-
-          rep(genotype$first[genotype$id == id], n)
-        alleles$alleles[[id]][["dam"]] <-
-          rep(genotype$second[genotype$id == id], n)
+        alleles <- getGenoDefinedParentGenotypes(alleles, genotype, id, sire,
+                                                 dam, n)
         assigned <- TRUE
       }
     }

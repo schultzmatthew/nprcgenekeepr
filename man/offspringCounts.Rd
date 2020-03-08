@@ -25,3 +25,19 @@ required and \code{livingOffspring} optional.
 \description{
 Optionally find the number that are part of the population of interest.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+examplePedigree <- nprcgenekeepr::examplePedigree
+breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
+                         reportChanges = FALSE,
+                         reportErrors = FALSE)
+focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
+                                  is.na(breederPed$dam)) &
+                                is.na(breederPed$exit)]
+ped <- setPopulation(ped = breederPed, ids = focalAnimals)
+trimmedPed <- trimPedigree(focalAnimals, breederPed)
+probands <- ped$id[ped$population]
+counts <- offspringCounts(probands, ped)
+}
+}

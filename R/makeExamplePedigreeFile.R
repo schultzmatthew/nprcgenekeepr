@@ -25,7 +25,7 @@ makeExamplePedigreeFile <- function(fileType = "csv") {
     status <-
       create_wkbk(file = filename,
                   df_list = list(nprcgenekeepr::examplePedigree),
-                  sheetnames = "Example_Pedigree", create = TRUE)
+                  sheetnames = "Example_Pedigree", replace = FALSE)
     if (!status)
       stop(paste0("Failed to write example data out to ", filename, "."))
   } else {

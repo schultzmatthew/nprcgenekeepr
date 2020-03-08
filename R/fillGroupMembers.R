@@ -22,7 +22,6 @@
 #' @param sexRatio numeric value indicating the ratio of females to males x
 #' (from 0.5 to 20 by increments of 0.5 within the accompanying Shiny
 #' application. A sex ratio of 0 ignores sex in making up groups.
-#' @export
 fillGroupMembers <- function(candidates, currentGroups, kin, ped, harem, minAge,
                              numGp, sexRatio) {
   groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem,

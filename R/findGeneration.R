@@ -11,17 +11,24 @@
 #' @return An integer vector indication the generation numbers for each id,
 #' starting at 0 for individuals lacking IDs for both parents.
 #'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped[ , c("id", "sire", "dam")]
+#' ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
+#' ped
+#' }
 #' @export
 findGeneration <- function(id, sire, dam) {
   parents <- c()
   gen <- rep(NA, length(id))
   i <- 0
 
-  #' @description{This loops through the entire pedigree by one generation at a
+  #' @description{This loops through the entire pedigree one generation at a
   #' time. It finds the zeroth generation during first loop.
   #' The first time through this loop no sire or dam is in parents.
   #' This means that the animals without a sire and without a dam are
-  #' assigned to generation 0 and become the first parental genereation.
+  #' assigned to generation 0 and become the first parental generation.
   #' The second time through this loop finds all of the animals that do
   #' not have a sire or do not have a dam and at least one parent
   #' is in the vector of parents defined the first time through.
@@ -48,4 +55,4 @@ findGeneration <- function(id, sire, dam) {
     parents <- cumulativeParents
   }
   return(gen)
-  }
+}

@@ -25,6 +25,7 @@
 #' in order of descending value.
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
 #'                          reportChanges = FALSE,
@@ -60,7 +61,7 @@ reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
                      byID = TRUE, updateProgress = NULL) {
   # Generates a genetic value report for a provided pedigree
 
-  ## If user has limited the population of iterest by defining 'pop',
+  ## If user has limited the population of interest by defining 'pop',
   ## that information is incorporated via the 'population' column.
   ped$population <- getGVPopulation(ped, pop)
 

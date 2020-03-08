@@ -16,6 +16,54 @@
 #' conform to the format %Y%m%d are set to NA. NA values are left as NA.
 ## ##  rmsutilityr get_and_or_list
 ## ##  rmsutilityr is_valid_date_str
+#' @examples
+#' \donttest{
+#' library(lubridate)
+#' set_seed(10)
+#' someBirthDates <- paste0(sample(seq(0, 15, by = 3), 10,
+#'                                 replace = TRUE) + 2000, "-",
+#'                          sample(1:12, 10, replace = TRUE), "-",
+#'                          sample(1:28, 10, replace = TRUE))
+#' someBadBirthDates <- paste0(sample(1:12, 10, replace = TRUE), "-",
+#'                             sample(1:28, 10, replace = TRUE), "-",
+#'                             sample(seq(0, 15, by = 3), 10,
+#'                                    replace = TRUE) + 2000)
+#' someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
+#' someDepartureDates <- sample(someBirthDates, length(someBirthDates),
+#'                              replace = FALSE)
+#' ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates,
+#'                    departure = someDepartureDates)
+#' someDates <- ymd(someBirthDates)
+#' ped2 <- data.frame(birth = someDates, death = someDeathDates,
+#'                    departure = someDepartureDates)
+#' ped3 <- data.frame(birth = someBirthDates, death = someDeathDates,
+#'                    departure = someDepartureDates)
+#' someNADeathDates <- someDeathDates
+#' someNADeathDates[c(1, 3, 5)] <- ""
+#' someNABirthDates <- someDates
+#' someNABirthDates[c(2, 4, 6)] <- NA
+#' ped4 <- data.frame(birth = someNABirthDates, death = someNADeathDates,
+#'                    departure = someDepartureDates)
+#'
+#' ## convertDate identifies bad dates
+#' result = tryCatch({
+#'   convertDate(ped1)
+#' }, warning = function(w) {
+#'   print("Warning in date")
+#' }, error = function(e) {
+#'   print("Error in date")
+#' })
+#'
+#' ## convertDate with error flag returns error list and not an error
+#' convertDate(ped1, reportErrors = TRUE)
+#'
+#' ## convertDate recognizes good dates
+#' all(is.Date(convertDate(ped2)$birth))
+#' all(is.Date(convertDate(ped3)$birth))
+#'
+#' ## convertDate handles NA and empty character string values correctly
+#' convertDate(ped4)
+#' }
 #' @importFrom stringi stri_trim_both
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"),

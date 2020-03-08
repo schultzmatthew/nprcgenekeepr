@@ -21,3 +21,14 @@ of \code{reportErrors} for return values when required columns are missing.
 \description{
 Examines column names, \code{cols} for required column names
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+requiredCols <- getRequiredCols()
+cols <-
+  paste0("id,sire,siretype,dam,damtype,sex,numberofparentsknown,birth,",
+         "arrivalatcenter,death,departure,status,ancestry,fromcenter?,",
+         "origin")
+all(requiredCols \%in\% checkRequiredCols(cols, reportErrors = TRUE))
+}
+}

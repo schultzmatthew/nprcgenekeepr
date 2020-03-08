@@ -20,3 +20,9 @@ row names should be printed.}
 \description{
 Adapted from print.data.frame
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+dataframe2string(nprcgenekeepr::pedOne)
+}
+}

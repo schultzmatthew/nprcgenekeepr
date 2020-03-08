@@ -4,8 +4,12 @@
 ## This file is part of nprcgenekeepr
 #' @param savePed logical value if TRUE the pedigree is saved into the
 #' packages \code{data} directory
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' nprcgenekeepr:::createPedSix()
+#' }
 #' @importFrom lubridate mdy
-#' @export
 createPedSix <- function(savePed = TRUE) {
   set_seed(10)
   someBirthDates <- ymd(paste0(sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000, "-",
@@ -34,8 +38,13 @@ createPedSix <- function(savePed = TRUE) {
     pedSix$birth[pedSix$id %in% c("s1", "s2", "d1", "d2")] - dyears(20)
   names(pedSix) <- c("Ego Id", "Sire Id", "Dam", "Sex", "Birth Date",
                      "Departure", "Death")
-  if (savePed)
-    save(pedSix, file = "data/pedSix.RData")
+  if (savePed) {
+    pedigree_dir <- "~/tmp"
+    suppressWarnings(dir.create(pedigree_dir))
+    pedigree_dir <- paste0(pedigree_dir, "/data")
+    suppressWarnings(dir.create(pedigree_dir))
+    save(pedSix, file = stri_c(pedigree_dir, "/pedSix.RData"))
+  }
   pedSix
 }
 

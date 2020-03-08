@@ -30,8 +30,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' data("examplePedigree")
-#' exampleTree <- createPedTree(examplePedigree)
+#' library(nprcgenekeepr)
+#' exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
 #' }
 #' @export

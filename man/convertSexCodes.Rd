@@ -25,3 +25,13 @@ Standard sex codes are
 \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
 \item{U} {-- replacing "UNKNOWN" or "3"}}
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+original <- c("m", "male", "1", "MALE", "M", "F", "f", "female",
+              "FemAle", "U", "Unknown", "H", "hermaphrodite",
+              "U", "Unknown", "3", "4")
+sexCodes <- convertSexCodes(original)
+sexCodes
+}
+}

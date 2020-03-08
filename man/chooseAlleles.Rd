@@ -22,3 +22,8 @@ and \code{a2} according to Mendelian inheritance.
 Combines two vectors of alleles by randomly selecting one allele
 or the other at each position.
 }
+\examples{
+\donttest{
+chooseAllelesChar(LETTERS, letters)
+}
+}

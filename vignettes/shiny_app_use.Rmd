@@ -42,6 +42,17 @@ GitHub with the following code.
 install.packages("devtools")
 devtools::install_github("rmsharp/nprcgenekeepr")
 
+## Notes regarding feedback from Amanda on 20200204
+## I am willing to change “reading” to “uploading”, but they do not mean the 
+## same thing. When you upload a file, there is no inference of paying 
+## attention to the contents. When reading a file, the contents are examined. 
+## Reading is the more accurate descriptor in our case.
+## 
+## I am going to write a seperate tutorial explicitely for the consortium 
+## members as typical R users would want conventional use of terms and 
+## descriptors. 
+## For example, Shiny apps are always described as Shiny apps.
+
 ```
 
 All missing dependencies should be automatically installed.
@@ -328,7 +339,7 @@ grid.raster(img)
 
 *********
 
-## Pedigree Age Pyramid Plot
+## Pedigree Age Plot
 
 The __Pedigree Age Plot__ tab displays a standard pyramid plot for the pedigree
 as selected in the __Pedigree Browser__ tab.
@@ -353,7 +364,8 @@ in the lower right corner of the display.
 We are not aware of a systematic study of pedigree structure with this 
 algorithm and have not performed extensive studies with pedigrees of various 
 structures, but 1000 iterations has seemed to provide reproducible results. 
- 
+<!--  Come up wit a definition of reproducible and see if we can run and -->
+<!-- automated test to find the needed number of iterations.-->
 
 
 ```{r gva-calculating, eval = TRUE, fig.width = 7, fig.height = 5.5, echo = FALSE}

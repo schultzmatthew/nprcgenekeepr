@@ -67,6 +67,15 @@
 #' @return Dataframe \code{rows: id, col: gu}
 #'  A single-column table of genome uniqueness values as percentages.
 #'  Rownames are set to 'id' values that are part of the population.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped1Alleles <- nprcgenekeepr::ped1Alleles
+#' gu_1 <- calcGU(ped1Alleles, threshold = 1, byID = FALSE, pop = NULL)
+#' gu_2 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE, pop = NULL)
+#' gu_3 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE,
+#'                pop = ped1Alleles$id[20:60])
+#' }
 #' @export
 calcGU <- function(alleles, threshold = 1, byID = FALSE, pop = NULL) {
   if (!is.null(pop)) {

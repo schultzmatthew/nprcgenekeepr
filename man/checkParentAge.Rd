@@ -32,3 +32,14 @@ in the original \code{sb} dataframe with the following added columns:
 \description{
 Ensure parents are sufficiently older than offspring
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+qcPed <- nprcgenekeepr::qcPed
+checkParentAge(qcPed, minParentAge = 2)
+checkParentAge(qcPed, minParentAge = 3)
+checkParentAge(qcPed, minParentAge = 5)
+checkParentAge(qcPed, minParentAge = 6)
+checkParentAge(qcPed, minParentAge = 10)
+}
+}

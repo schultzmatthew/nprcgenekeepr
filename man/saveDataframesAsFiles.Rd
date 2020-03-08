@@ -4,11 +4,13 @@
 \alias{saveDataframesAsFiles}
 \title{Write copy of dataframes to either CSV or Excel file.}
 \usage{
-saveDataframesAsFiles(df_list, fileType = "csv")
+saveDataframesAsFiles(dfList, baseDir, fileType = "csv")
 }
 \arguments{
-\item{df_list}{list of dataframes to be stored as files.
+\item{dfList}{list of dataframes to be stored as files.
 \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.}
+
+\item{baseDir}{character vector of length on with the directory path.}
 
 \item{fileType}{character vector of length one with possible values of
 \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.}
