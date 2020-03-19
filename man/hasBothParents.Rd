@@ -17,3 +17,14 @@ TRUE if ID has both sire and dam identified in \code{ped}.
 \description{
 hasBothParents checks to see if both parents are identified.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::pedOne
+names(ped) <- c("id", "sire", "dam", "sex", "birth")
+hasBothParents("o2", ped)
+ped$sire[ped$id == "o2"] <- NA
+hasBothParents("o2", ped)
+}
+
+}

@@ -24,6 +24,7 @@ or the other at each position.
 }
 \examples{
 \donttest{
-chooseAllelesChar(LETTERS, letters)
+chooseAlleles(0:4, 5:9)
 }
+
 }

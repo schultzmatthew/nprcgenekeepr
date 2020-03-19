@@ -31,4 +31,5 @@ kin <- kinMatrix2LongForm(kmat, rm.dups = FALSE)
 kinFiltered_0.3 <- filterThreshold(kin, threshold = 0.3)
 kinFiltered_0.1 <- filterThreshold(kin, threshold = 0.1)
 }
+
 }

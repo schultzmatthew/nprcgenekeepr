@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-01/07/2020
+03/16/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -17,7 +17,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9004 (20200203)
+# nprcgenekeepr – Version 0.5.42.9005 (20200216)
 
 ## Introduction
 
@@ -73,7 +73,7 @@ All missing dependencies should be automatically installed.
 ## Running Shiny Application
 
 The toolset available within nprcgenekeepr can be used inside standard R
-scripts. However, it was orginally designed to be used within a Shiny
+scripts. However, it was originally designed to be used within a Shiny
 application that can be started with:
 
 ``` r

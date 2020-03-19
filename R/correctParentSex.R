@@ -4,20 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' Part of Pedigree Curation
 #'
-#'
-#' @param id character vector with unique identifier for an individual
-#' @param sire character vector with unique identifier for an
-#' individual's father (\code{NA} if unknown).
-#' @param dam character vector with unique identifier for an
-#' individual's mother (\code{NA} if unknown).
-#' @param sex factor with levels: "M", "F", "U". Sex specifier for an
-#' individual.
-#' @param reportErrors logical value if TRUE will scan the entire file and
-#' make a list of all errors found. The errors will be returned in a
-#' list of list where each sublist is a type of error found.
-#' @param recordStatus character vector with value of \code{"added"} or
-#' \code{"original"}, which indicates whether an animal was added or an
-#' original animal.
 #' @return A factor with levels: "M", "F", "H", and "U"
 #' representing the sex codes for the ids provided
 #' @examples
@@ -47,6 +33,20 @@
 #' pedTwo[pedTwo$sex != pedTwoCorrected$sex, ]
 #' pedTwoCorrected[pedTwo$sex != pedTwoCorrected$sex, ]
 #' }
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
+#' @param sex factor with levels: "M", "F", "U". Sex specifier for an
+#' individual.
+#' @param reportErrors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
+#' @param recordStatus character vector with value of \code{"added"} or
+#' \code{"original"}, which indicates whether an animal was added or an
+#' original animal.
 #' @export
 correctParentSex <- function(id, sire, dam, sex, recordStatus,
                              reportErrors = FALSE) {

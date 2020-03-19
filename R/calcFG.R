@@ -8,8 +8,7 @@
 #' (req. fields: id, sire, dam, gen, population).
 #'
 #' It is assumed that the pedigree has no partial parentage
-#' @param alleles dataframe contains an \code{AlleleTable}. This is a
-#' table of allele information produced by \code{geneDrop()}.
+#'
 #' @examples
 #' \donttest{
 #' ## Example from Analysis of Founder Representation in Pedigrees: Founder
@@ -42,6 +41,9 @@
 #' fg <- calcFG(ped, alleles)
 #' fgFactors <- calcFG(pedFactors, allelesFactors)
 #' }
+#'
+#' @param alleles dataframe contains an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{geneDrop()}.
 #' @export
 calcFG <- function(ped, alleles) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))

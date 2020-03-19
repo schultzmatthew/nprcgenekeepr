@@ -6,12 +6,7 @@
 #' Part of Group Formation
 #' Filters kinship values less than the specified threshold from a long-format
 #' table of kinship values.
-#' @param kin a dataframe with columns \code{id1}, \code{id2}, and
-#' \code{kinship}. This is the kinship data reformatted from a matrix,
-#' to a long-format table.
-#' @param threshold numeric value representing the minimum kinship level to be
-#' considered in group formation. Pairwise kinship below this level will be
-#' ignored.
+#'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -22,6 +17,13 @@
 #' kinFiltered_0.3 <- filterThreshold(kin, threshold = 0.3)
 #' kinFiltered_0.1 <- filterThreshold(kin, threshold = 0.1)
 #' }
+#'
+#' @param kin a dataframe with columns \code{id1}, \code{id2}, and
+#' \code{kinship}. This is the kinship data reformatted from a matrix,
+#' to a long-format table.
+#' @param threshold numeric value representing the minimum kinship level to be
+#' considered in group formation. Pairwise kinship below this level will be
+#' ignored.
 #' @export
 filterThreshold <- function(kin, threshold = 0.015625) {
   kin <- kin[kin$kinship >= threshold, ]

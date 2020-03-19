@@ -4,6 +4,14 @@
 ## This file is part of nprcgenekeepr
 #' @return character vector of potential sire Ids
 #'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::pedWithGenotype
+#' ids <- nprcgenekeepr::qcBreeders
+#' getPotentialSires(ids, minAge = 1, ped)
+#' }
+#'
 #' @param ids character vector of IDs of the animals
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will

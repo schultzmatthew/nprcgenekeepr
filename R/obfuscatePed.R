@@ -8,6 +8,14 @@
 #' birthdate can be shifted (\code{maxDelta}).
 #'
 #' @return obfuscated pedigree
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- qcStudbook(nprcgenekeepr::pedGood)
+#' obfuscatedPed <- obfuscatePed(ped)
+#' ped
+#' obfuscatedPed
+#' }
 #'
 #' @param ped pedigree object
 #' @param size integer value indicating number of characters in alias IDs

@@ -4,6 +4,14 @@
 ## This file is part of nprcgenekeepr
 #' @return object to send to generic print function
 #'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' errorLst <- qcStudbook(nprcgenekeepr::pedInvalidDates,
+#'                        reportChanges = TRUE, reportErrors = TRUE)
+#' summary(errorLst)
+#' }
+#'
 #' @rdname print
 #' @method print summary.nprcgenekeeprErr
 #' @param x object of class summary.nprcgenekeeprErr and class list
@@ -29,6 +37,14 @@ print.summary.nprcgenekeeprErr <- function(x, ...) {
 }
 #' @rdname print
 #' @return object to send to generic print function
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::pedGood
+#' ped <- suppressWarnings(qcStudbook(ped, reportErrors = FALSE))
+#' summary(reportGV(ped, guIter = 10))
+#' }
+#'
 #' @method print summary.nprcgenekeeprGV
 #' @export
 print.summary.nprcgenekeeprGV <- function(x, ...) {

@@ -9,12 +9,12 @@ getTokenList(lines)
 \arguments{
 \item{lines}{character vector with text from configuration file}
 }
+\value{
+First right and left space trimmed token from first character vector
+element.
+}
 \description{
 ## Copyright(c) 2017-2019 R. Mark Sharp
-}
-\details{
-Returns first right and left space trimmed token from first character vector
-element.
 }
 \examples{
 \donttest{
@@ -33,4 +33,5 @@ tokenList <- getTokenList(lines)
 params <- tokenList$param
 tokenVectors <- tokenList$tokenVec
 }
+
 }

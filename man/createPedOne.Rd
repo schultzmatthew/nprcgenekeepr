@@ -18,4 +18,5 @@ createPedOne makes the pedOne data object
 library(nprcgenekeepr)
 nprcgenekeepr:::createPedOne()
 }
+
 }

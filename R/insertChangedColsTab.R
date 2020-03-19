@@ -1,5 +1,6 @@
 #' insertChangedColsTab insert a list of changed columns found by
 #' \code{qcStudbook} in the pedigree file
+#'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
@@ -8,7 +9,6 @@
 #' @param pedigreeFileName name of file provided by user on Input tab
 #' @importFrom stringi stri_c
 #' @importFrom stringi stri_split_regex
-#' @export
 insertChangedColsTab <- function(errorLst, pedigreeFileName) {
   text <- summary(errorLst)
   lines <- stri_split_regex(text$txt, pattern = "\n")[[1]]

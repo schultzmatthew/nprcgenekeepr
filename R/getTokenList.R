@@ -3,10 +3,8 @@
 #' ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
-#' Returns first right and left space trimmed token from first character vector
+#' @return First right and left space trimmed token from first character vector
 #' element.
-#'
-#' @param lines character vector with text from configuration file
 #' @examples
 #' \donttest{
 #' lines <- c("center = \"SNPRC\"",
@@ -24,6 +22,8 @@
 #' params <- tokenList$param
 #' tokenVectors <- tokenList$tokenVec
 #' }
+#'
+#' @param lines character vector with text from configuration file
 #' @import stringi
 #' @export
 getTokenList <- function(lines) {

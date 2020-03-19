@@ -2,7 +2,7 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @return{A list of site specific informatio used by the application.}
+#' @return{A list of site specific information used by the application.}
 #'
 #' Currently this returns the following character strings in a named list.
 #' \enumerate{
@@ -17,14 +17,14 @@
 #'   If \code{center} is "ONPRC", folderPath is "/ONPRC"}
 #'   \item{queryName}{is "demographics"}
 #'}
-#' @param expectConfigFile logical parameter when set to \code{FALSE}, no
-#' configuration is looked for. Default value is \code{TRUE}.
 #'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
 #' getSiteInfo()
 #' }
+#' @param expectConfigFile logical parameter when set to \code{FALSE}, no
+#' configuration is looked for. Default value is \code{TRUE}.
 #' @import stringi
 #' @export
 getSiteInfo <- function(expectConfigFile = TRUE) {

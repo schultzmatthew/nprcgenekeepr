@@ -2,13 +2,15 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @param savePed logical value if TRUE the pedigree is saved into the
-#' packages \code{data} directory
+#'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
 #' nprcgenekeepr:::createPedOne()
 #' }
+#'
+#' @param savePed logical value if TRUE the pedigree is saved into the
+#' packages \code{data} directory
 #' @importFrom lubridate mdy
 createPedOne <- function(savePed = TRUE) {
   set_seed(10)

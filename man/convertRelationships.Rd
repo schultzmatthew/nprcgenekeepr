@@ -44,4 +44,5 @@ bkmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen,
 relBIds <- convertRelationships(bkmat, ped, c("4LFS70", "DD1U77"))
 relBIds
 }
+
 }

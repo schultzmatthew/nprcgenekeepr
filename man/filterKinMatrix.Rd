@@ -34,4 +34,5 @@ kmatFiltered <- filterKinMatrix(ids, kmat)
 ncol(kmatFiltered)
 nrow(kmatFiltered)
 }
+
 }

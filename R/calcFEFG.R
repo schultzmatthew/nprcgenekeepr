@@ -4,12 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' Part of the Genetic Value Analysis
 #'
-#' @param ped the pedigree information in datatable format.  Pedigree
-#' (req. fields: id, sire, dam, gen, population).
-#'
-#' It is assumed that the pedigree has no partial parentage
-#' @param alleles dataframe contains an \code{AlleleTable}. This is a
-#' table of allele information produced by \code{geneDrop()}.
 #' @examples
 #' \donttest{
 #' data(lacy1989Ped)
@@ -34,6 +28,13 @@
 #' feFg <- calcFEFG(ped, alleles)
 #' feFgFactors <- calcFEFG(pedFactors, allelesFactors)
 #' }
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#'
+#' It is assumed that the pedigree has no partial parentage
+#' @param alleles dataframe contains an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{geneDrop()}.
 #' @export
 calcFEFG <- function(ped, alleles) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))

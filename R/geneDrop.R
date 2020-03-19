@@ -1,6 +1,34 @@
 #' Gene drop simulation based on the provided pedigree information
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcgenekeepr
 #' Part of Genetic Value Analysis
+#'
+#' @return data.frame \code{id, parent, V1 ... Vn}
+#' A data.frame providing the maternal and paternal alleles for an animal
+#' for each iteration. The first two columns provide the animal's ID and
+#' whether the allele came from the sire or dam. These are followed by
+#' \code{n} columns indicating the allele for that iteration.
+#'
+#' @examples
+#' \donttest{
+#' ## We usually defined `n` to be >= 5000
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' allelesNew <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+#'                       genotype = NULL, n = 50, updateProgress = NULL)
+#' genotype <- data.frame(id = ped$id,
+#'                        first_allele = c(NA, NA, "A001_B001", "A001_B002",
+#'                                         NA, "A001_B002", "A001_B001"),
+#'                        second_allele = c(NA, NA, "A010_B001", "A001_B001",
+#'                                          NA, NA, NA),
+#'                        stringsAsFactors = FALSE)
+#' pedWithGenotype <- addGenotype(ped, genotype)
+#' pedGenotype <- getGVGenotype(pedWithGenotype)
+#' allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
+#'                          genotype = pedGenotype,
+#'                          n = 5, updateProgress = NULL)
+#' }
 #'
 #' @param ids A character vector of IDs for a set of animals.
 #' @param sires A character vector with IDS of the sires for the set of
@@ -23,7 +51,7 @@
 #' used in the gene dropping algorithm.
 #'
 #' The genotypes are using indirection (integer instead of character) to
-#' indicate the genes because the minipulation of character strings was found
+#' indicate the genes because the manipulation of character strings was found
 #' to take 20-35 times longer to perform.
 #'
 #' Adding additional columns to \code{genotype} does not significantly affect
@@ -35,34 +63,6 @@
 #' will be called during each iteration to update a
 #' \code{shiny::Progress} object.
 #'
-#' @return data.frame \code{id, parent, V1 ... Vn}
-#' A data.frame providing the maternal and paternal alleles for an animal
-#' for each iteration. The first two columns provide the animal's ID and
-#' whether the allele came from the sire or dam. These are followed by
-#' \code{n} columns indicating the allele for that iteration.
-#'
-## Copyright(c) 2017-2019 R. Mark Sharp
-## This file is part of nprcgenekeepr
-#'
-#' @examples
-#' \donttest{
-#' ## We usually defined `n` to be >= 5000
-#' library(nprcgenekeepr)
-#' ped <- nprcgenekeepr::lacy1989Ped
-#' allelesNew <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
-#'                       genotype = NULL, n = 50, updateProgress = NULL)
-#' genotype <- data.frame(id = ped$id,
-#'                        first_allele = c(NA, NA, "A001_B001", "A001_B002",
-#'                                         NA, "A001_B002", "A001_B001"),
-#'                        second_allele = c(NA, NA, "A010_B001", "A001_B001",
-#'                                          NA, NA, NA),
-#'                        stringsAsFactors = FALSE)
-#' pedWithGenotype <- addGenotype(ped, genotype)
-#' pedGenotype <- getGVGenotype(pedWithGenotype)
-#' allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
-#'                          genotype = pedGenotype,
-#'                          n = 5, updateProgress = NULL)
-#' }
 #' @export
 geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
                      updateProgress = NULL) {

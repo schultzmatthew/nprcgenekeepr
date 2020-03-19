@@ -3,10 +3,20 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' Part of Group Formation
-#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
+#' kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
+#' reformatedKmat <- kinMatrix2LongForm(kmat, rm.dups = FALSE)
+#' nrow(reformatedKmat)
+#' reformatedNoDupsKmat <- kinMatrix2LongForm(kmat, rm.dups = TRUE)
+#' nrow(reformatedNoDupsKmat)
+#' }
 #' @param kinMatrix numerical matrix of pairwise kinship values. The row and
 #' column names correspond to animal IDs.
-#' @param rm.dups locigal value indication whether or not reverse-order ID
+#' @param rm.dups logical value indication whether or not reverse-order ID
 #' pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
 #' be collapsed into a single entry if rm.dups = TRUE)
 #'

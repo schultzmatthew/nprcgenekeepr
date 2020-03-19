@@ -21,7 +21,6 @@
 #' @import lubridate
 #' @import stringi
 #' @import plotrix
-#' @export
 agePyramidPlot <- function(males, females, ageLabels, mcol, fcol, laxlab,
                            raxlab, gap, currentDate) {
   pyramid.plot(lx = males, rx = females, labels = ageLabels,

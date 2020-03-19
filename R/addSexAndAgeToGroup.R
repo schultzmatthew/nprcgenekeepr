@@ -4,10 +4,6 @@
 #'
 #' @return Dataframe with Id, Sex, and Current Age
 #'
-#' @param ids character vector of animal Ids
-#' @param ped datatable that is the `Pedigree`. It contains pedigree
-#' information including the IDs listed in \code{candidates}.
-#'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -16,6 +12,10 @@
 #' df <- addSexAndAgeToGroup(ids = qcBreeders, ped = qcPed)
 #' head(df)
 #' }
+#'
+#' @param ids character vector of animal Ids
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
 #' @export
 addSexAndAgeToGroup <- function(ids, ped) {
   group <- data.frame(ids,

@@ -13,7 +13,7 @@
 #'
 #' Ballou & Lacy describe genome uniqueness as "the proportion of simulations
 #' in which an individual receives the only copy of a founder allele." We have
-#' interpretted this as meaning that genome uniqueness should only be calculated
+#' interpreted this as meaning that genome uniqueness should only be calculated
 #' for living, non-founder animals. Alleles possessed by living founders are
 #' not considered when calculating genome uniqueness.
 #'
@@ -41,6 +41,20 @@
 #' Population management for survival and recovery. New York (NY):
 #' Columbia University Press.
 #'
+#'
+#' @return Dataframe \code{rows: id, col: gu}
+#'  A single-column table of genome uniqueness values as percentages.
+#'  Rownames are set to 'id' values that are part of the population.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped1Alleles <- nprcgenekeepr::ped1Alleles
+#' gu_1 <- calcGU(ped1Alleles, threshold = 1, byID = FALSE, pop = NULL)
+#' gu_2 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE, pop = NULL)
+#' gu_3 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE,
+#'                pop = ped1Alleles$id[20:60])
+#' }
+#'
 #' @param alleles dataframe of containing an \code{AlleleTable}. This is a
 #' table of allele information produced by \code{geneDrop()}.
 #' An AlleleTable contains information about alleles an ego has inherited.
@@ -56,26 +70,13 @@
 #' @param threshold an integer indicating the maximum number of copies of an
 #' allele that can be present in the population for it to be considered rare.
 #' Default is 1.
-#' @param byID logical varioable of length 1 that is passed through to
+#' @param byID logical variable of length 1 that is passed through to
 #' eventually be used by \code{alleleFreq()}, which calculates the count of each
 #' allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 #' the function will only count the unique alleles for an individual
 #' (homozygous alleles will be counted as 1).
 #' @param pop character vector with animal IDs to consider as the population of
 #' interest, otherwise all animals will be considered. The default is NULL.
-#'
-#' @return Dataframe \code{rows: id, col: gu}
-#'  A single-column table of genome uniqueness values as percentages.
-#'  Rownames are set to 'id' values that are part of the population.
-#' @examples
-#' \donttest{
-#' library(nprcgenekeepr)
-#' ped1Alleles <- nprcgenekeepr::ped1Alleles
-#' gu_1 <- calcGU(ped1Alleles, threshold = 1, byID = FALSE, pop = NULL)
-#' gu_2 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE, pop = NULL)
-#' gu_3 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE,
-#'                pop = ped1Alleles$id[20:60])
-#' }
 #' @export
 calcGU <- function(alleles, threshold = 1, byID = FALSE, pop = NULL) {
   if (!is.null(pop)) {

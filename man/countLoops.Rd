@@ -51,4 +51,5 @@ sum(unlist(nLoops[nLoops > 0]))
 ## the following line of code:
 examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
 }
+
 }

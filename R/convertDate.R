@@ -4,13 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' Part of Pedigree Curation
 #'
-#' @param ped a dataframe of pedigree information that may contain birth,
-#' death, departure, or exit dates. The fields are optional, but will be used
-#' if present.(optional fields: birth, death, departure, and exit).
-#' @param time.origin date object used by \code{as.Date} to set \code{origin}.
-#' @param reportErrors logical value if TRUE will scan the entire file and
-#' make a list of all errors found. The errors will be returned in a
-#' list of list where each sublist is a type of error found.
 #' @return A dataframe with an updated table with date columns converted from
 #' \code{character} data type to \code{Date} data type. Values that do not
 #' conform to the format %Y%m%d are set to NA. NA values are left as NA.
@@ -64,6 +57,14 @@
 #' ## convertDate handles NA and empty character string values correctly
 #' convertDate(ped4)
 #' }
+#'
+#' @param ped a dataframe of pedigree information that may contain birth,
+#' death, departure, or exit dates. The fields are optional, but will be used
+#' if present.(optional fields: birth, death, departure, and exit).
+#' @param time.origin date object used by \code{as.Date} to set \code{origin}.
+#' @param reportErrors logical value if TRUE will scan the entire file and
+#' make a list of all errors found. The errors will be returned in a
+#' list of list where each sublist is a type of error found.
 #' @importFrom stringi stri_trim_both
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
@@ -77,7 +78,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
   }
 
   headers <-  tolower(names(ped))
-  headers <- headers[headers %in% c("birth", "death", "departure", "exit")]
+  headers <- headers[headers %in% getDateColNames()]
   format = "%Y-%m-%d"
   invalid_date_rows <- NULL
   for (header in headers) {
@@ -86,6 +87,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
       dates <- as.character(dates)
     }
     if (class(dates) == "Date") {
+      dates <- removeEarlyDates(dates, 1000)
       originalNAs <- is.na(dates)
       dates <- dates[!originalNAs]
     } else if (class(dates) == "character") {
@@ -106,7 +108,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
 
     if (any(is.na(dates))) {
       goodAndBadDates <- ifelse(is.na(dates), "bad", "good")
-      originalDates <- ped[[header]]
+      originalDates <- as.character(ped[[header]])
       originalDates[originalNAs] <- "good"
       originalDates[!originalNAs] <- goodAndBadDates
       if (reportErrors) {
@@ -120,6 +122,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
                   rowNums, "."))
     }
     ped[!originalNAs, header] <- dates
+    ped[originalNAs, header] <- NA # For those NAs from dates <= 1000 CE
     ped[[header]] <- as.Date(as.integer(ped[[header]]), origin = time.origin)
   }
   if (reportErrors) {

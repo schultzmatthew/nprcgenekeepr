@@ -2,12 +2,19 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' ID aliases are psuedorandom sequences of alphanumeric upper case characters
+#' ID aliases are pseudorandom sequences of alphanumeric upper case characters
 #' where the letter "O" is not included for readability..
 #' User has the option of providing a character vector of aliases to avoid using.
 #'
 #' @return named character vector of aliases where the name is the original ID value.
-#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' integerIds <- 1:10
+#' obfuscateId(integerIds, size = 4)
+#' characterIds <- paste0(paste0(sample(LETTERS, 1, replace = FALSE)), 1:10)
+#' obfuscateId(characterIds, size = 4)
+#' }
 #' @param id character vector of IDs to be obfuscated (alias creation).
 #' @param size character length of each alias
 #' @param existingIds character vector of existing aliases to avoid duplication.

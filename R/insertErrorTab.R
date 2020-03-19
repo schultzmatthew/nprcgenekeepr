@@ -8,7 +8,6 @@
 #' @importFrom htmlTable htmlTable
 #' @importFrom stringi stri_c
 #' @importFrom stringi stri_split_regex
-#' @export
 insertErrorTab <- function(errorLst, pedigreeFileName) {
   text <- summary(errorLst)
   if (checkChangedColsLst(errorLst$changedCols)) {

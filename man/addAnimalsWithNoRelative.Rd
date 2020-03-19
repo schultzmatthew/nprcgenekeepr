@@ -44,4 +44,5 @@ kin <- nprcgenekeepr:::addAnimalsWithNoRelative(kin, candidates)
 length(kin) # should be 2416
 kin[["1SPLS8"]] # should have 14 IDs
 }
+
 }

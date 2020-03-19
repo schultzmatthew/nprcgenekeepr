@@ -12,3 +12,9 @@ Current Version
 \description{
 getVersion Get the version number of nprcgenekeepr
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+getVersion()
+}
+}

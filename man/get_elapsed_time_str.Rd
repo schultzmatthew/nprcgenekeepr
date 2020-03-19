@@ -13,8 +13,10 @@ get_elapsed_time_str(start_time)
 Taken from github.com/rmsharp/rmsutilityr
 }
 \examples{
+\donttest{
 start_time <- proc.time()
 ## do something
 elapsed_time <- get_elapsed_time_str(start_time)
+}
 
 }

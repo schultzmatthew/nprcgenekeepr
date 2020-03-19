@@ -27,4 +27,5 @@ ped <- lacy1989Ped
 alleles <- lacy1989PedAlleles
 retention <- calcRetention(ped, alleles)
 }
+
 }

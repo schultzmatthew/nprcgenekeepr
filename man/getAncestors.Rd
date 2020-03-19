@@ -29,3 +29,26 @@ loops in the resulting pedigree, and thus, reduce the
 amount of time required to perform calculations with
 SIMWALK2 or similar programs.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::qcPed
+ped <- qcStudbook(ped, minParentAge = 0)
+pedTree <- createPedTree(ped)
+pedLoops <- findLoops(pedTree)
+ids <- names(pedTree)
+allAncestors <- list()
+
+for (i in seq_along(ids)) {
+  id <- ids[[i]]
+  anc <- getAncestors(id, pedTree)
+  allAncestors[[id]] <- anc
+}
+head(allAncestors)
+countOfAncestors <- unlist(lapply(allAncestors, length))
+idsWithMostAncestors <-
+  names(allAncestors)[countOfAncestors == max(countOfAncestors)]
+allAncestors[idsWithMostAncestors]
+}
+
+}

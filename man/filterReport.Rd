@@ -25,4 +25,5 @@ library(nprcgenekeepr)
 rpt <- nprcgenekeepr::pedWithGenotypeReport$report
 rpt1 <- filterReport(c("GHH9LB", "BD41WW"), rpt)
 }
+
 }

@@ -76,4 +76,5 @@ nff <- trimmedGeneticValue[["nFemaleFounders"]]
 fe <- trimmedGeneticValue[["fe"]]
 fg <- trimmedGeneticValue[["fg"]]
 }
+
 }

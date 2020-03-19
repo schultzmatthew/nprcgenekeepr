@@ -14,11 +14,33 @@
 #' amount of time required to perform calculations with
 #' SIMWALK2 or similar programs.
 #'
+#' @return A character vector of ancestors for an individual ID.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::qcPed
+#' ped <- qcStudbook(ped, minParentAge = 0)
+#' pedTree <- createPedTree(ped)
+#' pedLoops <- findLoops(pedTree)
+#' ids <- names(pedTree)
+#' allAncestors <- list()
+#'
+#' for (i in seq_along(ids)) {
+#'   id <- ids[[i]]
+#'   anc <- getAncestors(id, pedTree)
+#'   allAncestors[[id]] <- anc
+#' }
+#' head(allAncestors)
+#' countOfAncestors <- unlist(lapply(allAncestors, length))
+#' idsWithMostAncestors <-
+#'   names(allAncestors)[countOfAncestors == max(countOfAncestors)]
+#' allAncestors[idsWithMostAncestors]
+#' }
 #'
 #' @param id character vector of length 1 having the ID of interest
 #' @param ptree a list of lists forming a pedigree tree as constructed by
 #' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
-#' @return A character vector of ancestors for an individual ID.
+#'
 #' @export
 getAncestors <- function(id, ptree) {
 

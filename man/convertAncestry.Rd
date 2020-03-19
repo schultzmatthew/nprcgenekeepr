@@ -23,4 +23,5 @@ Part of Pedigree Curation
 original <- c("china", "india", "hybridized", NA, "human", "gorilla")
 convertAncestry(original)
 }
+
 }

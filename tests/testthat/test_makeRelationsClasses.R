@@ -8,7 +8,7 @@ qcPed <- nprcgenekeepr::qcPed
 bkmat <- kinship(qcPed$id, qcPed$sire, qcPed$dam, qcPed$gen,
                  sparse = FALSE)
 kin <- convertRelationships(bkmat, qcPed)
-relClasses <- as.data.frame(makeRelationClasseTable(kin))
+relClasses <- as.data.frame(makeRelationClassesTable(kin))
 relClasses$`Relationship Class` <- as.character(relClasses$`Relationship Class`)
 relClassTbl <- kin[!kin$relation == "Self", ] %>%
   group_by(relation) %>%

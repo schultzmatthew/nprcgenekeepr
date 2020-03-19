@@ -185,7 +185,7 @@ All missing dependencies should be automatically installed.
 ## Running Shiny Application  
 
 The toolset available within nprcgenekeepr can be used inside standard R scripts.
-However, it was orginally designed to be used within a Shiny application 
+However, it was originally designed to be used within a Shiny application 
 that can be started with:
 
 

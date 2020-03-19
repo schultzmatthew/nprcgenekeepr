@@ -5,8 +5,6 @@
 #' Checks to ensure the content and structure are appropriate for a genotype
 #' file. These checks are simply based on expected columns and legal domains.
 #'
-#'
-#' @param genotype dataframe with genotype data
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -26,6 +24,8 @@
 #'     cat("Error produced")
 #' })
 #' }
+#'
+#' @param genotype dataframe with genotype data
 #' @import stringi
 #' @export
 checkGenotypeFile <- function(genotype) {

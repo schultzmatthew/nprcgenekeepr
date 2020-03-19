@@ -44,4 +44,5 @@ ped <- nprcgenekeepr::lacy1989Ped[ , c("id", "sire", "dam")]
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 ped
 }
+
 }

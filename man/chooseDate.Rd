@@ -38,4 +38,5 @@ someDates
 chooseDate(someDates[1], someDates[2], earlier = TRUE)
 chooseDate(someDates[1], someDates[2], earlier = FALSE)
 }
+
 }

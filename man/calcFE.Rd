@@ -8,12 +8,13 @@ calcFE(ped)
 }
 \arguments{
 \item{ped}{the pedigree information in datatable format.  Pedigree
-(req. fields: id, sire, dam, gen, population).
-
-It is assumed that the pedigree has no partial parentage}
+(req. fields: id, sire, dam, gen, population).}
 }
 \description{
 Part of the Genetic Value Analysis
+}
+\details{
+It is assumed that the pedigree has no partial parentage
 }
 \examples{
 \donttest{
@@ -41,4 +42,5 @@ pedFactors$population <- getGVPopulation(pedFactors, NULL)
 fe <- calcFE(ped)
 feFactors <- calcFE(pedFactors)
 }
+
 }

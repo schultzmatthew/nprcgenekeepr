@@ -4,13 +4,27 @@
 ## This file is part of nprcgenekeepr
 #' From Relations
 #'
-#' kin : data.frame {fields: id1, id2, kinship, relation}
+#' @examples
+#' \donttest{
+#' suppressMessages(library(dplyr))
+#'
+#' qcPed <- nprcgenekeepr::qcPed
+#' bkmat <- kinship(qcPed$id, qcPed$sire, qcPed$dam, qcPed$gen,
+#'                  sparse = FALSE)
+#' kin <- convertRelationships(bkmat, qcPed)
+#' relClasses <- as.data.frame(makeRelationClassesTable(kin))
+#' relClasses$`Relationship Class` <- as.character(relClasses$`Relationship Class`)
+#' relClassTbl <- kin[!kin$relation == "Self", ] %>%
+#'   group_by(relation) %>%
+#'   summarise(count = n())
+#' relClassTbl
+#' }
 #'
 #' @param kin a dataframe with columns \code{id1}, \code{id2}, \code{kinship},
 #' and \code{relation}. It is a long-form table of pairwise kinships, with
 #' relationship categories included for each pair.
 #' @export
-makeRelationClasseTable <- function(kin) {
+makeRelationClassesTable <- function(kin) {
   rel.class <- c("Self", "Parent-Offspring", "Full-Siblings", "Half-Siblings",
                  "Grandparent-Grandchild", "Full-Cousins", "Cousin - Other",
                  "Full-Avuncular", "Avuncular - Other", "Other", "No Relation")

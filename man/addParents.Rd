@@ -34,4 +34,5 @@ pedTwo <- data.frame(id = c("d1", "s2", "d2", "o1", "o2", "o3", "o4"),
 newPed <- addParents(pedTwo)
 newPed
 }
+
 }

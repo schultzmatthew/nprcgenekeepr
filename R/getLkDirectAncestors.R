@@ -6,6 +6,14 @@
 #' table.
 #' @return dataframe with pedigree structure having all of the direct ancestors
 #' for the Ids provided.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ## Have to a vector of focal animals
+#' focalAnimals <- c("1X2701", "1X0101")
+#' getLkDirectAncestors <- function(ids = focalAnimals)
+#' }
+#'
 #' @param ids character vector with Ids.
 #' @import futile.logger
 #' @export

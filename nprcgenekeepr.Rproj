@@ -19,7 +19,7 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageBuildArgs: --md5  --compact-vignettes=both
-PackageBuildBinaryArgs: --md5  --compact-vignettes=both --compact-docs
+PackageBuildBinaryArgs: --compact-docs
 PackageCheckArgs: --as-cran --run-donttest
 PackageRoxygenize: rd,collate,namespace,vignette
 

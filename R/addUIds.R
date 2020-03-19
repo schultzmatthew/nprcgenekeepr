@@ -6,8 +6,6 @@
 #' This must be run prior to \code{addParents} since the IDs made herein are
 #' used by \code{addParents}
 #'
-#' @param ped datatable that is the `Pedigree`. It contains pedigree
-#' information. The fields \code{sire} and \code{dam} are required.
 #' @return The updated pedigree with partial parentage removed.
 #'
 #' @examples
@@ -28,6 +26,9 @@
 #' newPed <- addUIds(pedThree)
 #' newPed[newPed$id == "s1", ]
 #' }
+#'
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information. The fields \code{sire} and \code{dam} are required.
 #' @export
 addUIds <- function(ped) {
   s <- which(is.na(ped$sire) & !is.na(ped$dam))

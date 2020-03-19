@@ -46,6 +46,7 @@ back down the tree trimming off uninformative ancestors.
 }
 \examples{
 \donttest{
+library(nprcgenekeepr)
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
                          reportChanges = FALSE,
@@ -61,4 +62,5 @@ nrow(breederPed)
 nrow(trimmedPed)
 nrow(trimmedPedInformative)
 }
+
 }

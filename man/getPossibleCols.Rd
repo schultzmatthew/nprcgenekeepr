@@ -47,3 +47,10 @@ starting at 0 for individuals lacking IDs for both parents.}}
 \description{
 Pedigree curation function
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+getPossibleCols()
+}
+
+}

@@ -8,14 +8,6 @@
 #' it occurred earlier or later than the other. \code{NAs} are ignored if
 #' possible.
 #'
-#' @param d1 \code{Date} vector with the first of two dates to compare.
-#' @param d2 \code{Date} vector with the second of two dates to compare.
-#' @param earlier logical variable with \code{TRUE} if the earlier of the two
-#' dates is to be returned, otherwise the later is returned. Default is
-#' \code{TRUE}.
-#'
-#' @return \code{Date} vector of chosen dates or \code{NA} where neither
-#' is provided
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -27,6 +19,15 @@
 #' chooseDate(someDates[1], someDates[2], earlier = TRUE)
 #' chooseDate(someDates[1], someDates[2], earlier = FALSE)
 #' }
+#'
+#' @param d1 \code{Date} vector with the first of two dates to compare.
+#' @param d2 \code{Date} vector with the second of two dates to compare.
+#' @param earlier logical variable with \code{TRUE} if the earlier of the two
+#' dates is to be returned, otherwise the later is returned. Default is
+#' \code{TRUE}.
+#'
+#' @return \code{Date} vector of chosen dates or \code{NA} where neither
+#' is provided
 #' @export
 chooseDate <- function(d1, d2, earlier = TRUE) {
   if (is.na(d1)) {

@@ -27,4 +27,5 @@ original <- c("A", "alive", "Alive", "1", "S", "Sale", "sold", "shipped",
               "Unknown", "H", "hermaphrodite", "U", "Unknown", "4")
 convertStatusCodes(original)
 }
+
 }

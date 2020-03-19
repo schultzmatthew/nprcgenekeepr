@@ -41,4 +41,5 @@ ped
 kin[kin$id1 == "C", ]
 kinMM[kinMM$id1 == "C", ]
 }
+
 }

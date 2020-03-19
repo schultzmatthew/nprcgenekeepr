@@ -3,8 +3,7 @@
 context("removeUnknownAnimals")
 library(testthat)
 library(stringi)
-data("smallPed")
-ped <- smallPed
+ped <- nprcgenekeepr::smallPed
 newPed <- cbind(ped, recordStatus = rep("original", nrow(ped)),
                 stringsAsFactors = FALSE)
 addedPed <- newPed

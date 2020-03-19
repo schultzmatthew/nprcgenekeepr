@@ -3,6 +3,18 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' Ensure parents are sufficiently older than offspring
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' qcPed <- nprcgenekeepr::qcPed
+#' checkParentAge(qcPed, minParentAge = 2)
+#' checkParentAge(qcPed, minParentAge = 3)
+#' checkParentAge(qcPed, minParentAge = 5)
+#' checkParentAge(qcPed, minParentAge = 6)
+#' checkParentAge(qcPed, minParentAge = 10)
+#' }
+#'
 #' @param sb A dataframe containing a table of pedigree and demographic
 #' information.
 #' @param minParentAge numeric values to set the minimum age in years for
@@ -19,16 +31,6 @@
 #' \item{sireAge} {age of sire in years on the date indicated by \code{birth}.}
 #' \item{damBirth} {dam's birth date}
 #' \code{damAge} {age of dam in years on the date indicated by \code{birth}.}
-#' }
-#' @examples
-#' \donttest{
-#' library(nprcgenekeepr)
-#' qcPed <- nprcgenekeepr::qcPed
-#' checkParentAge(qcPed, minParentAge = 2)
-#' checkParentAge(qcPed, minParentAge = 3)
-#' checkParentAge(qcPed, minParentAge = 5)
-#' checkParentAge(qcPed, minParentAge = 6)
-#' checkParentAge(qcPed, minParentAge = 10)
 #' }
 #' @import lubridate
 #' @export

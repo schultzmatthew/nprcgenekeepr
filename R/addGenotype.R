@@ -4,18 +4,19 @@
 ## This file is part of nprcgenekeepr
 #' Assumes genotype has been opened by \code{checkGenotypeFile}
 #'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' rhesusPedigree <- nprcgenekeepr::rhesusPedigree
+#' rhesusGenotypes <- nprcgenekeepr::rhesusGenotypes
+#' pedWithGenotypes <- addGenotype(ped = rhesusPedigree,
+#'                                 genotype = rhesusGenotypes)
+#' }
+#'
 #' @param ped pedigree dataframe. \code{ped} is to be provided by
 #' \code{qcStudbook} so it is not checked.
 #' @param genotype genotype dataframe. \code{genotype} is to be provided by
 #' \code{checkGenotypeFile} so it is not checked.
-#' @examples
-#' \donttest{
-#' library(nprcgenekeepr)
-#' data(rhesusPedigree)
-#' data(rheusGenotypes)
-#' pedWithGenotypes <- addGenotype(ped = rhesusPedigree,
-#'                                 genotype = rhesusGenotypes)
-#' }
 #' @export
 addGenotype <- function(ped, genotype) {
   genotypeNames <- names(genotype)[2:3]

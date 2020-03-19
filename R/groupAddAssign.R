@@ -98,7 +98,7 @@
 #' from 0.5 to 20 by increments of 0.5.
 #' @param withKin Logical variable when set to \code{TRUE}, the kinship
 #' matrix for the group is returned along with the group and score.
-#' Defaults to not return the kinship matrix. This maintains compatability with
+#' Defaults to not return the kinship matrix. This maintains compatibility with
 #' earlier versions.
 #' @param updateProgress Function or NULL. If this function is defined, it
 #' will be called during each iteration to update a

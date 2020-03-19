@@ -42,4 +42,5 @@ allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
 feFg <- calcFEFG(ped, alleles)
 feFgFactors <- calcFEFG(pedFactors, allelesFactors)
 }
+
 }

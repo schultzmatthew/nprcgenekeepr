@@ -28,6 +28,7 @@ errorList <- qcStudbook(nprcgenekeepr::pedOne, minParentAge = 0, reportChanges =
 reportErrors = TRUE)
 summary(errorList)
 }
+
 \donttest{
 examplePedigree <- nprcgenekeepr::examplePedigree
 breederPed <- qcStudbook(examplePedigree, minParentAge = 2,

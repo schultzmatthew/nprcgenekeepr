@@ -2,16 +2,6 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @param alleles a list with a list \code{alleles$alleles}, which is a list
-#' of list containing the alleles for each individual's sire and dam that have
-#' been assigned thus far and \code{alleles$counter} that is the counter used
-#' to track the lists of\code{alleles$alleles}.
-#' @param parentType character vector of length one with value of
-#' \code{"sire"} or \code{"dam"}.
-#' @param parent either \code{ped[id, "sire"]} or \code{ped[id, "dam"]}.
-#' @param id character vector of length one containing the animal ID
-#' @param n integer indicating the number of iterations to simulate.
-#' Default is 5000.
 #'
 #' @examples
 #' \donttest{
@@ -23,6 +13,17 @@
 #'                          id = "o1", n = 4)
 #' alleles
 #' }
+#'
+#' @param alleles a list with a list \code{alleles$alleles}, which is a list
+#' of list containing the alleles for each individual's sire and dam that have
+#' been assigned thus far and \code{alleles$counter} that is the counter used
+#' to track the lists of\code{alleles$alleles}.
+#' @param parentType character vector of length one with value of
+#' \code{"sire"} or \code{"dam"}.
+#' @param parent either \code{ped[id, "sire"]} or \code{ped[id, "dam"]}.
+#' @param id character vector of length one containing the animal ID
+#' @param n integer indicating the number of iterations to simulate.
+#' Default is 5000.
 #' @export
 assignAlleles <- function(alleles, parentType, parent, id, n) {
   if (is.na(parent)) {

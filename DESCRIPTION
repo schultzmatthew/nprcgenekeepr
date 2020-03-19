@@ -57,6 +57,7 @@ Suggests:
     png,
     roxygen2 (>= 6.0.0),
     testthat
+Language en-US
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 7.0.2

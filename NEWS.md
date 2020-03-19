@@ -1,7 +1,20 @@
 NEWS
 ================
 R. Mark Sharp
-01/07/2020
+01/16/2020
+
+# nprcgenekeepr 0.5.42.9005 (20200201)
+
+  - Added examples to function documentation
+  - Added ColonyManagerTutorial.Rmd initial draft, which is copy of
+    shiny\_app\_use.Rmd. It is to be converted for use by colony
+    managers.
+
+# nprcgenekeepr 0.5.42.9004 (20200201)
+
+  - Added examples to function documentation
+  - Added obfuscated rhesus pedigree and rhesus haplotypes to use in
+    examples
 
 # nprcgenekeepr 0.5.42.9003
 

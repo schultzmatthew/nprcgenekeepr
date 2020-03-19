@@ -7,9 +7,6 @@
 #'  If ids are provided, the function will only count the unique alleles
 #' for an individual (homozygous alleles will be counted as 1).
 #'
-#' @param alleles an integer vector of alleles in the population
-#' @param ids character vector of IDs indicating to which animal each allele
-#' in \code{alleles} belongs.
 #'
 #' @return a data.frame with columns \code{allele} and \code{freq}. This is a
 #'  table of allele counts within the population.
@@ -23,6 +20,10 @@
 #' aF <- alleleFreq(alleles[[1]], ids = NULL)
 #' aF[aF$freq >= 10, ]
 #' }
+#'
+#' @param alleles an integer vector of alleles in the population
+#' @param ids character vector of IDs indicating to which animal each allele
+#' in \code{alleles} belongs.
 #' @export
 alleleFreq <- function(alleles, ids = NULL) {
   if (!is.null(ids)) {

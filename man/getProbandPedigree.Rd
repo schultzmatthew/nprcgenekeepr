@@ -23,3 +23,13 @@ the pedigree back in time starting from a group of probands. This will
 include all ancestors of the probands, even ones that might be
 uninformative.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::pedWithGenotype
+ids <- nprcgenekeepr::qcBreeders
+sires <- getPotentialSires(ids, minAge = 1, ped)
+head(getProbandPedigree(probands = sires, ped = ped))
+}
+
+}

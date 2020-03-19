@@ -185,7 +185,8 @@ shinyServer(function(input, output, session) {
         } else {
           if (checkChangedColsLst(errorLst$changedCols)) {
             insertTab(inputId = "tab_pages",
-                      getChangedColsTab(errorLst, pedigreeFile$name), target = "Input",
+                      getChangedColsTab(errorLst, pedigreeFile$name),
+                      target = "Input",
                       position = "before", select = FALSE)
           }
           breederPed <- tryCatch(qcStudbook(breederPed, minParentAge),
@@ -313,7 +314,8 @@ shinyServer(function(input, output, session) {
       focalAnimalUpdate <- input$focalAnimalUpdate
       flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
                         focalAnimalUpdate$name, "; ",
-                        "focalAnimalUpdate$datapath: ", focalAnimalUpdate$datapath),
+                        "focalAnimalUpdate$datapath: ",
+                        focalAnimalUpdate$datapath),
                  name = "nprcgenekeepr")
       focalAnimalUpdateDf <- unlist(read.table(focalAnimalUpdate$datapath,
                                                   header = TRUE,
@@ -479,7 +481,8 @@ shinyServer(function(input, output, session) {
 	of equally contributing founders that would be
 	required to produce the observed genetic diversity
 	in the current population. $f_e = 1 / \\sigma;(p_{i_{2}})$"))
-#  </MATH>Where <MATH>p<sub>i</sub></MATH>is the proportion of the genes of the living,
+#  </MATH>Where <MATH>p<sub>i</sub></MATH>is the proportion of the genes of
+# the living,
 #	descendant population contributed by founder <MATH>i</MATH>."))
     founder <- htmltools::withTags(table(
       class = "display",
@@ -558,7 +561,8 @@ shinyServer(function(input, output, session) {
 
     brx <- pretty(range(z), 25)
     ggplot(data.frame(z = z), aes(x = z, y=..density..)) +
-      geom_histogram(bins = 25, color="darkblue", fill="lightblue", breaks = brx) +
+      geom_histogram(bins = 25, color="darkblue", fill="lightblue",
+                     breaks = brx) +
       theme_classic() +
       xlab("Z-Score") + ylab("Frequency") +
       ggtitle("Distribution of Mean Kinship Coefficients Z-scores") +
@@ -685,7 +689,7 @@ shinyServer(function(input, output, session) {
   #                                 updateProgress = updateProgress)
   #
   #     progress$set(message = "Preparing Table", value = 1)
-  #     r <- makeRelationClasseTable(kin)
+  #     r <- makeRelationClassesTable(kin)
   #
   #     toCharacter(r)
   #   })

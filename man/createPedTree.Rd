@@ -10,9 +10,7 @@ createPedTree(ped)
 \item{ped}{dataframe of pedigree and demographic information potentially
 containing columns indicating the birth and death dates of an individual.
 The table may also contain dates of sale (departure). Optional columns
-are \code{birth}, \code{death}, \code{departure}.
-
-This function uses only \code{id}, \code{sire}, and \code{dam} columns.}
+are \code{birth}, \code{death}, \code{departure}.}
 }
 \value{
 A list of named lists forming a pedigree tree (PedTree or ptree).
@@ -34,6 +32,9 @@ The goal of sampling is to reduce the number of inbreeding
 loops in the resulting pedigree, and thus, reduce the
 amount of time required to perform calculations with
 SIMWALK2 or similar programs.
+
+
+This function uses only \code{id}, \code{sire}, and \code{dam} columns.
 }
 \examples{
 \dontrun{
@@ -41,4 +42,5 @@ library(nprcgenekeepr)
 exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 exampleLoops <- findLoops(exampleTree)
 }
+
 }

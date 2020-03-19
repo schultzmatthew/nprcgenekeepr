@@ -4,7 +4,17 @@
 ## This file is part of nprcgenekeepr
 #'
 #' @return pedigree with unknown animals removed
-#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::smallPed
+#' addedPed <- cbind(ped, recordStatus = rep("original", nrow(ped)),
+#'                 stringsAsFactors = FALSE)
+#' addedPed[1:3, "recordStatus"] <- "added"
+#' ped2 <- removeUnknownAnimals(addedPed)
+#' nrow(ped)
+#' nrow(ped2)
+#' }
 #' @param ped pedigree dataframe
 #' @export
 removeUnknownAnimals <- function(ped) {

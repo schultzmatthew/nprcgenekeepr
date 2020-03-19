@@ -26,4 +26,5 @@ data("qcPed")
 df <- addSexAndAgeToGroup(ids = qcBreeders, ped = qcPed)
 head(df)
 }
+
 }

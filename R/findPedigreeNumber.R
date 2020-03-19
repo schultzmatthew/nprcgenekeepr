@@ -3,11 +3,7 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' One of Pedigree Curation functions
-#' @param id character vector with unique identifier for an individual
-#' @param sire character vector with unique identifier for an
-#' individual's father (\code{NA} if unknown).
-#' @param dam character vector with unique identifier for an
-#' individual's mother (\code{NA} if unknown).
+#'
 #' @return Integer vector indicating generation numbers for each id,
 #' starting at 0 for individuals lacking IDs for both parents.
 #' @examples
@@ -30,6 +26,12 @@
 #' ped$pedigree <- findPedigreeNumber(ped$id, ped$sire, ped$dam)
 #' ped
 #' }
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
 #' @export
 findPedigreeNumber <- function(id, sire, dam) {
   founders <- id[is.na(sire) & is.na(dam)]

@@ -8,9 +8,6 @@
 #'
 #' This must be run after to \code{addUIds} since the IDs made there are
 #' used by \code{addParents}
-
-#' @param ped datatable that is the `Pedigree`. It contains pedigree
-#' information including the IDs listed in \code{candidates}.
 #'
 #' @return An updated pedigree with entries added as necessary.
 #' Entries have the id and sex specified; all remaining columns are filled
@@ -26,6 +23,9 @@
 #' newPed <- addParents(pedTwo)
 #' newPed
 #' }
+#'
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
 #' @export
 addParents <- function(ped) {
   sires <- ped$sire

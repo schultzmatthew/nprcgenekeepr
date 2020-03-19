@@ -165,4 +165,5 @@ ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
                   reportErrors = FALSE)
 names(ped)
 }
+
 }

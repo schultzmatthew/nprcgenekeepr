@@ -11,16 +11,6 @@
 #' \code{"M"}. This means animals with ambiguous sex are counted with the
 #' females.
 #'
-#' @param ids character vector of animal Ids
-#' @param ped datatable that is the `Pedigree`. It contains pedigree
-#' information including the IDs listed in \code{candidates}.
-#' @param additionalMales Integer value of males to add to those within the
-#' group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
-#' Default is 0.
-#' @param additionalFemales Integer value of females to add to those within the
-#' group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
-#'Default is 0.
-#'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -47,6 +37,16 @@
 #' calculateSexRatio(ids = character(0), ped = pedWithGenotype,
 #'                 additionalMales = 1, additionalFemales = 0)
 #' }
+#'
+#' @param ids character vector of animal Ids
+#' @param ped datatable that is the `Pedigree`. It contains pedigree
+#' information including the IDs listed in \code{candidates}.
+#' @param additionalMales Integer value of males to add to those within the
+#' group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+#' Default is 0.
+#' @param additionalFemales Integer value of females to add to those within the
+#' group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
+#'Default is 0.
 #' @export
 calculateSexRatio <- function(ids, ped, additionalMales = 0,
                               additionalFemales = 0) {

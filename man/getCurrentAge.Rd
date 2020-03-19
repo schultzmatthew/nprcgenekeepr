@@ -2,7 +2,7 @@
 % Please edit documentation in R/getCurrentAge.R
 \name{getCurrentAge}
 \alias{getCurrentAge}
-\title{Returns age in years using the provided birthdate.}
+\title{Age in years using the provided birthdate.}
 \usage{
 getCurrentAge(birth)
 }
@@ -11,9 +11,15 @@ getCurrentAge(birth)
 }
 \value{
 Age in years using the provided birthdate.
-
-Assumes current date for calculating age.
 }
 \description{
-Returns age in years using the provided birthdate.
+Assumes current date for calculating age.
+}
+\examples{
+\donttest{
+library(nprcgenekeepr)
+age <- getCurrentAge(birth = as.Date("06/02/2000", format = "\%m/\%d/\%Y"))
+}
+
+
 }

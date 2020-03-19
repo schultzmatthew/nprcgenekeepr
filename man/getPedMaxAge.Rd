@@ -12,3 +12,14 @@ getPedMaxAge(ped)
 \description{
 Get the maximum age of live animals in the pedigree.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+examplePedigree <- nprcgenekeepr::examplePedigree
+ped <- qcStudbook(examplePedigree, minParentAge = 2,
+                        reportChanges = FALSE,
+                        reportErrors = FALSE)
+getPedMaxAge(ped)
+}
+
+}

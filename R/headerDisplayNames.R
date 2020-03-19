@@ -5,9 +5,14 @@
 #' Converts the column names of a Pedigree or Genetic value Report to
 #' something more descriptive.
 #'
-#' @param headers a character vector of column (header) names
-#'
 #' @return Updated list of column names
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' headerDisplayNames(headers = c("id", "sire", "dam", "sex", "birth", "age"))
+#' }
+#'
+#' @param headers a character vector of column (header) names
 #' @export
 headerDisplayNames <- function(headers) {
   nameConversion <- c(
@@ -33,7 +38,7 @@ headerDisplayNames <- function(headers) {
     rank = "Rank",
     value = "Value Designation",
     status = "Status",
-    vasxOvx = "Vasectomy or Overiectomy Status",
+    vasxOvx = "Vasectomy or Ovariectomy Status",
     ancestry = "Ancestry",
     gu = "Genome Uniqueness (%)",
     pedNum = "Pedigree #",

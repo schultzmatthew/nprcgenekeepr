@@ -26,7 +26,7 @@
 #' the \code{id} is part of the extant population.}
 #' \item{origin} {-- character vector or \code{NA} (optional) that indicates
 #' the name of the facility that the individual was imported from.
-#' \code{NA} indicates the invidual was not imported.}
+#' \code{NA} indicates the individual was not imported.}
 #' \item{status} {-- an optional factor indicating the status of an individual
 #' with levels \code{ALIVE}, \code{DEAD}, and \code{SHIPPED}.}
 #' \item{condition} {--  character vector or \code{NA} (optional) that indicates
@@ -34,11 +34,16 @@
 #' are generally assumed to be naive.}
 #' \item{spf} {-- character vector or \code{NA} (optional) indicating the
 #' specific pathogen-free status of an individual.}
-#' \item{vasxOvx} {-- character vector indicating the vasectomy/overiectomy
+#' \item{vasxOvx} {-- character vector indicating the vasectomy/ovariectomy
 #' status of an animal where \code{NA} indicates an intact animal and all other
-#' values inicate surgical alteration.}
+#' values indicate surgical alteration.}
 #' \item{pedNum} {-- integer vector indicating generation numbers for each id,
 #' starting at 0 for individuals lacking IDs for both parents.}}
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' getPossibleCols()
+#' }
 #'
 #' @export
 getPossibleCols <- function() {

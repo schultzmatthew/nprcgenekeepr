@@ -31,6 +31,7 @@
 #' length(kin) # should be 2416
 #' kin[["1SPLS8"]] # should have 14 IDs
 #' }
+#'
 #' @param kin dataframe with kinship values
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.

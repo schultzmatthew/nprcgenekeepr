@@ -1,7 +1,7 @@
 ---
 title: "Meeting Notes and Things To Do"
 author: "R. Mark Sharp"
-date: "01/06/2020"
+date: "03/16/2020"
 output: html_document
 ---
 
@@ -13,9 +13,19 @@ library(rmsutilityr)
 library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
+
+## 20200316
+1.  Matt will work on colony manager tutorial during last two weeks of March.
+1.  Mark will provide user acceptance test questions.
+1.  Mark will provide colony manager tutorial material to Matt.
+1.  Mark will submit to CRAN during week of March 16, 2020.
+1.  Amanda will administer the user acceptance testing to collect feedback on
+    using the application. What causes problems, what can and cannot be done, 
+    what is missing, what is too complex, etc.
+    
 ## 20200203
 1.  Is the tutorial for CRAN or the Consoritum users.
-need overview of tab structure and order (left to right).
+    need overview of tab structure and order (left to right).
 
 ## 20200106 
 1.  Mark will convert nprcmanager to nprcgenekeepr before any other changes.
@@ -83,11 +93,11 @@ need overview of tab structure and order (left to right).
 originalPath <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
                        "nprcmanager_project/20160816_GeneticManagementTools")
 functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
-                    "library/nprcmanager/R")
+                    "library/nprcgenekeepr/R")
 tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-                "nprcmanager/tests/testthat")
+                "nprcgenekeepr/tests/testthat")
 ui <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-             "nprcmanager/inst/application")
+             "nprcgenekeepr/inst/application")
 
 paths <- c(originalPath, functions, ui, tests)
 codeCounts <- data.frame()
@@ -104,7 +114,7 @@ for (path in paths) {
                           check.names = FALSE,
                           stringsAsFactors = FALSE))
 }
-codeChanges <- data.frame(Source = c("Original", "nprcmanager 0.37"),
+codeChanges <- data.frame(Source = c("Original", "nprcgenekeepr 0.37"),
                           Files = c(codeCounts$files[1],
                                     sum(codeCounts$files[2:4])),
                           Lines = c(codeCounts$lines[1],
@@ -402,7 +412,7 @@ As a result of this meeting, the following columns are defined as follows
     
  Ballou & Lacy describe genome uniqueness as "the proportion of simulations 
  in which an individual receives the only copy of a founder allele." 
- We have interpretted this as meaning that genome uniqueness should only be 
+ We have interpreted this as meaning that genome uniqueness should only be 
  calculated  for living, non-founder animals. 
  Alleles possessed by living founders are not considered when calculating 
  genome uniqueness. 

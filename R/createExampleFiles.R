@@ -1,9 +1,12 @@
 #' Creates a folder with CSV files containing example pedigrees and ID lists
 #' used to demonstrate the package.
 #'
+## Copyright(c) 2017-2019 R. Mark Sharp
+## This file is part of nprcgenekeepr
 #' Creates a folder named \code{~/tmp/ExamplePedigrees} if it does not already
 #' exist. It then proceeds to write each example pedigree into a CSV file named
 #' based on the name of the example pedigree.
+#'
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)

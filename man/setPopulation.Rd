@@ -33,4 +33,5 @@ focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
 breederPed <- setPopulation(ped = breederPed, ids = focalAnimals)
 nrow(breederPed[breederPed$population, ])
 }
+
 }

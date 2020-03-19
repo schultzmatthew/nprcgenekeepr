@@ -8,14 +8,6 @@
 #' pedigree. If 'ids' is provided, the analysis is restricted to only the
 #' specified subset.
 #'
-#' @param ped : `Pedigree`
-#'   Standardized pedigree information in a table.
-#' @param ids character vector of IDs or NULL
-#'   These are the IDs to which the analysis should be restricted. First-order
-#'   relationships will only be tallied for the listed IDs and will only
-#'   consider relationships within the subset. If NULL, the analysis will
-#'   include all IDs in the pedigree.
-#'
 #' @return A dataframe with column \code{id}, \code{parents}, \code{offspring},
 #' \code{siblings}, and \code{total}. A table of first-order relationship
 #' counts, broken down to indicate the number of parents, offspring, and
@@ -30,6 +22,14 @@
 #' count <- countFirstOrder(ped, NULL)
 #' count
 #' }
+#'
+#' @param ped : `Pedigree`
+#'   Standardized pedigree information in a table.
+#' @param ids character vector of IDs or NULL
+#'   These are the IDs to which the analysis should be restricted. First-order
+#'   relationships will only be tallied for the listed IDs and will only
+#'   consider relationships within the subset. If NULL, the analysis will
+#'   include all IDs in the pedigree.
 #' @export
 countFirstOrder <- function(ped, ids = NULL) {
   if (!is.null(ids)) {

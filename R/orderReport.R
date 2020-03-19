@@ -7,12 +7,6 @@
 #' Takes in the results from a genetic value analysis and orders the report
 #' according to the ranking scheme we have developed.
 #'
-#' @param rpt a dataframe with required colnames \code{id}, \code{gu},
-#' \code{zScores}, \code{import}, \code{totalOffspring}, which is
-#' a data.frame of results from a genetic value analysis.
-#' @param ped the pedigree information in datatable format with required
-#' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
-#' This requires complete pedigree information..
 #'
 #' @return A dataframe, which is \code{rpt} sorted according to the ranking scheme:
 #' \itemize{
@@ -21,7 +15,13 @@
 #'  \item animals with mean kinship less than 0.25, ranked by ascending mk
 #'  \item all remaining animals, ranked by ascending mk
 #' }
-#' @export
+#'
+#' @param rpt a dataframe with required colnames \code{id}, \code{gu},
+#' \code{zScores}, \code{import}, \code{totalOffspring}, which is
+#' a data.frame of results from a genetic value analysis.
+#' @param ped the pedigree information in datatable format with required
+#' colnames \code{id}, \code{sire}, \code{dam}, \code{gen}, \code{population}).
+#' This requires complete pedigree information..
 orderReport <- function(rpt, ped) {
 
   finalRpt <- list()

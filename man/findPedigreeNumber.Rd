@@ -42,4 +42,5 @@ ped <- rbind(ped, ped3)
 ped$pedigree <- findPedigreeNumber(ped$id, ped$sire, ped$dam)
 ped
 }
+
 }

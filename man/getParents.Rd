@@ -15,3 +15,12 @@ columns id, sire, and dam.}
 \description{
 Get parents to corresponding animal IDs provided
 }
+\examples{
+library(nprcgenekeepr)
+\donttest{
+pedOne <- nprcgenekeepr::pedOne
+names(pedOne) <- c("id", "sire", "dam", "sex", "birth")
+getParents(pedOne, c("o1", "d4"))
+}
+
+}

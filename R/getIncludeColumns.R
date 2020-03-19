@@ -6,8 +6,10 @@
 #'
 #' Replaces INCLUDE.COLUMNS data statement.
 #' @return Superset of columns that can be in a pedigree file.
-#' examples
-#' get_inlcude_columns()
+#' @examples
+#' \donttest{
+#' getIncludeColumns()
+#' }
 #'
 #' @export
 getIncludeColumns <- function() {

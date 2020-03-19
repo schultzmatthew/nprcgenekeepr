@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "01/07/2020"
+date: "01/16/2020"
 output:
    github_document: default
 
@@ -10,6 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcgenekeepr 0.5.42.9005 (20200201)
+-   Added examples to function documentation
+-   Added ColonyManagerTutorial.Rmd initial draft, which is copy of 
+    shiny_app_use.Rmd. It is to be converted for use by colony managers.
+
 # nprcgenekeepr 0.5.42.9004 (20200201)
 -   Added examples to function documentation
 -   Added obfuscated rhesus pedigree and rhesus haplotypes to use in examples
@@ -204,7 +209,7 @@ knitr::opts_chunk$set(echo = TRUE)
 -   Exported set_seed. This will be moved into rmsutilityr
 -   Removed erroneous toCharacter documentation
 -   Added set_seed
-    -    Tried unsuccessfuly to use the RNGkind function and the sample.kind
+    -    Tried unsuccessfully to use the RNGkind function and the sample.kind
          argument to set.seed, but found neither existed prior to R 3.6.
     -    Created a R version sensitive version of set_seed that duplicates
          the pre-R version 3.6 set.seed function. This is only useful for

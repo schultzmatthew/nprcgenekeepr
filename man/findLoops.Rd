@@ -36,4 +36,5 @@ data("examplePedigree")
 exampleTree <- createPedTree(examplePedigree)
 exampleLoops <- findLoops(exampleTree)
 }
+
 }

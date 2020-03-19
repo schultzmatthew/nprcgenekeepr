@@ -5,9 +5,6 @@
 #' Part of Pedigree Curation
 #'
 #'
-#' @param status character vector or NA. Flag indicating an individual's
-#' status as alive, dead, sold, etc.
-#'
 #' @return factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}. Vector of
 #' standardized status codes with the possible values
 #' ALIVE, DECEASED, SHIPPED, or UNKNOWN
@@ -20,6 +17,9 @@
 #'               "Unknown", "H", "hermaphrodite", "U", "Unknown", "4")
 #' convertStatusCodes(original)
 #' }
+#'
+#' @param status character vector or NA. Flag indicating an individual's
+#' status as alive, dead, sold, etc.
 #' @export
 convertStatusCodes <- function(status) {
   status <- toupper(status)

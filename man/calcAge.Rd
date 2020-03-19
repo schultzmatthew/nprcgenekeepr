@@ -30,4 +30,5 @@ originalAge <- qcPed$age ## ages calculated at time of data collection
 currentAge <- calcAge(qcPed$birth, qcPed$exit) ## assumes no changes in
                                                ## colony
 }
+
 }

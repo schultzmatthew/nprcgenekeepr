@@ -16,11 +16,26 @@ file by \code{qcStudbook} through the functions it calls.}
 \value{
 a list with the pedigree, \code{sb}, and the \code{errorLst} with
 invalid date rows (\code{errorLst$invalidDateRows})
-
-If there are no errors that prevent the calculation of exit dates, they are
-calculated and added to the pedigree otherwise the pedigree is not updated.
 }
 \description{
 Finds date errors in columns defined in
 \code{convertDate} as dates and converts date strings to \code{Date} objects.
+}
+\details{
+If there are no errors that prevent the calculation of exit dates, they are
+calculated and added to the pedigree otherwise the pedigree is not updated.
+}
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::pedInvalidDates
+ped
+errorLst <- getEmptyErrorLst()
+colNamesAndErrors <- fixColumnNames(names(ped), errorLst)
+names(ped) <- colNamesAndErrors$newColNames
+pedAndErrors <- getDateErrorsAndConvertDatesInPed(ped, errorLst)
+pedAndErrors$sb
+pedAndErrors$errorLst
+}
+
 }

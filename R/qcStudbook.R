@@ -5,6 +5,14 @@
 #' Main pedigree curation function that performs basic quality control on
 #' pedigree information
 #'
+#' @examples
+#' \donttest{
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
+#'                   reportErrors = FALSE)
+#' names(ped)
+#' }
+#'
 #' @param sb A dataframe containing a table of pedigree and demographic
 #' information.
 #'
@@ -150,13 +158,6 @@
 #' @importFrom utils write.csv
 ## ##  rmsutilityr str_detect_fixed_all
 #' @export
-#' @examples
-#' \donttest{
-#' examplePedigree <- nprcgenekeepr::examplePedigree
-#' ped <- qcStudbook(examplePedigree, minParentAge = 2, reportChanges = FALSE,
-#'                   reportErrors = FALSE)
-#' names(ped)
-#' }
 qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
                        reportErrors = FALSE) {
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())

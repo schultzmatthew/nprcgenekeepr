@@ -36,4 +36,5 @@ trimmedPed <- trimPedigree(focalAnimals, breederPed)
 probands <- ped$id[ped$population]
 totalOffspring <- findOffspring(probands, ped)
 }
+
 }

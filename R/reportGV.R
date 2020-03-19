@@ -4,22 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' This is the main function for the Genetic Value Analysis.
 #'
-#' @param ped The pedigree information in data.frame format
-#' @param guIter Integer indicating the number of iterations for the gene-drop
-#'  analysis. Default is 5000 iterations
-#' @param guThresh Integer indicating the threshold number of animals for
-#' defining a unique allele. Default considers an allele "unique"
-#' if it is found in only 1 animal.
-#' @param pop Character vector with animal IDs to consider as the population of
-#' interest. The default is NULL.
-#' @param byID Logical varioable of length 1 that is passed through to
-#' eventually be used by \code{alleleFreq()}, which calculates the count of each
-#'  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
-#'  the function will only count the unique alleles for an individual
-#'   (homozygous alleles will be counted as 1).
-#' @param updateProgress Function or NULL. If this function is defined, it
-#' will be called during each iteration to update a
-#' \code{shiny::Progress} object.
 #'
 #' @return A dataframe with the genetic value report. Animals are ranked
 #' in order of descending value.
@@ -56,6 +40,23 @@
 #' fe <- trimmedGeneticValue[["fe"]]
 #' fg <- trimmedGeneticValue[["fg"]]
 #' }
+#'
+#' @param ped The pedigree information in data.frame format
+#' @param guIter Integer indicating the number of iterations for the gene-drop
+#'  analysis. Default is 5000 iterations
+#' @param guThresh Integer indicating the threshold number of animals for
+#' defining a unique allele. Default considers an allele "unique"
+#' if it is found in only 1 animal.
+#' @param pop Character vector with animal IDs to consider as the population of
+#' interest. The default is NULL.
+#' @param byID Logical variable of length 1 that is passed through to
+#' eventually be used by \code{alleleFreq()}, which calculates the count of each
+#'  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
+#'  the function will only count the unique alleles for an individual
+#'   (homozygous alleles will be counted as 1).
+#' @param updateProgress Function or NULL. If this function is defined, it
+#' will be called during each iteration to update a
+#' \code{shiny::Progress} object.
 #' @export
 reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
                      byID = TRUE, updateProgress = NULL) {

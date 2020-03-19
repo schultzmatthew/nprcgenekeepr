@@ -57,4 +57,5 @@ calculateSexRatio(ids = nonMales, ped = pedWithGenotype,
 calculateSexRatio(ids = character(0), ped = pedWithGenotype,
                 additionalMales = 1, additionalFemales = 0)
 }
+
 }

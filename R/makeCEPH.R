@@ -35,18 +35,27 @@
 #'     {--- Designate the relationship as \code{other}}
 #' \item {Else}
 #'     {--- Designate the relationships as \code{no relation.}}}
-
+#'
+#' @return List of lists: \{fields: id, \{subfields: parents, pgp, mgp\}\}.
+#' Pedigree information converted into a CEPH-style list. The top level
+#' list elements are the IDs from id. Below each ID is a list of three
+#' elements: parents (sire, dam), paternal grandparents (pgp: sire, dam),
+#' and maternal grandparents (mgp: sire, dam).
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' pedCEPH <- makeCEPH(ped$id, ped$sire, ped$dam)
+#' head(ped)
+#' head(pedCEPH$F)
+#' }
 #' @param id character vector with unique identifier for an individual
 #' @param sire character vector with unique identifier for an
 #' individual's father (\code{NA} if unknown).
 #' @param dam character vector with unique identifier for an
 #' individual's mother (\code{NA} if unknown).
-#'
-#' @return list of lists {fields: id, {subfields: parents, pgp, mgp}}
-#' Pedigree information converted into a CEPH-style list. The top level
-#' list elements are the IDs from id. Below each ID is a list of three
-#' elements: parents (sire, dam), paternal grandparents (pgp: sire, dam),
-#' and maternal grandparents (mgp: sire, dam).
+#' @export
 makeCEPH <- function(id, sire, dam) {
   ped <- data.frame(sire = sire, dam = dam, row.names = id,
                     stringsAsFactors = FALSE)

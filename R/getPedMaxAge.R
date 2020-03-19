@@ -2,6 +2,16 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' examplePedigree <- nprcgenekeepr::examplePedigree
+#' ped <- qcStudbook(examplePedigree, minParentAge = 2,
+#'                         reportChanges = FALSE,
+#'                         reportErrors = FALSE)
+#' getPedMaxAge(ped)
+#' }
+#'
 #' @param ped dataframe with pedigree
 #' @export
 getPedMaxAge <- function(ped) {

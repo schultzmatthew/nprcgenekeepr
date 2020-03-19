@@ -38,4 +38,5 @@ newPed <- addIdRecords(ids = "s1", pedOne, uPedOne)
 pedOne[!pedOne$id \%in\% newPed$id, ]
 newPed[newPed$id == "s1", ]
 }
+
 }

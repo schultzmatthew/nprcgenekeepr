@@ -25,4 +25,5 @@ increases exactly on a birthday.
 library(nprcgenekeepr)
 ped <- getPyramidAgeDist()
 }
+
 }

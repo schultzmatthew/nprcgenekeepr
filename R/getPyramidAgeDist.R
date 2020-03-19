@@ -16,6 +16,7 @@
 #' library(nprcgenekeepr)
 #' ped <- getPyramidAgeDist()
 #' }
+#'
 #' @importFrom anytime anytime
 #' @import lubridate
 #' @importFrom utils read.csv

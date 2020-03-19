@@ -2,9 +2,8 @@
 # This file is part of nprcgenekeepr
 context("kinMatrix2LongForm")
 library(testthat)
-data("lacy1989Ped")
-ped <- lacy1989Ped
 
+ped <- nprcgenekeepr::lacy1989Ped
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
 reformatedKmat <- kinMatrix2LongForm(kmat, rm.dups = FALSE)

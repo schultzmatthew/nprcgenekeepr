@@ -13,10 +13,6 @@
 #' \item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
 #' \item{U} {-- replacing "UNKNOWN" or "3"}}
 #'
-#' @param sex factor with levels: "M", "F", "U". Sex specifier for an
-#' individual.
-#' @param ignoreHerm logical flag indicating if hermaphrodites should be
-#' treated as unknown sex ("U"), default is \code{TRUE}.
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -26,6 +22,11 @@
 #' sexCodes <- convertSexCodes(original)
 #' sexCodes
 #' }
+#'
+#' @param sex factor with levels: "M", "F", "U". Sex specifier for an
+#' individual.
+#' @param ignoreHerm logical flag indicating if hermaphrodites should be
+#' treated as unknown sex ("U"), default is \code{TRUE}.
 #' @export
 convertSexCodes <- function(sex, ignoreHerm = TRUE) {
   sex <- toupper(sex)

@@ -2,6 +2,7 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
+#'
 #' The function previously had an internal call to the kindepth function in
 #' order to provide the parameter pdepth (the generation number). This version
 #' requires the generation number to be calculated elsewhere and passed into
@@ -11,6 +12,16 @@
 #'    processing is needed for them.
 #' Parents must be processed before their children, and then a child's
 #'    kinship is just a sum of the kinship's for his/her parents.
+#'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' ped <- nprcgenekeepr::lacy1989Ped
+#' ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
+#' kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
+#' ped
+#' kmat
+#' }
 #'
 #' @param id character vector of IDs for a set of animals.
 #' @param father.id character vector or NA for the IDs of the sires for the set

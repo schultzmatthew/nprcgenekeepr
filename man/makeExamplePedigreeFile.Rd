@@ -21,4 +21,5 @@ Uses \code{examplePedigree} data structure to create an example data file
 library(nprcgenekeepr)
 pedigreeFile <- makeExamplePedigreeFile()
 }
+
 }

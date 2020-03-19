@@ -4,6 +4,12 @@
 ## This file is part of nprcgenekeepr
 #' @return errorLst object with placeholders for error types found in a pedigree
 #' file by \code{qcStudbook}.
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' getEmptyErrorLst()
+#' }
+#'
 #' @export
 getEmptyErrorLst <- function() {
   emptyErrorLst <- list(failedDatabaseConnection = character(0),

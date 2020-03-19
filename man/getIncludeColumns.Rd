@@ -8,12 +8,16 @@ getIncludeColumns()
 }
 \value{
 Superset of columns that can be in a pedigree file.
-examples
-get_inlcude_columns()
 }
 \description{
 Part of Genetic Value Functions
 }
 \details{
 Replaces INCLUDE.COLUMNS data statement.
+}
+\examples{
+\donttest{
+getIncludeColumns()
+}
+
 }

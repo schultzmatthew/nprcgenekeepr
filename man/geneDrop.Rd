@@ -83,4 +83,5 @@ allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
                          genotype = pedGenotype,
                          n = 5, updateProgress = NULL)
 }
+
 }

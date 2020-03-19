@@ -2,11 +2,7 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @param file filename of workbook to be created
-#' @param df_list list of data frames to be added as worksheets to workbook
-#' @param sheetnames character vector of worksheet names
-#' @param replace Specifies if the file should be replaced if it
-#' already exist (default is FALSE).
+#'
 #' @examples
 #' \dontrun{
 #' library(nprcgenekeepr)
@@ -29,6 +25,12 @@
 #'             sheetnames = sheetnames, replace = FALSE)
 #' }
 #'
+#'
+#' @param file filename of workbook to be created
+#' @param df_list list of data frames to be added as worksheets to workbook
+#' @param sheetnames character vector of worksheet names
+#' @param replace Specifies if the file should be replaced if it
+#' already exist (default is FALSE).
 #' @import WriteXLS
 #' @export
 create_wkbk <- function(file, df_list, sheetnames, replace = FALSE) {

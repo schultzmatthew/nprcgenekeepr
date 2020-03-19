@@ -35,4 +35,5 @@ alleles <- assignAlleles(alleles, parentType = "dam", parent = NA,
                          id = "o1", n = 4)
 alleles
 }
+
 }

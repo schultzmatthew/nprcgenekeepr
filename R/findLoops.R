@@ -14,14 +14,10 @@
 #' amount of time required to perform calculations with
 #' SIMWALK2 or similar programs.
 #'
-#'
 #' @return a named list of logical values where each named element is
 #' named with an \code{id} from \code{ptree}. The value of the list element
 #' is set to \code{TRUE} if the \code{id} has a loop in the pedigree.
 #' Loops occur when an animal's sire and dam have a common ancestor.
-#'
-#' @param ptree a list of lists forming a pedigree tree as constructed by
-#' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
 #'
 #' @examples
 #' \dontrun{
@@ -29,6 +25,9 @@
 #' exampleTree <- createPedTree(examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
 #' }
+#'
+#' @param ptree a list of lists forming a pedigree tree as constructed by
+#' \code{createPedTree(ped)} where \code{ped} is a standard pedigree dataframe.
 #' @export
 findLoops <- function(ptree) {
 

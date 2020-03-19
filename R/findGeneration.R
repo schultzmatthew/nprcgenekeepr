@@ -2,11 +2,6 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' @param id character vector with unique identifier for an individual
-#' @param sire character vector with unique identifier for an
-#' individual's father (\code{NA} if unknown).
-#' @param dam character vector with unique identifier for an
-#' individual's mother (\code{NA} if unknown).
 #'
 #' @return An integer vector indication the generation numbers for each id,
 #' starting at 0 for individuals lacking IDs for both parents.
@@ -18,6 +13,12 @@
 #' ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 #' ped
 #' }
+#'
+#' @param id character vector with unique identifier for an individual
+#' @param sire character vector with unique identifier for an
+#' individual's father (\code{NA} if unknown).
+#' @param dam character vector with unique identifier for an
+#' individual's mother (\code{NA} if unknown).
 #' @export
 findGeneration <- function(id, sire, dam) {
   parents <- c()

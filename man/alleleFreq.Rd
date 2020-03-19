@@ -32,4 +32,5 @@ alleles <- ped1Alleles[, !(names(ped1Alleles) \%in\% c("id", "parent"))]
 aF <- alleleFreq(alleles[[1]], ids = NULL)
 aF[aF$freq >= 10, ]
 }
+
 }

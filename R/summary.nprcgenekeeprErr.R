@@ -2,6 +2,7 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
+#'
 #' @return object of class summary.nprcgenekeeprErr
 #' @examples
 #' \donttest{
@@ -9,6 +10,7 @@
 #' reportErrors = TRUE)
 #' summary(errorList)
 #' }
+#'
 #' @rdname summary
 #' @method summary nprcgenekeeprErr
 #' @param object object of class nprcgenekeeprErr and class list

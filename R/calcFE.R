@@ -4,10 +4,8 @@
 ## This file is part of nprcgenekeepr
 #' Part of the Genetic Value Analysis
 #'
-#' @param ped the pedigree information in datatable format.  Pedigree
-#' (req. fields: id, sire, dam, gen, population).
-#'
 #' It is assumed that the pedigree has no partial parentage
+#'
 #' @examples
 #' \donttest{
 #' ## Example from Analysis of Founder Representation in Pedigrees: Founder
@@ -34,6 +32,9 @@
 #' fe <- calcFE(ped)
 #' feFactors <- calcFE(pedFactors)
 #' }
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
 #' @export
 calcFE <- function(ped) {
   ped <- toCharacter(ped, headers = c("id", "sire", "dam"))

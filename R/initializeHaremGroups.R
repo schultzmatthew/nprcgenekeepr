@@ -15,7 +15,6 @@
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will
 #'  be ignored. Default is 1 year.
-#' @export
 initializeHaremGroups <- function(numGp, currentGroups, candidates, ped, minAge) {
   groupMembers <- list()
   if (length(currentGroups) > 0) {

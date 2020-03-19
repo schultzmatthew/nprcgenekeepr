@@ -16,7 +16,7 @@ expression. See fixed, ignore.case and perl sections
 for details. See  \emph{Extended Regular Expressions} for how to use regular
 expressions for matching.}
 
-\item{ignore_na}{if TRUE NA values are trimmed out of \code{strings} and 
+\item{ignore_na}{if TRUE NA values are trimmed out of \code{strings} and
 \code{patterns} before comparison}
 
 \item{...}{further arguments for stri_detect_fixed}

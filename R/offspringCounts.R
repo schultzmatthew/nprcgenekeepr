@@ -4,15 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' Optionally find the number that are part of the population of interest.
 #'
-#' @param probands character vector of egos for which offspring should be
-#' counted.
-#' @param ped the pedigree information in datatable format.  Pedigree
-#' (req. fields: id, sire, dam, gen, population).
-#' This is the complete pedigree.
-#' @param considerPop logical value indication whether or not the number of
-#' offspring that are part of the focal population are to be counted?
-#' Default is \code{FALSE}.
-#'
 #' @return A dataframe with at least \code{id} and \code{totalOffspring}
 #' required and \code{livingOffspring} optional.
 #'
@@ -31,6 +22,15 @@
 #' probands <- ped$id[ped$population]
 #' counts <- offspringCounts(probands, ped)
 #' }
+#'
+#' @param probands character vector of egos for which offspring should be
+#' counted.
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#' This is the complete pedigree.
+#' @param considerPop logical value indication whether or not the number of
+#' offspring that are part of the focal population are to be counted?
+#' Default is \code{FALSE}.
 #' @export
 offspringCounts <- function(probands, ped, considerPop = FALSE) {
   totalOffspring <- findOffspring(probands, ped)

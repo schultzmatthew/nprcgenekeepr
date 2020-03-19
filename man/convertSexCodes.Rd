@@ -34,4 +34,5 @@ original <- c("m", "male", "1", "MALE", "M", "F", "f", "female",
 sexCodes <- convertSexCodes(original)
 sexCodes
 }
+
 }

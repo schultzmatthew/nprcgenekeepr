@@ -40,4 +40,5 @@ trimmedPed <- trimPedigree(focalAnimals, breederPed)
 probands <- ped$id[ped$population]
 counts <- offspringCounts(probands, ped)
 }
+
 }

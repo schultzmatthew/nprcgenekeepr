@@ -8,6 +8,19 @@
 #'
 #' Returns an error if the table has duplicate IDs with differing data.
 #'
+#' @examples
+#' \donttest{
+#' ped <- nprcgenekeepr::smallPed
+#' newPed <- cbind(ped, recordStatus = rep("original", nrow(ped)))
+#' ped1 <- removeDuplicates(newPed)
+#' nrow(newPed)
+#' nrow(ped1)
+#' pedWithDups <- rbind(newPed, newPed[1:3, ])
+#' ped2 <- removeDuplicates(pedWithDups)
+#' nrow(pedWithDups)
+#' nrow(ped2)
+#' }
+#'
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree
 #' information. The \code{id} column is required.
 #' @param reportErrors logical value if TRUE will scan the entire file and

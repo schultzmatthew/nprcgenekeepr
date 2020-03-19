@@ -3,11 +3,7 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return Pedigree with Ego records added having NAs for parent IDs
-#' @param ids character vector of IDs to be added as Ego records having
-#' NAs for parent IDs
-#' @param fullPed a trimmed pedigree
-#' @param partialPed a trimmed pedigree dataframe with uninformative founders
-#' removed.
+#'
 #' @examples
 #' \donttest{
 #' uPedOne <- data.frame(id = c("d1", "s2", "d2", "o1", "o2", "o3", "o4"),
@@ -25,6 +21,12 @@
 #' pedOne[!pedOne$id %in% newPed$id, ]
 #' newPed[newPed$id == "s1", ]
 #' }
+#'
+#' @param ids character vector of IDs to be added as Ego records having
+#' NAs for parent IDs
+#' @param fullPed a trimmed pedigree
+#' @param partialPed a trimmed pedigree dataframe with uninformative founders
+#' removed.
 #' @export
 addIdRecords <- function(ids, fullPed, partialPed) {
   if (length(ids[!all(is.na(ids))]) > 0) {

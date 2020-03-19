@@ -81,6 +81,7 @@ gu_2 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE, pop = NULL)
 gu_3 <- calcGU(ped1Alleles, threshold = 3, byID = FALSE,
                pop = ped1Alleles$id[20:60])
 }
+
 }
 \references{
 Ballou JD, Lacy RC.  1995. Identifying genetically important

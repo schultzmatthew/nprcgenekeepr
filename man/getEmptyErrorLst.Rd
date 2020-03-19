@@ -13,3 +13,10 @@ file by \code{qcStudbook}.
 \description{
 Creates a empty errorLst object
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+getEmptyErrorLst()
+}
+
+}

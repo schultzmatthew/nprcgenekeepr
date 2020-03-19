@@ -36,4 +36,5 @@ pedThree <-
 newPed <- addUIds(pedThree)
 newPed[newPed$id == "s1", ]
 }
+
 }

@@ -2,10 +2,19 @@
 #'
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
+#' This is not robust as it fails if all IDs are found not within \code{map}.
+#'
 #' @return A dataframe or vector with original IDs replaced by their obfuscated
 #' counterparts.
 #'
-#' This is not robust as it fails if all IDs are found within \code{map}.
+#' @examples
+#' \donttest{
+#' set_seed(1)
+#' ped <- qcStudbook(nprcgenekeepr::pedSix)
+#' obfuscated <- obfuscatePed(ped, map = TRUE)
+#' someIds <- c("s1", "s2", "d1", "d1")
+#' mapIdsToObfuscated(someIds, obfuscated$map)
+#' }
 #'
 #' @param ids character vector with original IDs
 #' @param map named character vector where the values are the obfuscated IDs

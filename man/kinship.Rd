@@ -40,6 +40,17 @@ The rows (cols) of founders are just .5 * identity matrix, no further
 Parents must be processed before their children, and then a child's
    kinship is just a sum of the kinship's for his/her parents.
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- nprcgenekeepr::lacy1989Ped
+ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
+kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
+ped
+kmat
+}
+
+}
 \references{
 {Main website} \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 

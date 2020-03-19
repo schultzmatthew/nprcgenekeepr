@@ -4,6 +4,18 @@
 ## This file is part of nprcgenekeepr
 #' @return character vector of Ids with any potential sire Ids removed.
 #'
+#' @examples
+#' \donttest{
+#' library(nprcgenekeepr)
+#' qcBreeders <- nprcgenekeepr::qcBreeders
+#' pedWithGenotype <- nprcgenekeepr::pedWithGenotype
+#' noSires <- removePotentialSires(ids = qcBreeders, minAge = 2,
+#'                                 ped = pedWithGenotype)
+#' sires <- getPotentialSires(qcBreeders, minAge = 2, ped = pedWithGenotype)
+#' pedWithGenotype[pedWithGenotype$id %in% noSires, c("sex", "age")]
+#' pedWithGenotype[pedWithGenotype$id %in% sires, c("sex", "age")]
+#' }
+#'
 #' @param ids character vector of IDs of the animals
 #' @param minAge integer value indicating the minimum age to consider in group
 #' formation. Pairwise kinships involving an animal of this age or younger will

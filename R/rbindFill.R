@@ -12,7 +12,6 @@
 #'
 #' @return The appended dataframe with \code{NA} inserted into columns as
 #' needed.
-#' @export
 rbindFill <- function(df1, df2) {
 
   # Find columns in df1 not in df2

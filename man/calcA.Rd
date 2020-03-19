@@ -35,4 +35,5 @@ Part of Genetic Value Analysis
 library(nprcgenekeepr)
 rare <- calcA(nprcgenekeepr::ped1Alleles, threshold = 3, byID = FALSE)
 }
+
 }

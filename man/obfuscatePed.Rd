@@ -35,3 +35,13 @@ User provides a pedigree object (\code{ped}), the number of characters to be
 used for alias IDs (\code{size}), and the maximum number of days that the
 birthdate can be shifted (\code{maxDelta}).
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+ped <- qcStudbook(nprcgenekeepr::pedGood)
+obfuscatedPed <- obfuscatePed(ped)
+ped
+obfuscatedPed
+}
+
+}

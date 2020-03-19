@@ -4,12 +4,6 @@
 ## This file is part of nprcgenekeepr
 #' Part of Genetic Value Analysis
 #'
-#' @param ped the pedigree information in datatable format.  Pedigree
-#' (req. fields: id, sire, dam, gen, population).
-#'
-#' It is assumed that the pedigree has no partial parentage
-#' @param alleles dataframe of containing an \code{AlleleTable}. This is a
-#' table of allele information produced by \code{geneDrop()}.
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
@@ -19,6 +13,13 @@
 #' alleles <- lacy1989PedAlleles
 #' retention <- calcRetention(ped, alleles)
 #' }
+#'
+#' @param ped the pedigree information in datatable format.  Pedigree
+#' (req. fields: id, sire, dam, gen, population).
+#'
+#' It is assumed that the pedigree has no partial parentage
+#' @param alleles dataframe of containing an \code{AlleleTable}. This is a
+#' table of allele information produced by \code{geneDrop()}.
 #' @export
 calcRetention <- function(ped, alleles) {
   # ASSUME: Pedigree has no partial parentage

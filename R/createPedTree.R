@@ -17,11 +17,6 @@
 #' SIMWALK2 or similar programs.
 #'
 #'
-#' @param ped dataframe of pedigree and demographic information potentially
-#' containing columns indicating the birth and death dates of an individual.
-#' The table may also contain dates of sale (departure). Optional columns
-#' are \code{birth}, \code{death}, \code{departure}.
-#'
 #' This function uses only \code{id}, \code{sire}, and \code{dam} columns.
 #'
 #' @return A list of named lists forming a pedigree tree (PedTree or ptree).
@@ -34,9 +29,13 @@
 #' exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
 #' }
+#'
+#' @param ped dataframe of pedigree and demographic information potentially
+#' containing columns indicating the birth and death dates of an individual.
+#' The table may also contain dates of sale (departure). Optional columns
+#' are \code{birth}, \code{death}, \code{departure}.
 #' @export
 createPedTree <- function(ped) {
-
   pedTree <- rep(list(list(sire = NA, dam = NA)), nrow(ped))
   names(pedTree) <- ped$id
 

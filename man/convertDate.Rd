@@ -73,4 +73,5 @@ all(is.Date(convertDate(ped3)$birth))
 ## convertDate handles NA and empty character string values correctly
 convertDate(ped4)
 }
+
 }

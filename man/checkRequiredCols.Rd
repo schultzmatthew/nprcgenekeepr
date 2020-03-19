@@ -31,4 +31,5 @@ cols <-
          "origin")
 all(requiredCols \%in\% checkRequiredCols(cols, reportErrors = TRUE))
 }
+
 }

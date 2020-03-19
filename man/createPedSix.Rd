@@ -18,4 +18,5 @@ createPedSix makes the pedSix data object
 library(nprcgenekeepr)
 nprcgenekeepr:::createPedSix()
 }
+
 }

@@ -6,6 +6,24 @@
 \usage{
 getLogo()
 }
+\value{
+A character vector of length one having the name of the logo file
+used in the \code{Input} tab. A warning is returned if the configuration
+file is not found.
+}
 \description{
 Get Logo file name
+}
+\examples{
+\donttest{
+result = tryCatch({
+  getLogo()
+}, warning = function(w) {
+print(paste0("Warning in getLogo: ", w, ". File is to be ",
+             suppressWarnings(getLogo())$file))
+}, error = function(e) {
+print(paste0("Error in in getLogo: ", e))
+})
+
+}
 }

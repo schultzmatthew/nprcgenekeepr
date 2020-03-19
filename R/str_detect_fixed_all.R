@@ -10,11 +10,10 @@
 #' expression. See fixed, ignore.case and perl sections
 #' for details. See  \emph{Extended Regular Expressions} for how to use regular
 #' expressions for matching.
-#' @param ignore_na if TRUE NA values are trimmed out of \code{strings} and 
+#' @param ignore_na if TRUE NA values are trimmed out of \code{strings} and
 #' \code{patterns} before comparison
 #' @param ... further arguments for stri_detect_fixed
 #' @import stringi
-#' @export
 str_detect_fixed_all <- function(strings, patterns, ignore_na = FALSE, ...) {
   if (ignore_na) {
     strings <- strings[!is.na(strings)]

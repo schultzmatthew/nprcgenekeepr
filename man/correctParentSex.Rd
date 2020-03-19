@@ -60,4 +60,5 @@ pedTwoCorrected$sex <- correctParentSex(pedTwo$id, pedTwo$sire, pedTwo$dam,
 pedTwo[pedTwo$sex != pedTwoCorrected$sex, ]
 pedTwoCorrected[pedTwo$sex != pedTwoCorrected$sex, ]
 }
+
 }

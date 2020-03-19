@@ -7,6 +7,15 @@
 #' %m-%d-%Y format being read by %Y-%m-%d format
 #'
 #' NA values are ignored and not changed.
+#'
+#' @examples
+#' \donttest{
+#' dates <- structure(c(12361, 14400, 15413, NA, 11189, NA, 13224, 10971, -432000,
+#'                      13262), class = "Date")
+#' cleanedDates <- removeEarlyDates(dates, firstYear = 1000)
+#' dates
+#' cleanedDates
+#' }
 #' @param dates vector of dates
 #' @param firstYear integer value of first (earliest) year in the allowed
 #' date range.
