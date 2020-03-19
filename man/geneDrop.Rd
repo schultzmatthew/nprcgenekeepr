@@ -40,7 +40,7 @@ new fourth column could have a frequency for homozygosity that could be
 used in the gene dropping algorithm.
 
 The genotypes are using indirection (integer instead of character) to
-indicate the genes because the minipulation of character strings was found
+indicate the genes because the manipulation of character strings was found
 to take 20-35 times longer to perform.
 
 Adding additional columns to \code{genotype} does not significantly affect

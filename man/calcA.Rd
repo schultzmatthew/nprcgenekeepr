@@ -9,7 +9,7 @@ calcA(alleles, threshold = 1, byID = FALSE)
 }
 \arguments{
 \item{alleles}{a matrix with {id, parent, V1 ... Vn} providing the alleles
-an animal recieved during each simulation.
+an animal received during each simulation.
 The first 2 columns provide the animal ID and the parent the allele came
 from. Remaining columns provide alleles.}
 
@@ -17,7 +17,7 @@ from. Remaining columns provide alleles.}
 allele that can be present in the population for it to be considered rare.
 Default is 1.}
 
-\item{byID}{logical varioable of length 1 that is passed through to
+\item{byID}{logical variable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual

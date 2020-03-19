@@ -4,7 +4,7 @@
 \name{ped1Alleles}
 \alias{ped1Alleles}
 \title{ped1Alleles is a dataframe created by the geneDrop function}
-\format{A dataframe with 554 rows and 6 varialbes
+\format{A dataframe with 554 rows and 6 variables
 \describe{
 \item{V1}{alleles assigned to the parents of the animals identified in
 the \code{id} column during iteration 1 of gene dropping performed by

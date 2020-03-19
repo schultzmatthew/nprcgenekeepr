@@ -13,7 +13,7 @@ is_valid_date_str(
 \arguments{
 \item{date_str}{character vector with 0 or more dates}
 
-\item{format}{character vector of lenght one having the date format}
+\item{format}{character vector of length one having the date format}
 
 \item{optional}{parameter to \code{as.Date}. Logical value indicating
 to return NA (instead of signaling an error) if the format guessing does not succeed.

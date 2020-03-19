@@ -11,7 +11,7 @@ getSiteInfo(expectConfigFile = TRUE)
 configuration is looked for. Default value is \code{TRUE}.}
 }
 \value{
-{A list of site specific informatio used by the application.}
+{A list of site specific information used by the application.}
 
 Currently this returns the following character strings in a named list.
 \enumerate{

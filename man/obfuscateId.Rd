@@ -17,7 +17,7 @@ obfuscateId(id, size = 10, existingIds = character(0))
 named character vector of aliases where the name is the original ID value.
 }
 \description{
-ID aliases are psuedorandom sequences of alphanumeric upper case characters
+ID aliases are pseudorandom sequences of alphanumeric upper case characters
 where the letter "O" is not included for readability..
 User has the option of providing a character vector of aliases to avoid using.
 }

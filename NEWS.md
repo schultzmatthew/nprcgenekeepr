@@ -256,7 +256,7 @@ R. Mark Sharp
   - Exported set\_seed. This will be moved into rmsutilityr
   - Removed erroneous toCharacter documentation
   - Added set\_seed
-      - Tried unsuccessfuly to use the RNGkind function and the
+      - Tried unsuccessfully to use the RNGkind function and the
         sample.kind argument to set.seed, but found neither existed
         prior to R 3.6.
       - Created a R version sensitive version of set\_seed that

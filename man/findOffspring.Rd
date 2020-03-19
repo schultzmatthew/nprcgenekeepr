@@ -15,7 +15,7 @@ counted and returned.}
 This requires complete pedigree information.}
 }
 \value{
-a named vector containing the offpsring counts for each animal in
+a named vector containing the offspring counts for each animal in
 \code{probands}. Rownames are set to the IDs from \code{probands}.
 }
 \description{

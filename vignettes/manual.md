@@ -484,7 +484,7 @@ environment. Users can see all of the code at [github.com/rmsharp/nprcgenekeepr]
 and can submit suggestions and bug reports on our issue tracker at 
 [github.com/rmsharp/nprcgenekeepr/issues](https://github.com/rmsharp/nprcgenekeepr/issues).
 
-### Travi-ci Use
+### Travis-ci Use
 
 The application and associated website is being continuously integrated 
 at each push to the online repository. While often new features being added

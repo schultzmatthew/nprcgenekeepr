@@ -22,7 +22,7 @@
 #' the geographic population to which the individual belongs.}
 #' \item{age} {-- numeric or \code{NA} (optional) indicating the individual's
 #' current age or age at exit.}
-#' \item{population} {-- an optional logical argument indicating wheter or not
+#' \item{population} {-- an optional logical argument indicating whether or not
 #' the \code{id} is part of the extant population.}
 #' \item{origin} {-- character vector or \code{NA} (optional) that indicates
 #' the name of the facility that the individual was imported from.

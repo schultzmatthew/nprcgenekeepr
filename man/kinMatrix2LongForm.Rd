@@ -10,7 +10,7 @@ kinMatrix2LongForm(kinMatrix, rm.dups = FALSE)
 \item{kinMatrix}{numerical matrix of pairwise kinship values. The row and
 column names correspond to animal IDs.}
 
-\item{rm.dups}{locigal value indication whether or not reverse-order ID
+\item{rm.dups}{logical value indication whether or not reverse-order ID
 pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
 be collapsed into a single entry if rm.dups = TRUE)}
 }

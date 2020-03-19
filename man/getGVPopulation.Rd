@@ -13,7 +13,7 @@ getGVPopulation(ped, pop)
 interest. The default is NULL.}
 }
 \description{
-If user has limited the population of iterest by defining \code{pop},
+If user has limited the population of interest by defining \code{pop},
 that information is incorporated via the \code{ped$population} column.
 }
 \examples{

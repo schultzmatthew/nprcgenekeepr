@@ -14,5 +14,5 @@ getMaxAx(bins, axModulas)
 the interval between possible maxAx values.}
 }
 \description{
-This is used to scale the pyramid plot symetrically.
+This is used to scale the pyramid plot symmetrically.
 }

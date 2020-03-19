@@ -23,7 +23,7 @@ It contains the following columns:
 allele that can be present in the population for it to be considered rare.
 Default is 1.}
 
-\item{byID}{logical varioable of length 1 that is passed through to
+\item{byID}{logical variable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
 allele in the provided vector. If \code{byID} is TRUE and ids are provided,
 the function will only count the unique alleles for an individual
@@ -52,7 +52,7 @@ statistic.
 
 Ballou & Lacy describe genome uniqueness as "the proportion of simulations
 in which an individual receives the only copy of a founder allele." We have
-interpretted this as meaning that genome uniqueness should only be calculated
+interpreted this as meaning that genome uniqueness should only be calculated
 for living, non-founder animals. Alleles possessed by living founders are
 not considered when calculating genome uniqueness.
 

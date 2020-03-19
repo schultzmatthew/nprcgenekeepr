@@ -63,7 +63,7 @@ from 0.5 to 20 by increments of 0.5.}
 
 \item{withKin}{Logical variable when set to \code{TRUE}, the kinship
 matrix for the group is returned along with the group and score.
-Defaults to not return the kinship matrix. This maintains compatability with
+Defaults to not return the kinship matrix. This maintains compatibility with
 earlier versions.}
 
 \item{updateProgress}{Function or NULL. If this function is defined, it

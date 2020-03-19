@@ -26,7 +26,7 @@ if it is found in only 1 animal.}
 \item{pop}{Character vector with animal IDs to consider as the population of
 interest. The default is NULL.}
 
-\item{byID}{Logical varioable of length 1 that is passed through to
+\item{byID}{Logical variable of length 1 that is passed through to
 eventually be used by \code{alleleFreq()}, which calculates the count of each
  allele in the provided vector. If \code{byID} is TRUE and ids are provided,
  the function will only count the unique alleles for an individual
