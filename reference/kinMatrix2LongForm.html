@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -150,7 +153,7 @@ column names correspond to animal IDs.</p></td>
     </tr>
     <tr>
       <th>rm.dups</th>
-      <td><p>locigal value indication whether or not reverse-order ID
+      <td><p>logical value indication whether or not reverse-order ID
 pairs be filtered out? (i.e., "ID1 ID2 kin_val" and "ID2 ID1 kin_val" will
 be collapsed into a single entry if rm.dups = TRUE)</p></td>
     </tr>
@@ -161,12 +164,23 @@ be collapsed into a single entry if rm.dups = TRUE)</p></td>
     <p>dataframe with columns <code>id1</code>, <code>id2</code>, and <code>kinship</code>.
 This is the kinship data reformatted from a matrix, to a long-format table.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/lacy1989Ped.html'>lacy1989Ped</a></span>
+<span class='no'>ped</span>$<span class='no'>gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findGeneration.html'>findGeneration</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>)
+<span class='no'>kmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='kinship.html'>kinship</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>, <span class='no'>ped</span>$<span class='no'>gen</span>)
+<span class='no'>reformattedKmat</span> <span class='kw'>&lt;-</span> <span class='fu'>kinMatrix2LongForm</span>(<span class='no'>kmat</span>, <span class='kw'>rm.dups</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>reformattedKmat</span>)</div><div class='output co'>#&gt; [1] 49</div><div class='input'><span class='no'>reformattedNoDupsKmat</span> <span class='kw'>&lt;-</span> <span class='fu'>kinMatrix2LongForm</span>(<span class='no'>kmat</span>, <span class='kw'>rm.dups</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>reformattedNoDupsKmat</span>)</div><div class='output co'>#&gt; [1] 28</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -161,12 +164,23 @@ list of list where each sublist is a type of error found.</p></td>
     <p>Returns an updated dataframe with duplicate rows removed.</p>
 <p>Returns an error if the table has duplicate IDs with differing data.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/smallPed.html'>smallPed</a></span>
+<span class='no'>newPed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='no'>ped</span>, <span class='kw'>recordStatus</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"original"</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>ped</span>)))
+<span class='no'>ped1</span> <span class='kw'>&lt;-</span> <span class='fu'>removeDuplicates</span>(<span class='no'>newPed</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>newPed</span>)</div><div class='output co'>#&gt; [1] 17</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>ped1</span>)</div><div class='output co'>#&gt; [1] 17</div><div class='input'><span class='no'>pedWithDups</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(<span class='no'>newPed</span>, <span class='no'>newPed</span>[<span class='fl'>1</span>:<span class='fl'>3</span>, ])
+<span class='no'>ped2</span> <span class='kw'>&lt;-</span> <span class='fu'>removeDuplicates</span>(<span class='no'>pedWithDups</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>pedWithDups</span>)</div><div class='output co'>#&gt; [1] 20</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>ped2</span>)</div><div class='output co'>#&gt; [1] 17</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -160,6 +163,15 @@ animal ID. Elements are named with the IDs from the columns of kmat.</p>
 in which the summation is over all animals, <em>j</em>, including the kinship
 of animal <em>i</em> to itself.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/qcPed.html'>qcPed</a></span>
+<span class='no'>kmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='kinship.html'>kinship</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>, <span class='no'>ped</span>$<span class='no'>gen</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>meanKinship</span>(<span class='no'>kmat</span>))</div><div class='output co'>#&gt;      4LFS70      81KHJN      IU065S      H7R5WN      YAYD44      BRLQFI 
+#&gt; 0.003459821 0.003348214 0.003459821 0.005468750 0.003459821 0.003125000 </div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -167,6 +179,7 @@ of animal <em>i</em> to itself.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

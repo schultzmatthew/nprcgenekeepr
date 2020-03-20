@@ -71,7 +71,7 @@ Insure the resulting date is as least as large as the min_date." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -93,6 +93,9 @@ Insure the resulting date is as least as large as the min_date." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -164,11 +167,23 @@ obfuscated dates</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>someDates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2009-2-16"</span>, <span class='st'>"2016-2-16"</span>), <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%Y-%m-%d"</span>), <span class='fl'>10</span>)
+<span class='no'>minBirthDate</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2009-2-16"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%Y-%m-%d"</span>), <span class='fl'>20</span>)
+<span class='fu'>obfuscateDate</span>(<span class='no'>someDates</span>, <span class='fl'>30</span>, <span class='no'>minBirthDate</span>)</div><div class='output co'>#&gt;  [1] "2009-02-24" "2016-01-29" "2009-03-13" "2016-02-21" "2009-03-16"
+#&gt;  [6] "2016-02-29" "2009-02-28" "2016-01-23" "2009-02-24" "2016-03-16"
+#&gt; [11] "2009-03-03" "2016-02-13" "2009-02-16" "2016-01-29" "2009-02-21"
+#&gt; [16] "2016-02-20" "2009-02-24" "2016-03-12" "2009-02-21" "2016-02-19"</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

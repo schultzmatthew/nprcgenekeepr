@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -161,11 +164,11 @@ date</p></li>
 the geographic population to which the individual belongs.</p></li>
 <li><p>age -- numeric or <code>NA</code> (optional) indicating the individual's
 current age or age at exit.</p></li>
-<li><p>population -- an optional logical argument indicating wheter or not
+<li><p>population -- an optional logical argument indicating whether or not
 the <code>id</code> is part of the extant population.</p></li>
 <li><p>origin -- character vector or <code>NA</code> (optional) that indicates
 the name of the facility that the individual was imported from.
-<code>NA</code> indicates the invidual was not imported.</p></li>
+<code>NA</code> indicates the individual was not imported.</p></li>
 <li><p>status -- an optional factor indicating the status of an individual
 with levels <code>ALIVE</code>, <code>DEAD</code>, and <code>SHIPPED</code>.</p></li>
 <li><p>condition --  character vector or <code>NA</code> (optional) that indicates
@@ -173,19 +176,30 @@ the restricted status of an animal. "Nonrestricted" animals
 are generally assumed to be naive.</p></li>
 <li><p>spf -- character vector or <code>NA</code> (optional) indicating the
 specific pathogen-free status of an individual.</p></li>
-<li><p>vasxOvx -- character vector indicating the vasectomy/overiectomy
+<li><p>vasxOvx -- character vector indicating the vasectomy/ovariectomy
 status of an animal where <code>NA</code> indicates an intact animal and all other
-values inicate surgical alteration.</p></li>
+values indicate surgical alteration.</p></li>
 <li><p>pedNum -- integer vector indicating generation numbers for each id,
 starting at 0 for individuals lacking IDs for both parents.</p></li>
 </ul>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='fu'>getPossibleCols</span>()</div><div class='output co'>#&gt;  [1] "id"           "sire"         "dam"          "sex"          "gen"         
+#&gt;  [6] "birth"        "exit"         "death"        "age"          "ancestry"    
+#&gt; [11] "population"   "origin"       "status"       "condition"    "departure"   
+#&gt; [16] "spf"          "vasxOvx"      "pedNum"       "first"        "second"      
+#&gt; [21] "first_name"   "second_name"  "recordStatus"</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

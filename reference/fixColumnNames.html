@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -160,12 +163,85 @@ name changes.</p></td>
     <p>list object with <code>newColNames</code> and <code>errorLst</code> with
 a record of all changes made.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='fu'>fixColumnNames</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Sire_ID"</span>, <span class='st'>"EGO"</span>, <span class='st'>"DAM"</span>, <span class='st'>"Id"</span>, <span class='st'>"birth_date"</span>),
+               <span class='kw'>errorLst</span> <span class='kw'>=</span> <span class='fu'><a href='getEmptyErrorLst.html'>getEmptyErrorLst</a></span>())</div><div class='output co'>#&gt; $newColNames
+#&gt; [1] "sire"  "id"    "dam"   "id"    "birth"
+#&gt; 
+#&gt; $errorLst
+#&gt; $failedDatabaseConnection
+#&gt; character(0)
+#&gt; 
+#&gt; $missingColumns
+#&gt; character(0)
+#&gt; 
+#&gt; $invalidDateRows
+#&gt; character(0)
+#&gt; 
+#&gt; $suspiciousParents
+#&gt; data frame with 0 columns and 0 rows
+#&gt; 
+#&gt; $femaleSires
+#&gt; character(0)
+#&gt; 
+#&gt; $maleDams
+#&gt; character(0)
+#&gt; 
+#&gt; $sireAndDam
+#&gt; character(0)
+#&gt; 
+#&gt; $duplicateIds
+#&gt; character(0)
+#&gt; 
+#&gt; $fatalError
+#&gt; character(0)
+#&gt; 
+#&gt; $changedCols
+#&gt; $changedCols$caseChange
+#&gt; [1] "Sire_ID, EGO, DAM, and Id to sire_id, ego, dam, and id"
+#&gt; 
+#&gt; $changedCols$spaceRemoved
+#&gt; character(0)
+#&gt; 
+#&gt; $changedCols$periodRemoved
+#&gt; character(0)
+#&gt; 
+#&gt; $changedCols$underScoreRemoved
+#&gt; [1] "sire_id and birth_date to sireid and birthdate"
+#&gt; 
+#&gt; $changedCols$egoToId
+#&gt; [1] "ego to id"
+#&gt; 
+#&gt; $changedCols$egoidToId
+#&gt; character(0)
+#&gt; 
+#&gt; $changedCols$sireIdToSire
+#&gt; [1] "sireid to sire"
+#&gt; 
+#&gt; $changedCols$damIdToDam
+#&gt; character(0)
+#&gt; 
+#&gt; $changedCols$birthdateToBirth
+#&gt; [1] "birthdate to birth"
+#&gt; 
+#&gt; $changedCols$deathdateToDeath
+#&gt; character(0)
+#&gt; 
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "list"             "nprcgenekeeprErr"
+#&gt; </div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -160,12 +163,25 @@ Rows and columns should be named with IDs.</p></td>
     <p>A numeric matrix that is the reduced kinship matrix with named
 rows and columns (row and col names are 'ids')</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/qcPed.html'>qcPed</a></span>
+<span class='no'>ped</span>$<span class='no'>gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findGeneration.html'>findGeneration</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>)
+<span class='no'>kmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='kinship.html'>kinship</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>, <span class='no'>ped</span>$<span class='no'>gen</span>,
+                <span class='kw'>sparse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>ids</span> <span class='kw'>&lt;-</span> <span class='no'>ped</span>$<span class='no'>id</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>189</span>, <span class='fl'>192</span>, <span class='fl'>194</span>, <span class='fl'>195</span>)]
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>kmat</span>)</div><div class='output co'>#&gt; [1] 280</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>kmat</span>)</div><div class='output co'>#&gt; [1] 280</div><div class='input'><span class='no'>kmatFiltered</span> <span class='kw'>&lt;-</span> <span class='fu'>filterKinMatrix</span>(<span class='no'>ids</span>, <span class='no'>kmat</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>kmatFiltered</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>kmatFiltered</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

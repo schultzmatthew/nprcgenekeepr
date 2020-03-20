@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -89,6 +89,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -131,6 +134,37 @@
       <small>Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="nprcgenekeepr-05429007-20200319" class="section level1">
+<h1 class="page-header">
+<a href="#nprcgenekeepr-05429007-20200319" class="anchor"></a>nprcgenekeepr 0.5.42.9007 (20200319)</h1>
+<ul>
+<li>Changed warnings unit test for getLkDirectAncestors to work with Windows.</li>
+</ul>
+</div>
+    <div id="nprcgenekeepr-05429006-20200319" class="section level1">
+<h1 class="page-header">
+<a href="#nprcgenekeepr-05429006-20200319" class="anchor"></a>nprcgenekeepr 0.5.42.9006 (20200319)</h1>
+<ul>
+<li>Completed examples in function documentation</li>
+<li>Corrected spelling of several word throughout found with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_package.html">spelling::spell_check_package(".")</a></code>.</li>
+</ul>
+</div>
+    <div id="nprcgenekeepr-05429005-20200201" class="section level1">
+<h1 class="page-header">
+<a href="#nprcgenekeepr-05429005-20200201" class="anchor"></a>nprcgenekeepr 0.5.42.9005 (20200201)</h1>
+<ul>
+<li>Added examples to function documentation</li>
+<li>Added ColonyManagerTutorial.Rmd initial draft, which is copy of shiny_app_use.Rmd. It is to be converted for use by colony managers.</li>
+</ul>
+</div>
+    <div id="nprcgenekeepr-05429004-20200201" class="section level1">
+<h1 class="page-header">
+<a href="#nprcgenekeepr-05429004-20200201" class="anchor"></a>nprcgenekeepr 0.5.42.9004 (20200201)</h1>
+<ul>
+<li>Added examples to function documentation</li>
+<li>Added obfuscated rhesus pedigree and rhesus haplotypes to use in examples</li>
+</ul>
+</div>
     <div id="nprcgenekeepr-05429003" class="section level1">
 <h1 class="page-header">
 <a href="#nprcgenekeepr-05429003" class="anchor"></a>nprcgenekeepr 0.5.42.9003</h1>
@@ -237,7 +271,7 @@
 <a href="#nprcmanager-0536-20191106" class="anchor"></a>nprcmanager 0.5.36 (20191106)</h1>
 <ul>
 <li>Added colorIndex to list returned by getIndianOriginStatus(), getProductionStatus(), and getProportionLow(). Updated related unit tests</li>
-<li>Changed getSiteInfo() to reflect ONPRCs query structure</li>
+<li>Changed getSiteInfo() to reflect ONPRC’s query structure</li>
 <li>Changed .Rbuildignore to leave out .png image files needed for Shiny tutorial.</li>
 </ul>
 </div>
@@ -402,7 +436,7 @@
 <a href="#nprcmanager-0515-20190602" class="anchor"></a>nprcmanager 0.5.15 (20190602)</h1>
 <ul>
 <li>Added ability to create an example pedigree file using the <strong>examplePedigree</strong> data structure.</li>
-<li>Added <strong>summary.nprcmanagGV</strong> and <strong>print.summary.nprcmangGV</strong> functions</li>
+<li>Added <strong>summary.nprcmanagGV</strong> and <strong>print.summary.nprcmanagGV</strong> functions</li>
 <li>Added description of age-sex pyramid plot to the <em>summary of major functions</em>.</li>
 </ul>
 </div>
@@ -423,7 +457,7 @@
 <li>Removed erroneous toCharacter documentation</li>
 <li>Added set_seed
 <ul>
-<li>Tried unsuccessfuly to use the RNGkind function and the sample.kind argument to set.seed, but found neither existed prior to R 3.6.</li>
+<li>Tried unsuccessfully to use the RNGkind function and the sample.kind argument to set.seed, but found neither existed prior to R 3.6.</li>
 <li>Created a R version sensitive version of set_seed that duplicates the pre-R version 3.6 set.seed function. This is only useful for creating data structures for testing purposes and should not be used to set seeds for large simulations</li>
 </ul>
 </li>
@@ -594,7 +628,7 @@
 <ul>
 <li>Changed error reporting so as not to report as an error the wrong sex when animals are added into the pedigree and appear as both a sire and dam without an ego record. The error report now indicates these are both a sire and a dam. Done 20181208</li>
 <li>Made a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and green. Done 20181208</li>
-<li>Additional unit tests to cover all of the new functions created to handle the PEDSYS and military formated dates (YYYYMMDD) have been made. Done 20181112</li>
+<li>Additional unit tests to cover all of the new functions created to handle the PEDSYS and military formatted dates (YYYYMMDD) have been made. Done 20181112</li>
 <li>Corrected breeding groups formation, which was including unknown animals that had been added as placeholders for unknown parents. Done 20181119</li>
 <li>Hardened LabKey code by trapping a bad base URL in the configuration file with a tryCatch function and send a message to the log file. This needs to be tested with a working LabKey system.</li>
 </ul>
@@ -605,6 +639,10 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#nprcgenekeepr-05429007-20200319">0.5.42.9007</a></li>
+        <li><a href="#nprcgenekeepr-05429006-20200319">0.5.42.9006</a></li>
+        <li><a href="#nprcgenekeepr-05429005-20200201">0.5.42.9005</a></li>
+        <li><a href="#nprcgenekeepr-05429004-20200201">0.5.42.9004</a></li>
         <li><a href="#nprcgenekeepr-05429003">0.5.42.9003</a></li>
         <li><a href="#nprcgenekeepr-05429002">0.5.42.9002</a></li>
         <li><a href="#nprcmanager-05429001">0.5.42.9001</a></li>
