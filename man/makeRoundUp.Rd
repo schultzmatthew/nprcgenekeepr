@@ -3,16 +3,16 @@
 \name{makeRoundUp}
 \alias{makeRoundUp}
 \title{Round up the provided integer vector \code{int} according to the
-\code{modulas}.}
+\code{modulus}.}
 \usage{
-makeRoundUp(int, modulas)
+makeRoundUp(int, modulus)
 }
 \arguments{
 \item{int}{integer vector}
 
-\item{modulas}{integer value to use as the divisor.}
+\item{modulus}{integer value to use as the divisor.}
 }
 \description{
 Round up the provided integer vector \code{int} according to the
-\code{modulas}.
+\code{modulus}.
 }

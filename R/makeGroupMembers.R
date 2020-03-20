@@ -8,7 +8,7 @@
 #' formed from the list of IDs. Default is 1.
 #' @param currentGroups list of character vectors of IDs of animals currently
 #' assigned to the group. Defaults to character(0) assuming no groups are
-#' existant.
+#' existent.
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree

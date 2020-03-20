@@ -65,7 +65,7 @@
 #'  \item {V1} {--- Unnamed integer column representing allele 1.}
 #'  \item {V2} {--- Unnamed integer column representing allele 2.}
 #'  \item {...} {--- Unnamed integer columns representing alleles.}
-#'  \item {Vn} {--- Unnamed integer coulumn representing the nth column.}}
+#'  \item {Vn} {--- Unnamed integer column representing the nth column.}}
 #'
 #' @param threshold an integer indicating the maximum number of copies of an
 #' allele that can be present in the population for it to be considered rare.

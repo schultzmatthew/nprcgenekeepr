@@ -14,6 +14,14 @@ library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
 
+## 20200320
+1.  Notes of things to do prior to submission
+    1.  Correct spelling package wide - Done 2020319
+    1.  Update Development_Plans.Rmd
+        -   Updated and cleaned up a bit on 20200319 in preparation.
+        -   Sent out a request to Amanda and Matt for input on 20200319. 
+            Their input may not arrive before this submission.
+
 ## 20200316
 1.  Matt will work on colony manager tutorial during last two weeks of March.
 1.  Mark will provide user acceptance test questions.
@@ -91,7 +99,7 @@ Provided in reverse chronological order
     
 ```{r code-changes, include=FALSE}
 originalPath <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
-                       "nprcmanager_project/20160816_GeneticManagementTools")
+                       "nprcgenekeepr_project/20160816_GeneticManagementTools")
 functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                     "library/nprcgenekeepr/R")
 tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
@@ -707,7 +715,7 @@ cat(overlapping_str)
   and to get a draft of a technical paper written by the end of the year.
 9. Not discussed during the meeting was the need to develop additional unit 
   tests to cover all of the new functions created to handle the PEDSYS and
-  military formated dates (YYYYMMDD), which look like an integer. 
+  military formatted dates (YYYYMMDD), which look like an integer. 
   Most of those unit tests have been made, but additional ones are needed to
   provide full or near full coverage. Done 20181112
 10. Miscellaneous

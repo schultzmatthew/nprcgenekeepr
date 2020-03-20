@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -138,15 +141,19 @@
     <p>Uses <code>examplePedigree</code> data structure to create an example data file</p>
     </div>
 
-    <pre class="usage"><span class='fu'>saveDataframesAsFiles</span>(<span class='no'>df_list</span>, <span class='kw'>fileType</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</pre>
+    <pre class="usage"><span class='fu'>saveDataframesAsFiles</span>(<span class='no'>dfList</span>, <span class='no'>baseDir</span>, <span class='kw'>fileType</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df_list</th>
+      <th>dfList</th>
       <td><p>list of dataframes to be stored as files.
 <code>"txt"</code>, <code>"csv"</code>, or <code>"xlsx"</code>. Default value is <code>"csv"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>baseDir</th>
+      <td><p>character vector of length on with the directory path.</p></td>
     </tr>
     <tr>
       <th>fileType</th>

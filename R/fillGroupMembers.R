@@ -7,7 +7,7 @@
 #' @param candidates character vector of IDs of the animals available for
 #' use in the group.
 #' @param currentGroups list of character vectors of IDs of animals currently assigned
-#' to the group. Defaults to character(0) assuming no groups are existant.
+#' to the group. Defaults to character(0) assuming no groups are existent.
 #' @param kin list of animals and those animals who are related above a
 #' threshold value.
 #' @param ped dataframe that is the `Pedigree`. It contains pedigree

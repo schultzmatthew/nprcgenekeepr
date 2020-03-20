@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "01/16/2020"
+date: "03/19/2020"
 output:
    github_document: default
 
@@ -10,6 +10,14 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcgenekeepr 0.5.42.9007 (20200319)
+-   Changed warnings unit test for getLkDirectAncestors to work with Windows.
+
+# nprcgenekeepr 0.5.42.9006 (20200319)
+-   Completed examples in function documentation
+-   Corrected spelling of several word throughout found with 
+    `spelling::spell_check_package(".")`.
+
 # nprcgenekeepr 0.5.42.9005 (20200201)
 -   Added examples to function documentation
 -   Added ColonyManagerTutorial.Rmd initial draft, which is copy of 
@@ -91,7 +99,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # nprcmanager 0.5.36 (20191106)
 -   Added colorIndex to list returned by getIndianOriginStatus(),
     getProductionStatus(), and getProportionLow(). Updated related unit tests
--   Changed getSiteInfo() to reflect ONPRCs query structure
+-   Changed getSiteInfo() to reflect ONPRC's query structure
 -   Changed .Rbuildignore to leave out .png image files needed for Shiny 
     tutorial.
     
@@ -191,7 +199,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # nprcmanager 0.5.15 (20190602)
 -   Added ability to create an example pedigree file using the 
     __examplePedigree__ data structure.
--   Added __summary.nprcmanagGV__ and __print.summary.nprcmangGV__ functions
+-   Added __summary.nprcmanagGV__ and __print.summary.nprcmanagGV__ functions
 -   Added description of age-sex pyramid plot to the _summary of major functions_.
 
 # nprcmanager 0.5.14 (20190518)
@@ -322,13 +330,15 @@ knitr::opts_chunk$set(echo = TRUE)
 -   Changed error reporting so as not to report as an error the wrong sex when 
     animals are added into the pedigree
     and appear as both a sire and dam without an ego record. 
-    The error report now indicates these are both a sire and a dam. Done 20181208
+    The error report now indicates these are both a sire and a dam. 
+    Done 20181208
 -   Made a combined logo for Oregon and SNPRC. Have ONPRC on top using blue and
     green. Done 20181208
 -   Additional unit 
     tests to cover all of the new functions created to handle the PEDSYS and
-    military formated dates (YYYYMMDD) have been made. Done 20181112
--   Corrected breeding groups formation, which was including unknown animals that 
+    military formatted dates (YYYYMMDD) have been made. Done 20181112
+-   Corrected breeding groups formation, which was including unknown animals 
+    that 
     had been added as placeholders for unknown parents. Done 20181119
 -   Hardened LabKey code by trapping a bad base URL in the configuration file
     with a tryCatch function and send a message to the log file. This needs to be

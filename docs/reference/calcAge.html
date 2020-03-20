@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -162,6 +165,14 @@ from "birth" to "exit" or the current date if "exit" is NA.</p>
     <p>Given vectors of birth and exit dates, calculate an individuals age. If no
 exit date is provided, the calculation is based on the current date.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>qcPed</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/qcPed.html'>qcPed</a></span>
+<span class='no'>originalAge</span> <span class='kw'>&lt;-</span> <span class='no'>qcPed</span>$<span class='no'>age</span> <span class='co'>## ages calculated at time of data collection</span>
+<span class='no'>currentAge</span> <span class='kw'>&lt;-</span> <span class='fu'>calcAge</span>(<span class='no'>qcPed</span>$<span class='no'>birth</span>, <span class='no'>qcPed</span>$<span class='no'>exit</span>) <span class='co'>## assumes no changes in</span>
+                                               <span class='co'>## colony</span>
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -169,6 +180,7 @@ exit date is provided, the calculation is based on the current date.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -111,7 +111,7 @@
 #' Column 5001 is the \code{id} column with two rows for each member of the
 #' pedigree (2 * 7).
 #'
-#' Column 5002 is the \code{parent} colun with values of \code{sire} and
+#' Column 5002 is the \code{parent} column with values of \code{sire} and
 #' \code{dam} alternating.
 #' }
 "lacy1989PedAlleles"

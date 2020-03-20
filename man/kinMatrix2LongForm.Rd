@@ -27,9 +27,9 @@ library(nprcgenekeepr)
 ped <- nprcgenekeepr::lacy1989Ped
 ped$gen <- findGeneration(ped$id, ped$sire, ped$dam)
 kmat <- kinship(ped$id, ped$sire, ped$dam, ped$gen)
-reformatedKmat <- kinMatrix2LongForm(kmat, rm.dups = FALSE)
-nrow(reformatedKmat)
-reformatedNoDupsKmat <- kinMatrix2LongForm(kmat, rm.dups = TRUE)
-nrow(reformatedNoDupsKmat)
+reformattedKmat <- kinMatrix2LongForm(kmat, rm.dups = FALSE)
+nrow(reformattedKmat)
+reformattedNoDupsKmat <- kinMatrix2LongForm(kmat, rm.dups = TRUE)
+nrow(reformattedNoDupsKmat)
 }
 }

@@ -29,42 +29,43 @@
 #'
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' examplePedigree <- nprcgenekeepr::examplePedigree
 #' breederPed <- qcStudbook(examplePedigree, minParentAge = 2,
-#'                          reportChanges = FALSE,
-#'                          reportErrors = FALSE)
+#'                         reportChanges = FALSE,
+#'                         reportErrors = FALSE)
 #' focalAnimals <- breederPed$id[!(is.na(breederPed$sire) &
-#'                                   is.na(breederPed$dam)) &
-#'                                 is.na(breederPed$exit)]
+#'                                  is.na(breederPed$dam)) &
+#'                                is.na(breederPed$exit)]
 #' ped <- setPopulation(ped = breederPed, ids = focalAnimals)
 #' trimmedPed <- trimPedigree(focalAnimals, breederPed)
 #' probands <- ped$id[ped$population]
 #' ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
-#'                     addBackParents = FALSE)
+#'                    addBackParents = FALSE)
 #' geneticValue <- reportGV(ped, guIter = 50, # should be >= 1000
-#'                          guThresh = 3,
-#'                          byID = TRUE,
-#'                          updateProgress = NULL)
+#'                         guThresh = 3,
+#'                         byID = TRUE,
+#'                         updateProgress = NULL)
 #' trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50, # should be >= 1000
-#'                                 guThresh = 3,
-#'                                 byID = TRUE,
-#'                                 updateProgress = NULL)
+#'                                guThresh = 3,
+#'                                byID = TRUE,
+#'                                updateProgress = NULL)
 #' candidates <- trimmedPed$id[trimmedPed$birth < as.Date("2013-01-01") &
-#'                              !is.na(trimmedPed$birth) &
-#'                              is.na(trimmedPed$exit)]
+#'                             !is.na(trimmedPed$birth) &
+#'                             is.na(trimmedPed$exit)]
 #' haremGrp <- groupAddAssign(candidates = candidates,
-#'                            kmat = trimmedGeneticValue[["kinship"]],
-#'                            ped = trimmedPed,
-#'                            iter = 100, # should be >= 1000
-#'                            numGp = 6,
-#'                            harem = TRUE)
+#'                           kmat = trimmedGeneticValue[["kinship"]],
+#'                           ped = trimmedPed,
+#'                           iter = 100, # should be >= 1000
+#'                           numGp = 6,
+#'                           harem = TRUE)
 #' haremGrp$group
 #' sexRatioGrp <- groupAddAssign(candidates = candidates,
-#'                               kmat = trimmedGeneticValue[["kinship"]],
-#'                               ped = trimmedPed,
-#'                               iter = 100, # should be >= 1000
-#'                               numGp = 6,
-#'                               sexRatio = 9)
+#'                              kmat = trimmedGeneticValue[["kinship"]],
+#'                              ped = trimmedPed,
+#'                              iter = 100, # should be >= 1000
+#'                              numGp = 6,
+#'                              sexRatio = 9)
 #' sexRatioGrp$group
 #' }
 #' @param candidates Character vector of IDs of the animals available for

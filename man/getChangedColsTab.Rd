@@ -12,7 +12,7 @@ getChangedColsTab(errorLst, pedigreeFileName)
 \item{pedigreeFileName}{name of file provided by user on Input tab}
 }
 \value{
-HTML formated error list
+HTML formatted error list
 }
 \description{
 getChangedColsTab skeleton of list of errors

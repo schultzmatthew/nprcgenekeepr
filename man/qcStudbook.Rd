@@ -97,8 +97,8 @@ codes:
 \itemize{
 \item{F} {-- replacing "FEMALE" or "2"}
 \item{M} {-- replacing "MALE" or "1"}
-\item{H} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE}
-\item{U} {-- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE}
+\item{H} {-- replacing "HERMAPHRODITE" or "4", if ignore.herm == FALSE}
+\item{U} {-- replacing "HERMAPHRODITE" or "4", if ignore.herm == TRUE}
 \item{U} {-- replacing "UNKNOWN" or "3"}}
 
 The function \code{correctParentSex} is used to ensure no parent is both
@@ -117,7 +117,7 @@ is ignored.
 \item {"UNKNOWN"} {--- replacing "unknown", "U", "4"}}
 
 The function \code{convertAncestry} coverts ancestry indicators using
-regular experessions such that the following conversions are made from
+regular expressions such that the following conversions are made from
 character strings that match selected substrings to the following factors.
 
 \itemize{
@@ -132,7 +132,7 @@ The function \code{convertDate} converts character representations of
 dates in the columns \code{birth}, \code{death}, \code{departure}, and
 \code{exit} to dates using the \code{as.Date} function.
 
-The function \code{setExit} uses huristics and the columns \code{death}
+The function \code{setExit} uses heuristics and the columns \code{death}
 and \code{departure} to set \code{exit} if it is not already defined.
 
 The function \code{calcAge} uses the \code{birth} and the \code{exit}
@@ -144,7 +144,7 @@ The function \code{findGeneration} is used to define the generation number
 for each animal in the pedigree.
 
 The function \code{removeDuplicates} checks for any duplicated records and
-removeds the duplicates. I also throws an error and stops the program if an
+removes the duplicates. I also throws an error and stops the program if an
 ID appears in more
 than one record where one or more of the other columns have a difference.
 

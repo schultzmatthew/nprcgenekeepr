@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-03/16/2020
+03/19/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -17,7 +17,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9005 (20200216)
+# nprcgenekeepr – Version 0.5.42.9007 (20200319)
 
 ## Introduction
 
@@ -54,7 +54,7 @@ At present, the application supports 5 functions:
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic
 Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca
-mulatto*) Vinson, A ; Raboin, Mj *Journal Of The American Association
+mulatto*) Vinson, A ; Raboin, MJ *Journal Of The American Association
 For Laboratory Animal Science*, 2015 Nov, Vol.54(6), pp.700-707 \[Peer
 Reviewed Journal\]
 

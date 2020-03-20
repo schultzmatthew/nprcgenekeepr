@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -161,12 +164,24 @@ the program is stopped.</p></td>
     <p>NULL is returned if all required columns are present. See description
 of <code>reportErrors</code> for return values when required columns are missing.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>requiredCols</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='getRequiredCols.html'>getRequiredCols</a></span>()
+<span class='no'>cols</span> <span class='kw'>&lt;-</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"id,sire,siretype,dam,damtype,sex,numberofparentsknown,birth,"</span>,
+         <span class='st'>"arrivalatcenter,death,departure,status,ancestry,fromcenter?,"</span>,
+         <span class='st'>"origin"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='no'>requiredCols</span> <span class='kw'>%in%</span> <span class='fu'>checkRequiredCols</span>(<span class='no'>cols</span>, <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -6,6 +6,7 @@
 #'
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' suppressMessages(library(dplyr))
 #'
 #' qcPed <- nprcgenekeepr::qcPed

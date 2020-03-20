@@ -27,7 +27,7 @@ table.
 library(nprcgenekeepr)
 ## Have to a vector of focal animals
 focalAnimals <- c("1X2701", "1X0101")
-getLkDirectRelatives <- function(ids = focalAnimals)
+suppressWarnings(getLkDirectRelatives(ids = focalAnimals))
 }
 
 }

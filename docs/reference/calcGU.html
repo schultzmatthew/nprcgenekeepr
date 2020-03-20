@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -154,7 +157,7 @@ It contains the following columns:</p><ul>
 <li><p>V1 --- Unnamed integer column representing allele 1.</p></li>
 <li><p>V2 --- Unnamed integer column representing allele 2.</p></li>
 <li><p>... --- Unnamed integer columns representing alleles.</p></li>
-<li><p>Vn --- Unnamed integer coulumn representing the nth column.</p></li>
+<li><p>Vn --- Unnamed integer column representing the nth column.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -165,7 +168,7 @@ Default is 1.</p></td>
     </tr>
     <tr>
       <th>byID</th>
-      <td><p>logical varioable of length 1 that is passed through to
+      <td><p>logical variable of length 1 that is passed through to
 eventually be used by <code><a href='alleleFreq.html'>alleleFreq()</a></code>, which calculates the count of each
 allele in the provided vector. If <code>byID</code> is TRUE and ids are provided,
 the function will only count the unique alleles for an individual
@@ -193,7 +196,7 @@ does not distinguish between founders and non-founders in calculating the
 statistic.</p>
 <p>Ballou &amp; Lacy describe genome uniqueness as "the proportion of simulations
 in which an individual receives the only copy of a founder allele." We have
-interpretted this as meaning that genome uniqueness should only be calculated
+interpreted this as meaning that genome uniqueness should only be calculated
 for living, non-founder animals. Alleles possessed by living founders are
 not considered when calculating genome uniqueness.</p>
 <p>We have a differing view on this, since a living founder can still contribute
@@ -217,6 +220,15 @@ p 77-111. In: Ballou JD, Gilpin M, Foose TJ, editors.
 Population management for survival and recovery. New York (NY):
 Columbia University Press.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped1Alleles</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/ped1Alleles.html'>ped1Alleles</a></span>
+<span class='no'>gu_1</span> <span class='kw'>&lt;-</span> <span class='fu'>calcGU</span>(<span class='no'>ped1Alleles</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>pop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='no'>gu_2</span> <span class='kw'>&lt;-</span> <span class='fu'>calcGU</span>(<span class='no'>ped1Alleles</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>pop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='no'>gu_3</span> <span class='kw'>&lt;-</span> <span class='fu'>calcGU</span>(<span class='no'>ped1Alleles</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byID</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+               <span class='kw'>pop</span> <span class='kw'>=</span> <span class='no'>ped1Alleles</span>$<span class='no'>id</span>[<span class='fl'>20</span>:<span class='fl'>60</span>])
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -225,6 +237,7 @@ Columbia University Press.</p>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#references">References</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

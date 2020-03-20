@@ -62,7 +62,7 @@ At present, the application supports 5 functions:
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic 
 Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*)
-Vinson, A ; Raboin, Mj
+Vinson, A ; Raboin, MJ
 *Journal Of The American Association For Laboratory Animal Science*, 
 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]
 
@@ -515,5 +515,5 @@ Many of these have
 100 percent of the lines covered. However, the unit tests are not 
 exhaustive. The practice is to add further tests as errors are detected
 or when working on the code and a new unit test possibility is 
-discovered. As of 20190701 94.31 pecent of the lines are covered.
+discovered. As of 20190701 94.31 percent of the lines are covered.
 

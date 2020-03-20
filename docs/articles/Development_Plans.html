@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
+    <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
@@ -94,7 +97,7 @@
       <h1>Development Plans</h1>
                         <h4 class="author">R. Mark Sharp</h4>
             
-            <h4 class="date">October 14, 2018</h4>
+            <h4 class="date">March 19, 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/vignettes/Development_Plans.Rmd"><code>vignettes/Development_Plans.Rmd</code></a></small>
       <div class="hidden name"><code>Development_Plans.Rmd</code></div>
@@ -103,24 +106,9 @@
 
     
     
-<div id="next-steps" class="section level2">
+<div id="possibilities" class="section level2">
 <h2 class="hasAnchor">
-<a href="#next-steps" class="anchor"></a>Next steps</h2>
-<ol style="list-style-type: decimal">
-<li>Allow the user to provide multiple seed groups for the breeding groups.
-<ol style="list-style-type: decimal">
-<li>Have user select number of breeding groups to form.</li>
-<li>Have user place seed animals in any number of those groups.</li>
-<li>Calculate the average number of animals in each group and round down to the nearest integer (truncate). Use this integer for the total number of animals to place in the groups with seed animals.</li>
-<li>Loop through each of the groups with seed animals placing the single best fitting animal from the candidate list in that group (young pre-weanlings animals are being ignored with regard to selection and count) until all of these groups are filled.</li>
-<li>Form the best possible groups with the remaining animals by selecting the groups which provide the lowest mean kinship coefficients. This is not a trivial problem.</li>
-</ol>
-</li>
-</ol>
-</div>
-<div id="to-do" class="section level2">
-<h2 class="hasAnchor">
-<a href="#to-do" class="anchor"></a>To do</h2>
+<a href="#possibilities" class="anchor"></a>Possibilities</h2>
 <ol style="list-style-type: decimal">
 <li>
 <p>Amanda Vinson wrote this in an e-mail on 20170901:</p>
@@ -132,26 +120,12 @@ research, and I have been tasked with implementing the solution.</p>
 <li><p>It would be nice to have multiple “selected populations” that could be set up and easily selected for various analyses and plots.</p></li>
 <li>
 <p>Talk to Amanda about developing a general way to handle animals without two known parents that are not founders. There are the following lines of code in orderReport.R</p>
-<blockquote>
-<p># ONPRC-born animals with no parentage<br>
-i &lt;- (is.na(rpt$origin) &amp; (rpt$totalOffspring == 0) &amp; (rpt$id %in% founders))<br>
-noParentage &lt;- rpt[i, ]</p>
-</blockquote>
-</li>
-<li>
-<p>There are some functions that are defined and not used. They may be needed later.</p>
-<ol style="list-style-type: decimal">
-<li>findLoops</li>
-<li>makeLoop</li>
-<li>countLoops</li>
-<li>createPedTree</li>
-</ol>
-<p>I expect they are direct ports from kinship2. I will check.</p>
+<p><code># ONPRC-born animals with no parentage</code><br><code>i &lt;- (is.na(rpt\$origin) &amp; (rpt\$totalOffspring == 0) &amp;</code> <code>(rpt\$id %in% founders))</code> <code>noParentage &lt;- rpt[i, ]</code></p>
 </li>
 <li><p>Find some ways to use genetic marker data in the evaluation of genetic value. This needs to be discussed.</p></li>
 <li><p>Add breeding productivity measure calculations. For example, (a) number of offspring per year of exposure to male or female. (b) Number of months since last birth. (c) Number of months between births with range and standard deviation.</p></li>
 <li>
-<p>Consider developing a simulation module to allow uses to simulate breeding decisions.</p>
+<p>Consider developing a simulation module to allow users to simulate breeding decisions.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Need to be able to set the following values.
 <ol style="list-style-type: lower-alpha">
@@ -162,7 +136,7 @@ noParentage &lt;- rpt[i, ]</p>
 <li>Practical numbers of each sex in a breeding group</li>
 <li>Percent of year needed to adapt to new mating structure after a change.</li>
 <li>Loss due to mortality rate by age and sex</li>
-<li>Ability to use historical data for mating success</li>
+<li>Ability to use arbitrary or historical data for mating success</li>
 </ol>
 </li>
 <li>Breeding methods based on mean kinship (MK)
@@ -181,15 +155,18 @@ noParentage &lt;- rpt[i, ]</p>
 </li>
 </ol>
 </div>
-<div id="done" class="section level2">
+<div id="notes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#done" class="anchor"></a>Done</h2>
+<a href="#notes" class="anchor"></a>Notes</h2>
 <ol style="list-style-type: decimal">
-<li>
-<p>It would be better to catalogue and report the changes made by qcStudbook() so that the user knows how the provided pedigree was changed. Completed by developing the functions <strong>summary.nprcgenekeeprErr</strong> and <strong>print.summary.nprcgenekeeprErr</strong>, which when combind with using <strong>qcStudbook</strong> with the <em>error</em> argument set to <strong>TRUE</strong>. 20180915</p>
-<p>An <strong>Error List</strong> tab is now being generated and opened when pedigree errors are detected. 20181014</p>
-<p>An <strong>Changed Columns</strong> is now being generated and made when a pedigree has no errors, but the column names are being changed during processing. 20181020</p>
-</li>
+<li>There are some functions that are defined and not used in the Shiny app. They may be needed later.
+<ol style="list-style-type: decimal">
+<li>findLoops</li>
+<li>makeLoop</li>
+<li>countLoops</li>
+<li>createPedTree</li>
+</ol>
+I expect they are direct ports from kinship2. I will check.</li>
 </ol>
 </div>
   </div>
@@ -200,9 +177,8 @@ noParentage &lt;- rpt[i, ]</p>
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#next-steps">Next steps</a></li>
-      <li><a href="#to-do">To do</a></li>
-      <li><a href="#done">Done</a></li>
+<li><a href="#possibilities">Possibilities</a></li>
+      <li><a href="#notes">Notes</a></li>
       </ul>
 </div>
       </div>

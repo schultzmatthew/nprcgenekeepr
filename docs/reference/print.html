@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -162,12 +165,39 @@
     <p>object to send to generic print function</p>
 <p>object to send to generic print function</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>errorLst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='qcStudbook.html'>qcStudbook</a></span>(<span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/pedInvalidDates.html'>pedInvalidDates</a></span>,
+                       <span class='kw'>reportChanges</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>errorLst</span>)</div><div class='output co'>#&gt; Error: There are 2 rows having an invalid date. The rows having an invalid date are: 3 and 4.
+#&gt; 
+#&gt; Please check and correct the pedigree file.
+#&gt;  </div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/pedGood.html'>pedGood</a></span>
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='fu'><a href='qcStudbook.html'>qcStudbook</a></span>(<span class='no'>ped</span>, <span class='kw'>reportErrors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='fu'><a href='reportGV.html'>reportGV</a></span>(<span class='no'>ped</span>, <span class='kw'>guIter</span> <span class='kw'>=</span> <span class='fl'>10</span>))</div><div class='output co'>#&gt; The genetic value report 
+#&gt; Individuals in Pedigree: 8 
+#&gt; Male Founders: 2
+#&gt; Female Founders: 2
+#&gt; Total Founders: 4 
+#&gt; Founder Equivalents: 3.56 
+#&gt; Founder Genome Equivalents: 2.68 
+#&gt; Live Offspring: 8 
+#&gt; High Value Individuals: 5 
+#&gt; Low Value Individuals: 3 </div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

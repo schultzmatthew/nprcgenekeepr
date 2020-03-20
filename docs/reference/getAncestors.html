@@ -71,7 +71,7 @@ From PedigreeSampling.R
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -93,6 +93,9 @@ From PedigreeSampling.R
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -170,6 +173,55 @@ loops in the resulting pedigree, and thus, reduce the
 amount of time required to perform calculations with
 SIMWALK2 or similar programs.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/qcPed.html'>qcPed</a></span>
+<span class='no'>ped</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='qcStudbook.html'>qcStudbook</a></span>(<span class='no'>ped</span>, <span class='kw'>minParentAge</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='no'>pedTree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createPedTree.html'>createPedTree</a></span>(<span class='no'>ped</span>)
+<span class='no'>pedLoops</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findLoops.html'>findLoops</a></span>(<span class='no'>pedTree</span>)
+<span class='no'>ids</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>pedTree</span>)
+<span class='no'>allAncestors</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+
+<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_along</a></span>(<span class='no'>ids</span>)) {
+  <span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='no'>ids</span><span class='kw'>[[</span><span class='no'>i</span>]]
+  <span class='no'>anc</span> <span class='kw'>&lt;-</span> <span class='fu'>getAncestors</span>(<span class='no'>id</span>, <span class='no'>pedTree</span>)
+  <span class='no'>allAncestors</span><span class='kw'>[[</span><span class='no'>id</span>]] <span class='kw'>&lt;-</span> <span class='no'>anc</span>
+}
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>allAncestors</span>)</div><div class='output co'>#&gt; $`0K7VJN`
+#&gt; [1] "UN3A1F" "YAYD44"
+#&gt; 
+#&gt; $`0NG81L`
+#&gt; [1] "OC8QQZ" "LG9I3M"
+#&gt; 
+#&gt; $`168Q0A`
+#&gt; [1] "HRBVOE" "P4CQ2T"
+#&gt; 
+#&gt; $`2FUS6G`
+#&gt; [1] "UI9CUS" "YKG4ZM"
+#&gt; 
+#&gt; $`3CQZ3E`
+#&gt; [1] "UONB0Y" "MBJMH1"
+#&gt; 
+#&gt; $`3O7TMT`
+#&gt; [1] "WORLYK" "FHY041"
+#&gt; </div><div class='input'><span class='no'>countOfAncestors</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>allAncestors</span>, <span class='no'>length</span>))
+<span class='no'>idsWithMostAncestors</span> <span class='kw'>&lt;-</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>allAncestors</span>)[<span class='no'>countOfAncestors</span> <span class='kw'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>countOfAncestors</span>)]
+<span class='no'>allAncestors</span>[<span class='no'>idsWithMostAncestors</span>]</div><div class='output co'>#&gt; $HLI95R
+#&gt;  [1] "WMUJC5" "H00H7D" "ZWBMTP" "HRBVOE" "RD6KMA" "K7QBLH" "UL1ZA5" "VHXHVH"
+#&gt;  [9] "NY9FEC" "ZWBMTP" "HRBVOE" "RD6KMA" "TINMGJ" "UKKA3A" "6MXDVM" "AXDMJM"
+#&gt; [17] "L6D4ZC" "5EP5AL" "HB9B30" "I31V3S" "3O7TMT" "WORLYK" "FHY041" "43TUN9"
+#&gt; [25] "5EP5AL" "HB9B30" "I31V3S" "8G72QV"
+#&gt; 
+#&gt; $I9TQ0T
+#&gt;  [1] "CN4GMN" "QBLTI6" "F0YSEE" "SA1ZC1" "ZXJQQ5" "6MIRJI" "UKK94T" "596J7E"
+#&gt;  [9] "82IE3M" "F0YSEE" "SA1ZC1" "ZXJQQ5" "JNWPY2" "MQB1AE" "ZXJQQ5" "BNMWNZ"
+#&gt; [17] "DZ3B9K" "CQMWGX" "N2XF08" "P9GZ32" "HKOSVZ" "ZQ0DRX" "RX08B3" "N2XF08"
+#&gt; [25] "P9GZ32" "HKOSVZ" "1B71NB" "BRLQFI"
+#&gt; </div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -177,6 +229,7 @@ SIMWALK2 or similar programs.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

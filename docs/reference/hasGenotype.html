@@ -73,7 +73,7 @@ and legal domains." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@ and legal domains." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -158,11 +161,21 @@ and legal domains.</p>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>rhesusPedigree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/rhesusPedigree.html'>rhesusPedigree</a></span>
+<span class='no'>rhesusGenotypes</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/nprcgenekeepr/man/rhesusGenotypes.html'>rhesusGenotypes</a></span>
+<span class='no'>pedWithGenotypes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='addGenotype.html'>addGenotype</a></span>(<span class='kw'>ped</span> <span class='kw'>=</span> <span class='no'>rhesusPedigree</span>,
+                               <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='no'>rhesusGenotypes</span>)
+<span class='fu'>hasGenotype</span>(<span class='no'>pedWithGenotypes</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

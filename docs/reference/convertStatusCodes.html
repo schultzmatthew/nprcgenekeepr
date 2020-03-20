@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -156,12 +159,27 @@ status as alive, dead, sold, etc.</p></td>
 standardized status codes with the possible values
 ALIVE, DECEASED, SHIPPED, or UNKNOWN</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
+<span class='no'>original</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"alive"</span>, <span class='st'>"Alive"</span>, <span class='st'>"1"</span>, <span class='st'>"S"</span>, <span class='st'>"Sale"</span>, <span class='st'>"sold"</span>, <span class='st'>"shipped"</span>,
+              <span class='st'>"D"</span>, <span class='st'>"d"</span>, <span class='st'>"dead"</span>, <span class='st'>"died"</span>, <span class='st'>"deceased"</span>, <span class='st'>"2"</span>,
+              <span class='st'>"shiped"</span>, <span class='st'>"3"</span>, <span class='st'>"U"</span>, <span class='st'>"4"</span>, <span class='st'>"unknown"</span>, <span class='fl'>NA</span>,
+              <span class='st'>"Unknown"</span>, <span class='st'>"H"</span>, <span class='st'>"hermaphrodite"</span>, <span class='st'>"U"</span>, <span class='st'>"Unknown"</span>, <span class='st'>"4"</span>)
+<span class='fu'>convertStatusCodes</span>(<span class='no'>original</span>)</div><div class='output co'>#&gt;  [1] ALIVE    ALIVE    ALIVE    ALIVE    SHIPPED  SHIPPED  SHIPPED  SHIPPED 
+#&gt;  [9] DECEASED DECEASED DECEASED DECEASED DECEASED DECEASED SHIPPED  SHIPPED 
+#&gt; [17] UNKNOWN  UNKNOWN  UNKNOWN  UNKNOWN  UNKNOWN  &lt;NA&gt;     &lt;NA&gt;     UNKNOWN 
+#&gt; [25] UNKNOWN  UNKNOWN 
+#&gt; Levels: ALIVE DECEASED SHIPPED UNKNOWN</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

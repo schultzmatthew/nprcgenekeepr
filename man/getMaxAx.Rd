@@ -5,12 +5,12 @@
 \title{Get the maximum of the absolute values of the negative (males) and positive
 (female) animal counts.}
 \usage{
-getMaxAx(bins, axModulas)
+getMaxAx(bins, axModulus)
 }
 \arguments{
 \item{bins}{integer vector with numbers of individuals in each bin}
 
-\item{axModulas}{integer value used in the modulas function to determine
+\item{axModulus}{integer value used in the modulus function to determine
 the interval between possible maxAx values.}
 }
 \description{

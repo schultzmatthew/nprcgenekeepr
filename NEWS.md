@@ -1,7 +1,18 @@
 NEWS
 ================
 R. Mark Sharp
-01/16/2020
+03/19/2020
+
+# nprcgenekeepr 0.5.42.9007 (20200319)
+
+  - Changed warnings unit test for getLkDirectAncestors to work with
+    Windows.
+
+# nprcgenekeepr 0.5.42.9006 (20200319)
+
+  - Completed examples in function documentation
+  - Corrected spelling of several word throughout found with
+    `spelling::spell_check_package(".")`.
 
 # nprcgenekeepr 0.5.42.9005 (20200201)
 
@@ -108,7 +119,7 @@ R. Mark Sharp
   - Added colorIndex to list returned by getIndianOriginStatus(),
     getProductionStatus(), and getProportionLow(). Updated related unit
     tests
-  - Changed getSiteInfo() to reflect ONPRCs query structure
+  - Changed getSiteInfo() to reflect ONPRC’s query structure
   - Changed .Rbuildignore to leave out .png image files needed for Shiny
     tutorial.
 
@@ -234,7 +245,7 @@ R. Mark Sharp
 
   - Added ability to create an example pedigree file using the
     **examplePedigree** data structure.
-  - Added **summary.nprcmanagGV** and **print.summary.nprcmangGV**
+  - Added **summary.nprcmanagGV** and **print.summary.nprcmanagGV**
     functions
   - Added description of age-sex pyramid plot to the *summary of major
     functions*.
@@ -399,7 +410,7 @@ R. Mark Sharp
   - Made a combined logo for Oregon and SNPRC. Have ONPRC on top using
     blue and green. Done 20181208
   - Additional unit tests to cover all of the new functions created to
-    handle the PEDSYS and military formated dates (YYYYMMDD) have been
+    handle the PEDSYS and military formatted dates (YYYYMMDD) have been
     made. Done 20181112
   - Corrected breeding groups formation, which was including unknown
     animals that had been added as placeholders for unknown parents.

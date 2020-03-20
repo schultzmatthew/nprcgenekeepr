@@ -16,7 +16,7 @@ initially defined as the character vector made up of candidate animal Ids.}
 }
 \value{
 the grpNum list after removing any list element corresponding to a group
-with no availabel animals left using in filling a group.
+with no available animals left using in filling a group.
 }
 \description{
 Remove group numbers when all available animals have been used

@@ -3,7 +3,7 @@
 ## Copyright(c) 2017-2019 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return the grpNum list after removing any list element corresponding to a group
-#' with no availabel animals left using in filling a group.
+#' with no available animals left using in filling a group.
 #'
 #' @param grpNum as list of integer vectors initially populated with one list
 #' named by the integers 1:numGrp, where numGrp is the number of groups to be

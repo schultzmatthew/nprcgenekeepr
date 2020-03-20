@@ -70,7 +70,7 @@ pedigree information" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -92,6 +92,9 @@ pedigree information" />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -239,8 +242,8 @@ codes:</p>
 <ul>
 <li><p>F -- replacing "FEMALE" or "2"</p></li>
 <li><p>M -- replacing "MALE" or "1"</p></li>
-<li><p>H -- replacing "HERMAPHRODITE" or "4", if igore.herm == FALSE</p></li>
-<li><p>U -- replacing "HERMAPHRODITE" or "4", if igore.herm == TRUE</p></li>
+<li><p>H -- replacing "HERMAPHRODITE" or "4", if ignore.herm == FALSE</p></li>
+<li><p>U -- replacing "HERMAPHRODITE" or "4", if ignore.herm == TRUE</p></li>
 <li><p>U -- replacing "UNKNOWN" or "3"</p></li>
 </ul>
 
@@ -259,7 +262,7 @@ is ignored.</p>
 </ul>
 
 <p>The function <code>convertAncestry</code> coverts ancestry indicators using
-regular experessions such that the following conversions are made from
+regular expressions such that the following conversions are made from
 character strings that match selected substrings to the following factors.</p>
 <ul>
 <li><p>"INDIAN" --- replacing "ind" and not "chin"</p></li>
@@ -273,7 +276,7 @@ character strings that match selected substrings to the following factors.</p>
 <p>The function <code>convertDate</code> converts character representations of
 dates in the columns <code>birth</code>, <code>death</code>, <code>departure</code>, and
 <code>exit</code> to dates using the <code>as.Date</code> function.</p>
-<p>The function <code>setExit</code> uses huristics and the columns <code>death</code>
+<p>The function <code>setExit</code> uses heuristics and the columns <code>death</code>
 and <code>departure</code> to set <code>exit</code> if it is not already defined.</p>
 <p>The function <code>calcAge</code> uses the <code>birth</code> and the <code>exit</code>
 columns to define the <code>age</code> column. The numerical values is rounded
@@ -282,7 +285,7 @@ current system date (<code><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Da
 <p>The function <code>findGeneration</code> is used to define the generation number
 for each animal in the pedigree.</p>
 <p>The function <code>removeDuplicates</code> checks for any duplicated records and
-removeds the duplicates. I also throws an error and stops the program if an
+removes the duplicates. I also throws an error and stops the program if an
 ID appears in more
 than one record where one or more of the other columns have a difference.</p>
 <p>Columns that cannot be used subsequently are removed and the rows are
@@ -298,6 +301,7 @@ character.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>ped</span>)</div><div class='output co'>#&gt;  [1] "id"           "sire"         "dam"          "sex"          "gen"         
 #&gt;  [6] "birth"        "exit"         "age"          "ancestry"     "origin"      
 #&gt; [11] "status"       "recordStatus"</div><div class='input'># }
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

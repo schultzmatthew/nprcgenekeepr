@@ -16,7 +16,7 @@ makesLoop(id, ptree)
 TRUE if there is one or more common ancestors for the sire and dam.
 
 Tests to see if sires and dams for an individual in a ptree have a common
-ancester.
+ancestor.
 }
 \description{
 Part of Pedigree Sampling

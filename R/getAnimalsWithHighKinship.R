@@ -29,7 +29,7 @@
 #' considered in group formation. Pairwise kinship below this level will be
 #' ignored.
 #' @param currentGroups list of character vectors of IDs of animals currently assigned
-#' to the group. Defaults to character(0) assuming no groups are existant.
+#' to the group. Defaults to character(0) assuming no groups are existent.
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
 #' kinship should be ignored between certain sexes.

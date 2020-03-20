@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -89,6 +89,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
@@ -526,7 +529,7 @@ is at the state just prior to calling <code>rankSubjects</code> inside
         <td>
           <p><code><a href="getGVGenotype.html">getGVGenotype()</a></code> </p>
         </td>
-        <td><p>Get Genetic Valuie Genotype data structure for reportGV function.</p></td>
+        <td><p>Get Genetic Value Genotype data structure for reportGV function.</p></td>
       </tr><tr>
         
         <td>
@@ -1088,7 +1091,13 @@ the system.</p></td>
         <td>
           <p><code><a href="getCurrentAge.html">getCurrentAge()</a></code> </p>
         </td>
-        <td><p>Returns age in years using the provided birthdate.</p></td>
+        <td><p>Age in years using the provided birthdate.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getDateColNames.html">getDateColNames()</a></code> </p>
+        </td>
+        <td><p>Vector of date column names</p></td>
       </tr><tr>
         
         <td>
@@ -1128,6 +1137,13 @@ the system.</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="getGenoDefinedParentGenotypes.html">getGenoDefinedParentGenotypes()</a></code> </p>
+        </td>
+        <td><p>Assigns parental genotype contributions to an IDs genotype by attributing
+alleles to sire or dam</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getGenotypes.html">getGenotypes()</a></code> </p>
         </td>
         <td><p>Get genotypes from file</p></td>
@@ -1136,7 +1152,7 @@ the system.</p></td>
         <td>
           <p><code><a href="getGVGenotype.html">getGVGenotype()</a></code> </p>
         </td>
-        <td><p>Get Genetic Valuie Genotype data structure for reportGV function.</p></td>
+        <td><p>Get Genetic Value Genotype data structure for reportGV function.</p></td>
       </tr><tr>
         
         <td>
@@ -1390,12 +1406,6 @@ between month and day portions of a date string in %Y%m%d format.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGeneticDiversityDashboard.html">makeGeneticDiversityDashboard()</a></code> </p>
-        </td>
-        <td><p>Make genetic diversity dashboard</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="makeGroupMembers.html">makeGroupMembers()</a></code> </p>
         </td>
         <td><p>Convenience function to make the initial groupMembers animal list</p></td>
@@ -1408,7 +1418,7 @@ between month and day portions of a date string in %Y%m%d format.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeRelationClasseTable.html">makeRelationClasseTable()</a></code> </p>
+          <p><code><a href="makeRelationClassesTable.html">makeRelationClassesTable()</a></code> </p>
         </td>
         <td><p>Make relation classes table from <code>kin</code> dataframe.</p></td>
       </tr><tr>
@@ -1417,7 +1427,7 @@ between month and day portions of a date string in %Y%m%d format.</p></td>
           <p><code><a href="makeRoundUp.html">makeRoundUp()</a></code> </p>
         </td>
         <td><p>Round up the provided integer vector <code>int</code> according to the
-<code>modulas</code>.</p></td>
+<code>modulus</code>.</p></td>
       </tr><tr>
         
         <td>
@@ -1594,7 +1604,7 @@ placeholders for unknown parents.</p></td>
         <td>
           <p><code><a href="set_seed.html">set_seed()</a></code> </p>
         </td>
-        <td><p>Work around for unit tests using sample()</p></td>
+        <td><p>Work around for unit tests using sample() among various versions of R</p></td>
       </tr><tr>
         
         <td>

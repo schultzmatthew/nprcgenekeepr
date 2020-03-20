@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
+    <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
@@ -113,7 +116,18 @@
 <a href="#installation-and-help" class="anchor"></a>Installation and Help</h2>
 <p>To get the most recent version you can install <strong>nprcgenekeepr</strong> from GitHub with the following code.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcgenekeepr"</span>)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"rmsharp/nprcgenekeepr"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">## Notes regarding feedback from Amanda on 20200204</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">## I am willing to change “reading” to “uploading”, but they do not mean the </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">## same thing. When you upload a file, there is no inference of paying </span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">## attention to the contents. When reading a file, the contents are examined. </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">## Reading is the more accurate descriptor in our case.</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">## </span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">## I am going to write a seperate tutorial explicitely for the consortium </span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">## members as typical R users would want conventional use of terms and </span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">## descriptors. </span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">## For example, Shiny apps are always described as Shiny apps.</span></span></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 <p>You can start the Shiny application from the <strong>R</strong> console with</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcgenekeepr)</span>
@@ -294,9 +308,9 @@ Columns that have been changed to conform to internal naming conventions and wha
 <hr>
 </div>
 </div>
-<div id="pedigree-age-pyramid-plot" class="section level2">
+<div id="pedigree-age-plot" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pedigree-age-pyramid-plot" class="anchor"></a>Pedigree Age Pyramid Plot</h2>
+<a href="#pedigree-age-plot" class="anchor"></a>Pedigree Age Plot</h2>
 <p>The <strong>Pedigree Age Plot</strong> tab displays a standard pyramid plot for the pedigree as selected in the <strong>Pedigree Browser</strong> tab. This is showing 332 living animals from the entire example pedigree.</p>
 <p><img src="shiny_app_use_files/figure-html/age-plot-1.png" width="528"></p>
 <hr>
@@ -305,7 +319,7 @@ Columns that have been changed to conform to internal naming conventions and wha
 <h2 class="hasAnchor">
 <a href="#genetic-value-analysis" class="anchor"></a>Genetic Value Analysis</h2>
 <p>Selecting the <strong>Genetic Value Analysis</strong> tab and the <strong>Begin Analysis</strong> button will begin the gene dropping process, which you can monitor with the progress meter in the lower right corner of the display.</p>
-<p>We are not aware of a systematic study of pedigree structure with this algorithm and have not performed extensive studies with pedigrees of various structures, but 1000 iterations has seemed to provide reproducible results.</p>
+<p>We are not aware of a systematic study of pedigree structure with this algorithm and have not performed extensive studies with pedigrees of various structures, but 1000 iterations has seemed to provide reproducible results. <!--  Come up wit a definition of reproducible and see if we can run and --> <!-- automated test to find the needed number of iterations.--></p>
 <p><img src="shiny_app_use_files/figure-html/gva-calculating-1.png" width="672"></p>
 <hr>
 <p>As soon as the calculations are completed, a table showing the results of the analysis is displayed in 10 record increments. The calculations for 1000 iterations of the gene dropping algorithm took 1 minute 38 seconds with the example pedigree of 3,691 animals using a MacBook Pro (Mid 2014), 2.8 GHz Intel Core i7 with 16 GB of 1600 MHz DDR3 memory.</p>
@@ -371,7 +385,7 @@ Columns that have been changed to conform to internal naming conventions and wha
       <li><a href="#installation-and-help">Installation and Help</a></li>
       <li><a href="#input">Input</a></li>
       <li><a href="#pedigree-browser">Pedigree Browser</a></li>
-      <li><a href="#pedigree-age-pyramid-plot">Pedigree Age Pyramid Plot</a></li>
+      <li><a href="#pedigree-age-plot">Pedigree Age Plot</a></li>
       <li><a href="#genetic-value-analysis">Genetic Value Analysis</a></li>
       <li><a href="#summary-statistics">Summary Statistics</a></li>
       <li><a href="#breeding-group-formation">Breeding Group Formation</a></li>

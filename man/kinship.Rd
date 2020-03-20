@@ -18,7 +18,7 @@ of animals.}
 \item{pdepth}{integer vector indicating the generation number for each animal.}
 
 \item{sparse}{logical flag. If \code{TRUE}, \code{Matrix::Diagnol()} is
-used to make a unit diagnol matrix. If \code{FALSE}, \code{base::diag()} is
+used to make a unit diagonal matrix. If \code{FALSE}, \code{base::diag()} is
 used to make a unit square matrix.}
 }
 \description{

@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.42.9007</span>
       </span>
     </div>
 
@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/ColonyManagerTutorial.html">Colony Manager Tutorial</a>
+    </li>
+    <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
     </li>
     <li>
@@ -121,7 +124,7 @@
 <li>Creation of potential breeding groups with and without proscribed sex ratios and defined maximum kinships.</li>
 </ol>
 <p><strong>For more information see:</strong><br>
-A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (<em>Macaca mulatto</em>) Vinson, A ; Raboin, Mj <em>Journal Of The American Association For Laboratory Animal Science</em>, 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]</p>
+A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity in a Large Colony of Captive Rhesus Macaques (<em>Macaca mulatto</em>) Vinson, A ; Raboin, MJ <em>Journal Of The American Association For Laboratory Animal Science</em>, 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]</p>
 </div>
 <div id="summary-of-major-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -175,7 +178,7 @@ A Practical Approach for Designing Breeding Groups to Maximize Genetic Diversity
 <div id="running-shiny-application" class="section level2">
 <h2 class="hasAnchor">
 <a href="#running-shiny-application" class="anchor"></a>Running Shiny Application</h2>
-<p>The toolset available within nprcgenekeepr can be used inside standard R scripts. However, it was orginally designed to be used within a Shiny application that can be started with:</p>
+<p>The toolset available within nprcgenekeepr can be used inside standard R scripts. However, it was originally designed to be used within a Shiny application that can be started with:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nprcgenekeepr)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="../reference/runGenekeepr.html">runGenekeepr</a></span>()</span></code></pre></div>
 </div>
@@ -357,9 +360,9 @@ paternal allele vectors are added together.<br>
 <h2 class="hasAnchor">
 <a href="#software-issues" class="anchor"></a>Software Issues</h2>
 <p>Our goal is to use current R software development practices in an open software environment. Users can see all of the code at <a href="https://github.com/rmsharp/nprcgenekeepr">github.com/rmsharp/nprcgenekeepr</a> and can submit suggestions and bug reports on our issue tracker at <a href="https://github.com/rmsharp/nprcgenekeepr/issues">github.com/rmsharp/nprcgenekeepr/issues</a>.</p>
-<div id="travi-ci-use" class="section level3">
+<div id="travis-ci-use" class="section level3">
 <h3 class="hasAnchor">
-<a href="#travi-ci-use" class="anchor"></a>Travi-ci Use</h3>
+<a href="#travis-ci-use" class="anchor"></a>Travis-ci Use</h3>
 <p>The application and associated website is being continuously integrated at each push to the online repository. While often new features being added are not stable or complete, it is uncommon for the application not to run and perform functions that were working before. However, make sure the build was passing by looking for a green <em>Build Passing</em> badge at the top of the README file at <a href="https://travis-ci.org/rmsharp/nprcgenekeepr">travis-ci.org/rmsharp/nprcgenekeepr</a>.</p>
 </div>
 <div id="debug-logging" class="section level3">
@@ -370,7 +373,7 @@ paternal allele vectors are added together.<br>
 <div id="code-coverage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#code-coverage" class="anchor"></a>Code Coverage</h3>
-<p>Code coverage reports are part of the automated build system running on Travis-CI.org. We are using the <strong>testthat</strong> package for unit tests. Currently all code returning values that do not access a database or the file system have coverage with unit tests. Many of these have 100 percent of the lines covered. However, the unit tests are not exhaustive. The practice is to add further tests as errors are detected or when working on the code and a new unit test possibility is discovered. As of 20190701 94.31 pecent of the lines are covered.</p>
+<p>Code coverage reports are part of the automated build system running on Travis-CI.org. We are using the <strong>testthat</strong> package for unit tests. Currently all code returning values that do not access a database or the file system have coverage with unit tests. Many of these have 100 percent of the lines covered. However, the unit tests are not exhaustive. The practice is to add further tests as errors are detected or when working on the code and a new unit test possibility is discovered. As of 20190701 94.31 percent of the lines are covered.</p>
 </div>
 </div>
   </div>

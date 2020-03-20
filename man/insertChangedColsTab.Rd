@@ -13,7 +13,7 @@ insertChangedColsTab(errorLst, pedigreeFileName)
 \item{pedigreeFileName}{name of file provided by user on Input tab}
 }
 \value{
-text of the error list formated as an HTML page
+text of the error list formatted as an HTML page
 }
 \description{
 insertChangedColsTab insert a list of changed columns found by
