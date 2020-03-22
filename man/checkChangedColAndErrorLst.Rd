@@ -19,3 +19,17 @@ else the entire list is returned.
 checkChangedColAndErrorLst examines errorLst for errors and
 errorLst$changeCols non-empty fields
 }
+\examples{
+\donttest{
+library(nprcgenekeepr)
+errorLst <- qcStudbook(nprcgenekeepr::pedFemaleSireMaleDam,
+                       reportErrors = TRUE)
+nprcgenekeepr:::checkChangedColAndErrorLst(errorLst)
+errorLst <- qcStudbook(nprcgenekeepr::pedGood, reportErrors = TRUE)
+nprcgenekeepr:::checkChangedColAndErrorLst(errorLst)
+errorLst <- qcStudbook(nprcgenekeepr::pedOne, reportErrors = TRUE)
+nprcgenekeepr:::checkChangedColAndErrorLst(errorLst)[
+  c("suspiciousParents", "femaleSires", "maleDams")]
+}
+
+}

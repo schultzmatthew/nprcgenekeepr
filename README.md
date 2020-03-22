@@ -10,14 +10,14 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Build
 Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://travis-ci.org/rmsharp/nprcgenekeepr)
 [![codecov](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcgenekeepr)
-[![](https://www.r-pkg.org/badges/version/nprcgenekeepr)](https://cran.r-project.org/package=nprcgenekeepr)
+<!--[![](https://www.r-pkg.org/badges/version/nprcgenekeepr)](https://cran.r-project.org/package=nprcgenekeepr)
 
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/gh/rmsharp/nprcgenekeepr)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9007 (20200319)
+# nprcgenekeepr – Version 0.5.42.9008 (20200321)
 
 ## Introduction
 

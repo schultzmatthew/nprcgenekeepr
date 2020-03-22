@@ -5,7 +5,6 @@ cache:
   - github_packages
 dist: trusty
 r:
-    - oldrel
     - release
     - devel
 jobs:

@@ -4,8 +4,17 @@
 ## This file is part of nprcgenekeepr
 #' @return Returns \code{NULL} is all fields are empty
 #' else the entire list is returned.
+#'
+#' @examples
+#' \donttest{
+#' errorLst <- qcStudbook(nprcgenekeepr::pedFemaleSireMaleDam,
+#'                        reportErrors = TRUE)
+#' nprcgenekeepr:::checkErrorLst(errorLst)
+#' }
+#'
 #' @param errorLst list with fields for each type of error detectable by
 #' \code{qcStudbook}.
+#' @export
 checkErrorLst <- function(errorLst) {
   if (is.null(errorLst))
     return(FALSE)

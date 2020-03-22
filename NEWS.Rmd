@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "03/19/2020"
+date: "03/21/2020"
 output:
    github_document: default
 
@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# nprcgenekeepr 0.5.42.9008 (20200321)
+-   Changed dependency to R >= 3.6 since caTools is not available for R < 3.6.
+
 # nprcgenekeepr 0.5.42.9007 (20200319)
 -   Changed warnings unit test for getLkDirectAncestors to work with Windows.
 

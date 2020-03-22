@@ -1,7 +1,12 @@
 NEWS
 ================
 R. Mark Sharp
-03/19/2020
+03/21/2020
+
+# nprcgenekeepr 0.5.42.9008 (20200321)
+
+  - Changed dependency to R \>= 3.6 since caTools is not available for R
+    \< 3.6.
 
 # nprcgenekeepr 0.5.42.9007 (20200319)
 
