@@ -20,8 +20,8 @@ Get pedigree from file
 \examples{
 \donttest{
 library(nprcgenekeepr)
-getPedigree(fileName = system.file("testdata", "qcPed.csv",
-            package="nprcgenekeepr"))
+ped <- getPedigree(fileName = system.file("testdata", "qcPed.csv",
+                   package="nprcgenekeepr"))
 }
 
 }

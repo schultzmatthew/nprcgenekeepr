@@ -6,7 +6,9 @@
 \title{pedDuplicateIds is a dataframe with 9 rows and 5 columns (ego_id, sire,
 dam_id, sex, birth_date) representing a full pedigree with a duplicated
 record.}
-\format{An object of class \code{data.frame} with 9 rows and 5 columns.}
+\format{
+An object of class \code{data.frame} with 9 rows and 5 columns.
+}
 \usage{
 pedDuplicateIds
 }

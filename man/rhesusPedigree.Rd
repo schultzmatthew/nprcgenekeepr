@@ -4,7 +4,9 @@
 \name{rhesusPedigree}
 \alias{rhesusPedigree}
 \title{rhesusPedigree is a pedigree object}
-\format{An object of class \code{data.frame} with 375 rows and 8 columns.}
+\format{
+An object of class \code{data.frame} with 375 rows and 8 columns.
+}
 \usage{
 rhesusPedigree
 }

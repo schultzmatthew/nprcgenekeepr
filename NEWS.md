@@ -1,7 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-03/21/2020
+04/02/2020
+
+# nprcgenekeepr 0.5.42.9009 (20200402)
+
+  - Wrapped example for `makeExamplePedigreeFile` with `\dontrun{}`
+    because R 4.0.0 alpha was leaving the side effect of the dataframe
+    stored in a CSV file named as the text of the next line.
 
 # nprcgenekeepr 0.5.42.9008 (20200321)
 

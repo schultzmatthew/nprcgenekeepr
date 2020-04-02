@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-03/19/2020
+04/02/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -17,7 +17,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9008 (20200321)
+# nprcgenekeepr – Version 0.5.42.9009 (20200402)
 
 ## Introduction
 
@@ -60,8 +60,8 @@ Reviewed Journal\]
 
 ## Installation
 
-You can install the development version of **nprcgenekeepr** from github
-with:
+You can install the development version of **nprcgenekeepr** from GitHub
+from the R console prompt with:
 
 ``` r
 install.packages("devtools")
@@ -69,6 +69,24 @@ devtools::install_github("rmsharp/nprcgenekeepr")
 ```
 
 All missing dependencies should be automatically installed.
+
+## Online Documentation
+
+You can find the complete online documentation at
+<https://rmsharp.github.io/nprcgenekeepr/>.
+
+At the top of the page are three menus to the right of the `Home` icon:
+`Reference`, `Articles`, and `Changelog`.
+
+The `Reference` menu brings up the list of documentation for `Data
+objects`, `Major Features and Functions`, `Primary interactive
+functions` and `All exposed functions`.
+
+The `Articles` menu brings up the list of vignettes, which are, except
+for `Development Plans`, tutorials for using the package.
+
+The `Changelog` brings up a copy of the NEWS file of the package, which
+records the major changes made for each version.
 
 ## Running Shiny Application
 
@@ -188,8 +206,6 @@ the groups, though this has likely been a consideration by the user in
 selecting the candidate group members. Optionally the user may select to
 form harem groups, which considers the sex of individuals when forming
 groups and restricts the number of males to one per group.
-
-Find online documentation at <https://rmsharp.github.io/nprcgenekeepr/>.
 
 **For more information see:**  
 A Practical Approach for Designing Breeding Groups to Maximize Genetic

@@ -17,7 +17,7 @@ full path name of file saved.
 Uses \code{examplePedigree} data structure to create an example data file
 }
 \examples{
-\donttest{
+\dontrun{
 library(nprcgenekeepr)
 pedigreeFile <- makeExamplePedigreeFile()
 }

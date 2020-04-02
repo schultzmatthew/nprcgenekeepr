@@ -4,7 +4,9 @@
 \name{qcBreeders}
 \alias{qcBreeders}
 \title{qcBreeders is a list of 29 baboon IDs that are potential breeders}
-\format{An object of class \code{character} of length 29.}
+\format{
+An object of class \code{character} of length 29.
+}
 \source{
 qcBreeders is a list of 3 males and 26 females from
 the \code{qcPed} data set.

@@ -5,7 +5,9 @@
 \alias{focalAnimals}
 \title{focalAnimals is a dataframe with one column (_id_) containing the of animal
 Ids from the __examplePedigree__ pedigree.}
-\format{An object of class \code{data.frame} with 327 rows and 1 columns.}
+\format{
+An object of class \code{data.frame} with 327 rows and 1 columns.
+}
 \usage{
 focalAnimals
 }

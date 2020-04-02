@@ -5,7 +5,9 @@
 \alias{lacy1989PedAlleles}
 \title{lacy1989PedAlleles is a dataframe produced by \code{geneDrop} on
 \code{lacy1989Ped} with 5000 iterations.}
-\format{An object of class \code{data.frame} with 14 rows and 5002 columns.}
+\format{
+An object of class \code{data.frame} with 14 rows and 5002 columns.
+}
 \source{
 lacy1989Ped is a dataframe containing the small example pedigree used
 by Robert C. Lacy in "Analysis of Founder Representation in Pedigrees:

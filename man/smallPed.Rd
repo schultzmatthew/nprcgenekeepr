@@ -4,7 +4,9 @@
 \name{smallPed}
 \alias{smallPed}
 \title{smallPed is a hypothetical pedigree}
-\format{An object of class \code{data.frame} with 17 rows and 6 columns.}
+\format{
+An object of class \code{data.frame} with 17 rows and 6 columns.
+}
 \usage{
 smallPed
 }

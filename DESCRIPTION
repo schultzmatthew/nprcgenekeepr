@@ -1,8 +1,8 @@
 Package: nprcgenekeepr
 Type: Package
 Title: Genetic Tools for Colony Management
-Version: 0.5.42.9007
-Date: 2020-03-21
+Version: 0.5.42.9009
+Date: 2020-04-02
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("Terry", "Therneau", role = c("aut")),
@@ -53,11 +53,12 @@ Suggests:
     knitr,
     pkgdown,
     png,
-    roxygen2 (>= 6.0.0),
+    rmarkdown,
+    roxygen2 (>= 7.0.0),
     testthat
 Language: en-US
 Encoding: UTF-8
 License: MIT + file LICENSE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 LazyData: TRUE
-VignetteBuilder: knitr
+VignetteBuilder: knitr, rmarkdown

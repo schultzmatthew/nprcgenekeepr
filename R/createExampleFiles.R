@@ -10,7 +10,7 @@
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
-#' createExampleFiles()
+#' files <- createExampleFiles()
 #' }
 #' @export
 createExampleFiles <- function() {
@@ -30,7 +30,7 @@ createExampleFiles <- function() {
          qcBreeders = as.data.frame(nprcgenekeepr::qcBreeders, drop = FALSE),
          qcPed = nprcgenekeepr::qcPed,
          smallPed = nprcgenekeepr::smallPed)
-  pedigreeDir <- "~/tmp"
+  pedigreeDir <-  tempdir()
   suppressWarnings(dir.create(pedigreeDir))
   pedigreeDir <- paste0(pedigreeDir, "/ExamplePedigrees")
   suppressWarnings(dir.create(pedigreeDir))

@@ -15,6 +15,6 @@ based on the name of the example pedigree.
 \examples{
 \donttest{
 library(nprcgenekeepr)
-createExampleFiles()
+files <- createExampleFiles()
 }
 }

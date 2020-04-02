@@ -4,7 +4,9 @@
 \name{rhesusGenotypes}
 \alias{rhesusGenotypes}
 \title{rhesusGenotypes is a dataframe with two haplotypes per animal}
-\format{An object of class \code{data.frame} with 31 rows and 3 columns.}
+\format{
+An object of class \code{data.frame} with 31 rows and 3 columns.
+}
 \usage{
 rhesusGenotypes
 }

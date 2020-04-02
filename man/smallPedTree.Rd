@@ -4,7 +4,9 @@
 \name{smallPedTree}
 \alias{smallPedTree}
 \title{smallPedTree is a pedigree tree made from \code{smallPed}}
-\format{An object of class \code{list} of length 17.}
+\format{
+An object of class \code{list} of length 17.
+}
 \usage{
 smallPedTree
 }

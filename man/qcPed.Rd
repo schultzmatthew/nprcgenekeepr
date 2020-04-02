@@ -4,7 +4,9 @@
 \name{qcPed}
 \alias{qcPed}
 \title{qcPed is a dataframe with 277 rows and 6 columns}
-\format{An object of class \code{data.frame} with 280 rows and 8 columns.}
+\format{
+An object of class \code{data.frame} with 280 rows and 8 columns.
+}
 \usage{
 qcPed
 }

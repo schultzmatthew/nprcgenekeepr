@@ -14,7 +14,8 @@ vignette: >
 ---
 ## Installation
 
-You can install the development version of **nprcgenekeepr** from github with:
+You can install the development version of **nprcgenekeepr** from GitHub from
+the R console prompt with:
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
 install.packages("devtools")

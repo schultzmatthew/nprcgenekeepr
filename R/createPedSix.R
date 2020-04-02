@@ -41,7 +41,7 @@ createPedSix <- function(savePed = TRUE) {
   names(pedSix) <- c("Ego Id", "Sire Id", "Dam", "Sex", "Birth Date",
                      "Departure", "Death")
   if (savePed) {
-    pedigree_dir <- "~/tmp"
+    pedigree_dir <- tempdir()
     suppressWarnings(dir.create(pedigree_dir))
     pedigree_dir <- paste0(pedigree_dir, "/data")
     suppressWarnings(dir.create(pedigree_dir))

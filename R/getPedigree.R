@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' library(nprcgenekeepr)
-#' getPedigree(fileName = system.file("testdata", "qcPed.csv",
-#'             package="nprcgenekeepr"))
+#' ped <- getPedigree(fileName = system.file("testdata", "qcPed.csv",
+#'                    package="nprcgenekeepr"))
 #' }
 #'
 #' @param fileName character vector of temporary file path.

@@ -29,7 +29,7 @@
 #'   death = death,
 #'   departure = departure,
 #'   stringsAsFactors = FALSE)
-#' setExit(ped)
+#' pedWithExit <- setExit(ped)
 #' }
 #' @param ped dataframe of pedigree and demographic information potentially
 #' containing columns indicating the birth and death dates of an individual.

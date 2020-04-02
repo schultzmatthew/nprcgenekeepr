@@ -7,7 +7,9 @@
 by \code{reportGV}. It is created inside \code{orderReport}. This version
 is at the state just prior to calling \code{rankSubjects} inside
 \code{orderReport}.}
-\format{An object of class \code{list} of length 3.}
+\format{
+An object of class \code{list} of length 3.
+}
 \usage{
 finalRpt
 }

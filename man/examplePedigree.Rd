@@ -4,7 +4,9 @@
 \name{examplePedigree}
 \alias{examplePedigree}
 \title{examplePedigree is a pedigree object created by \code{qcStudbook}}
-\format{An object of class \code{data.frame} with 3694 rows and 12 columns.}
+\format{
+An object of class \code{data.frame} with 3694 rows and 12 columns.
+}
 \usage{
 examplePedigree
 }

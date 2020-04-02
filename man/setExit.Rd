@@ -41,6 +41,6 @@ ped <- data.frame(
   death = death,
   departure = departure,
   stringsAsFactors = FALSE)
-setExit(ped)
+pedWithExit <- setExit(ped)
 }
 }

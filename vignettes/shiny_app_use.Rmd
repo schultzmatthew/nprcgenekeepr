@@ -38,7 +38,7 @@ https://github.com/rmsharp/nprcgenekeepr/issues).
 To get the most recent version you can install **nprcgenekeepr** from
 GitHub with the following code.
 
-```{r gh-installation}
+```{r gh-installation, include = FALSE}
 install.packages("devtools")
 devtools::install_github("rmsharp/nprcgenekeepr")
 
@@ -57,12 +57,15 @@ devtools::install_github("rmsharp/nprcgenekeepr")
 
 All missing dependencies should be automatically installed.
 
-You can start the Shiny application from the __R__ console with 
 
-```{r start, echo = TRUE, include=TRUE, eval = FALSE}
-library(nprcgenekeepr)
-runManager()
+```{r child = "./manual_components/_online_documentation.Rmd", ref = "online_documentation", results = 'markup' , include = TRUE}
+```
 
+This document is the `Application for Genetic Management of Colonies` vignette.
+
+
+
+```{r child = "./manual_components/_running_shiny_application.Rmd", ref = "running_shiny_application"}
 ```
 
 This will result in the opening screen where you tell the application how to 

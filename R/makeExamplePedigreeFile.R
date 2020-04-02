@@ -5,7 +5,7 @@
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(nprcgenekeepr)
 #' pedigreeFile <- makeExamplePedigreeFile()
 #' }

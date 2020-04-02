@@ -4,7 +4,9 @@
 \name{pedWithGenotypeReport}
 \alias{pedWithGenotypeReport}
 \title{pedWithGenotypeReport is a list containing the output of \code{reportGV}.}
-\format{An object of class \code{list} (inherits from \code{GVnprcmanag}) of length 8.}
+\format{
+An object of class \code{list} (inherits from \code{GVnprcmanag}) of length 8.
+}
 \source{
 pedWithGenotypeReport was made with pedWithGenotype as input into
 reportGV with 10,000 iterations.

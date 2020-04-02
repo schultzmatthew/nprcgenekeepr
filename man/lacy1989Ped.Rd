@@ -4,7 +4,9 @@
 \name{lacy1989Ped}
 \alias{lacy1989Ped}
 \title{lacy1989Ped small hypothetical pedigree}
-\format{An object of class \code{data.frame} with 7 rows and 5 columns.}
+\format{
+An object of class \code{data.frame} with 7 rows and 5 columns.
+}
 \source{
 lacy1989Ped is a dataframe containing the small hypothetical
 pedigree of three founders and four descendants used
