@@ -311,18 +311,31 @@ shinyServer(function(input, output, session) {
   specifyFocalAnimals <- eventReactive(input$specifyFocalAnimal, {
     ped <- unlist(strsplit(input$focalAnimalIds, "[ ,;\t\n]"))
     if (!is.null(input$focalAnimalUpdate)) {
-      focalAnimalUpdate <- input$focalAnimalUpdate
-      flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
-                        focalAnimalUpdate$name, "; ",
-                        "focalAnimalUpdate$datapath: ",
-                        focalAnimalUpdate$datapath),
-                 name = "nprcgenekeepr")
+      if (!input$clearFocalAnimals) {
+        focalAnimalUpdate <- input$focalAnimalUpdate
+        flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
+                          focalAnimalUpdate$name, "; ",
+                          "focalAnimalUpdate$datapath: ",
+                          focalAnimalUpdate$datapath),
+                   name = "nprcgenekeepr")
+      } else {
+        focalAnimalUpdate <-
+          list(name = "emptyFocalAnimals.csv",
+               datapath = system.file("extdata", "emptyFocalAnimals.csv",
+                                      package  = "nprcgenekeepr"))
+
+        flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdate$name: ",
+                          focalAnimalUpdate$name, "; ",
+                          "focalAnimalUpdate$datapath: ",
+                          focalAnimalUpdate$datapath),
+                   name = "nprcgenekeepr")
+      }
       focalAnimalUpdateDf <- unlist(read.table(focalAnimalUpdate$datapath,
-                                                  header = TRUE,
-                                                  sep = ",",
-                                                  stringsAsFactors = FALSE,
-                                                  na.strings = c("", "NA"),
-                                                  check.names = FALSE))
+                                               header = TRUE,
+                                               sep = ",",
+                                               stringsAsFactors = FALSE,
+                                               na.strings = c("", "NA"),
+                                               check.names = FALSE))
       flog.debug(paste0("focalAnimalUpdate - focalAnimalUpdateDf: ",
                         focalAnimalUpdateDf),
                  name = "nprcgenekeepr")

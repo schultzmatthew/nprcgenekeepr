@@ -20,6 +20,10 @@ uitpPedigreeBrowser <-
       popify(actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
              paste0("Read selected file of focal animals or list of animals entered ",
              "and update the table below")),
+      popify(checkboxInput("clearFocalAnimals", label = "Clear Focal Animals",
+                           value = FALSE),
+             paste0("Focal animal list is to be cleared as well using a file ",
+                    "with no animal IDs. (Files are not affected).")),
       helpText(paste0("The search field below will search all columns for ",
                       "matches to any text or number entered."),
                style = "color:blue")

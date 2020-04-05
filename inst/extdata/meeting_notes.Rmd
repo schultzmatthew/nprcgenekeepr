@@ -32,8 +32,20 @@ Provided in reverse chronological order
     what is missing, what is too complex, etc.
     
 ## 20200203
-1.  Is the tutorial for CRAN or the Consoritum users.
+1.  Is the tutorial for CRAN or the Consortium users.
     need overview of tab structure and order (left to right).
+    1. Notes regarding feedback from Amanda on 20200204
+       I am willing to change “reading” to “uploading”, but they do not mean the
+       same thing. When you upload a file, there is no inference of paying
+       attention to the contents. When reading a file, the contents are examined.
+       Reading is the more accurate descriptor in our case.
+       
+       I am going to write a separate tutorial explicitly for the consortium
+       members as typical R users would want conventional use of terms and
+       descriptors.
+       For example, Shiny apps are always described as Shiny apps.
+
+
 
 ## 20200106 
 1.  Mark will convert nprcmanager to nprcgenekeepr before any other changes.
@@ -75,7 +87,7 @@ Provided in reverse chronological order
     a.  Add a column - something like "from center" so that "born at site" can 
         be ascertained.
 1.  Provide a way to clear focal animals added in __Pedigree Browser__ tab
-    so that full pedigree is again availabe. This will also allow a new 
+    so that full pedigree is again available. This will also allow a new 
     pedigree to be added via the __Input__ tab.
 
 ## 20191115
@@ -324,7 +336,7 @@ As a result of this meeting, the following columns are defined as follows
     1.   Work on tutorial to look at all possible data input errors
     1.   Submit new version to GitHub and Travis-ci
 2.  We discussed heat map type issues with regard to realtime examination of 
-    kinship relationships within breedeing groups
+    kinship relationships within breeding groups
     1.   Amanda is to send Mark a pedigree with breeding group information and 
          an updated version of the questions in an Excel workbook
     1.   Mark is to use those data and the questions to develop some 
@@ -343,7 +355,7 @@ As a result of this meeting, the following columns are defined as follows
 
 1. Work on loop code: have list of animals involved in loops with counts, number of loops, number of animals in loops.
    Not high priority.
-1. DCM wants to report on problems in current breeding groups prior occurance.
+1. DCM wants to report on problems in current breeding groups prior occurrence.
    -   Amanda has developed an initial set of questions.
        -   Are all Indian origin?
        -   Has alpha male been in group > 3 years.
@@ -464,7 +476,7 @@ slightly higher for non-founders than what this function will calculate.
    a.  Discuss what to do about overlapping group formation. 
      Instruct the user to run the Make Groups command again to get 
      a new set of groups. The new set will overlap with the prior results,
-     but will be mutually exclussive within a run.
+     but will be mutually exclusive within a run.
 1. Mark to send an invoice at end of February. Amanda will send the amount of
    funding available. Done 20190311
 1. Seed Groups
@@ -511,7 +523,7 @@ slightly higher for non-founders than what this function will calculate.
 1. Discussed what to do about overlapping group formation. 
   Decided to instruct the user to run the Make Groups command again to get 
   a new set of groups. The new set will overlap with the prior results, 
-  but will be mutually exclussive within a run. Added to things to do
+  but will be mutually exclusive within a run. Added to things to do
   for 20190225 meeting 20190224
 
 1. Discussed layout of breeding group formation tab by using a mockup tool.
@@ -587,7 +599,7 @@ slightly higher for non-founders than what this function will calculate.
   The second type of group is a collection of sub-groups where each
   sub-group is a group of the first type. Thus, there is no overlap
   of animals within any one sub-group of groups and there is 
-  potential overlay among the various subgroups. This is complecated
+  potential overlay among the various subgroups. This is complected
   and hard to follow so it is illustrated 
   with the list below where each letter represent a specific animal.
   Overlapping Groups 1-4 have within
@@ -684,7 +696,7 @@ cat(overlapping_str)
 3. Check the outliers found in the first box and whisker plot when the file
   "Example_Pedigree.csv" is analyzed. The outliers are exactly as described:
   Data beyond the end of the whiskers are called "outlying" points and are 
-  plotted individually. The jittered points are overlayed on top of the 
+  plotted individually. The jittered points are overlaid on top of the 
   boxplot and its outliers. Done 20181112
 4. Add the ability to select a sex ratio for group formation. 
   Ratios are to be female to male starting with 1:1 and progressing by 0.5
@@ -725,7 +737,7 @@ cat(overlapping_str)
   - Worked with Terry Hawkins on 20181119 and 20181120 to make sure the 
     LabKey code was working. He had an error in his
     base URL specification so that initial efforts failed and the error
-    message was misleading. I have trapped the erorr with a tryCatch 
+    message was misleading. I have trapped the error with a tryCatch 
     function and am sending a message to the log file. This needs to be
     tested.
 11. The next meeting is scheduled for 20181126. Due to conflicts in Mark's 
