@@ -42,17 +42,6 @@ GitHub with the following code.
 install.packages("devtools")
 devtools::install_github("rmsharp/nprcgenekeepr")
 
-## Notes regarding feedback from Amanda on 20200204
-## I am willing to change “reading” to “uploading”, but they do not mean the 
-## same thing. When you upload a file, there is no inference of paying 
-## attention to the contents. When reading a file, the contents are examined. 
-## Reading is the more accurate descriptor in our case.
-## 
-## I am going to write a seperate tutorial explicitely for the consortium 
-## members as typical R users would want conventional use of terms and 
-## descriptors. 
-## For example, Shiny apps are always described as Shiny apps.
-
 ```
 
 All missing dependencies should be automatically installed.

@@ -16,7 +16,8 @@ You can find the complete online documentation at [https://rmsharp.github.io/npr
 At the top of the page are three menus to the right of the `Home` icon: 
 `Reference`, `Articles`, and `Changelog`.
 
-The `Reference` menu brings up the list of documentation for `Data objects`, 
+The `Reference` menu at the top of the page brings up the list of documentation 
+for `Data objects`, 
 `Major Features and Functions`, `Primary interactive functions` and 
 `All exposed functions`.
 
