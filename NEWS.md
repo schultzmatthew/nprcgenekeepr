@@ -1,7 +1,14 @@
 NEWS
 ================
 R. Mark Sharp
-04/02/2020
+04/05/2020
+
+# nprcgenekeepr 0.5.42.9010 (20200405)
+
+  - Added code to address issue 1 (GitHub). See comment 1 for details,
+    but more should be done.
+  - Refreshed Shiny\_app\_use.Rmd to reflect changes since November
+    2019.
 
 # nprcgenekeepr 0.5.42.9009 (20200402)
 
