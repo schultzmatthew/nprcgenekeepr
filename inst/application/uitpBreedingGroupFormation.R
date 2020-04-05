@@ -94,7 +94,8 @@ uitpBreedingGroupFormation <-
             label = "Number of Groups Desired:",
             value = 1,
             min = 1,
-            max = MAXGROUPS
+            max = MAXGROUPS,
+            step = 1.0
           ),
           uiOutput("minParentAge", inline = FALSE),
           conditionalPanel(
@@ -164,7 +165,8 @@ uitpBreedingGroupFormation <-
                 label = "Enter the group to view:",
                 value = 1,
                 min = 1,
-                max = MAXGROUPS
+                max = MAXGROUPS,
+                step = 1
               ),
               downloadButton("downloadGroup", "Export Current Group"),
               downloadButton("downloadGroupKin",

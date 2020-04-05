@@ -1,6 +1,6 @@
 #' Returns record numbers with selected \code{recordStatus}.
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return integer vector of records with \code{recordStatus} == \code{status}.
 #'

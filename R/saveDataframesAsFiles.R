@@ -1,6 +1,6 @@
 #' Write copy of dataframes to either CSV or Excel file.
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' Uses \code{examplePedigree} data structure to create an example data file
 #' @return full path name of file saved.

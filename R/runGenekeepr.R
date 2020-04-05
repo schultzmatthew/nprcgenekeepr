@@ -1,7 +1,7 @@
 #' Allows running \code{shiny} application with
 #' \code{nprcgenekeepr::runGenekeepr()}
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @export
 runGenekeepr <- function() {

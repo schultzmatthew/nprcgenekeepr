@@ -1,6 +1,6 @@
 #' Form age pyramid plot
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @param males integer vector with the number of males in age groups
 #' corresponding to the position in the vector

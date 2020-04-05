@@ -1,6 +1,6 @@
 #' Get possible column names for a studbook.
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' Pedigree curation function
 #' @return A character vector of the possible columns that can be in a studbook.

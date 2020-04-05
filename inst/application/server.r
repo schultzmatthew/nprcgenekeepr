@@ -614,7 +614,7 @@ shinyServer(function(input, output, session) {
 
   meanKinshipBoxPlot <- function() {
     gu <- rpt()[, "indivMeanKin"]
-    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+    ggplot(data.frame(gu = gu), aes(x = 0, y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
@@ -631,7 +631,7 @@ shinyServer(function(input, output, session) {
   })
   zscoreBoxPlot <- function() {
     gu <- rpt()[, "zScores"]
-    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+    ggplot(data.frame(gu = gu), aes(x = 0, y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +
@@ -647,7 +647,7 @@ shinyServer(function(input, output, session) {
   })
   guBoxPlot <- function() {
     gu <- rpt()[, "gu"]
-    ggplot(data.frame(gu = gu), aes(x = "", y = gu)) +
+    ggplot(data.frame(gu = gu), aes(x = 0, y = gu)) +
       geom_boxplot(color="darkblue", fill="lightblue", notch = FALSE,
                    outlier.color = "red", outlier.shape = 1) +
       theme_classic() + geom_jitter(width = 0.2) + coord_flip() +

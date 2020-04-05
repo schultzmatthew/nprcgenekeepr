@@ -1,6 +1,6 @@
 #' checkErrorLst examines list for non-empty fields
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return Returns \code{NULL} is all fields are empty
 #' else the entire list is returned.

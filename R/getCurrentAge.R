@@ -2,7 +2,7 @@
 #'
 #' Assumes current date for calculating age.
 #'
-## Copyright(c) 2017-2019 R. Mark Sharp
+## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #' @return Age in years using the provided birthdate.
 #'
@@ -17,6 +17,6 @@
 #' @import lubridate
 #' @export
 getCurrentAge <- function(birth) {
-  interval(start = birth, end = today()) /
-    duration(num = 1, units = "years")
+  as.numeric(interval(start = birth, end = today()) /
+    duration(num = 1, units = "years"))
 }
