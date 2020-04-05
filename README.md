@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-04/02/2020
+04/05/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -17,7 +17,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9009 (20200402)
+# nprcgenekeepr – Version 0.5.42.9010 (20200405)
 
 ## Introduction
 
@@ -78,9 +78,9 @@ You can find the complete online documentation at
 At the top of the page are three menus to the right of the `Home` icon:
 `Reference`, `Articles`, and `Changelog`.
 
-The `Reference` menu brings up the list of documentation for `Data
-objects`, `Major Features and Functions`, `Primary interactive
-functions` and `All exposed functions`.
+The `Reference` menu at the top of the page brings up the list of
+documentation for `Data objects`, `Major Features and Functions`,
+`Primary interactive functions` and `All exposed functions`.
 
 The `Articles` menu brings up the list of vignettes, which are, except
 for `Development Plans`, tutorials for using the package.

@@ -215,7 +215,7 @@ You can choose to display UNKNOWN IDs in the rows displayed.
 
 
 ```{r pb-100-rows-display-unknown-ids, eval = TRUE, fig.width = 5.5, fig.height = 7, echo = FALSE}
-img <- readPNG("./shiny_app_use/pb_100_rows_display_unknown_ids.png")
+img <- readPNG("./shiny_app_use/pb_10_rows_display_unknown_ids.png")
 grid.raster(img)
 ```
 
