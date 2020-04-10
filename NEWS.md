@@ -5,6 +5,9 @@ R. Mark Sharp
 
 # nprcgenekeepr 0.5.42.9011 (20200409)
 
+  - Build failed on Travis-ci due to unit test failure but the test has
+    never failed and does not fail on other builds. Removed set\_seed()
+    to see if that helps.
   - Fixed GitHub issue 3
   - Added additional explanatory text from Matt Schultz edits for the
     Colony Manager version of the Shiny tutorial.
