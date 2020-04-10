@@ -1008,7 +1008,8 @@ shinyServer(function(input, output, session) {
     if (is.null(bg())) {
       return(NULL)
     }
-    i <- as.numeric(input$viewGrp)
+    i <- withinIntegerRange(input$viewGrp, minimum = 1,
+                            maximum = input$numGp)[1]
     gp <- bg()$group[[i]]
     ped <- getPed()
     gp <- addSexAndAgeToGroup(gp, ped)

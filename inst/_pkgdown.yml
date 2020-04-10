@@ -252,3 +252,5 @@ reference:
   - '`toCharacter`'
   - '`trimPedigree`'
   - '`unknown2NA`'
+  - '`withinIntegerRange`'
+

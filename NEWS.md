@@ -1,7 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-04/05/2020
+04/09/2020
+
+# nprcgenekeepr 0.5.42.9011 (20200409)
+
+  - Fixed GitHub issue 3
+  - Added additional explanatory text from Matt Schultz edits for the
+    Colony Manager version of the Shiny tutorial.
 
 # nprcgenekeepr 0.5.42.9010 (20200405)
 
