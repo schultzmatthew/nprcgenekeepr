@@ -22,7 +22,7 @@ script:
   - R CMD build . --compact-vignettes=gs+qpdf
   - R CMD check *tar.gz --as-cran
 after_success:
-  - R -e 'covr::codecov()'
+  - R -e CODECOV_TOKEN 'covr::codecov()'
   - Rscript -e 'pkgdown::build_site()'
 deploy:
   provider: pages
