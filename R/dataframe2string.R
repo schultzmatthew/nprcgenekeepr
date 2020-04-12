@@ -19,7 +19,7 @@
 #' @importFrom stringi stri_length
 #' @importFrom stringi stri_pad_both
 #' @export
-dataframe2string <- function (object, ..., digits = NULL, row.names = TRUE) {
+dataframe2string <- function(object, ..., digits = NULL, row.names = TRUE) {
   nRows = length(row.names(object))
   if (length(object) == 0L) {
     return(paste(
@@ -37,7 +37,7 @@ dataframe2string <- function (object, ..., digits = NULL, row.names = TRUE) {
     # define row-names (if required)
     if (isTRUE(row.names)) {
       rowNames <- dimnames(object)[[1L]]
-      if(is.null(rowNames)) {
+      if (is.null(rowNames)) {
         # no row header available -> use row numbers
         rowNames <- as.character(1:NROW(m))
       }
