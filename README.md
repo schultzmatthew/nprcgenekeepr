@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-04/05/2020
+04/12/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -96,7 +96,7 @@ application that can be started with:
 
 ``` r
 library(nprcgenekeepr)
-runGenekeepr()
+runGeneKeepR()
 ```
 
 ## Summary of Major Functions

@@ -3,6 +3,12 @@ NEWS
 R. Mark Sharp
 04/09/2020
 
+# nprcgenekeepr 0.5.42.9012 (20200412)
+
+  - Updated unit test for dataframe2string to account for change in age
+    of a sire from 8.67 to 8.66 years.
+  - Renamed tutorials.
+
 # nprcgenekeepr 0.5.42.9011 (20200409)
 
   - Build failed on Travis-ci due to unit test failure but the test has
