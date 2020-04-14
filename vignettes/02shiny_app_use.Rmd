@@ -7,7 +7,7 @@ output:
     df_print: paged
   pdf_document: default
 vignette: >
-  %\VignetteIndexEntry{Application for Genetic Management} 
+  %\VignetteIndexEntry{GeneKeepR Tutorial} 
   %\usepackage[UTF-8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown_notangle} 
 ---
