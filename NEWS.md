@@ -1,7 +1,11 @@
 NEWS
 ================
 R. Mark Sharp
-04/09/2020
+04/14/2020
+
+# nprcgenekeepr 0.5.43 (20200414)
+
+  - Final preparation for CRAN submission
 
 # nprcgenekeepr 0.5.42.9012 (20200412)
 

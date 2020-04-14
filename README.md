@@ -17,7 +17,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 0.5.42.9012 (20200412)
+# nprcgenekeepr – Version 0.5.43 (20200413)
 
 ## Introduction
 
