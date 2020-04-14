@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ColonyManagerTutorial.html">nprcgeneKeepr Application for Genetic Management of NHP Colonies: Colony Manager Tutorial</a>
+      <a href="../articles/ColonyManagerTutorial.html">National Primate Research Centers' GeneKeepR:</a>
     </li>
     <li>
       <a href="../articles/Development_Plans.html">Development Plans</a>
@@ -135,7 +135,7 @@
 <a href="#running-shiny-application" class="anchor"></a>Running Shiny Application</h2>
 <p>The toolset available within nprcgenekeepr can be used inside standard R scripts. However, it was originally designed to be used within a Shiny application that can be started with:</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">nprcgenekeepr</span>)
-<span class="fu"><a href="../reference/runGenekeepr.html">runGenekeepr</a></span>()</pre></body></html></div>
+<span class="fu"><a href="../reference/runGeneKeepR.html">runGeneKeepR</a></span>()</pre></body></html></div>
 <p>This will result in the opening screen where you tell the application how to find the pedigree you will be using.</p>
 </div>
 <div id="input" class="section level2">
@@ -154,8 +154,10 @@
 <p><img src="shiny_app_use_files/figure-html/eopening-screen-bottom-1.png" width="528"></p>
 <hr>
 <p>The following is an example of the pedigree file format.</p>
-<p>Without genotypes:<br><img src="shiny_app_use_files/figure-html/eexamplePedigreeTutorial-1.png" width="528"></p>
-<p>With genotypes:<br><img src="shiny_app_use_files/figure-html/eexamplePedigreeTutorial-with_alleles-1.png" width="528"></p>
+<p>Without genotypes:</p>
+<p><img src="shiny_app_use_files/figure-html/eexamplePedigreeTutorial-1.png" width="528"></p>
+<p>With genotypes:</p>
+<p><img src="shiny_app_use_files/figure-html/eexamplePedigreeTutorial-with_alleles-1.png" width="528"></p>
 <hr>
 </div>
 <div id="reading-in-the-pedigree" class="section level3">
@@ -379,24 +381,24 @@ Columns that have been changed to conform to internal naming conventions and wha
 <p>The <strong>Make Groups</strong> button appears once you select the source of animals you are going to use. However, you probably will be making additional selections using other controls on the screen.</p>
 <p>The most common source of animals will be the high-value animals found by the genetic analysis.</p>
 <p>You can either type in the number of groups that you want to form or select the number of groups using the arrows on the right edge of the <strong>Number of Groups Desired</strong> field, which is outlined in blue in the image below.</p>
-<p><img src="shiny_app_use_files/figure-html/breeding-group-1-1.png" width="768"> *********</p>
+<p><img src="shiny_app_use_files/figure-html/breeding-group-1-1.png" width="768"></p>
+<hr>
 <p>There are often behavioral constraints, such as preexisting social groups, that dictate the need to have some animals maintained together. This need is readily accommodated by pre-seeding groups with those social groups. You may select the <strong>Optional: Seed Groups with Specific Animals</strong> field if you decide to place some animals together within the groups because you know them to be compatible with each other.</p>
 <p>This has been done in the example below using six groups with differing numbers of seed animals. Note the selection of having animals below the minimum parent age of two being grouped with their mother.</p>
 <hr>
 <p><img src="shiny_app_use_files/figure-html/breeding-group-6-infants-with-dam-1.png" width="576"></p>
 <hr>
 <p>Each group has all of the seed animals that were assigned to it plus additional animals that could be added while satisfying the requirements imposed by the selected settings. I have indicated the seed animals for the first group with red rectangles.</p>
-<p><img src="shiny_app_use_files/figure-html/breeding-group-first-group-no-kinship-seeds-indicated-1.png" width="576"></p>
+<p><img src="shiny_app_use_files/figure-html/breeding-group-first-group-no-kinship-seeds-indicated-1.png" width="816"></p>
 <hr>
 <p>Display of kinship values requires that the <strong>Include kinship in display of groups</strong> checkbox be selected prior to group formation.</p>
 <p>A group of ten animals was formed in the next run after choosing to include kinship and selecting the <strong>Make Groups</strong> button.</p>
-<p><img src="shiny_app_use_files/figure-html/breeding-group-6-seed-grps-grp-6-kinship-1.png" width="528"></p>
+<p><img src="shiny_app_use_files/figure-html/breeding-group-6-seed-grps-grp-6-kinship-1.png" width="816"></p>
 <hr>
 <p>The option to select a desired sex ratio allows you to select any ratio desired. However, the ratio obtained is limited by the availability of animals that meet all criteria you have set.</p>
 <p><img src="shiny_app_use_files/figure-html/breeding-group-sex-ratio-specification-1.png" width="528"></p>
 <p>Selecting a sex ratio of 2.5 with 6 groups as is illustrated resulted in 5 groups of 20 with a ratio of 14:6 (2.3) and 1 group of 23 with a ratio of 16:7 (2.3).</p>
 <p>Groups can be individually exported into file names and locations of your choosing. The corresponding kinship matrix for each group can also be exported.</p>
-<hr>
 </div>
   </div>
 
