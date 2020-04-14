@@ -54,6 +54,7 @@ Suggests:
     dplyr,
     ggplot2,
     grid,
+    kableExtra,
     knitr,
     pkgdown,
     png,
