@@ -1,5 +1,5 @@
 ---
-title: "Interactive Use of **nprcgenekeepr**"
+title: "Interactive Use of nprcgenekeepr"
 subtitle: "An R Package for the Genetic Management of Colonies"
 output:
   html_document:
