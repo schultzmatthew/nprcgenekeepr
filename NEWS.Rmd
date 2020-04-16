@@ -11,77 +11,114 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# nprcgenekeepr 1.0 (20200415)
+-   Major changes -- none
+-   Minor changes
+    -   CRAN submission
+
 # nprcgenekeepr 0.5.43 (20200414)
--   Final preparation for CRAN submission
+-   Major changes -- none
+-   Minor changes
+    -   Final preparation for CRAN submission
 
 # nprcgenekeepr 0.5.42.9012 (20200412)
--   Updated unit test for dataframe2string to account for change in age of
+-   Major changes -- none
+-   Minor changes
+    -   Updated unit test for dataframe2string to account for change in age of
     a sire from 8.67 to 8.66 years.
--   Renamed tutorials.
+    -   Renamed tutorials.
 
 # nprcgenekeepr 0.5.42.9011 (20200409)
--   Build failed on Travis-ci due to unit test failure but the test has never
+-   Major changes -- none
+-   Minor changes
+    -   Build failed on Travis-ci due to unit test failure but the test has never
     failed and does not fail on other builds. Removed set_seed() to see if 
     that helps. 
--   Fixed GitHub issue 3 
--   Added additional explanatory text from Matt Schultz edits for the Colony
-    Manager version of the Shiny tutorial.
+    -   Fixed GitHub issue 3 
+    -   Added additional explanatory text from Matt Schultz edits for the Colony
+        Manager version of the Shiny tutorial.
 
 # nprcgenekeepr 0.5.42.9010 (20200405)
--   Added code to address issue 1 (GitHub). See comment 1 for details, but more
-    should be done.
--   Refreshed Shiny_app_use.Rmd to reflect changes since November 2019.
+-   Major changes -- none
+-   Minor changes
+    -   Added code to address issue 1 (GitHub). See comment 1 for details, but more
+        should be done.
+    -   Refreshed Shiny_app_use.Rmd to reflect changes since November 2019.
 
 # nprcgenekeepr 0.5.42.9009 (20200402)
--   Wrapped example for `makeExamplePedigreeFile` with `\dontrun{}` because
-    R 4.0.0 alpha was leaving the side effect of the dataframe stored in a CSV
-    file named as the text of the next line.
+-   Major changes -- none
+-   Minor changes
+    -   Wrapped example for `makeExamplePedigreeFile` with `\dontrun{}` because
+        R 4.0.0 alpha was leaving the side effect of the dataframe stored in a CSV
+        file named as the text of the next line.
 
 # nprcgenekeepr 0.5.42.9008 (20200321)
--   Changed dependency to R >= 3.6 since caTools is not available for R < 3.6.
+-   Major changes -- none
+-   Minor changes
+    -   Changed dependency to R >= 3.6 since caTools is not available for R < 3.6.
 
 # nprcgenekeepr 0.5.42.9007 (20200319)
--   Changed warnings unit test for getLkDirectAncestors to work with Windows.
+-   Major changes -- none
+-   Minor changes
+    -   Changed warnings unit test for getLkDirectAncestors to work with Windows.
 
 # nprcgenekeepr 0.5.42.9006 (20200319)
--   Completed examples in function documentation
--   Corrected spelling of several word throughout found with 
-    `spelling::spell_check_package(".")`.
+-   Major changes -- none
+-   Minor changes
+    -   Completed examples in function documentation
+    -   Corrected spelling of several word throughout found with 
+        `spelling::spell_check_package(".")`.
 
 # nprcgenekeepr 0.5.42.9005 (20200201)
--   Added examples to function documentation
--   Added ColonyManagerTutorial.Rmd initial draft, which is copy of 
-    shiny_app_use.Rmd. It is to be converted for use by colony managers.
+-   Major changes -- none
+-   Minor changes
+    -   Added examples to function documentation
+    -   Added ColonyManagerTutorial.Rmd initial draft, which is copy of 
+        shiny_app_use.Rmd. It is to be converted for use by colony managers.
 
 # nprcgenekeepr 0.5.42.9004 (20200201)
--   Added examples to function documentation
--   Added obfuscated rhesus pedigree and rhesus haplotypes to use in examples
+-   Major changes -- none
+-   Minor changes
+    -   Added examples to function documentation
+    -   Added obfuscated rhesus pedigree and rhesus haplotypes to use in examples
 
 # nprcgenekeepr 0.5.42.9003
--   Renamed local and remote repositories from nprcmanager to nprcgenekeepr.
+-   Major changes -- none
+-   Minor changes
+    -   Renamed local and remote repositories from nprcmanager to nprcgenekeepr.
 
 # nprcgenekeepr 0.5.42.9002
--   Changed name of package to nprcgenekeepr. This required changing of many
-    of the supporting files and functions. Having good unit test coverage of the
-    functions (739 test with > 90 percent coverage) made this possible.
--   This is the last version under the nprcmanager repository name.
--   Running the build check had OK: 739; Failed: 0; Warnings: 0; Skipped: 0
+-   Major changes
+    -   Changed name of package to nprcgenekeepr. This required changing of many
+        of the supporting files and functions. Having good unit test coverage of
+        the functions (739 test with > 90 percent coverage) made this possible.
+     -   This is the last version under the nprcmanager repository name.
+     -   Conversion worked 
+         -   Running the build check had OK: 739; Failed: 0; Warnings: 0; 
+             Skipped: 0
+-   Minor changes -- none
 
 # nprcmanager 0.5.42.9001
--   Adding small executable examples in `roxygen2` comments that will go into 
-    the Rd-files. Since I have tests, I am wrapping the examples in \donttest{}.
--   Added code prior to changing `par()` in _getPyramidPlot.R_ to reset `par()` 
-    with   
-    `opar <- par(no.readonly =TRUE)`  
-    `on.exit(par(opar))`   
--   Removed the word "Implements" from the title. 
--   Reworded the first sentence of the Description element and therein removing
-    "implements" and "nprcmanager" as unnecessary words.
--   Added single quotes around all package, software, and API names within the
-    Description element of the DESCRIPTION file.
+-   Major changes -- none
+-   Minor changes
+    -   Adding small executable examples in `roxygen2` comments that will go into 
+        the Rd-files. Since I have tests, I am wrapping the examples in
+        \donttest{}.
+    -   Added code prior to changing `par()` in _getPyramidPlot.R_ to reset `par()` 
+        with   
+        `opar <- par(no.readonly =TRUE)`  
+        `on.exit(par(opar))`   
+    -   Removed the word "Implements" from the title. 
+    -   Reworded the first sentence of the Description element and therein
+        removing
+        "implements" and "nprcmanager" as unnecessary words.
+    -   Added single quotes around all package, software, and API names within the
+        Description element of the DESCRIPTION file.
     
 # nprcmanager 0.5.42.9000
--   Added ability to export genetic summary statistic plots
+-   Major changes 
+    -   Added ability to export genetic summary statistic plots
+-   Minor changes -- none
 
 # nprcmanager 0.5.42 (20191208)
 -   CRAN submission
@@ -321,7 +358,7 @@ knitr::opts_chunk$set(echo = TRUE)
         appropriate for breeding as the current code does not check to 
         ensure the animals are still alive. This could easily be added.
     -   Males are selected for each group randomly at each iteration just
-        as are all other members. The only difference betweeen animal 
+        as are all other members. The only difference between animal 
         selection for harems is that sex is part of the selection process.
     -   This required the creation of a few functions and modification of 
         others. Unit tests were updated to reflect changes, but not additions.
