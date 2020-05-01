@@ -14,6 +14,52 @@ library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
 
+## 20200423
+1.  Submission to CRAN was rejected with the following revision requests
+    1.  considerably reduce the check time of your package to stay below the
+threshold of 10 minutes. This can for example be achieved by:
+	      -  Omitting the less important and lengthy tests by only running them
+           conditionally if some environment variable is set that you only 
+           define on your machine.
+	      -  Using precomputed results for the computational intensive parts in
+           vignettes.
+        -  Ensure that even after this change the package still includes
+           illustrative examples of the use of the user-facing functions. 
+           Please aim at trying to test and also illustrate the use of as much
+           functionality of the package as possible while making considerate use
+           of the computational resources.
+    1.  Single quotes are used to mark non-English usage, package names, 
+        software names, API names and paper titles. Not for names 
+        or abbreviations/acronyms. Please omit them where not accurate, 
+        e.g. --> Raboin, API,...
+    1.  Please only capitalize names, sentence beginnings and 
+        abbreviations/acronyms in the description text of your 
+        DESCRIPTION file. e.g. -- electronic health records
+    1.  Missing Rd-tags:
+        -  addGenotype.Rd: \value
+        -  agePyramidPlot.Rd: \value
+        -  allTrueNoNA.Rd: \value
+        -  assignAlleles.Rd: \value
+        -  calcFE.Rd: \value
+        -  calcFEFG.Rd: \value
+        -  calcFG.Rd: \value
+        -  calcRetention.Rd: \value
+        -  checkGenotypeFile.Rd: \value
+        -  convertSexCodes.Rd: \value
+        -  create_wkbk.Rd: \value
+        -  createExampleFiles.Rd: \arguments,  \value
+        -  ...
+    1.  You have examples for unexported functions which cannot run in this way.
+        Please either add nprcgenekeepr::: to the function calls in the 
+        examples, omit these examples or export these functions.
+    1.  Please fix and resubmit, and document what was changed in the 
+        submission comments.
+1.  I will work toward getting these changes in as soon as possible and 
+    resubmit.
+1.  I have not heard from you regarding the user acceptance testing and am
+    curious as whether or not you are going to go forward with that in this
+    period of social distancing.
+
 ## 20200320
 1.  Notes of things to do prior to submission
     1.  Correct spelling package wide - Done 2020319
