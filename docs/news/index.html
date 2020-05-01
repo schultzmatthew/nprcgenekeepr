@@ -97,7 +97,7 @@
       <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of **nprcgenekeepr**</a>
+      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
@@ -138,6 +138,29 @@
       <small>Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="nprcgenekeepr-101-20200503" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.1">
+<a href="#nprcgenekeepr-101-20200503" class="anchor"></a>nprcgenekeepr 1.0.1 (20200503)</h1>
+<ul>
+<li>Major changes – none</li>
+<li>Minor changes
+<ul>
+<li>CRAN resubmission: responded to all requests provided by reviewer
+<ul>
+<li>Reduced the time required for unit test from over 12 minutes to 21.6 seconds by skipping those test dependent on schochastic creation of simulated pedigrees and breeding groups when not running on my system.</li>
+<li>Reduced the time to run examples and create vignettes by reducing the number of stochastic modeling iterations by orders of magnitude without reducing the examples provided for user-facing functions.</li>
+<li>Checking (–as-cran –run-donttest) Duration: 2m 21.8s on my system.</li>
+<li>The files with the Rd-tag of missing do not take arguments.</li>
+<li>Corrected private referencing (:::) for exported functions.</li>
+<li>Exported all functions used in examples to remove private referencing (:::).</li>
+<li>Removed all single quotes on names, abbreviations, initialisms, and, acronyms.</li>
+<li>The phrase Electronic Health Records (EHR) is the name of a module within LabKey, which this software can use as a source of pedigree information so the capitalization is appropriate.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
     <div id="nprcgenekeepr-10-20200415" class="section level1">
 <h1 class="page-header" data-toc-text="1.0">
 <a href="#nprcgenekeepr-10-20200415" class="anchor"></a>nprcgenekeepr 1.0 (20200415)</h1>
@@ -249,7 +272,7 @@
 <li>Minor changes
 <ul>
 <li>Completed examples in function documentation</li>
-<li>Corrected spelling of several word throughout found with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_package.html">spelling::spell_check_package(".")</a></code>.</li>
+<li>Corrected spelling of several word throughout found with <code>spelling::spell_check_package(".")</code>.</li>
 </ul>
 </li>
 </ul>
@@ -789,7 +812,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

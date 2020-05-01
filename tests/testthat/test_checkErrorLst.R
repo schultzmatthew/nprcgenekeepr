@@ -5,7 +5,7 @@ library(testthat)
 library(lubridate)
 test_that("checkErrorLst sees errors when reported", {
   errorLst <- qcStudbook(nprcgenekeepr::pedGood, reportErrors = TRUE)
-  expect_false(nprcgenekeepr:::checkErrorLst(errorLst))
+  expect_false(checkErrorLst(errorLst))
 })
 test_that("checkErrorLst does not see errors when notreported", {
   set_seed(10)
@@ -20,10 +20,10 @@ test_that("checkErrorLst does not see errors when notreported", {
                               2000)),
     stringsAsFactors = FALSE, check.names = FALSE)
   errorLst <- qcStudbook(pedOne, reportErrors = TRUE)
-  expect_true(nprcgenekeepr:::checkErrorLst(errorLst))
+  expect_true(checkErrorLst(errorLst))
   errorLst <- qcStudbook(nprcgenekeepr::pedFemaleSireMaleDam,
                          reportErrors = TRUE)
-  expect_true(nprcgenekeepr:::checkErrorLst(errorLst))
+  expect_true(checkErrorLst(errorLst))
 })
 ## Most of this is tested via testing of functions that call this.
 test_that("checkErrorLst returns FALSE is given NULL", {

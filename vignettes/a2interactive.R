@@ -144,7 +144,7 @@ ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
                     addBackParents = FALSE)
 
 ## ----full-geneticValue--------------------------------------------------------
-geneticValue <- reportGV(ped, guIter = 500,
+geneticValue <- reportGV(ped, guIter = 50,
                          guThresh = 3,
                          byID = TRUE,
                          updateProgress = NULL)
@@ -153,7 +153,7 @@ summary(geneticValue)
 
 ## ----trimmed-genetic-value-analysis-------------------------------------------
 
-trimmedGeneticValue <- reportGV(trimmedPed, guIter = 500,
+trimmedGeneticValue <- reportGV(trimmedPed, guIter = 50,
                          guThresh = 3,
                          byID = TRUE,
                          updateProgress = NULL)
@@ -220,7 +220,7 @@ table(trimmedPed$sex[trimmedPed$id %in% candidates])
 haremGrp <- groupAddAssign(candidates = candidates,
                      kmat = trimmedGeneticValue[["kinship"]],
                      ped = trimmedPed,
-                     iter = 100,
+                     iter = 10,
                      numGp = 6,
                      harem = TRUE)
 haremGrp$group
@@ -240,7 +240,7 @@ for (line in lines) print(line)
 sexRatioGrp <- groupAddAssign(candidates = candidates,
                      kmat = trimmedGeneticValue[["kinship"]],
                      ped = trimmedPed,
-                     iter = 1000,
+                     iter = 10,
                      numGp = 6,
                      sexRatio = 9)
 sexRatioGrp$group

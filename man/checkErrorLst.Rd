@@ -21,7 +21,7 @@ checkErrorLst examines list for non-empty fields
 \donttest{
 errorLst <- qcStudbook(nprcgenekeepr::pedFemaleSireMaleDam,
                        reportErrors = TRUE)
-nprcgenekeepr:::checkErrorLst(errorLst)
+checkErrorLst(errorLst)
 }
 
 }

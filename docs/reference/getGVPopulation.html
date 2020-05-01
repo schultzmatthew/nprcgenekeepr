@@ -99,7 +99,7 @@ that information is incorporated via the ped$population column." />
       <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of **nprcgenekeepr**</a>
+      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
@@ -162,6 +162,10 @@ interest. The default is NULL.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A logical vector corresponding to the IDs in the vector of
+animal IDs provided to the function in <code>pop</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -176,7 +180,7 @@ interest. The default is NULL.</p></td>
 <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 <span class='no'>ped</span>[<span class='st'>"gen"</span>] <span class='kw'>&lt;-</span> <span class='fu'><a href='findGeneration.html'>findGeneration</a></span>(<span class='no'>ped</span>$<span class='no'>id</span>, <span class='no'>ped</span>$<span class='no'>sire</span>, <span class='no'>ped</span>$<span class='no'>dam</span>)
-<span class='no'>ped</span>$<span class='no'>population</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>:::</span><span class='fu'>getGVPopulation</span>(<span class='no'>ped</span>, <span class='kw'>NULL</span>)
+<span class='no'>ped</span>$<span class='no'>population</span> <span class='kw'>&lt;-</span> <span class='fu'>getGVPopulation</span>(<span class='no'>ped</span>, <span class='kw'>NULL</span>)
 <span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -193,7 +197,7 @@ interest. The default is NULL.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

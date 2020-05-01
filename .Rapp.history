@@ -1,3 +1,29 @@
+plot(jitter(target, 0.4), b)
+target <- jitter(rep(1:10, 10), 0.4)
+pred_1 <- runif(100)
+pred_2 <- ifelse(target > 4, target * exp(pred_1), target - pred_1)
+plot(target, pred_1)
+my_df <- data.frame(target = target, pred_1 = pred_1, pred_2 = pred_2)
+model_1 <- glm(target ~ pred_1, my_df)
+?glm
+model_1 <- glm(target ~ pred_1, "gaussian", data = my_df)
+model_2 <- glm(target ~ pred_2, "gaussian", data = my_df)
+model_3 <- glm(target ~ pred_1 + pred_2, data = my_df)
+model_4 <- glm(target ~ pred_1 * pred_2, data = my_df)
+summary(model_1); summary(model_2); summary(model_3); summary(model_4)
+history()
+?history
+model_1 <- glm(target ~ pred_1, my_df)
+library(nprcmanager)#
+## You can use a file browser#
+pedigreeFile <- file.choose()#
+## or you will have to change this to point to a pedigree file that you have#
+#pedigreeFile <- "/Users/msharp/Documents/Development/R/r_workspace/library/nprcmanager/inst/extdata/baboon_breeders_qc_ped.csv"#
+breederPedCsv <- read.table(pedigreeFile, sep = “,", header = TRUE)#
+breederPed <- qcStudbook(breederPedCsv, minParentAge = 0)
+pedigreeFile <- file.choose()
+pedigreeFile
+breederPedCsv <- read.table(pedigreeFile, sep = “,", header = TRUE)
 breederPedCsv <- read.table(pedigreeFile, sep = ",", header = TRUE)
 breederPed <- qcStudbook(breederPedCsv, minParentAge)
 library(nprcmanager)
@@ -244,62 +270,44 @@ library(pkgdown)
 library(nprcmanager)
 makeExamplePedigreeFile(fileType = "txt")
 library(devtools)
-install.packages("CASdatasets", repos = "http://cas.uqam.ca/pub/R/")
-rhub::check(platform= "debian-gcc-devel")
-rhub::check(platform= "debian-gcc-devel")
-cran_prep <- check_for_cran()
-library(rhub)
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-cran_prep$cran_summary()
-debug(cran_prep$cran_summary)
-cran_prep$cran_summary()
-debug(check_cran_summary)
-debug(cran_prep$check_cran_summary)
-cran_prep$cran_summary()
-debug(check_cran_summary)
-debug(check_cran_summary)
-debug(cran_prep$check_cran_summary)
-debug(check_cran_summary)
-debug(cran_prep$cran_summary)
-cran_prep$cran_summary()
-debug(check_cran_summary)
-str(lapply(x, rectangle_status))
-Q
-undebug(cran_prep$cran_summary)
-cran_prep$cran_summary()
-undebug(check_cran_summary)
-Q
-undebug(check_cran_summary)
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-cran_prep$cran_summary()
-cran_prep$cran_summary()
-debug(cran_prep$cran_summary)
-debug(cran_prep$cran_summary)
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-debug(cran_prep$cran_summary)
-cran_prep$cran_summary()
-debug(check_cran_summary)
-cran_prep$cran_summary()
-str(lapply(x, rectangle_status))
-Q
-?setNames
-remotes::install_github("r-hub/rhub")
-cran_prep <- check_for_cran()
-cran_prep <- check_for_cran()
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-Q
-undebug(check_cran_summary)
-undebug(rhub::check_cran_summary)
-undebug(rhub:::check_cran_summary)
-cran_prep$cran_summary()
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-cran_prep$cran_summary()
-cran_prep <- check_for_cran()
-cran_prep$cran_summary()
-cran_prep$cran_summary()
-cran_prep <- check_for_cran()
+?save
+data("exampleNprcgenekeeprConfig")#
+View(exampleNprcgenekeeprConfig)
+library(nprcgenekeepr)
+data("exampleNprcgenekeeprConfig")#
+View(exampleNprcgenekeeprConfig)
+?colors
+colors()
+?color
+??color
+colours()
+?colours
+demo("colors")
+?pkgdown::build_site
+library(nprcgenekeepr)
+nprcgenekeepr:::checkedChangedColList
+nprcgenekeepr:::checkChangedColList
+nprcgenekeepr:::checkChangedColsList
+nprcgenekeepr:::checkChangedColsLst
+devtools::install_github("rmsharp/nprcmanager")
+devtools::install_github("rmsharp/nprcgenekeepr")
+devtools::install_github("rmsharp/snprcgenekeepr")
+devtools::install_github("rmsharp/snprcspf")
+16 * 2.25 / 27
+1.75 / 27
+1.75 * 16 / 27
+flour_cups <- 16 * 2.25 /27
+wheat_bran_T <- 1.75 * 16 / 27
+wheat_germ_T <- 1.25 * 16 / 27
+nonfat_dry_milk <- 4 * 16 / 27
+nonfat_dry_milk_T <- 4 * 16 / 27
+nonfat_dry_milk <- NULL
+salt_t <- 2.67 * 3 / 27
+sugar_T <- 3 * 16 / 27
+baking_powder_T <- 16 / 27
+canola_oil_c <- 3.5 / 27
+a= c(1..25,.25,1.251.75)
+a= c(1.25,.25,1.251.75)
+a= c(1.25,.25,1.25,1.75)
+sum(a)
+getwd()

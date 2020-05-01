@@ -1,0 +1,1156 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/t1zi4.fd) [1{/usr/loc
+al/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [2]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [3]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [5]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [9]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.1989pt too wide) in paragraph at lines 594--598
+\T1/zi4/m/n/10 alleles$counter \T1/ptm/m/n/10 that is the counter used to track
+ the lists of\T1/zi4/m/n/10 alleles$alleles\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [13]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [14]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [15]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [16] [17]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [18] [19]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.18839pt too wide) in paragraph at lines 1139--1141
+[]\T1/ptm/m/n/10 list with fields for each type of changed col-umn and er-ror d
+e-tectable by \T1/zi4/m/n/10 qcStudbook\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [20]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [22]
+Overfull \hbox (1.99725pt too wide) in paragraph at lines 1308--1311
+[]\T1/ptm/m/n/10 A dataframe con-tain-ing rows for each an-i-mal where one or m
+ore par-ent was less than \T1/zi4/m/n/10 minParentAge\T1/ptm/m/n/10 .
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [25]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [27]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 2063--2067
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[35] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [36]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.7479pt too wide) in paragraph at lines 2257--2262
+\T1/ptm/m/n/10 dard-ized sta-tus codes with the pos-si-ble val-ues ALIVE, DE-CE
+ASED, SHIPPED, or UN-KNOWN 
+[38] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [41]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [42]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 2558--2561
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [43]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [49]
+Overfull \hbox (69.53712pt too wide) in paragraph at lines 2992--2995
+\T1/ptm/m/n/10 Jean W Mac-Cluer, John L Van-de-berg, and Oliver A Ry-der (1986)
+ <doi:10.1002/zoo.1430050209>
+[50] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [51]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [52]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [53]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [54]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1472) in paragraph at lines 3284--3284
+[]\T1/ptm/m/it/10 Returns a char-ac-ter vec-tor with an file name hav-ing the d
+ate
+
+Overfull \hbox (37.96628pt too wide) in paragraph at lines 3303--3305
+[]\T1/ptm/m/n/10 A charc-ter string with a file name prepended with the date an
+d time in YYYY-MM-DD_hh_mm_ss_basename
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [55]
+Overfull \hbox (2.67813pt too wide) in paragraph at lines 3346--3348
+[]\T1/ptm/m/n/10 A list with the pedi-gree, \T1/zi4/m/n/10 sb\T1/ptm/m/n/10 , a
+nd the \T1/zi4/m/n/10 errorLst \T1/ptm/m/n/10 with in-valid date rows (\T1/zi4/
+m/n/10 errorLst$invalidDateRows\T1/ptm/m/n/10 ) 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [56]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [58]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.37723pt too wide) in paragraph at lines 3607--3612
+[]\T1/ptm/m/n/10 A data.frame with the columns \T1/zi4/m/n/10 id\T1/ptm/m/n/10 
+, \T1/zi4/m/n/10 first\T1/ptm/m/n/10 , and \T1/zi4/m/n/10 second \T1/ptm/m/n/10
+ ex-tracted from a pedi-gree ob-ject (a data.frame)
+[60] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [68]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [70]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [71]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [72]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [73]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [76]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [77]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [78]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [79] [80]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.54822pt too wide) in paragraph at lines 4894--4896
+[]\T1/ptm/m/n/10 @return A list with mem-bers \T1/zi4/m/n/10 savedGroupMembers\
+T1/ptm/m/n/10 , \T1/zi4/m/n/10 savedScore\T1/ptm/m/n/10 , and if \T1/zi4/m/n/10
+ withKin == TRUE groupKin
+[81] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [82]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [83]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [84]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [85]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [86]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [87]
+Overfull \hbox (17.74019pt too wide) in paragraph at lines 5305--5306
+[]\T1/ptm/m/n/10 Main web-site [][]$\T1/zi4/m/n/10 http : / / www . mayo . edu 
+/ research / faculty / therneau-[]terry-[]m-[]ph-[]d / bio-[]00025991$[][] 
+
+Overfull \hbox (5.89558pt too wide) in paragraph at lines 5307--5311
+[]\T1/ptm/m/n/10 S-Plus/R Func-tion Page \T1/ptm/m/it/10 www.mayo.edu/research/
+departments-divisions/department-health-sciences-
+
+Overfull \hbox (6.81522pt too wide) in paragraph at lines 5307--5311
+\T1/ptm/m/it/10 research/division-biomedical-statistics-informatics/software/ \
+T1/ptm/m/n/10 @de-scrip-tion s-plus-r-functions Down-
+[88] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 3302) in paragraph at lines 5381--5381
+[]\T1/ptm/m/it/10 lacy1989PedAlleles is a dataframe pro-duced by \T1/zi4/m/n/10
+ geneDrop \T1/ptm/m/it/10 on
+[89] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [90]
+Overfull \hbox (26.65799pt too wide) in paragraph at lines 5488--5490
+[]\T1/ptm/m/n/10 Else if one is the grand-par-ent of the other --- Des-ig-nate 
+the re-la-tion-ship as \T1/zi4/m/n/10 grandparent-grandchild 
+[91] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [92]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [93]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [94]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [95]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [96] [97]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.66858pt too wide) in paragraph at lines 5951--5953
+[]\T1/ptm/m/n/10 integer vec-tor that is used to cre-ate min and max ar-gu-ment
+s to \T1/zi4/m/n/10 runif \T1/ptm/m/n/10 (\T1/zi4/m/n/10 runif(n,min
+[98] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [99]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [100]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 6136--6139
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+[101] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [102]
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6213--6218
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6234--6239
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6255--6260
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[103] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6276--6281
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6297--6302
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[104] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1590) in paragraph at lines 6341--6341
+[]\T1/ptm/m/it/10 pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5
+
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6345--6350
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[105] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [106]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [107]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [108]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [109]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [110]
+Overfull \hbox (11.32756pt too wide) in paragraph at lines 6652--6655
+[]\T1/ptm/m/n/10 vasxOvx --- Char-ac-ter or \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 (o
+p-tional) In-di-ca-tor of the va-sec-tomy/ovariectomy
+[111] [112] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [113]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [114]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [115]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [116]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [117]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [118]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [119] [120]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [121]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [122]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 10000) in paragraph at lines 7366--7366
+[]\T1/ptm/m/it/10 Allows run-ning \T1/zi4/m/n/10 shiny \T1/ptm/m/it/10 ap-pli-c
+a-tion with
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [123]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 7436--7440
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[124] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [125]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [126]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [127] [128]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [129]
+Overfull \hbox (5.35933pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe when one par-ent i
+s known. The func-tion \T1/zi4/m/n/10 addBackSecondParents
+
+Overfull \hbox (6.2378pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 uses the \T1/zi4/m/n/10 ped \T1/ptm/m/n/10 dataframe, which has 
+full com-ple-ment of par-ents and the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe
+,
+[130] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [131]
+No file Rd2.ind.
+[132] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2017/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2017/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (132 pages, 341433 bytes).
+Transcript written on Rd2.log.
+Parsing: Rd2.idx
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/t1zi4.fd) [1{/usr/loc
+al/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2] [3] [4]) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [5]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [9]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [13]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.1989pt too wide) in paragraph at lines 594--598
+\T1/zi4/m/n/10 alleles$counter \T1/ptm/m/n/10 that is the counter used to track
+ the lists of\T1/zi4/m/n/10 alleles$alleles\T1/ptm/m/n/10 . 
+[14] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [15]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [19] [20]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [21] [22]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.18839pt too wide) in paragraph at lines 1139--1141
+[]\T1/ptm/m/n/10 list with fields for each type of changed col-umn and er-ror d
+e-tectable by \T1/zi4/m/n/10 qcStudbook\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [25]
+Overfull \hbox (1.99725pt too wide) in paragraph at lines 1308--1311
+[]\T1/ptm/m/n/10 A dataframe con-tain-ing rows for each an-i-mal where one or m
+ore par-ent was less than \T1/zi4/m/n/10 minParentAge\T1/ptm/m/n/10 .
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [27]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [36]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 2063--2067
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[38] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.7479pt too wide) in paragraph at lines 2257--2262
+\T1/ptm/m/n/10 dard-ized sta-tus codes with the pos-si-ble val-ues ALIVE, DE-CE
+ASED, SHIPPED, or UN-KNOWN 
+[41] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [42]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [43]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 2558--2561
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [49]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [50]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [51]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [52]
+Overfull \hbox (69.53712pt too wide) in paragraph at lines 2992--2995
+\T1/ptm/m/n/10 Jean W Mac-Cluer, John L Van-de-berg, and Oliver A Ry-der (1986)
+ <doi:10.1002/zoo.1430050209>
+[53] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [54]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [55]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [56]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1472) in paragraph at lines 3284--3284
+[]\T1/ptm/m/it/10 Returns a char-ac-ter vec-tor with an file name hav-ing the d
+ate
+
+Overfull \hbox (37.96628pt too wide) in paragraph at lines 3303--3305
+[]\T1/ptm/m/n/10 A charc-ter string with a file name prepended with the date an
+d time in YYYY-MM-DD_hh_mm_ss_basename
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [58]
+Overfull \hbox (2.67813pt too wide) in paragraph at lines 3346--3348
+[]\T1/ptm/m/n/10 A list with the pedi-gree, \T1/zi4/m/n/10 sb\T1/ptm/m/n/10 , a
+nd the \T1/zi4/m/n/10 errorLst \T1/ptm/m/n/10 with in-valid date rows (\T1/zi4/
+m/n/10 errorLst$invalidDateRows\T1/ptm/m/n/10 ) 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [60]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.37723pt too wide) in paragraph at lines 3607--3612
+[]\T1/ptm/m/n/10 A data.frame with the columns \T1/zi4/m/n/10 id\T1/ptm/m/n/10 
+, \T1/zi4/m/n/10 first\T1/ptm/m/n/10 , and \T1/zi4/m/n/10 second \T1/ptm/m/n/10
+ ex-tracted from a pedi-gree ob-ject (a data.frame)
+[63] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [68]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [70]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [71]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [72]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [73]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [76]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [77]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [78]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [79]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [80]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [81]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [82] [83]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.54822pt too wide) in paragraph at lines 4894--4896
+[]\T1/ptm/m/n/10 @return A list with mem-bers \T1/zi4/m/n/10 savedGroupMembers\
+T1/ptm/m/n/10 , \T1/zi4/m/n/10 savedScore\T1/ptm/m/n/10 , and if \T1/zi4/m/n/10
+ withKin == TRUE groupKin
+[84] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [85]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [86]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [87]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [88]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [89]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [90]
+Overfull \hbox (17.74019pt too wide) in paragraph at lines 5305--5306
+[]\T1/ptm/m/n/10 Main web-site [][]$\T1/zi4/m/n/10 http : / / www . mayo . edu 
+/ research / faculty / therneau-[]terry-[]m-[]ph-[]d / bio-[]00025991$[][] 
+
+Overfull \hbox (5.89558pt too wide) in paragraph at lines 5307--5311
+[]\T1/ptm/m/n/10 S-Plus/R Func-tion Page \T1/ptm/m/it/10 www.mayo.edu/research/
+departments-divisions/department-health-sciences-
+
+Overfull \hbox (6.81522pt too wide) in paragraph at lines 5307--5311
+\T1/ptm/m/it/10 research/division-biomedical-statistics-informatics/software/ \
+T1/ptm/m/n/10 @de-scrip-tion s-plus-r-functions Down-
+[91] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 3302) in paragraph at lines 5381--5381
+[]\T1/ptm/m/it/10 lacy1989PedAlleles is a dataframe pro-duced by \T1/zi4/m/n/10
+ geneDrop \T1/ptm/m/it/10 on
+[92] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (26.65799pt too wide) in paragraph at lines 5488--5490
+[]\T1/ptm/m/n/10 Else if one is the grand-par-ent of the other --- Des-ig-nate 
+the re-la-tion-ship as \T1/zi4/m/n/10 grandparent-grandchild 
+[94] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [95]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [96]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [97]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [98]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [99] [100]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.66858pt too wide) in paragraph at lines 5951--5953
+[]\T1/ptm/m/n/10 integer vec-tor that is used to cre-ate min and max ar-gu-ment
+s to \T1/zi4/m/n/10 runif \T1/ptm/m/n/10 (\T1/zi4/m/n/10 runif(n,min
+[101] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [102]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [103]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 6136--6139
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+[104] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [105]
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6213--6218
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6234--6239
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6255--6260
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[106] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6276--6281
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6297--6302
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[107] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1590) in paragraph at lines 6341--6341
+[]\T1/ptm/m/it/10 pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5
+
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6345--6350
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[108] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [109]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [110]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [111]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [112]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [113]
+Overfull \hbox (11.32756pt too wide) in paragraph at lines 6652--6655
+[]\T1/ptm/m/n/10 vasxOvx --- Char-ac-ter or \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 (o
+p-tional) In-di-ca-tor of the va-sec-tomy/ovariectomy
+[114] [115] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [116]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [117]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [118]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [119]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [120]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [121]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [122] [123]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [124]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [125]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 10000) in paragraph at lines 7366--7366
+[]\T1/ptm/m/it/10 Allows run-ning \T1/zi4/m/n/10 shiny \T1/ptm/m/it/10 ap-pli-c
+a-tion with
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [126]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 7436--7440
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[127] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [128]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [129]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [130] [131]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [132]
+Overfull \hbox (5.35933pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe when one par-ent i
+s known. The func-tion \T1/zi4/m/n/10 addBackSecondParents
+
+Overfull \hbox (6.2378pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 uses the \T1/zi4/m/n/10 ped \T1/ptm/m/n/10 dataframe, which has 
+full com-ple-ment of par-ents and the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe
+,
+[133] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [134]
+No file Rd2.ind.
+[135] (./Rd2.aux) )
+(see the transcript file for additional information){/usr/local/texlive/2017/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2017/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (135 pages, 361000 bytes).
+Transcript written on Rd2.log.
+Parsing: Rd2.idx
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/t1zi4.fd) [1{/usr/loc
+al/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2] [3] [4]) (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [5]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [9]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [13]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.1989pt too wide) in paragraph at lines 594--598
+\T1/zi4/m/n/10 alleles$counter \T1/ptm/m/n/10 that is the counter used to track
+ the lists of\T1/zi4/m/n/10 alleles$alleles\T1/ptm/m/n/10 . 
+[14] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [15]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [19] [20]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [21] [22]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.18839pt too wide) in paragraph at lines 1139--1141
+[]\T1/ptm/m/n/10 list with fields for each type of changed col-umn and er-ror d
+e-tectable by \T1/zi4/m/n/10 qcStudbook\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [25]
+Overfull \hbox (1.99725pt too wide) in paragraph at lines 1308--1311
+[]\T1/ptm/m/n/10 A dataframe con-tain-ing rows for each an-i-mal where one or m
+ore par-ent was less than \T1/zi4/m/n/10 minParentAge\T1/ptm/m/n/10 .
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [27]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [36]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 2063--2067
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[38] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.7479pt too wide) in paragraph at lines 2257--2262
+\T1/ptm/m/n/10 dard-ized sta-tus codes with the pos-si-ble val-ues ALIVE, DE-CE
+ASED, SHIPPED, or UN-KNOWN 
+[41] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [42]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [43]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 2558--2561
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [49]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [50]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [51]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [52]
+Overfull \hbox (69.53712pt too wide) in paragraph at lines 2992--2995
+\T1/ptm/m/n/10 Jean W Mac-Cluer, John L Van-de-berg, and Oliver A Ry-der (1986)
+ <doi:10.1002/zoo.1430050209>
+[53] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [54]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [55]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [56]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1472) in paragraph at lines 3284--3284
+[]\T1/ptm/m/it/10 Returns a char-ac-ter vec-tor with an file name hav-ing the d
+ate
+
+Overfull \hbox (37.96628pt too wide) in paragraph at lines 3303--3305
+[]\T1/ptm/m/n/10 A charc-ter string with a file name prepended with the date an
+d time in YYYY-MM-DD_hh_mm_ss_basename
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [58]
+Overfull \hbox (2.67813pt too wide) in paragraph at lines 3346--3348
+[]\T1/ptm/m/n/10 A list with the pedi-gree, \T1/zi4/m/n/10 sb\T1/ptm/m/n/10 , a
+nd the \T1/zi4/m/n/10 errorLst \T1/ptm/m/n/10 with in-valid date rows (\T1/zi4/
+m/n/10 errorLst$invalidDateRows\T1/ptm/m/n/10 ) 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [60]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.37723pt too wide) in paragraph at lines 3607--3612
+[]\T1/ptm/m/n/10 A data.frame with the columns \T1/zi4/m/n/10 id\T1/ptm/m/n/10 
+, \T1/zi4/m/n/10 first\T1/ptm/m/n/10 , and \T1/zi4/m/n/10 second \T1/ptm/m/n/10
+ ex-tracted from a pedi-gree ob-ject (a data.frame)
+[63] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [68]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [70]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [71]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [72]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [73]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [76]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [77]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [78]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [79]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [80]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [81]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [82] [83]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.54822pt too wide) in paragraph at lines 4894--4896
+[]\T1/ptm/m/n/10 @return A list with mem-bers \T1/zi4/m/n/10 savedGroupMembers\
+T1/ptm/m/n/10 , \T1/zi4/m/n/10 savedScore\T1/ptm/m/n/10 , and if \T1/zi4/m/n/10
+ withKin == TRUE groupKin
+[84] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [85]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [86]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [87]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [88]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [89]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [90]
+Overfull \hbox (17.74019pt too wide) in paragraph at lines 5305--5306
+[]\T1/ptm/m/n/10 Main web-site [][]$\T1/zi4/m/n/10 http : / / www . mayo . edu 
+/ research / faculty / therneau-[]terry-[]m-[]ph-[]d / bio-[]00025991$[][] 
+
+Overfull \hbox (5.89558pt too wide) in paragraph at lines 5307--5311
+[]\T1/ptm/m/n/10 S-Plus/R Func-tion Page \T1/ptm/m/it/10 www.mayo.edu/research/
+departments-divisions/department-health-sciences-
+
+Overfull \hbox (6.81522pt too wide) in paragraph at lines 5307--5311
+\T1/ptm/m/it/10 research/division-biomedical-statistics-informatics/software/ \
+T1/ptm/m/n/10 @de-scrip-tion s-plus-r-functions Down-
+[91] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 3302) in paragraph at lines 5381--5381
+[]\T1/ptm/m/it/10 lacy1989PedAlleles is a dataframe pro-duced by \T1/zi4/m/n/10
+ geneDrop \T1/ptm/m/it/10 on
+[92] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (26.65799pt too wide) in paragraph at lines 5488--5490
+[]\T1/ptm/m/n/10 Else if one is the grand-par-ent of the other --- Des-ig-nate 
+the re-la-tion-ship as \T1/zi4/m/n/10 grandparent-grandchild 
+[94] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [95]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [96]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [97]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [98]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [99] [100]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.66858pt too wide) in paragraph at lines 5951--5953
+[]\T1/ptm/m/n/10 integer vec-tor that is used to cre-ate min and max ar-gu-ment
+s to \T1/zi4/m/n/10 runif \T1/ptm/m/n/10 (\T1/zi4/m/n/10 runif(n,min
+[101] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [102]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [103]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.41942pt too wide) in paragraph at lines 6136--6139
+[]\T1/ptm/m/n/10 a dataframe with re-quired col-names \T1/zi4/m/n/10 id\T1/ptm/
+m/n/10 , \T1/zi4/m/n/10 gu\T1/ptm/m/n/10 , \T1/zi4/m/n/10 zScores\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 import\T1/ptm/m/n/10 , \T1/zi4/m/n/10 totalOffspring\T1/ptm/m
+/n/10 ,
+[104] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [105]
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6213--6218
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6234--6239
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6255--6260
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[106] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6276--6281
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6297--6302
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[107] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 1590) in paragraph at lines 6341--6341
+[]\T1/ptm/m/it/10 pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5
+
+Overfull \hbox (6.10992pt too wide) in paragraph at lines 6345--6350
+[]\T1/ptm/m/n/10 It is one of six pedi-grees (\T1/zi4/m/n/10 pedDuplicateIds\T1
+/ptm/m/n/10 , \T1/zi4/m/n/10 pedFemaleSireMaleDam\T1/ptm/m/n/10 , \T1/zi4/m/n/1
+0 pedgood\T1/ptm/m/n/10 , \T1/zi4/m/n/10 pedInvalidDates\T1/ptm/m/n/10 ,
+[108] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [109]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [110]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [111]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [112]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [113]
+Overfull \hbox (11.32756pt too wide) in paragraph at lines 6652--6655
+[]\T1/ptm/m/n/10 vasxOvx --- Char-ac-ter or \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 (o
+p-tional) In-di-ca-tor of the va-sec-tomy/ovariectomy
+[114] [115] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [116]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [117]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [118]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [119]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [120]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [121]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [122] [123]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [124]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [125]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Underfull \hbox (badness 10000) in paragraph at lines 7366--7366
+[]\T1/ptm/m/it/10 Allows run-ning \T1/zi4/m/n/10 shiny \T1/ptm/m/it/10 ap-pli-c
+a-tion with
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [126]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.7476pt too wide) in paragraph at lines 7436--7440
+[]\T1/ptm/m/n/10 dataframe of pedi-gree and de-mo-graphic in-for-ma-tion po-ten
+-tially con-tain-ing columns
+[127] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [128]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [129]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [130] [131]
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [132]
+Overfull \hbox (5.35933pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe when one par-ent i
+s known. The func-tion \T1/zi4/m/n/10 addBackSecondParents
+
+Overfull \hbox (6.2378pt too wide) in paragraph at lines 7789--7796
+\T1/ptm/m/n/10 uses the \T1/zi4/m/n/10 ped \T1/ptm/m/n/10 dataframe, which has 
+full com-ple-ment of par-ents and the \T1/zi4/m/n/10 p \T1/ptm/m/n/10 dataframe
+,
+[133] (/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def) [134]
+No file Rd2.ind.
+[135] (./Rd2.aux) )
+(see the transcript file for additional information){/usr/local/texlive/2017/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2017/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (135 pages, 361143 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘nprcgenekeepr-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpQXqVXk/Rd2pdf2a26779e0e17'

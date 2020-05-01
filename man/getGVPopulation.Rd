@@ -12,6 +12,10 @@ getGVPopulation(ped, pop)
 \item{pop}{character vector with animal IDs to consider as the population of
 interest. The default is NULL.}
 }
+\value{
+A logical vector corresponding to the IDs in the vector of
+animal IDs provided to the function in \code{pop}.
+}
 \description{
 If user has limited the population of interest by defining \code{pop},
 that information is incorporated via the \code{ped$population} column.
@@ -29,6 +33,6 @@ dam = c(NA, NA, "B", "B", NA, "E", "E"),
 stringsAsFactors = FALSE
 )
 ped["gen"] <- findGeneration(ped$id, ped$sire, ped$dam)
-ped$population <- nprcgenekeepr:::getGVPopulation(ped, NULL)
+ped$population <- getGVPopulation(ped, NULL)
 }
 }

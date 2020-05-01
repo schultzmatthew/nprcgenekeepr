@@ -13,7 +13,7 @@ addAnimalsWithNoRelative(kin, candidates)
 use in the group.}
 }
 \value{
-dataframe with kinships in long form after adding a row for each
+A dataframe with kinships in long form after adding a row for each
 animal without a relative.
 }
 \description{
@@ -40,7 +40,7 @@ kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
 # Filtering out candidates related to current group members
 conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
 candidates <- setdiff(candidates, conflicts)
-kin <- nprcgenekeepr:::addAnimalsWithNoRelative(kin, candidates)
+kin <- addAnimalsWithNoRelative(kin, candidates)
 length(kin) # should be 2416
 kin[["1SPLS8"]] # should have 14 IDs
 }

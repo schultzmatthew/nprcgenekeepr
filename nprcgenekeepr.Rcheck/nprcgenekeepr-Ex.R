@@ -1,0 +1,2486 @@
+pkgname <- "nprcgenekeepr"
+source(file.path(R.home("share"), "R", "examples-header.R"))
+options(warn = 1)
+base::assign(".ExTimings", "nprcgenekeepr-Ex.timings", pos = 'CheckExEnv')
+base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+base::assign(".format_ptime",
+function(x) {
+  if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
+  if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
+  options(OutDec = '.')
+  format(x[1L:3L], digits = 7L)
+},
+pos = 'CheckExEnv')
+
+### * </HEADER>
+library('nprcgenekeepr')
+
+base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+cleanEx()
+nameEx("addAnimalsWithNoRelative")
+### * addAnimalsWithNoRelative
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addAnimalsWithNoRelative
+### Title: Adds an NA value for all animals without a relative
+### Aliases: addAnimalsWithNoRelative
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addAnimalsWithNoRelative", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addBackSecondParents")
+### * addBackSecondParents
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addBackSecondParents
+### Title: Add back single parents trimmed pedigree
+### Aliases: addBackSecondParents
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addBackSecondParents", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addGenotype")
+### * addGenotype
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addGenotype
+### Title: Add genotype data to pedigree file
+### Aliases: addGenotype
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addGenotype", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addIdRecords")
+### * addIdRecords
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addIdRecords
+### Title: addIdRecords Adds Ego records added having NAs for parent IDs
+### Aliases: addIdRecords
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addIdRecords", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addParents")
+### * addParents
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addParents
+### Title: Add parents
+### Aliases: addParents
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addParents", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addSexAndAgeToGroup")
+### * addSexAndAgeToGroup
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addSexAndAgeToGroup
+### Title: Forms a dataframe with Id, Sex, and current Age given a list of
+###   Ids and a pedigree
+### Aliases: addSexAndAgeToGroup
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addSexAndAgeToGroup", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("addUIds")
+### * addUIds
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: addUIds
+### Title: Eliminates partial parentage situations by adding unique
+###   placeholder IDs for the unknown parent.
+### Aliases: addUIds
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("addUIds", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("alleleFreq")
+### * alleleFreq
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: alleleFreq
+### Title: Calculates the count of each allele in the provided vector.
+### Aliases: alleleFreq
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("alleleFreq", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("assignAlleles")
+### * assignAlleles
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: assignAlleles
+### Title: Assign parent alleles randomly
+### Aliases: assignAlleles
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("assignAlleles", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcA")
+### * calcA
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcA
+### Title: Calculates 'a', the number of an individual's alleles that are
+###   rare in each simulation.
+### Aliases: calcA
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcA", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcAge")
+### * calcAge
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcAge
+### Title: Calculate animal ages.
+### Aliases: calcAge
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcAge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcFE")
+### * calcFE
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcFE
+### Title: Calculates founder Equivalents
+### Aliases: calcFE
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcFE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcFEFG")
+### * calcFEFG
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcFEFG
+### Title: Calculates Founder Equivalents and Founder Genome Equivalents
+### Aliases: calcFEFG
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcFEFG", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcFG")
+### * calcFG
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcFG
+### Title: Calculates Founder Genome Equivalents
+### Aliases: calcFG
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcFG", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcGU")
+### * calcGU
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcGU
+### Title: Calculates genome uniqueness for each ID that is part of the
+###   population.
+### Aliases: calcGU
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcGU", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calcRetention")
+### * calcRetention
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calcRetention
+### Title: Calculates Allelic Retention
+### Aliases: calcRetention
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calcRetention", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("calculateSexRatio")
+### * calculateSexRatio
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: calculateSexRatio
+### Title: Calculates the sex ratio (number of non-males / number of males)
+###   given animal Ids and their pedigree
+### Aliases: calculateSexRatio
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("calculateSexRatio", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("checkChangedColsLst")
+### * checkChangedColsLst
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: checkChangedColsLst
+### Title: checkChangedColsLst examines list for non-empty fields
+### Aliases: checkChangedColsLst
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("checkChangedColsLst", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("checkErrorLst")
+### * checkErrorLst
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: checkErrorLst
+### Title: checkErrorLst examines list for non-empty fields
+### Aliases: checkErrorLst
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("checkErrorLst", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("checkGenotypeFile")
+### * checkGenotypeFile
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: checkGenotypeFile
+### Title: Check genotype file
+### Aliases: checkGenotypeFile
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("checkGenotypeFile", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("checkParentAge")
+### * checkParentAge
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: checkParentAge
+### Title: Check parent ages to be at least 'minParentAge'
+### Aliases: checkParentAge
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("checkParentAge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("checkRequiredCols")
+### * checkRequiredCols
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: checkRequiredCols
+### Title: Examines column names, 'cols' for required column names
+### Aliases: checkRequiredCols
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("checkRequiredCols", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("chooseAlleles")
+### * chooseAlleles
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: chooseAlleles
+### Title: Combines two vectors of alleles by randomly selecting one allele
+###   or the other at each position.
+### Aliases: chooseAlleles
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("chooseAlleles", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("chooseDate")
+### * chooseDate
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: chooseDate
+### Title: Choose date based on 'earlier' flag.
+### Aliases: chooseDate
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("chooseDate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("convertAncestry")
+### * convertAncestry
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: convertAncestry
+### Title: Converts the ancestry information to a standardized code
+### Aliases: convertAncestry
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("convertAncestry", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("convertDate")
+### * convertDate
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: convertDate
+### Title: Converts date columns formatted as characters to be of type
+###   datetime
+### Aliases: convertDate
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("convertDate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("convertRelationships")
+### * convertRelationships
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: convertRelationships
+### Title: Converts pairwise kinship values to a relationship category
+###   descriptor.
+### Aliases: convertRelationships
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("convertRelationships", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("convertSexCodes")
+### * convertSexCodes
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: convertSexCodes
+### Title: Converts sex indicator for an individual to a standardized
+###   codes.
+### Aliases: convertSexCodes
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("convertSexCodes", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("convertStatusCodes")
+### * convertStatusCodes
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: convertStatusCodes
+### Title: Converts status indicators to a Standardized code
+### Aliases: convertStatusCodes
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("convertStatusCodes", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("correctParentSex")
+### * correctParentSex
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: correctParentSex
+### Title: Sets sex for animals listed as either a sire or dam.
+### Aliases: correctParentSex
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("correctParentSex", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("countFirstOrder")
+### * countFirstOrder
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: countFirstOrder
+### Title: Count first-order relatives.
+### Aliases: countFirstOrder
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("countFirstOrder", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("countLoops")
+### * countLoops
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: countLoops
+### Title: Count the number of loops in a pedigree tree.
+### Aliases: countLoops
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
+##D exampleLoops <- findLoops(exampleTree)
+##D ## You can count how many animals are in loops with the following code.
+##D length(exampleLoops[exampleLoops == TRUE])
+##D ## You can count how many loops you have with the following code.
+##D nLoops <- countLoops(exampleLoops, exampleTree)
+##D sum(unlist(nLoops[nLoops > 0]))
+##D ## You can list the first 10 sets of ids, sires and dams in loops with
+##D ## the following line of code:
+##D examplePedigree[exampleLoops == TRUE, c("id", "sire", "dam")][1:10, ]
+## End(Not run)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("countLoops", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("createExampleFiles")
+### * createExampleFiles
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: createExampleFiles
+### Title: Creates a folder with CSV files containing example pedigrees and
+###   ID lists used to demonstrate the package.
+### Aliases: createExampleFiles
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("createExampleFiles", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("createPedTree")
+### * createPedTree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: createPedTree
+### Title: Create a pedigree tree (PedTree).
+### Aliases: createPedTree
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
+##D exampleLoops <- findLoops(exampleTree)
+## End(Not run)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("createPedTree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("create_wkbk")
+### * create_wkbk
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: create_wkbk
+### Title: Creates an Excel workbook with worksheets.
+### Aliases: create_wkbk
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D 
+##D make_df_list <- function(size) {
+##D   df_list <- list(size)
+##D   if (size <= 0)
+##D     return(df_list)
+##D   for (i in 1:size) {
+##D     n <- sample(2:10, 2, replace = TRUE)
+##D     df <- data.frame(matrix(data = rnorm(n[1] * n[2]), ncol = n[1]))
+##D     df_list[[i]] <- df
+##D   }
+##D   names(df_list) <- paste0("A", 1:size)
+##D   df_list
+##D }
+##D df_list <- make_df_list(3)
+##D sheetnames <- names(df_list)
+##D create_wkbk(file = file.choose(), df_list = df_list,
+##D             sheetnames = sheetnames, replace = FALSE)
+## End(Not run)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("create_wkbk", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("dataframe2string")
+### * dataframe2string
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: dataframe2string
+### Title: dataframe2string converts a data.frame object to a character
+###   vector
+### Aliases: dataframe2string
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("dataframe2string", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("exampleNprcgenekeeprConfig")
+### * exampleNprcgenekeeprConfig
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: exampleNprcgenekeeprConfig
+### Title: exampleNprcgenekeeprConfig is a loadable version of the example
+###   configuration file 'example_nprcgenekeepr_config'
+### Aliases: exampleNprcgenekeeprConfig
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("exampleNprcgenekeeprConfig")
+##D View(exampleNprcgenekeeprConfig)
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("exampleNprcgenekeeprConfig", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("examplePedigree")
+### * examplePedigree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: examplePedigree
+### Title: examplePedigree is a pedigree object created by 'qcStudbook'
+### Aliases: examplePedigree
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("examplePedigree")
+##D exampleTree <- createPedTree(examplePedigree)
+##D exampleLoops <- findLoops(exampleTree)
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("examplePedigree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("filterKinMatrix")
+### * filterKinMatrix
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: filterKinMatrix
+### Title: Filters a kinship matrix to include only the egos listed in
+###   'ids'
+### Aliases: filterKinMatrix
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("filterKinMatrix", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("filterPairs")
+### * filterPairs
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: filterPairs
+### Title: Filters kinship values from a long-format kinship table based on
+###   the sexes of the two animals involved.
+### Aliases: filterPairs
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("filterPairs", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("filterReport")
+### * filterReport
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: filterReport
+### Title: Filters a genetic value report down to only the specified
+###   animals
+### Aliases: filterReport
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("filterReport", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("filterThreshold")
+### * filterThreshold
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: filterThreshold
+### Title: Filters kinship to remove rows with kinship values less than the
+###   specified threshold
+### Aliases: filterThreshold
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("filterThreshold", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("finalRpt")
+### * finalRpt
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: finalRpt
+### Title: finalRpt is a list object created from the list object _rpt_
+###   prepared by 'reportGV'. It is created inside 'orderReport'. This
+###   version is at the state just prior to calling 'rankSubjects' inside
+###   'orderReport'.
+### Aliases: finalRpt
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("finalRpt")
+##D finalRpt <- rankSubjects(finalRpt)
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("finalRpt", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("findGeneration")
+### * findGeneration
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: findGeneration
+### Title: Determines the generation number for each id.
+### Aliases: findGeneration
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("findGeneration", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("findLoops")
+### * findLoops
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: findLoops
+### Title: Find loops in a pedigree tree
+### Aliases: findLoops
+
+### ** Examples
+
+## Not run: 
+##D data("examplePedigree")
+##D exampleTree <- createPedTree(examplePedigree)
+##D exampleLoops <- findLoops(exampleTree)
+## End(Not run)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("findLoops", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("findOffspring")
+### * findOffspring
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: findOffspring
+### Title: Finds the number of total offspring for each animal in the
+###   provided pedigree.
+### Aliases: findOffspring
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("findOffspring", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("findPedigreeNumber")
+### * findPedigreeNumber
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: findPedigreeNumber
+### Title: Determines the generation number for each id.
+### Aliases: findPedigreeNumber
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("findPedigreeNumber", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("fixColumnNames")
+### * fixColumnNames
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: fixColumnNames
+### Title: fixColumnNames changes original column names and into
+###   standardized names.
+### Aliases: fixColumnNames
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("fixColumnNames", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("focalAnimals")
+### * focalAnimals
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: focalAnimals
+### Title: focalAnimals is a dataframe with one column (_id_) containing
+###   the of animal Ids from the __examplePedigree__ pedigree.
+### Aliases: focalAnimals
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("focalAnimals")
+##D data("examplePedigree")
+##D any(names(examplePedigree) == "population")
+##D nrow(examplePedigree)
+##D examplePedigree <- setPopulation(ped = examplePedigree,
+##D                                  ids = focalAnimals$id)
+##D any(names(examplePedigree) == "population")
+##D nrow(examplePedigree)
+##D nrow(examplePedigree[examplePedigree$population, ])
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("focalAnimals", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("geneDrop")
+### * geneDrop
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: geneDrop
+### Title: Gene drop simulation based on the provided pedigree information
+### Aliases: geneDrop
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("geneDrop", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getAncestors")
+### * getAncestors
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getAncestors
+### Title: Recursively create a character vector of ancestors for an
+###   individual ID.
+### Aliases: getAncestors
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getAncestors", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getAnimalsWithHighKinship")
+### * getAnimalsWithHighKinship
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getAnimalsWithHighKinship
+### Title: Forms a list of animal Ids and animals related to them
+### Aliases: getAnimalsWithHighKinship
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getAnimalsWithHighKinship", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getConfigFileName")
+### * getConfigFileName
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getConfigFileName
+### Title: getConfigFileName returns the configuration file name
+###   appropriate for the system.
+### Aliases: getConfigFileName
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getConfigFileName", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getCurrentAge")
+### * getCurrentAge
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getCurrentAge
+### Title: Age in years using the provided birthdate.
+### Aliases: getCurrentAge
+
+### ** Examples
+
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getCurrentAge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getDateErrorsAndConvertDatesInPed")
+### * getDateErrorsAndConvertDatesInPed
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getDateErrorsAndConvertDatesInPed
+### Title: Converts columns of dates in text form to 'Date' object columns
+### Aliases: getDateErrorsAndConvertDatesInPed
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getDateErrorsAndConvertDatesInPed", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getDatedFilename")
+### * getDatedFilename
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getDatedFilename
+### Title: Returns a character vector with an file name having the date
+###   prepended.
+### Aliases: getDatedFilename
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getDatedFilename", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getDemographics")
+### * getDemographics
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getDemographics
+### Title: Get demographic data
+### Aliases: getDemographics
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getDemographics", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getEmptyErrorLst")
+### * getEmptyErrorLst
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getEmptyErrorLst
+### Title: Creates a empty errorLst object
+### Aliases: getEmptyErrorLst
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getEmptyErrorLst", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getFocalAnimalPed")
+### * getFocalAnimalPed
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getFocalAnimalPed
+### Title: Get pedigree based on list of focal animals
+### Aliases: getFocalAnimalPed
+
+### ** Examples
+
+library(nprcgenekeepr)
+siteInfo <- getSiteInfo()
+source <- " generated by getFocalAnimalPed: "
+tryCatch(getFocalAnimalPed(fileName = "breeding file.csv"),
+                           warning = function(wCond) {
+                             cat(paste0("Warning", source, wCond),
+                                        name = "nprcgenekeepr")
+                             return(NULL)},
+                           error = function(eCond) {
+                             cat(paste0("Error", source, eCond),
+                                        name = "nprcgenekeepr")
+                             return(NULL)}
+)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getFocalAnimalPed", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getGVGenotype")
+### * getGVGenotype
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getGVGenotype
+### Title: Get Genetic Value Genotype data structure for reportGV function.
+### Aliases: getGVGenotype
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getGVGenotype", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getGVPopulation")
+### * getGVPopulation
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getGVPopulation
+### Title: Get the population of interest for the Genetic Value analysis.
+### Aliases: getGVPopulation
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getGVPopulation", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getGenotypes")
+### * getGenotypes
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getGenotypes
+### Title: Get genotypes from file
+### Aliases: getGenotypes
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getGenotypes", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getIdsWithOneParent")
+### * getIdsWithOneParent
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getIdsWithOneParent
+### Title: getIdsWithOneParent extracts IDs of animals pedigree without
+###   either a sire or a dam
+### Aliases: getIdsWithOneParent
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getIdsWithOneParent", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getIncludeColumns")
+### * getIncludeColumns
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getIncludeColumns
+### Title: Get the superset of columns that can be in a pedigree file.
+### Aliases: getIncludeColumns
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getIncludeColumns", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getLkDirectAncestors")
+### * getLkDirectAncestors
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getLkDirectAncestors
+### Title: Get the direct ancestors of selected animals
+### Aliases: getLkDirectAncestors
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getLkDirectAncestors", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getLkDirectRelatives")
+### * getLkDirectRelatives
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getLkDirectRelatives
+### Title: Get the direct ancestors of selected animals
+### Aliases: getLkDirectRelatives
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getLkDirectRelatives", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getLogo")
+### * getLogo
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getLogo
+### Title: Get Logo file name
+### Aliases: getLogo
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getLogo", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getOffspring")
+### * getOffspring
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getOffspring
+### Title: Get offspring to corresponding animal IDs provided
+### Aliases: getOffspring
+
+### ** Examples
+
+library(nprcgenekeepr)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getOffspring", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getParents")
+### * getParents
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getParents
+### Title: Get parents to corresponding animal IDs provided
+### Aliases: getParents
+
+### ** Examples
+
+library(nprcgenekeepr)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getParents", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPedMaxAge")
+### * getPedMaxAge
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPedMaxAge
+### Title: Get the maximum age of live animals in the pedigree.
+### Aliases: getPedMaxAge
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPedMaxAge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPedigree")
+### * getPedigree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPedigree
+### Title: Get pedigree from file
+### Aliases: getPedigree
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPedigree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPossibleCols")
+### * getPossibleCols
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPossibleCols
+### Title: Get possible column names for a studbook.
+### Aliases: getPossibleCols
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPossibleCols", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPotentialSires")
+### * getPotentialSires
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPotentialSires
+### Title: Provides list of potential sires
+### Aliases: getPotentialSires
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPotentialSires", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getProbandPedigree")
+### * getProbandPedigree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getProbandPedigree
+### Title: Gets pedigree to ancestors of provided group leaving
+###   uninformative ancestors.
+### Aliases: getProbandPedigree
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getProbandPedigree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPyramidAgeDist")
+### * getPyramidAgeDist
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPyramidAgeDist
+### Title: Get the age distribution for the pedigree
+### Aliases: getPyramidAgeDist
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPyramidAgeDist", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getPyramidPlot")
+### * getPyramidPlot
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getPyramidPlot
+### Title: Creates a pyramid plot of the pedigree provided.
+### Aliases: getPyramidPlot
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getPyramidPlot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getRequiredCols")
+### * getRequiredCols
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getRequiredCols
+### Title: Get required column names for a studbook.
+### Aliases: getRequiredCols
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getRequiredCols", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getSiteInfo")
+### * getSiteInfo
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getSiteInfo
+### Title: Get site information
+### Aliases: getSiteInfo
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getSiteInfo", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getTokenList")
+### * getTokenList
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getTokenList
+### Title: Gets tokens from character vector of lines
+### Aliases: getTokenList
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getTokenList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("getVersion")
+### * getVersion
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: getVersion
+### Title: getVersion Get the version number of nprcgenekeepr
+### Aliases: getVersion
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("getVersion", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("get_and_or_list")
+### * get_and_or_list
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: get_and_or_list
+### Title: Returns a one element character string with correct punctuation
+###   for a list made up of the elements of the character vector argument.
+### Aliases: get_and_or_list
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("get_and_or_list", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("get_elapsed_time_str")
+### * get_elapsed_time_str
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: get_elapsed_time_str
+### Title: Returns the elapsed time since start_time.
+### Aliases: get_elapsed_time_str
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("get_elapsed_time_str", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("groupAddAssign")
+### * groupAddAssign
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: groupAddAssign
+### Title: Add animals to an existing breeding group or forms groups:
+### Aliases: groupAddAssign
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("groupAddAssign", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("hasBothParents")
+### * hasBothParents
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: hasBothParents
+### Title: hasBothParents checks to see if both parents are identified.
+### Aliases: hasBothParents
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("hasBothParents", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("hasGenotype")
+### * hasGenotype
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: hasGenotype
+### Title: Check for genotype data in dataframe
+### Aliases: hasGenotype
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("hasGenotype", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("headerDisplayNames")
+### * headerDisplayNames
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: headerDisplayNames
+### Title: Convert internal column names to display or header names.
+### Aliases: headerDisplayNames
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("headerDisplayNames", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("is_valid_date_str")
+### * is_valid_date_str
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: is_valid_date_str
+### Title: Returns TRUE if the string is a valid date.
+### Aliases: is_valid_date_str
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("is_valid_date_str", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("kinMatrix2LongForm")
+### * kinMatrix2LongForm
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: kinMatrix2LongForm
+### Title: Reformats a kinship matrix into a long-format table.
+### Aliases: kinMatrix2LongForm
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("kinMatrix2LongForm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("kinship")
+### * kinship
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: kinship
+### Title: Generates a kinship matrix.
+### Aliases: kinship
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("kinship", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("makeCEPH")
+### * makeCEPH
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: makeCEPH
+### Title: Make a CEPH-style pedigree for each id
+### Aliases: makeCEPH
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("makeCEPH", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("makeExamplePedigreeFile")
+### * makeExamplePedigreeFile
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: makeExamplePedigreeFile
+### Title: Write copy of nprcgenekeepr::examplePedigree into a file
+### Aliases: makeExamplePedigreeFile
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D pedigreeFile <- makeExamplePedigreeFile()
+## End(Not run)
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("makeExamplePedigreeFile", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("makeRelationClassesTable")
+### * makeRelationClassesTable
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: makeRelationClassesTable
+### Title: Make relation classes table from 'kin' dataframe.
+### Aliases: makeRelationClassesTable
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("makeRelationClassesTable", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("mapIdsToObfuscated")
+### * mapIdsToObfuscated
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: mapIdsToObfuscated
+### Title: Map IDs to Obfuscated IDs
+### Aliases: mapIdsToObfuscated
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("mapIdsToObfuscated", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("meanKinship")
+### * meanKinship
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: meanKinship
+### Title: Calculates the mean kinship for each animal in a kinship matrix
+### Aliases: meanKinship
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("meanKinship", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("obfuscateDate")
+### * obfuscateDate
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: obfuscateDate
+### Title: obfucateDate adds a random number of days bounded by plus and
+###   minus max delta
+### Aliases: obfuscateDate
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("obfuscateDate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("obfuscateId")
+### * obfuscateId
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: obfuscateId
+### Title: obfucateId creates a vector of ID aliases of specified length
+### Aliases: obfuscateId
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("obfuscateId", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("obfuscatePed")
+### * obfuscatePed
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: obfuscatePed
+### Title: obfuscatePed takes a pedigree object and creates aliases for all
+###   IDs and adjusts all date within a specified amount.
+### Aliases: obfuscatePed
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("obfuscatePed", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("offspringCounts")
+### * offspringCounts
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: offspringCounts
+### Title: Finds the total number of offspring for each animal in the
+###   pedigree
+### Aliases: offspringCounts
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("offspringCounts", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("pedOne")
+### * pedOne
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: pedOne
+### Title: pedOne is a loadable version of a pedigree file fragment used
+###   for testing and demonstration
+### Aliases: pedOne
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("pedOne")
+##D View(pedOne)
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("pedOne", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("pedSix")
+### * pedSix
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: pedSix
+### Title: pedSix is a loadable version of a pedigree file fragment used
+###   for testing and demonstration
+### Aliases: pedSix
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D data("pedSix")
+##D View(pedSix)
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("pedSix", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("pedWithGenotypeReport")
+### * pedWithGenotypeReport
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: pedWithGenotypeReport
+### Title: pedWithGenotypeReport is a list containing the output of
+###   'reportGV'.
+### Aliases: pedWithGenotypeReport
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D pedWithGenotypeReport <- nprcgenekeepr::pedWithGenotypeReport
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("pedWithGenotypeReport", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("print")
+### * print
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: print.summary.nprcgenekeeprErr
+### Title: print.summary.nprcgenekeepr print.summary.nprcgenekeeprGV
+### Aliases: print.summary.nprcgenekeeprErr print.summary.nprcgenekeeprGV
+
+### ** Examples
+
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("print", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("qcPedGvReport")
+### * qcPedGvReport
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: qcPedGvReport
+### Title: qcPedGvReport is a genetic value report
+### Aliases: qcPedGvReport
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D qcPedGvReport <- nprcgenekeepr::qcPedGvReport
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("qcPedGvReport", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("qcStudbook")
+### * qcStudbook
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: qcStudbook
+### Title: Quality Control for the Studbook or pedigree
+### Aliases: qcStudbook
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("qcStudbook", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("rankSubjects")
+### * rankSubjects
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: rankSubjects
+### Title: Ranks animals based on genetic value.
+### Aliases: rankSubjects
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("rankSubjects", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("removeDuplicates")
+### * removeDuplicates
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: removeDuplicates
+### Title: Remove duplicate records from pedigree
+### Aliases: removeDuplicates
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("removeDuplicates", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("removeEarlyDates")
+### * removeEarlyDates
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: removeEarlyDates
+### Title: removeEarlyDates removes dates before a specified year
+### Aliases: removeEarlyDates
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("removeEarlyDates", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("removePotentialSires")
+### * removePotentialSires
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: removePotentialSires
+### Title: Removes potential sires from list of Ids
+### Aliases: removePotentialSires
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("removePotentialSires", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("removeUninformativeFounders")
+### * removeUninformativeFounders
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: removeUninformativeFounders
+### Title: Remove uninformative founders.
+### Aliases: removeUninformativeFounders
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("removeUninformativeFounders", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("removeUnknownAnimals")
+### * removeUnknownAnimals
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: removeUnknownAnimals
+### Title: removeUnknownAnimals Removes unknown animals added to pedigree
+###   that serve as placeholders for unknown parents.
+### Aliases: removeUnknownAnimals
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("removeUnknownAnimals", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("reportGV")
+### * reportGV
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: reportGV
+### Title: Generates a genetic value report for a provided pedigree.
+### Aliases: reportGV
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("reportGV", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("rhesusGenotypes")
+### * rhesusGenotypes
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: rhesusGenotypes
+### Title: rhesusGenotypes is a dataframe with two haplotypes per animal
+### Aliases: rhesusGenotypes
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D data("rhesusGenotypes")
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("rhesusGenotypes", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("rhesusPedigree")
+### * rhesusPedigree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: rhesusPedigree
+### Title: rhesusPedigree is a pedigree object
+### Aliases: rhesusPedigree
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D data("rhesusPedigree")
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("rhesusPedigree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("runGeneKeepR")
+### * runGeneKeepR
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: runGeneKeepR
+### Title: Allows running 'shiny' application with
+###   'nprcgenekeepr::runGeneKeepR()'
+### Aliases: runGeneKeepR
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D runGeneKeepR()
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("runGeneKeepR", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("setExit")
+### * setExit
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: setExit
+### Title: Sets the exit date, if there is no exit column in the table
+### Aliases: setExit
+
+### ** Examples
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("setExit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("setPopulation")
+### * setPopulation
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: setPopulation
+### Title: Population designation function
+### Aliases: setPopulation
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("setPopulation", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("set_seed")
+### * set_seed
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: set_seed
+### Title: Work around for unit tests using sample() among various versions
+###   of R
+### Aliases: set_seed
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("set_seed", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("smallPedTree")
+### * smallPedTree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: smallPedTree
+### Title: smallPedTree is a pedigree tree made from 'smallPed'
+### Aliases: smallPedTree
+### Keywords: datasets
+
+### ** Examples
+
+## Not run: 
+##D library(nprcgenekeepr)
+##D data("smallPedTree")
+## End(Not run)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("smallPedTree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("summary")
+### * summary
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: summary.nprcgenekeeprErr
+### Title: summary.nprcgenekeeprErr Summary function for class
+###   nprcgenekeeprErr
+### Aliases: summary.nprcgenekeeprErr summary.nprcgenekeeprGV
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("summary", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("toCharacter")
+### * toCharacter
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: toCharacter
+### Title: Force dataframe columns to character
+### Aliases: toCharacter
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("toCharacter", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("trimPedigree")
+### * trimPedigree
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: trimPedigree
+### Title: Trim pedigree to ancestors of provided group by removing
+###   uninformative individuals
+### Aliases: trimPedigree
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("trimPedigree", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("withinIntegerRange")
+### * withinIntegerRange
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: withinIntegerRange
+### Title: Get integer within a range
+### Aliases: withinIntegerRange
+
+### ** Examples
+
+
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("withinIntegerRange", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+### * <FOOTER>
+###
+cleanEx()
+options(digits = 7L)
+base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+grDevices::dev.off()
+###
+### Local variables: ***
+### mode: outline-minor ***
+### outline-regexp: "\\(> \\)?### [*]+" ***
+### End: ***
+quit('no')

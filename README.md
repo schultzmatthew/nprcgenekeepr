@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-04/15/2020
+05/03/2020
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -9,7 +9,8 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build
 Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://travis-ci.org/rmsharp/nprcgenekeepr)
-[![codecov](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcgenekeepr)
+[![Codecov test
+coverage](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.svg)](https://codecov.io/gh/rmsharp/nprcgenekeepr?branch=master)
 <!--[![](https://www.r-pkg.org/badges/version/nprcgenekeepr)](https://cran.r-project.org/package=nprcgenekeepr)
 
 <!--[![Rdoc](http://www.rdocumentation.org/badges/version/RDocumentation)](http://www.rdocumentation.org/packages/RDocumentation)
@@ -17,7 +18,7 @@ Status](https://travis-ci.org/rmsharp/nprcgenekeepr.svg?branch=master)](https://
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 1.0 (20200413)
+# nprcgenekeepr – Version 1.0.1 (20200503)
 
 ## Introduction
 

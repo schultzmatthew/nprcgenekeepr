@@ -1,7 +1,34 @@
 NEWS
 ================
 R. Mark Sharp
-04/14/2020
+05/03/2020
+
+# nprcgenekeepr 1.0.1 (20200503)
+
+  - Major changes – none
+  - Minor changes
+      - CRAN resubmission: responded to all requests provided by
+        reviewer
+          - Reduced the time required for unit test from over 12 minutes
+            to 21.6 seconds by skipping those test dependent on
+            schochastic creation of simulated pedigrees and breeding
+            groups when not running on my system.
+          - Reduced the time to run examples and create vignettes by
+            reducing the number of stochastic modeling iterations by
+            orders of magnitude without reducing the examples provided
+            for user-facing functions.
+          - Checking (–as-cran –run-donttest) Duration: 2m 21.8s on my
+            system.
+          - The files with the Rd-tag of missing do not take arguments.
+          - Corrected private referencing (:::) for exported functions.
+          - Exported all functions used in examples to remove private
+            referencing (:::).
+          - Removed all single quotes on names, abbreviations,
+            initialisms, and, acronyms.
+          - The phrase Electronic Health Records (EHR) is the name of a
+            module within LabKey, which this software can use as a
+            source of pedigree information so the capitalization is
+            appropriate.
 
 # nprcgenekeepr 1.0 (20200415)
 
