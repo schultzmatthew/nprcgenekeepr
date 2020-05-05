@@ -60,7 +60,7 @@ dataframe2string <- function(object, ..., digits = NULL, row.names = TRUE) {
     ##  t is needed because "If each call to FUN returns a vector
     ##  of length n, then apply returns an array of dimension
     ##  c(n, dim(X)[MARGIN])"
-    m <- t(apply(m, 1, stringi::stri_pad_both, width = maxLen))
+    m <- t(apply(m, 1, stri_pad_both, width = maxLen))
     # merge columns
     m <- apply(m, 1, paste, collapse = "")
     # merge rows (and return)

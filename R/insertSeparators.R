@@ -9,7 +9,7 @@
 #' @return A character vector of potential dates in \%Y-\%m-\%d format.
 #'
 #' @param dates character vector of potential dates
-#' @importFrom stringi stri_detect_regex
+#' @importFrom stringi stri_detect_regex stri_sub stri_c
 insertSeparators <- function(dates) {
   if (!any(stri_detect_regex(dates[!is.na(dates)], pattern = "[-/]"))) {
     if (all(suppressWarnings(as.integer(dates[!is.na(dates)]) &

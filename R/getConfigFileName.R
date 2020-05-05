@@ -12,6 +12,7 @@
 #' sysInfo <- Sys.info()
 #' config <- getConfigFileName(sysInfo)
 #' }
+#' @importFrom stringi stri_detect_fixed
 #' @export
 getConfigFileName <- function(sysInfo) {
   if (stri_detect_fixed(toupper(sysInfo[["sysname"]]), "WIND")) {

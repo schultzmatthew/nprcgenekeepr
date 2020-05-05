@@ -6,6 +6,7 @@
 #' @param savePed logical value if TRUE the pedigree is saved into the
 #' packages \code{data} directory
 #' @importFrom lubridate mdy
+#' @importFrom stringi stri_c
 createPedSix <- function(savePed = TRUE) {
   set_seed(10)
   someBirthDates <- ymd(paste0(sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000, "-",

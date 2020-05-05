@@ -7,7 +7,7 @@
 #' @param errorLst list of errors and changes made by \code{qcStudbook}
 #' @param pedigreeFileName name of file provided by user on Input tab
 #' @importFrom htmlTable htmlTable
-#' @importFrom stringi stri_c
+#' @importFrom stringi stri_c stri_trim_both
 #' @importFrom stringi stri_split_regex
 insertErrorTab <- function(errorLst, pedigreeFileName) {
   text <- summary(errorLst)

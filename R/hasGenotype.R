@@ -22,7 +22,7 @@
 #' hasGenotype(pedWithGenotypes)
 #' }
 #' @param genotype dataframe with genotype data
-#' @import stringi
+#' @importFrom stringi stri_detect_fixed
 #' @export
 hasGenotype <- function(genotype) {
   cols <- names(genotype)

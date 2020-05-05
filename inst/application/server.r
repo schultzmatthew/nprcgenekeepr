@@ -1,6 +1,7 @@
 `%then%` <- shiny:::`%OR%`
 library(futile.logger)
 library(ggplot2)
+library(stringi)
 library(DT)
 shinyServer(function(input, output, session) {
   errorLst <- getEmptyErrorLst()

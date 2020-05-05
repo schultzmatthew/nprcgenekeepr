@@ -13,7 +13,7 @@
 #' @param ignore_na if TRUE NA values are trimmed out of \code{strings} and
 #' \code{patterns} before comparison
 #' @param ... further arguments for stri_detect_fixed
-#' @import stringi
+#' @importFrom stringi stri_detect_fixed
 str_detect_fixed_all <- function(strings, patterns, ignore_na = FALSE, ...) {
   if (ignore_na) {
     strings <- strings[!is.na(strings)]

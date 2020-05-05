@@ -18,6 +18,7 @@
 #'
 #' @param ids character vector with Ids.
 #' @import futile.logger
+#' @importFrom stringi stri_c
 #' @export
 getLkDirectAncestors <- function(ids) {
   siteInfo <- getSiteInfo()

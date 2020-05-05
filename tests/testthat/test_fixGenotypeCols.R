@@ -2,7 +2,7 @@
 #' This file is part of nprcgenekeepr
 context("fixGenotypeCols")
 library(testthat)
-
+library(stringi)
 test_that("fixGenotypeCols correct column names correctly", {
   genotype <- data.frame(id = stri_c(2500 + 1:20),
                          first_name = stri_c("A", 10000L + 1L:20L),

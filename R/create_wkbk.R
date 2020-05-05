@@ -33,6 +33,7 @@
 #' @param sheetnames character vector of worksheet names
 #' @param replace Specifies if the file should be replaced if it
 #' already exist (default is FALSE).
+#' @importFrom stringi stri_c
 #' @importFrom WriteXLS WriteXLS
 #' @export
 create_wkbk <- function(file, df_list, sheetnames, replace = FALSE) {

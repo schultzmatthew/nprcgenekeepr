@@ -3,6 +3,7 @@
 context("getPyramidAgeDist")
 library(testthat)
 library(lubridate)
+library(stringi)
 
 qcPed <- nprcgenekeepr::qcPed
 ped <- qcPed[ , c("id", "sire", "dam", "sex", "birth", "exit")]

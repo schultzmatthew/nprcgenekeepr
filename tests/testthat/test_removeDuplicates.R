@@ -2,6 +2,7 @@
 # This file is part of nprcgenekeepr
 context("removeDuplicates")
 library(testthat)
+library(stringi)
 ped <- nprcgenekeepr::smallPed
 newPed <- cbind(ped, recordStatus = rep("original", nrow(ped)))
 

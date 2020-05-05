@@ -16,7 +16,7 @@
 #' @method summary nprcgenekeeprErr
 #' @param object object of class nprcgenekeeprErr and class list
 #' @param ... additional arguments for the \code{summary.default} statement
-#' @importFrom stringi stri_c
+#' @importFrom stringi stri_c stri_length
 ## ##  rmsutilityr get_and_or_list
 #' @export
 summary.nprcgenekeeprErr <- function(object, ...) {

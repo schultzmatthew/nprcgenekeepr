@@ -30,7 +30,7 @@
 #' }
 #'
 #' @param genotype dataframe with genotype data
-#' @import stringi
+#' @importFrom stringi stri_c stri_detect_fixed stri_detect_regex
 #' @export
 checkGenotypeFile <- function(genotype) {
   cols <- names(genotype)

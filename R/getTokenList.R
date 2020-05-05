@@ -25,7 +25,8 @@
 #' }
 #'
 #' @param lines character vector with text from configuration file
-#' @import stringi
+#' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
+#' @importFrom stringi stri_trim_both stri_split_regex
 #' @export
 getTokenList <- function(lines) {
   tokens <- character(0)

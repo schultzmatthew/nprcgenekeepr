@@ -11,6 +11,7 @@
 #' @param origin character vector of the animal origins. This vector
 #' is to have already been filtered to remove animals that should not be
 #' included in the calculation.
+#' @importFrom stringi stri_startswith_fixed stri_detect_fixed
 getIndianOriginStatus <- function(origin) {
   chinese <- length(origin[stri_detect_fixed(origin, "CHINESE")])
   indian <- length(origin[stri_detect_fixed(origin, "INDIAN")])

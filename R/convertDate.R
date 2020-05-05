@@ -67,7 +67,7 @@
 #' @param reportErrors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
-#' @importFrom stringi stri_trim_both
+#' @importFrom stringi stri_trim_both stri_c
 #' @export
 convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
                         reportErrors = FALSE) {

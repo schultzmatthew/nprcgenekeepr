@@ -9,7 +9,7 @@
 #' @param errorLst list of errors and changes made by \code{qcStudbook}
 #' @param pedigreeFileName name of file provided by user on Input tab
 #' @importFrom stringi stri_c
-#' @importFrom stringi stri_split_regex
+#' @importFrom stringi stri_split_regex stri_trim_both
 insertChangedColsTab <- function(errorLst, pedigreeFileName) {
   text <- summary(errorLst)
   lines <- stri_split_regex(text$txt, pattern = "\n")[[1]]

@@ -20,7 +20,7 @@ This is a resubmission. In this version I have:
      so the capitalization is appropriate.
   -  The words suspected of being misspelled (EHR, Roboin, and kinships) are
      an initialism of a module in LabKey, a proper name, and a genetic term.
-     
+
 ## Test environments
 * local OS X install, R 3.6.3
 * ubuntu 14.04 (on travis-ci), R 3.6.3
