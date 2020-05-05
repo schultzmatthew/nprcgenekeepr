@@ -107,7 +107,7 @@ of iterations." />
       <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of **nprcgenekeepr**</a>
+      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
@@ -300,107 +300,108 @@ that is specific for each group formed.</p>
 <span class='no'>haremGrp</span> <span class='kw'>&lt;-</span> <span class='fu'>groupAddAssign</span>(<span class='kw'>candidates</span> <span class='kw'>=</span> <span class='no'>candidates</span>,
                           <span class='kw'>kmat</span> <span class='kw'>=</span> <span class='no'>trimmedGeneticValue</span><span class='kw'>[[</span><span class='st'>"kinship"</span>]],
                           <span class='kw'>ped</span> <span class='kw'>=</span> <span class='no'>trimmedPed</span>,
-                          <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='co'># should be &gt;= 1000</span>
+                          <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='co'># should be &gt;= 1000</span>
                           <span class='kw'>numGp</span> <span class='kw'>=</span> <span class='fl'>6</span>,
                           <span class='kw'>harem</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>haremGrp</span>$<span class='no'>group</span></div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] "XX0GYV" "S7IWWA" "46ZHKN" "7ZNY75" "RJ4JPC" "0HYZ23" "MFKT9C" "1VP3UC"
-#&gt;  [9] "E5Q33K" "2Z4YLY" "G58RGY" "CHK1ZX" "LVYYNY" "GIIEUD" "VWC5ZH" "CRPXY7"
-#&gt; [17] "1CZM30" "NN3GDQ" "B134XZ" "3SKITJ" "AZ3L0D" "XYRDKV" "MX4J7G" "Q7U139"
-#&gt; [25] "W5WIRP" "W0GUKI" "1SPLS8" "TQEMY6" "N79QXB" "5IAFMK" "TEACA3" "C18V6I"
-#&gt; [33] "0IIAEN" "9P0DES" "B1WVCN" "YFCIHJ"
+#&gt;  [1] "3MMZD4" "QQMBT1" "1CIRC9" "5ERY5Z" "TQEMY6" "XFWVVX" "MH88T6" "S056D5"
+#&gt;  [9] "XEC0M5" "ZPS15A" "JLFKV8" "X694YR" "WKY2SZ" "1FAZ0K" "H2J6UA" "01QRQ4"
+#&gt; [17] "5IAFMK" "CMMUKU" "Q17CG3" "EZ2F8A" "3YJIMV" "S7IWWA" "5EDLL7" "N5QBWD"
+#&gt; [25] "FL170P" "KEA4QG" "AIHJ8Z" "7ZNY75" "Y0TCYX" "3GECJJ" "2Z4YLY" "I5CI33"
+#&gt; [33] "1SPLS8" "GAS52W" "ILVQVB"
 #&gt; 
 #&gt; [[2]]
-#&gt;  [1] "Z7NBA2" "38K2SR" "414N7M" "N4NV8B" "MB6NYQ" "S5H1GC" "Q8U9LB" "T3QPW5"
-#&gt;  [9] "7B9CA6" "AR17R5" "WK89I9" "1QVS67" "5KWNMZ" "5BPBUI" "PJ72W1" "SHG3RB"
-#&gt; [17] "WJXIH9" "J3F6PD" "MYUMMX" "HE0SCR" "AIHJ8Z" "AR5U44" "LYSLPP" "ZH3YG1"
-#&gt; [25] "7NE2UT" "S056D5" "S222R3" "DPXEQE" "BKWE4D" "EX5K0S" "5EDLL7"
+#&gt;  [1] "GDXWJ1" "LS184H" "PBAFJF" "T3QPW5" "SH3FB7" "XYRDKV" "M9PVG5" "AR17R5"
+#&gt;  [9] "B1WVCN" "FG0SFA" "PYPM1W" "7NE2UT" "0SGJ12" "F7I2ED" "NK802Y" "DRXMW4"
+#&gt; [17] "S3EBGZ" "AZ3L0D" "TEACA3" "321LLB" "F45799" "GIIEUD" "D33J06" "IH1KPA"
+#&gt; [25] "KX0RJ3" "B134XZ" "38K2SR" "WLMGS1" "414N7M" "NN3GDQ" "LYSLPP" "465ERA"
 #&gt; 
 #&gt; [[3]]
-#&gt;  [1] "7D09WH" "MH88T6" "QW2Z3R" "TXZUKC" "D4B0RM" "CLSVU6" "GTLA8R" "99BMJW"
-#&gt;  [9] "DHNQ1W" "SH3FB7" "ZATMEE" "1FAZ0K" "XEC0M5" "I5CI33" "WNEAS6" "MPIQ4N"
-#&gt; [17] "B228Q6" "1CIRC9" "TYEWF1" "DRXMW4" "1KJ2MG" "D33J06" "5EDIEE" "GAS52W"
-#&gt; [25] "EMV4P6" "ZQXZYB" "ESUIAF" "DCJJYS" "AW400C" "2F6J3U" "XFWVVX" "D9P18Y"
+#&gt;  [1] "PHB6TE" "0HYZ23" "GCBYDW" "6F9FB8" "D9P18Y" "D4B0RM" "5W621W" "Q7U139"
+#&gt;  [9] "QRZK48" "WK89I9" "72LYDE" "MYUMMX" "0IIAEN" "YTJ2UL" "87AQLF" "VWC5ZH"
+#&gt; [17] "EMV4P6" "PU7RSG" "3DTD2N" "5KWNMZ" "AW400C" "MTCAIG" "N79QXB" "MX4J7G"
+#&gt; [25] "7B9CA6" "S5H1GC" "DHNQ1W" "YLRNIK" "G58RGY" "ZATMEE" "DPXEQE" "ZH3YG1"
+#&gt; [33] "DI4AHD"
 #&gt; 
 #&gt; [[4]]
-#&gt;  [1] "BTTHAJ" "BS3RLE" "IH1KPA" "30J3CQ" "KX0RJ3" "QQMBT1" "87AQLF" "Q17CG3"
-#&gt;  [9] "6KWVRI" "PU7RSG" "5ERY5Z" "6F9FB8" "M9PVG5" "WKY2SZ" "13B1QL" "AFZKBS"
-#&gt; [17] "LS184H" "X694YR" "QCA36T" "W6MDVK" "Y0TCYX" "EZ2F8A" "0SGJ12" "FB5L3N"
-#&gt; [25] "BCJJKN" "RVHVTZ" "MKY9TK" "N5QBWD" "1GF3GM" "0XTZQ1" "SCFSBF"
+#&gt;  [1] "CFD12A" "2F6J3U" "S222R3" "30J3CQ" "HE0SCR" "KZY6PD" "1QVS67" "Z904TJ"
+#&gt;  [9] "6X6BG9" "AP1YLW" "WJXIH9" "W5WIRP" "R5AYJK" "PJ72W1" "DKIM6U" "RVHVTZ"
+#&gt; [17] "WI38KZ" "0X4W26" "6KWVRI" "CS23RV" "PVY432" "N4NV8B" "7RA57Q" "9P0DES"
+#&gt; [25] "92UG4N" "5BPBUI" "SHG3RB" "EX5K0S" "PI4VHT" "AR5U44"
 #&gt; 
 #&gt; [[5]]
-#&gt;  [1] "FTVE03" "72LYDE" "Y6DB6L" "7RA57Q" "321LLB" "967Y3D" "MTCAIG" "AP1YLW"
-#&gt;  [9] "JLFKV8" "ZPS15A" "DKIM6U" "3DTD2N" "QCENKM" "FG0SFA" "PI4VHT" "ILVQVB"
-#&gt; [17] "PVY432" "K3TNHP" "F7I2ED" "465ERA" "01QRQ4" "92UG4N" "F45799" "S3EBGZ"
-#&gt; [25] "50D77I" "WTE53B" "I8ABC7" "YTJ2UL" "83HQBN" "PYPM1W"
+#&gt;  [1] "XX0GYV" "13B1QL" "0XTZQ1" "BCJJKN" "967Y3D" "E5Q33K" "YFCIHJ" "RJ4JPC"
+#&gt;  [9] "MKY9TK" "5EDIEE" "CLSVU6" "W6MDVK" "GTLA8R" "3SKITJ" "AFZKBS" "BKWE4D"
+#&gt; [17] "9MG040" "C18V6I" "G8MCV7" "CHK1ZX" "1SSCJC" "MB6NYQ" "QW2Z3R" "QCA36T"
+#&gt; [25] "50D77I" "TYEWF1" "FJS7RQ" "LVYYNY" "CRPXY7" "QCENKM" "WTE53B" "BS3RLE"
+#&gt; [33] "ESUIAF" "MPIQ4N"
 #&gt; 
 #&gt; [[6]]
-#&gt;  [1] "ER464J" "QRZK48" "5W621W" "3GECJJ" "QWKFBH" "PBAFJF" "KZY6PD" "CS23RV"
-#&gt;  [9] "G8MCV7" "G25E3F" "DI4AHD" "1SSCJC" "DH9WJQ" "0X4W26" "KEA4QG" "8JUUJ9"
-#&gt; [17] "WLMGS1" "6X6BG9" "NK802Y" "GCBYDW" "FJS7RQ" "9MG040" "WI38KZ" "Z904TJ"
-#&gt; [25] "CMMUKU" "YLRNIK" "3YJIMV" "H2J6UA" "FL170P" "R5AYJK"
+#&gt;  [1] "RNQU14" "1KJ2MG" "8JUUJ9" "83HQBN" "G25E3F" "W0GUKI" "B228Q6" "MFKT9C"
+#&gt;  [9] "1VP3UC" "QWKFBH" "ZQXZYB" "99BMJW" "1CZM30" "FB5L3N" "J3F6PD" "Y6DB6L"
+#&gt; [17] "K3TNHP" "46ZHKN" "SCFSBF" "TXZUKC" "1GF3GM" "WNEAS6" "DH9WJQ" "Q8U9LB"
+#&gt; [25] "DCJJYS" "I8ABC7"
 #&gt; 
 #&gt; [[7]]
 #&gt; [1] NA
 #&gt; </div><div class='input'><span class='no'>sexRatioGrp</span> <span class='kw'>&lt;-</span> <span class='fu'>groupAddAssign</span>(<span class='kw'>candidates</span> <span class='kw'>=</span> <span class='no'>candidates</span>,
                              <span class='kw'>kmat</span> <span class='kw'>=</span> <span class='no'>trimmedGeneticValue</span><span class='kw'>[[</span><span class='st'>"kinship"</span>]],
                              <span class='kw'>ped</span> <span class='kw'>=</span> <span class='no'>trimmedPed</span>,
-                             <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='co'># should be &gt;= 1000</span>
+                             <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='co'># should be &gt;= 1000</span>
                              <span class='kw'>numGp</span> <span class='kw'>=</span> <span class='fl'>6</span>,
                              <span class='kw'>sexRatio</span> <span class='kw'>=</span> <span class='fl'>9</span>)
 <span class='no'>sexRatioGrp</span>$<span class='no'>group</span></div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] "50D77I" "RNQU14" "M9PVG5" "SHG3RB" "9P0DES" "3GECJJ" "38K2SR" "ILVQVB"
-#&gt;  [9] "X694YR" "D4B0RM" "RVHVTZ" "1QVS67" "FL170P" "BW10CL" "TEACA3" "G25E3F"
-#&gt; [17] "Q8U9LB" "S3EBGZ" "Y0TCYX" "465ERA" "R5AYJK" "1SPLS8" "EMV4P6" "321LLB"
-#&gt; [25] "JSAP3H"
+#&gt;  [1] "72LYDE" "P7RBPI" "8JUUJ9" "5KWNMZ" "0IIAEN" "NK802Y" "MPIQ4N" "MYUMMX"
+#&gt;  [9] "KZY6PD" "G25E3F" "6X6BG9" "1GF3GM" "5ERY5Z" "A6A1M1" "SHG3RB" "QWKFBH"
+#&gt; [17] "46ZHKN" "N79QXB" "QRZK48" "B1WVCN" "DHNQ1W" "NN3GDQ" "KEA4QG" "SCFSBF"
+#&gt; [25] "LN1DLY" "92UG4N" "1SSCJC" "MX4J7G" "PBAFJF" "T3QPW5" "MTCAIG"
 #&gt; 
 #&gt; [[2]]
-#&gt;  [1] "30J3CQ" "FG6L7S" "K3TNHP" "5KWNMZ" "01QRQ4" "WNEAS6" "G8MCV7" "7ZNY75"
-#&gt;  [9] "1KJ2MG" "0SGJ12" "B1WVCN" "0HYZ23" "ZPS15A" "ZW2X4N" "W0GUKI" "ZATMEE"
-#&gt; [17] "NN3GDQ" "LYSLPP" "MTCAIG" "CHK1ZX" "3SKITJ" "QQMBT1" "83HQBN" "AIHJ8Z"
-#&gt; [25] "LN1DLY" "J3F6PD" "8JUUJ9" "KX0RJ3"
+#&gt;  [1] "AIHJ8Z" "DGZLV3" "KX0RJ3" "WTE53B" "TEACA3" "PVY432" "S5H1GC" "Q17CG3"
+#&gt;  [9] "9P0DES" "QCENKM" "1SPLS8" "GTLA8R" "CRPXY7" "6KLWVC" "1QVS67" "MH88T6"
+#&gt; [17] "MB6NYQ" "CMMUKU" "PI4VHT" "B134XZ" "1KJ2MG" "XYRDKV" "967Y3D" "DKIM6U"
+#&gt; [25] "SXSVEH"
 #&gt; 
 #&gt; [[3]]
-#&gt;  [1] "WK89I9" "80KACX" "N4NV8B" "DI4AHD" "CMMUKU" "1FAZ0K" "1CZM30" "IH1KPA"
-#&gt;  [9] "XEC0M5" "99BMJW" "92UG4N" "Q17CG3" "414N7M" "A6A1M1" "CS23RV" "AW400C"
-#&gt; [17] "MPIQ4N" "PYPM1W" "5IAFMK" "967Y3D" "DH9WJQ" "MKY9TK" "Q7U139" "9MG040"
-#&gt; [25] "A98D7P" "FB5L3N" "JLFKV8" "DHNQ1W" "1VP3UC" "GIIEUD" "E5Q33K" "ZH3YG1"
-#&gt; [33] "W6MDVK" "C18V6I" "3MMZD4"
+#&gt;  [1] "X694YR" "7D09WH" "EZ2F8A" "DH9WJQ" "3DTD2N" "ILVQVB" "WK89I9" "S222R3"
+#&gt;  [9] "0X4W26" "GIIEUD" "38K2SR" "N5QBWD" "DRXMW4" "WQUN84" "7ZNY75" "465ERA"
+#&gt; [17] "30J3CQ" "N4NV8B" "1VP3UC" "WKY2SZ" "AP1YLW" "RVHVTZ" "G8MCV7" "ZQXZYB"
+#&gt; [25] "KZM9RB" "Z904TJ" "GAS52W"
 #&gt; 
 #&gt; [[4]]
-#&gt;  [1] "GCBYDW" "NSIC4I" "ESUIAF" "WLMGS1" "MFKT9C" "7RA57Q" "RJ4JPC" "TXZUKC"
-#&gt;  [9] "DCJJYS" "F45799" "S7IWWA" "5EDLL7" "46ZHKN" "5KFB90" "WJXIH9" "DRXMW4"
-#&gt; [17] "BCJJKN" "2Z4YLY" "CRPXY7" "CLSVU6" "MH88T6" "AFZKBS" "PVY432" "TYEWF1"
-#&gt; [25] "IZDV8K"
+#&gt;  [1] "EX5K0S" "5KFB90" "TXZUKC" "BKWE4D" "F45799" "414N7M" "AFZKBS" "F7I2ED"
+#&gt;  [9] "W5WIRP" "IH1KPA" "R5AYJK" "BS3RLE" "5W621W" "LMJWTN" "QW2Z3R" "VWC5ZH"
+#&gt; [17] "I5CI33" "Y6DB6L" "D4B0RM" "S7IWWA" "C18V6I" "6KWVRI" "0HYZ23" "DPXEQE"
+#&gt; [25] "G2GYST"
 #&gt; 
 #&gt; [[5]]
-#&gt;  [1] "7NE2UT" "FX9E4X" "B228Q6" "SH3FB7" "6KWVRI" "QWKFBH" "MX4J7G" "YTJ2UL"
-#&gt;  [9] "MB6NYQ" "AZ3L0D" "KZY6PD" "FJS7RQ" "S222R3" "9FRCIE" "KEA4QG" "6F9FB8"
-#&gt; [17] "T3QPW5" "S5H1GC" "D9P18Y" "N79QXB" "WKY2SZ" "LVYYNY" "1GF3GM" "PI4VHT"
-#&gt; [25] "KZM9RB" "WTE53B" "MYUMMX" "F7I2ED" "QRZK48" "WI38KZ" "QCENKM" "FG0SFA"
-#&gt; [33] "NK802Y" "0IIAEN" "K7900I"
+#&gt;  [1] "JLFKV8" "K7900I" "G58RGY" "01QRQ4" "W6MDVK" "7RA57Q" "2Z4YLY" "ZATMEE"
+#&gt;  [9] "HE0SCR" "YFCIHJ" "3GECJJ" "I8ABC7" "W0GUKI" "Z7NBA2" "FB5L3N" "LYSLPP"
+#&gt; [17] "3YJIMV" "S3EBGZ" "PU7RSG" "QQMBT1" "1CZM30" "EMV4P6" "B228Q6" "ZPS15A"
+#&gt; [25] "R6HV9A"
 #&gt; 
 #&gt; [[6]]
-#&gt;  [1] "1SSCJC" "CHSCFG" "AR5U44" "7B9CA6" "BKWE4D" "EZ2F8A" "HE0SCR" "Z904TJ"
-#&gt;  [9] "TQEMY6" "VWC5ZH" "87AQLF" "0X4W26" "H2J6UA" "5XVTVH" "D33J06" "B134XZ"
-#&gt; [17] "S056D5" "AR17R5" "5BPBUI" "GAS52W" "YFCIHJ" "1CIRC9" "G58RGY" "3YJIMV"
-#&gt; [25] "R6HV9A" "PJ72W1" "AP1YLW" "XFWVVX" "5EDIEE" "YLRNIK" "BS3RLE" "PU7RSG"
-#&gt; [33] "PBAFJF" "LS184H" "G2GYST"
+#&gt;  [1] "5EDIEE" "B2YJJP" "13B1QL" "7B9CA6" "E5Q33K" "S056D5" "XEC0M5" "DCJJYS"
+#&gt;  [9] "50D77I" "CLSVU6" "PYPM1W" "PJ72W1" "D9P18Y" "3P9BX6" "FL170P" "MKY9TK"
+#&gt; [17] "5EDLL7" "RJ4JPC" "6F9FB8" "0XTZQ1" "5BPBUI" "CHK1ZX" "M9PVG5" "AZ3L0D"
+#&gt; [25] "KXHGRH" "TYEWF1" "LS184H" "AR17R5" "XFWVVX" "2F6J3U" "GCBYDW" "Q8U9LB"
+#&gt; [33] "SH3FB7" "1FAZ0K" "3MMZD4"
 #&gt; 
 #&gt; [[7]]
-#&gt;  [1] "HLQ9SY" "6X6BG9" "B2CKHA" "DKIM6U" "GDXWJ1" "TR5L57" "XC304E" "Z7NBA2"
-#&gt;  [9] "1E8KD1" "5ERY5Z" "5PW7WT" "AEP5EG" "CFD12A" "CHJ9D2" "FTVE03" "IRFJ09"
-#&gt; [17] "KXHGRH" "LMJWTN" "N5QBWD" "Q9LWGX" "SCFSBF" "W5WIRP" "09LFE4" "13B1QL"
-#&gt; [25] "2F6J3U" "3DTD2N" "3QHAFI" "55BPSE" "72LYDE" "8IG767" "ER464J" "FFGPS4"
-#&gt; [33] "GTLA8R" "NHWTJ9" "P7RBPI" "TBCE78" "YI16QD" "2F1IV1" "4LHK19" "59NYZE"
-#&gt; [41] "5IYDXN" "6KLWVC" "80F2MI" "8TV4MT" "AZ4D19" "BTTHAJ" "DPXEQE" "EEGLWY"
-#&gt; [49] "G91ZM6" "I5CI33" "I8ABC7" "J1R2EW" "LDND6J" "MQT080" "PHB6TE" "QRWYQZ"
-#&gt; [57] "QW2Z3R" "RY1AZM" "WHQLH5" "WQUN84" "XL658N" "XX0GYV" "XYRDKV" "YHHVC7"
-#&gt; [65] "YP910X" "ZQXZYB" "0V4SAC" "0X1RZ9" "0XTZQ1" "3YHBC1" "55VDSQ" "5W621W"
-#&gt; [73] "653J82" "6MEP2C" "76DIT4" "B2YJJP" "E3JP0C" "EX5K0S" "FLIZQI" "GM371F"
-#&gt; [81] "MEUZ85" "PA9F3J" "QCA36T" "SXSVEH" "T38W6H" "TJN1AD" "WNKKW3" "XY2CK7"
-#&gt; [89] "XZH41H" "Y6DB6L" "YDRD81" "Z25D52" "ZDRSG0" "3P9BX6" "7D09WH" "DGZLV3"
-#&gt; [97] "S63QDN"
+#&gt;   [1] "5IAFMK" "HLQ9SY" "B2CKHA" "BCJJKN" "GDXWJ1" "JSAP3H" "TR5L57" "XC304E"
+#&gt;   [9] "1E8KD1" "5PW7WT" "AEP5EG" "AW400C" "BW10CL" "CFD12A" "CHJ9D2" "D33J06"
+#&gt;  [17] "ESUIAF" "FTVE03" "IRFJ09" "J3F6PD" "LVYYNY" "Q9LWGX" "RNQU14" "Y0TCYX"
+#&gt;  [25] "09LFE4" "1CIRC9" "3QHAFI" "3SKITJ" "55BPSE" "5XVTVH" "83HQBN" "8IG767"
+#&gt;  [33] "9FRCIE" "ER464J" "FFGPS4" "FG6L7S" "H2J6UA" "NHWTJ9" "TBCE78" "TQEMY6"
+#&gt;  [41] "WI38KZ" "YI16QD" "2F1IV1" "4LHK19" "59NYZE" "5IYDXN" "7NE2UT" "80F2MI"
+#&gt;  [49] "8TV4MT" "9MG040" "A98D7P" "AZ4D19" "BTTHAJ" "CHSCFG" "DI4AHD" "EEGLWY"
+#&gt;  [57] "FG0SFA" "FX9E4X" "G91ZM6" "J1R2EW" "K3TNHP" "LDND6J" "MFKT9C" "MQT080"
+#&gt;  [65] "NSIC4I" "PHB6TE" "Q7U139" "QRWYQZ" "RY1AZM" "WHQLH5" "WLMGS1" "WNEAS6"
+#&gt;  [73] "XL658N" "XX0GYV" "YHHVC7" "YLRNIK" "YP910X" "YTJ2UL" "ZH3YG1" "0SGJ12"
+#&gt;  [81] "0V4SAC" "0X1RZ9" "3YHBC1" "55VDSQ" "653J82" "6MEP2C" "76DIT4" "80KACX"
+#&gt;  [89] "87AQLF" "CS23RV" "E3JP0C" "FLIZQI" "GM371F" "IZDV8K" "MEUZ85" "PA9F3J"
+#&gt;  [97] "QCA36T" "T38W6H" "TJN1AD" "WJXIH9" "WNKKW3" "XY2CK7" "XZH41H" "YDRD81"
+#&gt; [105] "Z25D52" "ZDRSG0" "321LLB" "99BMJW" "AR5U44" "FJS7RQ" "S63QDN" "ZW2X4N"
 #&gt; </div><div class='input'># }
 </div></pre>
   </div>
@@ -418,7 +419,7 @@ that is specific for each group formed.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

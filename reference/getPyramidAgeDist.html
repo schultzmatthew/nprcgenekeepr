@@ -99,7 +99,7 @@ and age for those animals with a status of Alive in the pedigree." />
       <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of **nprcgenekeepr**</a>
+      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
@@ -157,6 +157,12 @@ and age for those animals with a status of <code>Alive</code> in the pedigree.</
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A pedigree with <code>status</code> column added, which describes the
+animal as <code>ALIVE</code> or <code>DECEASED</code> and a <code>age</code> column added,
+which has the animal's age in years or <code>NA</code> if it cannot be calculated.
+The <code>exit</code> column values have been remapped to valid dates or <code>NA</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The lubridate package is used here because of the way the modern Gregorian
@@ -185,7 +191,7 @@ increases exactly on a birthday.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

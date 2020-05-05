@@ -99,7 +99,7 @@ pedigree information" />
       <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of **nprcgenekeepr**</a>
+      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
       <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
@@ -208,14 +208,7 @@ Changes will include column names, case of categorical values (male,
 female, unknown), etc.
 Errors will include missing columns, invalid date rows, male dams,
 female sires, and records with one or more parents  below minimum age
-of parents.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A datatable with standardized and quality controlled pedigree
-information.</p>
+of parents.</p>
 <p>The following changes are made to the cols.</p>
 <ul>
 <li><p>Column cols are converted to all lower case</p></li>
@@ -294,7 +287,14 @@ than one record where one or more of the other columns have a difference.</p>
 <p>Columns that cannot be used subsequently are removed and the rows are
 ordered by generation number and then ID.</p>
 <p>Finally the columns <code>id</code> <code>sire</code>, and <code>dam</code> are coerce to
-character.</p>
+character.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data.frame with standardized and quality controlled pedigree
+information.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -321,7 +321,7 @@ character.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
