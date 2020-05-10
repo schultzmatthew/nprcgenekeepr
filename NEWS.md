@@ -3,7 +3,7 @@ NEWS
 R. Mark Sharp
 05/03/2020
 
-# nprcgenekeepr 1.0.1 (20200503)
+# nprcgenekeepr 1.0.1 (20200510)
 
   - Major changes – none
   - Minor changes
@@ -29,6 +29,8 @@ R. Mark Sharp
             module within LabKey, which this software can use as a
             source of pedigree information so the capitalization is
             appropriate.
+          - Two exported functions used by server.R to call tabpanel()
+            do not have examples.
 
 # nprcgenekeepr 1.0 (20200415)
 

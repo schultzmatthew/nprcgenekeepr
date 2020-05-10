@@ -19,8 +19,8 @@
 #' @param ids character vector of animal IDs
 #' @export
 getOffspring <- function(pedSourceDf, ids) {
-  unique(c(pedSourceDf$id[(pedSourceDf$sire %in% ids &
+  unique(c(pedSourceDf$id[(is.element(pedSourceDf$sire, ids) &
                                  !is.na(pedSourceDf$sire))],
-           pedSourceDf$id[(pedSourceDf$dam %in% ids &
+           pedSourceDf$id[(is.element(pedSourceDf$dam, ids) &
                                 !is.na(pedSourceDf$dam))]))
 }

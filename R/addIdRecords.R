@@ -31,7 +31,7 @@
 #' @export
 addIdRecords <- function(ids, fullPed, partialPed) {
   if (length(ids[!all(is.na(ids))]) > 0) {
-    addToPed <- fullPed[fullPed$id %in% ids, ]
+    addToPed <- fullPed[is.element(fullPed$id, ids), ]
     addToPed$sire <- NA
     addToPed$dam <- NA
     partialPed <- rbind(partialPed, addToPed,

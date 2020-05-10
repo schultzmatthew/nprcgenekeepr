@@ -9,11 +9,14 @@ test_that("getSiteInfo at least returns the right elements", {
                  "version", "nodename", "machine", "login", "user",
                  "effective_user", "homeDir", "configFile"))
 })
+
 test_that("getSiteInfo handled Windows and non-windows opperating systems", {
   siteInfo <- suppressWarnings(getSiteInfo())
   if (stri_detect_fixed(toupper(siteInfo$sysname), "WIND")) {
-    expect_equal(siteInfo$homeDir, paste0("/Users/", siteInfo$user, "/"))
-    expect_equal(siteInfo$configFile, paste0("/Users/", siteInfo$user,"/",
+    expect_equal(siteInfo$homeDir,
+                 paste0(gsub('\\\\', '/', Sys.getenv("HOME")), "/"))
+    expect_equal(siteInfo$configFile,
+                 paste0(gsub('\\\\', '/', Sys.getenv("HOME")), "/",
                                     "_nprcgenekeepr_config"))
   } else {
     expect_equal(siteInfo$homeDir, "~/")
@@ -21,7 +24,7 @@ test_that("getSiteInfo handled Windows and non-windows opperating systems", {
   }
 })
 test_that("getSiteInfo handle expectConfigFile parameter", {
-  expect_warning(test <- getSiteInfo())
-  expect_warning(test <- getSiteInfo(expectConfigFile = TRUE))
-  expect_silent(test <- getSiteInfo(expectConfigFile = FALSE))
+  expect_warning(getSiteInfo())
+  expect_warning(getSiteInfo(expectConfigFile = TRUE))
+  expect_silent(getSiteInfo(expectConfigFile = FALSE))
 })

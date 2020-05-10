@@ -11,7 +11,7 @@ skip_if_not(exists("pedWithGenotype"))
 skip_if_not(exists("pedWithGenotypeReport"))
 set_seed(10)
 test_that("groupAddAssign forms the correct groups", {
-  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   currentGroups <- list(1)
   currentGroups[[1]] <- qcBreeders[1:3]
   groupAddTest <- groupAddAssign(
@@ -29,7 +29,7 @@ test_that("groupAddAssign forms the correct groups", {
 )
 set_seed(10)
 test_that("groupAddAssign (numGp = 2) forms the correct groups", {
-  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   groupAssignTest <- groupAddAssign(candidates = qcBreeders,
                                     currentGroups = character(0),
                                     kmat = pedWithGenotypeReport$kinship,
@@ -44,7 +44,7 @@ test_that("groupAddAssign (numGp = 2) forms the correct groups", {
 )
 set_seed(10)
 test_that("groupAddAssign (numGp = 1) forms the correct groups with kinship matrices", {
-  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   currentGroups <- list(1)
   currentGroups[[1]] <- qcBreeders[1:3]
   groupAddKTest <- groupAddAssign(candidates = qcBreeders,
@@ -60,7 +60,7 @@ test_that("groupAddAssign (numGp = 1) forms the correct groups with kinship matr
 )
 set_seed(10)
 test_that("groupAddAssign forms the correct groups with kinship matrices", {
-  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+  skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
   groupAssignKTest <- groupAddAssign(candidates = qcBreeders,
                                      currentGroups = character(0),
                                      kmat = pedWithGenotypeReport$kinship,
@@ -80,7 +80,7 @@ sires <- getPotentialSires(qcBreeders, minAge = 2, pedWithGenotype)
 
 test_that(paste0(
   "groupAddAssign fails when no potential sires exist for harem creation"), {
-    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
     expect_error(groupAddAssign(candidates = noSires,
                                 currentGroups = character(0),
                                 kmat = pedWithGenotypeReport$kinship,
@@ -92,7 +92,7 @@ test_that(paste0(
 test_that(paste0(
   "groupAddAssign add 1 sire at most when there are multiple potential sires ",
   "in the candidates during harem creation"), {
-    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
     group <- groupAddAssign(candidates = qcBreeders,
                             currentGroups = character(0),
                             kmat = pedWithGenotypeReport$kinship,
@@ -110,7 +110,7 @@ test_that(
     "the number of groups to be formed"
   ),
   {
-    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "mdull")
+    skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
     currentGroups <- list(3)
     currentGroups[[1]] <- qcBreeders[1:3]
     currentGroups[[2]] <- qcBreeders[4:6]

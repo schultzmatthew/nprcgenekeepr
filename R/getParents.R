@@ -19,8 +19,8 @@
 #' @param ids character vector of animal IDs
 #' @export
 getParents <- function(pedSourceDf, ids) {
-  unique(c(pedSourceDf$sire[(pedSourceDf$id %in% ids &
+  unique(c(pedSourceDf$sire[(is.element(pedSourceDf$id, ids) &
                                  !is.na(pedSourceDf$sire))],
-           pedSourceDf$dam[(pedSourceDf$id %in% ids &
+           pedSourceDf$dam[(is.element(pedSourceDf$id, ids) &
                                 !is.na(pedSourceDf$dam))]))
 }

@@ -1,8 +1,8 @@
 Package: nprcgenekeepr
 Type: Package
 Title: Genetic Tools for Colony Management
-Version: 1.0.9000
-Date: 2020-05-07
+Version: 1.0.1.9001
+Date: 2020-05-10
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("Terry", "Therneau", role = c("aut")),

@@ -84,7 +84,7 @@ shinyServer(function(input, output, session) {
         flog.debug(paste0("before getFocalAnimalPed: ", pedigreeFile$name),
                    name = "nprcgenekeepr")
         breederPed <- getFocalAnimalPed(pedigreeFile$datapath, sep = sep)
-        if (any("nprckeepErr" %in% class(breederPed))) {
+        if (is.element("nprckeepErr", class(breederPed))) {
             errorLst <- breederPed
             breederPed <- NULL
         } else if (is.null(breederPed)) {
