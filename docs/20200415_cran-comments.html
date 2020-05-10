@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filters a genetic value report down to only the specified animals — filterReport • nprcgenekeepr</title>
+<title>NA • nprcgenekeepr</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script>
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,14 +33,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Filters a genetic value report down to only the specified animals — filterReport" />
-<meta property="og:description" content="Filters a genetic value report down to only the specified animals" />
+<meta property="og:title" content="NA" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -71,7 +70,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
+        <a class="navbar-link" href="index.html">nprcgenekeepr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
@@ -79,13 +78,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -95,24 +94,24 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
+      <a href="articles/ColonyManagerTutorial.html">GeneKeepR: A Colony Manager's Tutorial</a>
     </li>
     <li>
-      <a href="../articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
+      <a href="articles/a2interactive.html">Interactive Use of nprcgenekeepr</a>
     </li>
     <li>
-      <a href="../articles/a3manual.html">Genetic Management Tools Manual</a>
+      <a href="articles/a3manual.html">Genetic Management Tools Manual</a>
     </li>
     <li>
-      <a href="../articles/a4Development_Plans.html">Development Plans</a>
+      <a href="articles/a4Development_Plans.html">Development Plans</a>
     </li>
     <li>
-      <a href="../articles/shiny_app_use.html">GeneKeepR Tutorial</a>
+      <a href="articles/shiny_app_use.html">GeneKeepR Tutorial</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -133,51 +132,80 @@
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Filters a genetic value report down to only the specified animals</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/R/filterReport.R'><code>R/filterReport.R</code></a></small>
-    <div class="hidden name"><code>filterReport.Rd</code></div>
+      <h1>NA</h1>
     </div>
 
-    <div class="ref-description">
-    <p>Filters a genetic value report down to only the specified animals</p>
-    </div>
 
-    <pre class="usage"><span class='fu'>filterReport</span>(<span class='no'>ids</span>, <span class='no'>rpt</span>)</pre>
+<div id="resubmission" class="section level2">
+<h2 class="hasAnchor">
+<a href="#resubmission" class="anchor"></a>Resubmission</h2>
+<p>This is a resubmission. In this version I have:</p>
+<ul>
+<li>Responded to all requests provided by the reviewer
+<ul>
+<li>Removed redundant “Implements” in the title</li>
+<li>Enclosed all package names, software names and API names in single quotes in the DESCRIPTION file Description</li>
+<li>Added executable examples wrapped in \donttest() in all exported functions</li>
+<li>Ensured changes to the user’s par() settings were reset using on.exit as directed</li>
+<li>Ensured my functions are not modifying in the user’s home filespace. I am using a path provided by tempdir()</li>
+</ul>
+</li>
+<li>Major changes
+<ul>
+<li>Changed the name of the package from <strong>nprcmanager</strong> to <strong>nprcgenekeepr</strong>
+</li>
+<li>Added ability to export figures</li>
+</ul>
+</li>
+<li>Minor changes
+<ul>
+<li>Made changes to allow a clean build and check –as-cran under R 4.0.0 alpha</li>
+<li>Refactored several functions</li>
+<li>Added 12 more unit tests because of what I learned making examples.</li>
+<li>Added new functions to improve code and in response to user requests</li>
+<li>Corrected several spelling errors</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="test-environments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#test-environments" class="anchor"></a>Test environments</h2>
+<ul>
+<li>local OS X install, R 3.6.3</li>
+<li>ubuntu 14.04 (on travis-ci), R 3.6.3</li>
+<li>win-builder (devel and release)</li>
+</ul>
+</div>
+<div id="r-cmd-check-results" class="section level2">
+<h2 class="hasAnchor">
+<a href="#r-cmd-check-results" class="anchor"></a>R CMD check results</h2>
+<p>0 errors | 0 warnings | 1 note</p>
+<ul>
+<li>This is a new release.</li>
+</ul>
+</div>
+<div id="reverse-dependencies" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reverse-dependencies" class="anchor"></a>Reverse dependencies</h2>
+<ul>
+<li>There are currently no downstream dependencies for this package.</li>
+</ul>
+</div>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>ids</th>
-      <td><p>character vector of animal IDs</p></td>
-    </tr>
-    <tr>
-      <th>rpt</th>
-      <td><p>a dataframe with required colnames <code>id</code>, <code>gu</code>,
-<code>zScores</code>, <code>import</code>, <code>totalOffspring</code>, which is
-a data.frame of results from a genetic value analysis.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A copy of report specific to the specified animals.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
-<span class='no'>rpt</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>nprcgenekeepr</span><span class='kw ns'>::</span><span class='no'><a href='pedWithGenotypeReport.html'>pedWithGenotypeReport</a></span>$<span class='no'>report</span>
-<span class='no'>rpt1</span> <span class='kw'>&lt;-</span> <span class='fu'>filterReport</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"GHH9LB"</span>, <span class='st'>"BD41WW"</span>), <span class='no'>rpt</span>)
-<span class='co'># }</span></div></pre>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
+
 
 
       <footer>

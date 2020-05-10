@@ -18,7 +18,7 @@ coverage](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 1.0.1 (20200503)
+# nprcgenekeepr – Version 1.0.1 (20200510)
 
 ## Introduction
 
