@@ -20,7 +20,8 @@ ID value.
 \description{
 ID aliases are pseudorandom sequences of alphanumeric upper case characters
 where the letter "O" is not included for readability..
-User has the option of providing a character vector of aliases to avoid using.
+User has the option of providing a character vector of aliases to avoid
+using.
 }
 \examples{
 \donttest{

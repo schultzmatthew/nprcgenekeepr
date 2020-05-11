@@ -9,7 +9,8 @@ cols <- c("id", "sire", "dam", "sex", "gen", "birth", "exit", "age",
           "second_name", "recordStatus")
 cols <- c("id", "sire", "dam", "sex", "gen", "birth", "exit", "death",
           "age", "ancestry", "population", "origin", "status", "condition",
-          "departure", "spf", "vasxOvx", "pedNum", "first", "second", "first_name",
+          "departure", "spf", "vasxOvx", "pedNum", "first", "second",
+          "first_name",
           "second_name", "recordStatus")
 test_that("getPossibleCols returns the right columns", {
   expect_equal(getPossibleCols(), cols)

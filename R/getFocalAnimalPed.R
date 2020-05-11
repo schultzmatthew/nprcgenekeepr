@@ -30,7 +30,8 @@ getFocalAnimalPed <- function(fileName, sep = ",") {
              name = "nprcgenekeepr")
   if (excel_format(fileName) %in% c("xls", "xlsx")) {
     focalAnimals <- readExcelPOSIXToCharacter(fileName)
-    flog.debug(paste0("in getFocalAnimalPed after readxl, nrow(focalAnimals) = ",
+    flog.debug(paste0("in getFocalAnimalPed after readxl, ",
+                      "nrow(focalAnimals) = ",
                       nrow(focalAnimals), "\n"), name = "nprcgenekeepr")
   } else {
     focalAnimals <- read.csv(fileName,
@@ -39,7 +40,8 @@ getFocalAnimalPed <- function(fileName, sep = ",") {
                          stringsAsFactors = FALSE,
                          na.strings = c("", "NA"),
                          check.names = FALSE)
-    flog.debug(paste0("in getFocalAnimalPed after read.csv, nrow(focalAnimals) = ",
+    flog.debug(paste0("in getFocalAnimalPed after read.csv, ",
+                      "nrow(focalAnimals) = ",
                       nrow(focalAnimals), "\n"), name = "nprcgenekeepr")
   }
   focalAnimals <- as.character(focalAnimals[ , 1])

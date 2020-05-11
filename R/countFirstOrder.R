@@ -36,12 +36,12 @@ countFirstOrder <- function(ped, ids = NULL) {
   if (!is.null(ids)) {
     ped <- ped[ped$id %in% ids, ]
   }
-  rownames(ped) <- 1:nrow(ped)
+  rownames(ped) <- seq_len(nrow(ped))
   parents <- c()
   offspring <- c()
   siblings <- c()
 
-  for (i in 1:nrow(ped)) {
+  for (i in seq_len(nrow(ped))) {
     id <- ped[i, "id"]
     sire <- ped[i, "sire"]
     dam <- ped[i, "dam"]

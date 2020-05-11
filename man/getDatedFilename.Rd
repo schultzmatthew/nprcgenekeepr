@@ -10,7 +10,7 @@ getDatedFilename(filename)
 \item{filename}{character vector with name to use in file name}
 }
 \value{
-A charcter string with a file name prepended with the date and time
+A character string with a file name prepended with the date and time
 in YYYY-MM-DD_hh_mm_ss_basename format.
 }
 \description{

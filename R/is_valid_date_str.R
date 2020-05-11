@@ -4,8 +4,8 @@
 ## This file is part of nprcgenekeepr
 #' Taken from github.com/rmsharp/rmsutilityr
 #'
-#' @return A logical value or \code{NA} indicating whether or not the provided character
-#' vector represented a valid date string.
+#' @return A logical value or \code{NA} indicating whether or not the provided
+#' character vector represented a valid date string.
 #'
 #' @examples
 #' \donttest{

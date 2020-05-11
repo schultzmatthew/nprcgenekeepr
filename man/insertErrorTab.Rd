@@ -2,7 +2,8 @@
 % Please edit documentation in R/insertErrorTab.R
 \name{insertErrorTab}
 \alias{insertErrorTab}
-\title{insertErrorTab insert a list of errors found by \code{qcStudbook} in the pedigree file}
+\title{insertErrorTab insert a list of errors found by \code{qcStudbook} in the
+pedigree file}
 \usage{
 insertErrorTab(errorLst, pedigreeFileName)
 }
@@ -15,5 +16,6 @@ insertErrorTab(errorLst, pedigreeFileName)
 Text of the error list formatted as an HTML page
 }
 \description{
-insertErrorTab insert a list of errors found by \code{qcStudbook} in the pedigree file
+insertErrorTab insert a list of errors found by \code{qcStudbook} in the
+pedigree file
 }

@@ -37,7 +37,8 @@ someBadBirthDates <- paste0(sample(1:12, 10, replace = TRUE), "-",
                             sample(1:28, 10, replace = TRUE), "-",
                             sample(seq(0, 15, by = 3), 10,
                                    replace = TRUE) + 2000)
-someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
+someDeathDates <- sample(someBirthDates, length(someBirthDates),
+                         replace = FALSE)
 someDepartureDates <- sample(someBirthDates, length(someBirthDates),
                              replace = FALSE)
 ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates,

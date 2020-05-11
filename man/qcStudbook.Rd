@@ -51,8 +51,8 @@ performed for animals with missing birth dates.}
 contains the list of changes made to the column names. Default is
 \code{FALSE}.}
 
-\item{reportErrors}{logical value if \code{TRUE} will scan the entire file and
-report back changes made to input and errors in a
+\item{reportErrors}{logical value if \code{TRUE} will scan the entire file
+and report back changes made to input and errors in a
 list of list where each sublist is a type of change or error found.
 Changes will include column names, case of categorical values (male,
 female, unknown), etc.

@@ -39,7 +39,7 @@ createPedTree <- function(ped) {
   pedTree <- rep(list(list(sire = NA, dam = NA)), nrow(ped))
   names(pedTree) <- ped$id
 
-  for (i in 1:nrow(ped)) {
+  for (i in seq_len(nrow(ped))) {
     pedTree[[ped$id[i]]]$sire <- ped$sire[i]
     pedTree[[ped$id[i]]]$dam <- ped$dam[i]
   }

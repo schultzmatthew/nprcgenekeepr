@@ -18,7 +18,8 @@ test_that("fillGroupMembers adds animals in the specified sex ratio", {
   kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
                                    ignore = list(c("F", "F")), minAge = 1)
   # Filtering out candidates related to current group members
-  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
+  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]),
+                        unlist(currentGroups)))
   candidates <- setdiff(candidates, conflicts)
 
 
@@ -39,7 +40,8 @@ test_that("fillGroupMembers adds animals in the specified sex ratio", {
   sexRatio <- 1
   groupMembers <- fillGroupMembers(candidates, currentGroups, kin, ped, harem,
                                    minAge, numGp, sexRatio)
-  expect_equal(groupMembers[[1]][1:4], c("N54ICI", "VJ08BW", "2ZMHG7", "CS23RV"))
+  expect_equal(groupMembers[[1]][1:4],
+               c("N54ICI", "VJ08BW", "2ZMHG7", "CS23RV"))
   expect_equal(calculateSexRatio(groupMembers[[1]], ped), 1.0,
                tolerance = .1, scale = 1)
 })

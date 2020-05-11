@@ -2,7 +2,8 @@
 % Please edit documentation in R/addSexAndAgeToGroup.R
 \name{addSexAndAgeToGroup}
 \alias{addSexAndAgeToGroup}
-\title{Forms a dataframe with Id, Sex, and current Age given a list of Ids and a pedigree}
+\title{Forms a dataframe with Id, Sex, and current Age given a list of Ids and a
+pedigree}
 \usage{
 addSexAndAgeToGroup(ids, ped)
 }
@@ -16,7 +17,8 @@ information including the IDs listed in \code{candidates}.}
 Dataframe with Id, Sex, and Current Age
 }
 \description{
-Forms a dataframe with Id, Sex, and current Age given a list of Ids and a pedigree
+Forms a dataframe with Id, Sex, and current Age given a list of Ids and a
+pedigree
 }
 \examples{
 \donttest{

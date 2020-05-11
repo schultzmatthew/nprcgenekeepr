@@ -7,7 +7,7 @@
 #' It is assumed that the pedigree has no partial parentage
 #'
 #' @return The founder equivalents \code{FE = 1 / sum(p ^ 2)}, where \code{p}
-#' is average number of decendents and \code{r} is the mean number of founder
+#' is average number of descendants and \code{r} is the mean number of founder
 #' alleles retained in the gene dropping experiment.
 #'
 #' @examples
@@ -60,10 +60,10 @@ calcFE <- function(ped) {
   ## Note: skips generation 0.
   ## The references inside matrix d do not work if ped$sire and ped$dam and
   ## thus gen$sire and gen$dam are factors. See test_calcFE.R
-  for (i in 1:max(ped$gen)) {
+  for (i in seq_len(max(ped$gen))) {
     gen <- ped[(ped$gen == i), ]
 
-    for (j in 1:nrow(gen)) {
+    for (j in seq_len(nrow(gen))) {
       ego <- gen$id[j]
       sire <- gen$sire[j]
       dam <- gen$dam[j]

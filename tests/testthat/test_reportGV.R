@@ -22,7 +22,8 @@ updateProgress <- function(n = 1, detail = NULL, value = 0, reset = FALSE) {
 }
 
 gvReport <- reportGV(qcPed, guIter = 100, updateProgress = updateProgress)
-test_that("reportGV forms correct genetic value report with updateProgress defined", {
+test_that(
+  "reportGV forms correct genetic value report with updateProgress defined", {
   expect_equal(names(gvReport), c("report", "kinship", "gu", "fe", "fg",
                                   "maleFounders", "femaleFounders",
                                   "nMaleFounders", "nFemaleFounders", "total"))

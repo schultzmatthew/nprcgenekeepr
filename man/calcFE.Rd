@@ -12,7 +12,7 @@ calcFE(ped)
 }
 \value{
 The founder equivalents \code{FE = 1 / sum(p ^ 2)}, where \code{p}
-is average number of decendents and \code{r} is the mean number of founder
+is average number of descendants and \code{r} is the mean number of founder
 alleles retained in the gene dropping experiment.
 }
 \description{

@@ -6,19 +6,23 @@ library(stringi)
 
 pedOne <- nprcgenekeepr::pedOne
 test_that("summary.nprcgenekeeprErr provides expected classes of output", {
-  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$txt), "character")
-  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$sp), "data.frame")
+  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$txt),
+               "character")
+  expect_equal(class(summary(qcStudbook(pedOne, reportErrors = TRUE))$sp),
+               "data.frame")
 })
 test_that("summary.nprcgenekeeprErr provides expected output", {
   expect_equal(length(summary(qcStudbook(pedOne, reportErrors = TRUE))$txt), 1)
   expect_equal(nrow(summary(qcStudbook(pedOne, reportErrors = TRUE))$sp), 3)
   expect_equal(stri_count_regex(
-    summary(qcStudbook(pedOne, reportChanges = TRUE, reportErrors = TRUE))$txt, "\\n"), 9)
+    summary(qcStudbook(pedOne, reportChanges = TRUE, reportErrors = TRUE))$txt,
+    "\\n"), 9)
   pedTwo <- pedOne
   pedTwo$sex <- NULL
   expect_true(stri_detect_regex(
     summary(qcStudbook(pedTwo, reportChanges = TRUE, reportErrors = TRUE))$txt,
-    pattern = "sex.\\n The required columns are: id, sire, dam, sex, and birth"))
+    pattern =
+      "sex.\\n The required columns are: id, sire, dam, sex, and birth"))
   pedTwo <- pedOne
   pedTwo$birth_date <- "badDate"
   expect_true(stri_detect_regex(
@@ -27,7 +31,8 @@ test_that("summary.nprcgenekeeprErr provides expected output", {
                      "The first five records having bad dates are ",
                      "on rows 1, 2, 3, 4, and 5.")))
 })
-test_that("summary.nprcgenekeeprErr identifies individual bad dates in date columns", {
+test_that(
+  "summary.nprcgenekeeprErr identifies individual bad dates in date columns", {
   birth <- as.character(pedOne$birth_date, format = "%Y-%m-%d")
   birth[5] <- "04-02-2015"
   birth[6] <- "03-17-2009"
@@ -36,7 +41,8 @@ test_that("summary.nprcgenekeeprErr identifies individual bad dates in date colu
   pedEight$birth <- birth
   ped8 <- qcStudbook(pedEight, minParentAge = NULL, reportErrors = TRUE)
   summary(ped8)
-  expect_true(stri_detect_fixed(summary(ped8)$txt, "rows having an invalid date are: 5 and 6"))
+  expect_true(stri_detect_fixed(summary(ped8)$txt,
+                                "rows having an invalid date are: 5 and 6"))
 })
 test_that("summary.nprcgenekeeprErr identifies bad database connection", {
   birth <- as.character(pedOne$birth_date, format = "%Y-%m-%d")
@@ -49,6 +55,7 @@ test_that("summary.nprcgenekeeprErr identifies bad database connection", {
   ped8$failedDatabaseConnection <-
     "Database connection failed: configuration or permissions are invalid."
   summary(ped8)
-  expect_true(stri_detect_fixed(summary(ped8)$txt, "Database connection failed"))
+  expect_true(stri_detect_fixed(summary(ped8)$txt,
+                                "Database connection failed"))
 })
 

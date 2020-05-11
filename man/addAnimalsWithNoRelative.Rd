@@ -19,8 +19,8 @@ animal without a relative.
 \description{
 This allows \code{kin} to be used with \code{setdiff} when there are no
 relatives otherwise an error would occur because
-\code{kin[['animal_with_no_relative']]} would not be found. See the following:
-in \strong{groupAddAssign}
+\code{kin[['animal_with_no_relative']]} would not be found. See the
+following: in \strong{groupAddAssign}
 }
 \details{
 \code{available[[i]] <- setdiff(available[[i]], kin[[id]])}
@@ -38,7 +38,8 @@ threshold <- 0.015625
 kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
                                  ignore = list(c("F", "F")), minAge = 1)
 # Filtering out candidates related to current group members
-conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
+conflicts <- unique(c(unlist(kin[unlist(currentGroups)]),
+                                 unlist(currentGroups)))
 candidates <- setdiff(candidates, conflicts)
 kin <- addAnimalsWithNoRelative(kin, candidates)
 length(kin) # should be 2416

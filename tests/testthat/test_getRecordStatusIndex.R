@@ -10,7 +10,8 @@ test_that(
                                               rep("added", 3)))
     expect_equal(nprcgenekeepr:::getRecordStatusIndex(pedSix, status = "added"),
                  c(6:8))
-    expect_equal(nprcgenekeepr:::getRecordStatusIndex(pedSix, status = "original"),
+    expect_equal(nprcgenekeepr:::getRecordStatusIndex(pedSix,
+                                                      status = "original"),
                  c(1:5))
 
 })

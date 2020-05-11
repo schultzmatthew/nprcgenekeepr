@@ -7,11 +7,11 @@ R. Mark Sharp
 
   - Major changes – none
   - Minor changes
-      - CRAN resubmission: responded to all requests provided by
+      - CRAN re-submission: responded to all requests provided by
         reviewer
           - Reduced the time required for unit test from over 12 minutes
             to 21.6 seconds by skipping those test dependent on
-            schochastic creation of simulated pedigrees and breeding
+            stochastic creation of simulated pedigrees and breeding
             groups when not running on my system.
           - Reduced the time to run examples and create vignettes by
             reducing the number of stochastic modeling iterations by
@@ -493,7 +493,7 @@ R. Mark Sharp
   - All minor interface changes
       - Substituted hovertext for description of minimum parental age
       - Added meeting notes for 20181210 meeting
-      - Changed label on button controling reading of pedigree
+      - Changed label on button controlling reading of pedigree
         information
       - Updated logo
   - Added code of conduct file.

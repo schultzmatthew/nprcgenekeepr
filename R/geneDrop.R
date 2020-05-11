@@ -35,7 +35,8 @@
 #'  animals. \code{NA} is used for missing sires.
 #' @param dams A character vector with IDS of the dams for the set of
 #'  animals. \code{NA} is used for missing dams.
-#' @param gen An integer vector indicating the generation number for each animal.
+#' @param gen An integer vector indicating the generation number for each
+#' animal.
 #' @param genotype A dataframe containing known genotypes. It has three
 #' columns:  \code{id}, \code{first}, and \code{second}. The second and third
 #' columns contain the integers indicating the observed genotypes.
@@ -115,7 +116,7 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
 
   id <- c()
   parent <- c()
-  for (i in 1:length(keys)) {
+  for (i in seq_len(length(keys))) {
     key <- keys[[i]]
     id <- c(id, key[1])
     parent <- c(parent, key[2])
@@ -123,6 +124,6 @@ geneDrop <- function(ids, sires, dams, gen, genotype = NULL, n = 5000,
 
   alleles$id <- id
   alleles$parent <- parent
-  rownames(alleles) <- 1:nrow(alleles)
+  rownames(alleles) <- seq_len(nrow(alleles))
   return(alleles)
 }

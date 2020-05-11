@@ -18,7 +18,8 @@
 #' }
 #'
 #' @param cols character vector of column names
-#' @param reportErrors logical value when \code{TRUE} and missing columns are found
+#' @param reportErrors logical value when \code{TRUE} and missing columns are
+#' found
 #' the \code{errorLst} object is updated with the names of the missing
 #' columns and returned and when \code{FALSE} and missing columns are found
 #' the program is stopped.

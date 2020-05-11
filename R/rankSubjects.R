@@ -30,7 +30,7 @@
 rankSubjects <- function(rpt) {
   rnk <- 1
 
-  for (i in 1:length(rpt)) {
+  for (i in seq_len(length(rpt))) {
     if (nrow(rpt[[i]]) == 0) {
       next
     }

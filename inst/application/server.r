@@ -89,7 +89,8 @@ shinyServer(function(input, output, session) {
             breederPed <- NULL
         } else if (is.null(breederPed)) {
           flog.debug(paste0("after getFocalAnimalPed: ", pedigreeFile$name,
-                            "; NULL was returned by getFocalAnimalPed function"),
+                            "; NULL was returned by getFocalAnimalPed ",
+                            "function"),
                      name = "nprcgenekeepr")
         } else {
           flog.debug(paste0("after getFocalAnimalPed: ", pedigreeFile$name,
@@ -864,7 +865,7 @@ shinyServer(function(input, output, session) {
     }
     currentGroups
   })
-  output$currentGroups = renderUI({textAreaWidget()})
+  output$currentGroups <- renderUI({textAreaWidget()})
   output$getCurrentGroups <- renderText({getCurrentGroups()})
   textMinParentAge <- eventReactive(input$group_formation_rb,{
     minParentAgeLine <-

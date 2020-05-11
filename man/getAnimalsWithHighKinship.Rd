@@ -17,7 +17,8 @@ information including the IDs listed in \code{candidates}.}
 considered in group formation. Pairwise kinship below this level will be
 ignored.}
 
-\item{currentGroups}{list of character vectors of IDs of animals currently assigned
+\item{currentGroups}{list of character vectors of IDs of animals currently
+assigned
 to the group. Defaults to character(0) assuming no groups are existent.}
 
 \item{ignore}{list of character vectors representing the sex combinations

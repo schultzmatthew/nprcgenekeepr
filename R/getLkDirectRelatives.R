@@ -5,8 +5,8 @@
 #' Gets direct ancestors from labkey \code{study} schema and \code{demographics}
 #' table.
 #'
-#' @return A data.frame with pedigree structure having all of the direct ancestors
-#' for the Ids provided.
+#' @return A data.frame with pedigree structure having all of the direct
+#' ancestors for the Ids provided.
 #'
 #' @examples
 #' \donttest{

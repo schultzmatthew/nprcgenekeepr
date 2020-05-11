@@ -106,11 +106,13 @@
 #' \code{shiny::Progress} object.
 #'
 #' @export
-groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat, ped,
+groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat,
+                           ped,
                             threshold = 0.015625, ignore = list(c("F", "F")),
                             minAge = 1, iter = 1000,
                             numGp = 1, harem = FALSE,
-                            sexRatio = 0, withKin = FALSE, updateProgress = NULL) {
+                            sexRatio = 0, withKin = FALSE,
+                           updateProgress = NULL) {
   if (length(currentGroups) > numGp)
     stop(paste0("Cannot have more groups with seed animals than number of ",
                 "groups to be formed."))
@@ -119,7 +121,8 @@ groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat,
                                                minAge)
 
   # Filtering out candidates related to current group members
-  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
+  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]),
+                        unlist(currentGroups)))
   candidates <- setdiff(candidates, conflicts)
 
 

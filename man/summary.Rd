@@ -24,7 +24,8 @@ summary.nprcgenekeeprErr Summary function for class nprcgenekeeprErr
 }
 \examples{
 \donttest{
-errorList <- qcStudbook(nprcgenekeepr::pedOne, minParentAge = 0, reportChanges = TRUE,
+errorList <- qcStudbook(nprcgenekeepr::pedOne, minParentAge = 0,
+reportChanges = TRUE,
 reportErrors = TRUE)
 summary(errorList)
 }

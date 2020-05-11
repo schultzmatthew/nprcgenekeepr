@@ -3,8 +3,8 @@
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 
-#' @return An errorLst object with placeholders for error types found in a pedigree
-#' file by \code{qcStudbook}.
+#' @return An errorLst object with placeholders for error types found in a
+#' pedigree file by \code{qcStudbook}.
 #'
 #' @examples
 #' \donttest{

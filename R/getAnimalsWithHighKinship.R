@@ -29,7 +29,8 @@
 #' @param threshold numeric value indicating the minimum kinship level to be
 #' considered in group formation. Pairwise kinship below this level will be
 #' ignored.
-#' @param currentGroups list of character vectors of IDs of animals currently assigned
+#' @param currentGroups list of character vectors of IDs of animals currently
+#' assigned
 #' to the group. Defaults to character(0) assuming no groups are existent.
 #' @param ignore list of character vectors representing the sex combinations
 #' to be ignored. If provided, the vectors in the list specify if pairwise
@@ -40,8 +41,8 @@
 #'  be ignored. Default is 1 year.
 #'
 #' @export
-getAnimalsWithHighKinship <- function(kmat, ped, threshold, currentGroups, ignore,
-                                   minAge) {
+getAnimalsWithHighKinship <- function(kmat, ped, threshold, currentGroups,
+                                      ignore, minAge) {
   kin <- kinMatrix2LongForm(kmat)
 
   kin <- filterThreshold(kin, threshold = threshold)
@@ -52,7 +53,8 @@ getAnimalsWithHighKinship <- function(kmat, ped, threshold, currentGroups, ignor
   kin <- kin[(kin$id1 != kin$id2), ]
 
   # Ignore kinship between current group members
-  kin <- kin[!((kin$id1 %in% unlist(currentGroups)) & (kin$id2 %in% unlist(currentGroups))), ]
+  kin <- kin[!((kin$id1 %in% unlist(currentGroups)) &
+                 (kin$id2 %in% unlist(currentGroups))), ]
 
   # Converting the kinships to a list
   kin <- tapply(kin$id2, kin$id1, c)

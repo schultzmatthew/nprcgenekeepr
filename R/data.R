@@ -17,8 +17,8 @@
 #' Represents pedigree from \emph{ExamplePedigree.csv}.
 #' \describe{
 #' \item{id}{-- character column of animal IDs}
-#' \item{sire}{-- the male parent of the animal indicated by the \code{id} column.
-#' Unknown sires are indicated with \code{NA}}
+#' \item{sire}{-- the male parent of the animal indicated by the \code{id}
+#' column. Unknown sires are indicated with \code{NA}}
 #' \item{dam}{-- the female parent of the animal indicated by the \code{id}
 #' column.Unknown dams are indicated with \code{NA}}
 #' \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an
@@ -31,13 +31,15 @@
 #' \item{ancestry}{-- character vector or NA with free-form text providing
 #' information about the geographic population of origin.}
 #' \item{origin}{-- character vector or \code{NA} (optional) that indicates
-#' the name of the facility that the individual was imported from if other than local.}
+#' the name of the facility that the individual was imported from if other than
+#' local.}
 #' \item{status}{-- character vector or NA. Flag indicating an individual's
 #' status as alive, dead, sold, etc. Transformed to
 #'  factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}. Vector of
 #' standardized status codes with the possible values
 #' ALIVE, DECEASED, SHIPPED, or UNKNOWN}
-#' \item{recordStats}{-- character vector with value of \code{"added"} or \code{"original"}.}
+#' \item{recordStats}{-- character vector with value of \code{"added"} or
+#'  \code{"original"}.}
 #' }
 #' @examples
 #' \dontrun{
@@ -200,8 +202,8 @@
 #' View(pedOne)
 #' }
 "pedOne"
-#' pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5 columns (ego_id, sire,
-#' dam_id, sex, birth_date) representing a full pedigree with no errors.
+#' pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5 columns (ego_id,
+#' sire, dam_id, sex, birth_date) representing a full pedigree with no errors.
 #'
 #' It is one of six pedigrees (\code{pedDuplicateIds},
 #' \code{pedFemaleSireMaleDam}, \code{pedgood},
@@ -238,8 +240,10 @@
 #' It was created using the following commands.
 #'   \itemize{
 #'     \item set_seed(10)
-#'     \item pedWithGenotypeReport <- reportGV(nprcgenekeepr::pedWithGenotype, guIter = 10000)
-#'     \item save(pedWithGenotypeReport, file = "data/pedWithGenotypeReport.RData")
+#'     \item pedWithGenotypeReport <- reportGV(nprcgenekeepr::pedWithGenotype,
+#'           guIter = 10000)
+#'     \item save(pedWithGenotypeReport,
+#'                file = "data/pedWithGenotypeReport.RData")
 #'   }
 #'
 #' @examples
@@ -341,8 +345,8 @@
 #' IDs and dates have been modified to de-identify the data.
 #' \describe{
 #' \item{id}{-- character column of animal IDs}
-#' \item{sire}{-- the male parent of the animal indicated by the \code{id} column.
-#' Unknown sires are indicated with \code{NA}}
+#' \item{sire}{-- the male parent of the animal indicated by the \code{id}
+#' column. Unknown sires are indicated with \code{NA}}
 #' \item{dam}{-- the female parent of the animal indicated by the \code{id}
 #' column.Unknown dams are indicated with \code{NA}}
 #' \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an
@@ -359,4 +363,3 @@
 #' data("rhesusPedigree")
 #' }
 "rhesusPedigree"
-

@@ -13,7 +13,7 @@ set_seed(10)
 test_that(paste0("makeGroupMembers fails when more than one potential sire ",
                  "exists in currentGroup and harem == TRUE."), {
   currentGroups <- list(1)
-  currentGroups[[1]] = qcBreeders
+  currentGroups[[1]] <- qcBreeders
   expect_error(makeGroupMembers(
     numGp = 3, currentGroups = currentGroups,
     candidates = qcBreeders, ped = pedWithGenotype, harem = TRUE,

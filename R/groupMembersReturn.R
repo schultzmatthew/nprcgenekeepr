@@ -7,9 +7,9 @@
 #' \code{savedScore}, and if \code{withKin == TRUE} \code{groupKin} as well.
 #'
 #' @param savedGroupMembers selected animal group
-#' @param savedScore score of selected group, which is the group having the largest
-#' minimum group size
-#' @param withKin logical variable indicating to return kinship coeficients
+#' @param savedScore score of selected group, which is the group having the
+#'  largest minimum group size
+#' @param withKin logical variable indicating to return kinship coefficients
 #' when \code{TRUE}.
 #' @param kmat numeric matrix of pairwise kinship values. Rows and columns
 #' are named with animal IDs.

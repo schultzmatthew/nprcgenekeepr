@@ -3,8 +3,8 @@
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
-#' @return \code{production} -- Ratio of the number of births that live >30 days to
-#' the number of females >= 3 years of age.
+#' @return \code{production} -- Ratio of the number of births that live >30
+#' days to the number of females >= 3 years of age.
 #'
 #' @details Description of how Production and Production Status (color) is
 #' calculated.

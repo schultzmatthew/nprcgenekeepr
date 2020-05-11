@@ -42,7 +42,8 @@ test_that("getProductionStatus calculates correctly", {
   expect_equal(status$color, "green")
 })
 minParentAge <- 3
-noDamsPed <- pedWith71[!pedWith71$id %in% ped$id[ped$sex == "F" & ped$age >= minParentAge], ]
+noDamsPed <- pedWith71[!pedWith71$id %in% ped$id[ped$sex == "F" &
+                                                   ped$age >= minParentAge], ]
 test_that("getProductionStatus detects no dams", {
   status <- getProductionStatus(
     noDamsPed, minParentAge = 3, maxOffspringAge = NULL,

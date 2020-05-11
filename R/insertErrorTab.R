@@ -1,4 +1,5 @@
-#' insertErrorTab insert a list of errors found by \code{qcStudbook} in the pedigree file
+#' insertErrorTab insert a list of errors found by \code{qcStudbook} in the
+#' pedigree file
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'

@@ -19,7 +19,8 @@
 #'                  sparse = FALSE)
 #' kin <- convertRelationships(bkmat, qcPed)
 #' relClasses <- makeRelationClassesTable(kin)
-#' relClasses$`Relationship Class` <- as.character(relClasses$`Relationship Class`)
+#' relClasses$`Relationship Class` <-
+#'    as.character(relClasses$`Relationship Class`)
 #' relClassTbl <- kin[!kin$relation == "Self", ] %>%
 #'   group_by(relation) %>%
 #'   summarise(count = n())

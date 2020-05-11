@@ -9,12 +9,13 @@ removeGroupIfNoAvailableAnimals(grpNum, available)
 \arguments{
 \item{grpNum}{as list of integer vectors initially populated with one list
 named by the integers 1:numGrp, where numGrp is the number of groups to be
-formed. Each list member is initially populated with a integer vector 1:numGrp.}
+formed. Each list member is initially populated with a integer vector
+seq_len(numGrp).}
 
 \item{available}{is a list of numGrp named members and each member is
 initially defined as the character vector made up of candidate animal Ids.}
 }
 \description{
-@return The grpNum list after removing any list element corresponding to a group
-with no available animals left using in filling a group.
+@return The grpNum list after removing any list element corresponding to a
+group with no available animals left using in filling a group.
 }

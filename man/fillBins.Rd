@@ -2,7 +2,8 @@
 % Please edit documentation in R/fillBins.R
 \name{fillBins}
 \alias{fillBins}
-\title{fillBins Fill bins represented by list of two lists \code{males} and \code{females}.}
+\title{fillBins Fill bins represented by list of two lists \code{males} and
+\code{females}.}
 \usage{
 fillBins(ageDist, lowerAges, upperAges = NULL)
 }
@@ -16,5 +17,6 @@ length as \code{upperAges}}
 length as \code{lowerAges}}
 }
 \description{
-fillBins Fill bins represented by list of two lists \code{males} and \code{females}.
+fillBins Fill bins represented by list of two lists \code{males} and
+\code{females}.
 }

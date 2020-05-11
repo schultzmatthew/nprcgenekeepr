@@ -38,7 +38,8 @@ obfuscatePed <- function(ped, size = 6, maxDelta = 30,
       ped[[col]] <- obfuscateDate(ped[[col]], maxDelta = maxDelta)
     }
   }
-  if (any("age" %in% names(ped)) & any("birth" %in% names(ped)) & any("exit" %in% names(ped))) {
+  if (any("age" %in% names(ped)) & any("birth" %in% names(ped)) &
+      any("exit" %in% names(ped))) {
     if (all(is.Date(ped$birth)))
       ped["age"] <- calcAge(ped$birth, ped$exit)
   }

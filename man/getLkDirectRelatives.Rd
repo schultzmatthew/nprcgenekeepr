@@ -15,8 +15,8 @@ a place holder record where parent (\code{sire},
 \code{dam}) IDs are set to \code{NA}.}
 }
 \value{
-A data.frame with pedigree structure having all of the direct ancestors
-for the Ids provided.
+A data.frame with pedigree structure having all of the direct
+ancestors for the Ids provided.
 }
 \description{
 Gets direct ancestors from labkey \code{study} schema and \code{demographics}

@@ -12,8 +12,8 @@ obfuscateDate(baseDate, maxDelta = 30, minDate)
 \item{maxDelta}{integer vector that is used to create min and max arguments
 to \code{runif} (\code{runif(n, min = 0, max = 1)})}
 
-\item{minDate}{list object of Date objects that has the lower bound of resulting
-obfuscated dates}
+\item{minDate}{list object of Date objects that has the lower bound of
+resulting obfuscated dates}
 }
 \value{
 A vector of dates that have be obfuscated.
@@ -26,7 +26,8 @@ Insure the resulting date is as least as large as the min_date.
 \examples{
 \donttest{
 library(nprcgenekeepr)
-someDates <- rep(as.Date(c("2009-2-16", "2016-2-16"), format = "\%Y-\%m-\%d"), 10)
+someDates <- rep(as.Date(c("2009-2-16", "2016-2-16"), format = "\%Y-\%m-\%d"),
+                 10)
 minBirthDate <- rep(as.Date("2009-2-16", format = "\%Y-\%m-\%d"), 20)
 obfuscateDate(someDates, 30, minBirthDate)
 }

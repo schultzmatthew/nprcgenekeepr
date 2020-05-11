@@ -5,7 +5,8 @@
 #'
 #' @return Description of column name changes
 #'
-#' @param orgCols character vector with column names to be transformed if needed.
+#' @param orgCols character vector with column names to be transformed if
+#' needed.
 #' @param cols character vector with transformed column names
 ## ##  get_and_or_list
 #' @importFrom stringi stri_c

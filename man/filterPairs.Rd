@@ -15,7 +15,7 @@ to a long-format table.}
 \item{ped}{Dataframe of pedigree information including the IDs listed in
 \code{candidates}.}
 
-\item{ignore}{a list coontaining zero or more character vectors of length 2
+\item{ignore}{a list containing zero or more character vectors of length 2
 indicating which sex pairs should be ignored with regard to kinship.
 Defaults to \code{list(c("F", "F"))}.}
 }

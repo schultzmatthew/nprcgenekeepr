@@ -7,7 +7,8 @@ library(testthat)
 sysInfoUnix <-
   c(sysname = "Darwin",
     release = "17.7.0",
-    version = "Darwin Kernel Version 17.7.0: Thu Jun 21 22:53:14 PDT 2018; root:xnu-4570.71.2~1/RELEASE_X86_64",
+    version = paste0("Darwin Kernel Version 17.7.0: Thu Jun 21 22:53:14 ",
+                     "PDT 2018; root:xnu-4570.71.2~1/RELEASE_X86_64"),
     nodename = "prefect.local",
     machine = "x86_64",
     login = "msharp",
@@ -15,7 +16,8 @@ sysInfoUnix <-
 sysInfoWindows <-
   c(sysname = "Windows",
     release = "17.7.0",
-    version = "Darwin Kernel Version 17.7.0: Thu Jun 21 22:53:14 PDT 2018; root:xnu-4570.71.2~1/RELEASE_X86_64",
+    version = "Darwin Kernel Version 17.7.0: Thu Jun 21 22:53:14 PDT 2018; ",
+    "root:xnu-4570.71.2~1/RELEASE_X86_64",
     nodename = "prefect.local",
     machine = "x86_64",
     login = "msharp",

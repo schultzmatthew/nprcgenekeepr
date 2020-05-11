@@ -7,8 +7,8 @@
 getEmptyErrorLst()
 }
 \value{
-An errorLst object with placeholders for error types found in a pedigree
-file by \code{qcStudbook}.
+An errorLst object with placeholders for error types found in a
+pedigree file by \code{qcStudbook}.
 }
 \description{
 Creates a empty errorLst object

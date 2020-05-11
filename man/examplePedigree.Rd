@@ -14,8 +14,8 @@ examplePedigree
 Represents pedigree from \emph{ExamplePedigree.csv}.
 \describe{
 \item{id}{-- character column of animal IDs}
-\item{sire}{-- the male parent of the animal indicated by the \code{id} column.
-Unknown sires are indicated with \code{NA}}
+\item{sire}{-- the male parent of the animal indicated by the \code{id}
+column. Unknown sires are indicated with \code{NA}}
 \item{dam}{-- the female parent of the animal indicated by the \code{id}
 column.Unknown dams are indicated with \code{NA}}
 \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an
@@ -28,13 +28,15 @@ generation) of the animal indicated by the \code{id} column.}
 \item{ancestry}{-- character vector or NA with free-form text providing
 information about the geographic population of origin.}
 \item{origin}{-- character vector or \code{NA} (optional) that indicates
-the name of the facility that the individual was imported from if other than local.}
+the name of the facility that the individual was imported from if other than
+local.}
 \item{status}{-- character vector or NA. Flag indicating an individual's
 status as alive, dead, sold, etc. Transformed to
  factor {levels: ALIVE, DECEASED, SHIPPED, UNKNOWN}. Vector of
 standardized status codes with the possible values
 ALIVE, DECEASED, SHIPPED, or UNKNOWN}
-\item{recordStats}{-- character vector with value of \code{"added"} or \code{"original"}.}
+\item{recordStats}{-- character vector with value of \code{"added"} or
+ \code{"original"}.}
 }
 }
 \examples{

@@ -3,7 +3,7 @@
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
-#' @return A charcter string with a file name prepended with the date and time
+#' @return A character string with a file name prepended with the date and time
 #' in YYYY-MM-DD_hh_mm_ss_basename format.
 #'
 #' @examples

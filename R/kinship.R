@@ -30,7 +30,8 @@
 #' of animals.
 #' @param mother.id character vector or NA for the IDs of the dams for the set
 #' of animals.
-#' @param pdepth integer vector indicating the generation number for each animal.
+#' @param pdepth integer vector indicating the generation number for each
+#' animal.
 #' @param sparse logical flag. If \code{TRUE}, \code{Matrix::Diagnol()} is
 #' used to make a unit diagonal matrix. If \code{FALSE}, \code{base::diag()} is
 #' used to make a unit square matrix.
@@ -45,7 +46,8 @@
 #' @author {Terry Therneau, original version}
 #'
 #'
-#' @references {Main website} \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+#' @references {Main website}
+#' \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 #'
 #'
 #' @references {S-Plus/R Function Page}

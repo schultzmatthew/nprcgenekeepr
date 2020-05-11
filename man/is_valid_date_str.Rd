@@ -20,8 +20,8 @@ to return NA (instead of signaling an error) if the format guessing does not
 succeed. Defaults to FALSE.}
 }
 \value{
-A logical value or \code{NA} indicating whether or not the provided character
-vector represented a valid date string.
+A logical value or \code{NA} indicating whether or not the provided
+character vector represented a valid date string.
 }
 \description{
 Taken from github.com/rmsharp/rmsutilityr

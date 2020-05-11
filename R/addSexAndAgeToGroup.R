@@ -1,4 +1,5 @@
-#' Forms a dataframe with Id, Sex, and current Age given a list of Ids and a pedigree
+#' Forms a dataframe with Id, Sex, and current Age given a list of Ids and a
+#' pedigree
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
@@ -20,7 +21,8 @@
 addSexAndAgeToGroup <- function(ids, ped) {
   group <- data.frame(ids,
              sex = sapply(ids, function(id) {ped$sex[ped$id == id]}),
-             age = sapply(ids, function(id) {getCurrentAge(ped$birth[ped$id == id])}),
+             age = vapply(ids, function(id) {
+               getCurrentAge(ped$birth[ped$id == id])}, numeric(1)),
              stringsAsFactors = FALSE)
   group
 }

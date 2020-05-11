@@ -15,38 +15,62 @@ pedFactors <- data.frame(
   population = ped$population,
   stringsAsFactors = TRUE
 )
-genotype <- data.frame(id = ped$id,
-                     first_allele = c(NA, NA, "A001_B001", "A001_B002", NA,
-                                      "A001_B002", "A001_B001"),
-                     second_allele = c(NA, NA, "A010_B001", "A001_B001", NA,
-                                       NA, NA),
-                     stringsAsFactors = FALSE)
+genotype <- data.frame(
+  id = ped$id,
+  first_allele = c(NA, NA, "A001_B001", "A001_B002", NA,
+                   "A001_B002", "A001_B001"),
+  second_allele = c(NA, NA, "A010_B001", "A001_B001", NA,
+                    NA, NA),
+  stringsAsFactors = FALSE
+)
 pedWithGenotype <- addGenotype(ped, genotype)
 pedGenotype <- getGVGenotype(pedWithGenotype)
-allelesFactors <- geneDrop(pedFactors$id, pedFactors$sire, pedFactors$dam,
-                           pedFactors$gen, genotype = NULL, n = nDrops,
-                           updateProgress = NULL)
-allelesNew <- geneDrop(ped$id, ped$sire, ped$dam,
-                       ped$gen, genotype = NULL, n = nDrops,
-                       updateProgress = NULL)
-allelesNewGen <- geneDrop(ped$id, ped$sire, ped$dam, ped$gen,
-                          genotype = pedGenotype,
-                          n = nDrops, updateProgress = NULL)
+allelesFactors <-
+  geneDrop(
+    pedFactors$id,
+    pedFactors$sire,
+    pedFactors$dam,
+    pedFactors$gen,
+    genotype = NULL,
+    n = nDrops,
+    updateProgress = NULL
+  )
+allelesNew <- geneDrop(
+  ped$id,
+  ped$sire,
+  ped$dam,
+  ped$gen,
+  genotype = NULL,
+  n = nDrops,
+  updateProgress = NULL
+)
+allelesNewGen <- geneDrop(
+  ped$id,
+  ped$sire,
+  ped$dam,
+  ped$gen,
+  genotype = pedGenotype,
+  n = nDrops,
+  updateProgress = NULL
+)
 
-test_that("geneDrop correctly drops gene down the pedigree using
-          random segregation by Mendelian rules", {
-            expect_equal(table(as.numeric(allelesNew[7, 1:nDrops]))[[1]], 1)
-            expect_equal(table(as.numeric(allelesNew[7, 1:nDrops]))[[2]], 4)
-            expect_equal(table(as.numeric(allelesFactors[7, 1:nDrops]))[[1]],
-                         2)
-            expect_equal(table(as.numeric(allelesFactors[7, 1:nDrops]))[[2]],
-                         3)
-            expect_equal(table(as.numeric(allelesNewGen[7, 1:nDrops]))[["10001"]],
-                         nDrops)
-            expect_equal(table(as.numeric(allelesNewGen[9, 1:nDrops]))[["10002"]],
-                         nDrops)
-            expect_equal(table(as.numeric(allelesNewGen[13, 1:nDrops]))[["10001"]],
-                         5)
-            expect_equal(table(as.numeric(allelesNewGen[12, 1:nDrops]))[["6"]],
-                         3)
-          })
+test_that(
+  "geneDrop correctly drops gene down the pedigree using
+          random segregation by Mendelian rules",
+  {
+    expect_equal(table(as.numeric(allelesNew[7, 1:nDrops]))[[1]], 1)
+    expect_equal(table(as.numeric(allelesNew[7, 1:nDrops]))[[2]], 4)
+    expect_equal(table(as.numeric(allelesFactors[7, 1:nDrops]))[[1]],
+                 2)
+    expect_equal(table(as.numeric(allelesFactors[7, 1:nDrops]))[[2]],
+                 3)
+    expect_equal(table(as.numeric(allelesNewGen[7, 1:nDrops]))[["10001"]],
+                 nDrops)
+    expect_equal(table(as.numeric(allelesNewGen[9, 1:nDrops]))[["10002"]],
+                 nDrops)
+    expect_equal(table(as.numeric(allelesNewGen[13, 1:nDrops]))[["10001"]],
+                 5)
+    expect_equal(table(as.numeric(allelesNewGen[12, 1:nDrops]))[["6"]],
+                 3)
+  }
+)

@@ -32,8 +32,8 @@ is either \emph{"shelter_pens"} or \emph{"corral"}.}
 \code{Sys.Date()}.}
 }
 \value{
-\code{production} -- Ratio of the number of births that live >30 days to
-the number of females >= 3 years of age.
+\code{production} -- Ratio of the number of births that live >30
+days to the number of females >= 3 years of age.
 }
 \description{
 Get production status of group

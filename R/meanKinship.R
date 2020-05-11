@@ -8,7 +8,7 @@
 #' in which the summation is over all animals, \emph{j}, including the kinship
 #' of animal \emph{i} to itself.
 #'
-#' @return A named numeric vecter of average kinship coefficients for each
+#' @return A named numeric vector of average kinship coefficients for each
 #' animal ID. Elements are named with the IDs from the columns of kmat.
 #'
 #' @examples

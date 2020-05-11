@@ -7,7 +7,8 @@
 colChange(orgCols, cols)
 }
 \arguments{
-\item{orgCols}{character vector with column names to be transformed if needed.}
+\item{orgCols}{character vector with column names to be transformed if
+needed.}
 
 \item{cols}{character vector with transformed column names}
 }

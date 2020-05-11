@@ -11,8 +11,8 @@ convertAncestry(ancestry)
 information about the geographic population of origin.}
 }
 \value{
-A factor vector of standardized designators specifying if an animal is
-a Chinese rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or
+A factor vector of standardized designators specifying if an animal
+is a Chinese rhesus, Indian rhesus, Chinese-Indian hybrid rhesus, or
 Japanese macaque. Levels: CHINESE, INDIAN, HYBRID, JAPANESE, OTHER, UNKNOWN.
 }
 \description{

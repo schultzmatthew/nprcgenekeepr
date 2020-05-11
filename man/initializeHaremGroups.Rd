@@ -10,8 +10,9 @@ initializeHaremGroups(numGp, currentGroups, candidates, ped, minAge)
 \item{numGp}{integer value indicating the number of groups that should be
 formed from the list of IDs. Default is 1.}
 
-\item{currentGroups}{list of character vectors of IDs of animals currently assigned
-to the group. Defaults to character(0) assuming no groups are existent.}
+\item{currentGroups}{list of character vectors of IDs of animals currently
+assigned to the group. Defaults to character(0) assuming no groups are
+existent.}
 
 \item{candidates}{character vector of IDs of the animals available for
 use in the group.}

@@ -15,6 +15,7 @@ test_that("addSexAndAgeToGroup forms the correct dataframe", {
   expect_equal(names(df), c("ids", "sex", "age"))
   expect_equal(df$ids[1], "Q0RGP7")
   expect_equal(as.character(df$sex[1]), "F")
-  expect_equal(df$age[df$id == "Q0RGP7"], qcPed$age[qcPed$id == "Q0RGP7"], tolerance = 0.2, scale = 18)
+  expect_equal(df$age[df$id == "Q0RGP7"], qcPed$age[qcPed$id == "Q0RGP7"],
+               tolerance = 0.2, scale = 18)
 }
 )

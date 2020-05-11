@@ -15,7 +15,8 @@
 #' @param additionalFemales Integer value of females to add to those within the
 #' group when calculating the ratio. Ignored if calculated ratio is 0 or Inf.
 #'Default is 0.
-getSexRatioWithAdditions <- function(ids, ped, additionalMales, additionalFemales) {
+getSexRatioWithAdditions <- function(ids, ped, additionalMales,
+                                     additionalFemales) {
   (length(ped$sex[ped$id %in% ids & ped$sex != "M"]) + additionalFemales) /
     (length(ped$sex[ped$id %in% ids & ped$sex == "M"]) + additionalMales)
 }

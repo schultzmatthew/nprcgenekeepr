@@ -15,8 +15,8 @@ Represents an obfuscated pedigree from \emph{rhesusPedigree.csv} where the
 IDs and dates have been modified to de-identify the data.
 \describe{
 \item{id}{-- character column of animal IDs}
-\item{sire}{-- the male parent of the animal indicated by the \code{id} column.
-Unknown sires are indicated with \code{NA}}
+\item{sire}{-- the male parent of the animal indicated by the \code{id}
+column. Unknown sires are indicated with \code{NA}}
 \item{dam}{-- the female parent of the animal indicated by the \code{id}
 column.Unknown dams are indicated with \code{NA}}
 \item{sex}{-- factor with levels: "M", "F", "U". Sex specifier for an

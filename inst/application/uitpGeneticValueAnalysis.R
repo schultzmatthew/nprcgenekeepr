@@ -20,7 +20,8 @@ uitpGeneticValueAnalysis <-
         style = "margin-left:425px;padding:10px;",
 
         div(
-          style = "display:inline-block;width:350px;vertical-align: top;padding:10px",
+          style = paste0("display:inline-block;width:350px;vertical-align: ",
+                         "top;padding:10px"),
           numericInput(
             "iterations",
             label = paste0("Enter the number of simulations for the ",
@@ -31,7 +32,8 @@ uitpGeneticValueAnalysis <-
           )
         ),
         div(
-          style = "display:inline-block;width:350px;vertical-align: top;padding:10px",
+          style = paste0("display:inline-block;width:350px;vertical-align: ",
+                         "top;padding:10px"),
           selectInput(
             "threshold",
             label = "Enter the genome uniqueness threshold:",
@@ -50,7 +52,8 @@ uitpGeneticValueAnalysis <-
         br(),
         hr(),
         helpText(h4("Results:")),
-        helpText("Enter IDs of animals to be viewed (separate with comma, semicolon, tab or return):"),
+        helpText(paste0("Enter IDs of animals to be viewed (separate with ",
+                        "comma, semicolon, tab or return):")),
         helpText("(Leave blank to view all)"),
         div(
           style = "display:inline-block;width:250px;padding:10px",

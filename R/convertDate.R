@@ -23,7 +23,8 @@
 #'                             sample(1:28, 10, replace = TRUE), "-",
 #'                             sample(seq(0, 15, by = 3), 10,
 #'                                    replace = TRUE) + 2000)
-#' someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
+#' someDeathDates <- sample(someBirthDates, length(someBirthDates),
+#'                          replace = FALSE)
 #' someDepartureDates <- sample(someBirthDates, length(someBirthDates),
 #'                              replace = FALSE)
 #' ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates,
@@ -81,7 +82,7 @@ convertDate <- function(ped, time.origin = as.Date("1970-01-01"),
 
   headers <-  tolower(names(ped))
   headers <- headers[headers %in% getDateColNames()]
-  format = "%Y-%m-%d"
+  format <- "%Y-%m-%d"
   invalid_date_rows <- NULL
   for (header in headers) {
     dates <- ped[[header]]

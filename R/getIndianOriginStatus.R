@@ -21,7 +21,7 @@ getIndianOriginStatus <- function(origin) {
   unknown <- length(origin[stri_detect_fixed(origin, "UNKNOWN")])
   other <- length(origin[stri_detect_fixed(origin, "OTHER")])
 
-  ancestry = list(
+  ancestry <- list(
     chinese = chinese,
     indian = indian,
     hybrid = hybrid,

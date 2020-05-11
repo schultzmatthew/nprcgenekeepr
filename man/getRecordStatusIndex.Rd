@@ -9,10 +9,12 @@ getRecordStatusIndex(ped, status = "added")
 \arguments{
 \item{ped}{pedigree dataframe}
 
-\item{status}{character vector with value of \code{"added"} or \code{"original"}.}
+\item{status}{character vector with value of \code{"added"} or
+\code{"original"}.}
 }
 \value{
-An integer vector of records with \code{recordStatus} == \code{status}.
+An integer vector of records with \code{recordStatus} ==
+\code{status}.
 }
 \description{
 Returns record numbers with selected \code{recordStatus}.

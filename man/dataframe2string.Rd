@@ -19,7 +19,7 @@ row names should be printed.}
 }
 \value{
 A character vector representation of the data.frame provided to the
-fuction.
+function.
 }
 \description{
 Adapted from print.data.frame

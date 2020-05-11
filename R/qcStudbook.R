@@ -57,8 +57,8 @@
 #' @param reportChanges logical value that if \code{TRUE}, the \code{errorLst}
 #' contains the list of changes made to the column names. Default is
 #' \code{FALSE}.
-#' @param reportErrors logical value if \code{TRUE} will scan the entire file and
-#' report back changes made to input and errors in a
+#' @param reportErrors logical value if \code{TRUE} will scan the entire file
+#' and report back changes made to input and errors in a
 #' list of list where each sublist is a type of change or error found.
 #' Changes will include column names, case of categorical values (male,
 #' female, unknown), etc.
@@ -164,8 +164,8 @@ qcStudbook <- function(sb, minParentAge = 2, reportChanges = FALSE,
   newColumns <- fixColumnNames(names(sb), getEmptyErrorLst())
   cols <- newColumns$newColNames
   errorLst <- newColumns$errorLst
-  if (reportChanges == FALSE)
-    errorLst$changedCols <- getEmptyErrorLst()$changedCols # remove changed columns
+  if (reportChanges == FALSE) # remove changed columns
+    errorLst$changedCols <- getEmptyErrorLst()$changedCols
   missingColumns <- checkRequiredCols(cols, reportErrors)
   if (reportErrors & !is.null(missingColumns)) {
     errorLst$missingColumns <- missingColumns

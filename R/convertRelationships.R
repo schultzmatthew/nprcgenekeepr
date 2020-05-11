@@ -43,7 +43,7 @@ convertRelationships <- function(kmat, ped, ids = NULL, updateProgress = NULL) {
   ped <- makeCEPH(ped$id, ped$sire, ped$dam)
   r <- c()
 
-  for (i in 1:nrow(kin)) {
+  for (i in seq_len(nrow(kin))) {
     id1 <- kin$id1[i]
     id2 <- kin$id2[i]
 

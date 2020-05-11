@@ -10,7 +10,8 @@ getPossibleCols()
 Pedigree curation function
 }
 \details{
-@return A character vector of the possible columns that can be in a studbook.
+@return A character vector of the possible columns that can be in a
+ studbook.
 The possible columns are as follows:
 \itemize{
 \item{id} {-- character vector with unique identifier for an individual}

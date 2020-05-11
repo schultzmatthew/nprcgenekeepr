@@ -2,7 +2,8 @@
 #' This file is part of nprcgenekeepr
 context("fillGroupMembersWithSexRatio")
 
-test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio", {
+test_that(
+  "fillGroupMembersWithSexRatio adds animals in the specified sex ratio", {
   skip_if_not(Sys.info()[names(Sys.info()) == "user"] == "msharp")
 
   examplePedigree <- nprcgenekeepr::examplePedigree
@@ -18,7 +19,8 @@ test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio"
   kin <- getAnimalsWithHighKinship(kmat, ped, threshold, currentGroups,
                                    ignore = list(c("F", "F")), minAge = 1)
   # Filtering out candidates related to current group members
-  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]), unlist(currentGroups)))
+  conflicts <- unique(c(unlist(kin[unlist(currentGroups)]),
+                        unlist(currentGroups)))
   candidates <- setdiff(candidates, conflicts)
 
   kin <- addAnimalsWithNoRelative(kin, candidates)
@@ -29,7 +31,8 @@ test_that("fillGroupMembersWithSexRatio adds animals in the specified sex ratio"
   harem <- FALSE
   sexRatio <- 0
   withKin <- FALSE
-  groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped, harem = harem,
+  groupMembers <- makeGroupMembers(numGp, currentGroups, candidates, ped,
+                                   harem = harem,
                                    minAge = minAge)
   groupMembersStart <- groupMembers
   grpNum <- nprcgenekeepr:::makeGrpNum(numGp)

@@ -11,7 +11,7 @@ meanKinship(kmat)
 Animal IDs are the row and column names.}
 }
 \value{
-A named numeric vecter of average kinship coefficients for each
+A named numeric vector of average kinship coefficients for each
 animal ID. Elements are named with the IDs from the columns of kmat.
 }
 \description{

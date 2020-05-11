@@ -894,7 +894,7 @@
 <p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the R sessions temporary directory that lists the records that have generated the errors.</p>
 <div class="sourceCode" id="cb62"><html><body><pre class="r"><span class="no">pedOne</span> <span class="kw">&lt;-</span> <span class="kw pkg">nprcgenekeepr</span><span class="kw ns">::</span><span class="no"><a href="../reference/pedOne.html">pedOne</a></span> <span class="co"># put it in the local environment</span>
 <span class="no">ped</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(<span class="no">pedOne</span>, <span class="kw">minParentAge</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
-<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpurXf8m/lowParentAge.csv.</code></pre>
+<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpvzWzWR/lowParentAge.csv.</code></pre>
 <p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -1024,7 +1024,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb78"><html><body><pre class="r"><span class="no">elapsed_time</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(<span class="no">start_time</span>)</pre></body></html></div>
-<p>The current date and time is 2020-05-10 15:29:07. The processing time for this document was 16 seconds..</p>
+<p>The current date and time is 2020-05-10 23:17:01. The processing time for this document was 16 seconds..</p>
 <div class="sourceCode" id="cb79"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R version 4.0.0 (2020-04-24)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)

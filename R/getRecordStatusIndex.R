@@ -3,10 +3,12 @@
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
 #'
-#' @return An integer vector of records with \code{recordStatus} == \code{status}.
+#' @return An integer vector of records with \code{recordStatus} ==
+#' \code{status}.
 #'
 #' @param ped pedigree dataframe
-#' @param status character vector with value of \code{"added"} or \code{"original"}.
+#' @param status character vector with value of \code{"added"} or
+#' \code{"original"}.
 getRecordStatusIndex <- function(ped, status = "added") {
   if (any("recordStatus" %in% names(ped)))
     seq_along(ped$recordStatus)[ped$recordStatus == status]

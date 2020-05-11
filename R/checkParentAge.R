@@ -5,7 +5,7 @@
 #' Ensure parents are sufficiently older than offspring
 #'
 #' @return A dataframe containing rows for each animal where one or more
-#' parent was less than \code{minParentAge}. It cantains all of the columns
+#' parent was less than \code{minParentAge}. It contains all of the columns
 #' in the original \code{sb} dataframe with the following added columns:
 #' \enumerate{
 #' \item {sireBirth} {sire's birth date}

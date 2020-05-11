@@ -121,8 +121,10 @@ uitpBreedingGroupFormation <-
               label = "Animals with kinship above this value will be excluded:",
               choices = list(
                 "0.015625 (second cousins)" = 0.015625,
-                "0.0625 (great-grandparent/great-grandchild; first cousins)" = 0.0625,
-                "0.125 (grandparent/grandchild; half-siblings; avuncular)" = 0.125,
+                "0.0625 (great-grandparent/great-grandchild; first cousins)" =
+                  0.0625,
+                "0.125 (grandparent/grandchild; half-siblings; avuncular)" =
+                  0.125,
                 "0.25 (parent/child)" = 0.25
               ),
               selected = 1

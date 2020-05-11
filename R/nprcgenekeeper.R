@@ -23,8 +23,8 @@
 #' \item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an individual}
 #' \item{gen} {-- integer vector with the generation number of the individual}
 #' \item{birth} {-- Date or \code{NA} (optional) with the individual's birth date}
-#' \item{exit} {-- Date or \code{NA} (optional) with the individual's exit date (death,
-#'  or departure if applicable)}
+#' \item{exit} {-- Date or \code{NA} (optional) with the individual's exit date
+#' (death, or departure if applicable)}
 #' \item{ancestry} {-- character vector or \code{NA} (optional) that indicates
 #' the geographic population to which the individual belongs.}
 #' \item{age} {-- numeric or \code{NA} (optional) indicating the individual's
@@ -32,8 +32,8 @@
 #' \item{population} {-- logical (optional)
 #' Is the id part of the extant population?}
 #' \item{origin} {-- character vector or \code{NA} (optional) that indicates
-#' the name of the facility that the individual was imported from if other than local.
-#' \code{NA} indicates the individual was not imported.}
+#' the name of the facility that the individual was imported from if other than
+#' local.\code{NA} indicates the individual was not imported.}
 #'}
 #'
 #' Pedigree File Testing Functions

@@ -20,6 +20,8 @@ test_that("print.summary.nprcgenekeeprErr prints expected output", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
   expect_success(expect_output(summary(qcStudbook(
     pedClean, minParentAge = NULL, reportErrors = TRUE)), NA))
-  expect_failure(expect_output(print(summary(qcStudbook(pedOne, reportErrors = TRUE))), NA),
+  expect_failure(expect_output(print(summary(qcStudbook(pedOne,
+                                                        reportErrors = TRUE))),
+                               NA),
                  "produced output")
   })

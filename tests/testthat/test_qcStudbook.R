@@ -16,7 +16,8 @@ pedOne <- data.frame(ego_id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                            sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                              2000)),
                   stringsAsFactors = FALSE, check.names = FALSE)
-pedTwo <- data.frame(ego_id = c("UNKNOWN", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
+pedTwo <- data.frame(ego_id =
+                       c("UNKNOWN", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                      `si re` = c(NA, NA, NA, NA, "UNKNOWN", "s1", "s2", "s2"),
                      dam_id = c(NA, NA, NA, NA, "d1", "d2", "UNKNOWN", "d2"),
                      sex = c("F", "M", "M", "F", "F", "F", "F", "M"),
@@ -46,19 +47,25 @@ test_that("qcStudbook detects errors in column names", {
   expect_error(suppressWarnings(qcStudbook(pedOne)))
   expect_error(suppressWarnings(qcStudbook(pedOne[ , -1], minParentAge = NULL)))
 })
-test_that("qcStudbook returns list of suspicious parents when reportErrors == TRUE", {
-  expect_equal(suppressWarnings(qcStudbook(pedOne, reportErrors = TRUE)$suspiciousParents$id),
+test_that(
+  "qcStudbook returns list of suspicious parents when reportErrors == TRUE", {
+  expect_equal(
+    suppressWarnings(qcStudbook(pedOne,
+                                reportErrors = TRUE)$suspiciousParents$id),
                c("o2", "o3", "o4"))
 })
-test_that("qcStudbook returns list of missing column names when reportErrors == TRUE", {
+test_that(
+  "qcStudbook returns list of missing column names when reportErrors == TRUE", {
     expect_equal(suppressWarnings(
-    qcStudbook(pedOne[ , -1], minParentAge = NULL, reportErrors = TRUE)$missingColumns),
+    qcStudbook(pedOne[ , -1], minParentAge = NULL,
+               reportErrors = TRUE)$missingColumns),
     "id")
 })
 test_that("qcStudbook detects missing required column names", {
   expect_error(suppressWarnings(qcStudbook(pedOne[ , -3])))
 })
-test_that("qcStudbook detects returns list of bad column names when reportErrors == TRUE", {
+test_that(
+  "qcStudbook returns list of bad column names when reportErrors == TRUE", {
   expect_equal(qcStudbook(pedOne[ , -3], reportErrors = TRUE)$missingColumns,
   "dam")
 })
@@ -69,15 +76,19 @@ test_that("qcStudbook corrects column names", {
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "d1"]), "F")
   expect_equal(as.character(newPedOne$sex[newPedOne$id == "s1"]), "M")
 })
-test_that("qcStudbook reports correction of column names with reportErrors == TRUE", {
-  errorLst <- qcStudbook(pedOne, minParentAge = NULL, reportChanges = TRUE, reportErrors = TRUE)
+test_that(
+  "qcStudbook reports correction of column names with reportErrors == TRUE", {
+  errorLst <- qcStudbook(pedOne, minParentAge = NULL,
+                         reportChanges = TRUE, reportErrors = TRUE)
   expect_equal(errorLst$changedCols$spaceRemoved, c("si re to sire"))
-  expect_equal(errorLst$changedCols$underScoreRemoved,
-               c("ego_id, dam_id, and birth_date to egoid, damid, and birthdate"))
+  expect_equal(
+    errorLst$changedCols$underScoreRemoved,
+    c("ego_id, dam_id, and birth_date to egoid, damid, and birthdate"))
   expect_equal(errorLst$changedCols$damIdToDam, c("damid to dam"))
   expect_equal(errorLst$changedCols$birthdateToBirth, c("birthdate to birth"))
 })
-test_that("qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS", {
+test_that(
+  "qcStudbook corrects use of 'UNKNOWN' in 'id', 'sire' and 'dam' IDS", {
   newPedTwo <- suppressWarnings(qcStudbook(pedTwo, minParentAge = NULL))
   expect_equal(newPedTwo$sire[newPedTwo$id == "o1"], "U0001")
   expect_equal(newPedTwo$dam[newPedTwo$id == "o3"], "U0002")
@@ -104,14 +115,18 @@ test_that("qcStudbook removes duplicates", {
   qcPedDups <- qcStudbook(pedDups, minParentAge = NULL)
   expect_equal(nrow(pedOne), nrow(qcPedDups))
 })
-test_that("qcStudbook removes duplicates and reports them when reportErrors == TRUE", {
+test_that(
+  "qcStudbook removes duplicates and reports them when reportErrors == TRUE", {
   pedDups <- rbind(pedOne, pedOne[1:3, ])
-  dups <- qcStudbook(pedDups, minParentAge = NULL, reportErrors = TRUE)$duplicateIds
+  dups <- qcStudbook(pedDups, minParentAge = NULL,
+                     reportErrors = TRUE)$duplicateIds
   expect_equal(dups, c("s1", "d1", "s2"))
 })
-test_that("qcStudbook returns NULL with reportErrors == TRUE and no errors present", {
+test_that(
+  "qcStudbook returns NULL with reportErrors == TRUE and no errors present", {
   pedClean <- qcStudbook(pedOne, minParentAge = NULL)
-  expect_true(is.null(qcStudbook(pedClean, minParentAge = NULL, reportErrors = TRUE)))
+  expect_true(is.null(qcStudbook(pedClean, minParentAge = NULL,
+                                 reportErrors = TRUE)))
 })
 pedFive <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                      sire = c(NA, "s0", "s4", NA, "s1", "s1", "s2", "s2"),
@@ -123,32 +138,43 @@ pedFive <- data.frame(id = c("s1", "d1", "s2", "d2", "o1", "o2", "o3", "o4"),
                               sample(seq(0, 15, by = 3), 8, replace = TRUE) +
                                 2000)),
                      stringsAsFactors = FALSE)
-test_that("qcStudbook returns NULL errors with reportErrors == TRUE and errors not present", {
+test_that(
+  paste0("qcStudbook returns NULL errors with reportErrors == TRUE and errors ",
+         "not present"), {
   pedClean <- qcStudbook(pedFive, minParentAge = NULL, reportErrors = TRUE)
   expect_true(is.null(pedClean$maleDams))
 })
-test_that("qcStudbook returns parent sex errors with reportErrors == TRUE and errors present", {
+test_that(
+  paste0("qcStudbook returns parent sex errors with reportErrors == TRUE and ",
+         "errors present"), {
   pedClean <- qcStudbook(pedFive, minParentAge = NULL, reportErrors = TRUE)
   expect_equal(pedClean$femaleSires, "s1")
 })
 test_that("qcStudbook returns pedigree date errors with reportErrors == TRUE", {
   set_seed(10)
-  someBirthDates <- paste0(sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000, "-",
+  someBirthDates <- paste0(sample(seq(0, 15, by = 3), 8,
+                                  replace = TRUE) + 2000, "-",
                            sample(1:12, 8, replace = TRUE), "-",
                            sample(1:28, 8, replace = TRUE))
   someBadBirthDates <- paste0(sample(1:12, 8, replace = TRUE), "-",
                               sample(1:28, 8, replace = TRUE), "-",
-                              sample(seq(0, 15, by = 3), 8, replace = TRUE) + 2000)
-  someDeathDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
-  someDepartureDates <- sample(someBirthDates, length(someBirthDates), replace = FALSE)
-  ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates, departure = someDepartureDates)
+                              sample(seq(0, 15, by = 3), 8,
+                                     replace = TRUE) + 2000)
+  someDeathDates <- sample(someBirthDates, length(someBirthDates),
+                           replace = FALSE)
+  someDepartureDates <- sample(someBirthDates, length(someBirthDates),
+                               replace = FALSE)
+  ped1 <- data.frame(birth = someBadBirthDates, death = someDeathDates,
+                     departure = someDepartureDates)
   pedSix <- data.frame(pedFive[ , names(pedFive) != "birth"], ped1)
-  ped6 <- suppressWarnings(qcStudbook(pedSix, minParentAge = NULL, reportErrors = TRUE))
+  ped6 <- suppressWarnings(qcStudbook(pedSix, minParentAge = NULL,
+                                      reportErrors = TRUE))
   expect_equal(
     ped6$invalidDateRows,
     c("1", "2", "3", "4", "5", "6", "7", "8"))
 })
-test_that("qcStudbook passes through nonessential date columns with all == NA", {
+test_that(
+  "qcStudbook passes through nonessential date columns with all == NA", {
   pedSeven <- cbind(pedSix, exit = NA, stringsAsFactors = FALSE)
   ped7 <- qcStudbook(pedSeven, minParentAge = NULL, reportErrors = TRUE)
   expect_equal(ped7$invalidDateRows, character(0))

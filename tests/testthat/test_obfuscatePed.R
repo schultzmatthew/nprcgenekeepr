@@ -11,7 +11,8 @@ test_that("obfuscatePed creates correctly obfuscated pedigree", {
   expect_equal(ped$id[1], ped$dam[7])
   expect_equal(ped$id[1], ped$dam[7])
   expect_true(all(ped$id[2] == ped$dam[c(8, 11, 12)]))
-  expect_true(max(abs(pedSix$birth[!is.na(pedSix$birth)] - ped$birth[!is.na(ped$birth)])) <= 20)
+  expect_true(max(abs(pedSix$birth[!is.na(pedSix$birth)] -
+                        ped$birth[!is.na(ped$birth)])) <= 20)
 })
 test_that("obfuscatePed creates ID map on request", {
   pedSix <- qcStudbook(nprcgenekeepr::pedSix)

@@ -23,7 +23,8 @@ animals. \code{NA} is used for missing sires.}
 \item{dams}{A character vector with IDS of the dams for the set of
 animals. \code{NA} is used for missing dams.}
 
-\item{gen}{An integer vector indicating the generation number for each animal.}
+\item{gen}{An integer vector indicating the generation number for each
+animal.}
 
 \item{genotype}{A dataframe containing known genotypes. It has three
 columns:  \code{id}, \code{first}, and \code{second}. The second and third

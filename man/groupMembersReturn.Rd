@@ -9,10 +9,10 @@ groupMembersReturn(savedGroupMembers, savedScore, withKin, kmat)
 \arguments{
 \item{savedGroupMembers}{selected animal group}
 
-\item{savedScore}{score of selected group, which is the group having the largest
-minimum group size}
+\item{savedScore}{score of selected group, which is the group having the
+largest minimum group size}
 
-\item{withKin}{logical variable indicating to return kinship coeficients
+\item{withKin}{logical variable indicating to return kinship coefficients
 when \code{TRUE}.}
 
 \item{kmat}{numeric matrix of pairwise kinship values. Rows and columns

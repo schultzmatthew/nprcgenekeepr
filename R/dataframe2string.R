@@ -5,7 +5,7 @@
 #' Adapted from print.data.frame
 #'
 #' @return A character vector representation of the data.frame provided to the
-#' fuction.
+#' function.
 #'
 #' @examples
 #' \donttest{
@@ -23,7 +23,7 @@
 #' @importFrom stringi stri_pad_both
 #' @export
 dataframe2string <- function(object, ..., digits = NULL, row.names = TRUE) {
-  nRows = length(row.names(object))
+  nRows <- length(row.names(object))
   if (length(object) == 0L) {
     return(paste(
       sprintf(ngettext(nRows, "data frame with 0 columns and %d row",
@@ -42,7 +42,7 @@ dataframe2string <- function(object, ..., digits = NULL, row.names = TRUE) {
       rowNames <- dimnames(object)[[1L]]
       if (is.null(rowNames)) {
         # no row header available -> use row numbers
-        rowNames <- as.character(1:NROW(m))
+        rowNames <- as.character(seq_len(NROW(m)))
       }
       # add empty header (used with column headers)
       rowNames <- c("", rowNames)
