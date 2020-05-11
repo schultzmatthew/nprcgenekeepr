@@ -174,7 +174,8 @@ Avuncular - Other, Other, and No Relation.</p>
                  <span class='kw'>sparse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='no'>kin</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='convertRelationships.html'>convertRelationships</a></span>(<span class='no'>bkmat</span>, <span class='no'>qcPed</span>)
 <span class='no'>relClasses</span> <span class='kw'>&lt;-</span> <span class='fu'>makeRelationClassesTable</span>(<span class='no'>kin</span>)
-<span class='no'>relClasses</span>$<span class='no'>`Relationship Class`</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>relClasses</span>$<span class='no'>`Relationship Class`</span>)
+<span class='no'>relClasses</span>$<span class='no'>`Relationship Class`</span> <span class='kw'>&lt;-</span>
+   <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>relClasses</span>$<span class='no'>`Relationship Class`</span>)
 <span class='no'>relClassTbl</span> <span class='kw'>&lt;-</span> <span class='no'>kin</span>[!<span class='no'>kin</span>$<span class='no'>relation</span> <span class='kw'>==</span> <span class='st'>"Self"</span>, ] <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>relation</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>count</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/n.html'>n</a></span>())

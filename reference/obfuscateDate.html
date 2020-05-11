@@ -164,8 +164,8 @@ to <code>runif</code> (<code><a href='https://rdrr.io/r/stats/Uniform.html'>runi
     </tr>
     <tr>
       <th>minDate</th>
-      <td><p>list object of Date objects that has the lower bound of resulting
-obfuscated dates</p></td>
+      <td><p>list object of Date objects that has the lower bound of
+resulting obfuscated dates</p></td>
     </tr>
     </table>
 
@@ -176,7 +176,8 @@ obfuscated dates</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>nprcgenekeepr</span>)
-<span class='no'>someDates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2009-2-16"</span>, <span class='st'>"2016-2-16"</span>), <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%Y-%m-%d"</span>), <span class='fl'>10</span>)
+<span class='no'>someDates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2009-2-16"</span>, <span class='st'>"2016-2-16"</span>), <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%Y-%m-%d"</span>),
+                 <span class='fl'>10</span>)
 <span class='no'>minBirthDate</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2009-2-16"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%Y-%m-%d"</span>), <span class='fl'>20</span>)
 <span class='fu'>obfuscateDate</span>(<span class='no'>someDates</span>, <span class='fl'>30</span>, <span class='no'>minBirthDate</span>)</div><div class='output co'>#&gt;  [1] "2009-02-24" "2016-01-29" "2009-03-13" "2016-02-21" "2009-03-16"
 #&gt;  [6] "2016-02-29" "2009-02-28" "2016-01-23" "2009-02-24" "2016-03-16"

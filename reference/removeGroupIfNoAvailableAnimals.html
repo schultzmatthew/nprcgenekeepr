@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Remove group numbers when all available animals have been used — removeGroupIfNoAvailableAnimals" />
-<meta property="og:description" content="@return The grpNum list after removing any list element corresponding to a group
-with no available animals left using in filling a group." />
+<meta property="og:description" content="@return The grpNum list after removing any list element corresponding to a
+group with no available animals left using in filling a group." />
 
 
 
@@ -142,8 +142,8 @@ with no available animals left using in filling a group." />
     </div>
 
     <div class="ref-description">
-    <p>@return The grpNum list after removing any list element corresponding to a group
-with no available animals left using in filling a group.</p>
+    <p>@return The grpNum list after removing any list element corresponding to a
+group with no available animals left using in filling a group.</p>
     </div>
 
     <pre class="usage"><span class='fu'>removeGroupIfNoAvailableAnimals</span>(<span class='no'>grpNum</span>, <span class='no'>available</span>)</pre>
@@ -155,7 +155,8 @@ with no available animals left using in filling a group.</p>
       <th>grpNum</th>
       <td><p>as list of integer vectors initially populated with one list
 named by the integers 1:numGrp, where numGrp is the number of groups to be
-formed. Each list member is initially populated with a integer vector 1:numGrp.</p></td>
+formed. Each list member is initially populated with a integer vector
+seq_len(numGrp).</p></td>
     </tr>
     <tr>
       <th>available</th>
