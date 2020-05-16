@@ -7,9 +7,10 @@
 #' in their home directory. Instructions are embedded as comments
 #' within the file.
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' library(nprcgenekeepr)
 #' data("exampleNprcgenekeeprConfig")
-#' View(exampleNprcgenekeeprConfig)
+#' head(exampleNprcgenekeeprConfig)
 #' }
 "exampleNprcgenekeeprConfig"
 #' examplePedigree is a pedigree object created by \code{qcStudbook}
@@ -42,7 +43,7 @@
 #'  \code{"original"}.}
 #' }
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("examplePedigree")
 #' exampleTree <- createPedTree(examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
@@ -53,7 +54,7 @@
 #' is at the state just prior to calling \code{rankSubjects} inside
 #' \code{orderReport}.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("finalRpt")
 #' finalRpt <- rankSubjects(finalRpt)
 #' }
@@ -64,7 +65,7 @@
 #' They can be used to illustrate the identification of a population of
 #' interest as is shown in the example below.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("focalAnimals")
 #' data("examplePedigree")
 #' any(names(examplePedigree) == "population")
@@ -197,9 +198,9 @@
 #'
 #' This is used for testing and demonstration.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("pedOne")
-#' View(pedOne)
+#' head(pedOne)
 #' }
 "pedOne"
 #' pedSameMaleIsSireAndDam is a dataframe with 8 rows and 5 columns (ego_id,
@@ -216,9 +217,9 @@
 #'
 #' This is used for testing and demonstration.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("pedSix")
-#' View(pedSix)
+#' head(pedSix)
 #' }
 "pedSix"
 #' pedWithGenotype is a dataframe produced from qcPed by adding made up
@@ -247,8 +248,7 @@
 #'   }
 #'
 #' @examples
-#' \dontrun{
-#' library(nprcgenekeepr)
+#' \donttest{
 #' pedWithGenotypeReport <- nprcgenekeepr::pedWithGenotypeReport
 #' }
 "pedWithGenotypeReport"
@@ -293,8 +293,7 @@
 #'   }
 #'
 #' @examples
-#' \dontrun{
-#' library(nprcgenekeepr)
+#' \donttest{
 #' qcPedGvReport <- nprcgenekeepr::qcPedGvReport
 #' }
 "qcPedGvReport"
@@ -317,7 +316,7 @@
 #'
 #' Access it using the following commands.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(nprcgenekeepr)
 #' data("smallPedTree")
 #' }
@@ -334,7 +333,7 @@
 #' \item{second_name}{-- a generic name for the second haplotype}
 #' }
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(nprcgenekeepr)
 #' data("rhesusGenotypes")
 #' }
@@ -358,7 +357,7 @@
 #' \item{age}{-- numerical vector of age in years}
 #' }
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(nprcgenekeepr)
 #' data("rhesusPedigree")
 #' }

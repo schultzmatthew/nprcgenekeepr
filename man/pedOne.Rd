@@ -15,9 +15,9 @@ pedOne
 This is used for testing and demonstration.
 }
 \examples{
-\dontrun{
+\donttest{
 data("pedOne")
-View(pedOne)
+head(pedOne)
 }
 }
 \keyword{datasets}

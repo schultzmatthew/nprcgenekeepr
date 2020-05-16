@@ -19,9 +19,10 @@ in their home directory. Instructions are embedded as comments
 within the file.
 }
 \examples{
-\dontrun{
+\donttest{
+library(nprcgenekeepr)
 data("exampleNprcgenekeeprConfig")
-View(exampleNprcgenekeeprConfig)
+head(exampleNprcgenekeeprConfig)
 }
 }
 \keyword{datasets}

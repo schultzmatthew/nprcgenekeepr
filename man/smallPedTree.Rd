@@ -14,7 +14,7 @@ smallPedTree
 Access it using the following commands.
 }
 \examples{
-\dontrun{
+\donttest{
 library(nprcgenekeepr)
 data("smallPedTree")
 }

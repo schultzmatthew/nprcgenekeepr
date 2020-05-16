@@ -29,7 +29,7 @@ generation) of the animal indicated by the \code{id} column.}
 }
 }
 \examples{
-\dontrun{
+\donttest{
 library(nprcgenekeepr)
 data("rhesusPedigree")
 }

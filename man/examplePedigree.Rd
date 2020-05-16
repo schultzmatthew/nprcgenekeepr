@@ -40,7 +40,7 @@ ALIVE, DECEASED, SHIPPED, or UNKNOWN}
 }
 }
 \examples{
-\dontrun{
+\donttest{
 data("examplePedigree")
 exampleTree <- createPedTree(examplePedigree)
 exampleLoops <- findLoops(exampleTree)

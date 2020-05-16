@@ -21,8 +21,7 @@ It was created using the following commands.
   }
 }
 \examples{
-\dontrun{
-library(nprcgenekeepr)
+\donttest{
 qcPedGvReport <- nprcgenekeepr::qcPedGvReport
 }
 }
