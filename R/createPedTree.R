@@ -24,7 +24,7 @@
 #' the dam ID as named elements.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(nprcgenekeepr)
 #' exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)

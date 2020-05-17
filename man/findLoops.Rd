@@ -31,7 +31,7 @@ amount of time required to perform calculations with
 SIMWALK2 or similar programs.
 }
 \examples{
-\dontrun{
+\donttest{
 data("examplePedigree")
 exampleTree <- createPedTree(examplePedigree)
 exampleLoops <- findLoops(exampleTree)

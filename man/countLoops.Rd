@@ -38,7 +38,7 @@ Uses the \code{loops} data structure and the list of all ancestors for
 each individual to calculate the number of loops for each individual.
 }
 \examples{
-\dontrun{
+\donttest{
 library(nprcgenekeepr)
 exampleTree <- createPedTree(nprcgenekeepr::examplePedigree)
 exampleLoops <- findLoops(exampleTree)

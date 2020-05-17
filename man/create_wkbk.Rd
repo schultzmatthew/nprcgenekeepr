@@ -24,24 +24,25 @@ occurred.
 Creates an Excel workbook with worksheets.
 }
 \examples{
-\dontrun{
+\donttest{
 library(nprcgenekeepr)
 
 make_df_list <- function(size) {
   df_list <- list(size)
   if (size <= 0)
     return(df_list)
-  for (i in 1:size) {
+  for (i in seq_len(size)) {
     n <- sample(2:10, 2, replace = TRUE)
     df <- data.frame(matrix(data = rnorm(n[1] * n[2]), ncol = n[1]))
     df_list[[i]] <- df
   }
-  names(df_list) <- paste0("A", 1:size)
+  names(df_list) <- paste0("A", seq_len(size))
   df_list
 }
 df_list <- make_df_list(3)
 sheetnames <- names(df_list)
-create_wkbk(file = file.choose(), df_list = df_list,
+create_wkbk(file = file.path(tempdir(), "example_excel_wkbk.xlsx"),
+            df_list = df_list,
             sheetnames = sheetnames, replace = FALSE)
 }
 
