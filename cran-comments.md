@@ -1,26 +1,27 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Responded to all requests provided by the reviewer
-  -  Reduced the time required for unit test from over 12 minutes to 21.6 
-     seconds by skipping those test dependent on stochastic creation of 
-     simulated pedigrees and breeding groups when not running on my system.
-  -  Reduced the time to run examples and create vignettes by reducing the 
-     number of stochastic modeling iterations by orders of magnitude without 
-     reducing the examples provided for user-facing functions.
-  -  Checking (--as-cran --run-donttest) Duration: 2m 21.8s on my system.
-  -  The files with the Rd-tag of \arguments missing do not take arguments.
-  -  Corrected private referencing (:::) for exported functions.
-  -  Exported all functions used in examples to remove private referencing 
-     (:::).
-  -  Removed all single quotes on names, abbreviations, initialisms, and,
-     acronyms.
-  -  The phrase Electronic Health Records (EHR) is the name of a module within
-     LabKey, which this software can use as a source of pedigree information
-     so the capitalization is appropriate.
-  -  The words suspected of being misspelled (EHR, Roboin, and kinships) are
-     an initialism of a module in LabKey, a proper name, and a genetic term 
-     respectively.
+* Responded to both requests provided by the reviewer
+  - I have not changed the capitalization of `Shiny` in the description section
+    of the DESCRIPTION file as it is the name of the type of application and is
+    not being used as the name of the package. The use of the capitalization is
+    consistent with the capitalization used within the documentation for the
+    `shiny` package (?shiny, See the Details section, first sentence where it
+    is used as the type of tutorial.) and all documentation and tutorials 
+    provided by the author and RStudio where it is capitalized everywhere 
+    except when referring to the package.
+  - I have continued to use dontrun for the following examples:
+    - runGeneKeepr(), which starts the Shiny application
+    - getFocalAnimalPed(), which is dependent on a valid LabKey instance,
+      a proper configuration file, and a .netrc or _netrc authentication file.
+  - I have exchanged dontrun for donttest for the following examples:
+    - create_wkbk()
+    - createPedTree()
+    - findLoops()
+    - countLoops()
+    - All 11 examples in data.R
+    - makeExamplePedigreeFile()
+* I have incremented the version from 1.0.1 to 1.0.2
 
 ## Test environments
 * local OS X install, R 4.0.0

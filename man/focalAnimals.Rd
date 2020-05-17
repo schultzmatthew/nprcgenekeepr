@@ -17,6 +17,7 @@ interest as is shown in the example below.
 }
 \examples{
 \donttest{
+library(nprcgenekeepr)
 data("focalAnimals")
 data("examplePedigree")
 any(names(examplePedigree) == "population")

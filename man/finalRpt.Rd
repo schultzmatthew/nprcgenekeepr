@@ -21,6 +21,7 @@ is at the state just prior to calling \code{rankSubjects} inside
 }
 \examples{
 \donttest{
+library(nprcgenekeepr)
 data("finalRpt")
 finalRpt <- rankSubjects(finalRpt)
 }
