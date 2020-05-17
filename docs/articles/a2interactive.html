@@ -40,7 +40,7 @@
 <li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
-
+     
   </a>
 </li>
 <li>
@@ -49,7 +49,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-
+     
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -78,7 +78,7 @@
 <li>
   <a href="https://github.com/rmsharp/nprcgenekeepr/">
     <span class="fab fa fab fa-github fa-lg"></span>
-
+     
   </a>
 </li>
       </ul>
@@ -89,22 +89,22 @@
 </div>
 <!--/.navbar -->
 
-
+      
 
       </header><script src="a2interactive_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Interactive Use of nprcgenekeepr</h1>
             <h3 class="subtitle">An R Package for the Genetic Management of Colonies</h3>
-
-
+            
+      
       <small class="dont-index">Source: <a href="https://github.com/rmsharp/nprcgenekeepr/blob/master/vignettes/a2interactive.Rmd"><code>vignettes/a2interactive.Rmd</code></a></small>
       <div class="hidden name"><code>a2interactive.Rmd</code></div>
 
     </div>
 
-
-
+    
+    
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -242,15 +242,15 @@
                          <span class="kw">byID</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                          <span class="kw">updateProgress</span> <span class="kw">=</span> <span class="kw">NULL</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">geneticValue</span>)</pre></body></html></div>
-<pre><code>## The genetic value report
-## Individuals in Pedigree: 3694
+<pre><code>## The genetic value report 
+## Individuals in Pedigree: 3694 
 ## Male Founders: 141
 ## Female Founders: 122
-## Total Founders: 263
-## Founder Equivalents: 241.84
-## Founder Genome Equivalents: 163.62
-## Live Offspring: 4052
-## High Value Individuals: 2957
+## Total Founders: 263 
+## Founder Equivalents: 241.84 
+## Founder Genome Equivalents: 163.62 
+## Live Offspring: 4052 
+## High Value Individuals: 2957 
 ## Low Value Individuals: 737</code></pre>
 <p>What happens if we limit our analysis to the trimmed pedigree? Remember that the trimmed pedigree still contains all of the genetic information that the full pedigree has for the focal animals.</p>
 <div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="no">trimmedGeneticValue</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/reportGV.html">reportGV</a></span>(<span class="no">trimmedPed</span>, <span class="kw">guIter</span> <span class="kw">=</span> <span class="fl">50</span>,
@@ -258,15 +258,15 @@
                          <span class="kw">byID</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                          <span class="kw">updateProgress</span> <span class="kw">=</span> <span class="kw">NULL</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">trimmedGeneticValue</span>)</pre></body></html></div>
-<pre><code>## The genetic value report
-## Individuals in Pedigree: 327
+<pre><code>## The genetic value report 
+## Individuals in Pedigree: 327 
 ## Male Founders: 3
 ## Female Founders: 17
-## Total Founders: 20
-## Founder Equivalents: 109.67
-## Founder Genome Equivalents: 47.44
-## Live Offspring: 321
-## High Value Individuals: 223
+## Total Founders: 20 
+## Founder Equivalents: 109.67 
+## Founder Genome Equivalents: 47.44 
+## Live Offspring: 321 
+## High Value Individuals: 223 
 ## Low Value Individuals: 104</code></pre>
 <p>It is clear that limiting your analysis to the animals of interest reduces the effort required to examine the animals of interest.</p>
 <div id="detailed-look-at-the-genetic-value-report-object" class="section level3">
@@ -274,13 +274,13 @@
 <a href="#detailed-look-at-the-genetic-value-report-object" class="anchor"></a>Detailed look at the Genetic Value Report object</h3>
 <p>The names of the object within the genetic value report object (<em>trimmedGeneticValue</em>) can be listed as shown in the next line of code.</p>
 <div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">trimmedGeneticValue</span>)</pre></body></html></div>
-<pre><code>##  [1] "report"          "kinship"         "gu"              "fe"
-##  [5] "fg"              "maleFounders"    "femaleFounders"  "nMaleFounders"
+<pre><code>##  [1] "report"          "kinship"         "gu"              "fe"             
+##  [5] "fg"              "maleFounders"    "femaleFounders"  "nMaleFounders"  
 ##  [9] "nFemaleFounders" "total"</code></pre>
 <p>The <em>report</em> object (an R dataframe) can in-turn be examined.</p>
 <div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">trimmedGeneticValue</span>$<span class="no">report</span>) <span class="co">## column names</span></pre></body></html></div>
-<pre><code>##  [1] "id"              "sex"             "age"             "birth"
-##  [5] "exit"            "population"      "origin"          "indivMeanKin"
+<pre><code>##  [1] "id"              "sex"             "age"             "birth"          
+##  [5] "exit"            "population"      "origin"          "indivMeanKin"   
 ##  [9] "zScores"         "gu"              "totalOffspring"  "livingOffspring"
 ## [13] "value"           "rank"</code></pre>
 <div class="sourceCode" id="cb38"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">trimmedGeneticValue</span>$<span class="no">report</span>) <span class="co">## Number of rows</span></pre></body></html></div>
@@ -558,8 +558,8 @@
                               !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">trimmedPed</span>$<span class="no">birth</span>) <span class="kw">&amp;</span>
                               <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">trimmedPed</span>$<span class="no">exit</span>)]
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">trimmedPed</span>$<span class="no">sex</span>[<span class="no">trimmedPed</span>$<span class="no">id</span> <span class="kw">%in%</span> <span class="no">candidates</span>])</pre></body></html></div>
-<pre><code>##
-##   F   M   H   U
+<pre><code>## 
+##   F   M   H   U 
 ## 184  96   0   0</code></pre>
 <p>Our candidates are made up of 184 females and 96 males. The parameters <strong>currentGroups</strong>, <strong>threshold</strong>, <strong>ignore</strong>, <strong>minAge</strong>, <strong>sexRatio</strong>, <strong>withKin</strong>, and <strong>updateProgress</strong> are allowed to take their default values. The setting of the <strong>sexRatio</strong> parameter to 0 is ignored in the following call of the <strong>groupAddAssign</strong> function. This is consistent with the a value of 0 making little since in a breeding colony.</p>
 <p>The empty seventh group at the bottom is evidence that all of the candidate animals could be placed in a group without exceeding the default value of 0.015625.</p>
@@ -579,62 +579,62 @@
 ##  [9] "BKWE4D" "321LLB" "NN3GDQ" "DCJJYS" "XYRDKV" "7NE2UT" "PYPM1W" "ESUIAF"
 ## [17] "AFZKBS" "3DTD2N" "YTJ2UL" "2F6J3U" "0IIAEN" "PBAFJF" "W5WIRP" "N5QBWD"
 ## [25] "PVY432" "W0GUKI" "D9P18Y" "G8MCV7"
-##
+## 
 ## [[2]]
 ##  [1] "1E8KD1" "S222R3" "X694YR" "CMMUKU" "WNEAS6" "DI4AHD" "Q8U9LB" "GCBYDW"
 ##  [9] "WTE53B" "QW2Z3R" "LS184H" "B228Q6" "TQEMY6" "LYSLPP" "BS3RLE" "1SSCJC"
 ## [17] "B1WVCN" "5ERY5Z" "EZ2F8A" "N4NV8B" "CHK1ZX" "S056D5" "Y6DB6L" "D4B0RM"
 ## [25] "QCA36T" "83HQBN" "E5Q33K" "TYEWF1" "9MG040" "MPIQ4N" "EMV4P6" "WLMGS1"
 ## [33] "30J3CQ"
-##
+## 
 ## [[3]]
 ##  [1] "WNKKW3" "T3QPW5" "S5H1GC" "FJS7RQ" "KX0RJ3" "3GECJJ" "1SPLS8" "DPXEQE"
 ##  [9] "3SKITJ" "QQMBT1" "46ZHKN" "VWC5ZH" "I5CI33" "ZH3YG1" "5KWNMZ" "H2J6UA"
 ## [17] "5W621W" "N79QXB" "G58RGY" "AIHJ8Z" "G25E3F" "F45799" "8JUUJ9" "JLFKV8"
 ## [25] "TEACA3" "3YJIMV" "PI4VHT" "KEA4QG" "WKY2SZ" "MKY9TK"
-##
+## 
 ## [[4]]
 ##  [1] "CHJ9D2" "GAS52W" "HE0SCR" "ZQXZYB" "DHNQ1W" "1CZM30" "87AQLF" "WK89I9"
 ##  [9] "IH1KPA" "XFWVVX" "MH88T6" "ZPS15A" "YLRNIK" "QWKFBH" "967Y3D" "MYUMMX"
 ## [17] "C18V6I" "J3F6PD" "7ZNY75" "EX5K0S" "1VP3UC" "AR17R5" "6F9FB8" "Y0TCYX"
 ## [25] "D33J06" "WI38KZ" "MX4J7G" "BCJJKN" "Q7U139" "ILVQVB" "QRZK48" "38K2SR"
 ## [33] "2Z4YLY" "MB6NYQ"
-##
+## 
 ## [[5]]
 ##  [1] "T38W6H" "R5AYJK" "0SGJ12" "SHG3RB" "AP1YLW" "GIIEUD" "5IAFMK" "CLSVU6"
 ##  [9] "5BPBUI" "S3EBGZ" "FG0SFA" "NK802Y" "92UG4N" "FB5L3N" "ZATMEE" "1GF3GM"
 ## [17] "KZY6PD" "Z904TJ" "TXZUKC" "0XTZQ1" "AZ3L0D" "465ERA" "6X6BG9" "5EDIEE"
 ## [25] "50D77I" "1KJ2MG" "7RA57Q" "CS23RV" "I8ABC7" "1CIRC9" "0X4W26" "QCENKM"
 ## [33] "01QRQ4" "MTCAIG" "M9PVG5" "PJ72W1"
-##
+## 
 ## [[6]]
 ##  [1] "AZ4D19" "7B9CA6" "K3TNHP" "S7IWWA" "CRPXY7" "MFKT9C" "PU7RSG" "W6MDVK"
 ##  [9] "LVYYNY" "FL170P" "9P0DES" "WJXIH9" "DH9WJQ" "DKIM6U" "GTLA8R" "AR5U44"
 ## [17] "Q17CG3" "6KWVRI" "SH3FB7" "B134XZ" "414N7M" "DRXMW4" "99BMJW" "1FAZ0K"
 ## [25] "YFCIHJ" "AW400C" "RVHVTZ" "F7I2ED" "5EDLL7"
-##
+## 
 ## [[7]]
 ## [1] NA</code></pre>
 <p>We can identify and list the males in each group with the following code.</p>
 <div class="sourceCode" id="cb49"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">haremGrp</span>$<span class="no">group</span>, <span class="kw">function</span>(<span class="no">ids</span>) {<span class="no">ids</span>[<span class="no">ids</span> <span class="kw">%in%</span> <span class="no">trimmedPed</span>$<span class="no">id</span>[<span class="no">trimmedPed</span>$<span class="no">sex</span> <span class="kw">==</span> <span class="st">"M"</span>]]})</pre></body></html></div>
 <pre><code>## [[1]]
 ## [1] "G2GYST"
-##
+## 
 ## [[2]]
 ## [1] "1E8KD1"
-##
+## 
 ## [[3]]
 ## [1] "WNKKW3"
-##
+## 
 ## [[4]]
 ## [1] "CHJ9D2"
-##
+## 
 ## [[5]]
 ## [1] "T38W6H"
-##
+## 
 ## [[6]]
 ## [1] "AZ4D19"
-##
+## 
 ## [[7]]
 ## logical(0)</code></pre>
 <p>It is easy to notice that the male is listed first within each breeding group.</p>
@@ -668,38 +668,38 @@
 ##  [9] "R5AYJK" "GIIEUD" "RJ4JPC" "Q17CG3" "PI4VHT" "A98D7P" "7RA57Q" "GCBYDW"
 ## [17] "PBAFJF" "DI4AHD" "EMV4P6" "92UG4N" "VWC5ZH" "1KJ2MG" "BCJJKN" "5EDIEE"
 ## [25] "A6A1M1"
-##
+## 
 ## [[2]]
 ##  [1] "6F9FB8" "0V4SAC" "5EDLL7" "1FAZ0K" "5BPBUI" "01QRQ4" "0X4W26" "W0GUKI"
 ##  [9] "CRPXY7" "1QVS67" "FJS7RQ" "HE0SCR" "F45799" "KXHGRH" "RVHVTZ" "XEC0M5"
 ## [17] "3YJIMV" "99BMJW" "YLRNIK" "K3TNHP" "2Z4YLY" "LVYYNY" "EZ2F8A" "B134XZ"
 ## [25] "R6HV9A"
-##
+## 
 ## [[3]]
 ##  [1] "83HQBN" "MEUZ85" "BKWE4D" "Q7U139" "1SSCJC" "PU7RSG" "IH1KPA" "LYSLPP"
 ##  [9] "50D77I" "FL170P" "465ERA" "FB5L3N" "EX5K0S" "GDXWJ1" "KX0RJ3" "BS3RLE"
 ## [17] "T3QPW5" "YFCIHJ" "TQEMY6" "PJ72W1" "G8MCV7" "46ZHKN" "8JUUJ9" "GAS52W"
 ## [25] "5KFB90"
-##
+## 
 ## [[4]]
 ##  [1] "1CZM30" "80F2MI" "1VP3UC" "G58RGY" "W5WIRP" "ZPS15A" "3SKITJ" "MPIQ4N"
 ##  [9] "XYRDKV" "B1WVCN" "W6MDVK" "1SPLS8" "AR17R5" "ZW2X4N" "XFWVVX" "6X6BG9"
 ## [17] "S3EBGZ" "414N7M" "C18V6I" "Y0TCYX" "S222R3" "72LYDE" "E5Q33K" "ILVQVB"
 ## [25] "KZM9RB"
-##
+## 
 ## [[5]]
 ##  [1] "87AQLF" "3QHAFI" "0SGJ12" "MTCAIG" "AFZKBS" "WNEAS6" "38K2SR" "DPXEQE"
 ##  [9] "321LLB" "WTE53B" "S5H1GC" "MKY9TK" "I5CI33" "IZDV8K" "S056D5" "AP1YLW"
 ## [17] "5ERY5Z" "DKIM6U" "PVY432" "ZH3YG1" "3GECJJ" "I8ABC7" "NN3GDQ" "ZATMEE"
 ## [25] "G2GYST"
-##
+## 
 ## [[6]]
 ##  [1] "MB6NYQ" "CHSCFG" "ESUIAF" "7NE2UT" "WI38KZ" "7B9CA6" "TYEWF1" "FG0SFA"
 ##  [9] "B228Q6" "CS23RV" "QCENKM" "QRZK48" "MX4J7G" "K7900I" "KZY6PD" "MH88T6"
 ## [17] "967Y3D" "M9PVG5" "MFKT9C" "QWKFBH" "AZ3L0D" "D9P18Y" "5KWNMZ" "1CIRC9"
 ## [25] "LN1DLY" "AW400C" "MYUMMX" "X694YR" "N79QXB" "TXZUKC" "S7IWWA" "J3F6PD"
 ## [33] "LS184H" "Q8U9LB" "JSAP3H"
-##
+## 
 ## [[7]]
 ##   [1] "CLSVU6" "5IAFMK" "HLQ9SY" "B2CKHA" "DCJJYS" "TR5L57" "WK89I9" "XC304E"
 ##   [9] "Z7NBA2" "1E8KD1" "5PW7WT" "AEP5EG" "BW10CL" "CFD12A" "CHJ9D2" "D33J06"
@@ -720,22 +720,22 @@
 <div class="sourceCode" id="cb55"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">sexRatioGrp</span>$<span class="no">group</span>, <span class="kw">function</span>(<span class="no">ids</span>) {<span class="no">ids</span>[<span class="no">ids</span> <span class="kw">%in%</span> <span class="no">trimmedPed</span>$<span class="no">id</span>[<span class="no">trimmedPed</span>$<span class="no">sex</span> <span class="kw">==</span> <span class="st">"M"</span>]]})</pre></body></html></div>
 <pre><code>## [[1]]
 ## [1] "EEGLWY" "A98D7P" "A6A1M1"
-##
+## 
 ## [[2]]
 ## [1] "0V4SAC" "KXHGRH" "R6HV9A"
-##
+## 
 ## [[3]]
 ## [1] "MEUZ85" "GDXWJ1" "5KFB90"
-##
+## 
 ## [[4]]
 ## [1] "80F2MI" "ZW2X4N" "KZM9RB"
-##
+## 
 ## [[5]]
 ## [1] "3QHAFI" "IZDV8K" "G2GYST"
-##
+## 
 ## [[6]]
 ## [1] "CHSCFG" "K7900I" "LN1DLY" "JSAP3H"
-##
+## 
 ## [[7]]
 ##  [1] "HLQ9SY" "B2CKHA" "TR5L57" "XC304E" "Z7NBA2" "1E8KD1" "5PW7WT" "AEP5EG"
 ##  [9] "BW10CL" "CFD12A" "CHJ9D2" "FTVE03" "IRFJ09" "LMJWTN" "Q9LWGX" "RNQU14"
@@ -767,10 +767,10 @@
 <a href="#pedigree-errors" class="anchor"></a>Pedigree Errors</h2>
 <p>As stated earlier you can see which types of errors are detected by <em>qcStudbook</em> by looking at names returned by <em>getEmptyErrorLst()</em> as shown below.</p>
 <div class="sourceCode" id="cb59"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="../reference/getEmptyErrorLst.html">getEmptyErrorLst</a></span>())</pre></body></html></div>
-<pre><code>##  [1] "failedDatabaseConnection" "missingColumns"
-##  [3] "invalidDateRows"          "suspiciousParents"
-##  [5] "femaleSires"              "maleDams"
-##  [7] "sireAndDam"               "duplicateIds"
+<pre><code>##  [1] "failedDatabaseConnection" "missingColumns"          
+##  [3] "invalidDateRows"          "suspiciousParents"       
+##  [5] "femaleSires"              "maleDams"                
+##  [7] "sireAndDam"               "duplicateIds"            
 ##  [9] "fatalError"               "changedCols"</code></pre>
 <p>Each is defined below.</p>
 <table class="table">
@@ -894,7 +894,7 @@
 <p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the R sessions temporary directory that lists the records that have generated the errors.</p>
 <div class="sourceCode" id="cb62"><html><body><pre class="r"><span class="no">pedOne</span> <span class="kw">&lt;-</span> <span class="kw pkg">nprcgenekeepr</span><span class="kw ns">::</span><span class="no"><a href="../reference/pedOne.html">pedOne</a></span> <span class="co"># put it in the local environment</span>
 <span class="no">ped</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(<span class="no">pedOne</span>, <span class="kw">minParentAge</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
-<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpofVzNR/lowParentAge.csv.</code></pre>
+<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpP0RcDU/lowParentAge.csv.</code></pre>
 <p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -975,7 +975,7 @@
 ## Change: The column changed from: egoid to id.
 ## Change: The column changed from: damid to dam.
 ## Change: The column changed from: birthdate to birth.
-##
+## 
 ## Please check and correct the pedigree file.
 ## </code></pre>
 <p>We will discuss each of these newly identified errors in a moment, however, let’s look at shortening this report, because often you will not be interested in the more trivial changes to the column names made by <strong>qcStudbook</strong> and in those cases you simply choose not to report changes to the column names as is shown here by setting <em>reportChanges</em> to . For this illustration, we are going to bring back the original copy of <strong>pedOne</strong> to see how the suspicious parents are reported by the <strong>summary</strong> function.</p>
@@ -986,9 +986,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">errorList</span>)</pre></body></html></div>
 <pre><code>## Error: The animal listed as a sire and also listed as a female is: s1.
 ## Error: The animal listed as a dam and also listed as a male is: d1.
-##
+## 
 ## Please check and correct the pedigree file.
-##
+##  
 ## Animal records where parent records are suspicous because of dates.
 ## One or more parents appear too young at time of birth.
 ##   dam sire id sex      birth recordStatus exit  sireBirth   damBirth sireAge damAge
@@ -1024,51 +1024,47 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb78"><html><body><pre class="r"><span class="no">elapsed_time</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(<span class="no">start_time</span>)</pre></body></html></div>
-<<<<<<< HEAD
-<p>The current date and time is 2020-05-17 00:36:19. The processing time for this document was 17 seconds..</p>
-=======
-<p>The current date and time is 2020-05-16 22:07:19. The processing time for this document was 19 seconds..</p>
->>>>>>> 0bb9c6ef0e1c910815b5f858e7067befa4bbbe9f
+<p>The current date and time is 2020-05-17 02:56:49. The processing time for this document was 16 seconds..</p>
 <div class="sourceCode" id="cb79"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R version 4.0.0 (2020-04-24)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
 ## Running under: macOS Catalina 10.15.4
-##
+## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
 ## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
-##
+## 
 ## Random number generation:
-##  RNG:     Mersenne-Twister
-##  Normal:  Inversion
-##  Sample:  Rounding
-##
+##  RNG:     Mersenne-Twister 
+##  Normal:  Inversion 
+##  Sample:  Rounding 
+##  
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-##
+## 
 ## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  methods   base
-##
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
 ## other attached packages:
-## [1] nprcgenekeepr_1.0.2 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6
-##
+## [1] nprcgenekeepr_1.0.2 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6      
+## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.0.0     xfun_0.13            purrr_0.3.4          lattice_0.20-41
-##  [5] colorspace_1.4-1     vctrs_0.2.4          generics_0.0.2       htmltools_0.4.0
-##  [9] yaml_2.2.1           rlang_0.4.5          pkgdown_1.5.1        pillar_1.4.4
-## [13] later_1.0.0          glue_1.4.0           withr_2.2.0          readxl_1.3.1
-## [17] lambda.r_1.2.4       lifecycle_0.2.0      stringr_1.4.0        cellranger_1.1.0
-## [21] munsell_0.5.0        gtable_0.3.0         anytime_0.3.7        futile.logger_1.4.3
-## [25] htmlwidgets_1.5.1    memoise_1.1.0        evaluate_0.14        labeling_0.3
-## [29] WriteXLS_5.0.0       Rlabkey_2.4.0        fastmap_1.0.1        httpuv_1.5.2
-## [33] highr_0.8            htmlTable_1.13.3     Rcpp_1.0.4.6         xtable_1.8-4
-## [37] checkmate_2.0.0      scales_1.1.0         backports_1.1.6      promises_1.1.0
-## [41] formatR_1.7          plotrix_3.7-8        desc_1.2.0           jsonlite_1.6.1
-## [45] farver_2.0.3         mime_0.9             fs_1.4.1             digest_0.6.25
-## [49] dplyr_0.8.5          shiny_1.4.0.2        grid_4.0.0           rprojroot_1.3-2
+##  [1] tidyselect_1.0.0     xfun_0.13            purrr_0.3.4          lattice_0.20-41     
+##  [5] colorspace_1.4-1     vctrs_0.2.4          generics_0.0.2       htmltools_0.4.0     
+##  [9] yaml_2.2.1           rlang_0.4.5          pkgdown_1.5.1        pillar_1.4.4        
+## [13] later_1.0.0          glue_1.4.0           withr_2.2.0          readxl_1.3.1        
+## [17] lambda.r_1.2.4       lifecycle_0.2.0      stringr_1.4.0        cellranger_1.1.0    
+## [21] munsell_0.5.0        gtable_0.3.0         anytime_0.3.7        futile.logger_1.4.3 
+## [25] htmlwidgets_1.5.1    memoise_1.1.0        evaluate_0.14        labeling_0.3        
+## [29] WriteXLS_5.0.0       Rlabkey_2.4.0        fastmap_1.0.1        httpuv_1.5.2        
+## [33] highr_0.8            htmlTable_1.13.3     Rcpp_1.0.4.6         xtable_1.8-4        
+## [37] checkmate_2.0.0      scales_1.1.0         backports_1.1.6      promises_1.1.0      
+## [41] formatR_1.7          plotrix_3.7-8        desc_1.2.0           jsonlite_1.6.1      
+## [45] farver_2.0.3         mime_0.9             fs_1.4.1             digest_0.6.25       
+## [49] dplyr_0.8.5          shiny_1.4.0.2        grid_4.0.0           rprojroot_1.3-2     
 ## [53] tools_4.0.0          magrittr_1.5         tibble_3.0.1         futile.options_1.0.1
-## [57] crayon_1.3.4         pkgconfig_2.0.3      MASS_7.3-51.5        ellipsis_0.3.0
-## [61] Matrix_1.2-18        lubridate_1.7.8      assertthat_0.2.1     rmarkdown_2.1
+## [57] crayon_1.3.4         pkgconfig_2.0.3      MASS_7.3-51.5        ellipsis_0.3.0      
+## [61] Matrix_1.2-18        lubridate_1.7.8      assertthat_0.2.1     rmarkdown_2.1       
 ## [65] httr_1.4.1           rstudioapi_0.11      R6_2.4.1             compiler_4.0.0</code></pre>
 </div>
 <div class="footnotes">
@@ -1102,7 +1098,7 @@
       </footer>
 </div>
 
-
+  
 
 
   </body>
