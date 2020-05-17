@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -894,7 +894,7 @@
 <p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the R sessions temporary directory that lists the records that have generated the errors.</p>
 <div class="sourceCode" id="cb62"><html><body><pre class="r"><span class="no">pedOne</span> <span class="kw">&lt;-</span> <span class="kw pkg">nprcgenekeepr</span><span class="kw ns">::</span><span class="no"><a href="../reference/pedOne.html">pedOne</a></span> <span class="co"># put it in the local environment</span>
 <span class="no">ped</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(<span class="no">pedOne</span>, <span class="kw">minParentAge</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
-<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpvzWzWR/lowParentAge.csv.</code></pre>
+<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//Rtmpzsp1im/lowParentAge.csv.</code></pre>
 <p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -963,7 +963,7 @@
 ## 2 d2 &lt;NA&gt; &lt;NA&gt;   F   0 2006-04-13 &lt;NA&gt; 14.1     original
 ## 4 s2 &lt;NA&gt; &lt;NA&gt;   M   0 2006-06-19 &lt;NA&gt; 13.9     original
 ## 7 o3   s2   d2   F   1 2012-04-11 &lt;NA&gt;  8.1     original
-## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.6     original</code></pre>
+## 8 o4   s2   d2   M   1 2015-09-16 &lt;NA&gt;  4.7     original</code></pre>
 <p>However, the preferred method of creating the standardized studbook format with <strong>qcStudbook</strong> is to examine all errors found and correcting them before proceeding. This is done by explicitly requesting that all aspects inconsistent with the studbook format be identified by setting <em>reportChanges</em> and <em>reportErrors</em> to .</p>
 <div class="sourceCode" id="cb67"><html><body><pre class="r"><span class="no">errorList</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(<span class="no">pedOne</span>, <span class="kw">minParentAge</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">reportChanges</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                         <span class="kw">reportErrors</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
@@ -1024,7 +1024,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb78"><html><body><pre class="r"><span class="no">elapsed_time</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(<span class="no">start_time</span>)</pre></body></html></div>
-<p>The current date and time is 2020-05-10 23:17:01. The processing time for this document was 16 seconds..</p>
+<p>The current date and time is 2020-05-17 00:04:56. The processing time for this document was 15 seconds..</p>
 <div class="sourceCode" id="cb79"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R version 4.0.0 (2020-04-24)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -1046,7 +1046,7 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] nprcgenekeepr_1.0.1 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6      
+## [1] nprcgenekeepr_1.0.2 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] tidyselect_1.0.0     xfun_0.13            purrr_0.3.4          lattice_0.20-41     

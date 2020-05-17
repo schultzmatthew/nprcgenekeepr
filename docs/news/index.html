@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -138,6 +138,38 @@
       <small>Source: <a href='https://github.com/rmsharp/nprcgenekeepr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="nprcgenekeepr-102-20200517" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.2">
+<a href="#nprcgenekeepr-102-20200517" class="anchor"></a>nprcgenekeepr 1.0.2 (20200517)</h1>
+<ul>
+<li>Major changes – none</li>
+<li>Minor changes
+<ul>
+<li>CRAN re-submission: responded to all requests provided by reviewer
+<ul>
+<li>I have not changed the capitalization of <code>Shiny</code> in the description section of the DESCRIPTION file as it is the name of the type of application and is not being used as the name of the package. The use of the capitalization is consistent with the capitalization used within the documentation for the <code>shiny</code> package (?shiny, See the Details section, first sentence where it is used as the type of tutorial.) and all documentation and tutorials provided by the author and RStudio where it is capitalized everywhere except when referring to the package.</li>
+<li>I have continued to use dontrun for the following examples:
+<ul>
+<li>runGeneKeepr(), which starts the Shiny application</li>
+<li>getFocalAnimalPed(), which is dependent on a valid LabKey instance, a proper configuration file, and a .netrc or _netrc authentication file.</li>
+</ul>
+</li>
+<li>I have exchanged dontrun for donttest for the following examples:
+<ul>
+<li>create_wkbk()</li>
+<li>createPedTree()</li>
+<li>findLoops()</li>
+<li>countLoops()</li>
+<li>All 11 examples in data.R</li>
+<li>makeExamplePedigreeFile</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
     <div id="nprcgenekeepr-101-20200510" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.1">
 <a href="#nprcgenekeepr-101-20200510" class="anchor"></a>nprcgenekeepr 1.0.1 (20200510)</h1>

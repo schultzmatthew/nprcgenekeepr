@@ -11,6 +11,30 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# nprcgenekeepr 1.0.2 (20200517)
+-   Major changes -- none
+-   Minor changes
+    -   CRAN re-submission: responded to all requests provided by reviewer
+        -   I have not changed the capitalization of `Shiny` in the description section
+            of the DESCRIPTION file as it is the name of the type of application and is
+            not being used as the name of the package. The use of the capitalization is
+            consistent with the capitalization used within the documentation for the
+            `shiny` package (?shiny, See the Details section, first sentence where it
+            is used as the type of tutorial.) and all documentation and tutorials 
+            provided by the author and RStudio where it is capitalized everywhere 
+            except when referring to the package.
+        -   I have continued to use dontrun for the following examples:
+            -   runGeneKeepr(), which starts the Shiny application
+            -   getFocalAnimalPed(), which is dependent on a valid LabKey instance,
+                a proper configuration file, and a .netrc or _netrc authentication file.
+        -   I have exchanged dontrun for donttest for the following examples:
+            -   create_wkbk()
+            -   createPedTree()
+            -   findLoops()
+            -   countLoops()
+            -   All 11 examples in data.R
+            -   makeExamplePedigreeFile
+            
 # nprcgenekeepr 1.0.1 (20200510)
 -   Major changes -- none
 -   Minor changes
