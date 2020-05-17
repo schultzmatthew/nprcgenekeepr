@@ -44,6 +44,7 @@
 #' }
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' data("examplePedigree")
 #' exampleTree <- createPedTree(examplePedigree)
 #' exampleLoops <- findLoops(exampleTree)
@@ -55,6 +56,7 @@
 #' \code{orderReport}.
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' data("finalRpt")
 #' finalRpt <- rankSubjects(finalRpt)
 #' }
@@ -66,6 +68,7 @@
 #' interest as is shown in the example below.
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' data("focalAnimals")
 #' data("examplePedigree")
 #' any(names(examplePedigree) == "population")
@@ -199,6 +202,7 @@
 #' This is used for testing and demonstration.
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' data("pedOne")
 #' head(pedOne)
 #' }
@@ -218,6 +222,7 @@
 #' This is used for testing and demonstration.
 #' @examples
 #' \donttest{
+#' library(nprcgenekeepr)
 #' data("pedSix")
 #' head(pedSix)
 #' }
