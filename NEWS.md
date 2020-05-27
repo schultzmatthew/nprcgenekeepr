@@ -3,6 +3,21 @@ NEWS
 R. Mark Sharp
 05/03/2020
 
+# nprcgenekeepr 1.0.3 (20200526)
+
+  - Major changes – none
+  - Minor changes
+      - CRAN re-submission: responded to the two requests provided by
+        reviewer
+          - I have removed the capitalization from “Genetic Tools for
+            Colony Management” and “Genetic Value Analysis Reports”
+            within DESCRIPTION.
+          - I have removed the conditional installation of DT from the
+            ui.R file.
+      - I have incremented the version from 1.0.2 to 1.0.3, updated NEWS
+        to reflect the changes, and updated all documentation to reflect
+        the version change.
+
 # nprcgenekeepr 1.0.2 (20200517)
 
   - Major changes – none

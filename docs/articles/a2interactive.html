@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nprcgenekeepr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.3</span>
       </span>
     </div>
 
@@ -894,7 +894,7 @@
 <p>If we try to convert this pedigree file into the standardized studbook format, we are going to get an error message and the creation of a file in the R sessions temporary directory that lists the records that have generated the errors.</p>
 <div class="sourceCode" id="cb62"><html><body><pre class="r"><span class="no">pedOne</span> <span class="kw">&lt;-</span> <span class="kw pkg">nprcgenekeepr</span><span class="kw ns">::</span><span class="no"><a href="../reference/pedOne.html">pedOne</a></span> <span class="co"># put it in the local environment</span>
 <span class="no">ped</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/qcStudbook.html">qcStudbook</a></span>(<span class="no">pedOne</span>, <span class="kw">minParentAge</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
-<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpP0RcDU/lowParentAge.csv.</code></pre>
+<pre><code>## Error in qcStudbook(pedOne, minParentAge = 0): Parents with low age at birth of offspring are listed in /var/folders/y3/5z1skj6s5tq0pktmsq6x80v80000gn/T//RtmpCsSBct/lowParentAge.csv.</code></pre>
 <p>The contents of <em>lowParentAge.csv</em> is shown below.</p>
 <table class="table">
 <thead><tr class="header">
@@ -1024,7 +1024,7 @@
 ## 2924 85ESBB UQFY9C Q2RK1E
 ## 2941 0VLW56 6KPKH7 MMEHXV</code></pre>
 <div class="sourceCode" id="cb78"><html><body><pre class="r"><span class="no">elapsed_time</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_elapsed_time_str.html">get_elapsed_time_str</a></span>(<span class="no">start_time</span>)</pre></body></html></div>
-<p>The current date and time is 2020-05-17 02:56:49. The processing time for this document was 16 seconds..</p>
+<p>The current date and time is 2020-05-26 20:29:10. The processing time for this document was 16 seconds..</p>
 <div class="sourceCode" id="cb79"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R version 4.0.0 (2020-04-24)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -1046,12 +1046,12 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] nprcgenekeepr_1.0.2 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6      
+## [1] nprcgenekeepr_1.0.3 knitr_1.28          ggplot2_3.3.0       stringi_1.4.6      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] tidyselect_1.0.0     xfun_0.13            purrr_0.3.4          lattice_0.20-41     
 ##  [5] colorspace_1.4-1     vctrs_0.2.4          generics_0.0.2       htmltools_0.4.0     
-##  [9] yaml_2.2.1           rlang_0.4.5          pkgdown_1.5.1        pillar_1.4.4        
+##  [9] yaml_2.2.1           rlang_0.4.6          pkgdown_1.5.1        pillar_1.4.4        
 ## [13] later_1.0.0          glue_1.4.0           withr_2.2.0          readxl_1.3.1        
 ## [17] lambda.r_1.2.4       lifecycle_0.2.0      stringr_1.4.0        cellranger_1.1.0    
 ## [21] munsell_0.5.0        gtable_0.3.0         anytime_0.3.7        futile.logger_1.4.3 
@@ -1063,7 +1063,7 @@
 ## [45] farver_2.0.3         mime_0.9             fs_1.4.1             digest_0.6.25       
 ## [49] dplyr_0.8.5          shiny_1.4.0.2        grid_4.0.0           rprojroot_1.3-2     
 ## [53] tools_4.0.0          magrittr_1.5         tibble_3.0.1         futile.options_1.0.1
-## [57] crayon_1.3.4         pkgconfig_2.0.3      MASS_7.3-51.5        ellipsis_0.3.0      
+## [57] crayon_1.3.4         pkgconfig_2.0.3      MASS_7.3-51.6        ellipsis_0.3.0      
 ## [61] Matrix_1.2-18        lubridate_1.7.8      assertthat_0.2.1     rmarkdown_2.1       
 ## [65] httr_1.4.1           rstudioapi_0.11      R6_2.4.1             compiler_4.0.0</code></pre>
 </div>

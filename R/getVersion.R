@@ -8,7 +8,15 @@
 #' library(nprcgenekeepr)
 #' getVersion()
 #' }
+#' @param date A logical value when TRUE (default) a date in YYYYMMDD format
+#' within parentheses is appended.
 #' @export
-getVersion <- function() {
-  "1.0.2 (20200516)"
+getVersion <- function(date = TRUE) {
+  version = "1.0.3"
+  version_date = "20200526"
+  if (date) {
+    paste0(version, " (", version_date, ")")
+  } else {
+    version
+  }
 }

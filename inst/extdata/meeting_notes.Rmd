@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(knitr)
+library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE)
 library(stringi)
 library(rmsutilityr)
@@ -156,7 +157,7 @@ threshold of 10 minutes. This can for example be achieved by:
 
     
 ```{r code-changes, include=FALSE}
-originalPath <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
+originalFiles <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
                        "nprcgenekeepr_project/20160816_GeneticManagementTools")
 functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
                     "library/nprcgenekeepr/R")
@@ -165,12 +166,16 @@ tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
 ui <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
              "nprcgenekeepr/inst/application")
 
-paths <- c(originalPath, functions, ui, tests)
+paths <- c(originalFiles = originalFiles, 
+           functions = functions, 
+           ui = ui, 
+           tests = tests)
 codeCounts <- data.frame()
 for (path in paths) {
   counts <- classify_code_lines(files = ".", path = path)
   codeCounts <- rbind(codeCounts,
                       data.frame(
+                        section = names(paths)[paths == path],
                           files = counts["files"],
                           lines = counts["lines"],
                           code = counts["code"],
@@ -180,29 +185,64 @@ for (path in paths) {
                           check.names = FALSE,
                           stringsAsFactors = FALSE))
 }
-codeChanges <- data.frame(Source = c("Original", "nprcgenekeepr 0.37"),
-                          Files = c(codeCounts$files[1],
-                                    sum(codeCounts$files[2:4])),
-                          Lines = c(codeCounts$lines[1],
-                                    sum(codeCounts$lines[2:4])),
-                          Code = c(codeCounts$code[1],
-                                    sum(codeCounts$code[2:4])),
-                          `Blank Lines` = c(codeCounts$blank_lines[1],
-                                    sum(codeCounts$blank_lines[2:4])),
-                          `Document Lines` = c(codeCounts$roxygen_doc_lines[1],
-                                    sum(codeCounts$roxygen_doc_lines[2:4])),
-                          `Comment Lines` = c(codeCounts$comments[1],
-                                    sum(codeCounts$comments[2:4])),
-                          check.names = FALSE,
-                          stringsAsFactors = FALSE)
+codeChanges <-
+  data.frame(
+    Source = c("Original Files", paste0("Version ", getVersion(date = FALSE))),
+    Files = c(codeCounts$files[names(paths) == "originalFiles"],
+              sum(codeCounts$files[names(paths) != "originalFiles"])),
+    Lines = c(codeCounts$lines[names(paths) == "originalFiles"],
+              sum(codeCounts$lines[names(paths) != "originalFiles"])),
+    Code = c(codeCounts$code[names(paths) == "originalFiles"],
+             sum(codeCounts$code[names(paths) != "originalFiles"])),
+    `Blank Lines` = c(codeCounts$blank_lines[names(paths) == "originalFiles"],
+                      sum(codeCounts$blank_lines[
+                        names(paths) != "originalFiles"])),
+    `Document Lines` = c(
+      codeCounts$roxygen_doc_lines[names(paths) == "originalFiles"],
+      sum(codeCounts$roxygen_doc_lines[names(paths) != "originalFiles"])
+    ),
+    `Comment Lines` = 
+      c(codeCounts$comments[names(paths) == "originalFiles"],
+        sum(codeCounts$comments[names(paths) != "originalFiles"])),
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+save_names <- names(codeChanges)
+names(codeChanges) <- names(codeCounts)
+sectionCodeChanges <- rbind(codeChanges, 
+                            codeCounts[-1, ], 
+                            make.row.names = FALSE)
+sectionCodeChanges$section[is.element(sectionCodeChanges$section, 
+                                      c("functions", "ui", "tests"))] <-
+  paste0(getVersion(date = FALSE), ": ", 
+         sectionCodeChanges$section[is.element(sectionCodeChanges$section, 
+                                      c("functions", "ui", "tests"))])
+names(sectionCodeChanges) <- save_names
+names(codeChanges) <- save_names
 
 ```
 ```{r code-change-table, echo = FALSE}
-kable(codeChanges, caption = stri_c("Simple metrics for the Original Version (",
-                                    "20160816) and Version ", getVersion(),
-                                    "."))
+kable(codeChanges, 
+      caption = stri_c("Simple metrics for the Original Version (",
+                       "20160816) and Current Version ", 
+                       getVersion(date = TRUE),
+                                    ".")) %>%
+  kable_styling(full_width = FALSE, position = "left") %>% 
+                collapse_rows(latex_hline = "none") %>%
+  column_spec(3, width = "5em")
 ## version was 0.5.37 (20191108) at the time of writing.
 
+```
+```{r detail-code-change-table, echo = FALSE}
+
+kable(sectionCodeChanges, 
+                caption = stri_c("Simple metrics for the Original Version (",
+                       "20160816) and Current Version ", 
+                       getVersion(date = TRUE), " and current version groups ",
+                                 "of functions.")) %>%
+  kable_styling(full_width = FALSE, position = "left",) %>%
+  column_spec(3, width = "5em") %>%
+  row_spec(2, hline_after = TRUE)
 
 ```
 

@@ -4,7 +4,11 @@
 \alias{getVersion}
 \title{getVersion Get the version number of nprcgenekeepr}
 \usage{
-getVersion()
+getVersion(date = TRUE)
+}
+\arguments{
+\item{date}{A logical value when TRUE (default) a date in YYYYMMDD format
+within parentheses is appended.}
 }
 \value{
 Current Version
