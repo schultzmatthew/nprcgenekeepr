@@ -7,7 +7,7 @@ test_that("getMinParentAge throws an error with no input defined", {
                "cannot coerce type 'closure' to vector of type 'double'")
 })
 test_that(
-  "getMinParentAge throws an error with input improperly define outside ui.R", {
+  "getMinParentAge throws an error with input improperly defined outside ui.R", {
     expect_error(getMinParentAge(input = list(minParentAge = 0.0)),
                "cannot coerce type 'closure' to vector of type 'double'")
 })
