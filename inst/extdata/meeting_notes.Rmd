@@ -14,6 +14,25 @@ library(rmsutilityr)
 library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
+## 20201117
+1.   Preparation for Friday's meeting with the Genetics and Genomics Consortium.
+1.   Review of progress todate
+     1.     Software changes
+            
+Simple metrics for the Original Version (20160816) and Current Version 1.0.3 
+(20200526).
+Source	       Files	Lines	  Code	 Blank Lines	Document Lines	Comment Lines
+Original Files	   8	 3621	  1927	         531	             0	         1163
+Version 1.0.3	   293  13776	  7775	         441	          4613	          947
+
+Simple metrics for the Original Version (20160816) and Current Version 1.0.3 
+(20200526) and current version groups of functions.
+Source	        Files	 Lines  Code	 Blank Lines	Document Lines	Comment Lines
+Original Files	    8	  3621  1927	         531               0	         1163
+Version 1.0.3	    293	 13776	7775	         441	          4613	          947
+1.0.3: functions  163	  8272	3007	         226	          4406	          633
+1.0.3: ui	         11	  1782	1506	          98	             2	          176
+1.0.3: tests    	119	  3722	3262	         117	           205	          138
 
 ## 20200423
 1.  Submission to CRAN was rejected with the following revision requests
@@ -157,14 +176,18 @@ threshold of 10 minutes. This can for example be achieved by:
 
     
 ```{r code-changes, include=FALSE}
+
+if (Sys.Date() > "2020-08-01") {
+  path <- "/Users/msharp/Documents/Development/R/r_workspace/"
+} else {
+  path <- "/Users/msharp/Documents/Development/R/r_workspace/library/"
+}
+
 originalFiles <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
                        "nprcgenekeepr_project/20160816_GeneticManagementTools")
-functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
-                    "library/nprcgenekeepr/R")
-tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-                "nprcgenekeepr/tests/testthat")
-ui <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-             "nprcgenekeepr/inst/application")
+functions <- stri_c(path, "nprcgenekeepr/R")
+tests <- stri_c(path, "nprcgenekeepr/tests/testthat")
+ui <- stri_c(path, "nprcgenekeepr/inst/application")
 
 paths <- c(originalFiles = originalFiles, 
            functions = functions, 
