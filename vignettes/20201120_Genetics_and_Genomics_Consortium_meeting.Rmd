@@ -2,12 +2,26 @@
 title: "Genetic Management Software for Nonhuman Primates"
 author: "R. Mark Sharp"
 date: "11/20/2020"
-output: ioslides_presentation
+output: 
+  ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+<!--
+<div class="notes">
+In March of 2017 I reached out to Amanda Vinson to request some new features
+around LabKey integration. A few months later we began to collaborate on 
+extending the capability of the genetic management software she and Michael
+Raboin had created.
+
+Present table
+
+While doing this we added the ability to have different numbers of groups,
+harems, and breeding groups of any specified sex ratio.
+</div>
+-->
 
 ## Update of Software From Vinson and Raboin (2015)
 <!--Summary of software changes; publishing on CRAN. -->
@@ -50,6 +64,9 @@ original code with microsatelites -->
 
 -  What is currently available
 -  Further development
+<!-- Is there some feature you need to make it useful?
+     Are there features that will make it more useful?
+-->
 
 ## Acknowledgements
 This work has been supported in part by NIH grants P51 RR13986 to the Southwest National Primate Research Center and P51 OD011092 to the Oregon National Primate Research Center.
