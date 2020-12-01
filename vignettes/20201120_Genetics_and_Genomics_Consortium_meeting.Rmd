@@ -59,7 +59,13 @@ original code with microsatelites -->
 -  Predictive modeling of breeding strategies via simulation
 
  - Suggestions?
- 
+    -  Database connectivity
+       -  ARMS
+       -  Oracle
+    -  Group from common colony - assign kinship coefficients (matrix) 
+       based on genetic data
+    -  Tracking of individual alleles
+    
 ## Interest Within Genetics and Genomics
 
 -  What is currently available

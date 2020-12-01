@@ -14,9 +14,18 @@ library(rmsutilityr)
 library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
+
+## 20201130
+1.   Mark met with Amanda to discuss the parent exclusion project and to discuss writing of a paper about nprcgenekeepr. The possible journals she thought of are listed below.
+     a. ILAR
+     a. Molecular Ecology
+     a. Zoo Biology
+     a. Journal of Medical Primatology - probably not good for software
+     a. Journal of Genomics - check
+     
 ## 20201117
 1.   Preparation for Friday's meeting with the Genetics and Genomics Consortium.
-1.   Review of progress todate
+1.   Review of progress to date
      1.     Software changes
             
 Simple metrics for the Original Version (20160816) and Current Version 1.0.3 
