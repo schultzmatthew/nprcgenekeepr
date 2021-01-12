@@ -47,6 +47,15 @@ fixColumnNames <- function(orgCols, errorLst) {
   cols <- newCols
   newCols <- gsub("deathdate", "death", cols)
   errorLst$changedCols$deathdateToDeath <- colChange(cols, newCols)
+  cols <- newCols
   newCols <- gsub("recordstatus", "recordStatus", newCols)
+  errorLst$changedCols$recordstatusToRecordStatus <- colChange(cols, newCols)
+  cols <- newCols
+  newCols <- gsub("fromcenter", "fromCenter", newCols)
+  errorLst$changedCols$fromcenterToFromCenter <- colChange(cols, newCols)
+  cols <- newCols
+  newCols <- gsub("geographicorigin", "geographicOrigin", newCols)
+  errorLst$changedCols$geographicoriginToGeographicOrigin <-
+    colChange(cols, newCols)
   list(newColNames = newCols, errorLst = errorLst)
 }
