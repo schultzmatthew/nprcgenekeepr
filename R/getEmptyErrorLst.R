@@ -37,7 +37,7 @@ getEmptyErrorLst <- function() {
       deathdateToDeath = character(0),
       recordstatusToRecordStatus = character(0),
       fromcenterToFromCenter = character(0),
-      geographicoriginToGeographicOrigin(0)
+      geographicoriginToGeographicOrigin = character(0)
     )
   )
   class(emptyErrorLst) <-
