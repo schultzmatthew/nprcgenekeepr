@@ -1,7 +1,7 @@
 README
 ================
 R. Mark Sharp
-05/17/2020
+03/10/2021
 
 [![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
@@ -18,7 +18,7 @@ coverage](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 1.0.3 (20200526)
+# nprcgenekeepr – Version 1.0.4 (20210310)
 
 ## Introduction
 
@@ -34,9 +34,7 @@ Southwest National Primate Research Center and P51 OD011092 to the
 Oregon National Primate Research Center.
 
 <!--It is now managed and maintained as a joint effort between ONPRC-->
-
 <!--and Southwest National Primate Research Center (SNPRC) with the -->
-
 <!--coding being done by R. Mark Sharp, Ph.D.-->
 
 At present, the application supports 5 functions:
@@ -155,7 +153,7 @@ View(exampleNprcgenekeeprConfig)
 
 ### Display of an age by sex pyramid plot
 
-Adapted from  on 20190603. Written by Matt Rosenberg. Updated May 07,
+Adapted from on 20190603. Written by Matt Rosenberg. Updated May 07,
 2019
 
 The most important demographic characteristic of a population is its

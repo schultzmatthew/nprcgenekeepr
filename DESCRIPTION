@@ -1,7 +1,7 @@
 Package: nprcgenekeepr
 Type: Package
 Title: Genetic Tools for Colony Management
-Version: 1.0.3.9000
+Version: 1.0.4
 Authors@R: c(
     person("Michael", "Raboin", role = c("aut")),
     person("Terry", "Therneau", role = c("aut")),
@@ -43,6 +43,7 @@ Imports:
     plotrix,
     readxl,
     Rlabkey,
+    rlang,
     shiny,
     shinyBS,
     stringi,
@@ -63,6 +64,6 @@ Suggests:
 Language: en-US
 Encoding: UTF-8
 License: MIT + file LICENSE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 LazyData: TRUE
 VignetteBuilder: knitr, rmarkdown

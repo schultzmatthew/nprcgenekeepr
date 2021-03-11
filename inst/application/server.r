@@ -1,8 +1,8 @@
-`%then%` <- shiny:::`%OR%`
+`%then%` <- rlang::`%||%`
 library(futile.logger)
 library(ggplot2)
 library(stringi)
-library(DT)
+suppressMessages(library(DT))
 shinyServer(function(input, output, session) {
   errorLst <- getEmptyErrorLst()
   nprcgenekeeprLog <- paste0(getSiteInfo()$homeDir, "nprcgenekeepr.log")
