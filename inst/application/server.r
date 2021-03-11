@@ -1,4 +1,4 @@
-`%then%` <- shiny:::`%OR%`
+`%then%` <- rlang::`%||%`
 library(futile.logger)
 library(ggplot2)
 library(stringi)
