@@ -18,7 +18,7 @@ coverage](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 1.0.3 (20200526)
+# nprcgenekeepr – Version 1.0.4 (20210310)
 
 ## Introduction
 
@@ -58,6 +58,13 @@ For Laboratory Animal Science*, 2015 Nov, Vol.54(6), pp.700-707 \[Peer
 Reviewed Journal\]
 
 ## Installation
+
+You can install the CRAN version of **nprcgenekeepr** from the R console
+prompt with:
+
+``` r
+install.packages("nprcgenekeepr")
+```
 
 You can install the development version of **nprcgenekeepr** from GitHub
 from the R console prompt with:
