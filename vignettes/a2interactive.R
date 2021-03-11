@@ -14,8 +14,10 @@ set_seed(1)
 
 
 ## ----gh-installation, eval = FALSE, echo=TRUE---------------------------------
-#  install.packages("devtools")
-#  devtools::install_github("rmsharp/nprcgenekeepr")
+#  install.packages(nprcgenekeepr)
+#  ## Use the following code to get the development version
+#  # install.packages("devtools")
+#  # devtools::install_github("rmsharp/nprcgenekeepr")
 #  
 
 ## ----gh-help, eval = FALSE, echo=TRUE-----------------------------------------
@@ -126,7 +128,7 @@ knownExit <- breederPed$id[ !is.na(breederPed$exit)]
 unknownBirthKnownExit <- breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
 knownPed <- breederPed[!breederPed$id %in% unknownBirthKnownExit, ]
 otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
-print(stri_c("The living animal in the pedigree that are not in the trimmed ",
+print(stri_c("The living animals in the pedigree that are not in the trimmed ",
              "pedigree are ", get_and_or_list(otherIds), "."))
 
 
