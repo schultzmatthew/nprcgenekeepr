@@ -43,9 +43,7 @@ Imports:
     plotrix,
     readxl,
     Rlabkey,
-    rlang,
     shiny,
-    shinyBS,
     stringi,
     utils,
     WriteXLS
@@ -58,9 +56,12 @@ Suggests:
     knitr,
     pkgdown,
     png,
+    rlang,
     rmarkdown,
     roxygen2 (>= 7.0.0),
-    testthat
+    shinyBS,
+    testthat,
+    utf8
 Language: en-US
 Encoding: UTF-8
 License: MIT + file LICENSE

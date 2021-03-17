@@ -11,6 +11,8 @@
 #' library(nprcgenekeepr)
 #' runGeneKeepR()
 #' }
+#'
+#' @importFrom shiny runApp
 #' @export
 runGeneKeepR <- function() {
   appDir <- system.file("application", package = "nprcgenekeepr")
