@@ -20,8 +20,8 @@ matrix:
 addons:
   apt:
     packages:
-    - harfbuzz
-    - fribidi
+      - libharfbuzz-dev
+      - libfribidi-dev
 script:
   - R CMD build . --compact-vignettes=gs+qpdf
   - R CMD check *tar.gz --as-cran

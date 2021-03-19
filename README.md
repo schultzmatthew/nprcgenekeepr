@@ -3,7 +3,7 @@ README
 R. Mark Sharp
 05/17/2020
 
-[![Rdoc](http://www.rdocumentation.org/badges/version/nprcgenekeepr)](http://www.rdocumentation.org/packages/nprcgenekeepr)
+[![Rdoc](https://www.rdocumentation.org/badges/version/nprcgenekeepr)](https://www.rdocumentation.org/packages/nprcgenekeepr)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -18,7 +18,7 @@ coverage](https://codecov.io/gh/rmsharp/nprcgenekeepr/branch/master/graph/badge.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nprcgenekeepr – Version 1.0.4 (20210310)
+# nprcgenekeepr – Version 1.0.4.9003 (20210310)
 
 ## Introduction
 
