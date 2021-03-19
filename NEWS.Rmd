@@ -1,7 +1,7 @@
 ---
 title: "NEWS"
 author: "R. Mark Sharp"
-date: "05/03/2020"
+date: "03/18/2021"
 output:
    github_document: default
 
@@ -11,6 +11,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# nprcgenekeepr 1.0.4.9003 (20210318)
+-   Major changes -- none
+-   Minor changes
+    -   Testing .travis.yml code change to get textshaping to build.
+    
 # nprcgenekeepr 1.0.3 (20200526)
 -   Major changes -- none
 -   Minor changes
