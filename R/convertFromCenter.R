@@ -25,7 +25,7 @@ convertFromCenter <- function(fromCenter) {
   falseValues <- c("N", "NO", "F", "FALSE")
 
   # grepl takes comparison to NA as a failure resulting in FALSE
-  # We conpensate for that while looking for ambiguous text and then put the
+  # We compensate for that while looking for ambiguous text and then put the
   # NA values back before returning.
   if (!is.logical(fromCenter)) {
     fromCenterTrue <- grepl(paste(trueValues, collapse = "|"), fromCenter,
