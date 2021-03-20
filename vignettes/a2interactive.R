@@ -14,8 +14,10 @@ set_seed(1)
 
 
 ## ----gh-installation, eval = FALSE, echo=TRUE---------------------------------
-#  install.packages("devtools")
-#  devtools::install_github("rmsharp/nprcgenekeepr")
+#  install.packages(nprcgenekeepr)
+#  ## Use the following code to get the development version
+#  # install.packages("devtools")
+#  # devtools::install_github("rmsharp/nprcgenekeepr")
 #  
 
 ## ----gh-help, eval = FALSE, echo=TRUE-----------------------------------------

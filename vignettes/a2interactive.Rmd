@@ -45,8 +45,10 @@ issue tracker at \url{https://github.com/rmsharp/nprcgenekeepr/issues}.
 You can install **nprcgenekeepr** from GitHub with the following code.
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
-install.packages("devtools")
-devtools::install_github("rmsharp/nprcgenekeepr")
+install.packages(nprcgenekeepr)
+## Use the following code to get the development version
+# install.packages("devtools")
+# devtools::install_github("rmsharp/nprcgenekeepr")
 
 ```
 
@@ -71,7 +73,8 @@ pedigree information is pulled in through the LabKey API.
 This tutorial will use a pedigree file that can be created using the 
 __makeExamplePedigreeFile__ function as shown below.
 The function __makeExamplePedigreeFile__ both saves a file and returns the
-full path name to the saved file, which we are saving into the variable _pedigreeFile_.
+full path name to the saved file, which we are saving into the variable 
+_pedigreeFile_.
 Note: the user will select where to store the file.
 
 ```{r make-example-pedigree, eval = FALSE, include = TRUE}

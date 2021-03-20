@@ -9,6 +9,17 @@ R. Mark Sharp
 -   Minor changes
     -   Testing .travis.yml code change to get textshaping to build.
 
+# nprcgenekeepr 1.0.4 (20210310)
+
+-   Major changes – none
+-   Minor changes
+    -   Added suppression of warnings from DT at beginning of server.R
+        since it is unlikely for anyone to call affected functions in
+        the controlled environment.
+    -   Changed call to shiny:::`%OR%` to rlang::`%||%` in server.R
+        since the update to 1.6 of shiny broke the code. Thanks to Dan
+        Metzger of Wisconsin National Primate Research Center.
+
 # nprcgenekeepr 1.0.3 (20200526)
 
 -   Major changes – none
