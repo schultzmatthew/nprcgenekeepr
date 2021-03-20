@@ -1,7 +1,13 @@
 NEWS
 ================
 R. Mark Sharp
-05/03/2020
+03/18/2021
+
+# nprcgenekeepr 1.0.4.9003 (20210318)
+
+-   Major changes – none
+-   Minor changes
+    -   Testing .travis.yml code change to get textshaping to build.
 
 # nprcgenekeepr 1.0.4 (20210310)
 

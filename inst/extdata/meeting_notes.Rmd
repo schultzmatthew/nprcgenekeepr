@@ -15,6 +15,68 @@ library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
 
+## 20201130
+1.   Mark met with Amanda to discuss the parent exclusion project and to 
+     discuss writing of a paper about nprcgenekeepr. 
+     a.   The possible journals she thought of are listed below.
+          1. ILAR
+          1. Molecular Ecology
+          1. Zoo Biology
+          1. Journal of Medical Primatology - probably not good for software
+          1. Journal of Genomics - check
+
+## 20201120
+1.   Mark and Matt met with the Genetics and Genomics Consortium to present a
+     brief summary of work to date and to discuss potential work going forward.
+     1.  Provided a table of statistics describing the growth of the 
+         software from a set of 8 scripts to a mature package published on CRAN.
+     1.  Near term plans
+         1.  Plans to correctly handle false founders made up of animals
+             from within the colony that do not have one or both parents 
+             identified.
+         1.  Offered to help with LabKey integration at each site using LabKey.
+         1.  Offered to train users and improve tutorials based on user 
+             feedback.
+         1.  Will refactor user interface code to use Shiny modules.
+     1.  Parent exclusion software
+         1.  Nearly done with conversion of Java scripts to R
+         1.  Plan to make standalone Shiny Application
+         1.  May integrate into `nprcgenekeepr`
+     1.  Possible long term plan is to provide predictive modeling of breeding
+         strategies via simulation.
+     1.  Obtained requests from users
+         1.  ARMS connectivity
+         1.  Oracle connectivity
+         1.  Add tracking of individual alleles
+             1.  The internal code already does this if the animal has 
+                 geneotypes assigned. However, the user interface is minimal
+                 and does not provide output regarding statistical summaries of 
+                 probabilities for those individual genes being in the current
+                 potential breeders.
+         1.  Group from common colony - assign kinship coefficients (matrix) 
+             based on genetic data. Mark does not remember the meaning of this 
+             request and needs to find someone who can provide more explanation.
+         
+## 20201117
+1.   Preparation for Friday's meeting with the Genetics and Genomics Consortium.
+1.   Review of progress to date
+     1.     Software changes
+            
+Simple metrics for the Original Version (20160816) and Current Version 1.0.3 
+(20200526).
+Source	       Files	Lines	  Code	 Blank Lines	Document Lines	Comment Lines
+Original Files	   8	 3621	  1927	         531	             0	         1163
+Version 1.0.3	   293  13776	  7775	         441	          4613	          947
+
+Simple metrics for the Original Version (20160816) and Current Version 1.0.3 
+(20200526) and current version groups of functions.
+Source	        Files	 Lines  Code	 Blank Lines	Document Lines	Comment Lines
+Original Files	    8	  3621  1927	         531               0	         1163
+Version 1.0.3	    293	 13776	7775	         441	          4613	          947
+1.0.3: functions  163	  8272	3007	         226	          4406	          633
+1.0.3: ui	         11	  1782	1506	          98	             2	          176
+1.0.3: tests    	119	  3722	3262	         117	           205	          138
+
 ## 20200423
 1.  Submission to CRAN was rejected with the following revision requests
     1.  considerably reduce the check time of your package to stay below the
@@ -157,14 +219,18 @@ threshold of 10 minutes. This can for example be achieved by:
 
     
 ```{r code-changes, include=FALSE}
+
+if (Sys.Date() > "2020-08-01") {
+  path <- "/Users/msharp/Documents/Development/R/r_workspace/"
+} else {
+  path <- "/Users/msharp/Documents/Development/R/r_workspace/library/"
+}
+
 originalFiles <- stri_c("/Users/msharp/Documents/Projects/Active_Projects/",
                        "nprcgenekeepr_project/20160816_GeneticManagementTools")
-functions <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/",
-                    "library/nprcgenekeepr/R")
-tests <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-                "nprcgenekeepr/tests/testthat")
-ui <- stri_c("/Users/msharp/Documents/Development/R/r_workspace/library/",
-             "nprcgenekeepr/inst/application")
+functions <- stri_c(path, "nprcgenekeepr/R")
+tests <- stri_c(path, "nprcgenekeepr/tests/testthat")
+ui <- stri_c(path, "nprcgenekeepr/inst/application")
 
 paths <- c(originalFiles = originalFiles, 
            functions = functions, 

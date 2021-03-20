@@ -38,7 +38,9 @@ checkChangedColsLst <- function(changedCols) {
       length(changedCols$sireIdToSire) > 0 |
       length(changedCols$damIdToDam) > 0 |
       length(changedCols$birthdateToBirth) > 0 |
-      length(changedCols$deathdateToDeath) > 0) {
+      length(changedCols$deathdateToDeath) > 0 |
+      length(changedCols$recordstatusToRecordStatus) > 0 |
+      length(changedCols$fromcenterToFromCenter) > 0) {
     return(TRUE)
   } else {
     return(FALSE)

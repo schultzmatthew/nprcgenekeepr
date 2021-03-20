@@ -3,7 +3,6 @@ sudo: required
 cache:
   - packages
   - github_packages
-dist: trusty
 r:
     - release
     - devel
@@ -17,7 +16,13 @@ r_packages:
 matrix:
      include:
          - os: osx
+           osx_image: xcode12.2
            fortran: false
+addons:
+  apt:
+    packages:
+      - libharfbuzz-dev
+      - libfribidi-dev
 script:
   - R CMD build . --compact-vignettes=gs+qpdf
   - R CMD check *tar.gz --as-cran
