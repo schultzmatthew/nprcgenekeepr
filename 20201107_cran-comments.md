@@ -1,5 +1,5 @@
-## Bug fix and additional unit tests
-This is a bug fix to allow the shiny app to run under shiny 1.6
+## Resubmission
+This is a resubmission. In this version I have:
 
 * Responded to both requests provided by the reviewer
   - I have removed the capitalization from "Genetic Tools for Colony 
