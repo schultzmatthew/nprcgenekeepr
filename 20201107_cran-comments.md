@@ -1,14 +1,15 @@
-## Bug fix and additional unit tests
-This is a bug fix to allow the shiny app to run under shiny 1.6
+## Resubmission
+This is a resubmission. In this version I have:
 
-* Changed the use of an internal `shiny:::%OR%` function to exported
-  `rlang::%||%`.
-* I added some unit tests and enhanced rigor of unit tests
-* Updated all documentation (NEWS, README, and tutorials) with minor technical
-  edits.
+* Responded to both requests provided by the reviewer
+  - I have removed the capitalization from "Genetic Tools for Colony 
+    Management" and "Genetic Value Analysis Reports" within DESCRIPTION.
+  - I have removed the conditional installation of DT from the ui.R file.
+* I have incremented the version from 1.0.2 to 1.0.3, updated NEWS to reflect
+  the changes, and updated all documentation to reflect the version change.
 
 ## Test environments
-* local OS X install, R 4.0.4
+* local OS X install, R 4.0.0
 * travis-ci R version 4.0.0 (2020-04-24) platform: x86_64-pc-linux-gnu (64-bit)
 * travis-ci R Under development (unstable) (2020-05-26 r78576) platform: 
   x86_64-pc-linux-gnu (64-bit)

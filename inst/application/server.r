@@ -1,4 +1,5 @@
 `%then%` <- rlang::`%||%`
+library(nprcgenekeepr)
 library(futile.logger)
 library(ggplot2)
 library(stringi)

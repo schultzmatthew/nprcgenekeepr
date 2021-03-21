@@ -29,3 +29,8 @@ test_that("convertFromCenter makes correct transformations", {
   expect_equal(status[19], FALSE)
   expect_equal(status[20], FALSE)
 })
+test_that("convertFromCenter() detects input error", {
+  original <- c("y", "&")
+  expect_error(convertFromCenter(original), "fromCenter field has ambiguous")
+})
+

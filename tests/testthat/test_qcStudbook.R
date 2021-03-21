@@ -21,6 +21,7 @@ pedTwo <- data.frame(ego_id =
                      `si re` = c(NA, NA, NA, NA, "UNKNOWN", "s1", "s2", "s2"),
                      dam_id = c(NA, NA, NA, NA, "d1", "d2", "UNKNOWN", "d2"),
                      sex = c("F", "M", "M", "F", "F", "F", "F", "M"),
+                     fromcenter = c("F", "T", "T", "F", "F", "F", "F", "T"),
                      birth_date = mdy(
                        paste0(sample(1:12, 8, replace = TRUE), "-",
                               sample(1:28, 8, replace = TRUE), "-",
