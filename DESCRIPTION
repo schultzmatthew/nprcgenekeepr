@@ -46,6 +46,7 @@ Imports:
     rlang,
     shiny,
     shinyBS,
+    shinyWidgets,
     stringi,
     utils,
     WriteXLS
