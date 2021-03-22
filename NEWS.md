@@ -3,13 +3,28 @@ NEWS
 R. Mark Sharp
 03/18/2021
 
+# nprcgenekeepr 1.0.5 (20210322)
+
+-   Major changes – none
+-   Minor changes
+    -   CRAN submission primarily in response to a change in `shiny 1.6`
+        that removed an internal `shiny` function (`shiny:::%OR%`) and
+        replaced it with `rlang::%||%`
+    -   I have incremented the version from 1.0.4 (github.com only
+        version) to 1.0.5, updated NEWS to reflect the changes, and
+        updated all documentation to reflect the version change.
+
 # nprcgenekeepr 1.0.4.9003 (20210318)
 
 -   Major changes – none
 -   Minor changes
-    -   Testing .travis.yml code change to get textshaping to build.
+    -   Testing .travis.yml code change to get textshaping to build on
+        all systems..
+    -   Cleaned up .travis.yml in response to syntax checking on
+        travis.org.
+    -   Added `markdown` to suggest due to new changes in `knitr`.
 
-# nprcgenekeepr 1.0.4 (20210310)
+# nprcgenekeepr 1.0.4 (20210318)
 
 -   Major changes – none
 -   Minor changes
