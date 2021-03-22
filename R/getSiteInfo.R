@@ -26,7 +26,6 @@
 #' }
 #' @param expectConfigFile logical parameter when set to \code{FALSE}, no
 #' configuration is looked for. Default value is \code{TRUE}.
-#' @import stringi
 #' @export
 getSiteInfo <- function(expectConfigFile = TRUE) {
   sysInfo <- Sys.info()

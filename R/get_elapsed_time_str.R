@@ -16,7 +16,6 @@
 #'
 #' @param start_time a POSIXct time object
 #' @importFrom stringi stri_c
-#' @import lubridate
 #' @export
 get_elapsed_time_str <- function(start_time) {
   # To use: collect the start_time at the beginning of the script with

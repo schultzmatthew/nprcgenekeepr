@@ -5,7 +5,7 @@
 #'
 #' @param savePed logical value if TRUE the pedigree is saved into the
 #' packages \code{data} directory
-#' @importFrom lubridate mdy
+#' @importFrom lubridate mdy dyears ymd
 #' @importFrom stringi stri_c
 createPedSix <- function(savePed = TRUE) {
   set_seed(10)

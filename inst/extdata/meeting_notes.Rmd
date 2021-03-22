@@ -773,11 +773,11 @@ for (i in 1:4) {
                 unique_set_3 = unique[11:15], 
                 stringsAsFactors = FALSE )
 }
-overlapping_str <- sapply(overlapping_groups, function(x) {
+overlapping_str <- vapply(overlapping_groups, function(x) {
  stri_c("Unique Set 1: ", stri_c(x[[1]], collapse = ","), "\n",
      "Unique Set 2: ", stri_c(x[[2]], collapse = ","), "\n",
      "Unique Set 3: ", stri_c(x[[3]], collapse = ","), "\n")
-})
+}, character(1))
 cat(overlapping_str)
 
 ```

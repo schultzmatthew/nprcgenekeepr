@@ -33,7 +33,8 @@
 #' @param reportErrors logical value if TRUE will scan the entire file and
 #' make a list of all errors found. The errors will be returned in a
 #' list of list where each sublist is a type of error found.
-#' @import lubridate
+#' @importFrom anytime anytime
+#' @importFrom lubridate dyears
 #' @export
 checkParentAge <- function(sb, minParentAge = 2, reportErrors = FALSE) {
   if (nrow(sb) == 0 |

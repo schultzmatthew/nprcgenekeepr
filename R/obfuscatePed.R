@@ -26,6 +26,7 @@
 #' @param map logical if \code{TRUE} a list object is returned with the new
 #' pedigree and a named character vector with the names being the original IDs
 #' and the values being the new alias values. Defaults to \code{FALSE}.
+#' @importFrom lubridate is.Date
 #' @export
 obfuscatePed <- function(ped, size = 6, maxDelta = 30,
                          existingIds = character(0), map = FALSE ) {
