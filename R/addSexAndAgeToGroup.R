@@ -20,8 +20,7 @@
 #' @export
 addSexAndAgeToGroup <- function(ids, ped) {
   group <- data.frame(ids,
-             sex = sapply(ids, function(id) {ped$sex[ped$id == id]},
-                          character(1)),
+             sex = sapply(ids, function(id) {ped$sex[ped$id == id]}),
              age = vapply(ids, function(id) {
                getCurrentAge(ped$birth[ped$id == id])}, numeric(1)),
              stringsAsFactors = FALSE)
