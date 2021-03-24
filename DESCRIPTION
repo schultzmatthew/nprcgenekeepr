@@ -45,8 +45,6 @@ Imports:
     Rlabkey,
     rlang,
     shiny,
-    shinyBS,
-    shinyWidgets,
     stringi,
     utils,
     WriteXLS
@@ -62,6 +60,8 @@ Suggests:
     png,
     rmarkdown,
     roxygen2 (>= 7.0.0),
+    shinyBS,
+    shinyWidgets,
     testthat
 Language: en-US
 Encoding: UTF-8

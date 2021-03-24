@@ -28,6 +28,9 @@ This is a bug fix to allow the shiny app to run under shiny 1.6
 
 0 errors | 0 warnings | 0 note
 
+-  Some test systems are reading historical sections of the NEWS file and 
+   falsely identifying an old URL as possibly incorrect. Please ignore the note.
+   
 ## Reverse dependencies
 
 * There are currently no downstream dependencies for this package.
