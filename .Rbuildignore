@@ -47,3 +47,5 @@ README\.*\.png$
 ^images$
 ^images/*$
 ^LICENSE\.md$
+^CRAN-RELEASE$
+

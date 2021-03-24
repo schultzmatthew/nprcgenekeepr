@@ -160,9 +160,11 @@ possible columns:</p><ul>
 individual's father (<code>NA</code> if unknown).</p></li>
 <li><p>dam -- character vector with unique identifier for an
 individual's mother (<code>NA</code> if unknown).</p></li>
-<li><p>sex -- factor levels: "M", "F", "U" Sex specifier for an individual</p></li>
+<li><p>sex -- factor levels: "M", "F", "U" Sex specifier for an
+ individual</p></li>
 <li><p>gen -- integer vector with the generation number of the individual</p></li>
-<li><p>birth -- Date or <code>NA</code> (optional) with the individual's birth date</p></li>
+<li><p>birth -- Date or <code>NA</code> (optional) with the individual's birth
+date</p></li>
 <li><p>exit -- Date or <code>NA</code> (optional) with the individual's exit date
 (death, or departure if applicable)</p></li>
 <li><p>ancestry -- character vector or <code>NA</code> (optional) that indicates
@@ -178,8 +180,8 @@ local.<code>NA</code> indicates the individual was not imported.</p></li>
 
 <p>Pedigree File Testing Functions</p>
 <ul>
-<li><p><a href='qcStudbook.html'>qcStudbook</a> --- Main pedigree curation function that performs basic
-quality control on pedigree information</p></li>
+<li><p><a href='qcStudbook.html'>qcStudbook</a> --- Main pedigree curation function that performs
+basic quality control on pedigree information</p></li>
 <li><p><a href='fixColumnNames.html'>fixColumnNames</a> --- Changes original column names and into
 standardized names.</p></li>
 <li><p><a href='checkRequiredCols.html'>checkRequiredCols</a> --- Examines column names, cols, to see if
@@ -198,11 +200,12 @@ provided pedigree information</p></li>
 </ul><p>Genetic Value Analysis Functions</p>
 <p>Contains functions to calculate the kinship coefficient and genome
 uniqueness for animals listed in a Pedigree table.</p><ul>
-<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
-kinship matrix</p></li>
+<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal
+in a kinship matrix</p></li>
 <li><p><a href='calcA.html'>calcA</a> --- Calculates <code>a</code>, the number of an individual's
 alleles that are rare in each simulation.</p></li>
-<li><p><a href='alleleFreq.html'>alleleFreq</a> --- Calculates the count of each allele in the provided vector.</p></li>
+<li><p><a href='alleleFreq.html'>alleleFreq</a> --- Calculates the count of each allele in the
+provided vector.</p></li>
 <li><p><a href='calcFE.html'>calcFE</a> --- Calculates founder equivalents.</p></li>
 <li><p><a href='calcFG.html'>calcFG</a> --- Calculates founder genome equivalents.</p></li>
 <li><p><a href='calcFEFG.html'>calcFEFG</a>--- Returns founder equivalents <code>FE</code> and
@@ -214,18 +217,20 @@ pedigree information.</p></li>
 <li><p><a href='chooseAlleles.html'>chooseAlleles</a> --- Combines two vectors of alleles by randomly
 selecting one allele or the other at each position.</p></li>
 <li><p><a href='calcRetention.html'>calcRetention</a> --- Calculates allelic retention.</p></li>
-<li><p><a href='filterKinMatrix.html'>filterKinMatrix</a> --- Filters a kinship matrix to include only the egos
+<li><p><a href='filterKinMatrix.html'>filterKinMatrix</a> --- Filters a kinship matrix to include only
+the egos
 listed in 'ids'</p></li>
 <li><p><a href='kinship.html'>kinship</a> --- Generates a kinship matrix</p></li>
-<li><p><a href='reportGV.html'>reportGV</a> --- Generates a genetic value report for a provided pedigree.</p></li>
+<li><p><a href='reportGV.html'>reportGV</a> --- Generates a genetic value report for a provided
+pedigree.</p></li>
 </ul><p>Plotting Functions</p>
 <ul>
-<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
-kinship matrix</p></li>
+<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal
+in a kinship matrix</p></li>
 </ul><p>Breeding Group Formation Functions</p>
 <ul>
-<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal in a
-kinship matrix</p></li>
+<li><p><a href='meanKinship.html'>meanKinship</a> --- Calculates the mean kinship for each animal
+in a kinship matrix</p></li>
 </ul>
 </div>
 
