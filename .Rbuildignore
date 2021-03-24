@@ -33,8 +33,6 @@ README\.*\.png$
 ^README\.Rmd$
 # Comments for CRAN submission
 ^cran-comments\.md$
-# A news file written in Markdown
-^NEWS\.md$
 # A news file written in RMarkdown
 ^NEWS\.Rmd$
 # Used for continuous integration testing with travis
