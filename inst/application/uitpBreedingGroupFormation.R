@@ -58,7 +58,7 @@ uitpBreedingGroupFormation <-
         ),
         conditionalPanel(
           condition = "input.group_sex_rb == 'sex-ratio'",
-          div(popify(
+          div(shinyBS::popify(
             numericInput(
               "sexRatio",
               label = "Sex Ratio (F/M):",
@@ -102,7 +102,7 @@ uitpBreedingGroupFormation <-
           uiOutput("minParentAge", inline = FALSE),
           conditionalPanel(
             condition = "!input.useMinParentAge",
-            div(popify(
+            div(shinyBS::popify(
               numericInput(
                 "minAge",
                 label = "Animals will be grouped with the mother below age:",

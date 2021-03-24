@@ -17,10 +17,10 @@ uitpPedigreeBrowser <-
                 accept = c("text/csv",
                            "text/comma-separated-values,text/plain",
                            ".csv")),
-      popify(actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
+      shinyBS::popify(actionButton("specifyFocalAnimal", label = "Update Focal Animals"),
              paste0("Read selected file of focal animals or list of animals ",
              "entered and update the table below")),
-      popify(checkboxInput("clearFocalAnimals", label = "Clear Focal Animals",
+      shinyBS::popify(checkboxInput("clearFocalAnimals", label = "Clear Focal Animals",
                            value = FALSE),
              paste0("Focal animal list is to be cleared as well using a file ",
                     "with no animal IDs. (Files are not affected).")),
@@ -42,7 +42,7 @@ uitpPedigreeBrowser <-
     # div(
     # conditionalPanel(
     #   condition = "input$focalAnimalUpdate",
-    #   div(popify(checkboxInput("clearFocalAnimals",
+    #   div(shinyBS::popify(checkboxInput("clearFocalAnimals",
     #                            label = paste0("Clear focal Animals"),
     #                            width = "150%",
     #                            value = FALSE)
@@ -51,17 +51,17 @@ uitpPedigreeBrowser <-
     # Right Side Panel
          style = paste("margin-left: 550px;",
           "width: 500px; height: 180px; padding: 10px"),
-      popify(checkboxInput("uid", label = "Display Unknown IDs",
+      shinyBS::popify(checkboxInput("uid", label = "Display Unknown IDs",
                         value = TRUE),
              paste0("Unknown IDs, beginning with a capital U, are created ",
                     "by the application for all animals with only one  ",
                     "parent.")),
-      popify(checkboxInput("trim",
+      shinyBS::popify(checkboxInput("trim",
                     label = "Trim pedigree based on focal animals",
                     value = FALSE),
              paste0("Trim the pedigree to include only relatives of the focal ",
                     "animals provided.")),
-      popify(downloadButton("downloadPedigree", "Export"),
+      shinyBS::popify(downloadButton("downloadPedigree", "Export"),
              paste0("Export the pedigree into a CSV (comma separted value)  ",
                     "file.")),
       helpText("A population must be defined before proceeding
