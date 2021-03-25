@@ -15,7 +15,7 @@
 #'
 #'
 #' @param birth birth date(s)
-#' @import lubridate
+#' @importFrom lubridate duration interval today
 #' @export
 getCurrentAge <- function(birth) {
   as.numeric(interval(start = birth, end = today()) /

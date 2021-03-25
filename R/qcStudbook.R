@@ -156,6 +156,7 @@
 #' Finally the columns \code{id} \code{sire}, and \code{dam} are coerce to
 #' character.
 #'
+#' @importFrom lubridate is.Date
 #' @importFrom utils write.csv
 ## ##  rmsutilityr str_detect_fixed_all
 #' @export

@@ -45,8 +45,10 @@ issue tracker at \url{https://github.com/rmsharp/nprcgenekeepr/issues}.
 You can install **nprcgenekeepr** from GitHub with the following code.
 
 ```{r gh-installation, eval = FALSE, echo=TRUE}
-install.packages("devtools")
-devtools::install_github("rmsharp/nprcgenekeepr")
+install.packages(nprcgenekeepr)
+## Use the following code to get the development version
+# install.packages("devtools")
+# devtools::install_github("rmsharp/nprcgenekeepr")
 
 ```
 
@@ -71,7 +73,8 @@ pedigree information is pulled in through the LabKey API.
 This tutorial will use a pedigree file that can be created using the 
 __makeExamplePedigreeFile__ function as shown below.
 The function __makeExamplePedigreeFile__ both saves a file and returns the
-full path name to the saved file, which we are saving into the variable _pedigreeFile_.
+full path name to the saved file, which we are saving into the variable 
+_pedigreeFile_.
 Note: the user will select where to store the file.
 
 ```{r make-example-pedigree, eval = FALSE, include = TRUE}
@@ -128,8 +131,8 @@ breederPed <- qcStudbook(breederPedCsv, minParentAge = 2)
 
 ```
 
-If __qcStudbook__ reports an error, change the call by adding the __reportErrors__
-argument set to __TRUE__ and examine the returned object.
+If __qcStudbook__ reports an error, change the call by adding the 
+__reportErrors__ argument set to __TRUE__ and examine the returned object.
 More on this is presented in the __Pedigree Errors__ section.
 
 ## Identifying Focal Animals
@@ -163,8 +166,8 @@ breederPed[breederPed$id %in%
 
 We indicate that these are the animals of interest by using the
 __setPopulation__ function. 
-This function simply sets a column named _population_[^2] to the logical value of
-__TRUE__ if the row represents an animal in the list and __FALSE__ otherwise.
+This function simply sets a column named _population_[^2] to the logical value
+of __TRUE__ if the row represents an animal in the list and __FALSE__ otherwise.
 
 [^2]: The _population_ column is created and added to the pedigree object if it 
 does not already exist.
@@ -228,7 +231,8 @@ the focal animals or their parents. They are more distant ancestors
 as we will show.
 
 ```{r find-non-focal-non-focal-parent}
-notFocalNotParent <- trimmedPed$id[!trimmedPed$id %in% c(focalAnimals, allFocalParents)]
+notFocalNotParent <- 
+  trimmedPed$id[!trimmedPed$id %in% c(focalAnimals, allFocalParents)]
 length(notFocalNotParent)
 
 ```
@@ -239,9 +243,11 @@ allFocalGrandParents <- c(breederPed$sire[breederPed$id %in% allFocalParents],
                           breederPed$dam[breederPed$id %in% allFocalParents])
 ## Not all parents are known so the unknown individuals (NA) are removed.
 allFocalGrandParents <- allFocalGrandParents[!is.na(allFocalGrandParents)] 
-trimmedFocalGrandParents <- c(trimmedPed$sire[trimmedPed$id %in% allFocalParents],
-                          trimmedPed$dam[trimmedPed$id %in% allFocalParents])
-trimmedFocalGrandParents <- trimmedFocalGrandParents[!is.na(trimmedFocalGrandParents)] 
+trimmedFocalGrandParents <- 
+  c(trimmedPed$sire[trimmedPed$id %in% allFocalParents],
+    trimmedPed$dam[trimmedPed$id %in% allFocalParents])
+trimmedFocalGrandParents <- 
+  trimmedFocalGrandParents[!is.na(trimmedFocalGrandParents)] 
 all.equal(allFocalGrandParents, trimmedFocalGrandParents)
 
 ```
@@ -275,7 +281,8 @@ provide genetic information while the others
 
 ```{r animals-no-birth-no-exit, echo = FALSE, eval = TRUE, include=FALSE}
 unknownBirth <- breederPed$id[is.na(breederPed$birth)]
-unknownBirthOrExit <- breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
+unknownBirthOrExit <- 
+  breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
 knownPed <- breederPed[!breederPed$id %in% unknownBirthOrExit, ]
 otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
 
@@ -289,7 +296,8 @@ living animals are still in the colony but are not in the trimmed pedigree.[^3]
 ```{r show-living-animals-not-in-trimmed-pedigree, results = 'asis'}
 unknownBirth <- breederPed$id[is.na(breederPed$birth)]
 knownExit <- breederPed$id[ !is.na(breederPed$exit)]
-unknownBirthKnownExit <- breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
+unknownBirthKnownExit <- 
+  breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
 knownPed <- breederPed[!breederPed$id %in% unknownBirthKnownExit, ]
 otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
 print(stri_c("The living animals in the pedigree that are not in the trimmed ",
@@ -380,8 +388,8 @@ reduces the effort required to examine the animals of interest.
 
 ### Detailed look at the Genetic Value Report object
 
-The names of the object within the genetic value report object (_trimmedGeneticValue_)
-can be listed as shown in the next line of code.
+The names of the object within the genetic value report object 
+(_trimmedGeneticValue_) can be listed as shown in the next line of code.
 
 ```{r list-genetic-value-objects}
 names(trimmedGeneticValue)
@@ -471,7 +479,8 @@ There are several options you must consider when forming groups using
 __nprcgenekeepr__, which we will examine using code below.
 
 -   Animals used to form groups
-    -   _high-value_: Randomly select from only high-value animals in genetic value analysis
+    -   _high-value_: Randomly select from only high-value animals in genetic 
+        value analysis
     -   _all_: Randomly select from all animals in genetic value analysis
     -   _candidates_: Use candidate animals entered below to form groups
 -   Sex ratio
@@ -560,7 +569,8 @@ table(trimmedPed$sex[trimmedPed$id %in% candidates])
 
 ```
 
-Our candidates are made up of `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]`
+Our candidates are made up of 
+`r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[1]]`
 females and `r table(trimmedPed$sex[trimmedPed$id %in% candidates])[[2]]` males.
 The parameters __currentGroups__, __threshold__, __ignore__, __minAge__, 
 __sexRatio__, __withKin__, 
@@ -594,7 +604,8 @@ haremGrp$group
 We can identify and list the males in each group with the following code.
 
 ```{r list-males-in-harem-groups}
-sapply(haremGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+sapply(haremGrp$group, function(ids) {
+  ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
 
 ```
 
@@ -635,7 +646,8 @@ sexRatioGrp$group
 Again we can identify and list the males in each group with the following code.
 
 ```{r list-males-in-sexratio-groups}
-sapply(sexRatioGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+sapply(sexRatioGrp$group, function(ids) {
+  ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
 
 ```
 

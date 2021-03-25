@@ -23,9 +23,11 @@ possible columns:
 individual's father (\code{NA} if unknown).}
 \item{dam} {-- character vector with unique identifier for an
 individual's mother (\code{NA} if unknown).}
-\item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an individual}
+\item{sex} {-- factor {levels: "M", "F", "U"} Sex specifier for an
+ individual}
 \item{gen} {-- integer vector with the generation number of the individual}
-\item{birth} {-- Date or \code{NA} (optional) with the individual's birth date}
+\item{birth} {-- Date or \code{NA} (optional) with the individual's birth
+date}
 \item{exit} {-- Date or \code{NA} (optional) with the individual's exit date
 (death, or departure if applicable)}
 \item{ancestry} {-- character vector or \code{NA} (optional) that indicates
@@ -42,8 +44,8 @@ local.\code{NA} indicates the individual was not imported.}
 Pedigree File Testing Functions
 
 \itemize{
-\item{\link{qcStudbook}} {--- Main pedigree curation function that performs basic
-quality control on pedigree information}
+\item{\link{qcStudbook}} {--- Main pedigree curation function that performs
+basic quality control on pedigree information}
 \item{\link{fixColumnNames}} {--- Changes original column names and into
 standardized names.}
 \item{\link{checkRequiredCols}} {--- Examines column names, cols, to see if
@@ -67,11 +69,12 @@ Genetic Value Analysis Functions
 Contains functions to calculate the kinship coefficient and genome
 uniqueness for animals listed in a Pedigree table.
 \itemize{
-\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
-kinship matrix}
+\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal
+in a kinship matrix}
 \item {\link{calcA}} {--- Calculates \code{a}, the number of an individual's
 alleles that are rare in each simulation.}
-\item{\link{alleleFreq}} {--- Calculates the count of each allele in the provided vector.}
+\item{\link{alleleFreq}} {--- Calculates the count of each allele in the
+provided vector.}
 \item{\link{calcFE}} {--- Calculates founder equivalents.}
 \item{\link{calcFG}} {--- Calculates founder genome equivalents.}
 \item{\link{calcFEFG}}{--- Returns founder equivalents \code{FE} and
@@ -83,21 +86,23 @@ pedigree information.}
 \item{\link{chooseAlleles}} {--- Combines two vectors of alleles by randomly
 selecting one allele or the other at each position.}
 \item{\link{calcRetention}} {--- Calculates allelic retention.}
-\item{\link{filterKinMatrix}} {--- Filters a kinship matrix to include only the egos
+\item{\link{filterKinMatrix}} {--- Filters a kinship matrix to include only
+the egos
 listed in 'ids'}
 \item{\link{kinship}} {--- Generates a kinship matrix}
-\item{\link{reportGV}} {--- Generates a genetic value report for a provided pedigree.}
+\item{\link{reportGV}} {--- Generates a genetic value report for a provided
+pedigree.}
 }
 Plotting Functions
 
 \itemize{
-\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
-kinship matrix}
+\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal
+in a kinship matrix}
 }
 Breeding Group Formation Functions
 
 \itemize{
-\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal in a
-kinship matrix}
+\item{\link{meanKinship}} {--- Calculates the mean kinship for each animal
+in a kinship matrix}
 }
 }

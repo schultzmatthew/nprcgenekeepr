@@ -9,7 +9,7 @@ uitpBreedingGroupFormation <-
           "border: 1px solid lightgray; background-color: #EDEDED; ",
           "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
         ),
-        radioButtons(
+        prettyRadioButtons(
           "group_formation_rb",
           "Choose one group formation workflow:",
           choiceNames = list(
@@ -24,7 +24,8 @@ uitpBreedingGroupFormation <-
           ),
           choiceValues = list("high-value", "all", "candidates"),
           width = "650px",
-          selected = character(0)
+          selected = character(0),
+          outline = TRUE
         ),
         conditionalPanel(
           condition = paste0("input.group_formation_rb == 'candidates' "),
@@ -42,7 +43,7 @@ uitpBreedingGroupFormation <-
           "border: 1px solid lightgray; background-color: #EDEDED;",
           "border-radius: 1px; box-shadow: 0 0 5px 2px #888"
         ),
-        radioButtons(
+        prettyRadioButtons(
           "group_sex_rb",
           "Sex of animals in groups:",
           choiceNames = list(
@@ -52,11 +53,12 @@ uitpBreedingGroupFormation <-
           ),
           choiceValues = list("ignore-sex", "harems", "sex-ratio"),
           width = "350px",
-          selected = "ignore-sex"
+          selected = "ignore-sex",
+          outline = TRUE
         ),
         conditionalPanel(
           condition = "input.group_sex_rb == 'sex-ratio'",
-          div(popify(
+          div(shinyBS::popify(
             numericInput(
               "sexRatio",
               label = "Sex Ratio (F/M):",
@@ -100,7 +102,7 @@ uitpBreedingGroupFormation <-
           uiOutput("minParentAge", inline = FALSE),
           conditionalPanel(
             condition = "!input.useMinParentAge",
-            div(popify(
+            div(shinyBS::popify(
               numericInput(
                 "minAge",
                 label = "Animals will be grouped with the mother below age:",

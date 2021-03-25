@@ -34,16 +34,17 @@ uitpInput <-
         helpText(
           "Select how you are submitting data."
         ),
-        radioButtons(
+        prettyRadioButtons(
           "fileType",
           label = "File Type",
           choices = list(
             "Excel" = "fileTypeExcel",
             "Text" = "fileTypeText"
           ),
-          selected = NULL
+          selected = NULL,
+          outline = TRUE
         ),
-        radioButtons(
+        prettyRadioButtons(
           "fileContent",
           label = "File Content",
           choices = list(
@@ -57,7 +58,7 @@ uitpInput <-
         ),
         conditionalPanel(
           condition = "input.fileType == 'fileTypeText'",
-          radioButtons(
+          prettyRadioButtons(
             "separator",
             label = "Separator",
             choices = list(
@@ -65,7 +66,8 @@ uitpInput <-
               "Semicolon" = ";",
               "Tab" = "\t"
             ),
-            selected = ","
+            selected = ",",
+            outline = TRUE
           )),
         conditionalPanel(
           condition = "input.fileContent == 'pedFile'",
@@ -84,7 +86,7 @@ uitpInput <-
           condition = "input.fileContent == 'focalAnimals'",
           fileInput("breederFile", label = "Select Focal Animals File")
         ),
-        popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
+        shinyBS::popify(textInput("minParentAge", label = "Minimum Parent Age (years)",
                   value = "2.0"), NULL,
                paste("Parents must be at least as old as the minimum parent",
                      "age at the birthdate of an offspring. If not, the",

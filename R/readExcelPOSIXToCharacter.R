@@ -11,7 +11,8 @@
 readExcelPOSIXToCharacter <- function(fileName) {
   pedigree <- as.data.frame(read_excel(path = fileName, na = "NA"),
                             stringsAsFactors = FALSE)
-  cols <- sapply(pedigree, class)
+  cols <- vapply(pedigree, function(col) {stri_c(class(col), collapse = "")},
+                 character(1))
   cols <- suppressWarnings(names(cols)[stri_detect_fixed(cols, "POSIX")])
   pedigree <- toCharacter(pedigree, headers = cols)
   pedigree

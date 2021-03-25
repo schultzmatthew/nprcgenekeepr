@@ -1,7 +1,8 @@
 library(futile.logger)
 library(ggplot2)
-library(stringi)
+library(nprcgenekeepr)
 library(rlang)
+library(stringi)
 `%then%` <- rlang::`%||%`
 suppressMessages(library(DT))
 shinyServer(function(input, output, session) {
@@ -856,7 +857,8 @@ shinyServer(function(input, output, session) {
     do.call(tagList, seedAnimalList)}, ignoreInit = FALSE)
 
   getCurrentGroups <- reactive({
-    currentGroups <- sapply(1:(input$numGp), function(i){character(0)})
+    currentGroups <- vapply(seq_len(input$numGp), function(i){character(0)},
+                            character(0))
     for (i in 1:(input$numGp)) {
       inputName <- paste0("curGrp", i)
       if (is.null(input[[inputName]])) # seed animal option is not selected

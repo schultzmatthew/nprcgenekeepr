@@ -18,7 +18,7 @@
 #' @param optional parameter to \code{as.Date}. Logical value indicating
 #' to return NA (instead of signaling an error) if the format guessing does not
 #' succeed. Defaults to FALSE.
-#' @import anytime
+#' @importFrom anytime anytime
 #' @export
 is_valid_date_str <- function(date_str, format = "%d-%m-%Y %H:%M:%S",
                               optional = FALSE) {

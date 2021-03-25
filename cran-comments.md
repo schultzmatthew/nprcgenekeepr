@@ -1,35 +1,36 @@
-## Resubmission
-This is a resubmission. In this version I have:
+## Bug fix and additional unit tests
+This is a bug fix to allow the shiny app to run under shiny 1.6
 
-* Responded to both requests provided by the reviewer
-  - I have removed the capitalization from "Genetic Tools for Colony 
-    Management" and "Genetic Value Analysis Reports" within DESCRIPTION.
-  - I have removed the conditional installation of DT from the ui.R file.
-* I have incremented the version from 1.0.2 to 1.0.3, updated NEWS to reflect
-  the changes, and updated all documentation to reflect the version change.
+* Changed the use of an internal `shiny:::%OR%` function to exported
+  `rlang::%||%`.
+* Added some unit tests and enhanced the rigor of some unit tests
+* Updated all documentation (NEWS, README, and tutorials) with minor technical
+  edits.
 
 ## Test environments
-* local OS X install, R 4.0.0
-* travis-ci R version 4.0.0 (2020-04-24) platform: x86_64-pc-linux-gnu (64-bit)
-* travis-ci R Under development (unstable) (2020-05-26 r78576) platform: 
+* local OS X install, R 4.0.4
+* travis-ci R version 4.0.2 (2020-06-22) platform: x86_64-pc-linux-gnu (64-bit)
+* travis-ci R Under development (unstable) (2021-03-19 r80100) platform: 
   x86_64-pc-linux-gnu (64-bit)
-* travis-ci R version 4.0.0 (2020-04-24) using platform: 
+* travis-ci R version 4.0.4 (2021-02-15) using platform: 
   x86_64-apple-darwin17.0 (64-bit)
 * R-hub Fedora Linux, R-devel, clang, gfortran
-* R-hub Ubuntu Linux 16.04 LTS, R-release, GCC
+* R-hub Ubuntu Linux 20.04.1 LTS, R-release, GCC
+* R-hub Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 * winbuilder using R version 3.6.3 (2020-02-29)
   using platform: x86_64-w64-mingw32 (64-bit)
-* winbuilder R Under development (unstable) (2020-05-26 r78577)
+* winbuilder R Under development (unstable) (2021-03-19 r80100)
   using platform: x86_64-w64-mingw32 (64-bit)
-* winbuilder R version 4.0.0 (2020-04-24) using platform: 
+* winbuilder R version 4.0.4 (2021-02-15) using platform: 
   x86_64-w64-mingw32 (64-bit)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-* This is a new release.
-
+-  Some test systems are reading historical sections of the NEWS file and 
+   falsely identifying an old URL as possibly incorrect. Please ignore the note.
+   
 ## Reverse dependencies
 
 * There are currently no downstream dependencies for this package.

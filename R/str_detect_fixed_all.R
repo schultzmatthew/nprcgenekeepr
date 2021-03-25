@@ -19,6 +19,6 @@ str_detect_fixed_all <- function(strings, patterns, ignore_na = FALSE, ...) {
     strings <- strings[!is.na(strings)]
     patterns <- patterns[!is.na(patterns)]
   }
-  sapply(patterns, function(pattern) {
-    any(stri_detect_fixed(strings, pattern, ...))})
+  vapply(patterns, function(pattern) {
+    any(stri_detect_fixed(strings, pattern, ...))}, logical(1))
 }

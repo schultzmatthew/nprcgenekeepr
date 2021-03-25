@@ -126,6 +126,7 @@ reference:
   - '`colChange`'
   - '`convertAncestry`'
   - '`convertDate`'
+  - '`convertFromCenter`'
   - '`convertRelationships`'
   - '`convertSexCodes`'
   - '`convertStatusCodes`'
