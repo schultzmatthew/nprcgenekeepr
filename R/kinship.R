@@ -47,7 +47,7 @@
 #'
 #'
 #' @references {Main website}
-#' \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+#' \url{https://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 #'
 #'
 #' @references {S-Plus/R Function Page}

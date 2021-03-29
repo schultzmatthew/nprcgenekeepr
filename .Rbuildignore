@@ -6,6 +6,7 @@
 ^\.httr-oauth$
 ^\.Rprofile$
 ^cran-comments\.md$
+^20210324_cran-comments\.md$
 ^20201107_cran-comments\.md$
 ^20200517_cran-comments\.md$
 ^20200510_cran-comments\.md$

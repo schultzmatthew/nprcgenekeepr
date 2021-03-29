@@ -57,7 +57,7 @@ kmat
 }
 \references{
 {Main website}
-\url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+\url{https://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 
 {S-Plus/R Function Page}
 \emph{www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/}
