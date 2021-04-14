@@ -15,6 +15,8 @@ knitr::opts_chunk$set(echo = TRUE,include = TRUE, results = "markup", cache = FA
 pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
 
+#library(nprcgenekeepr)
+#runGeneKeepR()
 ```
 
 ```{r, include = FALSE}
@@ -93,6 +95,9 @@ to tell __read.table__ what file to read.
 ```{r read-in-example-pedigree}
 breederPedCsv <- read.table(pedigreeFile, sep = ",", header = TRUE,
                             stringsAsFactors = FALSE)
+
+breederPedCsv$fromCenter<-"TRUE"
+breederPedCsv$fromCenter[ sample( which(is.na(breederPedCsv$sire) & is.na(breederPedCsv$dam)), round(0.8*length(which(is.na(breederPedCsv$sire) & is.na(breederPedCsv$dam))))) ]<-"FALSE"
 ```
 Note the number of rows read. Each row represents an individual within the 
 pedigree.
@@ -246,11 +251,20 @@ all.equal(allFocalGrandParents, trimmedFocalGrandParents)
 
 ```
 
+
 Since the trimming process is supposed to retain the focal animals
 and their ancestors, we will leave it as an exercise for you to demonstrate
 that at least some of the remaining animals are grandparents of the focal
 animals. _Hint: there are `r length(trimmedFocalGrandParents)` grandparents
 in both the trimmed and the complete pedigree_.
+
+
+```{r find-non-focal-non-focal-parent}
+notFocalGParent <- trimmedPed$id[trimmedPed$id %in% trimmedFocalGrandParents]
+length(notFocalGParent)
+length(trimmedFocalGrandParents)
+```
+
 
 ```{r get-informative-and-uninformative-added-animals, echo=FALSE, include=FALSE, eval=TRUE}
 trimmedPedInformative <- trimPedigree(focalAnimals, breederPed,
