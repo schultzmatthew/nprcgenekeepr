@@ -2,7 +2,7 @@
 % Please edit documentation in R/saveDataframesAsFiles.R
 \name{saveDataframesAsFiles}
 \alias{saveDataframesAsFiles}
-\title{Write copy of dataframes to either CSV or Excel file.}
+\title{Write copy of dataframes to either CSV, TXT, or Excel file.}
 \usage{
 saveDataframesAsFiles(dfList, baseDir, fileType = "csv")
 }
@@ -16,8 +16,9 @@ saveDataframesAsFiles(dfList, baseDir, fileType = "csv")
 \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.}
 }
 \value{
-Full path name of file saved.
+Full path name of files saved.
 }
 \description{
-Uses \code{examplePedigree} data structure to create an example data file
+Takes a list of dataframes and creates a file based on the list name of
+the dataframe and the extension for the file type.
 }

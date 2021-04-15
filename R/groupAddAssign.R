@@ -146,7 +146,7 @@ groupAddAssign <- function(candidates, currentGroups = list(character(0)), kmat,
                                      minAge, numGp, sexRatio)
 
     # Score the resulting groups
-    score <- min(sapply(groupMembers, length))
+    score <- min(vapply(groupMembers, length, integer(1)))
 
     if (score > savedScore) {
       savedGroupMembers <- groupMembers

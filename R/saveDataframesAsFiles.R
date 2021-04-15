@@ -1,10 +1,12 @@
-#' Write copy of dataframes to either CSV or Excel file.
+#' Write copy of dataframes to either CSV, TXT, or Excel file.
 #'
 ## Copyright(c) 2017-2020 R. Mark Sharp
 ## This file is part of nprcgenekeepr
-#' Uses \code{examplePedigree} data structure to create an example data file
 #'
-#' @return Full path name of file saved.
+#' Takes a list of dataframes and creates a file based on the list name of
+#' the dataframe and the extension for the file type.
+#'
+#' @return Full path name of files saved.
 #'
 #' @param dfList list of dataframes to be stored as files.
 #' \code{"txt"}, \code{"csv"}, or \code{"xlsx"}. Default value is \code{"csv"}.
@@ -14,9 +16,11 @@
 #'
 #' @importFrom utils write.table write.csv
 ## ## rmsutilityr create_wkbk
+#' @export
 saveDataframesAsFiles <- function(dfList, baseDir, fileType = "csv") {
   if (!(class(dfList) == "list" &
-      all(sapply(dfList, function(df) {class(df) == "data.frame"}))))
+      all(vapply(dfList, function(df) {class(df) == "data.frame"},
+                 logical(1)))))
       stop("dfList must be a list containing only dataframes.")
   stopifnot(any(fileType %in% c("txt", "csv", "excel")))
   filesWritten <- character(0)
@@ -36,7 +40,7 @@ saveDataframesAsFiles <- function(dfList, baseDir, fileType = "csv") {
         )
       if (!status)
         stop(paste0("Failed to write example data out to ", filename, "."))
-    } else {
+    } else { # txt; tab delimited
       write.table(
         dfList[[i]],
         file = filename,

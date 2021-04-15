@@ -1,5 +1,6 @@
 library(shiny)
 library(shinyBS)
+library(shinyWidgets)
 library(DT)
 library(stringi)
 source("../application/uitpInput.R")

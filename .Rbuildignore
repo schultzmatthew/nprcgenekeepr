@@ -6,6 +6,7 @@
 ^\.httr-oauth$
 ^\.Rprofile$
 ^cran-comments\.md$
+^20201107_cran-comments\.md$
 ^20200517_cran-comments\.md$
 ^20200510_cran-comments\.md$
 ^20200415_cran-comments\.md$
@@ -32,8 +33,6 @@ README\.*\.png$
 ^README\.Rmd$
 # Comments for CRAN submission
 ^cran-comments\.md$
-# A news file written in Markdown
-^NEWS\.md$
 # A news file written in RMarkdown
 ^NEWS\.Rmd$
 # Used for continuous integration testing with travis
@@ -48,3 +47,5 @@ README\.*\.png$
 ^images$
 ^images/*$
 ^LICENSE\.md$
+^CRAN-RELEASE$
+

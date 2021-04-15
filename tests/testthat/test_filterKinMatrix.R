@@ -26,8 +26,8 @@ kmatFiltered <- filterKinMatrix(ids, kmat)
 test_that("filterKinMatrix leaves the correct rows", {
   expect_equal(nrow(kmatFiltered), length(ids))
   expect_equal(ncol(kmatFiltered), length(ids))
-  expect_equal(kmat[(1:nrow(kmat))[rownames(kmat) %in% ids[20:23]],
-                    (1:ncol(kmat))[colnames(kmat) %in% ids[20:23]]],
+  expect_equal(kmat[(seq_len(nrow(kmat)))[rownames(kmat) %in% ids[20:23]],
+                    (seq_len(ncol(kmat)))[colnames(kmat) %in% ids[20:23]]],
                kmatFiltered[20:23, 20:23])
 }
 )

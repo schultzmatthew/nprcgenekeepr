@@ -14,8 +14,10 @@ set_seed(1)
 
 
 ## ----gh-installation, eval = FALSE, echo=TRUE---------------------------------
-#  install.packages("devtools")
-#  devtools::install_github("rmsharp/nprcgenekeepr")
+#  install.packages(nprcgenekeepr)
+#  ## Use the following code to get the development version
+#  # install.packages("devtools")
+#  # devtools::install_github("rmsharp/nprcgenekeepr")
 #  
 
 ## ----gh-help, eval = FALSE, echo=TRUE-----------------------------------------
@@ -86,7 +88,8 @@ all.equal(allFocalParents, trimmedFocalParents) # Are the IDs the same?
 
 
 ## ----find-non-focal-non-focal-parent------------------------------------------
-notFocalNotParent <- trimmedPed$id[!trimmedPed$id %in% c(focalAnimals, allFocalParents)]
+notFocalNotParent <- 
+  trimmedPed$id[!trimmedPed$id %in% c(focalAnimals, allFocalParents)]
 length(notFocalNotParent)
 
 
@@ -95,9 +98,11 @@ allFocalGrandParents <- c(breederPed$sire[breederPed$id %in% allFocalParents],
                           breederPed$dam[breederPed$id %in% allFocalParents])
 ## Not all parents are known so the unknown individuals (NA) are removed.
 allFocalGrandParents <- allFocalGrandParents[!is.na(allFocalGrandParents)] 
-trimmedFocalGrandParents <- c(trimmedPed$sire[trimmedPed$id %in% allFocalParents],
-                          trimmedPed$dam[trimmedPed$id %in% allFocalParents])
-trimmedFocalGrandParents <- trimmedFocalGrandParents[!is.na(trimmedFocalGrandParents)] 
+trimmedFocalGrandParents <- 
+  c(trimmedPed$sire[trimmedPed$id %in% allFocalParents],
+    trimmedPed$dam[trimmedPed$id %in% allFocalParents])
+trimmedFocalGrandParents <- 
+  trimmedFocalGrandParents[!is.na(trimmedFocalGrandParents)] 
 all.equal(allFocalGrandParents, trimmedFocalGrandParents)
 
 
@@ -115,7 +120,8 @@ geneticallyInformative <-
 
 ## ----animals-no-birth-no-exit, echo = FALSE, eval = TRUE, include=FALSE-------
 unknownBirth <- breederPed$id[is.na(breederPed$birth)]
-unknownBirthOrExit <- breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
+unknownBirthOrExit <- 
+  breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
 knownPed <- breederPed[!breederPed$id %in% unknownBirthOrExit, ]
 otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
 
@@ -123,7 +129,8 @@ otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
 ## ----show-living-animals-not-in-trimmed-pedigree, results = 'asis'------------
 unknownBirth <- breederPed$id[is.na(breederPed$birth)]
 knownExit <- breederPed$id[ !is.na(breederPed$exit)]
-unknownBirthKnownExit <- breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
+unknownBirthKnownExit <- 
+  breederPed$id[is.na(breederPed$birth) | !is.na(breederPed$exit)]
 knownPed <- breederPed[!breederPed$id %in% unknownBirthKnownExit, ]
 otherIds <- knownPed$id[!knownPed$id %in% trimmedPed$id[is.na(trimmedPed$exit)]]
 print(stri_c("The living animals in the pedigree that are not in the trimmed ",
@@ -227,7 +234,8 @@ haremGrp$group
 
 
 ## ----list-males-in-harem-groups-----------------------------------------------
-sapply(haremGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+sapply(haremGrp$group, function(ids) {
+  ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
 
 
 ## ----harem-count-and-sexratios------------------------------------------------
@@ -247,7 +255,8 @@ sexRatioGrp$group
 
 
 ## ----list-males-in-sexratio-groups--------------------------------------------
-sapply(sexRatioGrp$group, function(ids) {ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
+sapply(sexRatioGrp$group, function(ids) {
+  ids[ids %in% trimmedPed$id[trimmedPed$sex == "M"]]})
 
 
 ## ----list-count-and-sexratios-------------------------------------------------

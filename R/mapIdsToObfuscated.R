@@ -23,6 +23,6 @@
 mapIdsToObfuscated <- function(ids, map) {
   if (!all(ids %in% names(map)))
     stop("Some IDs are not in map.")
-  as.character(sapply(ids, function(id) {
-    map[names(map) == as.character(id)]}))
+  as.character(vapply(ids, function(id) {
+    map[names(map) == as.character(id)]}, character(1)))
 }
