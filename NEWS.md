@@ -1,15 +1,19 @@
 NEWS
 ================
 R. Mark Sharp
-03/18/2021
+03/28/2021
 
-# nprcgenekeepr 1.0.5 (20210322)
+# nprcgenekeepr 1.0.5 (20210328)
 
 -   Major changes – none
 -   Minor changes
     -   CRAN submission primarily in response to a change in `shiny 1.6`
         that removed an internal `shiny` function (`shiny:::%OR%`) and
         replaced it with `rlang::%||%`
+    -   Stale URL in historical documentation that were causing notes to
+        be generated in automated tests have been removed.
+    -   A URL referring to Terry Therneau’s page was updated from “http”
+        to “https”.
     -   I have incremented the version from 1.0.4 (github.com only
         version) to 1.0.5, updated NEWS to reflect the changes, and
         updated all documentation to reflect the version change.
@@ -268,9 +272,8 @@ R. Mark Sharp
 -   Added **createExampleFiles** and **saveDataframesAsFiles** to allow
     the user to generate all of the example pedigrees and other files
     used in testing and in tutorials.
--   Removed **Development\_Plans.Rmd** from build because it has be
-    replaced by adding issues on our issue tracker at
-    [github.com/rmsharp/nprcmanager/issues](https://github.com/rmsharp/nprcmanager/issues).
+-   Removed **Development\_Plans.Rmd** from build because it has has
+    been replaced by adding issues on our GitHub issue tracker.
 
 # nprcmanager 0.5.40.9000 (20191115)
 
