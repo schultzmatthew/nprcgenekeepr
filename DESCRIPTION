@@ -9,6 +9,8 @@ Authors@R: c(
     person("R. Mark", "Sharp", email = "rmsharp@me.com", 
     comment = c(ORCID = "0000-0002-6170-6942"), 
     role = c("aut", "cre", "cph", "dtc")),
+    person("Matthew", "Schultz", role = c("aut"),
+    comment = c(ORCID = "0000-0001-5103-4305")), 
     person("Southwest National Primate Research Center NIH grant P51 RR13986", 
     role = "fnd"),
     person("Oregon National Primate Research Center grant P51 OD011092",
