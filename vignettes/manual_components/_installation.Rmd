@@ -14,6 +14,13 @@ vignette: >
 ---
 ## Installation
 
+You can install the CRAN version of **nprcgenekeepr** from
+the R console prompt with:
+
+```{r cran-installation, eval = FALSE, echo=TRUE}
+install.packages("nprcgenekeepr")
+```
+
 You can install the development version of **nprcgenekeepr** from GitHub from
 the R console prompt with:
 
