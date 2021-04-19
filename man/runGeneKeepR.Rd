@@ -20,4 +20,5 @@ Allows running \code{shiny} application with
 library(nprcgenekeepr)
 runGeneKeepR()
 }
+
 }
