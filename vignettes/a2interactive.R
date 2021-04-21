@@ -3,6 +3,8 @@ knitr::opts_chunk$set(echo = TRUE,include = TRUE, results = "markup", cache = FA
 pdf.options(useDingbats = TRUE)
 start_time <- proc.time()
 
+#library(nprcgenekeepr)
+#runGeneKeepR()
 
 ## ---- include = FALSE---------------------------------------------------------
 library(stringi)
@@ -34,8 +36,21 @@ pedigreeFile <- "../inst/extdata/ExamplePedigree.csv"
 
 
 ## ----read-in-example-pedigree-------------------------------------------------
-breederPedCsv <- read.table(pedigreeFile, sep = ",", header = TRUE,
-                            stringsAsFactors = FALSE)
+breederPedCsv <- read.table(
+  pedigreeFile,
+  sep = ",",
+  header = TRUE,
+  stringsAsFactors = FALSE
+)
+
+breederPedCsv$fromCenter <- "TRUE"
+breederPedCsv$fromCenter[
+  sample(which(is.na(breederPedCsv$sire) &
+                 is.na(breederPedCsv$dam)), 
+         round(0.8 * length(which(
+           is.na(breederPedCsv$sire) & 
+             is.na(breederPedCsv$dam)))))] <- "FALSE"
+
 
 ## ----row-count----------------------------------------------------------------
 nrow(breederPedCsv)
@@ -104,6 +119,13 @@ trimmedFocalGrandParents <-
 trimmedFocalGrandParents <- 
   trimmedFocalGrandParents[!is.na(trimmedFocalGrandParents)] 
 all.equal(allFocalGrandParents, trimmedFocalGrandParents)
+
+
+## ----find-non-focal-non-focal-grandparent-------------------------------------
+notFocalGParent <-
+  trimmedPed$id[trimmedPed$id %in% trimmedFocalGrandParents]
+length(notFocalGParent)
+length(trimmedFocalGrandParents)
 
 
 ## ----get-informative-and-uninformative-added-animals, echo=FALSE, include=FALSE, eval=TRUE----
