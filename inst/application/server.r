@@ -1,8 +1,9 @@
-`%then%` <- rlang::`%||%`
-library(nprcgenekeepr)
 library(futile.logger)
 library(ggplot2)
+library(nprcgenekeepr)
+library(rlang)
 library(stringi)
+`%then%` <- rlang::`%||%`
 suppressMessages(library(DT))
 shinyServer(function(input, output, session) {
   errorLst <- getEmptyErrorLst()

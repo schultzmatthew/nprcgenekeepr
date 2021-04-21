@@ -54,7 +54,6 @@ knitr::opts_chunk$set(echo = TRUE)
         reflect the changes, and updated all documentation to reflect the 
         version change.
 
-
 # nprcgenekeepr 1.0.2 (20200517)
 -   Major changes -- none
 -   Minor changes
