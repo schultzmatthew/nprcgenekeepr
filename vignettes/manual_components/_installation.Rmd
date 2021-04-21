@@ -20,8 +20,6 @@ the R console prompt with:
 ```{r cran-installation, eval = FALSE, echo=TRUE}
 install.packages("nprcgenekeepr")
 
-```
-
 You can install the development version of **nprcgenekeepr** from GitHub from
 the R console prompt with:
 
