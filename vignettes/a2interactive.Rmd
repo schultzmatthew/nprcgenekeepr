@@ -367,7 +367,7 @@ ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
 ```
 
 The arguments to __reportGV__ are all optional except for _ped_, but
-you may often want to non-default values.
+you may often want non-default values.
 
 - __ped__ Pedigree information in data.frame format
 
