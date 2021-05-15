@@ -9,9 +9,9 @@ makeSimPed(ped, allSimParents)
 \arguments{
 \item{ped}{The pedigree information in data.frame format}
 
-\item{allSimParents}{list made up of \code{simParent} where each has a
-single \code{id}, a vector of representative sires (\code{sires}),
-and a vector of representative dams(\code{dams}).}
+\item{allSimParents}{list made up of lists where the internal list
+has the offspring ID \code{id}, a vector of representative sires
+(\code{sires}), and a vector of representative dams(\code{dams}).}
 }
 \description{
 For each \code{id} in \code{allSimParents} with one or more unknow parents
