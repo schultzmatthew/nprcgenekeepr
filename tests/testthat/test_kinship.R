@@ -22,3 +22,10 @@ test_that("kinship detects duplicate record", {
   expect_error(kinship(ped$id, ped$sire, ped$dam, ped$gen, sparse = TRUE),
                 "All id values must be unique", fixed = TRUE)
 })
+test_that(# placeholder
+  stri_c("kinship handles animals born in colony with unknown ",
+                 "parents correctly"), {
+  ped <- nprcgenekeepr::pedSix
+  ped$fromCenter <- c(rep(FALSE, 6), rep(TRUE, 6))
+  expect_true(TRUE)
+})
