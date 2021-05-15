@@ -14,6 +14,25 @@ library(rmsutilityr)
 library(nprcgenekeepr)
 ```
 Provided in reverse chronological order
+## 20210514
+1. Discussed issue 8 - adding fromCenter to calculate unknown parents kinship value
+  a. Matt to work on  function to find to find potential sires and dams for animals lacking parents to be used in the kinship simulation (kinship.r)
+      - Only thing needed is ped
+
+    1.Function to find animals born here but lack parents
+      -   Create list - missing both; missing dam; missing sire
+
+    2. Function to find parents for those identified above
+      -   Use ped, list, argument
+      -   Argument: 
+          Sire <- any had offspring in +-1 yr birth
+          Dam<-any had offspring in +-1 yr birth but did not have off in focal birth year
+    
+    3. Function to put them together
+    
+  
+
+
 
 ## 20201130
 1.   Mark met with Amanda to discuss the parent exclusion project and to 
@@ -773,11 +792,11 @@ for (i in 1:4) {
                 unique_set_3 = unique[11:15], 
                 stringsAsFactors = FALSE )
 }
-overlapping_str <- vapply(overlapping_groups, function(x) {
+overlapping_str <- sapply(overlapping_groups, function(x) {
  stri_c("Unique Set 1: ", stri_c(x[[1]], collapse = ","), "\n",
      "Unique Set 2: ", stri_c(x[[2]], collapse = ","), "\n",
      "Unique Set 3: ", stri_c(x[[3]], collapse = ","), "\n")
-}, character(1))
+})
 cat(overlapping_str)
 
 ```
