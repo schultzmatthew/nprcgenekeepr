@@ -69,9 +69,6 @@ reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
   # Get the list of animals in the population to consider
   probands <- as.character(ped$id[ped$population])
 
-  ## Extract genotype data if available otherwise NULL is returned.
-  genotype <- getGVGenotype(ped)
-
   # Generate the kinship matrix and filter down to the animals of interest
   kmat <- filterKinMatrix(probands, kinship(ped$id, ped$sire, ped$dam,
                                             ped$gen))
@@ -80,6 +77,9 @@ reportGV <- function(ped, guIter = 5000, guThresh = 1, pop = NULL,
   indivMeanKin <- meanKinship(kmat)
   indivMeanKin <- indivMeanKin[probands] # making sure the order is correct
   zScores <- scale(indivMeanKin)
+
+  ## Extract genotype data if available otherwise NULL is returned.
+  genotype <- getGVGenotype(ped)
 
   # Perform the gene drop simulation
   alleles <- geneDrop(ids = ped$id, sires = ped$sire, dams = ped$dam,

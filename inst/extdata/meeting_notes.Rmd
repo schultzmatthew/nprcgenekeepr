@@ -52,10 +52,10 @@ Provided in reverse chronological order
     a.   Mark will create a function to run the simulation. It will take the
          __allSimParents__ and use __makeSimPed()__ to create a list of 
          simulated kinship matrices. If memory becomes an issue, summary 
-         statistics will have to be cumulated. The simmulated kinship 
+         statistics will have to be accumulated. The simmulated kinship 
          coefficients for any one animal will be normally destributed so this
          is straight forward.
-    a.   Mark will create a function to take the simulated kinship matraces and
+    a.   Mark will create a function to take the simulated kinship matrices and
          generate Tukey's five number summary for each.
     
 
