@@ -34,6 +34,50 @@ Provided in reverse chronological order
 
 
 
+
+## 20210514
+1.  Discussed issue 8 - adding fromCenter to calculate unknown parents kinship 
+    value
+    a.   Matt to work on function to find potential sires and dams for 
+         animals lacking parents to be used in the kinship simulation, 
+         __kinship.R__.
+         1. Only object needed by the function is __ped__.
+    a.   Matt to work on a function to find animals born here but lack parents.
+         1. The function will create a list object with three vectors of IDs:
+            animals missing both parents, animals missing the dam, and animals
+            missing the sire.
+    a.   Matt to work on a function to find parents for those identified above
+         1. Use ped, list, argument
+         1. Argument:
+            -   Sires with any offspring within plus or minus 1 yr of birth.
+            -   Dams with any offspring within plus or minus 1 yr of birth 
+                but did not have an offspring in focal birth year. This will
+                work for rhesus but needs to be made so that the exclusion
+                period is variable. For example, potential baboon dams would 
+                need to be excluded if they had an offspring within 6 months
+                of birth. Thus, the plus or minus period needs to be an 
+                optional parameter with a default ot 1 year and the dam
+                exclusion period should default to the gestational length
+                for the species.
+    a.   Matt to work on a function to put them together into a list object
+         __allSimParents__ made up of lists where the internal list has the 
+         offspring ID (__id__), a vector of representative sires (__sires__), 
+         and a vector of representative dams (__dams__). In those cases where
+         the sire or dam is known the vector will contain the known respective
+         sire or dam ID.
+    a.   Mark to create a function (__makeSimPed()__) to use the list object of 
+         __allSimParents__
+         to make the simulated pedigree along with the associated unit tests.
+    a.   Mark will create a function to run the simulation. It will take the
+         __allSimParents__ and use __makeSimPed()__ to create a list of 
+         simulated kinship matrices. If memory becomes an issue, summary 
+         statistics will have to be accumulated. The simmulated kinship 
+         coefficients for any one animal will be normally destributed so this
+         is straight forward.
+    a.   Mark will create a function to take the simulated kinship matrices and
+         generate Tukey's five number summary for each.
+    
+
 ## 20201130
 1.   Mark met with Amanda to discuss the parent exclusion project and to 
      discuss writing of a paper about nprcgenekeepr. 

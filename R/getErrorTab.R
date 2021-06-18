@@ -24,8 +24,3 @@ getErrorTab <- function(errorLst, pedigreeFileName) {
            # )),
            div(HTML(insertErrorTab(errorLst, pedigreeFileName))))
 }
-
-
-
-
-# test delete

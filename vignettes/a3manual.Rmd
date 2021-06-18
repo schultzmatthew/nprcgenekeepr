@@ -42,13 +42,13 @@ vignette: >
 ```
 ```{r child = "manual_components/_summary_statistics.Rmd", ref.label = "summary-statistics"}
 ```
-```{r child = "manual_components/_breeding_group_formation.Rmd", ref.label = "breeding-group-formation"}
+```{r child = "manual_components/_bg_formation.Rmd", ref.label = "bg-formation"}
 ```
 ```{r child = "manual_components/_gv_and_bg_desc.Rmd", ref.label = "gv-and-bg-desc"}
 ```
 ```{r child = "manual_components/_orip_reporting.Rmd", ref.label = "orip-reporting"}
 ```
-```{r child = "manual_components/_breeding_group_algorithm.Rmd", ref.label = "breeding-group-algorithm"}
+```{r child = "manual_components/_bg_algorithm.Rmd", ref.label = "bg-algorithm"}
 ```
 ```{r child = "manual_components/_genome_uniqueness_algorithm.Rmd", ref.label = "genome-uniqueness-algorithm"}
 ```

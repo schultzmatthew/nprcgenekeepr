@@ -27,6 +27,20 @@ vignette: >
 [Algorithm: Genome Uniqueness]   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Introduction  
 The goal of __nprcgenekeepr__ is to implement Genetic Tools for Colony Management.
 It was initially conceived and developed as a Shiny web application at
@@ -64,6 +78,20 @@ Diversity in a Large Colony of Captive Rhesus Macaques (*Macaca mulatto*)
 Vinson, A ; Raboin, MJ
 *Journal Of The American Association For Laboratory Animal Science*, 
 2015 Nov, Vol.54(6), pp.700-707 [Peer Reviewed Journal]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Summary of Major Functions  
 
@@ -167,9 +195,23 @@ Optionally the user may select to form harem groups,
 which considers the sex of individuals when forming groups and restricts the 
 number of males to one per group.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Installation
 
-You can install the development version of **nprcgenekeepr** from GitHub from
+You can install the CRAN version of **nprcgenekeepr** from
 the R console prompt with:
 
 
@@ -178,7 +220,26 @@ install.packages("devtools")
 devtools::install_github("rmsharp/nprcgenekeepr")
 ```
 
+```r
+install.packages("devtools")
+devtools::install_github("rmsharp/nprcgenekeepr")
+```
+
 All missing dependencies should be automatically installed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -193,6 +254,21 @@ that can be started with:
 library(nprcgenekeepr)
 runGeneKeepR()
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Input  
@@ -221,6 +297,20 @@ Additionally, the population of interest can be specified directly in either
 the input file, or entered on the Pedigree Browser tab.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Pedigree Browser  
 
 The Pedigree Browser tab allows the user to view the input data, specify a population
@@ -244,6 +334,20 @@ examine. In the top half of the tab, there is an input box to specify the focal 
 animals. The population flag can be reset by adding the desired animal IDs to the box.
 Once the population flag has been set to the desired group of animals, all further
 analyses will be relative to this group.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Genetic Value Analysis  
@@ -286,6 +390,20 @@ of the animals using the text input box. Both the currently-viewed subset and
 the full report can be exported to a file from here.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Summary Statistics  
 This tab provides some descriptions of the population being examined
 after the genetic value analysis has been run. 
@@ -298,6 +416,20 @@ quartile, mean, median, 3^rd^ quartile, and maximum.
 Lastly, the tab displays histograms and box plots of the distribution of
 mean kinship coefficients, the distribution of mean kinship coefficient 
 Z-scores, Distribution of genome uniqueness values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Breeding Group Formation  
@@ -331,9 +463,37 @@ Whichever group is
 currently being displayed can then be downloaded with the export button.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Genetic Value Analysis and Breeding Group Formation Description  
 This tab contains more in-depth descriptions of how the Genetic Value Analysis
 is created, and how breeding groups are formed by the program.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## ORIP Reporting
 The ORIP Reporting tab will eventually contain information for reporting to the
@@ -343,6 +503,20 @@ histograms. Alternatively, this may contain a subset of information from the
 Summary Statistics tab presented as a formatted report that can be exported and
 submitted to ORIP. The exact information that needs to be submitted for ORIP
 recordkeeping is still under discussion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Algorithm: Breeding Group Formation  
 The group formation process is accomplished by using an algorithm for determining
@@ -404,6 +578,20 @@ The algorithm proceeds by the following steps:
     d. If the score of the new groups is higher than groups that were previously generated, save the new groups.  
 2. Return the currently saved groups  
     a. This should be the best groups encountered in __I__ iterations.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Algorithm: Genome Uniqueness  
@@ -475,6 +663,20 @@ being considered (2 * number of simulations).
 
 
 ![Generation of a vector of five gametes from one parent. Showing how the transmission vectors (row 2) determine which alleles are passed from the parental alleles or haplotypes (row 1) to form complementary vectors (row 3) that are combined by adding corresponding elements to form the final vector of transmitted alleles (row 4).](../inst/application/www/GeneDrop.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Software Issues

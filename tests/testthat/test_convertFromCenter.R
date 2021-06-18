@@ -1,6 +1,5 @@
 #' Copyright(c) 2017-2020 R. Mark Sharp
 #' This file is part of nprcgenekeepr
-
 context("convertFromCenter")
 library(testthat)
 original <- c("y", "yes", "Y", "Yes", "YES",
@@ -34,4 +33,3 @@ test_that("convertFromCenter makes correct transformations", {
   expect_equal(fromCenter[21], NA)
 
 })
-

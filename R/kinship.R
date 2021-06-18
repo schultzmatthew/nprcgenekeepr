@@ -47,7 +47,7 @@
 #'
 #'
 #' @references {Main website}
-#' \url{http://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
+#' \url{https://www.mayo.edu/research/faculty/therneau-terry-m-ph-d/bio-00025991}
 #'
 #'
 #' @references {S-Plus/R Function Page}
@@ -93,7 +93,8 @@ kinship <- function(id, father.id, mother.id, pdepth, sparse = FALSE) {
   # Those at depth == 0 don't need to be processed
   # Subjects with depth = i must be processed before those at depth i + 1.
   # Any parent is guarranteed to be at a lower depth than their children
-  #  The inner loop on "i" can NOT be replaced with a vectorized expression:
+
+  # The inner loop on "i" can NOT be replaced with a vectorized expression:
   # sibs' effect on each other is cumulative.
   for (depth in 1:max(pdepth, na.rm = TRUE)) {
     indx <- (1:n)[pdepth == depth]

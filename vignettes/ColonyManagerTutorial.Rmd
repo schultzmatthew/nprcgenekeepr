@@ -549,8 +549,8 @@ formed.
 
 
 
-```{r breeding-group-first-view, eval = TRUE, fig.width = 7, fig.height = 5.5, echo = FALSE}
-img <- readPNG("./shiny_app_use/breeding_group_first_view.png")
+```{r bg-first-view, eval = TRUE, fig.width = 7, fig.height = 5.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/bg_first_view.png")
 grid.raster(img)
 
 ```
@@ -570,8 +570,8 @@ number of groups using the arrows on the right edge of the
 __Number of Groups Desired__ field, which is outlined in blue in the image 
 below.
 
-```{r breeding-group-1, eval = TRUE, fig.width = 8, fig.height = 7.5, echo = FALSE}
-img <- readPNG("./shiny_app_use/breeding_group_1.png")
+```{r bg-1, eval = TRUE, fig.width = 8, fig.height = 7.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/bg_1.png")
 grid.raster(img)
 
 ```
@@ -592,8 +592,8 @@ age of two being grouped with their mother.
 
 *********
 
-```{r breeding-group-6-infants-with-dam, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
-img <- readPNG("./shiny_app_use/breeding_group_6_infants_with_dam.png")
+```{r bg-6-infants-with-dam, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/bg_6_infants_with_dam.png")
 grid.raster(img)
 
 ```
@@ -606,8 +606,8 @@ selected settings. I have indicated the seed animals for the first group with
 red rectangles.
 
 
-```{r breeding-group-first-group-no-kinship-seeds-indicated, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
-img <- readPNG("./shiny_app_use/breeding_group_first_group_no_kinship_seeds_indicated.png")
+```{r bg-first-group-no-kinship-seeds-indicated, eval = TRUE, fig.width = 6, fig.height = 5.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/bg_first_group_no_kinship_seeds_indicated.png")
 grid.raster(img)
 
 ```
@@ -622,8 +622,8 @@ A group of ten animals was formed in the next run after choosing to include
 kinship and selecting the __Make Groups__ button.
 
 
-```{r breeding-group-6-seed-grps-grp-6-kinship, eval = TRUE, fig.width = 5.5, fig.height = 5.5, echo = FALSE}
-img <- readPNG("./shiny_app_use/breeding_group_6_seed_grps_grp_6_kinship.png")
+```{r bg-6-seed-grps-grp-6-kinship, eval = TRUE, fig.width = 5.5, fig.height = 5.5, echo = FALSE}
+img <- readPNG("./shiny_app_use/bg_6_seed_grps_grp_6_kinship.png")
 grid.raster(img)
 
 ```
@@ -637,8 +637,8 @@ However, the ratio obtained is limited by the availability of animals that
 meet all criteria you have set.
 
 
-```{r breeding-group-sex-ratio-specification, eval = TRUE, fig.width = 5.5, echo = FALSE}
-img <- png::readPNG("./shiny_app_use/breeding_group_sex_ratio_specification.png")
+```{r bg-sex-ratio-specification, eval = TRUE, fig.width = 5.5, echo = FALSE}
+img <- png::readPNG("./shiny_app_use/bg_sex_ratio_specification.png")
 grid::grid.raster(img)
 
 ```                                                                                      

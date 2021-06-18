@@ -96,11 +96,21 @@ You use the file name provided by the __makeExamplePedigreeFile__ function
 to tell __read.table__ what file to read.
 
 ```{r read-in-example-pedigree}
-breederPedCsv <- read.table(pedigreeFile, sep = ",", header = TRUE,
-                            stringsAsFactors = FALSE)
+breederPedCsv <- read.table(
+  pedigreeFile,
+  sep = ",",
+  header = TRUE,
+  stringsAsFactors = FALSE
+)
 
-breederPedCsv$fromCenter<-"TRUE"
-breederPedCsv$fromCenter[ sample( which(is.na(breederPedCsv$sire) & is.na(breederPedCsv$dam)), round(0.8*length(which(is.na(breederPedCsv$sire) & is.na(breederPedCsv$dam))))) ]<-"FALSE"
+breederPedCsv$fromCenter <- "TRUE"
+breederPedCsv$fromCenter[
+  sample(which(is.na(breederPedCsv$sire) &
+                 is.na(breederPedCsv$dam)), 
+         round(0.8 * length(which(
+           is.na(breederPedCsv$sire) & 
+             is.na(breederPedCsv$dam)))))] <- "FALSE"
+
 ```
 Note the number of rows read. Each row represents an individual within the 
 pedigree.
@@ -265,10 +275,12 @@ animals. _Hint: there are `r length(trimmedFocalGrandParents)` grandparents
 in both the trimmed and the complete pedigree_.
 
 
-```{r find-non-focal-non-focal-parent}
-notFocalGParent <- trimmedPed$id[trimmedPed$id %in% trimmedFocalGrandParents]
+```{r find-non-focal-non-focal-grandparent}
+notFocalGParent <-
+  trimmedPed$id[trimmedPed$id %in% trimmedFocalGrandParents]
 length(notFocalGParent)
 length(trimmedFocalGrandParents)
+
 ```
 
 
@@ -355,7 +367,7 @@ ped <- trimPedigree(probands, ped, removeUninformative = FALSE,
 ```
 
 The arguments to __reportGV__ are all optional except for _ped_, but
-you may often want to non-default values.
+you may often want non-default values.
 
 - __ped__ Pedigree information in data.frame format
 
